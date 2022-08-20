@@ -1,1 +1,1 @@
-# MTAP-MIDI-Pedal
+# MTAP-MIDI-Expression-Pedal
