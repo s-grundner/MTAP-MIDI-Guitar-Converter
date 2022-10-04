@@ -9,9 +9,9 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "README.md",
+            "file": "Antrag.md",
             "mode": "source",
-            "source": false
+            "source": true
           }
         }
       }
@@ -61,7 +61,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 142.5
   },
   "right": {
     "id": "352f227efb3ae12f",
@@ -77,7 +77,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "Antrag.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -94,7 +94,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "Antrag.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -117,20 +117,29 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "Antrag.md"
               }
             }
+          },
+          {
+            "id": "3811c0611b0e43a1",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
+    "width": 192.5,
     "collapsed": true
   },
   "active": "b6673551244486f5",
   "lastOpenFiles": [
-    "Antrag.md",
-    "README.md"
+    "README.md",
+    "Antrag.md"
   ]
 }

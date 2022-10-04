@@ -1,4 +1,4 @@
-# MTAP-MIDI-Guitar-Converter / Gitcon
+# MTAP-MIDI-Guitar-Converter 
 Das MIDI-GC ist ein DSP Device mit welchem es möglich ist, Analoge signale eines Gitarren Pickups in MIDI Signale/Noten umzwandeln und an einen PC via USB zu senden. Die MIDI Signale können an einer Digital Audio Workstation verarbeitet werden.
 Es gibt eine Line IN für das Gitarren Signal, sowie eine USB Buchse mit der die Digitalen Signale an den PC übertragen werden und Das MIDI-GC mit 5V versorgt wird.
 Der Line In kann außerdem unverändert an einer 6.3mm Buchse abgegriffen werden, falls man das Gitarren Signal noch weiter verwenden will.
@@ -13,22 +13,19 @@ Der Line In kann außerdem unverändert an einer 6.3mm Buchse abgegriffen werden
 
 # Arbeitsaufteilung
 
-PT schaltplan
-Prototypen
-Programmierung ESP
-	FFT
-	Schnittstelle ADC
-	
-Schaltplan in EAGLE
-**ESP**
-	ESP32 Standalone
-	USB Bridge 
-**Analog technik**
-	Vorverstärker
-	Filter
-	
-Board
-Gehäuse
+## Firmware
+Digital Audio input
+FFT
+MIDI Conversion
+	-> [MIDI Standards](https://mitxela.com/other/ca33.pdf)
+	-> [MIDI Data Table](https://www.midi.org/specifications-old/item/table-2-expanded-messages-list-status-bytes)
+MIDI Transmission via USART
+## Software
+[MIDI to Serial](https://projectgus.github.io/hairless-midiserial/)
+[MIDI loopback](https://mitxela.com/other/ca33.pdf)
+## Hardware
+### Embedded
+### Analog
 
 # FFT
 [arduinoFFT](https://github.com/kosme/arduinoFFT)
@@ -38,9 +35,10 @@ FFT docs
 
 # Quellen
 [Repository](https://github.com/s-grundner/MTAP-MIDI-Expression-Pedal)
-[MIDI Standards](https://mitxela.com/other/ca33.pdf)
-[MIDI loopback](https://mitxela.com/other/ca33.pdf)
-[MIDI Data Table](https://www.midi.org/specifications-old/item/table-2-expanded-messages-list-status-bytes)
-[MIDI to Serial](https://projectgus.github.io/hairless-midiserial/)
 
+# Namen
+GitCon
+midigit
+midigicon ⭐
+digituar
 
