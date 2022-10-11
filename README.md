@@ -14,31 +14,42 @@ Der Line In kann außerdem unverändert an einer 6.3mm Buchse abgegriffen werden
 # Arbeitsaufteilung
 
 ## Firmware
-Digital Audio input
-FFT
-MIDI Conversion
+
+- Digital Audio input
+
+- FFT
+
+- MIDI Conversion
+
 	-> [MIDI Standards](https://mitxela.com/other/ca33.pdf)
+	
 	-> [MIDI Data Table](https://www.midi.org/specifications-old/item/table-2-expanded-messages-list-status-bytes)
-MIDI Transmission via USART
+	
+- MIDI Transmission via USART
+
 ## Software
 [MIDI to Serial](https://projectgus.github.io/hairless-midiserial/)
+
 [MIDI loopback](https://mitxela.com/other/ca33.pdf)
+
 ## Hardware
 ### Embedded
 ### Analog
 
 # FFT
 [arduinoFFT](https://github.com/kosme/arduinoFFT)
-[FFT lib](https://github.com/yash-sanghvi/ESP32/blob/master/FFT_on_ESP32_Arduino/FFT.h)
-FFT docs
 
+[FFT lib](https://github.com/yash-sanghvi/ESP32/blob/master/FFT_on_ESP32_Arduino/FFT.h)
 
 # Quellen
 [Repository](https://github.com/s-grundner/MTAP-MIDI-Expression-Pedal)
 
 # Namen
 GitCon
+
 midigit
+
 midigicon ⭐
+
 digituar
 

@@ -21,11 +21,10 @@ Das Vorliegende Projekt ermöglicht die Verwendung, einer E-Gitarre als MIDI-Dev
 Das Gerät soll einzelne Noten und Akkorde, mit möglichst geringer Latenz, zuverlässig in das MIDI-Format umwandeln.
 
 ## Geplantes Ergebnis der Prüfungskandidaten
-**D B** Entwurf und Implementierung der analogen Signalverarbeitungskette bestehend aus Tiefpassfilter und Vorverstärker
+**Daniel Bräumann:** Entwurf und Implementierung der analogen Signalverarbeitungskette bestehend aus Tiefpassfilter und Vorverstärker.
 
-**L H** Entwurf der Software, um mittels eines FFT Algorithmus die Musiknoten zu ermitteln 
+**Laurenz Hölzl:** Entwurf der Software, um mittels eines FFT Algorithmus die Musiknoten zu ermitteln.
 
-**S G** Die umgewandelte Note soll anschließend im MIDI Format via USART and ein USB-Gateway ansteuern, welches die Verbindung zum PC herstellt
-
+**Simon Grundner:** Umwandlung der berechneten Noten in das MIDI Format. Die Noten werden via USART an die USB-Schnittstelle des PCs übertragen. Entwicklung und Design des Mainboards, welches alle Peripherien miteinander verknüpft.
 
 ---
