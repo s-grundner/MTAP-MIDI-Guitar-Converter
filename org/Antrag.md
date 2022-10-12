@@ -12,7 +12,7 @@ Digitale Instrumente sind in der modernen Musik-Produktion aufgrund ihrer Versat
 ## Untersuchungsanliegen der Individuellen Themenstellung
 **Daniel Bräumann** Implementiert den Teil der Hardware, welcher für die Aufbereitung des Gitarrensignals zuständig ist. Dies umfasst sämtliche Filterstufen und Verstärker. Außerdem widmet er sich der Gehäusekonstruktion.
 
-**Simon Grundner** übernimmt die Entwicklung des Mainboards und die Implementierung der Anbindung an eine Digital Audio Workstation. Dazu zählen auch Entwurf, Entwicklung, Inbetriebnahme und Testung der Schaltungen.
+**Simon Grundner** übernimmt die Entwicklung des Mainboards und die implementierung der Anbindung an eine Digital Audio Workstation. Dazu zählen auch Entwurf, Entwicklung, Inbetriebnahme und Testung der Schaltungen.
 
 **Laurenz Hölzl** entwickelt die Firmware, welche für die Digitale Signalverarbeitung auf dem Microprozessor notwendig ist.
 
