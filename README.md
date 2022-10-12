@@ -43,13 +43,3 @@ Der Line In kann außerdem unverändert an einer 6.3mm Buchse abgegriffen werden
 
 # Quellen
 [Repository](https://github.com/s-grundner/MTAP-MIDI-Expression-Pedal)
-
-# Namen
-GitCon
-
-midigit
-
-midigicon ⭐
-
-digituar
-
