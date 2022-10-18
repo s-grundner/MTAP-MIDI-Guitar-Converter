@@ -1,0 +1,156 @@
+{
+  "main": {
+    "id": "e6a90835c9729944",
+    "type": "split",
+    "children": [
+      {
+        "id": "bb8e7acb70598449",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b6673551244486f5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "org/Antrag.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "919c103af2e5090a",
+    "type": "split",
+    "children": [
+      {
+        "id": "f21b50bd04ba0829",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "52d63bff9a1ec529",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "2f07eea5708c479b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "89f059d44654bbc9",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 142.5
+  },
+  "right": {
+    "id": "352f227efb3ae12f",
+    "type": "split",
+    "children": [
+      {
+        "id": "ec2517a8926e7905",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4438bf090804e5ff",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "org/Antrag.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "dce303b129b51b42",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "org/Antrag.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "06d81d16f479bab8",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "fe5de00c0d0fb496",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "org/Antrag.md"
+              }
+            }
+          },
+          {
+            "id": "3811c0611b0e43a1",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 192.5,
+    "collapsed": true
+  },
+  "ribbon": {
+    "mostRecentAction": ""
+  },
+  "active": "b6673551244486f5",
+  "lastOpenFiles": [
+    "README.md",
+    "Antrag.md"
+  ]
+}
