@@ -10,6 +10,14 @@ Der Line In kann außerdem unverändert an einer 6.3mm Buchse abgegriffen werden
 
 ## Projektstatus
 Das Projekt befindet sich derzeit in der frühen Entwicklungsphase. Funktinoalitäten sind noch in Planung
+Planungsvorgänge können unter dem Reiter *Projects* eingesehen werden.
+
+## Mitwirkende
+[Simon Grundner](https://github.com/s-grundner)
+
+[Laurenz Hölzl](https://github.com/Laurenz03)
+
+[Daniel Bräumann](https://github.com/Hexewillfred)
 
 ## Repository Struktur
 
