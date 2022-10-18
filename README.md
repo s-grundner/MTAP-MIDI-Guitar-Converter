@@ -4,13 +4,12 @@
 
 
 # MTAP-MIDI-Guitar-Converter 
-Das MIDI-GC ist ein DSP Device mit welchem es möglich ist, Analoge signale eines Gitarren Pickups in MIDI Signale/Noten umzwandeln und an einen PC via USB zu senden. Die MIDI Signale können an einer Digital Audio Workstation verarbeitet werden.
+Der MIDI-GC ist ein DSP Device mit welchem es möglich ist, analoge Signale eines Gitarren Pickups in MIDI Signale/Noten umzwandeln und an einen PC via USB zu senden. Die MIDI Signale können an einer [Digital Audio Workstation](https://www.ableton.com/de/live/) verarbeitet werden.
 Es gibt eine Line IN für das Gitarren Signal, sowie eine USB Buchse mit der die Digitalen Signale an den PC übertragen werden und Das MIDI-GC mit 5V versorgt wird.
 Der Line In kann außerdem unverändert an einer 6.3mm Buchse abgegriffen werden, falls man das Gitarren Signal noch weiter verwenden will.
 
 ## Projektstatus
-Das Projekt ist derzeit unvollständig, dennoch Funktionstüchtig. Alle Angeführten Features sind verfügbar. CAD dateien e.g. Gehäuse sind noch nicht im Projekt inkludiert.
-Um die Diagramme in der Dokumentation gut erkennen zu können, wird empfohlen, das Dark-Mode-Theme von GitHub zu Verwenden.
+Das Projekt befindet sich derzeit in der frühen Entwicklungsphase. Funktinoalitäten sind noch in Planung
 
 ## Repository Struktur
 
