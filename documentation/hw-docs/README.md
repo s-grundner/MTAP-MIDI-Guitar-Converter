@@ -1,2 +1,2 @@
 ## BSB - Blockschaltbild
-![BSB](images/BSB-light.svg)
+![BSB](images/BSB-dark.svg)
