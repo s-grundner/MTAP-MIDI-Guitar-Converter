@@ -9,7 +9,7 @@ Es gibt eine Line IN für das Gitarren Signal, sowie eine USB Buchse mit der die
 Der Line In kann außerdem unverändert an einer 6.3mm Buchse abgegriffen werden, falls man das Gitarren Signal noch weiter verwenden will.
 
 ## Projektstatus
-Das Projekt befindet sich derzeit in der frühen Entwicklungsphase. Funktinoalitäten sind noch in Planung
+Das Projekt befindet sich derzeit in der frühen Entwicklungsphase. Funktionalitäten sind noch in Planung
 Planungsvorgänge können unter dem Reiter *[Projects](https://github.com/s-grundner/MTAP-MIDI-Guitar-Converter/projects?query=is%3Aopen)* eingesehen werden.
 
 ## Mitwirkende
