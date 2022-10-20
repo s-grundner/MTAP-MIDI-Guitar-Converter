@@ -12423,7 +12423,6 @@ Source: &lt;a href="https://gct.co/files/drawings/usb4140.pdf"&gt; Datasheet &lt
 <part name="R3" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:18365371/1"/>
 <part name="D1" library="ic_GruS" library_urn="urn:adsk.eagle:library:13571010" deviceset="CP2102N-A01-GQFN28" device="" package3d_urn="urn:adsk.eagle:package:37738757/2"/>
 <part name="X1" library="con_GruS" library_urn="urn:adsk.eagle:library:13569504" deviceset="USB4140-GF-0230-C" device="" package3d_urn="urn:adsk.eagle:package:37738890/1"/>
-<part name="GND9" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -12538,12 +12537,9 @@ Source: &lt;a href="https://gct.co/files/drawings/usb4140.pdf"&gt; Datasheet &lt
 <attribute name="NAME" x="212.09" y="200.66" size="1.6764" layer="95" font="vector" align="bottom-center"/>
 <attribute name="VALUE" x="212.09" y="198.12" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
-<instance part="X1" gate="G$1" x="45.72" y="137.16" smashed="yes" rot="R270">
-<attribute name="NAME" x="63.5" y="113.03" size="1.778" layer="95" rot="R270" align="center-left"/>
-<attribute name="VALUE" x="60.96" y="113.03" size="1.778" layer="96" rot="R270" align="center-left"/>
-</instance>
-<instance part="GND9" gate="1" x="66.04" y="111.76" smashed="yes">
-<attribute name="VALUE" x="66.04" y="109.728" size="1.27" layer="96" font="vector" align="bottom-center"/>
+<instance part="X1" gate="G$1" x="58.42" y="86.36" smashed="yes">
+<attribute name="NAME" x="82.55" y="104.14" size="1.778" layer="95" align="center-left"/>
+<attribute name="VALUE" x="82.55" y="101.6" size="1.778" layer="96" align="center-left"/>
 </instance>
 </instances>
 <busses>
@@ -12666,16 +12662,6 @@ Source: &lt;a href="https://gct.co/files/drawings/usb4140.pdf"&gt; Datasheet &lt
 <pinref part="GND8" gate="1" pin="GND"/>
 <pinref part="C5" gate="G$1" pin="2"/>
 <wire x1="22.86" y1="180.34" x2="22.86" y2="182.88" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="X1" gate="G$1" pin="GND_1"/>
-<wire x1="63.5" y1="116.84" x2="66.04" y2="116.84" width="0.1524" layer="91"/>
-<pinref part="X1" gate="G$1" pin="GND_2"/>
-<wire x1="63.5" y1="129.54" x2="66.04" y2="129.54" width="0.1524" layer="91"/>
-<wire x1="66.04" y1="129.54" x2="66.04" y2="116.84" width="0.1524" layer="91"/>
-<wire x1="66.04" y1="114.3" x2="66.04" y2="116.84" width="0.1524" layer="91"/>
-<junction x="66.04" y="116.84"/>
-<pinref part="GND9" gate="1" pin="GND"/>
 </segment>
 </net>
 <net name="N$1" class="0">
