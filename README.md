@@ -3,7 +3,7 @@
 [![Drawn with: Diagrams](https://img.shields.io/badge/drawn%20with-diagrams.net-ff8c00)](https://app.diagrams.net/)
 
 <picture>
- <source media="(prefers-color-scheme: dark)" srcset="https://github.com/s-grundner/MTAP-MIDI-Guitar-Converter/blob/main/documentation/images/LOGO-light.png?raw=true">
+ <source media="(prefers-color-scheme: dark)" srcset="https://github.com/s-grundner/MTAP-MIDI-Guitar-Converter/blob/main/documentation/images/LOGO-dark.png?raw=true">
  <img alt="Logo" src="https://github.com/s-grundner/MTAP-MIDI-Guitar-Converter/blob/main/documentation/images/LOGO-light.png?raw=true">
 </picture>
 
