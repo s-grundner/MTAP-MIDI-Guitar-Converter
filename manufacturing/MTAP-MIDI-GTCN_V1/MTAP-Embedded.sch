@@ -1905,92 +1905,89 @@ HTBLuVA Salzburg&lt;br&gt;
 Schuljahr: 2019-20&lt;br&gt;
 Eagle Ver. 9.x&lt;br&gt;</description>
 <packages>
-<package name="ESP32WROOM32D4MBPS" urn="urn:adsk.eagle:footprint:37740906/1" library_version="17">
-<description>&lt;b&gt;ESP32-WROOM-32D (4MB PS)-3&lt;/b&gt;&lt;br&gt;
+<package name="ESP32WROOM32UEN8" urn="urn:adsk.eagle:footprint:37940891/1" library_version="18">
+<description>&lt;b&gt;ESP32-WROOM-32UE-N8-1&lt;/b&gt;&lt;br&gt;
 </description>
-<smd name="1" x="-8.5" y="5.26" dx="2" dy="0.9" layer="1"/>
-<smd name="2" x="-8.5" y="3.99" dx="2" dy="0.9" layer="1"/>
-<smd name="3" x="-8.5" y="2.72" dx="2" dy="0.9" layer="1"/>
-<smd name="4" x="-8.5" y="1.45" dx="2" dy="0.9" layer="1"/>
-<smd name="5" x="-8.5" y="0.18" dx="2" dy="0.9" layer="1"/>
-<smd name="6" x="-8.5" y="-1.09" dx="2" dy="0.9" layer="1"/>
-<smd name="7" x="-8.5" y="-2.36" dx="2" dy="0.9" layer="1"/>
-<smd name="8" x="-8.5" y="-3.63" dx="2" dy="0.9" layer="1"/>
-<smd name="9" x="-8.5" y="-4.9" dx="2" dy="0.9" layer="1"/>
-<smd name="10" x="-8.5" y="-6.17" dx="2" dy="0.9" layer="1"/>
-<smd name="11" x="-8.5" y="-7.44" dx="2" dy="0.9" layer="1"/>
-<smd name="12" x="-8.5" y="-8.71" dx="2" dy="0.9" layer="1"/>
-<smd name="13" x="-8.5" y="-9.98" dx="2" dy="0.9" layer="1"/>
-<smd name="14" x="-8.5" y="-11.25" dx="2" dy="0.9" layer="1"/>
-<smd name="15" x="-5.715" y="-12.25" dx="2" dy="0.9" layer="1" rot="R90"/>
-<smd name="16" x="-4.445" y="-12.25" dx="2" dy="0.9" layer="1" rot="R90"/>
-<smd name="17" x="-3.175" y="-12.25" dx="2" dy="0.9" layer="1" rot="R90"/>
-<smd name="18" x="-1.905" y="-12.25" dx="2" dy="0.9" layer="1" rot="R90"/>
-<smd name="19" x="-0.635" y="-12.25" dx="2" dy="0.9" layer="1" rot="R90"/>
-<smd name="20" x="0.635" y="-12.25" dx="2" dy="0.9" layer="1" rot="R90"/>
-<smd name="21" x="1.905" y="-12.25" dx="2" dy="0.9" layer="1" rot="R90"/>
-<smd name="22" x="3.175" y="-12.25" dx="2" dy="0.9" layer="1" rot="R90"/>
-<smd name="23" x="4.445" y="-12.25" dx="2" dy="0.9" layer="1" rot="R90"/>
-<smd name="24" x="5.715" y="-12.25" dx="2" dy="0.9" layer="1" rot="R90"/>
-<smd name="25" x="8.5" y="-11.25" dx="2" dy="0.9" layer="1"/>
-<smd name="26" x="8.5" y="-9.98" dx="2" dy="0.9" layer="1"/>
-<smd name="27" x="8.5" y="-8.71" dx="2" dy="0.9" layer="1"/>
-<smd name="28" x="8.5" y="-7.44" dx="2" dy="0.9" layer="1"/>
-<smd name="29" x="8.5" y="-6.17" dx="2" dy="0.9" layer="1"/>
-<smd name="30" x="8.5" y="-4.9" dx="2" dy="0.9" layer="1"/>
-<smd name="31" x="8.5" y="-3.63" dx="2" dy="0.9" layer="1"/>
-<smd name="32" x="8.5" y="-2.36" dx="2" dy="0.9" layer="1"/>
-<smd name="33" x="8.5" y="-1.09" dx="2" dy="0.9" layer="1"/>
-<smd name="34" x="8.5" y="0.18" dx="2" dy="0.9" layer="1"/>
-<smd name="35" x="8.5" y="1.45" dx="2" dy="0.9" layer="1"/>
-<smd name="36" x="8.5" y="2.72" dx="2" dy="0.9" layer="1"/>
-<smd name="37" x="8.5" y="3.99" dx="2" dy="0.9" layer="1"/>
-<smd name="38" x="8.5" y="5.26" dx="2" dy="0.9" layer="1"/>
-<smd name="39" x="-2.835" y="-0.405" dx="1.33" dy="1.33" layer="1"/>
-<smd name="40" x="-1" y="-0.405" dx="1.33" dy="1.33" layer="1"/>
-<smd name="41" x="0.835" y="-0.405" dx="1.33" dy="1.33" layer="1"/>
-<smd name="42" x="0.835" y="-2.24" dx="1.33" dy="1.33" layer="1"/>
-<smd name="43" x="-1" y="-2.24" dx="1.33" dy="1.33" layer="1"/>
-<smd name="44" x="-2.835" y="-2.24" dx="1.33" dy="1.33" layer="1"/>
-<smd name="45" x="-2.835" y="-4.075" dx="1.33" dy="1.33" layer="1"/>
-<smd name="46" x="-1" y="-4.075" dx="1.33" dy="1.33" layer="1"/>
-<smd name="47" x="0.835" y="-4.075" dx="1.33" dy="1.33" layer="1"/>
-<text x="-0.35" y="-0.25" size="1.27" layer="25" align="center">&gt;NAME</text>
-<text x="-0.35" y="-0.25" size="1.27" layer="27" align="center">&gt;VALUE</text>
-<wire x1="-9" y1="-12.75" x2="9" y2="-12.75" width="0.2" layer="51"/>
-<wire x1="9" y1="-12.75" x2="9" y2="12.75" width="0.2" layer="51"/>
-<wire x1="9" y1="12.75" x2="-9" y2="12.75" width="0.2" layer="51"/>
-<wire x1="-9" y1="12.75" x2="-9" y2="-12.75" width="0.2" layer="51"/>
-<wire x1="-11.2" y1="13.75" x2="10.5" y2="13.75" width="0.1" layer="51"/>
-<wire x1="10.5" y1="13.75" x2="10.5" y2="-14.25" width="0.1" layer="51"/>
-<wire x1="10.5" y1="-14.25" x2="-11.2" y2="-14.25" width="0.1" layer="51"/>
-<wire x1="-11.2" y1="-14.25" x2="-11.2" y2="13.75" width="0.1" layer="51"/>
-<wire x1="-9" y1="6.25" x2="-9" y2="12.75" width="0.1" layer="21"/>
-<wire x1="-9" y1="12.75" x2="9" y2="12.75" width="0.1" layer="21"/>
-<wire x1="9" y1="12.75" x2="9" y2="6.25" width="0.1" layer="21"/>
-<wire x1="-9" y1="-12.25" x2="-9" y2="-12.75" width="0.1" layer="21"/>
-<wire x1="-9" y1="-12.75" x2="-6.75" y2="-12.75" width="0.1" layer="21"/>
-<wire x1="6.75" y1="-12.75" x2="9" y2="-12.75" width="0.1" layer="21"/>
-<wire x1="9" y1="-12.75" x2="9" y2="-12.25" width="0.1" layer="21"/>
-<wire x1="-10.2" y1="5.25" x2="-10.2" y2="5.25" width="0.2" layer="21"/>
-<wire x1="-10.2" y1="5.25" x2="-10.1" y2="5.25" width="0.2" layer="21" curve="180"/>
-<wire x1="-10.1" y1="5.25" x2="-10.1" y2="5.25" width="0.2" layer="21"/>
-<wire x1="-10.1" y1="5.25" x2="-10.2" y2="5.25" width="0.2" layer="21" curve="180"/>
-<wire x1="-10.2" y1="5.25" x2="-10.2" y2="5.25" width="0.2" layer="21"/>
-<wire x1="-10.2" y1="5.25" x2="-10.1" y2="5.25" width="0.2" layer="21" curve="180"/>
+<smd name="1" x="-8.75" y="8.66" dx="1.5" dy="0.9" layer="1"/>
+<smd name="2" x="-8.75" y="7.39" dx="1.5" dy="0.9" layer="1"/>
+<smd name="3" x="-8.75" y="6.12" dx="1.5" dy="0.9" layer="1"/>
+<smd name="4" x="-8.75" y="4.85" dx="1.5" dy="0.9" layer="1"/>
+<smd name="5" x="-8.75" y="3.58" dx="1.5" dy="0.9" layer="1"/>
+<smd name="6" x="-8.75" y="2.31" dx="1.5" dy="0.9" layer="1"/>
+<smd name="7" x="-8.75" y="1.04" dx="1.5" dy="0.9" layer="1"/>
+<smd name="8" x="-8.75" y="-0.23" dx="1.5" dy="0.9" layer="1"/>
+<smd name="9" x="-8.75" y="-1.5" dx="1.5" dy="0.9" layer="1"/>
+<smd name="10" x="-8.75" y="-2.77" dx="1.5" dy="0.9" layer="1"/>
+<smd name="11" x="-8.75" y="-4.04" dx="1.5" dy="0.9" layer="1"/>
+<smd name="12" x="-8.75" y="-5.31" dx="1.5" dy="0.9" layer="1"/>
+<smd name="13" x="-8.75" y="-6.58" dx="1.5" dy="0.9" layer="1"/>
+<smd name="14" x="-8.75" y="-7.85" dx="1.5" dy="0.9" layer="1"/>
+<smd name="15" x="-5.715" y="-9.1" dx="1.5" dy="0.9" layer="1" rot="R90"/>
+<smd name="16" x="-4.445" y="-9.1" dx="1.5" dy="0.9" layer="1" rot="R90"/>
+<smd name="17" x="-3.175" y="-9.1" dx="1.5" dy="0.9" layer="1" rot="R90"/>
+<smd name="18" x="-1.905" y="-9.1" dx="1.5" dy="0.9" layer="1" rot="R90"/>
+<smd name="19" x="-0.635" y="-9.1" dx="1.5" dy="0.9" layer="1" rot="R90"/>
+<smd name="20" x="0.635" y="-9.1" dx="1.5" dy="0.9" layer="1" rot="R90"/>
+<smd name="21" x="1.905" y="-9.1" dx="1.5" dy="0.9" layer="1" rot="R90"/>
+<smd name="22" x="3.175" y="-9.1" dx="1.5" dy="0.9" layer="1" rot="R90"/>
+<smd name="23" x="4.445" y="-9.1" dx="1.5" dy="0.9" layer="1" rot="R90"/>
+<smd name="24" x="5.715" y="-9.1" dx="1.5" dy="0.9" layer="1" rot="R90"/>
+<smd name="25" x="8.75" y="-7.85" dx="1.5" dy="0.9" layer="1"/>
+<smd name="26" x="8.75" y="-6.58" dx="1.5" dy="0.9" layer="1"/>
+<smd name="27" x="8.75" y="-5.31" dx="1.5" dy="0.9" layer="1"/>
+<smd name="28" x="8.75" y="-4.04" dx="1.5" dy="0.9" layer="1"/>
+<smd name="29" x="8.75" y="-2.77" dx="1.5" dy="0.9" layer="1"/>
+<smd name="30" x="8.75" y="-1.5" dx="1.5" dy="0.9" layer="1"/>
+<smd name="31" x="8.75" y="-0.23" dx="1.5" dy="0.9" layer="1"/>
+<smd name="32" x="8.75" y="1.04" dx="1.5" dy="0.9" layer="1"/>
+<smd name="33" x="8.75" y="2.31" dx="1.5" dy="0.9" layer="1"/>
+<smd name="34" x="8.75" y="3.58" dx="1.5" dy="0.9" layer="1"/>
+<smd name="35" x="8.75" y="4.85" dx="1.5" dy="0.9" layer="1"/>
+<smd name="36" x="8.75" y="6.12" dx="1.5" dy="0.9" layer="1"/>
+<smd name="37" x="8.75" y="7.39" dx="1.5" dy="0.9" layer="1"/>
+<smd name="38" x="8.75" y="8.66" dx="1.5" dy="0.9" layer="1"/>
+<smd name="39" x="-1.5" y="1.32" dx="0.9" dy="0.9" layer="1" rot="R90"/>
+<smd name="40" x="-2.9" y="1.32" dx="0.9" dy="0.9" layer="1" rot="R90"/>
+<smd name="41" x="-2.9" y="-0.08" dx="0.9" dy="0.9" layer="1" rot="R90"/>
+<smd name="42" x="-1.5" y="-0.08" dx="0.9" dy="0.9" layer="1" rot="R90"/>
+<smd name="43" x="-0.1" y="-0.08" dx="0.9" dy="0.9" layer="1" rot="R90"/>
+<smd name="44" x="-0.1" y="1.32" dx="0.9" dy="0.9" layer="1" rot="R90"/>
+<smd name="45" x="-0.1" y="2.72" dx="0.9" dy="0.9" layer="1" rot="R90"/>
+<smd name="46" x="-1.5" y="2.72" dx="0.9" dy="0.9" layer="1" rot="R90"/>
+<smd name="47" x="-2.9" y="2.72" dx="0.9" dy="0.9" layer="1" rot="R90"/>
+<text x="0" y="0" size="1.27" layer="25" align="center">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" align="center">&gt;VALUE</text>
+<wire x1="-9" y1="9.85" x2="9" y2="9.85" width="0.1" layer="51"/>
+<wire x1="9" y1="9.85" x2="9" y2="-9.35" width="0.1" layer="51"/>
+<wire x1="9" y1="-9.35" x2="-9" y2="-9.35" width="0.1" layer="51"/>
+<wire x1="-9" y1="-9.35" x2="-9" y2="9.85" width="0.1" layer="51"/>
+<wire x1="-10.5" y1="10.85" x2="10.5" y2="10.85" width="0.1" layer="51"/>
+<wire x1="10.5" y1="10.85" x2="10.5" y2="-10.85" width="0.1" layer="51"/>
+<wire x1="10.5" y1="-10.85" x2="-10.5" y2="-10.85" width="0.1" layer="51"/>
+<wire x1="-10.5" y1="-10.85" x2="-10.5" y2="10.85" width="0.1" layer="51"/>
+<wire x1="9" y1="9.45" x2="9" y2="9.85" width="0.2" layer="21"/>
+<wire x1="9" y1="9.85" x2="-9" y2="9.85" width="0.2" layer="21"/>
+<wire x1="-9" y1="9.85" x2="-9" y2="9.45" width="0.2" layer="21"/>
+<wire x1="9" y1="-8.55" x2="9" y2="-9.35" width="0.2" layer="21"/>
+<wire x1="9" y1="-9.35" x2="6.4" y2="-9.35" width="0.2" layer="21"/>
+<wire x1="-9" y1="-8.55" x2="-9" y2="-9.35" width="0.2" layer="21"/>
+<wire x1="-9" y1="-9.35" x2="-6.4" y2="-9.35" width="0.2" layer="21"/>
+<wire x1="-10" y1="8.66" x2="-10" y2="8.66" width="0.1" layer="21"/>
+<wire x1="-10" y1="8.66" x2="-10.1" y2="8.66" width="0.1" layer="21" curve="180"/>
+<wire x1="-10.1" y1="8.66" x2="-10.1" y2="8.66" width="0.1" layer="21"/>
+<wire x1="-10.1" y1="8.66" x2="-10" y2="8.66" width="0.1" layer="21" curve="180"/>
 </package>
 </packages>
 <packages3d>
-<package3d name="ESP32WROOM32D4MBPS" urn="urn:adsk.eagle:package:37740908/1" type="box" library_version="17">
-<description>&lt;b&gt;ESP32-WROOM-32D (4MB PS)-3&lt;/b&gt;&lt;br&gt;
-</description>
+<package3d name="ESP32WROOM32UEN8" urn="urn:adsk.eagle:package:37940893/1" type="box" library_version="18">
+<description>&lt;b&gt;ESP32-WROOM-32UE-N8-1&lt;/b&gt;&lt;br&gt;</description>
 <packageinstances>
-<packageinstance name="ESP32WROOM32D4MBPS"/>
+<packageinstance name="ESP32WROOM32UEN8"/>
 </packageinstances>
 </package3d>
 </packages3d>
 <symbols>
-<symbol name="ESP32-WROOM-32D__4MB_PS_" urn="urn:adsk.eagle:symbol:37740907/1" library_version="17">
+<symbol name="ESP32-WROOM-32UE-N8" urn="urn:adsk.eagle:symbol:37940892/1" library_version="18">
 <wire x1="5.08" y1="2.54" x2="33.02" y2="2.54" width="0.254" layer="94"/>
 <wire x1="33.02" y1="-60.96" x2="33.02" y2="2.54" width="0.254" layer="94"/>
 <wire x1="33.02" y1="-60.96" x2="5.08" y2="-60.96" width="0.254" layer="94"/>
@@ -2013,12 +2010,12 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 <pin name="IO12" x="0" y="-33.02" length="middle"/>
 <pin name="GND_2" x="0" y="-35.56" length="middle"/>
 <pin name="IO13" x="0" y="-38.1" length="middle"/>
-<pin name="SHD/SD2" x="0" y="-40.64" length="middle"/>
-<pin name="SWP/SD3" x="0" y="-43.18" length="middle"/>
-<pin name="SCS/CMD" x="0" y="-45.72" length="middle"/>
-<pin name="SCK/CLK" x="0" y="-48.26" length="middle"/>
-<pin name="SDO/SD0" x="0" y="-50.8" length="middle"/>
-<pin name="SDI/SD1" x="0" y="-53.34" length="middle"/>
+<pin name="NC_1" x="0" y="-40.64" length="middle"/>
+<pin name="NC_2" x="0" y="-43.18" length="middle"/>
+<pin name="NC_3" x="0" y="-45.72" length="middle"/>
+<pin name="NC_4" x="0" y="-48.26" length="middle"/>
+<pin name="NC_5" x="0" y="-50.8" length="middle"/>
+<pin name="NC_6" x="0" y="-53.34" length="middle"/>
 <pin name="IO15" x="0" y="-55.88" length="middle"/>
 <pin name="IO2" x="0" y="-58.42" length="middle"/>
 <pin name="IO0" x="38.1" y="0" length="middle" rot="R180"/>
@@ -2028,7 +2025,7 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 <pin name="IO5" x="38.1" y="-10.16" length="middle" rot="R180"/>
 <pin name="IO18" x="38.1" y="-12.7" length="middle" rot="R180"/>
 <pin name="IO19" x="38.1" y="-15.24" length="middle" rot="R180"/>
-<pin name="NC" x="38.1" y="-17.78" length="middle" direction="nc" rot="R180"/>
+<pin name="NC_7" x="38.1" y="-17.78" length="middle" rot="R180"/>
 <pin name="IO21" x="38.1" y="-20.32" length="middle" rot="R180"/>
 <pin name="RXD0" x="38.1" y="-22.86" length="middle" rot="R180"/>
 <pin name="TXD0" x="38.1" y="-25.4" length="middle" rot="R180"/>
@@ -2047,14 +2044,14 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="ESP32-WROOM-32D" urn="urn:adsk.eagle:component:37740909/1" prefix="IC" library_version="17">
-<description>&lt;b&gt;WiFi Modules (802.11)&lt;/b&gt;&lt;p&gt;
-Source: &lt;a href="https://www.mouser.com/datasheet/2/891/esp32-wroom-32d_esp32-wroom-32u_datasheet_en-1365844.pdf"&gt; Datasheet &lt;/a&gt;</description>
+<deviceset name="ESP32-WROOM-32UE-N8" urn="urn:adsk.eagle:component:37940894/1" prefix="IC" library_version="18">
+<description>&lt;b&gt;Multiprotocol Modules SMD module ESP32-WROOM-32UE, ESP32-D0WD-V3, ESP32 ECO V3, 8 MB SPI flash, IPEX antenna connector&lt;/b&gt;&lt;p&gt;
+Source: &lt;a href="https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32e_esp32-wroom-32ue_datasheet_en.pdf"&gt; Datasheet &lt;/a&gt;</description>
 <gates>
-<gate name="G$1" symbol="ESP32-WROOM-32D__4MB_PS_" x="0" y="0"/>
+<gate name="G$1" symbol="ESP32-WROOM-32UE-N8" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="ESP32WROOM32D4MBPS">
+<device name="" package="ESP32WROOM32UEN8">
 <connects>
 <connect gate="G$1" pin="3V3" pad="2"/>
 <connect gate="G$1" pin="EN" pad="3"/>
@@ -2092,31 +2089,31 @@ Source: &lt;a href="https://www.mouser.com/datasheet/2/891/esp32-wroom-32d_esp32
 <connect gate="G$1" pin="IO35" pad="7"/>
 <connect gate="G$1" pin="IO4" pad="26"/>
 <connect gate="G$1" pin="IO5" pad="29"/>
-<connect gate="G$1" pin="NC" pad="32"/>
+<connect gate="G$1" pin="NC_1" pad="17"/>
+<connect gate="G$1" pin="NC_2" pad="18"/>
+<connect gate="G$1" pin="NC_3" pad="19"/>
+<connect gate="G$1" pin="NC_4" pad="20"/>
+<connect gate="G$1" pin="NC_5" pad="21"/>
+<connect gate="G$1" pin="NC_6" pad="22"/>
+<connect gate="G$1" pin="NC_7" pad="32"/>
 <connect gate="G$1" pin="RXD0" pad="34"/>
-<connect gate="G$1" pin="SCK/CLK" pad="20"/>
-<connect gate="G$1" pin="SCS/CMD" pad="19"/>
-<connect gate="G$1" pin="SDI/SD1" pad="22"/>
-<connect gate="G$1" pin="SDO/SD0" pad="21"/>
 <connect gate="G$1" pin="SENSOR_VN" pad="5"/>
 <connect gate="G$1" pin="SENSOR_VP" pad="4"/>
-<connect gate="G$1" pin="SHD/SD2" pad="17"/>
-<connect gate="G$1" pin="SWP/SD3" pad="18"/>
 <connect gate="G$1" pin="TXD0" pad="35"/>
 </connects>
 <package3dinstances>
-<package3dinstance package3d_urn="urn:adsk.eagle:package:37740908/1"/>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:37940893/1"/>
 </package3dinstances>
 <technologies>
 <technology name="">
 <attribute name="ARROW_PART_NUMBER" value="" constant="no"/>
 <attribute name="ARROW_PRICE-STOCK" value="" constant="no"/>
-<attribute name="DESCRIPTION" value="WiFi Modules (802.11)" constant="no"/>
-<attribute name="HEIGHT" value="3.2mm" constant="no"/>
+<attribute name="DESCRIPTION" value="Multiprotocol Modules SMD module ESP32-WROOM-32UE, ESP32-D0WD-V3, ESP32 ECO V3, 8 MB SPI flash, IPEX antenna connector" constant="no"/>
+<attribute name="HEIGHT" value="3.35mm" constant="no"/>
 <attribute name="MANUFACTURER_NAME" value="Espressif Systems" constant="no"/>
-<attribute name="MANUFACTURER_PART_NUMBER" value="ESP32-WROOM-32D (4MB PS)" constant="no"/>
-<attribute name="MOUSER_PART_NUMBER" value="356-ESPWROOM3200PS3" constant="no"/>
-<attribute name="MOUSER_PRICE-STOCK" value="https://www.mouser.co.uk/ProductDetail/Espressif-Systems/ESP32-WROOM-32D-4MB-PS?qs=GBLSl2Akirs5uooPY1MBgw%3D%3D" constant="no"/>
+<attribute name="MANUFACTURER_PART_NUMBER" value="ESP32-WROOM-32UE-N8" constant="no"/>
+<attribute name="MOUSER_PART_NUMBER" value="356-ESP32WRM32UE64UH" constant="no"/>
+<attribute name="MOUSER_PRICE-STOCK" value="https://www.mouser.co.uk/ProductDetail/Espressif-Systems/ESP32-WROOM-32UE-N8?qs=Li%252BoUPsLEntX6CSaKZB9vw%3D%3D" constant="no"/>
 <attribute name="MOUSER_TESTING_PART_NUMBER" value="" constant="no"/>
 <attribute name="MOUSER_TESTING_PRICE-STOCK" value="" constant="no"/>
 </technology>
@@ -2159,8 +2156,7 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 </packages>
 <packages3d>
 <package3d name="SOT229P700X180-4N" urn="urn:adsk.eagle:package:37738375/1" type="box" library_version="20">
-<description>&lt;b&gt;3 LEAD SOT-223 PLASTIC PACKAGE&lt;/b&gt;&lt;br&gt;
-</description>
+<description>&lt;b&gt;3 LEAD SOT-223 PLASTIC PACKAGE&lt;/b&gt;&lt;br&gt;</description>
 <packageinstances>
 <packageinstance name="SOT229P700X180-4N"/>
 </packageinstances>
@@ -13039,8 +13035,7 @@ Eagle Ver. 9.3.0&lt;br&gt;</description>
 </packages>
 <packages3d>
 <package3d name="SOT95P240X115-3N" urn="urn:adsk.eagle:package:37738390/1" type="box" library_version="12">
-<description>&lt;b&gt;SOT-23_2&lt;/b&gt;&lt;br&gt;
-</description>
+<description>&lt;b&gt;SOT-23_2&lt;/b&gt;&lt;br&gt;</description>
 <packageinstances>
 <packageinstance name="SOT95P240X115-3N"/>
 </packageinstances>
@@ -13154,8 +13149,7 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 </packages>
 <packages3d>
 <package3d name="QFN50P500X500X80-29N" urn="urn:adsk.eagle:package:37738757/2" type="box" library_version="46">
-<description>&lt;b&gt;QFN-28_3&lt;/b&gt;&lt;br&gt;
-</description>
+<description>&lt;b&gt;QFN-28_3&lt;/b&gt;&lt;br&gt;</description>
 <packageinstances>
 <packageinstance name="QFN28"/>
 </packageinstances>
@@ -13268,7 +13262,7 @@ HTBLuVA Salzburg&lt;br&gt;
 Schuljahr: 2019-20&lt;br&gt;
 Eagle Ver. 9.x&lt;br&gt;</description>
 <packages>
-<package name="USB4140GF0230C" urn="urn:adsk.eagle:footprint:37738888/1" library_version="65">
+<package name="USB4140GF0230C" urn="urn:adsk.eagle:footprint:37738888/2" library_version="67">
 <description>&lt;b&gt;USB4140-GF-0230-C-1&lt;/b&gt;&lt;br&gt;
 </description>
 <smd name="A5" x="-0.5" y="1.75" dx="2" dy="0.7" layer="1" rot="R90"/>
@@ -13277,7 +13271,7 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 <smd name="B5" x="0.5" y="1.75" dx="2" dy="0.7" layer="1" rot="R90"/>
 <smd name="B9" x="-1.52" y="1.75" dx="2" dy="0.76" layer="1" rot="R90"/>
 <smd name="B12" x="-2.75" y="1.75" dx="2" dy="0.8" layer="1" rot="R90"/>
-<pad name="MH1" x="-4.32" y="0.55" drill="1.17" diameter="1.755" shape="long"/>
+<pad name="MH1" x="-4.36" y="0.76" drill="1.17" diameter="1.755" shape="long" rot="R90"/>
 <pad name="MH2" x="4.32" y="0.55" drill="1.17" diameter="1.755" shape="long" rot="R90"/>
 <pad name="MH3" x="-2.3" y="-0.88" drill="1.25" diameter="1.6" shape="long" rot="R90"/>
 <pad name="MH4" x="2.3" y="-0.88" drill="1.25" diameter="1.6" shape="long" rot="R90"/>
@@ -13306,14 +13300,12 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 <wire x1="3.725" y1="2.15" x2="4.32" y2="2.15" width="0.1" layer="51"/>
 <wire x1="4.32" y1="2.15" x2="4.32" y2="1.83" width="0.1" layer="51"/>
 <wire x1="-1.2" y1="-1.33" x2="1.2" y2="-1.33" width="0.2" layer="21"/>
-<wire x1="-0.6" y1="3.2" x2="-0.6" y2="3.2" width="0.1" layer="21"/>
 <wire x1="-0.6" y1="3.2" x2="-0.5" y2="3.2" width="0.1" layer="21" curve="180"/>
-<wire x1="-0.5" y1="3.2" x2="-0.5" y2="3.2" width="0.1" layer="21"/>
 <wire x1="-0.5" y1="3.2" x2="-0.6" y2="3.2" width="0.1" layer="21" curve="180"/>
 </package>
 </packages>
 <packages3d>
-<package3d name="USB4140GF0230C" urn="urn:adsk.eagle:package:37738890/1" type="box" library_version="65">
+<package3d name="USB4140GF0230C" urn="urn:adsk.eagle:package:37738890/2" type="box" library_version="67">
 <description>&lt;b&gt;USB4140-GF-0230-C-1&lt;/b&gt;&lt;br&gt;</description>
 <packageinstances>
 <packageinstance name="USB4140GF0230C"/>
@@ -13341,7 +13333,7 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="USB4140-GF-0230-C" urn="urn:adsk.eagle:component:37738891/2" prefix="X" library_version="66">
+<deviceset name="USB4140-GF-0230-C" urn="urn:adsk.eagle:component:37738891/3" prefix="X" library_version="67">
 <description>&lt;b&gt;USB Connectors USB C Rec GF Vert 6P SMT 2.3mm TH stakes H 6.5mm&lt;/b&gt;&lt;p&gt;
 Source: &lt;a href="https://gct.co/files/drawings/usb4140.pdf"&gt; Datasheet &lt;/a&gt;</description>
 <gates>
@@ -13362,7 +13354,7 @@ Source: &lt;a href="https://gct.co/files/drawings/usb4140.pdf"&gt; Datasheet &lt
 <connect gate="G$1" pin="VBUS_2" pad="B9"/>
 </connects>
 <package3dinstances>
-<package3dinstance package3d_urn="urn:adsk.eagle:package:37738890/1"/>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:37738890/2"/>
 </package3dinstances>
 <technologies>
 <technology name="">
@@ -14039,12 +14031,18 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 <variantdefs>
 </variantdefs>
 <classes>
-<class number="0" name="default" width="0" drill="0">
+<class number="0" name="default" width="0.254" drill="0">
+</class>
+<class number="1" name="+3V3" width="0.8128" drill="0">
+</class>
+<class number="2" name="VBUS" width="0.8128" drill="0">
+</class>
+<class number="3" name="+5V" width="0.8128" drill="0">
 </class>
 </classes>
 <parts>
 <part name="FRAMES1" library="frames_GruS" library_urn="urn:adsk.eagle:library:27468648" deviceset="HTL-A4H-V1" device=""/>
-<part name="IC1" library="modul_GruS" library_urn="urn:adsk.eagle:library:13580331" deviceset="ESP32-WROOM-32D" device="" package3d_urn="urn:adsk.eagle:package:37740908/1"/>
+<part name="IC1" library="modul_GruS" library_urn="urn:adsk.eagle:library:13580331" deviceset="ESP32-WROOM-32UE-N8" device="" package3d_urn="urn:adsk.eagle:package:37940893/1"/>
 <part name="IC2" library="vreg_GruS" library_urn="urn:adsk.eagle:library:13581047" deviceset="AMS1117-3.3" device="" package3d_urn="urn:adsk.eagle:package:37738375/1"/>
 <part name="C1" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="22u/10V"/>
 <part name="R1" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="R-EUS" device="R0805" package3d_urn="urn:adsk.eagle:package:18365371/1" value="2k"/>
@@ -14062,7 +14060,7 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 <part name="V1" library="transistor_GruS" library_urn="urn:adsk.eagle:library:13581291" deviceset="SS8050-G" device="" package3d_urn="urn:adsk.eagle:package:37738390/1"/>
 <part name="V2" library="transistor_GruS" library_urn="urn:adsk.eagle:library:13581291" deviceset="SS8050-G" device="" package3d_urn="urn:adsk.eagle:package:37738390/1"/>
 <part name="D1" library="ic_GruS" library_urn="urn:adsk.eagle:library:13571010" deviceset="CP2102N-A01-GQFN28" device="" package3d_urn="urn:adsk.eagle:package:37738757/2"/>
-<part name="X1" library="con_GruS" library_urn="urn:adsk.eagle:library:13569504" deviceset="USB4140-GF-0230-C" device="" package3d_urn="urn:adsk.eagle:package:37738890/1"/>
+<part name="X1" library="con_GruS" library_urn="urn:adsk.eagle:library:13569504" deviceset="USB4140-GF-0230-C" device="" package3d_urn="urn:adsk.eagle:package:37738890/2"/>
 <part name="D2" library="diode_GruS" library_urn="urn:adsk.eagle:library:13569696" deviceset="LESD5D5.0CT1G" device="" package3d_urn="urn:adsk.eagle:package:37738879/1"/>
 <part name="D3" library="diode_GruS" library_urn="urn:adsk.eagle:library:13569696" deviceset="LESD5D5.0CT1G" device="" package3d_urn="urn:adsk.eagle:package:37738879/1"/>
 <part name="D4" library="diode_GruS" library_urn="urn:adsk.eagle:library:13569696" deviceset="LESD5D5.0CT1G" device="" package3d_urn="urn:adsk.eagle:package:37738879/1"/>
@@ -14073,9 +14071,9 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 <part name="R5" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:18365371/1"/>
 <part name="R6" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:18365371/1"/>
 <part name="VBUS1" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="VBUS" device=""/>
-<part name="S1" library="switch_GruS" library_urn="urn:adsk.eagle:library:13571161" deviceset="TASTE10XX" device="SMD" package3d_urn="urn:adsk.eagle:package:18368075/2"/>
+<part name="S1" library="switch_GruS" library_urn="urn:adsk.eagle:library:13571161" deviceset="TASTE10XX" device="WE" package3d_urn="urn:adsk.eagle:package:18368072/1"/>
 <part name="C6" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EUL" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2"/>
-<part name="S2" library="switch_GruS" library_urn="urn:adsk.eagle:library:13571161" deviceset="TASTE10XX" device="SMD" package3d_urn="urn:adsk.eagle:package:18368075/2"/>
+<part name="S2" library="switch_GruS" library_urn="urn:adsk.eagle:library:13571161" deviceset="TASTE10XX" device="WE" package3d_urn="urn:adsk.eagle:package:18368072/1"/>
 <part name="C7" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EUL" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2"/>
 <part name="+3V1" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="+3V3" device=""/>
 <part name="C8" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2"/>
@@ -14097,13 +14095,16 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 <part name="R10" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="R-EUS" device="R0805" package3d_urn="urn:adsk.eagle:package:18365371/1"/>
 <part name="R9" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:18365371/1"/>
 <part name="+3V2" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="+3V3" device=""/>
-<part name="R7" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="R-EUS" device="R0805" package3d_urn="urn:adsk.eagle:package:18365371/1"/>
-<part name="R8" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:18365371/1"/>
+<part name="R7" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="R-EUS" device="R0805" package3d_urn="urn:adsk.eagle:package:18365371/1" value="47k5"/>
+<part name="R8" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:18365371/1" value="22k1"/>
 <part name="+3V3" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="+3V3" device=""/>
 <part name="+3V4" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="+3V3" device=""/>
 <part name="+3V5" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="+3V3" device=""/>
 <part name="PGND14" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="PGND" device=""/>
 <part name="PGND15" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="PGND" device=""/>
+<part name="R11" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:18365371/1" value="0R"/>
+<part name="PGND13" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="PGND" device=""/>
+<part name="GND2" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -14338,6 +14339,16 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 <instance part="PGND15" gate="G$1" x="142.24" y="83.82" smashed="yes">
 <attribute name="VALUE" x="142.24" y="81.788" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
+<instance part="R11" gate="G$1" x="106.68" y="86.36" smashed="yes">
+<attribute name="NAME" x="106.68" y="89.1286" size="1.6764" layer="95" font="vector" align="bottom-center"/>
+<attribute name="VALUE" x="106.68" y="87.63" size="1.27" layer="96" font="vector" align="bottom-center"/>
+</instance>
+<instance part="PGND13" gate="G$1" x="99.06" y="81.28" smashed="yes">
+<attribute name="VALUE" x="99.06" y="79.248" size="1.27" layer="96" font="vector" align="bottom-center"/>
+</instance>
+<instance part="GND2" gate="1" x="114.3" y="81.28" smashed="yes">
+<attribute name="VALUE" x="114.3" y="79.248" size="1.27" layer="96" font="vector" align="bottom-center"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -14416,6 +14427,12 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 <wire x1="124.46" y1="147.32" x2="124.46" y2="121.92" width="0.1524" layer="91"/>
 <pinref part="GND1" gate="1" pin="GND"/>
 </segment>
+<segment>
+<pinref part="R11" gate="G$1" pin="2"/>
+<wire x1="111.76" y1="86.36" x2="114.3" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="114.3" y1="86.36" x2="114.3" y2="83.82" width="0.1524" layer="91"/>
+<pinref part="GND2" gate="1" pin="GND"/>
+</segment>
 </net>
 <net name="N$1" class="0">
 <segment>
@@ -14473,21 +14490,10 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 </net>
 <net name="USB_DP" class="0">
 <segment>
-<pinref part="X1" gate="G$1" pin="CC2"/>
-<wire x1="53.34" y1="165.1" x2="78.74" y2="165.1" width="0.1524" layer="91"/>
-<label x="81.28" y="165.1" size="1.27" layer="95" xref="yes"/>
-<pinref part="D4" gate="G$1" pin="1"/>
-<wire x1="78.74" y1="165.1" x2="81.28" y2="165.1" width="0.1524" layer="91"/>
-<wire x1="78.74" y1="162.56" x2="78.74" y2="165.1" width="0.1524" layer="91"/>
-<junction x="78.74" y="165.1"/>
-</segment>
-<segment>
 <pinref part="D1" gate="G$1" pin="D+"/>
 <wire x1="127" y1="144.78" x2="114.3" y2="144.78" width="0.1524" layer="91"/>
 <label x="114.3" y="144.78" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
-</net>
-<net name="USB_DN" class="0">
 <segment>
 <pinref part="X1" gate="G$1" pin="CC1"/>
 <wire x1="53.34" y1="167.64" x2="71.12" y2="167.64" width="0.1524" layer="91"/>
@@ -14497,10 +14503,21 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 <junction x="71.12" y="167.64"/>
 <label x="81.28" y="167.64" size="1.27" layer="95" xref="yes"/>
 </segment>
+</net>
+<net name="USB_DN" class="0">
 <segment>
 <pinref part="D1" gate="G$1" pin="D-"/>
 <wire x1="127" y1="142.24" x2="114.3" y2="142.24" width="0.1524" layer="91"/>
 <label x="114.3" y="142.24" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+<segment>
+<pinref part="X1" gate="G$1" pin="CC2"/>
+<wire x1="53.34" y1="165.1" x2="78.74" y2="165.1" width="0.1524" layer="91"/>
+<label x="81.28" y="165.1" size="1.27" layer="95" xref="yes"/>
+<pinref part="D4" gate="G$1" pin="1"/>
+<wire x1="78.74" y1="165.1" x2="81.28" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="162.56" x2="78.74" y2="165.1" width="0.1524" layer="91"/>
+<junction x="78.74" y="165.1"/>
 </segment>
 </net>
 <net name="VBUS" class="0">
@@ -14845,6 +14862,12 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 <pinref part="PGND15" gate="G$1" pin="PGND"/>
 <wire x1="142.24" y1="88.9" x2="142.24" y2="86.36" width="0.1524" layer="91"/>
 <pinref part="R7" gate="G$1" pin="1"/>
+</segment>
+<segment>
+<pinref part="R11" gate="G$1" pin="1"/>
+<wire x1="101.6" y1="86.36" x2="99.06" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="86.36" x2="99.06" y2="83.82" width="0.1524" layer="91"/>
+<pinref part="PGND13" gate="G$1" pin="PGND"/>
 </segment>
 </net>
 <net name="CTS" class="0">
