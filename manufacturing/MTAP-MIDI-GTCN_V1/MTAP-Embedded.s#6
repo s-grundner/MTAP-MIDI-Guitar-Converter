@@ -13439,20 +13439,23 @@ Eagle Ver. 9.3.0 oder höher&lt;br&gt;</description>
 </package3d>
 </packages3d>
 <symbols>
-<symbol name="LESD5D5.0CT1G" urn="urn:adsk.eagle:symbol:37738877/1" library_version="36">
-<wire x1="10.16" y1="0" x2="5.08" y2="-2.54" width="0.254" layer="94"/>
-<wire x1="5.08" y1="2.54" x2="5.08" y2="-2.54" width="0.254" layer="94"/>
-<wire x1="5.08" y1="2.54" x2="10.16" y2="0" width="0.254" layer="94"/>
-<wire x1="10.16" y1="0" x2="15.24" y2="-2.54" width="0.254" layer="94"/>
-<wire x1="15.24" y1="2.54" x2="15.24" y2="-2.54" width="0.254" layer="94"/>
-<wire x1="15.24" y1="2.54" x2="10.16" y2="0" width="0.254" layer="94"/>
-<wire x1="10.16" y1="-2.032" x2="10.16" y2="2.032" width="0.254" layer="94"/>
-<wire x1="9.144" y1="2.54" x2="10.16" y2="2.032" width="0.254" layer="94"/>
-<wire x1="10.16" y1="-2.032" x2="11.176" y2="-2.54" width="0.254" layer="94"/>
-<text x="12.7" y="8.89" size="1.778" layer="95">&gt;NAME</text>
-<text x="12.7" y="6.35" size="1.778" layer="96">&gt;VALUE</text>
-<pin name="1" x="0" y="0" visible="pad" length="middle"/>
-<pin name="2" x="20.32" y="0" visible="pad" length="middle" rot="R180"/>
+<symbol name="LESD5D5.0CT1G" urn="urn:adsk.eagle:symbol:37738877/3" library_version="38">
+<wire x1="0" y1="0" x2="-2.54" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="1.27" x2="-2.54" y2="0" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="0" x2="-2.54" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="1.27" x2="0" y2="0" width="0.254" layer="94"/>
+<wire x1="0" y1="0" x2="2.54" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="2.54" y1="1.27" x2="2.54" y2="0" width="0.254" layer="94"/>
+<wire x1="2.54" y1="0" x2="2.54" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="2.54" y1="1.27" x2="0" y2="0" width="0.254" layer="94"/>
+<wire x1="0" y1="-0.762" x2="0" y2="0.762" width="0.254" layer="94"/>
+<wire x1="-1.016" y1="1.27" x2="0" y2="0.762" width="0.254" layer="94"/>
+<wire x1="0" y1="-0.762" x2="1.016" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="2.54" y1="0" x2="-2.54" y2="0" width="0.254" layer="94"/>
+<text x="0" y="5.08" size="1.6764" layer="95" font="vector" align="bottom-center">&gt;NAME</text>
+<text x="0" y="2.54" size="1.27" layer="96" font="vector" align="bottom-center">&gt;VALUE</text>
+<pin name="1" x="-5.08" y="0" visible="pad" length="short"/>
+<pin name="2" x="5.08" y="0" visible="pad" length="short" rot="R180"/>
 </symbol>
 <symbol name="SCHOTTKY" urn="urn:adsk.eagle:symbol:19314708/8" library_version="36">
 <wire x1="1.27" y1="0" x2="-1.27" y2="-1.27" width="0.254" layer="94"/>
@@ -13473,7 +13476,7 @@ Eagle Ver. 9.3.0 oder höher&lt;br&gt;</description>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="LESD5D5.0CT1G" urn="urn:adsk.eagle:component:37738881/1" prefix="D" library_version="36">
+<deviceset name="LESD5D5.0CT1G" urn="urn:adsk.eagle:component:37738881/3" prefix="D" library_version="38">
 <description>&lt;b&gt;Diodes - ESD SOD-523 RoHS&lt;/b&gt;&lt;p&gt;
 Source: &lt;a href="https://datasheet.lcsc.com/szlcsc/1908071806_Leshan-Radio-LESD5D5-0CT1G_C383211.pdf"&gt; Datasheet &lt;/a&gt;</description>
 <gates>
@@ -14479,7 +14482,7 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 <wire x1="53.34" y1="167.64" x2="71.12" y2="167.64" width="0.1524" layer="91"/>
 <pinref part="D3" gate="G$1" pin="1"/>
 <wire x1="71.12" y1="167.64" x2="81.28" y2="167.64" width="0.1524" layer="91"/>
-<wire x1="71.12" y1="157.48" x2="71.12" y2="167.64" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="162.56" x2="71.12" y2="167.64" width="0.1524" layer="91"/>
 <junction x="71.12" y="167.64"/>
 <label x="81.28" y="167.64" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -14496,7 +14499,7 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 <label x="81.28" y="165.1" size="1.27" layer="95" xref="yes"/>
 <pinref part="D4" gate="G$1" pin="1"/>
 <wire x1="78.74" y1="165.1" x2="81.28" y2="165.1" width="0.1524" layer="91"/>
-<wire x1="78.74" y1="157.48" x2="78.74" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="162.56" x2="78.74" y2="165.1" width="0.1524" layer="91"/>
 <junction x="78.74" y="165.1"/>
 </segment>
 </net>
@@ -14512,7 +14515,7 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 <junction x="58.42" y="170.18"/>
 <pinref part="D2" gate="G$1" pin="1"/>
 <wire x1="63.5" y1="170.18" x2="68.58" y2="170.18" width="0.1524" layer="91"/>
-<wire x1="63.5" y1="157.48" x2="63.5" y2="170.18" width="0.1524" layer="91"/>
+<wire x1="63.5" y1="162.56" x2="63.5" y2="170.18" width="0.1524" layer="91"/>
 <junction x="63.5" y="170.18"/>
 <wire x1="63.5" y1="170.18" x2="63.5" y2="172.72" width="0.1524" layer="91"/>
 <pinref part="VBUS1" gate="G$2" pin="VBUS"/>
@@ -14754,17 +14757,17 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 </segment>
 <segment>
 <pinref part="D2" gate="G$1" pin="2"/>
-<wire x1="63.5" y1="149.86" x2="63.5" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="63.5" y1="149.86" x2="63.5" y2="152.4" width="0.1524" layer="91"/>
 <pinref part="PGND2" gate="G$1" pin="PGND"/>
 </segment>
 <segment>
 <pinref part="D3" gate="G$1" pin="2"/>
-<wire x1="71.12" y1="149.86" x2="71.12" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="149.86" x2="71.12" y2="152.4" width="0.1524" layer="91"/>
 <pinref part="PGND3" gate="G$1" pin="PGND"/>
 </segment>
 <segment>
 <pinref part="D4" gate="G$1" pin="2"/>
-<wire x1="78.74" y1="149.86" x2="78.74" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="149.86" x2="78.74" y2="152.4" width="0.1524" layer="91"/>
 <pinref part="PGND4" gate="G$1" pin="PGND"/>
 </segment>
 <segment>

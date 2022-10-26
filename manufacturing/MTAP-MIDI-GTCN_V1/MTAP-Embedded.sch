@@ -1980,7 +1980,8 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 </packages>
 <packages3d>
 <package3d name="ESP32WROOM32UEN8" urn="urn:adsk.eagle:package:37940893/1" type="box" library_version="18">
-<description>&lt;b&gt;ESP32-WROOM-32UE-N8-1&lt;/b&gt;&lt;br&gt;</description>
+<description>&lt;b&gt;ESP32-WROOM-32UE-N8-1&lt;/b&gt;&lt;br&gt;
+</description>
 <packageinstances>
 <packageinstance name="ESP32WROOM32UEN8"/>
 </packageinstances>
@@ -2156,7 +2157,8 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 </packages>
 <packages3d>
 <package3d name="SOT229P700X180-4N" urn="urn:adsk.eagle:package:37738375/1" type="box" library_version="20">
-<description>&lt;b&gt;3 LEAD SOT-223 PLASTIC PACKAGE&lt;/b&gt;&lt;br&gt;</description>
+<description>&lt;b&gt;3 LEAD SOT-223 PLASTIC PACKAGE&lt;/b&gt;&lt;br&gt;
+</description>
 <packageinstances>
 <packageinstance name="SOT229P700X180-4N"/>
 </packageinstances>
@@ -13035,7 +13037,8 @@ Eagle Ver. 9.3.0&lt;br&gt;</description>
 </packages>
 <packages3d>
 <package3d name="SOT95P240X115-3N" urn="urn:adsk.eagle:package:37738390/1" type="box" library_version="12">
-<description>&lt;b&gt;SOT-23_2&lt;/b&gt;&lt;br&gt;</description>
+<description>&lt;b&gt;SOT-23_2&lt;/b&gt;&lt;br&gt;
+</description>
 <packageinstances>
 <packageinstance name="SOT95P240X115-3N"/>
 </packageinstances>
@@ -13149,7 +13152,8 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 </packages>
 <packages3d>
 <package3d name="QFN50P500X500X80-29N" urn="urn:adsk.eagle:package:37738757/2" type="box" library_version="46">
-<description>&lt;b&gt;QFN-28_3&lt;/b&gt;&lt;br&gt;</description>
+<description>&lt;b&gt;QFN-28_3&lt;/b&gt;&lt;br&gt;
+</description>
 <packageinstances>
 <packageinstance name="QFN28"/>
 </packageinstances>

@@ -14073,9 +14073,9 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 <part name="R5" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:18365371/1"/>
 <part name="R6" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:18365371/1"/>
 <part name="VBUS1" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="VBUS" device=""/>
-<part name="S1" library="switch_GruS" library_urn="urn:adsk.eagle:library:13571161" deviceset="TASTE10XX" device="SMD" package3d_urn="urn:adsk.eagle:package:18368075/2"/>
+<part name="S1" library="switch_GruS" library_urn="urn:adsk.eagle:library:13571161" deviceset="TASTE10XX" device="WE" package3d_urn="urn:adsk.eagle:package:18368072/1"/>
 <part name="C6" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EUL" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2"/>
-<part name="S2" library="switch_GruS" library_urn="urn:adsk.eagle:library:13571161" deviceset="TASTE10XX" device="SMD" package3d_urn="urn:adsk.eagle:package:18368075/2"/>
+<part name="S2" library="switch_GruS" library_urn="urn:adsk.eagle:library:13571161" deviceset="TASTE10XX" device="WE" package3d_urn="urn:adsk.eagle:package:18368072/1"/>
 <part name="C7" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EUL" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2"/>
 <part name="+3V1" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="+3V3" device=""/>
 <part name="C8" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2"/>

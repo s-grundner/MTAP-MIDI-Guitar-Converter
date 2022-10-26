@@ -14030,7 +14030,13 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 <variantdefs>
 </variantdefs>
 <classes>
-<class number="0" name="default" width="0" drill="0">
+<class number="0" name="default" width="0.254" drill="0">
+</class>
+<class number="1" name="+3V3" width="0.8128" drill="0">
+</class>
+<class number="2" name="VBUS" width="0.8128" drill="0">
+</class>
+<class number="3" name="+5V" width="0.8128" drill="0">
 </class>
 </classes>
 <parts>
