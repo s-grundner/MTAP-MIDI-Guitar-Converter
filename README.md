@@ -2,13 +2,13 @@
 [![Built with: platformio](https://img.shields.io/badge/built%20with-platformio-orange)](https://platformio.org/)
 [![Drawn with: Diagrams](https://img.shields.io/badge/drawn%20with-diagrams.net-ff8c00)](https://app.diagrams.net/)
 
+# MTAP-MIDI-Guitar-Converter 
 
 <picture>
  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/s-grundner/MTAP-MIDI-Guitar-Converter/blob/main/documentation/images/LOGO-dark.png?raw=true" align="right" width="450px" height="160px"/>
  <img alt="Logo" src="https://github.com/s-grundner/MTAP-MIDI-Guitar-Converter/blob/main/documentation/images/LOGO-light.png?raw=true" align="right" width="450px" height="160px"/>
 </picture>
 
-# MTAP-MIDI-Guitar-Converter 
 Der MIDI-GC ist ein DSP Device mit welchem es möglich ist, analoge Signale eines Gitarren Pickups in MIDI Signale/Noten umzwandeln und an einen PC via USB zu senden. Die MIDI Signale können an einer [Digital Audio Workstation](https://www.ableton.com/de/live/) verarbeitet werden.
 Es gibt eine Line IN für das Gitarren Signal, sowie eine USB Buchse mit der die Digitalen Signale an den PC übertragen werden und Das MIDI-GC mit 5V versorgt wird.
 Der Line In kann außerdem unverändert an einer 6.3mm Buchse abgegriffen werden, falls man das Gitarren Signal noch weiter verwenden will.
