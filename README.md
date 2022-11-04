@@ -4,7 +4,7 @@
 
 <picture>
  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/s-grundner/MTAP-MIDI-Guitar-Converter/blob/main/documentation/images/LOGO-dark.png?raw=true">
- <img align="left" width="0px" height="100px"/>
+ <img align="left" width="100px" height="100px"/>
  <img alt="Logo" src="https://github.com/s-grundner/MTAP-MIDI-Guitar-Converter/blob/main/documentation/images/LOGO-light.png?raw=true">
 </picture>
 
