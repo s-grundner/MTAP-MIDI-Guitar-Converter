@@ -2,7 +2,7 @@
 [![Built with: platformio](https://img.shields.io/badge/built%20with-platformio-orange)](https://platformio.org/)
 [![Drawn with: Diagrams](https://img.shields.io/badge/drawn%20with-diagrams.net-ff8c00)](https://app.diagrams.net/)
 
-# MTAP-MIDI-Guitar-Converter 
+# MTAP-MIDI-Guitar-Converter [DE]
 
 <picture>
  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/s-grundner/MTAP-MIDI-Guitar-Converter/blob/main/documentation/images/LOGO-dark.png?raw=true" align="right" width="450px" height="160px"/>
