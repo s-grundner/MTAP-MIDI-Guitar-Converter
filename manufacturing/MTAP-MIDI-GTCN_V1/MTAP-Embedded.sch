@@ -1986,7 +1986,8 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 </packages>
 <packages3d>
 <package3d name="SOT229P700X180-4N" urn="urn:adsk.eagle:package:37738375/1" type="box" library_version="24">
-<description>&lt;b&gt;3 LEAD SOT-223 PLASTIC PACKAGE&lt;/b&gt;&lt;br&gt;</description>
+<description>&lt;b&gt;3 LEAD SOT-223 PLASTIC PACKAGE&lt;/b&gt;&lt;br&gt;
+</description>
 <packageinstances>
 <packageinstance name="SOT229P700X180-4N"/>
 </packageinstances>
@@ -1998,7 +1999,8 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 </packageinstances>
 </package3d>
 <package3d name="SOT95P280X145-5N" urn="urn:adsk.eagle:package:38111175/1" type="box" library_version="24">
-<description>&lt;b&gt;DBV-05&lt;/b&gt;&lt;br&gt;</description>
+<description>&lt;b&gt;DBV-05&lt;/b&gt;&lt;br&gt;
+</description>
 <packageinstances>
 <packageinstance name="SOT95P280X145-5N"/>
 </packageinstances>
@@ -13048,7 +13050,8 @@ Eagle Ver. 9.3.0&lt;br&gt;</description>
 </packages>
 <packages3d>
 <package3d name="SOT95P240X115-3N" urn="urn:adsk.eagle:package:37738390/1" type="box" library_version="12">
-<description>&lt;b&gt;SOT-23_2&lt;/b&gt;&lt;br&gt;</description>
+<description>&lt;b&gt;SOT-23_2&lt;/b&gt;&lt;br&gt;
+</description>
 <packageinstances>
 <packageinstance name="SOT95P240X115-3N"/>
 </packageinstances>
@@ -13162,7 +13165,8 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 </packages>
 <packages3d>
 <package3d name="QFN50P500X500X80-29N" urn="urn:adsk.eagle:package:37738757/2" type="box" library_version="46">
-<description>&lt;b&gt;QFN-28_3&lt;/b&gt;&lt;br&gt;</description>
+<description>&lt;b&gt;QFN-28_3&lt;/b&gt;&lt;br&gt;
+</description>
 <packageinstances>
 <packageinstance name="QFN28"/>
 </packageinstances>
@@ -14617,7 +14621,8 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 </packages>
 <packages3d>
 <package3d name="ESP32WROOM32UEN8" urn="urn:adsk.eagle:package:37940893/1" type="box" library_version="18">
-<description>&lt;b&gt;ESP32-WROOM-32UE-N8-1&lt;/b&gt;&lt;br&gt;</description>
+<description>&lt;b&gt;ESP32-WROOM-32UE-N8-1&lt;/b&gt;&lt;br&gt;
+</description>
 <packageinstances>
 <packageinstance name="ESP32WROOM32UEN8"/>
 </packageinstances>
@@ -14795,7 +14800,8 @@ Source: &lt;a href="https://www.espressif.com/sites/default/files/documentation/
 </packages>
 <packages3d>
 <package3d name="SOP50P490X110-10N" urn="urn:adsk.eagle:package:38102767/2" type="box" library_version="24">
-<description>&lt;b&gt;10-Lead Plastic Micro Small Outline Package (MS) [MSOP]&lt;/b&gt;&lt;br&gt;</description>
+<description>&lt;b&gt;10-Lead Plastic Micro Small Outline Package (MS) [MSOP]&lt;/b&gt;&lt;br&gt;
+</description>
 <packageinstances>
 <packageinstance name="MSOP10"/>
 </packageinstances>
@@ -14915,7 +14921,8 @@ Source: &lt;a href="http://ww1.microchip.com/downloads/en/DeviceDoc/MCP33131D-Da
 </packages>
 <packages3d>
 <package3d name="SOP65P640X120-14N" urn="urn:adsk.eagle:package:38081399/2" type="box" library_version="16">
-<description>&lt;b&gt;PW (R-PDSO-G14)&lt;/b&gt;&lt;br&gt;</description>
+<description>&lt;b&gt;PW (R-PDSO-G14)&lt;/b&gt;&lt;br&gt;
+</description>
 <packageinstances>
 <packageinstance name="SOP65P640X120-14N"/>
 </packageinstances>
@@ -14995,7 +15002,7 @@ Source: &lt;a href="https://www.ti.com/lit/ds/symlink/tlv9104.pdf?ts=16025357181
 </devicesets>
 </library>
 <library name="con-molex" urn="urn:adsk.eagle:library:28216378">
-<description>&lt;b&gt;Molex Connectors&lt;/b&gt;&lt;p&gt;
+<description>&lt;b&gt;Molex Connectors&lt;/b&gt;&lt;p&gt;
 &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
 <packages>
 <package name="22-23-2021" urn="urn:adsk.eagle:footprint:8078259/1" library_version="1">
@@ -15185,25 +15192,23 @@ Source: &lt;a href="https://www.ti.com/lit/ds/symlink/tlv9104.pdf?ts=16025357181
 <part name="+3V11" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="-1V8" device=""/>
 <part name="+3V13" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="+1V8" device=""/>
 <part name="+3V12" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="-1V8" device=""/>
-<part name="C16" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2"/>
-<part name="C17" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EUL" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2"/>
-<part name="R3" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:18365371/1"/>
+<part name="C16" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="10n"/>
+<part name="C17" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EUL" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="180n"/>
+<part name="R3" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:18365371/1" value="6k2"/>
 <part name="AGND2" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="AGND" device=""/>
-<part name="C18" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2"/>
-<part name="R12" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:18365371/1"/>
-<part name="R13" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:18365371/1"/>
+<part name="C18" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="10nF"/>
+<part name="R12" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:18365371/1" value="560R"/>
+<part name="R13" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:18365371/1" value="1k"/>
 <part name="X2" library="con-molex" library_urn="urn:adsk.eagle:library:28216378" deviceset="22-23-2021" device="" package3d_urn="urn:adsk.eagle:package:8078633/1"/>
 <part name="AGND3" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="AGND" device=""/>
 <part name="AGND4" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="AGND" device=""/>
-<part name="C19" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EUL" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2"/>
 <part name="R4" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:18365371/1" value="33R"/>
-<part name="C20" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2"/>
-<part name="R14" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="R-EUS" device="R0805" package3d_urn="urn:adsk.eagle:package:18365371/1"/>
-<part name="C21" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2"/>
+<part name="C20" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100n"/>
+<part name="C21" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="1u"/>
 <part name="AGND5" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="AGND" device=""/>
 <part name="AGND6" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="AGND" device=""/>
-<part name="C22" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2"/>
-<part name="C23" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2"/>
+<part name="C22" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100n"/>
+<part name="C23" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="1u"/>
 <part name="AGND7" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="AGND" device=""/>
 <part name="AGND8" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="AGND" device=""/>
 <part name="C24" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2"/>
@@ -16325,7 +16330,7 @@ MIDI Transmission</text>
 <attribute name="NAME" x="129.54" y="106.68" size="1.6764" layer="95" font="vector" align="bottom-center"/>
 <attribute name="VALUE" x="129.54" y="104.14" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
-<instance part="+3V11" gate="G$1" x="152.4" y="139.7" smashed="yes">
+<instance part="+3V11" gate="G$1" x="152.4" y="137.16" smashed="yes">
 <attribute name="VALUE" x="152.4" y="136.398" size="1.27" layer="96" font="vector" rot="R180" align="bottom-center"/>
 </instance>
 <instance part="+3V13" gate="G$1" x="180.34" y="106.68" smashed="yes">
@@ -16334,32 +16339,32 @@ MIDI Transmission</text>
 <instance part="+3V12" gate="G$1" x="180.34" y="81.28" smashed="yes">
 <attribute name="VALUE" x="180.34" y="80.518" size="1.27" layer="96" font="vector" rot="R180" align="bottom-center"/>
 </instance>
-<instance part="C16" gate="G$1" x="55.88" y="88.9" smashed="yes">
-<attribute name="NAME" x="54.864" y="88.3666" size="1.6764" layer="95" font="vector" align="bottom-right"/>
-<attribute name="VALUE" x="54.864" y="85.5726" size="1.27" layer="96" font="vector" align="bottom-right"/>
+<instance part="C16" gate="G$1" x="55.88" y="93.98" smashed="yes">
+<attribute name="NAME" x="54.864" y="93.4466" size="1.6764" layer="95" font="vector" align="bottom-right"/>
+<attribute name="VALUE" x="54.864" y="90.6526" size="1.27" layer="96" font="vector" align="bottom-right"/>
 </instance>
-<instance part="C17" gate="G$1" x="109.22" y="114.3" smashed="yes">
-<attribute name="NAME" x="110.49" y="117.5766" size="1.6764" layer="95" font="vector" align="bottom-center"/>
-<attribute name="VALUE" x="110.49" y="116.0526" size="1.27" layer="96" font="vector" align="bottom-center"/>
+<instance part="C17" gate="G$1" x="109.22" y="109.22" smashed="yes">
+<attribute name="NAME" x="110.49" y="112.4966" size="1.6764" layer="95" font="vector" align="bottom-center"/>
+<attribute name="VALUE" x="110.49" y="110.9726" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
 <instance part="R3" gate="G$1" x="48.26" y="101.6" smashed="yes">
 <attribute name="NAME" x="48.26" y="104.3686" size="1.6764" layer="95" font="vector" align="bottom-center"/>
 <attribute name="VALUE" x="48.26" y="102.87" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
-<instance part="AGND2" gate="G$1" x="55.88" y="78.74" smashed="yes">
-<attribute name="VALUE" x="55.88" y="76.708" size="1.27" layer="96" font="vector" align="bottom-center"/>
+<instance part="AGND2" gate="G$1" x="55.88" y="83.82" smashed="yes">
+<attribute name="VALUE" x="55.88" y="81.788" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
-<instance part="C18" gate="G$1" x="114.3" y="91.44" smashed="yes">
-<attribute name="NAME" x="113.284" y="90.9066" size="1.6764" layer="95" font="vector" align="bottom-right"/>
-<attribute name="VALUE" x="113.284" y="88.1126" size="1.27" layer="96" font="vector" align="bottom-right"/>
+<instance part="C18" gate="G$1" x="114.3" y="93.98" smashed="yes">
+<attribute name="NAME" x="113.284" y="93.4466" size="1.6764" layer="95" font="vector" align="bottom-right"/>
+<attribute name="VALUE" x="113.284" y="90.6526" size="1.27" layer="96" font="vector" align="bottom-right"/>
 </instance>
 <instance part="R12" gate="G$1" x="91.44" y="99.06" smashed="yes">
 <attribute name="NAME" x="91.44" y="101.8286" size="1.6764" layer="95" font="vector" align="bottom-center"/>
 <attribute name="VALUE" x="91.44" y="100.33" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
-<instance part="R13" gate="G$1" x="106.68" y="101.6" smashed="yes">
-<attribute name="NAME" x="106.68" y="104.3686" size="1.6764" layer="95" font="vector" align="bottom-center"/>
-<attribute name="VALUE" x="106.68" y="102.87" size="1.27" layer="96" font="vector" align="bottom-center"/>
+<instance part="R13" gate="G$1" x="106.68" y="99.06" smashed="yes">
+<attribute name="NAME" x="106.68" y="101.8286" size="1.6764" layer="95" font="vector" align="bottom-center"/>
+<attribute name="VALUE" x="106.68" y="100.33" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
 <instance part="X2" gate="-1" x="38.1" y="99.06" smashed="yes" rot="R180">
 <attribute name="NAME" x="35.56" y="99.822" size="1.524" layer="95" rot="R180"/>
@@ -16368,15 +16373,11 @@ MIDI Transmission</text>
 <instance part="X2" gate="-2" x="38.1" y="101.6" smashed="yes" rot="R180">
 <attribute name="NAME" x="35.56" y="102.362" size="1.524" layer="95" rot="R180"/>
 </instance>
-<instance part="AGND3" gate="G$1" x="114.3" y="78.74" smashed="yes">
-<attribute name="VALUE" x="114.3" y="76.708" size="1.27" layer="96" font="vector" align="bottom-center"/>
+<instance part="AGND3" gate="G$1" x="114.3" y="81.28" smashed="yes">
+<attribute name="VALUE" x="114.3" y="79.248" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
-<instance part="AGND4" gate="G$1" x="43.18" y="78.74" smashed="yes">
-<attribute name="VALUE" x="43.18" y="76.708" size="1.27" layer="96" font="vector" align="bottom-center"/>
-</instance>
-<instance part="C19" gate="G$1" x="88.9" y="177.8" smashed="yes">
-<attribute name="NAME" x="90.17" y="181.0766" size="1.6764" layer="95" font="vector" align="bottom-center"/>
-<attribute name="VALUE" x="90.17" y="179.5526" size="1.27" layer="96" font="vector" align="bottom-center"/>
+<instance part="AGND4" gate="G$1" x="43.18" y="83.82" smashed="yes">
+<attribute name="VALUE" x="43.18" y="81.788" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
 <instance part="R4" gate="G$1" x="134.62" y="218.44" smashed="yes">
 <attribute name="NAME" x="134.62" y="221.2086" size="1.6764" layer="95" font="vector" align="bottom-center"/>
@@ -16385,10 +16386,6 @@ MIDI Transmission</text>
 <instance part="C20" gate="G$1" x="68.58" y="203.2" smashed="yes">
 <attribute name="NAME" x="67.564" y="202.6666" size="1.6764" layer="95" font="vector" align="bottom-right"/>
 <attribute name="VALUE" x="67.564" y="199.8726" size="1.27" layer="96" font="vector" align="bottom-right"/>
-</instance>
-<instance part="R14" gate="G$1" x="83.82" y="187.96" smashed="yes">
-<attribute name="NAME" x="82.296" y="188.1886" size="1.6764" layer="95" font="vector" align="bottom-right"/>
-<attribute name="VALUE" x="82.296" y="186.436" size="1.27" layer="96" font="vector" align="bottom-right"/>
 </instance>
 <instance part="C21" gate="G$1" x="60.96" y="203.2" smashed="yes">
 <attribute name="NAME" x="59.944" y="202.6666" size="1.6764" layer="95" font="vector" align="bottom-right"/>
@@ -16447,17 +16444,17 @@ MIDI Transmission</text>
 <segment>
 <pinref part="C16" gate="G$1" pin="2"/>
 <pinref part="AGND2" gate="G$1" pin="AGND"/>
-<wire x1="55.88" y1="81.28" x2="55.88" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="55.88" y1="86.36" x2="55.88" y2="88.9" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="AGND3" gate="G$1" pin="AGND"/>
 <pinref part="C18" gate="G$1" pin="2"/>
-<wire x1="114.3" y1="81.28" x2="114.3" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="114.3" y1="83.82" x2="114.3" y2="88.9" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="X2" gate="-1" pin="S"/>
 <wire x1="40.64" y1="99.06" x2="43.18" y2="99.06" width="0.1524" layer="91"/>
-<wire x1="43.18" y1="99.06" x2="43.18" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="43.18" y1="99.06" x2="43.18" y2="86.36" width="0.1524" layer="91"/>
 <pinref part="AGND4" gate="G$1" pin="AGND"/>
 </segment>
 <segment>
@@ -16492,6 +16489,21 @@ MIDI Transmission</text>
 <wire x1="76.2" y1="213.36" x2="63.5" y2="213.36" width="0.1524" layer="91"/>
 <wire x1="63.5" y1="213.36" x2="63.5" y2="220.98" width="0.1524" layer="91"/>
 <label x="63.5" y="220.98" size="1.27" layer="95" rot="R90" xref="yes"/>
+</segment>
+<segment>
+<pinref part="V4" gate="B" pin="N"/>
+<wire x1="119.38" y1="96.52" x2="116.84" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="96.52" x2="116.84" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="91.44" x2="142.24" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="142.24" y1="91.44" x2="142.24" y2="99.06" width="0.1524" layer="91"/>
+<pinref part="V4" gate="B" pin="O"/>
+<wire x1="142.24" y1="99.06" x2="139.7" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="142.24" y1="99.06" x2="144.78" y2="99.06" width="0.1524" layer="91"/>
+<junction x="142.24" y="99.06"/>
+<pinref part="C17" gate="G$1" pin="1"/>
+<wire x1="142.24" y1="99.06" x2="142.24" y2="109.22" width="0.1524" layer="91"/>
+<wire x1="142.24" y1="109.22" x2="114.3" y2="109.22" width="0.1524" layer="91"/>
+<label x="144.78" y="99.06" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="+3V3" class="0">
@@ -16660,7 +16672,7 @@ MIDI Transmission</text>
 </net>
 <net name="-1V8" class="0">
 <segment>
-<wire x1="152.4" y1="142.24" x2="152.4" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="152.4" y1="139.7" x2="152.4" y2="152.4" width="0.1524" layer="91"/>
 <pinref part="IC3" gate="G$1" pin="OUT"/>
 <wire x1="144.78" y1="152.4" x2="147.32" y2="152.4" width="0.1524" layer="91"/>
 <wire x1="147.32" y1="152.4" x2="147.32" y2="149.86" width="0.1524" layer="91"/>
@@ -16695,7 +16707,7 @@ MIDI Transmission</text>
 <pinref part="R3" gate="G$1" pin="2"/>
 <wire x1="60.96" y1="101.6" x2="55.88" y2="101.6" width="0.1524" layer="91"/>
 <wire x1="55.88" y1="101.6" x2="53.34" y2="101.6" width="0.1524" layer="91"/>
-<wire x1="55.88" y1="101.6" x2="55.88" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="55.88" y1="101.6" x2="55.88" y2="96.52" width="0.1524" layer="91"/>
 <junction x="55.88" y="101.6"/>
 <pinref part="C16" gate="G$1" pin="1"/>
 </segment>
@@ -16711,40 +16723,24 @@ MIDI Transmission</text>
 <segment>
 <pinref part="R12" gate="G$1" pin="2"/>
 <wire x1="96.52" y1="99.06" x2="99.06" y2="99.06" width="0.1524" layer="91"/>
-<wire x1="99.06" y1="99.06" x2="99.06" y2="101.6" width="0.1524" layer="91"/>
 <pinref part="R13" gate="G$1" pin="1"/>
-<wire x1="99.06" y1="101.6" x2="101.6" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="99.06" x2="101.6" y2="99.06" width="0.1524" layer="91"/>
 <pinref part="C17" gate="G$1" pin="2"/>
-<wire x1="99.06" y1="101.6" x2="99.06" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="99.06" y1="114.3" x2="106.68" y2="114.3" width="0.1524" layer="91"/>
-<junction x="99.06" y="101.6"/>
+<wire x1="99.06" y1="99.06" x2="99.06" y2="109.22" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="109.22" x2="106.68" y2="109.22" width="0.1524" layer="91"/>
+<junction x="99.06" y="99.06"/>
 </segment>
 </net>
 <net name="N$12" class="0">
 <segment>
 <pinref part="C18" gate="G$1" pin="1"/>
-<wire x1="114.3" y1="93.98" x2="114.3" y2="101.6" width="0.1524" layer="91"/>
-<pinref part="R13" gate="G$1" pin="2"/>
-<wire x1="114.3" y1="101.6" x2="111.76" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="114.3" y1="96.52" x2="114.3" y2="99.06" width="0.1524" layer="91"/>
 <pinref part="V4" gate="B" pin="P"/>
+<wire x1="114.3" y1="99.06" x2="114.3" y2="101.6" width="0.1524" layer="91"/>
 <wire x1="114.3" y1="101.6" x2="119.38" y2="101.6" width="0.1524" layer="91"/>
-<junction x="114.3" y="101.6"/>
-</segment>
-</net>
-<net name="N$13" class="0">
-<segment>
-<pinref part="V4" gate="B" pin="N"/>
-<wire x1="119.38" y1="96.52" x2="116.84" y2="96.52" width="0.1524" layer="91"/>
-<wire x1="116.84" y1="96.52" x2="116.84" y2="91.44" width="0.1524" layer="91"/>
-<wire x1="116.84" y1="91.44" x2="142.24" y2="91.44" width="0.1524" layer="91"/>
-<wire x1="142.24" y1="91.44" x2="142.24" y2="99.06" width="0.1524" layer="91"/>
-<pinref part="V4" gate="B" pin="O"/>
-<wire x1="142.24" y1="99.06" x2="139.7" y2="99.06" width="0.1524" layer="91"/>
-<wire x1="142.24" y1="99.06" x2="144.78" y2="99.06" width="0.1524" layer="91"/>
-<junction x="142.24" y="99.06"/>
-<pinref part="C17" gate="G$1" pin="1"/>
-<wire x1="142.24" y1="99.06" x2="142.24" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="142.24" y1="114.3" x2="114.3" y2="114.3" width="0.1524" layer="91"/>
+<pinref part="R13" gate="G$1" pin="2"/>
+<wire x1="111.76" y1="99.06" x2="114.3" y2="99.06" width="0.1524" layer="91"/>
+<junction x="114.3" y="99.06"/>
 </segment>
 </net>
 <net name="MISO" class="0">
