@@ -1,0 +1,20 @@
+Circuit: * C:\Users\Smon\source\MTAP-MIDI-Guitar-Converter\simulations\Draft3.asc
+
+Direct Newton iteration for .op point succeeded.
+
+Date: Sat Nov 12 02:04:28 2022
+Total elapsed time: 0.025 seconds.
+
+tnom = 27
+temp = 27
+method = trap
+totiter = 27
+traniter = 0
+tranpoints = 0
+accept = 0
+rejected = 0
+matrix size = 54
+fillins = 52
+solver = Normal
+Matrix Compiler1:     293 opcodes
+Matrix Compiler2: 5.30 KB object code size
