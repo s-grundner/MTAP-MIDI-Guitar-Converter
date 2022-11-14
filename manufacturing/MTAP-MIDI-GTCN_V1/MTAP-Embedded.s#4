@@ -17007,9 +17007,9 @@ Single Supply</text>
 <attribute name="NAME" x="78.74" y="149.86" size="1.6764" layer="95" font="vector" align="bottom-center"/>
 <attribute name="VALUE" x="78.74" y="147.32" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
-<instance part="V4" gate="B" x="137.16" y="142.24" smashed="yes">
-<attribute name="NAME" x="137.16" y="149.86" size="1.6764" layer="95" font="vector" align="bottom-center"/>
-<attribute name="VALUE" x="137.16" y="147.32" size="1.27" layer="96" font="vector" align="bottom-center"/>
+<instance part="V4" gate="B" x="137.16" y="142.24" smashed="yes" rot="MR180">
+<attribute name="NAME" x="137.16" y="134.62" size="1.6764" layer="95" font="vector" rot="MR180" align="bottom-center"/>
+<attribute name="VALUE" x="137.16" y="137.16" size="1.27" layer="96" font="vector" rot="MR180" align="bottom-center"/>
 </instance>
 <instance part="V4" gate="P" x="154.94" y="203.2" smashed="yes">
 <attribute name="NAME" x="154.94" y="203.2" size="1.6764" layer="95" font="vector" align="bottom-center"/>
@@ -17128,8 +17128,8 @@ Single Supply</text>
 </segment>
 <segment>
 <pinref part="V4" gate="B" pin="P"/>
-<wire x1="127" y1="144.78" x2="124.46" y2="144.78" width="0.1524" layer="91"/>
-<wire x1="124.46" y1="144.78" x2="124.46" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="127" y1="139.7" x2="124.46" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="124.46" y1="139.7" x2="124.46" y2="119.38" width="0.1524" layer="91"/>
 <pinref part="AGND13" gate="G$1" pin="AGND"/>
 </segment>
 </net>
@@ -17207,13 +17207,13 @@ Single Supply</text>
 <segment>
 <pinref part="R13" gate="G$1" pin="2"/>
 <wire x1="119.38" y1="142.24" x2="121.92" y2="142.24" width="0.1524" layer="91"/>
-<wire x1="121.92" y1="142.24" x2="121.92" y2="154.94" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="142.24" x2="121.92" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="144.78" x2="121.92" y2="154.94" width="0.1524" layer="91"/>
 <wire x1="121.92" y1="154.94" x2="127" y2="154.94" width="0.1524" layer="91"/>
 <pinref part="C14" gate="G$1" pin="2"/>
-<wire x1="121.92" y1="142.24" x2="121.92" y2="139.7" width="0.1524" layer="91"/>
-<junction x="121.92" y="142.24"/>
 <pinref part="V4" gate="B" pin="N"/>
-<wire x1="121.92" y1="139.7" x2="127" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="127" y1="144.78" x2="121.92" y2="144.78" width="0.1524" layer="91"/>
+<junction x="121.92" y="144.78"/>
 </segment>
 </net>
 <net name="N$17" class="0">

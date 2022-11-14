@@ -15973,6 +15973,7 @@ W = angled&lt;p&gt;
 <part name="PGND16" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="PGND" device=""/>
 <part name="AGND11" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="AGND" device=""/>
 <part name="AGND12" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="AGND" device=""/>
+<part name="AGND13" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="AGND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -17045,6 +17046,9 @@ Single Supply</text>
 <instance part="AGND12" gate="G$1" x="147.32" y="190.5" smashed="yes">
 <attribute name="VALUE" x="147.32" y="188.468" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
+<instance part="AGND13" gate="G$1" x="124.46" y="116.84" smashed="yes">
+<attribute name="VALUE" x="124.46" y="114.808" size="1.27" layer="96" font="vector" align="bottom-center"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -17122,6 +17126,12 @@ Single Supply</text>
 <wire x1="147.32" y1="193.04" x2="147.32" y2="198.12" width="0.1524" layer="91"/>
 <pinref part="AGND12" gate="G$1" pin="AGND"/>
 </segment>
+<segment>
+<pinref part="V4" gate="B" pin="P"/>
+<wire x1="127" y1="144.78" x2="124.46" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="124.46" y1="144.78" x2="124.46" y2="119.38" width="0.1524" layer="91"/>
+<pinref part="AGND13" gate="G$1" pin="AGND"/>
+</segment>
 </net>
 <net name="AINP" class="0">
 <segment>
@@ -17134,10 +17144,6 @@ Single Supply</text>
 <junction x="40.64" y="208.28"/>
 </segment>
 <segment>
-<wire x1="127" y1="139.7" x2="124.46" y2="139.7" width="0.1524" layer="91"/>
-<wire x1="124.46" y1="139.7" x2="124.46" y2="134.62" width="0.1524" layer="91"/>
-<wire x1="124.46" y1="134.62" x2="149.86" y2="134.62" width="0.1524" layer="91"/>
-<wire x1="149.86" y1="134.62" x2="149.86" y2="142.24" width="0.1524" layer="91"/>
 <wire x1="149.86" y1="142.24" x2="147.32" y2="142.24" width="0.1524" layer="91"/>
 <wire x1="149.86" y1="142.24" x2="152.4" y2="142.24" width="0.1524" layer="91"/>
 <junction x="149.86" y="142.24"/>
@@ -17150,7 +17156,6 @@ Single Supply</text>
 <wire x1="134.62" y1="154.94" x2="149.86" y2="154.94" width="0.1524" layer="91"/>
 <junction x="149.86" y="154.94"/>
 <pinref part="V4" gate="B" pin="O"/>
-<pinref part="V4" gate="B" pin="N"/>
 </segment>
 </net>
 <net name="+3V3" class="0">
@@ -17200,15 +17205,15 @@ Single Supply</text>
 </net>
 <net name="N$12" class="0">
 <segment>
-<wire x1="121.92" y1="142.24" x2="121.92" y2="144.78" width="0.1524" layer="91"/>
-<wire x1="121.92" y1="144.78" x2="127" y2="144.78" width="0.1524" layer="91"/>
 <pinref part="R13" gate="G$1" pin="2"/>
 <wire x1="119.38" y1="142.24" x2="121.92" y2="142.24" width="0.1524" layer="91"/>
-<wire x1="121.92" y1="144.78" x2="121.92" y2="154.94" width="0.1524" layer="91"/>
-<junction x="121.92" y="144.78"/>
+<wire x1="121.92" y1="142.24" x2="121.92" y2="154.94" width="0.1524" layer="91"/>
 <wire x1="121.92" y1="154.94" x2="127" y2="154.94" width="0.1524" layer="91"/>
 <pinref part="C14" gate="G$1" pin="2"/>
-<pinref part="V4" gate="B" pin="P"/>
+<wire x1="121.92" y1="142.24" x2="121.92" y2="139.7" width="0.1524" layer="91"/>
+<junction x="121.92" y="142.24"/>
+<pinref part="V4" gate="B" pin="N"/>
+<wire x1="121.92" y1="139.7" x2="127" y2="139.7" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$17" class="0">

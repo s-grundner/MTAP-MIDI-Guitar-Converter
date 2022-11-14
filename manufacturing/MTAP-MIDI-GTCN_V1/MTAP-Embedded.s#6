@@ -16881,9 +16881,10 @@ MIDI Transmission</text>
 <text x="144.78" y="220.98" size="2.54" layer="97" align="bottom-center">Analogue Voltage
 Supply and Reference</text>
 <text x="88.9" y="172.72" size="2.54" layer="97" align="bottom-center">Low Pass Filter</text>
-<text x="162.56" y="116.84" size="1.778" layer="97" rot="R180">E7 Filter (2637.02Hz)
+<text x="162.56" y="121.92" size="1.778" layer="97" rot="R180">E7 Filter (2637.02Hz)
 10V/V Gain
-</text>
+Multiple Feedback
+Single Supply</text>
 </plain>
 <instances>
 <instance part="FRAMES2" gate="G$1" x="0" y="0" smashed="yes">
