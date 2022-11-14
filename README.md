@@ -17,6 +17,10 @@ Der Line In kann außerdem unverändert an einer 6.3mm Buchse abgegriffen werden
 Das Projekt befindet sich derzeit in der frühen Entwicklungsphase. Funktionalitäten sind noch in Planung
 Planungsvorgänge können unter dem Reiter *[Projects](https://github.com/s-grundner/MTAP-MIDI-Guitar-Converter/projects?query=is%3Aopen)* eingesehen werden.
 
+ - [**Lastenheft**](documentation/lastenheft.md)
+
+ - [**Pflichtenheft**](documentation/pflichtenheft.md)
+
 ## Mitwirkende
 [Simon Grundner](https://github.com/s-grundner)
 
