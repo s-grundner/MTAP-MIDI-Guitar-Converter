@@ -16998,9 +16998,9 @@ Single Supply</text>
 <instance part="AGND10" gate="G$1" x="71.12" y="116.84" smashed="yes">
 <attribute name="VALUE" x="71.12" y="114.808" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
-<instance part="C16" gate="G$1" x="106.68" y="129.54" smashed="yes">
-<attribute name="NAME" x="105.664" y="129.0066" size="1.6764" layer="95" font="vector" align="bottom-right"/>
-<attribute name="VALUE" x="105.664" y="126.2126" size="1.27" layer="96" font="vector" align="bottom-right"/>
+<instance part="C16" gate="G$1" x="106.68" y="127" smashed="yes">
+<attribute name="NAME" x="105.664" y="126.4666" size="1.6764" layer="95" font="vector" align="bottom-right"/>
+<attribute name="VALUE" x="105.664" y="123.6726" size="1.27" layer="96" font="vector" align="bottom-right"/>
 </instance>
 <instance part="AGND3" gate="G$1" x="106.68" y="116.84" smashed="yes">
 <attribute name="VALUE" x="106.68" y="114.808" size="1.27" layer="96" font="vector" align="bottom-center"/>
@@ -17120,7 +17120,7 @@ Single Supply</text>
 <segment>
 <pinref part="AGND3" gate="G$1" pin="AGND"/>
 <pinref part="C16" gate="G$1" pin="2"/>
-<wire x1="106.68" y1="119.38" x2="106.68" y2="124.46" width="0.1524" layer="91"/>
+<wire x1="106.68" y1="119.38" x2="106.68" y2="121.92" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="V4" gate="P" pin="VSS"/>
@@ -17206,7 +17206,7 @@ Single Supply</text>
 <wire x1="106.68" y1="162.56" x2="109.22" y2="162.56" width="0.1524" layer="91"/>
 <junction x="106.68" y="142.24"/>
 <pinref part="C16" gate="G$1" pin="1"/>
-<wire x1="106.68" y1="132.08" x2="106.68" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="106.68" y1="129.54" x2="106.68" y2="142.24" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$12" class="0">
