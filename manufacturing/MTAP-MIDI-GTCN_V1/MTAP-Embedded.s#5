@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -1932,7 +1932,8 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 </packages>
 <packages3d>
 <package3d name="SOT229P700X180-4N" urn="urn:adsk.eagle:package:37738375/1" type="box" library_version="24">
-<description>&lt;b&gt;3 LEAD SOT-223 PLASTIC PACKAGE&lt;/b&gt;&lt;br&gt;</description>
+<description>&lt;b&gt;3 LEAD SOT-223 PLASTIC PACKAGE&lt;/b&gt;&lt;br&gt;
+</description>
 <packageinstances>
 <packageinstance name="SOT229P700X180-4N"/>
 </packageinstances>
@@ -13819,7 +13820,8 @@ Eagle Ver. 9.3.0&lt;br&gt;</description>
 </packages>
 <packages3d>
 <package3d name="SOT95P240X115-3N" urn="urn:adsk.eagle:package:37738390/1" type="box" library_version="12">
-<description>&lt;b&gt;SOT-23_2&lt;/b&gt;&lt;br&gt;</description>
+<description>&lt;b&gt;SOT-23_2&lt;/b&gt;&lt;br&gt;
+</description>
 <packageinstances>
 <packageinstance name="SOT95P240X115-3N"/>
 </packageinstances>
@@ -13933,7 +13935,8 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 </packages>
 <packages3d>
 <package3d name="QFN50P500X500X80-29N" urn="urn:adsk.eagle:package:37738757/2" type="box" library_version="46">
-<description>&lt;b&gt;QFN-28_3&lt;/b&gt;&lt;br&gt;</description>
+<description>&lt;b&gt;QFN-28_3&lt;/b&gt;&lt;br&gt;
+</description>
 <packageinstances>
 <packageinstance name="QFN28"/>
 </packageinstances>
@@ -15388,7 +15391,8 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 </packages>
 <packages3d>
 <package3d name="ESP32WROOM32UEN8" urn="urn:adsk.eagle:package:37940893/1" type="box" library_version="18">
-<description>&lt;b&gt;ESP32-WROOM-32UE-N8-1&lt;/b&gt;&lt;br&gt;</description>
+<description>&lt;b&gt;ESP32-WROOM-32UE-N8-1&lt;/b&gt;&lt;br&gt;
+</description>
 <packageinstances>
 <packageinstance name="ESP32WROOM32UEN8"/>
 </packageinstances>
@@ -15564,7 +15568,8 @@ Source: &lt;a href="https://www.espressif.com/sites/default/files/documentation/
 </packages>
 <packages3d>
 <package3d name="SOIC127P600X175-8N" urn="urn:adsk.eagle:package:38150835/1" type="box" library_version="18">
-<description>&lt;b&gt;TLV9152IDR&lt;/b&gt;&lt;br&gt;</description>
+<description>&lt;b&gt;TLV9152IDR&lt;/b&gt;&lt;br&gt;
+</description>
 <packageinstances>
 <packageinstance name="SOIC127P600X175-8N"/>
 </packageinstances>
@@ -15668,7 +15673,8 @@ Source: &lt;a href="https://www.ti.com/lit/ds/symlink/tlv9152.pdf?ts=16189305680
 </packages>
 <packages3d>
 <package3d name="SOIC127P600X175-8N" urn="urn:adsk.eagle:package:38133701/2" type="box" library_version="26">
-<description>&lt;b&gt;SN&lt;/b&gt;&lt;br&gt;</description>
+<description>&lt;b&gt;SN&lt;/b&gt;&lt;br&gt;
+</description>
 <packageinstances>
 <packageinstance name="SOIC127P600X175-8N"/>
 </packageinstances>
@@ -16907,9 +16913,9 @@ Single Supply</text>
 <instance part="AGND1" gate="G$1" x="45.72" y="190.5" smashed="yes">
 <attribute name="VALUE" x="45.72" y="188.468" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
-<instance part="C17" gate="G$1" x="63.5" y="127" smashed="yes">
-<attribute name="NAME" x="62.484" y="126.4666" size="1.6764" layer="95" font="vector" align="bottom-right"/>
-<attribute name="VALUE" x="62.484" y="123.6726" size="1.27" layer="96" font="vector" align="bottom-right"/>
+<instance part="C17" gate="G$1" x="63.5" y="129.54" smashed="yes">
+<attribute name="NAME" x="62.484" y="129.0066" size="1.6764" layer="95" font="vector" align="bottom-right"/>
+<attribute name="VALUE" x="62.484" y="126.2126" size="1.27" layer="96" font="vector" align="bottom-right"/>
 </instance>
 <instance part="R9" gate="G$1" x="114.3" y="162.56" smashed="yes" rot="R180">
 <attribute name="NAME" x="114.3" y="165.3286" size="1.6764" layer="95" font="vector" align="bottom-center"/>
@@ -17007,9 +17013,9 @@ Single Supply</text>
 <attribute name="NAME" x="78.74" y="149.86" size="1.6764" layer="95" font="vector" align="bottom-center"/>
 <attribute name="VALUE" x="78.74" y="147.32" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
-<instance part="V4" gate="B" x="137.16" y="142.24" smashed="yes">
-<attribute name="NAME" x="137.16" y="149.86" size="1.6764" layer="95" font="vector" align="bottom-center"/>
-<attribute name="VALUE" x="137.16" y="147.32" size="1.27" layer="96" font="vector" align="bottom-center"/>
+<instance part="V4" gate="B" x="137.16" y="142.24" smashed="yes" rot="MR180">
+<attribute name="NAME" x="137.16" y="134.62" size="1.6764" layer="95" font="vector" rot="MR180" align="bottom-center"/>
+<attribute name="VALUE" x="137.16" y="137.16" size="1.27" layer="96" font="vector" rot="MR180" align="bottom-center"/>
 </instance>
 <instance part="V4" gate="P" x="154.94" y="203.2" smashed="yes">
 <attribute name="NAME" x="154.94" y="203.2" size="1.6764" layer="95" font="vector" align="bottom-center"/>
@@ -17063,7 +17069,7 @@ Single Supply</text>
 <segment>
 <pinref part="C17" gate="G$1" pin="2"/>
 <pinref part="AGND2" gate="G$1" pin="AGND"/>
-<wire x1="63.5" y1="119.38" x2="63.5" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="63.5" y1="119.38" x2="63.5" y2="124.46" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <wire x1="33.02" y1="198.12" x2="33.02" y2="193.04" width="0.1524" layer="91"/>
@@ -17128,8 +17134,8 @@ Single Supply</text>
 </segment>
 <segment>
 <pinref part="V4" gate="B" pin="P"/>
-<wire x1="127" y1="144.78" x2="124.46" y2="144.78" width="0.1524" layer="91"/>
-<wire x1="124.46" y1="144.78" x2="124.46" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="127" y1="139.7" x2="124.46" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="124.46" y1="139.7" x2="124.46" y2="119.38" width="0.1524" layer="91"/>
 <pinref part="AGND13" gate="G$1" pin="AGND"/>
 </segment>
 </net>
@@ -17183,7 +17189,7 @@ Single Supply</text>
 <pinref part="R11" gate="G$1" pin="2"/>
 <wire x1="68.58" y1="144.78" x2="63.5" y2="144.78" width="0.1524" layer="91"/>
 <wire x1="63.5" y1="144.78" x2="60.96" y2="144.78" width="0.1524" layer="91"/>
-<wire x1="63.5" y1="144.78" x2="63.5" y2="129.54" width="0.1524" layer="91"/>
+<wire x1="63.5" y1="144.78" x2="63.5" y2="132.08" width="0.1524" layer="91"/>
 <junction x="63.5" y="144.78"/>
 <pinref part="C17" gate="G$1" pin="1"/>
 <pinref part="V4" gate="A" pin="P"/>
@@ -17207,13 +17213,13 @@ Single Supply</text>
 <segment>
 <pinref part="R13" gate="G$1" pin="2"/>
 <wire x1="119.38" y1="142.24" x2="121.92" y2="142.24" width="0.1524" layer="91"/>
-<wire x1="121.92" y1="142.24" x2="121.92" y2="154.94" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="142.24" x2="121.92" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="144.78" x2="121.92" y2="154.94" width="0.1524" layer="91"/>
 <wire x1="121.92" y1="154.94" x2="127" y2="154.94" width="0.1524" layer="91"/>
 <pinref part="C14" gate="G$1" pin="2"/>
-<wire x1="121.92" y1="142.24" x2="121.92" y2="139.7" width="0.1524" layer="91"/>
-<junction x="121.92" y="142.24"/>
 <pinref part="V4" gate="B" pin="N"/>
-<wire x1="121.92" y1="139.7" x2="127" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="127" y1="144.78" x2="121.92" y2="144.78" width="0.1524" layer="91"/>
+<junction x="121.92" y="144.78"/>
 </segment>
 </net>
 <net name="N$17" class="0">
