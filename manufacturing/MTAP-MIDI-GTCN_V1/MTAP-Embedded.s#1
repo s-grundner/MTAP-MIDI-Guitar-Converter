@@ -17115,6 +17115,7 @@ Single Supply</text>
 <pinref part="R9" gate="G$1" pin="1"/>
 <wire x1="66.04" y1="144.78" x2="63.5" y2="144.78" width="0.1524" layer="91"/>
 <wire x1="63.5" y1="144.78" x2="60.96" y2="144.78" width="0.1524" layer="91"/>
+<<<<
 <wire x1="63.5" y1="144.78" x2="63.5" y2="152.4" width="0.1524" layer="91"/>
 <junction x="63.5" y="144.78"/>
 <pinref part="C14" gate="G$1" pin="2"/>

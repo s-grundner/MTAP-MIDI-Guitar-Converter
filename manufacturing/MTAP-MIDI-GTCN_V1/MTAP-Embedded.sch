@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -15565,7 +15565,8 @@ Source: &lt;a href="https://www.espressif.com/sites/default/files/documentation/
 </packages>
 <packages3d>
 <package3d name="SOT95P280X145-5N" urn="urn:adsk.eagle:package:38237664/1" type="box" library_version="19">
-<description>&lt;b&gt;DBV0005A&lt;/b&gt;&lt;br&gt;</description>
+<description>&lt;b&gt;DBV0005A&lt;/b&gt;&lt;br&gt;
+</description>
 <packageinstances>
 <packageinstance name="SOT95P280X145-5N"/>
 </packageinstances>
@@ -16871,7 +16872,7 @@ MIDI Transmission</text>
 <wire x1="165.1" y1="231.14" x2="124.46" y2="231.14" width="0.1524" layer="97" style="dashdot"/>
 <text x="144.78" y="220.98" size="2.54" layer="97" align="bottom-center">Analogue Voltage
 Supply and Reference</text>
-<text x="88.9" y="172.72" size="2.54" layer="97" align="bottom-center">Low Pass Filter</text>
+<text x="88.9" y="172.72" size="2.54" layer="97" align="bottom-center">Low Pass Filter (NEEDS REWORK)</text>
 <text x="162.56" y="121.92" size="1.778" layer="97" rot="R180">E7 Filter (2637.02Hz)
 10V/V Gain
 Multiple Feedback
