@@ -4069,9 +4069,9 @@ W = angled&lt;p&gt;
 <via x="1.5875" y="8.89" extent="1-16" drill="0.35" diameter="0.7"/>
 <via x="1.5875" y="9.8425" extent="1-16" drill="0.35" diameter="0.7"/>
 <via x="1.5875" y="10.795" extent="1-16" drill="0.35" diameter="0.7"/>
-<via x="14.2875" y="1.905" extent="1-16" drill="0.35" diameter="0.7"/>
-<via x="14.2875" y="2.8575" extent="1-16" drill="0.35" diameter="0.7"/>
-<via x="14.2875" y="3.81" extent="1-16" drill="0.35" diameter="0.7"/>
+<via x="13.0175" y="2.8575" extent="1-16" drill="0.35" diameter="0.7"/>
+<via x="13.0175" y="3.81" extent="1-16" drill="0.35" diameter="0.7"/>
+<via x="13.0175" y="4.7625" extent="1-16" drill="0.35" diameter="0.7"/>
 <contactref element="C17" pad="2"/>
 <contactref element="V5" pad="2"/>
 </signal>
