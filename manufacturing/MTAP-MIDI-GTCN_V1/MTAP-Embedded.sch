@@ -1932,7 +1932,8 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 </packages>
 <packages3d>
 <package3d name="SOT229P700X180-4N" urn="urn:adsk.eagle:package:37738375/2" type="model" library_version="26">
-<description>&lt;b&gt;3 LEAD SOT-223 PLASTIC PACKAGE&lt;/b&gt;&lt;br&gt;</description>
+<description>&lt;b&gt;3 LEAD SOT-223 PLASTIC PACKAGE&lt;/b&gt;&lt;br&gt;
+</description>
 <packageinstances>
 <packageinstance name="SOT229P700X180-4N"/>
 </packageinstances>
@@ -13819,7 +13820,8 @@ Eagle Ver. 9.3.0&lt;br&gt;</description>
 </packages>
 <packages3d>
 <package3d name="SOT95P240X115-3N" urn="urn:adsk.eagle:package:37738390/3" type="model" library_version="13">
-<description>&lt;b&gt;SOT-23_2&lt;/b&gt;&lt;br&gt;</description>
+<description>&lt;b&gt;SOT-23_2&lt;/b&gt;&lt;br&gt;
+</description>
 <packageinstances>
 <packageinstance name="SOT95P240X115-3N"/>
 </packageinstances>
@@ -13929,7 +13931,8 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 </packages>
 <packages3d>
 <package3d name="QFN50P400X400X80-25N" urn="urn:adsk.eagle:package:38290199/3" type="model" library_version="52">
-<description>&lt;b&gt;QFN24 *&lt;/b&gt;&lt;br&gt;</description>
+<description>&lt;b&gt;QFN24 *&lt;/b&gt;&lt;br&gt;
+</description>
 <packageinstances>
 <packageinstance name="QFN24"/>
 </packageinstances>
@@ -15365,7 +15368,8 @@ Eagle Ver. 9.x&lt;br&gt;</description>
 </packages>
 <packages3d>
 <package3d name="ESP32WROOM32UEN8" urn="urn:adsk.eagle:package:37940893/3" type="model" library_version="21">
-<description>&lt;b&gt;ESP32-WROOM-32UE-N8-1&lt;/b&gt;&lt;br&gt;</description>
+<description>&lt;b&gt;ESP32-WROOM-32UE-N8-1&lt;/b&gt;&lt;br&gt;
+</description>
 <packageinstances>
 <packageinstance name="ESP32WROOM32UEN8"/>
 </packageinstances>
@@ -15538,7 +15542,8 @@ Source: &lt;a href="https://www.espressif.com/sites/default/files/documentation/
 </packages>
 <packages3d>
 <package3d name="SOT95P280X145-5N" urn="urn:adsk.eagle:package:38237664/3" type="model" library_version="24">
-<description>&lt;b&gt;DBV0005A&lt;/b&gt;&lt;br&gt;</description>
+<description>&lt;b&gt;DBV0005A&lt;/b&gt;&lt;br&gt;
+</description>
 <packageinstances>
 <packageinstance name="SOT95P280X145-5N"/>
 </packageinstances>
@@ -15901,8 +15906,8 @@ Eagle Ver. 7.6.0&lt;br&gt;</description>
 <part name="V6" library="diode_GruS" library_urn="urn:adsk.eagle:library:13569696" deviceset="ESD5B5.0ST1G" device="" package3d_urn="urn:adsk.eagle:package:37738879/4"/>
 <part name="V3" library="diode_GruS" library_urn="urn:adsk.eagle:library:13569696" deviceset="BAT760-7" device="" package3d_urn="urn:adsk.eagle:package:37738880/3"/>
 <part name="+5V2" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="+5V" device=""/>
-<part name="R4" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:18365371/1" value="10k"/>
-<part name="R6" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:18365371/1" value="10k"/>
+<part name="R4" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:18365371/1" value="12k"/>
+<part name="R6" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:18365371/1" value="12k"/>
 <part name="VBUS1" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="VBUS" device=""/>
 <part name="S1" library="switch_GruS" library_urn="urn:adsk.eagle:library:13571161" deviceset="TASTE10XX" device="WE" package3d_urn="urn:adsk.eagle:package:18368072/4" value="BOOT"/>
 <part name="C8" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EUL" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100n"/>
@@ -16341,6 +16346,13 @@ MIDI Transmission</text>
 <text x="93.98" y="261.62" size="2.54" layer="97" font="vector" align="bottom-center">USB Bridge</text>
 <text x="96.52" y="165.1" size="2.54" layer="97" font="vector" align="bottom-center">5V -&gt; 3.3V Low Dropout Regulator</text>
 <text x="96.52" y="104.14" size="2.54" layer="97" font="vector" align="bottom-center">Boot Mode and Reset button &amp; UART0/1 Slider Switch</text>
+<text x="25.4" y="187.96" size="1.27" layer="97" font="vector"></text>
+<text x="22.86" y="180.34" size="1.27" layer="97" font="vector">Autoprogram
+DTR RTS -&gt; EN  IO0
+    1     1       1     1
+    0     0       1     1
+    1     0       0     1 
+    0     1       1     0</text>
 </plain>
 <instances>
 <instance part="FRAMES1" gate="G$1" x="0" y="0" smashed="yes">
