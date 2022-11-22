@@ -1,0 +1,20 @@
+{
+    "project_name":       "bootloader",
+    "project_path":       "C:/Users/Smon/.platformio/packages/framework-espidf/components/bootloader/subproject",
+    "build_dir":          "C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/.pio/build/pico32/bootloader",
+    "config_file":        "C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/sdkconfig.pico32",
+    "config_defaults":    "",
+    "app_elf":            "bootloader.elf",
+    "app_bin":            "bootloader.bin",
+    "git_revision":       "4.3.2",
+    "target":             "esp32",
+    "phy_data_partition": "",
+    "monitor_baud" :      "115200",
+    "monitor_toolprefix": "xtensa-esp32-elf-",
+    "config_environment" : {
+        "COMPONENT_KCONFIGS" : "C:/Users/Smon/.platformio/packages/framework-espidf/components/efuse/Kconfig;C:/Users/Smon/.platformio/packages/framework-espidf/components/esp32/Kconfig;C:/Users/Smon/.platformio/packages/framework-espidf/components/esp_common/Kconfig;C:/Users/Smon/.platformio/packages/framework-espidf/components/esp_system/Kconfig;C:/Users/Smon/.platformio/packages/framework-espidf/components/log/Kconfig;C:/Users/Smon/.platformio/packages/framework-espidf/components/newlib/Kconfig;C:/Users/Smon/.platformio/packages/framework-espidf/components/spi_flash/Kconfig",
+        "COMPONENT_KCONFIGS_PROJBUILD" : "C:/Users/Smon/.platformio/packages/framework-espidf/components/bootloader/Kconfig.projbuild;C:/Users/Smon/.platformio/packages/framework-espidf/components/esptool_py/Kconfig.projbuild;C:/Users/Smon/.platformio/packages/framework-espidf/components/partition_table/Kconfig.projbuild"
+    },
+    "build_components" : [ "bootloader", "bootloader_support", "efuse", "esp32", "esp_common", "esp_hw_support", "esp_rom", "esp_system", "esptool_py", "hal", "log", "main", "micro-ecc", "newlib", "partition_table", "soc", "spi_flash", "xtensa", "" ],
+    "build_component_paths" : [ "C:/Users/Smon/.platformio/packages/framework-espidf/components/bootloader", "C:/Users/Smon/.platformio/packages/framework-espidf/components/bootloader_support", "C:/Users/Smon/.platformio/packages/framework-espidf/components/efuse", "C:/Users/Smon/.platformio/packages/framework-espidf/components/esp32", "C:/Users/Smon/.platformio/packages/framework-espidf/components/esp_common", "C:/Users/Smon/.platformio/packages/framework-espidf/components/esp_hw_support", "C:/Users/Smon/.platformio/packages/framework-espidf/components/esp_rom", "C:/Users/Smon/.platformio/packages/framework-espidf/components/esp_system", "C:/Users/Smon/.platformio/packages/framework-espidf/components/esptool_py", "C:/Users/Smon/.platformio/packages/framework-espidf/components/hal", "C:/Users/Smon/.platformio/packages/framework-espidf/components/log", "C:/Users/Smon/.platformio/packages/framework-espidf/components/bootloader/subproject/main", "C:/Users/Smon/.platformio/packages/framework-espidf/components/bootloader/subproject/components/micro-ecc", "C:/Users/Smon/.platformio/packages/framework-espidf/components/newlib", "C:/Users/Smon/.platformio/packages/framework-espidf/components/partition_table", "C:/Users/Smon/.platformio/packages/framework-espidf/components/soc", "C:/Users/Smon/.platformio/packages/framework-espidf/components/spi_flash", "C:/Users/Smon/.platformio/packages/framework-espidf/components/xtensa", "" ]
+}
