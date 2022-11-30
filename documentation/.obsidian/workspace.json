@@ -1,0 +1,158 @@
+{
+  "main": {
+    "id": "1e94b8a209baa7b7",
+    "type": "split",
+    "children": [
+      {
+        "id": "73d42075bf209a35",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a0d0002a3e5ad169",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Pflichtenheft.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "897e45e653e35ee5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Software-Doku.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "7c306b1522085ae6",
+    "type": "split",
+    "children": [
+      {
+        "id": "922f3cd16a88d08f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e57a44f190942aad",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "6d7b1bcb58692b48",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "1232e1655d310cae",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "7d361d4b8825083c",
+    "type": "split",
+    "children": [
+      {
+        "id": "0718a77906b7fb7a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b6e1a33951d32fcb",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Software-Doku.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "02fa5fa1c47c6646",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Software-Doku.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "7e39d4e26bc276ae",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "48b5cb9186ef79d0",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Software-Doku.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "897e45e653e35ee5",
+  "lastOpenFiles": [
+    "Software-Doku.md",
+    "Pflichtenheft.md",
+    "Lastenheft.md"
+  ]
+}
