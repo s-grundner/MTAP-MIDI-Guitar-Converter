@@ -6,7 +6,8 @@
 <picture>
  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/s-grundner/MTAP-MIDI-Guitar-Converter/blob/main/documentation/images/LOGO-dark.png?raw=true" align="right" width="450px" height="160px"/>
  <img alt="Logo" src="https://github.com/s-grundner/MTAP-MIDI-Guitar-Converter/blob/main/documentation/images/LOGO-light.png?raw=true" align="right" width="450px" height="160px"/>
-</picture> 
+</picture>
+
 ## Kurzberschreibung
 Das vorliegende Projekt ermöglicht die Verwendung einer E-Gitarre als MIDI-Device. Das Gerät soll einzelne Noten und Akkorde zuverlässig mit möglichst geringer Latenz in das MIDI-Format umwandeln. Die MIDI-Signale werden an die USB-Schnittstelle eines PCs übertragen, von welchem die Signale beliebig interpretiert werden können.
 
@@ -21,10 +22,6 @@ Der Vorteil des MIDI-Formats ist, dass es der Standard vieler Musikproduktionsum
 Das Projekt befindet sich derzeit in der frühen Entwicklungsphase. Funktionalitäten sind noch in Planung
 Planungsvorgänge können unter dem Reiter *[Projects](https://github.com/s-grundner/MTAP-MIDI-Guitar-Converter/projects?query=is%3Aopen)* eingesehen werden.
 
-## Repository Struktur
-- [**Lastenheft**](documentation/Lastenheft.md)
-- [**Pflichtenheft**](documentation/Pflichtenheft.md)
-
 ## Mitwirkende
 [Simon Grundner](https://github.com/s-grundner)
 
@@ -33,7 +30,7 @@ Planungsvorgänge können unter dem Reiter *[Projects](https://github.com/s-grun
 [Daniel Bräumann](https://github.com/Hexewillfred)
 
 ## Repository Struktur
-
- - [**Hardware DOCS**](documentation/hw-docs)
-
- - [**Software DOCS**](documentation/sw-docs)
+- [**Lastenheft**](documentation/Lastenheft.md)
+- [**Pflichtenheft**](documentation/Pflichtenheft.md)
+- [**Hardware DOCS**](documentation/hw-docs)
+- [**Software DOCS**](documentation/sw-docs)
