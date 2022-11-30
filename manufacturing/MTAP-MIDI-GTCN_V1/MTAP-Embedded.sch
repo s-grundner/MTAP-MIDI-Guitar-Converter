@@ -15909,7 +15909,6 @@ Eagle Ver. 7.6.0&lt;br&gt;</description>
 <part name="R4" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:18365371/1" value="12k"/>
 <part name="R6" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:18365371/1" value="12k"/>
 <part name="VBUS1" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="VBUS" device=""/>
-<part name="S1" library="switch_GruS" library_urn="urn:adsk.eagle:library:13571161" deviceset="TASTE10XX" device="WE" package3d_urn="urn:adsk.eagle:package:18368072/4" value="BOOT"/>
 <part name="C8" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EUL" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100n"/>
 <part name="S2" library="switch_GruS" library_urn="urn:adsk.eagle:library:13571161" deviceset="TASTE10XX" device="WE" package3d_urn="urn:adsk.eagle:package:18368072/4" value="EN"/>
 <part name="C9" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EUL" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100n"/>
@@ -15997,17 +15996,18 @@ Eagle Ver. 7.6.0&lt;br&gt;</description>
 <part name="R12" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:18365371/1" value="22k"/>
 <part name="AGND10" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="AGND" device=""/>
 <part name="AVDD6" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="AVDD" device=""/>
-<part name="X2" library="solpad_GruS" library_urn="urn:adsk.eagle:library:13571267" deviceset="SMD-TP" device="" package3d_urn="urn:adsk.eagle:package:38312116/4"/>
-<part name="X3" library="solpad_GruS" library_urn="urn:adsk.eagle:library:13571267" deviceset="SMD-TP" device="" package3d_urn="urn:adsk.eagle:package:38312116/4"/>
-<part name="X5" library="solpad_GruS" library_urn="urn:adsk.eagle:library:13571267" deviceset="SMD-TP" device="" package3d_urn="urn:adsk.eagle:package:38312116/4"/>
-<part name="X6" library="solpad_GruS" library_urn="urn:adsk.eagle:library:13571267" deviceset="SMD-TP" device="" package3d_urn="urn:adsk.eagle:package:38312116/4"/>
-<part name="X1" library="solpad_GruS" library_urn="urn:adsk.eagle:library:13571267" deviceset="SMD-TP" device="" package3d_urn="urn:adsk.eagle:package:38312116/4"/>
+<part name="AGND" library="solpad_GruS" library_urn="urn:adsk.eagle:library:13571267" deviceset="SMD-TP" device="" package3d_urn="urn:adsk.eagle:package:38312116/4"/>
+<part name="AVDD" library="solpad_GruS" library_urn="urn:adsk.eagle:library:13571267" deviceset="SMD-TP" device="" package3d_urn="urn:adsk.eagle:package:38312116/4"/>
+<part name="POST-AFE" library="solpad_GruS" library_urn="urn:adsk.eagle:library:13571267" deviceset="SMD-TP" device="" package3d_urn="urn:adsk.eagle:package:38312116/4"/>
+<part name="AIN" library="solpad_GruS" library_urn="urn:adsk.eagle:library:13571267" deviceset="SMD-TP" device="" package3d_urn="urn:adsk.eagle:package:38312116/4"/>
+<part name="PGND" library="solpad_GruS" library_urn="urn:adsk.eagle:library:13571267" deviceset="SMD-TP" device="" package3d_urn="urn:adsk.eagle:package:38312116/4"/>
 <part name="PGND1" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="PGND" device=""/>
 <part name="+3V7" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="+3V3" device=""/>
-<part name="X4" library="solpad_GruS" library_urn="urn:adsk.eagle:library:13571267" deviceset="SMD-TP" device="" package3d_urn="urn:adsk.eagle:package:38312116/4"/>
-<part name="X7" library="solpad_GruS" library_urn="urn:adsk.eagle:library:13571267" deviceset="SMD-TP" device="" package3d_urn="urn:adsk.eagle:package:38312116/4"/>
-<part name="X8" library="solpad_GruS" library_urn="urn:adsk.eagle:library:13571267" deviceset="SMD-TP" device="" package3d_urn="urn:adsk.eagle:package:38312116/4"/>
-<part name="X9" library="solpad_GruS" library_urn="urn:adsk.eagle:library:13571267" deviceset="SMD-TP" device="" package3d_urn="urn:adsk.eagle:package:38312116/4"/>
+<part name="3V3" library="solpad_GruS" library_urn="urn:adsk.eagle:library:13571267" deviceset="SMD-TP" device="" package3d_urn="urn:adsk.eagle:package:38312116/4"/>
+<part name="SPI_CS" library="solpad_GruS" library_urn="urn:adsk.eagle:library:13571267" deviceset="SMD-TP" device="" package3d_urn="urn:adsk.eagle:package:38312116/4"/>
+<part name="SPIQ" library="solpad_GruS" library_urn="urn:adsk.eagle:library:13571267" deviceset="SMD-TP" device="" package3d_urn="urn:adsk.eagle:package:38312116/4"/>
+<part name="SPI_CLK" library="solpad_GruS" library_urn="urn:adsk.eagle:library:13571267" deviceset="SMD-TP" device="" package3d_urn="urn:adsk.eagle:package:38312116/4"/>
+<part name="S1" library="switch_GruS" library_urn="urn:adsk.eagle:library:13571161" deviceset="TASTE10XX" device="WE" package3d_urn="urn:adsk.eagle:package:18368072/4" value="BOOT"/>
 </parts>
 <sheets>
 <sheet>
@@ -16087,21 +16087,21 @@ Eagle Ver. 7.6.0&lt;br&gt;</description>
 <instance part="AVDD6" gate="G$1" x="78.74" y="106.68" smashed="yes" rot="R180">
 <attribute name="VALUE" x="78.74" y="105.918" size="1.27" layer="96" font="vector" rot="R180" align="bottom-center"/>
 </instance>
-<instance part="X2" gate="G$1" x="73.66" y="114.3" smashed="yes"/>
-<instance part="X3" gate="G$1" x="78.74" y="114.3" smashed="yes"/>
-<instance part="X5" gate="G$1" x="93.98" y="114.3" smashed="yes"/>
-<instance part="X6" gate="G$1" x="99.06" y="114.3" smashed="yes"/>
-<instance part="X1" gate="G$1" x="68.58" y="114.3" smashed="yes"/>
+<instance part="AGND" gate="G$1" x="73.66" y="114.3" smashed="yes"/>
+<instance part="AVDD" gate="G$1" x="78.74" y="114.3" smashed="yes"/>
+<instance part="POST-AFE" gate="G$1" x="93.98" y="114.3" smashed="yes"/>
+<instance part="AIN" gate="G$1" x="99.06" y="114.3" smashed="yes"/>
+<instance part="PGND" gate="G$1" x="68.58" y="114.3" smashed="yes"/>
 <instance part="PGND1" gate="G$1" x="68.58" y="106.68" smashed="yes">
 <attribute name="VALUE" x="68.58" y="104.648" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
 <instance part="+3V7" gate="G$1" x="83.82" y="106.68" smashed="yes" rot="R180">
 <attribute name="VALUE" x="83.82" y="105.918" size="1.27" layer="96" font="vector" rot="R180" align="bottom-center"/>
 </instance>
-<instance part="X4" gate="G$1" x="83.82" y="114.3" smashed="yes"/>
-<instance part="X7" gate="G$1" x="109.22" y="114.3" smashed="yes"/>
-<instance part="X8" gate="G$1" x="114.3" y="114.3" smashed="yes"/>
-<instance part="X9" gate="G$1" x="119.38" y="114.3" smashed="yes"/>
+<instance part="3V3" gate="G$1" x="83.82" y="114.3" smashed="yes"/>
+<instance part="SPI_CS" gate="G$1" x="109.22" y="114.3" smashed="yes"/>
+<instance part="SPIQ" gate="G$1" x="114.3" y="114.3" smashed="yes"/>
+<instance part="SPI_CLK" gate="G$1" x="119.38" y="114.3" smashed="yes"/>
 </instances>
 <busses>
 </busses>
@@ -16232,7 +16232,7 @@ Eagle Ver. 7.6.0&lt;br&gt;</description>
 <pinref part="+3V4" gate="G$1" pin="+3V3"/>
 </segment>
 <segment>
-<pinref part="X4" gate="G$1" pin="P$1"/>
+<pinref part="3V3" gate="G$1" pin="P$1"/>
 <pinref part="+3V7" gate="G$1" pin="+3V3"/>
 <wire x1="83.82" y1="111.76" x2="83.82" y2="109.22" width="0.1524" layer="91"/>
 </segment>
@@ -16260,7 +16260,7 @@ Eagle Ver. 7.6.0&lt;br&gt;</description>
 <segment>
 <wire x1="109.22" y1="111.76" x2="109.22" y2="109.22" width="0.1524" layer="91"/>
 <label x="109.22" y="109.22" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="X7" gate="G$1" pin="P$1"/>
+<pinref part="SPI_CS" gate="G$1" pin="P$1"/>
 </segment>
 </net>
 <net name="VSPI_CLK" class="0">
@@ -16272,7 +16272,7 @@ Eagle Ver. 7.6.0&lt;br&gt;</description>
 <segment>
 <wire x1="119.38" y1="111.76" x2="119.38" y2="109.22" width="0.1524" layer="91"/>
 <label x="119.38" y="109.22" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="X9" gate="G$1" pin="P$1"/>
+<pinref part="SPI_CLK" gate="G$1" pin="P$1"/>
 </segment>
 </net>
 <net name="VSPIQ_MISO" class="0">
@@ -16284,40 +16284,40 @@ Eagle Ver. 7.6.0&lt;br&gt;</description>
 <segment>
 <wire x1="114.3" y1="111.76" x2="114.3" y2="109.22" width="0.1524" layer="91"/>
 <label x="114.3" y="109.22" size="1.27" layer="95" rot="MR270" xref="yes"/>
-<pinref part="X8" gate="G$1" pin="P$1"/>
+<pinref part="SPIQ" gate="G$1" pin="P$1"/>
 </segment>
 </net>
 <net name="AGND" class="0">
 <segment>
 <pinref part="AGND10" gate="G$1" pin="AGND"/>
-<pinref part="X2" gate="G$1" pin="P$1"/>
+<pinref part="AGND" gate="G$1" pin="P$1"/>
 <wire x1="73.66" y1="111.76" x2="73.66" y2="109.22" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="AINP" class="0">
 <segment>
 <label x="93.98" y="109.22" size="1.27" layer="95" rot="R270" xref="yes"/>
-<pinref part="X5" gate="G$1" pin="P$1"/>
+<pinref part="POST-AFE" gate="G$1" pin="P$1"/>
 <wire x1="93.98" y1="111.76" x2="93.98" y2="109.22" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="IN1" class="0">
 <segment>
 <label x="99.06" y="109.22" size="1.27" layer="95" rot="R270" xref="yes"/>
-<pinref part="X6" gate="G$1" pin="P$1"/>
+<pinref part="AIN" gate="G$1" pin="P$1"/>
 <wire x1="99.06" y1="111.76" x2="99.06" y2="109.22" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="AVDD" class="0">
 <segment>
 <pinref part="AVDD6" gate="G$1" pin="AVDD"/>
-<pinref part="X3" gate="G$1" pin="P$1"/>
+<pinref part="AVDD" gate="G$1" pin="P$1"/>
 <wire x1="78.74" y1="111.76" x2="78.74" y2="109.22" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="PGND" class="0">
 <segment>
-<pinref part="X1" gate="G$1" pin="P$1"/>
+<pinref part="PGND" gate="G$1" pin="P$1"/>
 <pinref part="PGND1" gate="G$1" pin="PGND"/>
 <wire x1="68.58" y1="111.76" x2="68.58" y2="109.22" width="0.1524" layer="91"/>
 </segment>
@@ -16431,10 +16431,6 @@ DTR RTS -&gt; EN  IO0
 </instance>
 <instance part="VBUS1" gate="G$2" x="129.54" y="157.48" smashed="yes">
 <attribute name="VALUE" x="129.54" y="158.496" size="1.27" layer="96" font="vector" align="bottom-center"/>
-</instance>
-<instance part="S1" gate="G$1" x="78.74" y="93.98" smashed="yes">
-<attribute name="NAME" x="78.74" y="99.06" size="1.6764" layer="95" font="vector" align="bottom-center"/>
-<attribute name="VALUE" x="78.74" y="91.44" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
 <instance part="C8" gate="G$1" x="76.2" y="83.82" smashed="yes">
 <attribute name="NAME" x="77.47" y="87.0966" size="1.6764" layer="95" font="vector" align="bottom-center"/>
@@ -16559,6 +16555,10 @@ DTR RTS -&gt; EN  IO0
 <instance part="+3V2" gate="G$1" x="83.82" y="246.38" smashed="yes">
 <attribute name="VALUE" x="83.82" y="247.142" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
+<instance part="S1" gate="G$1" x="78.74" y="93.98" smashed="yes">
+<attribute name="NAME" x="78.74" y="99.06" size="1.6764" layer="95" font="vector" align="bottom-center"/>
+<attribute name="VALUE" x="78.74" y="91.44" size="1.27" layer="96" font="vector" align="bottom-center"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -16616,16 +16616,16 @@ DTR RTS -&gt; EN  IO0
 <segment>
 <pinref part="C8" gate="G$1" pin="1"/>
 <wire x1="81.28" y1="83.82" x2="86.36" y2="83.82" width="0.1524" layer="91"/>
-<pinref part="S1" gate="G$1" pin="S"/>
 <wire x1="86.36" y1="83.82" x2="86.36" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="86.36" y1="91.44" x2="86.36" y2="93.98" width="0.1524" layer="91"/>
 <wire x1="86.36" y1="93.98" x2="83.82" y2="93.98" width="0.1524" layer="91"/>
-<pinref part="S1" gate="G$1" pin="S1"/>
 <wire x1="83.82" y1="91.44" x2="86.36" y2="91.44" width="0.1524" layer="91"/>
 <junction x="86.36" y="91.44"/>
 <wire x1="86.36" y1="93.98" x2="88.9" y2="93.98" width="0.1524" layer="91"/>
 <junction x="86.36" y="93.98"/>
 <label x="88.9" y="93.98" size="1.27" layer="95" xref="yes"/>
+<pinref part="S1" gate="G$1" pin="S"/>
+<pinref part="S1" gate="G$1" pin="S1"/>
 </segment>
 </net>
 <net name="USB_DP" class="0">
@@ -16855,17 +16855,17 @@ DTR RTS -&gt; EN  IO0
 </segment>
 <segment>
 <wire x1="71.12" y1="81.28" x2="71.12" y2="83.82" width="0.1524" layer="91"/>
-<pinref part="S1" gate="G$1" pin="P"/>
 <wire x1="71.12" y1="83.82" x2="71.12" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="71.12" y1="91.44" x2="71.12" y2="93.98" width="0.1524" layer="91"/>
 <wire x1="71.12" y1="93.98" x2="73.66" y2="93.98" width="0.1524" layer="91"/>
-<pinref part="S1" gate="G$1" pin="P1"/>
 <wire x1="73.66" y1="91.44" x2="71.12" y2="91.44" width="0.1524" layer="91"/>
 <junction x="71.12" y="91.44"/>
 <pinref part="C8" gate="G$1" pin="2"/>
 <wire x1="73.66" y1="83.82" x2="71.12" y2="83.82" width="0.1524" layer="91"/>
 <junction x="71.12" y="83.82"/>
 <pinref part="PGND8" gate="G$1" pin="PGND"/>
+<pinref part="S1" gate="G$1" pin="P"/>
+<pinref part="S1" gate="G$1" pin="P1"/>
 </segment>
 <segment>
 <pinref part="H1" gate="G$1" pin="C"/>
