@@ -36,3 +36,5 @@ Planungsvorgänge können unter dem Reiter *[Projects](https://github.com/s-grun
 - [Laurenz Hölzl](https://github.com/Laurenz03)
 - [Daniel Bräumann](https://github.com/Hexewillfred)
 
+## Auszeichnungen
+Diese Projekt wurde bei Jugend Innovativ in der Engineering II Kategorie eingereicht
