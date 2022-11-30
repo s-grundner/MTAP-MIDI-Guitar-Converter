@@ -22,15 +22,17 @@ Der Vorteil des MIDI-Formats ist, dass es der Standard vieler Musikproduktionsum
 Das Projekt befindet sich derzeit in der frühen Entwicklungsphase. Funktionalitäten sind noch in Planung
 Planungsvorgänge können unter dem Reiter *[Projects](https://github.com/s-grundner/MTAP-MIDI-Guitar-Converter/projects?query=is%3Aopen)* eingesehen werden.
 
-## Mitwirkende
-[Simon Grundner](https://github.com/s-grundner)
-
-[Laurenz Hölzl](https://github.com/Laurenz03)
-
-[Daniel Bräumann](https://github.com/Hexewillfred)
-
 ## Repository Struktur
 - [**Lastenheft**](documentation/Lastenheft.md)
 - [**Pflichtenheft**](documentation/Pflichtenheft.md)
 - [**Hardware DOCS**](documentation/hw-docs)
 - [**Software DOCS**](documentation/sw-docs)
+
+## Mitwirkende
+### Betreuer
+[DI Siegbert Schrempf](https://www.linkedin.com/in/siegbert-schrempf-aa1189a)
+### Entwickler
+- [Simon Grundner](https://github.com/s-grundner)
+- [Laurenz Hölzl](https://github.com/Laurenz03)
+- [Daniel Bräumann](https://github.com/Hexewillfred)
+
