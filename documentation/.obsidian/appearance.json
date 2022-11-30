@@ -1,3 +1,9 @@
 {
-  "accentColor": ""
+  "cssTheme": "Everforest",
+  "baseFontSize": 16,
+  "translucency": true,
+  "accentColor": "#8624ff",
+  "textFontFamily": "Monocraft",
+  "monospaceFontFamily": "Monocraft",
+  "theme": "obsidian"
 }
