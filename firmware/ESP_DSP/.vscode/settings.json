@@ -4,6 +4,8 @@
   "idf.port": "/dev/ttyUSB0",
   "idf.flashType": "UART",
   "files.associations": {
-    "stdlib.h": "c"
+    "stdlib.h": "c",
+    "cmath": "c",
+    "complex": "c"
   }
 }
