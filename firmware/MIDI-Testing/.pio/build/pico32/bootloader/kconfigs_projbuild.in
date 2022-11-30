@@ -1,3 +1,4 @@
-source "C:/Users/Smon/.platformio/packages/framework-espidf/components/bootloader/Kconfig.projbuild"
-source "C:/Users/Smon/.platformio/packages/framework-espidf/components/esptool_py/Kconfig.projbuild"
-source "C:/Users/Smon/.platformio/packages/framework-espidf/components/partition_table/Kconfig.projbuild"
+source "C:/Users/simon/.platformio/packages/framework-espidf/components/bootloader/Kconfig.projbuild"
+source "C:/Users/simon/.platformio/packages/framework-espidf/components/esp_rom/Kconfig.projbuild"
+source "C:/Users/simon/.platformio/packages/framework-espidf/components/esptool_py/Kconfig.projbuild"
+source "C:/Users/simon/.platformio/packages/framework-espidf/components/partition_table/Kconfig.projbuild"

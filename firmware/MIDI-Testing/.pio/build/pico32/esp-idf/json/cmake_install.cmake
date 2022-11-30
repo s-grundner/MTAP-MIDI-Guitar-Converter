@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Smon/.platformio/packages/framework-espidf/components/json
+# Install script for directory: C:/Users/simon/.platformio/packages/framework-espidf/components/json
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
