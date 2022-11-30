@@ -37,4 +37,4 @@ Planungsvorgänge können unter dem Reiter *[Projects](https://github.com/s-grun
 - [Daniel Bräumann](https://github.com/Hexewillfred)
 
 ## Auszeichnungen
-Diese Projekt wurde bei Jugend Innovativ in der Engineering II Kategorie eingereicht
+Diese Projekt wurde bei [Jugend Innovativ](https://machmit.jugendinnovativ.at/#/) in der Engineering II Kategorie eingereicht
