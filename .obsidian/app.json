@@ -11,5 +11,8 @@
   "spellcheckLanguages": [
     "en-GB",
     "de"
-  ]
+  ],
+  "showUnsupportedFiles": true,
+  "alwaysUpdateLinks": true,
+  "useMarkdownLinks": true
 }
