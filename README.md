@@ -4,8 +4,8 @@
 
 # MTAP-MIDI-Guitar-Converter [DE]
 <picture>
- <source media="(prefers-color-scheme: dark)" srcset="https://github.com/s-grundner/MTAP-MIDI-Guitar-Converter/blob/main/documentation/images/LOGO-dark.png?raw=true" align="right" width="450px" height="160px"/>
- <img alt="Logo" src="https://github.com/s-grundner/MTAP-MIDI-Guitar-Converter/blob/main/documentation/images/LOGO-light.png?raw=true" align="right" width="450px" height="160px"/>
+ <source media="(prefers-color-scheme: dark)" srcset="/documentation/images/MTAP-logo-weiss.png" align="right" width="450px"/>
+ <img alt="Logo" src="/documentation/images/MTAP-logo-schwarz.png" align="right" width="450px"/>
 </picture>
 
 ## Kurzberschreibung
