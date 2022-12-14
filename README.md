@@ -38,3 +38,5 @@ Planungsvorgänge können unter dem Reiter *[Projects](https://github.com/s-grun
 
 ## Auszeichnungen
 Diese Projekt wurde bei [Jugend Innovativ](https://machmit.jugendinnovativ.at/#/) in der Engineering II Kategorie eingereicht
+
+![Poster](/documentation/images/MTAP-Poster.png)
