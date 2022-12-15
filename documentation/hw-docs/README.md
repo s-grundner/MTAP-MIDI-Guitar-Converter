@@ -1,7 +1,7 @@
 ## BSB - Blockschaltbild
 <picture>
- <source media="(prefers-color-scheme: dark)" srcset="/documentation/hw-docs/BSB-white.svg">
- <img alt="Blockschaltbild" src="/documentation/hw-docs/BSB-black.svg">
+ <source media="(prefers-color-scheme: dark)" srcset="/documentation/hw-docs/BSB-white.svg" width="1000">
+ <img alt="Blockschaltbild" src="/documentation/hw-docs/BSB-black.svg" width="1000">
 </picture>
 
 ## SPL - Schaltplan
