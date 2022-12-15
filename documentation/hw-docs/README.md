@@ -1,10 +1,13 @@
 ## BSB - Blockschaltbild
 <picture>
- <source media="(prefers-color-scheme: dark)" srcset="/documentation/hw-docs/images/BSB-weiss.svg">
- <img alt="Blockschaltbild" src="/documentation/hw-docs/images/BSB-schwarz.svg">
+ <source media="(prefers-color-scheme: dark)" srcset="/documentation/hw-docs/BSB-white.svg">
+ <img alt="Blockschaltbild" src="/documentation/hw-docs/BSB-black.svg">
 </picture>
 
 ## SPL - Schaltplan
+![ESP32 an Testterminals](/documentation/hw-docs/SPL-P1.png)
+![](/documentation/hw-docs/SPL-P2.png)
+![](/documentation/hw-docs/SPL-P3.png)
 
 ## BSP - Bestückungsplan
 
