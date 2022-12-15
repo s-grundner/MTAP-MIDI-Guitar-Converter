@@ -16353,7 +16353,7 @@ DTR RTS -&gt; EN  IO0
     0     0       1     1
     1     0       0     1 
     0     1       1     0</text>
-<text x="134.62" y="193.04" size="1.778" layer="97" font="vector" rot="R180" align="center">NF</text>
+<text x="137.16" y="193.04" size="1.778" layer="97" font="vector" rot="R180" align="center">NF</text>
 </plain>
 <instances>
 <instance part="FRAMES1" gate="G$1" x="0" y="0" smashed="yes">
@@ -16403,24 +16403,24 @@ DTR RTS -&gt; EN  IO0
 <attribute name="NAME" x="50.8" y="205.74" size="1.6764" layer="95" font="vector" rot="MR0" align="bottom-center"/>
 <attribute name="VALUE" x="50.8" y="203.962" size="1.27" layer="96" font="vector" rot="MR0" align="bottom-center"/>
 </instance>
-<instance part="V4" gate="G$1" x="129.54" y="139.7" smashed="yes" rot="R270">
-<attribute name="NAME" x="125.73" y="142.24" size="1.778" layer="95" font="vector" rot="R270"/>
-<attribute name="VALUE" x="125.73" y="137.16" size="1.778" layer="96" font="vector" rot="R270"/>
-</instance>
-<instance part="V5" gate="G$1" x="137.16" y="139.7" smashed="yes" rot="R270">
+<instance part="V4" gate="G$1" x="137.16" y="139.7" smashed="yes" rot="R270">
 <attribute name="NAME" x="133.35" y="142.24" size="1.778" layer="95" font="vector" rot="R270"/>
 <attribute name="VALUE" x="133.35" y="137.16" size="1.778" layer="96" font="vector" rot="R270"/>
 </instance>
-<instance part="V6" gate="G$1" x="144.78" y="139.7" smashed="yes" rot="R270">
+<instance part="V5" gate="G$1" x="144.78" y="139.7" smashed="yes" rot="R270">
 <attribute name="NAME" x="140.97" y="142.24" size="1.778" layer="95" font="vector" rot="R270"/>
 <attribute name="VALUE" x="140.97" y="137.16" size="1.778" layer="96" font="vector" rot="R270"/>
 </instance>
-<instance part="V3" gate="G$1" x="137.16" y="152.4" smashed="yes">
-<attribute name="NAME" x="137.16" y="156.718" size="1.6764" layer="95" font="vector" align="bottom-center"/>
-<attribute name="VALUE" x="137.16" y="154.94" size="1.27" layer="96" font="vector" align="bottom-center"/>
+<instance part="V6" gate="G$1" x="152.4" y="139.7" smashed="yes" rot="R270">
+<attribute name="NAME" x="148.59" y="142.24" size="1.778" layer="95" font="vector" rot="R270"/>
+<attribute name="VALUE" x="148.59" y="137.16" size="1.778" layer="96" font="vector" rot="R270"/>
 </instance>
-<instance part="+5V2" gate="G$1" x="144.78" y="157.48" smashed="yes">
-<attribute name="VALUE" x="144.78" y="158.496" size="1.27" layer="96" font="vector" align="bottom-center"/>
+<instance part="V3" gate="G$1" x="144.78" y="152.4" smashed="yes">
+<attribute name="NAME" x="144.78" y="156.718" size="1.6764" layer="95" font="vector" align="bottom-center"/>
+<attribute name="VALUE" x="144.78" y="154.94" size="1.27" layer="96" font="vector" align="bottom-center"/>
+</instance>
+<instance part="+5V2" gate="G$1" x="152.4" y="157.48" smashed="yes">
+<attribute name="VALUE" x="152.4" y="158.496" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
 <instance part="R4" gate="G$1" x="43.18" y="220.98" smashed="yes">
 <attribute name="NAME" x="43.18" y="223.7486" size="1.6764" layer="95" font="vector" align="bottom-center"/>
@@ -16430,8 +16430,8 @@ DTR RTS -&gt; EN  IO0
 <attribute name="NAME" x="43.18" y="205.9686" size="1.6764" layer="95" font="vector" align="bottom-center"/>
 <attribute name="VALUE" x="43.18" y="204.47" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
-<instance part="VBUS1" gate="G$2" x="129.54" y="157.48" smashed="yes">
-<attribute name="VALUE" x="129.54" y="158.496" size="1.27" layer="96" font="vector" align="bottom-center"/>
+<instance part="VBUS1" gate="G$2" x="137.16" y="157.48" smashed="yes">
+<attribute name="VALUE" x="137.16" y="158.496" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
 <instance part="C8" gate="G$1" x="76.2" y="83.82" smashed="yes">
 <attribute name="NAME" x="77.47" y="87.0966" size="1.6764" layer="95" font="vector" align="bottom-center"/>
@@ -16445,14 +16445,14 @@ DTR RTS -&gt; EN  IO0
 <attribute name="NAME" x="110.49" y="87.0966" size="1.6764" layer="95" font="vector" align="bottom-center"/>
 <attribute name="VALUE" x="110.49" y="85.5726" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
-<instance part="PGND2" gate="G$1" x="129.54" y="129.54" smashed="yes">
-<attribute name="VALUE" x="129.54" y="127.508" size="1.27" layer="96" font="vector" align="bottom-center"/>
-</instance>
-<instance part="PGND3" gate="G$1" x="137.16" y="129.54" smashed="yes">
+<instance part="PGND2" gate="G$1" x="137.16" y="129.54" smashed="yes">
 <attribute name="VALUE" x="137.16" y="127.508" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
-<instance part="PGND4" gate="G$1" x="144.78" y="129.54" smashed="yes">
+<instance part="PGND3" gate="G$1" x="144.78" y="129.54" smashed="yes">
 <attribute name="VALUE" x="144.78" y="127.508" size="1.27" layer="96" font="vector" align="bottom-center"/>
+</instance>
+<instance part="PGND4" gate="G$1" x="152.4" y="129.54" smashed="yes">
+<attribute name="VALUE" x="152.4" y="127.508" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
 <instance part="PGND7" gate="G$1" x="104.14" y="78.74" smashed="yes">
 <attribute name="VALUE" x="104.14" y="76.708" size="1.27" layer="96" font="vector" align="bottom-center"/>
@@ -16602,9 +16602,9 @@ DTR RTS -&gt; EN  IO0
 </segment>
 <segment>
 <pinref part="V3" gate="G$1" pin="A"/>
-<wire x1="139.7" y1="152.4" x2="144.78" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="147.32" y1="152.4" x2="152.4" y2="152.4" width="0.1524" layer="91"/>
 <pinref part="+5V2" gate="G$1" pin="+5V"/>
-<wire x1="144.78" y1="154.94" x2="144.78" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="152.4" y1="154.94" x2="152.4" y2="152.4" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="GPIO0" class="0">
@@ -16631,12 +16631,12 @@ DTR RTS -&gt; EN  IO0
 </net>
 <net name="USB_DP" class="0">
 <segment>
-<wire x1="119.38" y1="147.32" x2="137.16" y2="147.32" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="147.32" x2="144.78" y2="147.32" width="0.1524" layer="91"/>
 <pinref part="V5" gate="G$1" pin="1"/>
-<wire x1="137.16" y1="147.32" x2="147.32" y2="147.32" width="0.1524" layer="91"/>
-<wire x1="137.16" y1="144.78" x2="137.16" y2="147.32" width="0.1524" layer="91"/>
-<junction x="137.16" y="147.32"/>
-<label x="147.32" y="147.32" size="1.27" layer="95" font="vector" xref="yes"/>
+<wire x1="144.78" y1="147.32" x2="154.94" y2="147.32" width="0.1524" layer="91"/>
+<wire x1="144.78" y1="144.78" x2="144.78" y2="147.32" width="0.1524" layer="91"/>
+<junction x="144.78" y="147.32"/>
+<label x="154.94" y="147.32" size="1.27" layer="95" font="vector" xref="yes"/>
 <pinref part="J1" gate="G$1" pin="D+"/>
 </segment>
 <segment>
@@ -16647,12 +16647,12 @@ DTR RTS -&gt; EN  IO0
 </net>
 <net name="USB_DN" class="0">
 <segment>
-<wire x1="119.38" y1="149.86" x2="144.78" y2="149.86" width="0.1524" layer="91"/>
-<label x="147.32" y="149.86" size="1.27" layer="95" font="vector" xref="yes"/>
+<wire x1="119.38" y1="149.86" x2="152.4" y2="149.86" width="0.1524" layer="91"/>
+<label x="154.94" y="149.86" size="1.27" layer="95" font="vector" xref="yes"/>
 <pinref part="V6" gate="G$1" pin="1"/>
-<wire x1="144.78" y1="149.86" x2="147.32" y2="149.86" width="0.1524" layer="91"/>
-<wire x1="144.78" y1="144.78" x2="144.78" y2="149.86" width="0.1524" layer="91"/>
-<junction x="144.78" y="149.86"/>
+<wire x1="152.4" y1="149.86" x2="154.94" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="152.4" y1="144.78" x2="152.4" y2="149.86" width="0.1524" layer="91"/>
+<junction x="152.4" y="149.86"/>
 <pinref part="J1" gate="G$1" pin="D-"/>
 </segment>
 <segment>
@@ -16665,12 +16665,12 @@ DTR RTS -&gt; EN  IO0
 <segment>
 <pinref part="VBUS1" gate="G$2" pin="VBUS"/>
 <pinref part="V3" gate="G$1" pin="K"/>
-<wire x1="129.54" y1="152.4" x2="134.62" y2="152.4" width="0.1524" layer="91"/>
-<junction x="129.54" y="152.4"/>
-<wire x1="129.54" y1="152.4" x2="129.54" y2="154.94" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="152.4" x2="142.24" y2="152.4" width="0.1524" layer="91"/>
+<junction x="137.16" y="152.4"/>
+<wire x1="137.16" y1="152.4" x2="137.16" y2="154.94" width="0.1524" layer="91"/>
 <pinref part="V4" gate="G$1" pin="1"/>
-<wire x1="129.54" y1="144.78" x2="129.54" y2="152.4" width="0.1524" layer="91"/>
-<wire x1="129.54" y1="152.4" x2="119.38" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="144.78" x2="137.16" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="152.4" x2="119.38" y2="152.4" width="0.1524" layer="91"/>
 <pinref part="J1" gate="G$1" pin="VBUS"/>
 </segment>
 <segment>
@@ -16827,17 +16827,17 @@ DTR RTS -&gt; EN  IO0
 <net name="PGND" class="0">
 <segment>
 <pinref part="V4" gate="G$1" pin="2"/>
-<wire x1="129.54" y1="132.08" x2="129.54" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="132.08" x2="137.16" y2="134.62" width="0.1524" layer="91"/>
 <pinref part="PGND2" gate="G$1" pin="PGND"/>
 </segment>
 <segment>
 <pinref part="V5" gate="G$1" pin="2"/>
-<wire x1="137.16" y1="132.08" x2="137.16" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="144.78" y1="132.08" x2="144.78" y2="134.62" width="0.1524" layer="91"/>
 <pinref part="PGND3" gate="G$1" pin="PGND"/>
 </segment>
 <segment>
 <pinref part="V6" gate="G$1" pin="2"/>
-<wire x1="144.78" y1="132.08" x2="144.78" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="152.4" y1="132.08" x2="152.4" y2="134.62" width="0.1524" layer="91"/>
 <pinref part="PGND4" gate="G$1" pin="PGND"/>
 </segment>
 <segment>
