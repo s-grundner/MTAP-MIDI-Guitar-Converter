@@ -6,8 +6,8 @@
 
 ## SPL - Schaltplan
 ![ESP32 an Testterminals](/documentation/hw-docs/SPL-P1.png)
-![](/documentation/hw-docs/SPL-P2.png)
-![](/documentation/hw-docs/SPL-P3.png)
+![Embedded Peripherals](/documentation/hw-docs/SPL-P2.png)
+![Analogue Peripherals](/documentation/hw-docs/SPL-P3.png)
 
 ## BSP - Bestückungsplan
 
