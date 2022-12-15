@@ -16011,6 +16011,7 @@ Eagle Ver. 7.6.0&lt;br&gt;</description>
 </parts>
 <sheets>
 <sheet>
+<description>ESP32 and Test Terminals</description>
 <plain>
 <wire x1="35.56" y1="226.06" x2="154.94" y2="226.06" width="0.1524" layer="97" style="dashdot"/>
 <wire x1="154.94" y1="226.06" x2="154.94" y2="134.62" width="0.1524" layer="97" style="dashdot"/>
