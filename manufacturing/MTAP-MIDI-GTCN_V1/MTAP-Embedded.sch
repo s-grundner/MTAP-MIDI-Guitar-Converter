@@ -15890,6 +15890,8 @@ Eagle Ver. 7.6.0&lt;br&gt;</description>
 </class>
 <class number="3" name="+5V" width="0.8128" drill="0">
 </class>
+<class number="4" name="dp" width="0" drill="0">
+</class>
 </classes>
 <parts>
 <part name="FRAMES1" library="frames_GruS" library_urn="urn:adsk.eagle:library:27468648" deviceset="HTL-A4H-V1" device=""/>
@@ -16630,7 +16632,7 @@ DTR RTS -&gt; EN  IO0
 <pinref part="S1" gate="G$1" pin="S1"/>
 </segment>
 </net>
-<net name="USB_DP" class="0">
+<net name="USB_DP" class="4">
 <segment>
 <wire x1="119.38" y1="147.32" x2="144.78" y2="147.32" width="0.1524" layer="91"/>
 <pinref part="V5" gate="G$1" pin="1"/>
@@ -16646,7 +16648,7 @@ DTR RTS -&gt; EN  IO0
 <pinref part="D2" gate="G$1" pin="D+"/>
 </segment>
 </net>
-<net name="USB_DN" class="0">
+<net name="USB_DN" class="4">
 <segment>
 <wire x1="119.38" y1="149.86" x2="152.4" y2="149.86" width="0.1524" layer="91"/>
 <label x="154.94" y="149.86" size="1.27" layer="95" font="vector" xref="yes"/>
