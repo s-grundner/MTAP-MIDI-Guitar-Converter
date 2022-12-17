@@ -95,20 +95,20 @@
 <text x="14.339" y="-4.445" size="1.778" layer="48">33.3</text>
 <wire x1="-7.62" y1="0" x2="-5.08" y2="0" width="0.127" layer="48"/>
 <wire x1="-5.08" y1="0" x2="-2.54" y2="0" width="0.127" layer="48"/>
-<wire x1="-7.62" y1="57.15" x2="-5.08" y2="57.15" width="0.127" layer="48"/>
+<wire x1="-7.62" y1="54.61" x2="-5.08" y2="54.61" width="0.127" layer="48"/>
 <polygon width="0.127" layer="48">
 <vertex x="-5.08" y="0"/>
 <vertex x="-5.588" y="3.175"/>
 <vertex x="-4.572" y="3.175"/>
 </polygon>
-<wire x1="-5.08" y1="57.15" x2="-2.54" y2="57.15" width="0.127" layer="48"/>
-<wire x1="-5.08" y1="0" x2="-5.08" y2="57.15" width="0.127" layer="48"/>
+<wire x1="-5.08" y1="54.61" x2="-2.54" y2="54.61" width="0.127" layer="48"/>
+<wire x1="-5.08" y1="0" x2="-5.08" y2="54.61" width="0.127" layer="48"/>
 <polygon width="0.127" layer="48">
-<vertex x="-5.08" y="57.15"/>
-<vertex x="-5.588" y="53.975"/>
-<vertex x="-4.572" y="53.975"/>
+<vertex x="-5.08" y="54.61"/>
+<vertex x="-5.588" y="51.435"/>
+<vertex x="-4.572" y="51.435"/>
 </polygon>
-<text x="-5.715" y="26.289" size="1.778" layer="48" rot="R90">57.2</text>
+<text x="-5.715" y="25.019" size="1.778" layer="48" rot="R90">54.6</text>
 <wire x1="0" y1="-7.62" x2="0" y2="-5.08" width="0.127" layer="112"/>
 <wire x1="0" y1="-5.08" x2="0" y2="-2.54" width="0.127" layer="112"/>
 <wire x1="33.25" y1="-7.62" x2="33.25" y2="-5.08" width="0.127" layer="112"/>
@@ -127,53 +127,166 @@
 <text x="18.911" y="-4.445" size="1.778" layer="112" rot="MR0">33.3</text>
 <wire x1="35.79" y1="0" x2="38.33" y2="0" width="0.127" layer="112"/>
 <wire x1="38.33" y1="0" x2="40.87" y2="0" width="0.127" layer="112"/>
-<wire x1="35.79" y1="57.15" x2="38.33" y2="57.15" width="0.127" layer="112"/>
+<wire x1="35.79" y1="54.61" x2="38.33" y2="54.61" width="0.127" layer="112"/>
 <polygon width="0.127" layer="112">
 <vertex x="38.33" y="0"/>
 <vertex x="37.822" y="3.175"/>
 <vertex x="38.838" y="3.175"/>
 </polygon>
-<wire x1="38.33" y1="57.15" x2="40.87" y2="57.15" width="0.127" layer="112"/>
-<wire x1="38.33" y1="0" x2="38.33" y2="57.15" width="0.127" layer="112"/>
+<wire x1="38.33" y1="54.61" x2="40.87" y2="54.61" width="0.127" layer="112"/>
+<wire x1="38.33" y1="0" x2="38.33" y2="54.61" width="0.127" layer="112"/>
 <polygon width="0.127" layer="112">
-<vertex x="38.33" y="57.15"/>
-<vertex x="37.822" y="53.975"/>
-<vertex x="38.838" y="53.975"/>
+<vertex x="38.33" y="54.61"/>
+<vertex x="37.822" y="51.435"/>
+<vertex x="38.838" y="51.435"/>
 </polygon>
-<text x="38.965" y="26.289" size="1.778" layer="112" rot="MR90">57.2</text>
-<wire x1="0" y1="-7.62" x2="0" y2="-5.08" width="0.127" layer="111"/>
-<wire x1="33.25" y1="-7.62" x2="33.25" y2="-5.08" width="0.127" layer="111"/>
-<wire x1="0" y1="-5.08" x2="33.25" y2="-5.08" width="0.127" layer="111"/>
+<text x="38.965" y="25.019" size="1.778" layer="112" rot="MR90">54.6</text>
+<wire x1="6.35" y1="-7.62" x2="6.35" y2="-5.08" width="0.127" layer="111"/>
+<wire x1="0" y1="-5.08" x2="6.35" y2="-5.08" width="0.127" layer="111"/>
 <polygon width="0.127" layer="111">
 <vertex x="0" y="-5.08"/>
 <vertex x="3.175" y="-5.588"/>
 <vertex x="3.175" y="-4.572"/>
 </polygon>
 <polygon width="0.127" layer="111">
-<vertex x="33.25" y="-5.08"/>
-<vertex x="30.075" y="-5.588"/>
-<vertex x="30.075" y="-4.572"/>
+<vertex x="6.35" y="-5.08"/>
+<vertex x="3.175" y="-5.588"/>
+<vertex x="3.175" y="-4.572"/>
 </polygon>
-<text x="14.339" y="-4.445" size="1.778" layer="111">33.3</text>
+<text x="1.524" y="-4.445" size="1.778" layer="111">6.4</text>
 <wire x1="0" y1="-5.08" x2="0" y2="0" width="0.127" layer="111"/>
-<wire x1="33.25" y1="-5.08" x2="33.25" y2="57.15" width="0.127" layer="111"/>
-<wire x1="-7.62" y1="0" x2="-5.08" y2="0" width="0.127" layer="111"/>
-<wire x1="-7.62" y1="57.15" x2="-5.08" y2="57.15" width="0.127" layer="111"/>
+<wire x1="6.35" y1="-5.08" x2="6.35" y2="51.33" width="0.127" layer="111"/>
+<wire x1="-7.62" y1="51.33" x2="-5.08" y2="51.33" width="0.127" layer="111"/>
 <polygon width="0.127" layer="111">
 <vertex x="-5.08" y="0"/>
 <vertex x="-5.588" y="3.175"/>
 <vertex x="-4.572" y="3.175"/>
 </polygon>
-<wire x1="-5.08" y1="57.15" x2="-2.54" y2="57.15" width="0.127" layer="111"/>
-<wire x1="-5.08" y1="0" x2="-5.08" y2="57.15" width="0.127" layer="111"/>
+<wire x1="-5.08" y1="0" x2="-5.08" y2="51.33" width="0.127" layer="111"/>
 <polygon width="0.127" layer="111">
-<vertex x="-5.08" y="57.15"/>
-<vertex x="-5.588" y="53.975"/>
-<vertex x="-4.572" y="53.975"/>
+<vertex x="-5.08" y="51.33"/>
+<vertex x="-5.588" y="48.155"/>
+<vertex x="-4.572" y="48.155"/>
 </polygon>
-<text x="-5.715" y="26.289" size="1.778" layer="111" rot="R90">57.2</text>
+<text x="-5.715" y="23.379" size="1.778" layer="111" rot="R90">51.3</text>
 <wire x1="-5.08" y1="0" x2="0" y2="0" width="0.127" layer="111"/>
-<wire x1="-2.54" y1="57.15" x2="33.25" y2="57.15" width="0.127" layer="111"/>
+<wire x1="-5.08" y1="51.33" x2="13.97" y2="51.33" width="0.127" layer="111"/>
+<wire x1="10.990725" y1="57.059275" x2="13.97" y2="54.08" width="0.127" layer="111"/>
+<polygon width="0.127" layer="111">
+<vertex x="14.235165625" y="53.814834375"/>
+<vertex x="16.12101875" y="51.210559375"/>
+<vertex x="16.839440625" y="51.92898125"/>
+</polygon>
+<polygon width="0.127" layer="111">
+<vertex x="13.704834375" y="54.345165625"/>
+<vertex x="11.100559375" y="56.23101875"/>
+<vertex x="11.81898125" y="56.949440625"/>
+</polygon>
+<text x="16.929240625" y="51.569771875" size="1.778" layer="111" rot="R315">0.8</text>
+<circle x="13.97" y="54.08" radius="0.375" width="0.0508" layer="111"/>
+<wire x1="13.97" y1="54.08" x2="19.284140625" y2="48.765859375" width="0.127" layer="111"/>
+<wire x1="3.370725" y1="54.309275" x2="11.664140625" y2="46.015859375" width="0.127" layer="111"/>
+<polygon width="0.127" layer="111">
+<vertex x="6.615165625" y="51.064834375"/>
+<vertex x="8.50101875" y="48.460559375"/>
+<vertex x="9.219440625" y="49.17898125"/>
+</polygon>
+<polygon width="0.127" layer="111">
+<vertex x="6.084834375" y="51.595165625"/>
+<vertex x="3.480559375" y="53.48101875"/>
+<vertex x="4.19898125" y="54.199440625"/>
+</polygon>
+<text x="9.309240625" y="48.819771875" size="1.778" layer="111" rot="R315">0.8</text>
+<circle x="6.35" y="51.33" radius="0.375" width="0.0508" layer="111"/>
+<wire x1="13.97" y1="-12.7" x2="13.97" y2="-10.16" width="0.127" layer="111"/>
+<wire x1="0" y1="-10.16" x2="13.97" y2="-10.16" width="0.127" layer="111"/>
+<polygon width="0.127" layer="111">
+<vertex x="0" y="-10.16"/>
+<vertex x="3.175" y="-10.668"/>
+<vertex x="3.175" y="-9.652"/>
+</polygon>
+<polygon width="0.127" layer="111">
+<vertex x="13.97" y="-10.16"/>
+<vertex x="10.795" y="-10.668"/>
+<vertex x="10.795" y="-9.652"/>
+</polygon>
+<text x="4.699" y="-9.525" size="1.778" layer="111">14.0</text>
+<wire x1="13.97" y1="-10.16" x2="13.97" y2="54.08" width="0.127" layer="111"/>
+<wire x1="-12.7" y1="54.08" x2="-10.16" y2="54.08" width="0.127" layer="111"/>
+<polygon width="0.127" layer="111">
+<vertex x="-10.16" y="0"/>
+<vertex x="-10.668" y="3.175"/>
+<vertex x="-9.652" y="3.175"/>
+</polygon>
+<wire x1="-10.16" y1="0" x2="-10.16" y2="54.08" width="0.127" layer="111"/>
+<polygon width="0.127" layer="111">
+<vertex x="-10.16" y="54.08"/>
+<vertex x="-10.668" y="50.905"/>
+<vertex x="-9.652" y="50.905"/>
+</polygon>
+<text x="-10.795" y="24.754" size="1.778" layer="111" rot="R90">54.1</text>
+<wire x1="-10.16" y1="54.08" x2="13.97" y2="54.08" width="0.127" layer="111"/>
+<wire x1="3.370725" y1="57.059275" x2="11.664140625" y2="48.765859375" width="0.127" layer="111"/>
+<polygon width="0.127" layer="111">
+<vertex x="6.615165625" y="53.814834375"/>
+<vertex x="8.50101875" y="51.210559375"/>
+<vertex x="9.219440625" y="51.92898125"/>
+</polygon>
+<polygon width="0.127" layer="111">
+<vertex x="6.084834375" y="54.345165625"/>
+<vertex x="3.480559375" y="56.23101875"/>
+<vertex x="4.19898125" y="56.949440625"/>
+</polygon>
+<text x="9.309240625" y="51.569771875" size="1.778" layer="111" rot="R315">0.8</text>
+<circle x="6.35" y="54.08" radius="0.375" width="0.0508" layer="111"/>
+<wire x1="10.990725" y1="54.309275" x2="19.284140625" y2="46.015859375" width="0.127" layer="111"/>
+<polygon width="0.127" layer="111">
+<vertex x="14.235165625" y="51.064834375"/>
+<vertex x="16.12101875" y="48.460559375"/>
+<vertex x="16.839440625" y="49.17898125"/>
+</polygon>
+<polygon width="0.127" layer="111">
+<vertex x="13.704834375" y="51.595165625"/>
+<vertex x="11.100559375" y="53.48101875"/>
+<vertex x="11.81898125" y="54.199440625"/>
+</polygon>
+<text x="16.929240625" y="48.819771875" size="1.778" layer="111" rot="R315">0.8</text>
+<circle x="13.97" y="51.33" radius="0.375" width="0.0508" layer="111"/>
+<wire x1="0" y1="-17.78" x2="0" y2="-15.24" width="0.127" layer="111"/>
+<wire x1="0" y1="-15.24" x2="0" y2="-10.16" width="0.127" layer="111"/>
+<wire x1="33.25" y1="-17.78" x2="33.25" y2="-15.24" width="0.127" layer="111"/>
+<wire x1="0" y1="-15.24" x2="33.25" y2="-15.24" width="0.127" layer="111"/>
+<polygon width="0.127" layer="111">
+<vertex x="0" y="-15.24"/>
+<vertex x="3.175" y="-15.748"/>
+<vertex x="3.175" y="-14.732"/>
+</polygon>
+<polygon width="0.127" layer="111">
+<vertex x="33.25" y="-15.24"/>
+<vertex x="30.075" y="-15.748"/>
+<vertex x="30.075" y="-14.732"/>
+</polygon>
+<text x="14.339" y="-14.605" size="1.778" layer="111">33.3</text>
+<wire x1="0" y1="-10.16" x2="0" y2="-5.08" width="0.127" layer="111"/>
+<wire x1="33.25" y1="-15.24" x2="33.25" y2="54.61" width="0.127" layer="111"/>
+<wire x1="-17.78" y1="0" x2="-15.24" y2="0" width="0.127" layer="111"/>
+<wire x1="-15.24" y1="0" x2="-10.16" y2="0" width="0.127" layer="111"/>
+<wire x1="-17.78" y1="54.61" x2="-15.24" y2="54.61" width="0.127" layer="111"/>
+<polygon width="0.127" layer="111">
+<vertex x="-15.24" y="0"/>
+<vertex x="-15.748" y="3.175"/>
+<vertex x="-14.732" y="3.175"/>
+</polygon>
+<wire x1="-15.24" y1="54.61" x2="-12.7" y2="54.61" width="0.127" layer="111"/>
+<wire x1="-15.24" y1="0" x2="-15.24" y2="54.61" width="0.127" layer="111"/>
+<polygon width="0.127" layer="111">
+<vertex x="-15.24" y="54.61"/>
+<vertex x="-15.748" y="51.435"/>
+<vertex x="-14.732" y="51.435"/>
+</polygon>
+<text x="-15.875" y="25.019" size="1.778" layer="111" rot="R90">54.6</text>
+<wire x1="-10.16" y1="0" x2="-5.08" y2="0" width="0.127" layer="111"/>
+<wire x1="-12.7" y1="54.61" x2="33.25" y2="54.61" width="0.127" layer="111"/>
 </package>
 <package name="FABRIACTION">
 <text x="32.5" y="-1.25" size="1.778" layer="154" font="vector" ratio="12" align="center">Drill chart</text>
@@ -203,7 +316,7 @@
 <text x="27.5" y="-6.25" size="1.778" layer="154" font="vector" align="center">0.35</text>
 <wire x1="35" y1="-7.5" x2="35" y2="-5" width="0.1016" layer="154"/>
 <wire x1="35" y1="-5" x2="50" y2="-5" width="0.1016" layer="154"/>
-<text x="42.5" y="-6.25" size="1.778" layer="154" font="vector" align="center">92</text>
+<text x="42.5" y="-6.25" size="1.778" layer="154" font="vector" align="center">80</text>
 <wire x1="50" y1="-7.5" x2="50" y2="-5" width="0.1016" layer="154"/>
 <wire x1="50" y1="-5" x2="65" y2="-5" width="0.1016" layer="154"/>
 <text x="57.5" y="-6.25" size="1.778" layer="154" font="vector" align="center">YES</text>
@@ -242,7 +355,7 @@
 <text x="27.5" y="-11.25" size="1.778" layer="154" font="vector" align="center">0.75</text>
 <wire x1="35" y1="-12.5" x2="35" y2="-10" width="0.1" layer="154"/>
 <wire x1="35" y1="-10" x2="50" y2="-10" width="0.1" layer="154"/>
-<text x="42.5" y="-11.25" size="1.778" layer="154" font="vector" align="center">4</text>
+<text x="42.5" y="-11.25" size="1.778" layer="154" font="vector" align="center">8</text>
 <wire x1="50" y1="-12.5" x2="50" y2="-10" width="0.1" layer="154"/>
 <wire x1="50" y1="-10" x2="65" y2="-10" width="0.1" layer="154"/>
 <text x="57.5" y="-11.25" size="1.778" layer="154" font="vector" align="center">NO</text>

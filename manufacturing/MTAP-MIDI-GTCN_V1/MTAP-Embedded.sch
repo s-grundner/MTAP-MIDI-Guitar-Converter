@@ -16010,6 +16010,7 @@ Eagle Ver. 7.6.0&lt;br&gt;</description>
 <part name="SPIQ" library="solpad_GruS" library_urn="urn:adsk.eagle:library:13571267" deviceset="SMD-TP" device="" package3d_urn="urn:adsk.eagle:package:38312116/4"/>
 <part name="SPI_CLK" library="solpad_GruS" library_urn="urn:adsk.eagle:library:13571267" deviceset="SMD-TP" device="" package3d_urn="urn:adsk.eagle:package:38312116/4"/>
 <part name="S1" library="switch_GruS" library_urn="urn:adsk.eagle:library:13571161" deviceset="TASTE10XX" device="WE" package3d_urn="urn:adsk.eagle:package:18368072/4" value="BOOT"/>
+<part name="PGND5" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="PGND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -16563,6 +16564,9 @@ DTR RTS -&gt; EN  IO0
 <attribute name="NAME" x="78.74" y="99.06" size="1.6764" layer="95" font="vector" align="bottom-center"/>
 <attribute name="VALUE" x="78.74" y="91.44" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
+<instance part="PGND5" gate="G$1" x="162.56" y="208.28" smashed="yes">
+<attribute name="VALUE" x="162.56" y="206.248" size="1.27" layer="96" font="vector" align="bottom-center"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -16576,10 +16580,10 @@ DTR RTS -&gt; EN  IO0
 <pinref part="GND2" gate="1" pin="GND"/>
 </segment>
 <segment>
-<wire x1="139.7" y1="246.38" x2="139.7" y2="248.92" width="0.1524" layer="91"/>
-<wire x1="139.7" y1="248.92" x2="144.78" y2="248.92" width="0.1524" layer="91"/>
-<wire x1="144.78" y1="248.92" x2="144.78" y2="246.38" width="0.1524" layer="91"/>
 <pinref part="GND1" gate="1" pin="GND"/>
+<wire x1="144.78" y1="248.92" x2="144.78" y2="246.38" width="0.1524" layer="91"/>
+<wire x1="139.7" y1="248.92" x2="144.78" y2="248.92" width="0.1524" layer="91"/>
+<wire x1="139.7" y1="246.38" x2="139.7" y2="248.92" width="0.1524" layer="91"/>
 <pinref part="D2" gate="G$1" pin="GND_1"/>
 </segment>
 </net>
@@ -16703,8 +16707,8 @@ DTR RTS -&gt; EN  IO0
 <pinref part="S3" gate="G$1" pin="COM1"/>
 </segment>
 <segment>
-<wire x1="160.02" y1="220.98" x2="162.56" y2="220.98" width="0.1524" layer="91"/>
-<label x="162.56" y="220.98" size="1.27" layer="95" xref="yes"/>
+<wire x1="160.02" y1="220.98" x2="165.1" y2="220.98" width="0.1524" layer="91"/>
+<label x="165.1" y="220.98" size="1.27" layer="95" xref="yes"/>
 <pinref part="D2" gate="G$1" pin="TXD"/>
 </segment>
 </net>
@@ -16715,8 +16719,8 @@ DTR RTS -&gt; EN  IO0
 <pinref part="S3" gate="G$1" pin="COM"/>
 </segment>
 <segment>
-<wire x1="160.02" y1="218.44" x2="162.56" y2="218.44" width="0.1524" layer="91"/>
-<label x="162.56" y="218.44" size="1.27" layer="95" xref="yes"/>
+<wire x1="160.02" y1="218.44" x2="165.1" y2="218.44" width="0.1524" layer="91"/>
+<label x="165.1" y="218.44" size="1.27" layer="95" xref="yes"/>
 <pinref part="D2" gate="G$1" pin="RXD"/>
 </segment>
 </net>
@@ -16733,8 +16737,8 @@ DTR RTS -&gt; EN  IO0
 <label x="30.48" y="220.98" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<wire x1="160.02" y1="226.06" x2="162.56" y2="226.06" width="0.1524" layer="91"/>
-<label x="162.56" y="226.06" size="1.27" layer="95" xref="yes"/>
+<wire x1="160.02" y1="226.06" x2="165.1" y2="226.06" width="0.1524" layer="91"/>
+<label x="165.1" y="226.06" size="1.27" layer="95" xref="yes"/>
 <pinref part="D2" gate="G$1" pin="DTR"/>
 </segment>
 </net>
@@ -16765,8 +16769,8 @@ DTR RTS -&gt; EN  IO0
 <label x="30.48" y="203.2" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<wire x1="160.02" y1="215.9" x2="162.56" y2="215.9" width="0.1524" layer="91"/>
-<label x="162.56" y="215.9" size="1.27" layer="95" xref="yes"/>
+<wire x1="160.02" y1="215.9" x2="165.1" y2="215.9" width="0.1524" layer="91"/>
+<label x="165.1" y="215.9" size="1.27" layer="95" xref="yes"/>
 <pinref part="D2" gate="G$1" pin="RTS"/>
 </segment>
 </net>
@@ -16825,6 +16829,9 @@ DTR RTS -&gt; EN  IO0
 <pinref part="+3V1" gate="G$1" pin="+3V3"/>
 <wire x1="129.54" y1="259.08" x2="129.54" y2="256.54" width="0.1524" layer="91"/>
 <junction x="129.54" y="256.54"/>
+<pinref part="D2" gate="G$1" pin="VIO"/>
+<wire x1="132.08" y1="246.38" x2="132.08" y2="248.92" width="0.1524" layer="91"/>
+<wire x1="132.08" y1="248.92" x2="129.54" y2="248.92" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="PGND" class="0">
@@ -16935,6 +16942,12 @@ DTR RTS -&gt; EN  IO0
 <pinref part="PGND6" gate="G$1" pin="PGND"/>
 <wire x1="116.84" y1="246.38" x2="116.84" y2="248.92" width="0.1524" layer="91"/>
 <junction x="116.84" y="248.92"/>
+</segment>
+<segment>
+<pinref part="D2" gate="G$1" pin="GND_2"/>
+<wire x1="160.02" y1="231.14" x2="162.56" y2="231.14" width="0.1524" layer="91"/>
+<wire x1="162.56" y1="231.14" x2="162.56" y2="210.82" width="0.1524" layer="91"/>
+<pinref part="PGND5" gate="G$1" pin="PGND"/>
 </segment>
 </net>
 <net name="TXD1" class="0">
