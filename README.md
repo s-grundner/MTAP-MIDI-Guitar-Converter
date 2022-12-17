@@ -20,7 +20,7 @@ Der Vorteil des MIDI-Formats ist, dass es der Standard vieler Musikproduktionsum
 
 ## Projektstatus
 
-Das Projekt befindet sich derzeit in der Entwicklungsphase. Funktionalitäten sind noch in Planung
+Das Projekt befindet sich derzeit in der Entwicklungsphase. Funktionalitäten sind noch in Planung.
 Planungsvorgänge können unter dem Reiter *[Projects](https://github.com/s-grundner/MTAP-MIDI-Guitar-Converter/projects?query=is%3Aopen)* eingesehen werden.
 
 - Der Schaltplan sowie die Platine sind bereits fertig.
