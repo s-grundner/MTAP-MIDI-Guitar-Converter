@@ -19,8 +19,19 @@ Die Ein- und Ausgänge des Systems umfassen eine Micro-USB-Buchse und zwei Mono-
 Der Vorteil des MIDI-Formats ist, dass es der Standard vieler Musikproduktionsumgebungen ist. In der DAW wird das MIDI-Signal als Note auf einem Klavier interpretiert, welches dann in beliebige virtuelle Instrumente eingespeist werden kann und somit einen benutzerdefinierten Ton abspielt. Außerdem hat das Abgreifen der unveränderten Gitarrenschwingung den Zweck, dass parallel zur Analyse eine Aufnahme des Rohsignals erfolgen kann.
 
 ## Projektstatus
-Das Projekt befindet sich derzeit in der frühen Entwicklungsphase. Funktionalitäten sind noch in Planung
+
+Das Projekt befindet sich derzeit in der Entwicklungsphase. Funktionalitäten sind noch in Planung.
 Planungsvorgänge können unter dem Reiter *[Projects](https://github.com/s-grundner/MTAP-MIDI-Guitar-Converter/projects?query=is%3Aopen)* eingesehen werden.
+
+- Der Schaltplan sowie die Platine sind bereits fertig.
+- Simulationen für das Analogue-Frontend stimmen
+- Die FFT eines künstlich generierten Signals ist bereits möglich
+- Die hardwaretechnische Realisierung des Prototypen ist jedoch noch nicht ganz Fertig.
+
+### 3D Renderung der Platine
+| Top-Seite | Bot-Seite |
+|-----------|-----------|
+|![](/documentation/images/MTAP-Embedded.png)|![](/documentation/images/MTAP-Embedded-bot.png)|
 
 ## Repository Struktur
 - [**Lastenheft**](documentation/Lastenheft.md)
