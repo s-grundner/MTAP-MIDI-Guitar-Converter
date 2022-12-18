@@ -40,6 +40,9 @@ Planungsvorgänge können unter dem Reiter *[Projects](https://github.com/s-grun
 - [**Hardware DOCS**](documentation/hw-docs)
 - [**Software DOCS**](documentation/sw-docs)
 
+## [Dokumentation](https://app.gitbook.com/o/Qwl1YBxcvnIgpDva1OFB/s/MkWAoR5yK34IMWYoVd5u/)
+Die Vollständige Technische Dokumentation wird auf der Gitbook Page zu finden sein 
+
 ## Mitwirkende
 ### Betreuer
 [DI Siegbert Schrempf](https://www.linkedin.com/in/siegbert-schrempf-aa1189a)
