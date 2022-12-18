@@ -1,4 +1,9 @@
 eagle.epf
+fabrication.lbr
 *.b#*
 *.s#*
 *.l#*
+*-exportpro.dru
+*-exportpro2.cfg
+*.CFG
+*.pro
