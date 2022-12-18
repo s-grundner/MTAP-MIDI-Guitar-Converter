@@ -3,7 +3,7 @@ fabrication.lbr
 *.b#*
 *.s#*
 *.l#*
-*-exportpro.dru
-*-exportpro2.cfg
-*.CFG
-*.pro
+MTAP-Embedded-exportpro.dru
+MTAP-Embedded-exportpro2.cfg
+DRILEGEND.CFG
+MTAP-Embedded.pro
