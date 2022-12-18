@@ -26,11 +26,12 @@ Planungsvorgänge können unter dem Reiter *[Projects](https://github.com/s-grun
 - Der Schaltplan sowie die Platine sind bereits fertig.
 - Simulationen für das Analogue-Frontend stimmen
 - Die FFT eines künstlich generierten Signals ist bereits möglich
+- Frequenz zu Noten Konversion möglich
 - Die hardwaretechnische Realisierung des Prototypen ist jedoch noch nicht ganz Fertig.
 
 ### 3D Renderung der Platine
 | Top-Seite | Bot-Seite |
-|-----------|-----------|
+|-|-|
 |![](/documentation/images/MTAP-Embedded.png)|![](/documentation/images/MTAP-Embedded-bot.png)|
 
 ## Repository Struktur

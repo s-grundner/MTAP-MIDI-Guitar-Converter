@@ -10,5 +10,13 @@
 ![Analogue Peripherals](/documentation/hw-docs/SPL-P3.png)
 
 ## BSP - Bestückungsplan
+### Top Layer
+![](/manufacturing/MTAP-MIDI-GTCN_V1/docu/2022-12-17/images/MTAP-Embedded-parts-top.png)
+### Bottom Layer
+![](/manufacturing/MTAP-MIDI-GTCN_V1/docu/2022-12-17/images/MTAP-Embedded-parts-bot.png)
 
 ## LAY - Layout
+### Top Layer
+![](/manufacturing/MTAP-MIDI-GTCN_V1/docu/2022-12-17/images/MTAP-Embedded-l01-top.png)
+### Bottom layer
+![](/manufacturing/MTAP-MIDI-GTCN_V1/docu/2022-12-17/images/MTAP-Embedded-l16-bot.png)
