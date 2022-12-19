@@ -30,6 +30,9 @@ Planungsvorgänge können unter dem Reiter *[Projects](https://github.com/s-grun
 - Die hardwaretechnische Realisierung des Prototypen ist jedoch noch nicht ganz Fertig.
 
 ### 3D Renderung der Platine
+
+![](/documentation/images/MTAP-Embedded.gif)
+
 | Top-Seite | Bot-Seite |
 |-|-|
 |![](/documentation/images/MTAP-Embedded.png)|![](/documentation/images/MTAP-Embedded-bot.png)|
