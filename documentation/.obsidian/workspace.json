@@ -4,35 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "73d42075bf209a35",
+        "id": "b4e149dc1ed61be9",
         "type": "tabs",
         "children": [
           {
-            "id": "a0d0002a3e5ad169",
+            "id": "12c3c101ff20b636",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Pflichtenheft.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "897e45e653e35ee5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Software-Doku.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -61,7 +44,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#Input",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -78,8 +61,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -99,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Software-Doku.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Software-Doku.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,9 +118,15 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Software-Doku.md"
-              }
+              "state": {}
+            }
+          },
+          {
+            "id": "dbe0ae24465bab37",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
             }
           }
         ]
@@ -150,10 +136,11 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "6d7b1bcb58692b48",
+  "active": "12c3c101ff20b636",
   "lastOpenFiles": [
-    "Pflichtenheft.md",
     "Software-Doku.md",
+    "Pasted image 20221130111604.png.md",
+    "Pflichtenheft.md",
     "Lastenheft.md"
   ]
 }
