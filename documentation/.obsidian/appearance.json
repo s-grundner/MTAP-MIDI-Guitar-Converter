@@ -1,4 +1,5 @@
 {
+<<<<<<< Updated upstream
   "cssTheme": "Everforest",
   "baseFontSize": 16,
   "translucency": true,
@@ -6,4 +7,8 @@
   "textFontFamily": "Monocraft",
   "monospaceFontFamily": "Monocraft",
   "theme": "obsidian"
+=======
+  "accentColor": "",
+  "cssTheme": "ITS Theme"
+>>>>>>> Stashed changes
 }
