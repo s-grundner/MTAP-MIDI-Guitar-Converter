@@ -8560,6 +8560,8 @@ sDk
 sRkiT
 shjVB
 success
+sBIT
+spOT
 reference
 rc
 rCs
@@ -11263,6 +11265,7 @@ rMU
 rdV
 rückgekoppelt
 resonanzverhalten
+rIY
 created
 cU
 cc
@@ -14061,6 +14064,7 @@ cOV
 cjC
 cWd
 cts
+cmUZ
 September
 Sp
 Schalter
@@ -17234,6 +17238,8 @@ Schlefe
 Sitze
 Strahlungsdichte
 Strahlungsleistungsdichte
+SWD
+Serial
 Inverswandler
 Indukitivät
 ID
@@ -20278,6 +20284,7 @@ IbRBIb
 Imaginärteil
 Isotroper
 Isotrope
+Input
 Tags
 Transistor
 Teil
@@ -23230,6 +23237,8 @@ Tle
 TdTZ
 Tickets
 Teams
+Tests
+Transform
 Der
 Diode
 Dabei
@@ -28867,6 +28876,7 @@ nHv
 nre
 nZGB
 negativ
+note
 dem
 der
 des
@@ -43254,6 +43264,9 @@ BAW
 Boi
 BQt
 Beschreibt
+Beispielsignal
+BeispielSignal
+Beispielsignals
 Converter
 Columns
 CE
@@ -54863,6 +54876,7 @@ FGu
 Flug
 Fluglinie
 Flüge
+FqR
 fließt
 für
 fFOlq
@@ -57783,6 +57797,7 @@ fFM
 üLn
 übv
 überbucht
+überlagert
 weiter
 wird
 wo
@@ -69232,6 +69247,8 @@ Kapazitive
 Kugelstrahler
 Kugelstrahlers
 Kugeloberfläche
+KrIYX
+Kovw
 bzw
 bbd
 bg
@@ -78070,6 +78087,7 @@ ZpVp
 ZhG
 ZIAN
 ZUb
+ZfM
 Verbraucher
 VuuV
 VU
@@ -80998,6 +81016,8 @@ VaN
 VtL
 VSEO
 Verhältnis
+VeSy
+Visualisierung
 Nach
 Ngm
 NN
@@ -92305,6 +92325,7 @@ PpBl
 Phasendrehung
 Punktschaltung
 Passagier
+Plotter
 Herleitung
 Hy
 HE
@@ -100433,6 +100454,7 @@ LwI
 Ldb
 Ladungsvorgang
 Ladevorgang
+Lin
 endobj
 ey
 endstream
@@ -109346,6 +109368,7 @@ XVshF
 Xwj
 XWs
 XgK
+Xuw
 Uv
 Uc
 UMO
@@ -115130,6 +115153,7 @@ pLu
 pBe
 pnl
 phasenrichtig
+plotter
 hY
 hK
 ha
@@ -117849,6 +117873,7 @@ hkB
 hdj
 hCx
 hqV
+hAa
 xI
 xj
 xA
@@ -129070,6 +129095,7 @@ qvycnf
 qLLc
 quMd
 qUP
+qYxX
 yj
 yX
 yN
@@ -140459,6 +140485,7 @@ GSB
 Güte
 Gesamtspannung
 Gleich
+Geogebra
 Oc
 OB
 OJ
@@ -150855,6 +150882,7 @@ AoB
 Aag
 AfVT
 AFi
+AiuDK
 ÖgLk
 ÖW
 ÖP
