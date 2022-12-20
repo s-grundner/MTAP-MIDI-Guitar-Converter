@@ -1,0 +1,80 @@
+{
+  "targetAttributes": [
+    "subject",
+    ""
+  ],
+  "targetTags": true,
+  "presetFields": [],
+  "displayFieldsInContextMenu": true,
+  "globallyIgnoredFields": [],
+  "classFilesPath": "",
+  "getFromInlineField": true,
+  "activateSnippet": true,
+  "enableEditor": true,
+  "enableFileList": true,
+  "enableBacklinks": true,
+  "enableQuickSwitcher": true,
+  "enableSuggestor": true,
+  "selectors": [
+    {
+      "type": "attribute",
+      "name": "subject",
+      "value": "mathe",
+      "matchCaseSensitive": false,
+      "match": "contains",
+      "uid": "6445-2bcd",
+      "selectText": false,
+      "selectAppend": false,
+      "selectPrepend": false,
+      "selectBackground": true
+    },
+    {
+      "type": "attribute",
+      "name": "subject",
+      "value": "ksn",
+      "matchCaseSensitive": false,
+      "match": "contains",
+      "uid": "31ff-1e20",
+      "selectText": false,
+      "selectAppend": false,
+      "selectPrepend": false,
+      "selectBackground": true
+    },
+    {
+      "type": "attribute",
+      "name": "subject",
+      "value": "hwe",
+      "matchCaseSensitive": false,
+      "match": "contains",
+      "uid": "2a82-b83a",
+      "selectText": false,
+      "selectAppend": false,
+      "selectPrepend": false,
+      "selectBackground": true
+    },
+    {
+      "type": "attribute",
+      "name": "subject",
+      "value": "mtrs",
+      "matchCaseSensitive": false,
+      "match": "contains",
+      "uid": "2ec8-4302",
+      "selectText": false,
+      "selectAppend": false,
+      "selectPrepend": false,
+      "selectBackground": true
+    },
+    {
+      "type": "attribute",
+      "name": "subject",
+      "value": "dic",
+      "matchCaseSensitive": false,
+      "match": "contains",
+      "uid": "3f0b-90be",
+      "selectText": false,
+      "selectAppend": false,
+      "selectPrepend": false,
+      "selectBackground": true
+    }
+  ]
+}
