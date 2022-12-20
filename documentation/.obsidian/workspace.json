@@ -128,6 +128,14 @@
               "type": "calendar",
               "state": {}
             }
+          },
+          {
+            "id": "8e251e2097c4a135",
+            "type": "leaf",
+            "state": {
+              "type": "reminder-list",
+              "state": {}
+            }
           }
         ]
       }

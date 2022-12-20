@@ -3,6 +3,7 @@ fabrication.lbr
 *.b#*
 *.s#*
 *.l#*
+.obsidian
 MTAP-Embedded-exportpro.dru
 MTAP-Embedded-exportpro2.cfg
 DRILEGEND.CFG
