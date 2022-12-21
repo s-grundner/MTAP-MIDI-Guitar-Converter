@@ -236,7 +236,7 @@ ENABLE_TESTING:BOOL=
 ENABLE_ZLIB_SUPPORT:BOOL=OFF
 
 //No help, variable specified on the command line.
-EXTRA_COMPONENT_DIRS:PATH=c:/Users/simon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src
+EXTRA_COMPONENT_DIRS:PATH=C:/Users/simon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src
 
 //Git command line client
 GIT_EXECUTABLE:FILEPATH=C:/Program Files/Git/cmd/git.exe
@@ -272,7 +272,7 @@ PYTHON:UNINITIALIZED=C:\Users\simon\.platformio\penv\Scripts\python.exe
 PYTHON_DEPS_CHECKED:UNINITIALIZED=1
 
 //No help, variable specified on the command line.
-SDKCONFIG:UNINITIALIZED=c:\Users\simon\source\MTAP-MIDI-Guitar-Converter\firmware\MIDI-Testing\sdkconfig.pico32
+SDKCONFIG:UNINITIALIZED=C:\Users\simon\source\MTAP-MIDI-Guitar-Converter\firmware\MIDI-Testing\sdkconfig.pico32
 
 //Allow unsafe builds. These builds ARE NOT SECURE.
 UNSAFE_BUILD:BOOL=OFF

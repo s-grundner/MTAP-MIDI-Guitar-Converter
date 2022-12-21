@@ -1,4 +1,4 @@
-/* * Data converted from c:\Users\simon\source\MTAP-MIDI-Guitar-Converter\firmware\MIDI-Testing\.pio\build\pico32\x509_crt_bundle
+/* * Data converted from C:\Users\simon\source\MTAP-MIDI-Guitar-Converter\firmware\MIDI-Testing\.pio\build\pico32\x509_crt_bundle
  */
 .data
 .section .rodata.embedded

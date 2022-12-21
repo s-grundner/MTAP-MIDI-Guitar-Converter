@@ -10,6 +10,7 @@
             "includePath": [
                 "C:/Users/simon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/include",
                 "C:/Users/simon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src",
+                "C:/Users/simon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201",
                 "C:/Users/simon/.platformio/packages/framework-espidf/components/esp_ringbuf/include",
                 "C:/Users/simon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/.pio/build/pico32/config",
                 "C:/Users/simon/.platformio/packages/framework-espidf/components/newlib/platform_include",
@@ -135,6 +136,7 @@
                 "path": [
                     "C:/Users/simon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/include",
                     "C:/Users/simon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src",
+                    "C:/Users/simon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201",
                     "C:/Users/simon/.platformio/packages/framework-espidf/components/esp_ringbuf/include",
                     "C:/Users/simon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/.pio/build/pico32/config",
                     "C:/Users/simon/.platformio/packages/framework-espidf/components/newlib/platform_include",
