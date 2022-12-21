@@ -1,3 +1,5 @@
+import shutil
+
 arr=[]
 arr = [0 for i in range(8192)] 
 i = 0
@@ -20,3 +22,6 @@ file_to_delete.close()
 with open('processed-data.txt', 'w') as d:
     for data in arr:  
         d.write(str(data) + ',')
+    d.close()
+
+shutil.copyfile('processed-data.txt', '/home/laurenz/Dokumente/GitHub/MTAP-MIDI-Guitar-Converter/firmware/ESP_DSP/src/processed-data.txt')
