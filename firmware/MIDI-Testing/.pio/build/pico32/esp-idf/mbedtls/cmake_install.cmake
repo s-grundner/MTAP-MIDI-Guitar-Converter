@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/simon/.platformio/packages/framework-espidf/components/mbedtls
+# Install script for directory: C:/Users/Smon/.platformio/packages/framework-espidf/components/mbedtls
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("C:/Users/simon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/.pio/build/pico32/esp-idf/mbedtls/mbedtls/cmake_install.cmake")
+  include("C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/.pio/build/pico32/esp-idf/mbedtls/mbedtls/cmake_install.cmake")
 
 endif()
 

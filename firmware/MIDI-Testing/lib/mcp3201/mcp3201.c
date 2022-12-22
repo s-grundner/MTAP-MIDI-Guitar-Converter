@@ -1,21 +1,24 @@
 #include "mcp3201.h"
-#define SPI_CS 5
 
 static const char *TAG = "mcp3201";
 
-typedef struct
+typedef struct mcp3201_context_t
 {
 	mcp3201_config_t cfg;
 	spi_device_handle_t spi;
-} mcp3201_context_t;
+};
+typedef struct mcp3201_context_t mcp3201_context_t;
 
 static void cs_low(spi_transaction_t *t)
 {
-	gpio_set_level(SPI_CS, 0);
+	mcp3201_handle_t mcp_handle = (mcp3201_handle_t)t->user;
+	gpio_set_level(mcp_handle->cfg.cs_io, 0);
 }
-static void cs_high()
+
+static void cs_high(spi_transaction_t *t)
 {
-	gpio_set_level(SPI_CS, 1);
+	mcp3201_handle_t mcp_handle = (mcp3201_handle_t)t->user;
+	gpio_set_level(mcp_handle->cfg.cs_io, 1);
 }
 
 esp_err_t init_mcp3201(mcp3201_context_t **out_ctx, const mcp3201_config_t *cfg)
@@ -36,7 +39,7 @@ esp_err_t init_mcp3201(mcp3201_context_t **out_ctx, const mcp3201_config_t *cfg)
 	spi_device_interface_config_t dev_cfg = {
 		.clock_speed_hz = ADC_CLK,
 		.mode = 0,
-		.spics_io_num = SPI_CS,
+		.spics_io_num = ctx->cfg.cs_io,
 		.queue_size = 1,
 		.pre_cb = cs_low,
 		.post_cb = cs_high,
@@ -65,4 +68,43 @@ cleanup:
 	}
 	free(ctx);
 	return err;
+}
+
+esp_err_t mcp3201_read(mcp3201_context_t *ctx, uint16_t *out_value)
+{
+	esp_err_t err = ESP_OK;
+
+	spi_transaction_t t = {
+		.user = (void *)ctx,
+		.length = 16,
+		.rx_buffer = out_value,
+	};
+
+	err = spi_device_polling_transmit(ctx->spi, &t);
+	if (err != ESP_OK)
+	{
+		ESP_LOGE(TAG, "Failed to transmit to mcp3201");
+		return err;
+	}
+
+	return ESP_OK;
+}
+
+esp_err_t deinit_mcp3201(mcp3201_handle_t mcp_handle)
+{
+	esp_err_t err = ESP_OK;
+
+	if (mcp_handle->spi)
+	{
+		err = spi_bus_remove_device(mcp_handle->spi);
+		if (err != ESP_OK)
+		{
+			ESP_LOGE(TAG, "Failed to remove device from spi bus");
+			return err;
+		}
+		mcp_handle->spi = NULL;
+	}
+
+	free(mcp_handle);
+	return ESP_OK;
 }

@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/simon/.platformio/packages/framework-espidf/components/__pio_env
+# Install script for directory: C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/.pio/build/pico32/__pio_env
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

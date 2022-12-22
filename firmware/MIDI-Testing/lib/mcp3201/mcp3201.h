@@ -15,11 +15,13 @@ typedef struct
 	gpio_num_t cs_io;
 	gpio_num_t miso_io;
 	gpio_num_t mosi_io;
+	int dma_chan;
 } mcp3201_config_t;
 
 typedef struct mcp3201_context_t *mcp3201_handle_t;
 
 esp_err_t mcp3201_init(mcp3201_handle_t *out_handle, const mcp3201_config_t *cfg);
+esp_err_t deinit_mcp3201(mcp3201_handle_t mcp_handle);
 esp_err_t mcp3201_read(mcp3201_handle_t handle, uint16_t *out_value);
 
 #endif
