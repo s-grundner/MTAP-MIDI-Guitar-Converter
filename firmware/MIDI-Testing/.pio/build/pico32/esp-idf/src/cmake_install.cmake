@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src
+# Install script for directory: C:/Users/simon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
