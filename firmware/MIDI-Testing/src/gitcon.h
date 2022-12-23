@@ -8,3 +8,4 @@ typedef struct
 typedef gitcon_config_t *gitcon_handle_t;
 
 esp_err_t gitcon_init(gitcon_handle_t *out_handle);
+esp_err_t gitcon_exit(gitcon_handle_t handle);

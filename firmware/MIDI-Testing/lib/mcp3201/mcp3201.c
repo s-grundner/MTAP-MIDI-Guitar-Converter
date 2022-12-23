@@ -2,7 +2,7 @@
 
 static const char *TAG = "mcp3201";
 
-typedef struct mcp3201_context_t
+struct mcp3201_context_t
 {
 	mcp3201_config_t cfg;
 	spi_device_handle_t spi;
@@ -21,12 +21,10 @@ static void cs_high(spi_transaction_t *t)
 	gpio_set_level(mcp_handle->cfg.cs_io, 1);
 }
 
-esp_err_t init_mcp3201(mcp3201_context_t **out_ctx, const mcp3201_config_t *cfg)
+esp_err_t mcp3201_init(mcp3201_context_t **out_ctx, const mcp3201_config_t *cfg)
 {
 	mcp3201_context_t *ctx = (mcp3201_context_t *)malloc(sizeof(mcp3201_context_t));
-
 	esp_err_t err = ESP_OK;
-
 	if (ctx == NULL)
 	{
 		ESP_LOGE(TAG, "Failed to allocate memory for mcp3201 context");
@@ -56,9 +54,8 @@ esp_err_t init_mcp3201(mcp3201_context_t **out_ctx, const mcp3201_config_t *cfg)
 		ESP_LOGE(TAG, "Failed to add device to spi bus");
 		goto cleanup;
 	}
-
 	*out_ctx = ctx;
-	return ESP_OK;
+	return err;
 
 cleanup:
 	if (ctx->spi)
@@ -73,24 +70,21 @@ cleanup:
 esp_err_t mcp3201_read(mcp3201_context_t *ctx, uint16_t *out_value)
 {
 	esp_err_t err = ESP_OK;
-
 	spi_transaction_t t = {
 		.user = (void *)ctx,
 		.length = 16,
 		.rx_buffer = out_value,
 	};
-
 	err = spi_device_polling_transmit(ctx->spi, &t);
 	if (err != ESP_OK)
 	{
 		ESP_LOGE(TAG, "Failed to transmit to mcp3201");
 		return err;
 	}
-
-	return ESP_OK;
+	return err;
 }
 
-esp_err_t deinit_mcp3201(mcp3201_handle_t mcp_handle)
+esp_err_t mcp3201_deinit(mcp3201_handle_t mcp_handle)
 {
 	esp_err_t err = ESP_OK;
 
@@ -106,5 +100,5 @@ esp_err_t deinit_mcp3201(mcp3201_handle_t mcp_handle)
 	}
 
 	free(mcp_handle);
-	return ESP_OK;
+	return err;
 }
