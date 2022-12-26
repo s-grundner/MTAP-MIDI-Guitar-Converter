@@ -1,14 +1,43 @@
-#ifndef CONFIG_H
-#define CONFIG_H
+/**
+ * @file config.h
+ * @author @s-grundner
+ * @brief
+ * @version 0.1
+ * @date 2022-12-24
+ *
+ * @copyright Copyright (c) 2022
+ *
+ */
+#pragma once
 
-#define SPI_MOSI 23
-#define SPI_MISO 19
-#define SPI_SCLK 18
-#define SPI_CS 5
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "driver/gpio.h"
+#include "driver/spi_master.h"
+#include "driver/uart.h"
+#include "driver/adc.h"
+#include "driver/i2s.h"
+#include "esp_log.h"
+
+#define SPI_MOSI (GPIO_NUM_23)
+#define SPI_MISO (GPIO_NUM_19)
+#define SPI_SCLK (GPIO_NUM_18)
+#define SPI_CS (GPIO_NUM_5)
+#define SPI_DEV (VSPI_HOST)
+
+#define INTERNAL_ADC_UNIT (ADC_UNIT_2)
+#define INTERNAL_ADC (ADC2_CHANNEL_0)
+#define INTERNAL_ADC_IO (GPIO_NUM_4)
+
+#define MIDI_UART (UART_NUM_1)
+#define MIDI_BAUD (31250)
+#define MIDI_TX (GPIO_NUM_17)
+#define MIDI_RX (GPIO_NUM_16)
 
 #define DMA_CHAN 1
-#define SPI_DEV VSPI_HOST
+
+// #define USE_MCP3201
+#define USE_INTERNAL_ADC
 
 #include "mcp3201.h"
-
-#endif
+#include "midi.h"

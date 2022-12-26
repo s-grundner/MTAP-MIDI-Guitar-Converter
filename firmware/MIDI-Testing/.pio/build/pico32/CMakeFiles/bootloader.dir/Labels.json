@@ -2,34 +2,34 @@
 	"sources" : 
 	[
 		{
-			"file" : "C:/Users/simon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/.pio/build/pico32/CMakeFiles/bootloader"
+			"file" : "C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/.pio/build/pico32/CMakeFiles/bootloader"
 		},
 		{
-			"file" : "C:/Users/simon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/.pio/build/pico32/CMakeFiles/bootloader.rule"
+			"file" : "C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/.pio/build/pico32/CMakeFiles/bootloader.rule"
 		},
 		{
-			"file" : "C:/Users/simon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/.pio/build/pico32/CMakeFiles/bootloader-complete.rule"
+			"file" : "C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/.pio/build/pico32/CMakeFiles/bootloader-complete.rule"
 		},
 		{
-			"file" : "C:/Users/simon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/.pio/build/pico32/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule"
+			"file" : "C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/.pio/build/pico32/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule"
 		},
 		{
-			"file" : "C:/Users/simon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/.pio/build/pico32/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule"
+			"file" : "C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/.pio/build/pico32/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule"
 		},
 		{
-			"file" : "C:/Users/simon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/.pio/build/pico32/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule"
+			"file" : "C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/.pio/build/pico32/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule"
 		},
 		{
-			"file" : "C:/Users/simon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/.pio/build/pico32/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule"
+			"file" : "C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/.pio/build/pico32/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule"
 		},
 		{
-			"file" : "C:/Users/simon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/.pio/build/pico32/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule"
+			"file" : "C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/.pio/build/pico32/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule"
 		},
 		{
-			"file" : "C:/Users/simon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/.pio/build/pico32/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule"
+			"file" : "C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/.pio/build/pico32/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule"
 		},
 		{
-			"file" : "C:/Users/simon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/.pio/build/pico32/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule"
+			"file" : "C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/.pio/build/pico32/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule"
 		}
 	],
 	"target" : 

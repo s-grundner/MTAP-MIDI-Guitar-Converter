@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/simon/.platformio/packages/framework-espidf/components/expat
+# Install script for directory: C:/Users/Smon/.platformio/packages/framework-espidf/components/expat
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

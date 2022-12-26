@@ -1,0 +1,29 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"name": "MIDI-Testing",
+			"path": "MIDI-Testing"
+		},
+		{
+			"name": "SRC_HWEP_Sequencer_V2",
+			"path": "../../HWEP/src/SRC_HWEP_Sequencer_V2"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"gitcon.h": "c",
+			"mcp3201.h": "c",
+			"config.h": "c",
+			"midi.h": "c",
+			"*.ipp": "c",
+			"xiosbase": "c",
+			"gpio.h": "c",
+			"spi_master.h": "c",
+			"task.h": "c",
+			"fft.h": "c"
+		}
+	}
+}

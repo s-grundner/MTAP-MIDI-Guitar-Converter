@@ -1,3 +1,14 @@
+/**
+ * @file mcp3201.c
+ * @author @s-grundner
+ * @brief
+ * @version 0.1
+ * @date 2022-12-24
+ *
+ * @copyright Copyright (c) 2022
+ *
+ */
+
 #include "mcp3201.h"
 
 static const char *TAG = "mcp3201";
@@ -84,7 +95,7 @@ esp_err_t mcp3201_read(mcp3201_context_t *ctx, uint16_t *out_value)
 	return err;
 }
 
-esp_err_t mcp3201_deinit(mcp3201_handle_t mcp_handle)
+esp_err_t mcp3201_exit(mcp3201_handle_t mcp_handle)
 {
 	esp_err_t err = ESP_OK;
 
