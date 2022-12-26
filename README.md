@@ -54,7 +54,4 @@ Die Vollständige Technische Dokumentation wird auf der Gitbook Page zu finden s
 - [Laurenz Hölzl](https://github.com/Laurenz03)
 - [Daniel Bräumann](https://github.com/Hexewillfred)
 
-## Auszeichnungen
-Diese Projekt wurde bei [Jugend Innovativ](https://machmit.jugendinnovativ.at/#/) in der Engineering II Kategorie eingereicht
-
-![Poster](/documentation/images/MTAP-Poster.png)
+![Poster](/documentation/images/plakat.png)
