@@ -29,6 +29,7 @@ Planungsvorgänge können unter dem Reiter *[Projects](https://github.com/s-grun
 - Frequenz zu Noten Konversion möglich
 - Die hardwaretechnische Realisierung des AFE Prototypen ist bereits Vorhanden
 - Die Firmware läuft bereits auf einem RTOS, in welchem die priorisierung der einzelen Tasks gehandled wird, sowie eine stabile Kommunikation zwischen den beiden Kernen am ESP32
+- Benötigte Bibliotheken sind ausprogrammiert bzw implementiert
 
 ### 3D Renderung der Platine
 
