@@ -53,7 +53,7 @@ typedef struct
  * @param tx_pin TX Pin
  * @return esp_err_t
  */
-esp_err_t midi_init(uart_port_t uart_port, int baudrate, gpio_num_t rx_pin, gpio_num_t tx_pin);
+esp_err_t midi_init(const uart_port_t uart_port, int baudrate, gpio_num_t rx_pin, gpio_num_t tx_pin);
 
 /**
  * @brief Send MIDI Message
@@ -62,7 +62,7 @@ esp_err_t midi_init(uart_port_t uart_port, int baudrate, gpio_num_t rx_pin, gpio
  * @param msg midi message to send
  * @return esp_err_t
  */
-esp_err_t midi_send(uart_port_t uart_port, midi_message_t *msg);
+esp_err_t midi_send(const uart_port_t uart_port, midi_message_t *msg);
 
 /**
  * @brief Exit MIDI UART driver
@@ -71,4 +71,4 @@ esp_err_t midi_send(uart_port_t uart_port, midi_message_t *msg);
  * @retval ESP_OK On success
  * @retval ESP_FAIL On parameter error
  */
-esp_err_t midi_exit(uart_port_t uart_port);
+esp_err_t midi_exit(const uart_port_t uart_port);

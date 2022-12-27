@@ -37,7 +37,7 @@
 #define DMA_CHAN 1
 
 // #define USE_MCP3201
-#define USE_INTERNAL_ADC
+// #define USE_INTERNAL_ADC
 
 #include "mcp3201.h"
 #include "midi.h"

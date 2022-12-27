@@ -24,7 +24,7 @@ static void midi_task(void *arg)
 		if (xQueueReceive(handle->midi_queue, &message, portMAX_DELAY) == pdTRUE)
 		{
 			// Send MIDI here
-			ESP_LOGI("MIDI", "Sending MIDI message");
+			// ESP_LOGI("MIDI", "Sending MIDI message");
 			midi_send(MIDI_UART, &message);
 		}
 		vTaskDelay(1000 / portTICK_PERIOD_MS);
@@ -38,14 +38,12 @@ static void dsp_task(void *arg)
 	{
 		// Do DSP here
 		// send processed audio data to MIDI queue
-		ESP_LOGI("DSP", "Sending MIDI message");
+		// ESP_LOGI("DSP", "Sending MIDI message");
 		midi_message_t message = {
 			.status = MIDI_STATUS_NOTE_ON,
 			.channel = 0,
 			.note_num = 0x3C, // C4
 			.velocity = 0x7F};
-
-		// make a toggling if statement here
 
 		xQueueSend(handle->midi_queue, &message, portMAX_DELAY);
 		vTaskDelay(1000 / portTICK_PERIOD_MS);
@@ -61,6 +59,8 @@ esp_err_t gitcon_init(gitcon_context_t **out_handle)
 	gitcon_context_t *cfg = (gitcon_context_t *)malloc(sizeof(gitcon_context_t));
 	if (!cfg)
 		return ESP_ERR_NO_MEM;
+
+#ifdef USE_MCP3201
 	// ------------------------------------------------------------
 	// SPI
 	// ------------------------------------------------------------
@@ -75,7 +75,7 @@ esp_err_t gitcon_init(gitcon_context_t **out_handle)
 	// ------------------------------------------------------------
 	// MCP3201 (ADC)
 	// ------------------------------------------------------------
-#ifdef USE_MCP3201
+
 	mcp3201_config_t adc_cfg = {
 		.host = SPI_DEV,
 		.cs_io = SPI_CS,
@@ -105,23 +105,13 @@ esp_err_t gitcon_init(gitcon_context_t **out_handle)
 		.fixed_mclk = 0};
 
 	ESP_ERROR_CHECK(i2s_driver_install(I2S_NUM_0, &i2s_cfg, 0, NULL));
-	ESP_ERROR_CHECK(i2s_set_adc_mode(INTERNAL_ADC_UNIT, INTERNAL_ADC));
+	ESP_ERROR_CHECK(i2s_set_adc_mode((adc_unit_t)INTERNAL_ADC_UNIT, (adc1_channel_t)INTERNAL_ADC));
 	ESP_ERROR_CHECK(i2s_adc_enable(I2S_NUM_0));
 #endif
 
 	// ------------------------------------------------------------
 	// MIDI
 	// ------------------------------------------------------------
-
-	gpio_config_t rx_tx_pin_config = {
-		.pin_bit_mask = (1ULL << MIDI_TX) | (1ULL << MIDI_RX),
-		.mode = GPIO_MODE_INPUT,
-		.pull_up_en = GPIO_PULLUP_DISABLE,
-		.pull_down_en = GPIO_PULLDOWN_DISABLE,
-		.intr_type = GPIO_INTR_DISABLE};
-
-	ESP_ERROR_CHECK(gpio_config(&rx_tx_pin_config));
-	gpio_install_isr_service(0);
 
 	ESP_ERROR_CHECK(midi_init(MIDI_UART, MIDI_BAUD, MIDI_TX, MIDI_RX));
 

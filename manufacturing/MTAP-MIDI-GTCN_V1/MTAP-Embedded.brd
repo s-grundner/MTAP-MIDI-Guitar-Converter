@@ -4461,6 +4461,9 @@ Eagle Ver. 7.6.0&lt;br&gt;</description>
 <contactref element="C18" pad="1"/>
 <wire x1="12.7" y1="6.03" x2="14.9225" y2="6.03" width="0.8128" layer="1"/>
 </signal>
+<signal name="MTDO">
+<contactref element="D1" pad="23"/>
+</signal>
 </signals>
 <mfgpreviewcolors>
 <mfgpreviewcolor name="soldermaskcolor" color="0xC8008000"/>

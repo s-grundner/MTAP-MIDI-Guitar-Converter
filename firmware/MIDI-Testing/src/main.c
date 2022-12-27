@@ -10,6 +10,9 @@
  */
 
 #include "gitcon.h"
+#include <string.h>
+
+#define LOG_LOCAL_LEVEL ESP_LOG_INFO
 
 static const char *TAG = "main";
 
@@ -22,7 +25,4 @@ void app_main(void)
 		ESP_LOGE(TAG, "gitcon_init failed");
 		return;
 	}
-
-	while (1)
-		vTaskDelay(10 / portTICK_PERIOD_MS);
 }

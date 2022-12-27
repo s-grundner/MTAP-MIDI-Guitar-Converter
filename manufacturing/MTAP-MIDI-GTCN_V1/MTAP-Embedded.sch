@@ -16351,6 +16351,13 @@ Eagle Ver. 7.6.0&lt;br&gt;</description>
 <wire x1="68.58" y1="111.76" x2="68.58" y2="109.22" width="0.1524" layer="91"/>
 </segment>
 </net>
+<net name="MTDO" class="0">
+<segment>
+<pinref part="D1" gate="G$1" pin="IO15"/>
+<wire x1="83.82" y1="154.94" x2="78.74" y2="154.94" width="0.1524" layer="91"/>
+<label x="78.74" y="154.94" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
 </nets>
 </sheet>
 <sheet>
