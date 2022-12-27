@@ -27,7 +27,9 @@ Planungsvorgänge können unter dem Reiter *[Projects](https://github.com/s-grun
 - Simulationen für das Analogue-Frontend stimmen
 - Die FFT eines künstlich generierten Signals ist bereits möglich
 - Frequenz zu Noten Konversion möglich
-- Die hardwaretechnische Realisierung des Prototypen ist jedoch noch nicht ganz Fertig.
+- Die hardwaretechnische Realisierung des AFE Prototypen ist bereits Vorhanden
+- Die Firmware läuft bereits auf einem RTOS, in welchem die priorisierung der einzelen Tasks gehandled wird, sowie eine stabile Kommunikation zwischen den beiden Kernen am ESP32
+- Benötigte Bibliotheken sind ausprogrammiert bzw implementiert
 
 ### 3D Renderung der Platine
 
