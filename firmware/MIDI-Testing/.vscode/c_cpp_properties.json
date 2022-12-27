@@ -118,6 +118,7 @@
                 "C:/Users/Smon/.platformio/packages/framework-espidf/components/spiffs/include",
                 "C:/Users/Smon/.platformio/packages/framework-espidf/components/ulp/include",
                 "C:/Users/Smon/.platformio/packages/framework-espidf/components/wifi_provisioning/include",
+                "C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio",
                 "C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft",
                 ""
             ],
@@ -234,6 +235,7 @@
                     "C:/Users/Smon/.platformio/packages/framework-espidf/components/spiffs/include",
                     "C:/Users/Smon/.platformio/packages/framework-espidf/components/ulp/include",
                     "C:/Users/Smon/.platformio/packages/framework-espidf/components/wifi_provisioning/include",
+                    "C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio",
                     "C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft",
                     ""
                 ]
