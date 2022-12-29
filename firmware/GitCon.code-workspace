@@ -28,7 +28,8 @@
 			"spi_master.h": "c",
 			"task.h": "c",
 			"fft.h": "c",
-			"freertos.h": "c"
+			"freertos.h": "c",
+			"esp_adc_cal.h": "c"
 		}
 	}
 }

@@ -12,9 +12,13 @@
 #pragma once
 #include <config.h>
 
+#define GITCON_LOG_LEVEL ESP_LOG_ERROR
+
 /**
  * @brief Gitcon Configuration
  * @param mcp3201 MCP3201 ADC
+ * @param midi_queue MIDI Queue
+ * @param post_fft_dsp_queue analysis result processing queue
  */
 typedef struct
 {
@@ -22,6 +26,8 @@ typedef struct
 	mcp3201_handle_t mcp3201;
 #endif
 	QueueHandle_t midi_queue;
+	// QueueHandle_t post_fft_dsp_queue;
+
 } gitcon_context_t;
 typedef gitcon_context_t *gitcon_handle_t;
 
