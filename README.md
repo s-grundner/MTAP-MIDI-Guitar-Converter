@@ -28,6 +28,7 @@ Planungsvorgänge können unter dem Reiter *[Projects](https://github.com/s-grun
 - Die FFT eines künstlich generierten Signals ist bereits möglich
 - Frequenz zu Noten Konversion möglich
 - Die hardwaretechnische Realisierung des AFE Prototypen ist bereits Vorhanden
+- Das Grundgerüst der Codebase ist bereits ausgearbeitet
 - Die Firmware läuft bereits auf einem RTOS, in welchem die priorisierung der einzelen Tasks gehandled wird, sowie eine stabile Kommunikation zwischen den beiden Kernen am ESP32
 - Benötigte Bibliotheken sind ausprogrammiert bzw implementiert
 
