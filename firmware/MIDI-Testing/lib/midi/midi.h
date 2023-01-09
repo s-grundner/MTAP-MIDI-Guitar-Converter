@@ -16,7 +16,6 @@
 #include "esp_log.h"
 #include "driver/uart.h"
 
-#define MIDI_LOG_LEVEL ESP_LOG_ERROR
 /**
  * @brief
  * @enum midi_status_t
@@ -39,6 +38,12 @@ typedef enum
 	MIDI_STATUS_PITCH_BEND = 0xE0,
 } midi_status_t;
 
+typedef enum
+{
+	MIDI_BYTE_SIZE_DEFAULT = 3,
+	MIDI_BYTE_SIZE_SHORT = 2
+} midi_byte_size_t;
+
 /**
  * @brief MIDI Message
  * @typedef midi_message_t
@@ -55,44 +60,29 @@ typedef struct
 	uint8_t param2;
 } midi_message_t;
 
-/**
- * @brief Initialize MIDI UART driver
- *
- * @param uart_port Number of UART port
- * @param baudrate Baudrate of UART port
- * @param rx_pin RX Pin
- * @param tx_pin TX Pin
- * @return esp_err_t
- */
-esp_err_t midi_init(const uart_port_t uart_port, int baudrate, gpio_num_t rx_pin, gpio_num_t tx_pin);
+typedef void (*init_fn_t)(void *user);
+typedef void (*exit_fn_t)(void *user);
+typedef void (*send_fn_t)(void *user, midi_message_t *message, midi_byte_size_t byte_size);
 
-/**
- * @brief Send Midi Pitch Bend
- *
- * @param uart_port Number of UART port
- * @param channel 0-15
- * @param bend
- * 0x0000: negative full bend
- * 0x3F00: no bend
- * 0x3FFF: positive full bend
- * @return esp_err_t
- */
-esp_err_t midi_pitch_bend(const uart_port_t uart_port, uint8_t channel, uint16_t bend);
+typedef struct
+{
+	init_fn_t user_init;
+	exit_fn_t user_exit;
+	send_fn_t user_send;
 
-/**
- * @brief Send MIDI Message
- *
- * @param uart_port Number of UART port
- * @param msg midi message to send
- * @return esp_err_t
- */
-esp_err_t midi_send(const uart_port_t uart_port, midi_message_t *msg);
+	const void *user;
+} midi_config_t;
 
-/**
- * @brief Exit MIDI UART driver
- *
- * @param uart_port Number of UART port
- * @retval ESP_OK On success
- * @retval ESP_FAIL On parameter error
- */
-esp_err_t midi_exit(const uart_port_t uart_port);
+typedef struct midi_context_t *midi_handle_t;
+
+char midi_init(midi_handle_t *out_handle, midi_config_t *cfg);
+
+void midi_exit(midi_handle_t midi_handle);
+
+void midi_note_off(midi_handle_t handle, uint8_t, uint8_t);
+void midi_note_on(midi_handle_t handle, uint8_t, uint8_t);
+void midi_poly_key_pressure(midi_handle_t handle, uint8_t, uint8_t);
+void midi_ctrl_change(midi_handle_t handle, uint8_t, uint8_t);
+void midi_prg_change(midi_handle_t handle, uint8_t, uint8_t);
+void midi_channel_pressure(midi_handle_t handle, uint8_t, uint8_t);
+void midi_pitch_bend(midi_handle_t midi_handle, uint8_t channel, uint16_t bend);

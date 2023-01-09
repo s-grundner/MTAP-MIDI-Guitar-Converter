@@ -25,6 +25,7 @@ typedef struct
 #ifdef USE_MCP3201
 	mcp3201_handle_t mcp3201;
 #endif
+	midi_handle_t midi_handle;
 	QueueHandle_t midi_queue;
 	// QueueHandle_t post_fft_dsp_queue;
 
