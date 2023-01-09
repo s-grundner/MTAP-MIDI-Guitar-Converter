@@ -16,7 +16,7 @@ static const char *TAG = "gitcon";
 // ------------------------------------------------------------
 // ISR and static functions
 // ------------------------------------------------------------
-static void IRAM_ATTR dma_task(void *arg)
+static void dma_task(void *arg)
 {
 	for (;;)
 	{
@@ -25,7 +25,7 @@ static void IRAM_ATTR dma_task(void *arg)
 	}
 }
 
-static void IRAM_ATTR dsp_task(void *arg)
+static void dsp_task(void *arg)
 {
 	midi_status_t status = MIDI_STATUS_NOTE_OFF;
 
@@ -71,7 +71,7 @@ static void IRAM_ATTR dsp_task(void *arg)
 	}
 }
 
-static void IRAM_ATTR midi_task(void *arg)
+static void midi_task(void *arg)
 {
 	gitcon_handle_t gc_handle = (gitcon_handle_t)arg;
 	midi_message_t *message;
@@ -94,7 +94,7 @@ static void IRAM_ATTR midi_task(void *arg)
 
 esp_err_t gitcon_init(gitcon_context_t **out_handle)
 {
-	esp_log_level_set(TAG, GITCON_LOG_LEVEL);
+	// esp_log_level_set(TAG, GITCON_LOG_LEVEL);
 
 	gitcon_context_t *gc_cfg = (gitcon_context_t *)malloc(sizeof(gitcon_context_t));
 	if (!gc_cfg)
@@ -167,19 +167,23 @@ esp_err_t gitcon_init(gitcon_context_t **out_handle)
 	// INIT RTOS
 	// ------------------------------------------------------------
 
-	gc_cfg->midi_queue = xQueueCreate(10, sizeof(midi_message_t *));
+	gc_cfg->midi_queue = xQueueCreate(10, sizeof(midi_message_t));
 
-	// DMA task: reads audio data from ADC and sends it to DSP task
-	if (xTaskCreatePinnedToCore(dma_task, "dma_task", 2048, gc_cfg, 5, NULL, 0) == pdFALSE)
-		return ESP_ERR_NO_MEM;
-	// DSP task: receives audio data from DMA task and sends midi messages to midi task
-	if (xTaskCreatePinnedToCore(dsp_task, "dsp_task", 2048, gc_cfg, 5, NULL, 1) == pdFALSE)
-		return ESP_ERR_NO_MEM;
-	// MIDI task: receives midi messages from DSP task and sends them to MIDI UART
-	if (xTaskCreatePinnedToCore(midi_task, "midi_task", 2048, gc_cfg, 5, NULL, 0) == pdFALSE)
-		return ESP_ERR_NO_MEM;
+	// // DMA task: reads audio data from ADC and sends it to DSP task
+	// if (xTaskCreatePinnedToCore(dma_task, "dma_task", 2048, gc_cfg, 5, NULL, 0) == pdFALSE)
+	// 	return ESP_ERR_NO_MEM;
+	// // DSP task: receives audio data from DMA task and sends midi messages to midi task
+	// if (xTaskCreatePinnedToCore(dsp_task, "dsp_task", 2048, gc_cfg, 5, NULL, 1) == pdFALSE)
+	// 	return ESP_ERR_NO_MEM;
+	// // MIDI task: receives midi messages from DSP task and sends them to MIDI UART
+	// if (xTaskCreatePinnedToCore(midi_task, "midi_task", 2048, gc_cfg, 5, NULL, 0) == pdFALSE)
+	// 	return ESP_ERR_NO_MEM;
 
-	*out_handle = gc_cfg;
+	ESP_LOGI(TAG, "Gitcon initialized");
+
+	// midi values:
+
+		*out_handle = gc_cfg;
 	return ESP_OK;
 }
 

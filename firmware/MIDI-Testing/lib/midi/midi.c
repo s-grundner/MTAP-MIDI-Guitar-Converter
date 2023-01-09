@@ -22,12 +22,18 @@ typedef struct midi_context_t
 
 esp_err_t midi_init(midi_context_t **out_ctx, midi_config_t *cfg)
 {
+	esp_log_level_set(TAG, MIDI_LOG_LEVEL);
 	midi_context_t *ctx = (midi_context_t *)malloc(sizeof(midi_context_t));
 	if (!ctx)
 		return ESP_ERR_NO_MEM;
 
 	*ctx = (midi_context_t){
 		.cfg = *cfg};
+
+	// print config
+	ESP_LOGI(TAG, "MIDI config:%d, %d, %d, %d",
+			 ctx->cfg.uart_num, ctx->cfg.baudrate,
+			 ctx->cfg.rx_io, ctx->cfg.tx_io);
 
 	gpio_config_t rx_pin_config = {
 		.pin_bit_mask = (1ULL << ctx->cfg.rx_io),

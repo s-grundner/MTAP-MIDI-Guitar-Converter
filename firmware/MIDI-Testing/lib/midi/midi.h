@@ -16,6 +16,8 @@
 #include "driver/uart.h"
 #include "esp_log.h"
 
+#define MIDI_LOG_LEVEL ESP_LOG_ERROR
+
 #define MIDI_BYTE_SIZE_DEFAULT 3
 #define MIDI_BYTE_SIZE_SHORT 2
 

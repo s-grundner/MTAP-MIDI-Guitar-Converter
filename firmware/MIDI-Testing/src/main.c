@@ -16,7 +16,7 @@ static const char *TAG = "main";
 
 void app_main(void)
 {
-	esp_log_level_set(TAG, USER_LOCAL_LEVEL);
+	// esp_log_level_set(TAG, USER_LOCAL_LEVEL);
 
 	gitcon_handle_t handle;
 	if (gitcon_init(&handle) != ESP_OK)
