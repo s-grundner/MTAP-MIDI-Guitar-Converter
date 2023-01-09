@@ -53,7 +53,10 @@
 			"vector": "c",
 			"xmemory": "c",
 			"xstring": "c",
-			"xutility": "c"
+			"xutility": "c",
+			"uart.h": "c",
+			"uart_types.h": "c",
+			"system_error": "c"
 		}
 	}
 }
