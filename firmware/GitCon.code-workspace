@@ -29,7 +29,31 @@
 			"task.h": "c",
 			"fft.h": "c",
 			"freertos.h": "c",
-			"esp_adc_cal.h": "c"
+			"esp_adc_cal.h": "c",
+			"pid.h": "c",
+			"algorithm": "c",
+			"array": "c",
+			"atomic": "c",
+			"charconv": "c",
+			"chrono": "c",
+			"deque": "c",
+			"forward_list": "c",
+			"future": "c",
+			"iterator": "c",
+			"list": "c",
+			"map": "c",
+			"memory": "c",
+			"new": "c",
+			"optional": "c",
+			"random": "c",
+			"set": "c",
+			"tuple": "c",
+			"type_traits": "c",
+			"unordered_map": "c",
+			"vector": "c",
+			"xmemory": "c",
+			"xstring": "c",
+			"xutility": "c"
 		}
 	}
 }
