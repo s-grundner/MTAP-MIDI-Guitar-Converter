@@ -56,7 +56,7 @@ static void dsp_task(void *arg)
 		// send dummy message
 		midi_message_t msg = {
 			.status = test_status,
-			.channel = 1,
+			.channel = 0,
 			.param1 = 0x3C, // C4
 			.param2 = 0x7F};
 

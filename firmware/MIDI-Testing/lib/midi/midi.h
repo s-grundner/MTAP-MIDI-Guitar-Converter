@@ -113,10 +113,10 @@ esp_err_t midi_write(midi_handle_t midi_handle, midi_message_t *msg);
 esp_err_t midi_read(midi_handle_t midi_handle, midi_message_t *msg);
 
 // functions to configure midi messages
-midi_message_t *note_off(uint8_t channel, uint8_t key_num, uint8_t velocity);
-midi_message_t *note_on(uint8_t channel, uint8_t key_num, uint8_t velocity);
-midi_message_t *poly_key_pressure(uint8_t channel, uint8_t key_num, uint8_t value);
-midi_message_t *ctrl_change(uint8_t channel, uint8_t controller_num, uint8_t value);
-midi_message_t *prg_change(uint8_t channel, uint8_t program);
-midi_message_t *channel_pressure(uint8_t channel, uint8_t value);
-midi_message_t *pitch_bend(uint8_t channel, uint16_t value);
+midi_message_t note_off(uint8_t channel, uint8_t key_num, uint8_t velocity);
+midi_message_t note_on(uint8_t channel, uint8_t key_num, uint8_t velocity);
+midi_message_t poly_key_pressure(uint8_t channel, uint8_t key_num, uint8_t value);
+midi_message_t ctrl_change(uint8_t channel, uint8_t controller_num, uint8_t value);
+midi_message_t prg_change(uint8_t channel, uint8_t program);
+midi_message_t channel_pressure(uint8_t channel, uint8_t value);
+midi_message_t pitch_bend(uint8_t channel, uint16_t value);

@@ -88,10 +88,14 @@ esp_err_t midi_exit(midi_handle_t midi_handle)
 
 esp_err_t midi_write(midi_handle_t handle, midi_message_t *msg)
 {
+	ESP_LOGI(TAG, "TX MIDI: %02X %02X %02X", msg->status, msg->param1, msg->param2);
+
 	// ------------------------------------------------------------
 	// SEND MIDI MESSAGE
 	// ------------------------------------------------------------
 	int len = 0;
+	const char data[] = {msg->status | msg->channel, msg->param1, msg->param2};
+
 	// switch status to determine message length
 	switch (msg->status)
 	{
@@ -100,11 +104,11 @@ esp_err_t midi_write(midi_handle_t handle, midi_message_t *msg)
 	case MIDI_STATUS_CONTROL_CHANGE:
 	case MIDI_STATUS_PITCH_BEND:
 	case MIDI_STATUS_POLYPHONIC_KEY_PRESSURE:
-		len = uart_write_bytes(handle->cfg.uart_num, (const char *)msg, MIDI_BYTE_SIZE_DEFAULT);
+		len = uart_write_bytes(handle->cfg.uart_num, data, MIDI_BYTE_SIZE_DEFAULT);
 		break;
 	case MIDI_STATUS_PROGRAM_CHANGE:
 	case MIDI_STATUS_CHANNEL_PRESSURE:
-		len = uart_write_bytes(handle->cfg.uart_num, (const char *)msg, MIDI_BYTE_SIZE_SHORT);
+		len = uart_write_bytes(handle->cfg.uart_num, data, MIDI_BYTE_SIZE_SHORT);
 		break;
 	default:
 		ESP_LOGE(TAG, "midi_send: invalid status");
@@ -126,4 +130,6 @@ esp_err_t midi_read(midi_handle_t midi_handle, midi_message_t *msg)
 	// if no message is received, return ESP_ERR_TIMEOUT
 	// if an error occurs, return ESP_FAIL
 	// if the message is invalid, return ESP_ERR_INVALID_ARG
+
+	return ESP_OK;
 }
