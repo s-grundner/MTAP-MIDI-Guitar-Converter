@@ -22,7 +22,7 @@
 #define MIDI_BYTE_SIZE_SHORT 2
 
 /**
- * @brief
+ * @brief MIDI Status Bytes
  * @enum midi_status_t
  * @param MIDI_STATUS_NOTE_OFF 0x80 requires param2
  * @param MIDI_STATUS_NOTE_ON 0x90 requires param2
@@ -43,6 +43,14 @@ typedef enum
 	MIDI_STATUS_PITCH_BEND = 0xE0,
 } midi_status_t;
 
+/**
+ * @brief MIDI Message
+ * @struct midi_message_t
+ * @param status MIDI Status Byte
+ * @param channel MIDI Channel
+ * @param param1 MIDI Parameter 1
+ * @param param2 MIDI Parameter 2
+ */
 typedef struct
 {
 	midi_status_t status;
@@ -51,6 +59,14 @@ typedef struct
 	uint8_t param2;
 } midi_message_t;
 
+/**
+ * @brief MIDI UART Configuration
+ * @struct midi_config_t
+ * @param uart_num UART Port
+ * @param baudrate UART Baudrate
+ * @param rx_io UART RX Pin
+ * @param tx_io UART TX Pin
+ */
 typedef struct
 {
 	uart_port_t uart_num;
@@ -60,7 +76,37 @@ typedef struct
 } midi_config_t;
 typedef struct midi_context_t *midi_handle_t;
 
-esp_err_t midi_init(midi_handle_t *out_handle, midi_config_t *cfg);
+/**
+ * @brief initializes MIDI
+ *
+ * @param out_handle MIDI Handle to be initialized
+ * @param out_cfg MIDI Configuration
+ * @return esp_err_t
+ */
+esp_err_t midi_init(midi_handle_t *out_handle, midi_config_t *out_cfg);
+
+/**
+ * @brief Exits MIDI and frees all resources
+ *
+ * @param midi_handle MIDI Handle to be freed
+ * @return esp_err_t
+ */
 esp_err_t midi_exit(midi_handle_t midi_handle);
 
-esp_err_t midi_send(midi_handle_t midi_handle, midi_message_t *msg);
+/**
+ * @brief Writes MIDI Message to UART
+ *
+ * @param midi_handle MIDI Handle to pass parameters
+ * @param msg MIDI Message to be sent
+ * @return esp_err_t
+ */
+esp_err_t midi_write(midi_handle_t midi_handle, midi_message_t *msg);
+
+/**
+ * @brief Reads MIDI Message from UART
+ *
+ * @param midi_handle MIDI Handle to pass parameters
+ * @param msg MIDI Message to be read
+ * @return esp_err_t
+ */
+esp_err_t midi_read(midi_handle_t midi_handle, midi_message_t *msg);

@@ -15,26 +15,27 @@
 
 static const char *TAG = "MIDI";
 
+/**
+ * @brief MIDI Context (internal! not to be accessed externally, use midi_handle_t instead)
+ * @struct midi_context_t
+ * @param cfg MIDI Config
+ */
 typedef struct midi_context_t
 {
 	midi_config_t cfg;
 } midi_context_t;
 
-esp_err_t midi_init(midi_context_t **out_ctx, midi_config_t *cfg)
+esp_err_t midi_init(midi_context_t **out_ctx, midi_config_t *out_cfg)
 {
-	esp_log_level_set(TAG, MIDI_LOG_LEVEL);
+	// Allocate memory for context
 	midi_context_t *ctx = (midi_context_t *)malloc(sizeof(midi_context_t));
 	if (!ctx)
 		return ESP_ERR_NO_MEM;
 
 	*ctx = (midi_context_t){
-		.cfg = *cfg};
+		.cfg = *out_cfg};
 
-	// print config
-	ESP_LOGI(TAG, "MIDI config:%d, %d, %d, %d",
-			 ctx->cfg.uart_num, ctx->cfg.baudrate,
-			 ctx->cfg.rx_io, ctx->cfg.tx_io);
-
+	// Configure UART
 	gpio_config_t rx_pin_config = {
 		.pin_bit_mask = (1ULL << ctx->cfg.rx_io),
 		.mode = GPIO_MODE_INPUT,
@@ -60,11 +61,11 @@ esp_err_t midi_init(midi_context_t **out_ctx, midi_config_t *cfg)
 		.flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
 		.source_clk = UART_SCLK_APB};
 
-	// Configure UART parameters
 	ESP_ERROR_CHECK(uart_param_config(ctx->cfg.uart_num, &uart_config));
 	ESP_ERROR_CHECK(uart_set_pin(ctx->cfg.uart_num, ctx->cfg.tx_io, ctx->cfg.rx_io, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE));
 	ESP_ERROR_CHECK(uart_driver_install(ctx->cfg.uart_num, 1024 * 2, 1024 * 2, 0, NULL, 0));
 
+	// Pass configured context to outer parameters
 	*out_ctx = ctx;
 	return 0;
 }
@@ -77,13 +78,13 @@ esp_err_t midi_exit(midi_handle_t midi_handle)
 	return err;
 }
 
-esp_err_t midi_send(midi_handle_t handle, midi_message_t *msg)
+esp_err_t midi_write(midi_handle_t handle, midi_message_t *msg)
 {
 	// ------------------------------------------------------------
 	// SEND MIDI MESSAGE
 	// ------------------------------------------------------------
 	int len = 0;
-
+	// switch status to determine message length
 	switch (msg->status)
 	{
 	case MIDI_STATUS_NOTE_OFF:
@@ -107,6 +108,14 @@ esp_err_t midi_send(midi_handle_t handle, midi_message_t *msg)
 		ESP_LOGE(TAG, "uart_write_bytes failed");
 		return ESP_FAIL;
 	}
-
 	return ESP_OK;
+}
+
+esp_err_t midi_read(midi_handle_t midi_handle, midi_message_t *msg)
+{
+	// interrupt whenever a midi message is received
+	// read the message and return it
+	// if no message is received, return ESP_ERR_TIMEOUT
+	// if an error occurs, return ESP_FAIL
+	// if the message is invalid, return ESP_ERR_INVALID_ARG
 }
