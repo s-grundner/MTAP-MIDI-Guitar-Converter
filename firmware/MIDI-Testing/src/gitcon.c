@@ -65,7 +65,21 @@ static void dsp_task(void *arg)
 		}
 		// printf("Middle component : %f\n", fft_buffer[1]); // N/2 is real and stored at [1]
 
-		fft_destroy(real_fft_plan);
+		// send dummy message
+		midi_message_t msg = {
+			.status = test_status,
+			.channel = 0,
+			.param1 = 0x3C, // C4
+			.param2 = 0x7F};
+
+		// at a later point, the message should be created from the DSP result
+		// eventually, the message should be created in the MIDI task and not in the DSP task
+		// instead, the DSP task should send the rawest possible data to the MIDI task
+		// the MIDI task should then create the MIDI message from the raw data
+		// the raw data could be the a buffer in which, currently on/off notes are stored
+
+		xQueueSend(gitcon_handle->midi_queue, &msg, portMAX_DELAY);
+		vTaskDelay(1000 / portTICK_PERIOD_MS);
 	}
 	// 1. read ADC to DMA buffer
 	// 2. analyze audio data (FFT, etc.)
