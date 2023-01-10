@@ -15978,7 +15978,6 @@ Eagle Ver. 7.6.0&lt;br&gt;</description>
 <part name="C15" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EUL" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="12n"/>
 <part name="N2" library="opv_GruS" library_urn="urn:adsk.eagle:library:27826080" deviceset="TLV271C*" device="DBVTG4" package3d_urn="urn:adsk.eagle:package:38237664/3" value="TLV271G4"/>
 <part name="D2" library="ic_GruS" library_urn="urn:adsk.eagle:library:13571010" deviceset="CP2102N-A02-GQFN24" device="" package3d_urn="urn:adsk.eagle:package:38290199/3" value="CP2102N"/>
-<part name="GND1" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="GND" device=""/>
 <part name="+3V1" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="+3V3" device=""/>
 <part name="C5" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100n"/>
 <part name="C4" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="4u7"/>
@@ -16011,6 +16010,10 @@ Eagle Ver. 7.6.0&lt;br&gt;</description>
 <part name="SPI_CLK" library="solpad_GruS" library_urn="urn:adsk.eagle:library:13571267" deviceset="SMD-TP" device="" package3d_urn="urn:adsk.eagle:package:38312116/4"/>
 <part name="S1" library="switch_GruS" library_urn="urn:adsk.eagle:library:13571161" deviceset="TASTE10XX" device="WE" package3d_urn="urn:adsk.eagle:package:18368072/4" value="BOOT"/>
 <part name="PGND5" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="PGND" device=""/>
+<part name="C19" library="rcl_GruS" library_urn="urn:adsk.eagle:library:13572313" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="1u"/>
+<part name="AGND13" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="AGND" device=""/>
+<part name="+3V8" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="+3V3" device=""/>
+<part name="PGND18" library="supply_GruS" library_urn="urn:adsk.eagle:library:13579815" deviceset="PGND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -16106,6 +16109,13 @@ Eagle Ver. 7.6.0&lt;br&gt;</description>
 <instance part="SPI_CS" gate="G$1" x="109.22" y="114.3" smashed="yes"/>
 <instance part="SPIQ" gate="G$1" x="114.3" y="114.3" smashed="yes"/>
 <instance part="SPI_CLK" gate="G$1" x="119.38" y="114.3" smashed="yes"/>
+<instance part="C19" gate="G$1" x="129.54" y="157.48" smashed="yes">
+<attribute name="NAME" x="128.778" y="156.9466" size="1.6764" layer="95" font="vector" align="bottom-right"/>
+<attribute name="VALUE" x="128.524" y="154.1526" size="1.27" layer="96" font="vector" align="bottom-right"/>
+</instance>
+<instance part="AGND13" gate="G$1" x="129.54" y="147.32" smashed="yes">
+<attribute name="VALUE" x="129.54" y="145.288" size="1.27" layer="96" font="vector" align="bottom-center"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -16130,6 +16140,11 @@ Eagle Ver. 7.6.0&lt;br&gt;</description>
 <junction x="81.28" y="175.26"/>
 <pinref part="D1" gate="G$1" pin="GND_1"/>
 <wire x1="81.28" y1="210.82" x2="83.82" y2="210.82" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="GND8" gate="1" pin="GND"/>
+<pinref part="C3" gate="G$1" pin="2"/>
+<wire x1="55.88" y1="149.86" x2="55.88" y2="152.4" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="D1" gate="G$1" pin="GND_12"/>
@@ -16173,31 +16188,26 @@ Eagle Ver. 7.6.0&lt;br&gt;</description>
 <junction x="124.46" y="154.94"/>
 <pinref part="GND7" gate="1" pin="GND"/>
 </segment>
-<segment>
-<pinref part="GND8" gate="1" pin="GND"/>
-<pinref part="C3" gate="G$1" pin="2"/>
-<wire x1="55.88" y1="149.86" x2="55.88" y2="152.4" width="0.1524" layer="91"/>
-</segment>
 </net>
 <net name="GPIO0" class="0">
 <segment>
 <pinref part="D1" gate="G$1" pin="IO0"/>
-<wire x1="121.92" y1="210.82" x2="124.46" y2="210.82" width="0.1524" layer="91"/>
-<label x="124.46" y="210.82" size="1.27" layer="95" xref="yes"/>
+<wire x1="121.92" y1="210.82" x2="127" y2="210.82" width="0.1524" layer="91"/>
+<label x="127" y="210.82" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="TXD0" class="0">
 <segment>
 <pinref part="D1" gate="G$1" pin="TXD0"/>
-<wire x1="121.92" y1="185.42" x2="124.46" y2="185.42" width="0.1524" layer="91"/>
-<label x="124.46" y="185.42" size="1.27" layer="95" xref="yes"/>
+<wire x1="121.92" y1="185.42" x2="127" y2="185.42" width="0.1524" layer="91"/>
+<label x="127" y="185.42" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="RXD0" class="0">
 <segment>
 <pinref part="D1" gate="G$1" pin="RXD0"/>
-<wire x1="121.92" y1="187.96" x2="124.46" y2="187.96" width="0.1524" layer="91"/>
-<label x="124.46" y="187.96" size="1.27" layer="95" xref="yes"/>
+<wire x1="121.92" y1="187.96" x2="127" y2="187.96" width="0.1524" layer="91"/>
+<label x="127" y="187.96" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="EN" class="0">
@@ -16258,8 +16268,8 @@ Eagle Ver. 7.6.0&lt;br&gt;</description>
 <net name="VSPI_!CS" class="0">
 <segment>
 <pinref part="D1" gate="G$1" pin="IO5"/>
-<wire x1="121.92" y1="200.66" x2="124.46" y2="200.66" width="0.1524" layer="91"/>
-<label x="124.46" y="200.66" size="1.27" layer="95" xref="yes"/>
+<wire x1="121.92" y1="200.66" x2="127" y2="200.66" width="0.1524" layer="91"/>
+<label x="127" y="200.66" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
 <wire x1="109.22" y1="111.76" x2="109.22" y2="109.22" width="0.1524" layer="91"/>
@@ -16270,8 +16280,8 @@ Eagle Ver. 7.6.0&lt;br&gt;</description>
 <net name="VSPI_CLK" class="0">
 <segment>
 <pinref part="D1" gate="G$1" pin="IO18"/>
-<wire x1="121.92" y1="198.12" x2="124.46" y2="198.12" width="0.1524" layer="91"/>
-<label x="124.46" y="198.12" size="1.27" layer="95" xref="yes"/>
+<wire x1="121.92" y1="198.12" x2="127" y2="198.12" width="0.1524" layer="91"/>
+<label x="127" y="198.12" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
 <wire x1="119.38" y1="111.76" x2="119.38" y2="109.22" width="0.1524" layer="91"/>
@@ -16282,8 +16292,8 @@ Eagle Ver. 7.6.0&lt;br&gt;</description>
 <net name="VSPIQ_MISO" class="0">
 <segment>
 <pinref part="D1" gate="G$1" pin="IO19"/>
-<wire x1="121.92" y1="195.58" x2="124.46" y2="195.58" width="0.1524" layer="91"/>
-<label x="124.46" y="195.58" size="1.27" layer="95" xref="yes"/>
+<wire x1="121.92" y1="195.58" x2="127" y2="195.58" width="0.1524" layer="91"/>
+<label x="127" y="195.58" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
 <wire x1="114.3" y1="111.76" x2="114.3" y2="109.22" width="0.1524" layer="91"/>
@@ -16297,12 +16307,28 @@ Eagle Ver. 7.6.0&lt;br&gt;</description>
 <pinref part="AGND" gate="G$1" pin="P$1"/>
 <wire x1="73.66" y1="111.76" x2="73.66" y2="109.22" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="C19" gate="G$1" pin="2"/>
+<wire x1="129.54" y1="149.86" x2="129.54" y2="152.4" width="0.1524" layer="91"/>
+<pinref part="AGND13" gate="G$1" pin="AGND"/>
+</segment>
 </net>
 <net name="AINP" class="0">
 <segment>
 <label x="93.98" y="109.22" size="1.27" layer="95" rot="R270" xref="yes"/>
 <pinref part="POST-AFE" gate="G$1" pin="P$1"/>
 <wire x1="93.98" y1="111.76" x2="93.98" y2="109.22" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="C19" gate="G$1" pin="1"/>
+<wire x1="129.54" y1="160.02" x2="129.54" y2="180.34" width="0.1524" layer="91"/>
+<pinref part="D1" gate="G$1" pin="IO4"/>
+<wire x1="127" y1="208.28" x2="124.46" y2="208.28" width="0.1524" layer="91"/>
+<label x="127" y="208.28" size="1.27" layer="95" xref="yes"/>
+<wire x1="124.46" y1="208.28" x2="121.92" y2="208.28" width="0.1524" layer="91"/>
+<wire x1="129.54" y1="180.34" x2="124.46" y2="180.34" width="0.1524" layer="91"/>
+<wire x1="124.46" y1="180.34" x2="124.46" y2="208.28" width="0.1524" layer="91"/>
+<junction x="124.46" y="208.28"/>
 </segment>
 </net>
 <net name="IN1" class="0">
@@ -16324,6 +16350,13 @@ Eagle Ver. 7.6.0&lt;br&gt;</description>
 <pinref part="PGND" gate="G$1" pin="P$1"/>
 <pinref part="PGND1" gate="G$1" pin="PGND"/>
 <wire x1="68.58" y1="111.76" x2="68.58" y2="109.22" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="MTDO" class="0">
+<segment>
+<pinref part="D1" gate="G$1" pin="IO15"/>
+<wire x1="83.82" y1="154.94" x2="78.74" y2="154.94" width="0.1524" layer="91"/>
+<label x="78.74" y="154.94" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 </nets>
@@ -16512,9 +16545,6 @@ DTR RTS -&gt; EN  IO0
 <attribute name="NAME" x="102.87" y="246.38" size="1.778" layer="95" align="center-left"/>
 <attribute name="VALUE" x="102.87" y="243.84" size="1.778" layer="96" align="center-left"/>
 </instance>
-<instance part="GND1" gate="1" x="144.78" y="243.84" smashed="yes">
-<attribute name="VALUE" x="144.78" y="241.808" size="1.27" layer="96" font="vector" align="bottom-center"/>
-</instance>
 <instance part="+3V1" gate="G$1" x="129.54" y="261.62" smashed="yes">
 <attribute name="VALUE" x="129.54" y="262.382" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
@@ -16567,6 +16597,12 @@ DTR RTS -&gt; EN  IO0
 <instance part="PGND5" gate="G$1" x="162.56" y="208.28" smashed="yes">
 <attribute name="VALUE" x="162.56" y="206.248" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
+<instance part="+3V8" gate="G$1" x="101.6" y="157.48" smashed="yes">
+<attribute name="VALUE" x="101.6" y="158.242" size="1.27" layer="96" font="vector" align="bottom-center"/>
+</instance>
+<instance part="PGND18" gate="G$1" x="144.78" y="243.84" smashed="yes">
+<attribute name="VALUE" x="144.78" y="241.808" size="1.27" layer="96" font="vector" align="bottom-center"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -16578,13 +16614,6 @@ DTR RTS -&gt; EN  IO0
 <wire x1="137.16" y1="91.44" x2="139.7" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="91.44" x2="139.7" y2="81.28" width="0.1524" layer="91"/>
 <pinref part="GND2" gate="1" pin="GND"/>
-</segment>
-<segment>
-<pinref part="GND1" gate="1" pin="GND"/>
-<wire x1="144.78" y1="248.92" x2="144.78" y2="246.38" width="0.1524" layer="91"/>
-<wire x1="139.7" y1="248.92" x2="144.78" y2="248.92" width="0.1524" layer="91"/>
-<wire x1="139.7" y1="246.38" x2="139.7" y2="248.92" width="0.1524" layer="91"/>
-<pinref part="D2" gate="G$1" pin="GND_1"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -16728,13 +16757,14 @@ DTR RTS -&gt; EN  IO0
 <segment>
 <pinref part="V2" gate="G$1" pin="E"/>
 <wire x1="58.42" y1="208.28" x2="58.42" y2="210.82" width="0.1524" layer="91"/>
-<wire x1="58.42" y1="210.82" x2="33.02" y2="210.82" width="0.1524" layer="91"/>
-<wire x1="33.02" y1="210.82" x2="33.02" y2="220.98" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="210.82" x2="43.18" y2="210.82" width="0.1524" layer="91"/>
 <pinref part="R4" gate="G$1" pin="1"/>
-<wire x1="33.02" y1="220.98" x2="38.1" y2="220.98" width="0.1524" layer="91"/>
-<wire x1="33.02" y1="220.98" x2="30.48" y2="220.98" width="0.1524" layer="91"/>
-<junction x="33.02" y="220.98"/>
-<label x="30.48" y="220.98" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
+<wire x1="35.56" y1="220.98" x2="38.1" y2="220.98" width="0.1524" layer="91"/>
+<wire x1="35.56" y1="220.98" x2="33.02" y2="220.98" width="0.1524" layer="91"/>
+<label x="33.02" y="220.98" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
+<wire x1="35.56" y1="220.98" x2="35.56" y2="218.44" width="0.1524" layer="91"/>
+<junction x="35.56" y="220.98"/>
+<wire x1="35.56" y1="218.44" x2="43.18" y2="210.82" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <wire x1="160.02" y1="226.06" x2="165.1" y2="226.06" width="0.1524" layer="91"/>
@@ -16760,13 +16790,14 @@ DTR RTS -&gt; EN  IO0
 <segment>
 <pinref part="V1" gate="G$1" pin="E"/>
 <wire x1="58.42" y1="215.9" x2="58.42" y2="213.36" width="0.1524" layer="91"/>
-<wire x1="58.42" y1="213.36" x2="35.56" y2="213.36" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="213.36" x2="43.18" y2="213.36" width="0.1524" layer="91"/>
 <pinref part="R6" gate="G$1" pin="1"/>
-<wire x1="35.56" y1="213.36" x2="35.56" y2="203.2" width="0.1524" layer="91"/>
-<wire x1="35.56" y1="203.2" x2="38.1" y2="203.2" width="0.1524" layer="91"/>
-<wire x1="35.56" y1="203.2" x2="30.48" y2="203.2" width="0.1524" layer="91"/>
+<wire x1="38.1" y1="203.2" x2="35.56" y2="203.2" width="0.1524" layer="91"/>
+<label x="33.02" y="203.2" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
+<wire x1="35.56" y1="203.2" x2="33.02" y2="203.2" width="0.1524" layer="91"/>
+<wire x1="35.56" y1="203.2" x2="35.56" y2="205.74" width="0.1524" layer="91"/>
 <junction x="35.56" y="203.2"/>
-<label x="30.48" y="203.2" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
+<wire x1="35.56" y1="205.74" x2="43.18" y2="213.36" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <wire x1="160.02" y1="215.9" x2="165.1" y2="215.9" width="0.1524" layer="91"/>
@@ -16832,6 +16863,12 @@ DTR RTS -&gt; EN  IO0
 <pinref part="D2" gate="G$1" pin="VIO"/>
 <wire x1="132.08" y1="246.38" x2="132.08" y2="248.92" width="0.1524" layer="91"/>
 <wire x1="132.08" y1="248.92" x2="129.54" y2="248.92" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="N1" gate="G$1" pin="NC"/>
+<wire x1="99.06" y1="152.4" x2="101.6" y2="152.4" width="0.1524" layer="91"/>
+<pinref part="+3V8" gate="G$1" pin="+3V3"/>
+<wire x1="101.6" y1="152.4" x2="101.6" y2="154.94" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="PGND" class="0">
@@ -16949,6 +16986,13 @@ DTR RTS -&gt; EN  IO0
 <wire x1="162.56" y1="231.14" x2="162.56" y2="210.82" width="0.1524" layer="91"/>
 <pinref part="PGND5" gate="G$1" pin="PGND"/>
 </segment>
+<segment>
+<wire x1="144.78" y1="248.92" x2="144.78" y2="246.38" width="0.1524" layer="91"/>
+<wire x1="139.7" y1="248.92" x2="144.78" y2="248.92" width="0.1524" layer="91"/>
+<wire x1="139.7" y1="246.38" x2="139.7" y2="248.92" width="0.1524" layer="91"/>
+<pinref part="D2" gate="G$1" pin="GND_1"/>
+<pinref part="PGND18" gate="G$1" pin="PGND"/>
+</segment>
 </net>
 <net name="TXD1" class="0">
 <segment>
@@ -17020,8 +17064,8 @@ DTR RTS -&gt; EN  IO0
 <text x="144.78" y="220.98" size="2.54" layer="97" font="vector" align="bottom-center">Analogue Voltage
 Supply and Reference</text>
 <text x="88.9" y="172.72" size="2.54" layer="97" font="vector" align="bottom-center">Low Pass Filter</text>
-<text x="162.56" y="116.84" size="1.778" layer="97" font="vector" rot="R180">A6 Filter (1760Hz)
-2V/V Gain
+<text x="162.56" y="116.84" size="1.778" layer="97" font="vector" rot="R180">G6 Filter (~1500Hz)
+2.8V/V Gain
 Sallen Key Aufbau
 Butterworth Charakeristik
 Single Supply</text>
