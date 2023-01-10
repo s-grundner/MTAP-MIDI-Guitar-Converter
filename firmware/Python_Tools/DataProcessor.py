@@ -16,12 +16,14 @@ with open('sample-data.txt') as f:
         i += 1
 f.close()
 
-file_to_delete = open("processed-data.txt",'w')
+file_to_delete = open("processed-data.h",'w')
 file_to_delete.close()
 
-with open('processed-data.txt', 'w') as d:
+with open('processed-data.h', 'w') as d:
+    d.write('float test_buffer[] = {')
     for data in arr:  
         d.write(str(data) + ',')
+    d.write('};')
     d.close()
 
-shutil.copyfile('processed-data.txt', '/home/laurenz/Dokumente/GitHub/MTAP-MIDI-Guitar-Converter/firmware/ESP_DSP/src/processed-data.txt')
+shutil.copyfile('processed-data.h', '/home/laurenz/Dokumente/GitHub/MTAP-MIDI-Guitar-Converter/firmware/ESP_DSP/src/processed-data.h')
