@@ -38,7 +38,7 @@ void app_main(void)
         if (magnitude[k] >= 0.5)
         {
             printf("%d-th magnitude: %f => corresponds to %f Hz\n", k, magnitude[k], frequency[k]);
-            // printf("keyNR: %d\n", (int)round(keyNR[k]));
+            printf("keyNR: %d\n", (int)round(keyNR[k]));
         }
         // printf("%f\n", magnitude[k]);
     }
