@@ -25,6 +25,10 @@ typedef struct midi_context_t
 	midi_config_t cfg;
 } midi_context_t;
 
+// ------------------------------------------------------------
+// MIDI CONFIG
+// ------------------------------------------------------------
+
 esp_err_t midi_init(midi_context_t **out_ctx, midi_config_t *out_cfg)
 {
 	// Allocate memory for context
@@ -77,6 +81,10 @@ esp_err_t midi_exit(midi_handle_t midi_handle)
 	free(midi_handle);
 	return err;
 }
+
+// ------------------------------------------------------------
+// MIDI TRANSMISSIONS
+// ------------------------------------------------------------
 
 esp_err_t midi_write(midi_handle_t handle, midi_message_t *msg)
 {
