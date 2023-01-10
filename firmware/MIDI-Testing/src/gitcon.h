@@ -9,8 +9,10 @@
  *
  */
 
-#pragma once
-#include <config.h>
+#ifndef GITCON_H
+#define GITCON_H
+
+#include "config.h"
 
 #define GITCON_LOG_LEVEL ESP_LOG_ERROR
 
@@ -25,8 +27,8 @@ typedef struct
 #ifdef USE_MCP3201
 	mcp3201_handle_t mcp3201;
 #endif
+	midi_handle_t midi_handle;
 	QueueHandle_t midi_queue;
-	// QueueHandle_t post_fft_dsp_queue;
 
 } gitcon_context_t;
 typedef gitcon_context_t *gitcon_handle_t;
@@ -46,3 +48,5 @@ esp_err_t gitcon_init(gitcon_handle_t *out_handle);
  * @return esp_err_t
  */
 esp_err_t gitcon_exit(gitcon_handle_t handle);
+
+#endif // GITCON_H

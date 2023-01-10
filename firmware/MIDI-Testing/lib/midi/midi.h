@@ -13,12 +13,16 @@
 
 #include <stdio.h>
 #include "driver/gpio.h"
-#include "esp_log.h"
 #include "driver/uart.h"
+#include "esp_log.h"
 
 #define MIDI_LOG_LEVEL ESP_LOG_ERROR
+
+#define MIDI_BYTE_SIZE_DEFAULT 3
+#define MIDI_BYTE_SIZE_SHORT 2
+
 /**
- * @brief
+ * @brief MIDI Status Bytes
  * @enum midi_status_t
  * @param MIDI_STATUS_NOTE_OFF 0x80 requires param2
  * @param MIDI_STATUS_NOTE_ON 0x90 requires param2
@@ -41,11 +45,11 @@ typedef enum
 
 /**
  * @brief MIDI Message
- * @typedef midi_message_t
- * @param status 0x80-0xE0
- * @param channel 0-15
- * @param param1 0-127
- * @param param2 0-127
+ * @struct midi_message_t
+ * @param status MIDI Status Byte
+ * @param channel MIDI Channel
+ * @param param1 MIDI Parameter 1
+ * @param param2 MIDI Parameter 2
  */
 typedef struct
 {
@@ -56,43 +60,53 @@ typedef struct
 } midi_message_t;
 
 /**
- * @brief Initialize MIDI UART driver
- *
- * @param uart_port Number of UART port
- * @param baudrate Baudrate of UART port
- * @param rx_pin RX Pin
- * @param tx_pin TX Pin
- * @return esp_err_t
+ * @brief MIDI UART Configuration
+ * @struct midi_config_t
+ * @param uart_num UART Port
+ * @param baudrate UART Baudrate
+ * @param rx_io UART RX Pin
+ * @param tx_io UART TX Pin
  */
-esp_err_t midi_init(const uart_port_t uart_port, int baudrate, gpio_num_t rx_pin, gpio_num_t tx_pin);
+typedef struct
+{
+	uart_port_t uart_num;
+	uint baudrate;
+	gpio_num_t rx_io;
+	gpio_num_t tx_io;
+} midi_config_t;
+typedef struct midi_context_t *midi_handle_t;
 
 /**
- * @brief Send Midi Pitch Bend
+ * @brief initializes MIDI
  *
- * @param uart_port Number of UART port
- * @param channel 0-15
- * @param bend
- * 0x0000: negative full bend
- * 0x3F00: no bend
- * 0x3FFF: positive full bend
+ * @param out_handle MIDI Handle to be initialized
+ * @param out_cfg MIDI Configuration
  * @return esp_err_t
  */
-esp_err_t midi_pitch_bend(const uart_port_t uart_port, uint8_t channel, uint16_t bend);
+esp_err_t midi_init(midi_handle_t *out_handle, midi_config_t *out_cfg);
 
 /**
- * @brief Send MIDI Message
+ * @brief Exits MIDI and frees all resources
  *
- * @param uart_port Number of UART port
- * @param msg midi message to send
+ * @param midi_handle MIDI Handle to be freed
  * @return esp_err_t
  */
-esp_err_t midi_send(const uart_port_t uart_port, midi_message_t *msg);
+esp_err_t midi_exit(midi_handle_t midi_handle);
 
 /**
- * @brief Exit MIDI UART driver
+ * @brief Writes MIDI Message to UART
  *
- * @param uart_port Number of UART port
- * @retval ESP_OK On success
- * @retval ESP_FAIL On parameter error
+ * @param midi_handle MIDI Handle to pass parameters
+ * @param msg MIDI Message to be sent
+ * @return esp_err_t
  */
-esp_err_t midi_exit(const uart_port_t uart_port);
+esp_err_t midi_write(midi_handle_t midi_handle, midi_message_t *msg);
+
+/**
+ * @brief Reads MIDI Message from UART
+ *
+ * @param midi_handle MIDI Handle to pass parameters
+ * @param msg MIDI Message to be read
+ * @return esp_err_t
+ */
+esp_err_t midi_read(midi_handle_t midi_handle, midi_message_t *msg);
