@@ -9,8 +9,7 @@ MTAP-Embedded-exportpro2.cfg
 DRILEGEND.CFG
 MTAP-Embedded.pro
 manufacturing/invoice/*
-firmware/MIDI-Testing/.pio
-firmware/MIDI-Testing/.vscode
-firmware/MIDI-Testing/.vscode
-firmware/MIDI-Testing/sdkconfig.*
-firmware/MIDI-Testing/.vscode/c_cpp_properties.json
+.pio
+.vscode
+sdkconfig.*
+c_cpp_properties.json
