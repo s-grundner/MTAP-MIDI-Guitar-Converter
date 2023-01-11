@@ -28,6 +28,8 @@
 
 #include "esp_log.h"
 #include "fft.h"
+#include "mcp3201.h"
+#include "midi.h"
 
 #define SPI_MOSI (GPIO_NUM_23)
 #define SPI_MISO (GPIO_NUM_19)
@@ -51,6 +53,3 @@
 
 // #define USE_MCP3201
 // #define USE_INTERNAL_ADC
-
-#include "mcp3201.h"
-#include "midi.h"
