@@ -27,7 +27,10 @@ Planungsvorgänge können unter dem Reiter *[Projects](https://github.com/s-grun
 - Simulationen für das Analogue-Frontend stimmen
 - Die FFT eines künstlich generierten Signals ist bereits möglich
 - Frequenz zu Noten Konversion möglich
-- Die hardwaretechnische Realisierung des Prototypen ist jedoch noch nicht ganz Fertig.
+- Die hardwaretechnische Realisierung des AFE Prototypen ist bereits Vorhanden
+- Das Grundgerüst der Codebase ist bereits ausgearbeitet
+- Die Firmware läuft bereits auf einem RTOS, in welchem die priorisierung der einzelen Tasks gehandled wird, sowie eine stabile Kommunikation zwischen den beiden Kernen am ESP32
+- Benötigte Bibliotheken sind ausprogrammiert bzw implementiert
 
 ### 3D Renderung der Platine
 
@@ -54,7 +57,4 @@ Die Vollständige Technische Dokumentation wird auf der Gitbook Page zu finden s
 - [Laurenz Hölzl](https://github.com/Laurenz03)
 - [Daniel Bräumann](https://github.com/Hexewillfred)
 
-## Auszeichnungen
-Diese Projekt wurde bei [Jugend Innovativ](https://machmit.jugendinnovativ.at/#/) in der Engineering II Kategorie eingereicht
-
-![Poster](/documentation/images/MTAP-Poster.png)
+![Poster](/documentation/images/plakat.png)
