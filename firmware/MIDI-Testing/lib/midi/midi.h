@@ -54,9 +54,9 @@ typedef enum
  */
 typedef struct
 {
+	uint8_t param1;
 	midi_status_t status;
 	uint8_t channel;
-	uint8_t param1;
 	uint8_t param2;
 } midi_message_t;
 
