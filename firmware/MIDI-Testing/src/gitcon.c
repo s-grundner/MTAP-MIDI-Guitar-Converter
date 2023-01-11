@@ -48,8 +48,6 @@ static void dsp_task(void *arg)
 
 		// (!note) velocity of the note is determined by the initial amplitude of a transient frequency
 
-		ESP_LOGI(TAG, "Sending MIDI message from DSP task");
-
 		// toggle note on/off for testing purposes
 		test_status = (test_status == MIDI_STATUS_NOTE_OFF) ? MIDI_STATUS_NOTE_ON : MIDI_STATUS_NOTE_OFF;
 
@@ -66,6 +64,8 @@ static void dsp_task(void *arg)
 		// the MIDI task should then create the MIDI message from the raw data
 		// the raw data could be the a buffer in which, currently on/off notes are stored
 
+		ESP_LOGI(TAG, "Sending MIDI message from DSP task: %02X %02X %02X", msg.status, msg.param1, msg.param2);
+
 		xQueueSend(gitcon_handle->midi_queue, &msg, portMAX_DELAY);
 		vTaskDelay(1000 / portTICK_PERIOD_MS);
 	}
@@ -80,6 +80,12 @@ static void midi_task(void *arg)
 		if (xQueueReceive(gitcon_handle->midi_queue, &msg, portMAX_DELAY) == pdTRUE)
 		{
 			// send message to MIDI UART
+
+			msg.channel = 1;
+			msg.param1 = 0x3C;
+			msg.param2 = 0x7F;
+
+			ESP_LOGI(TAG, "TX MIDI: %02X %02X %02X", msg.status, msg.param1, msg.param2);
 			ESP_ERROR_CHECK(midi_write(gitcon_handle->midi_handle, &msg));
 		}
 		vTaskDelay(1000 / portTICK_PERIOD_MS);
@@ -127,7 +133,6 @@ esp_err_t gitcon_init(gitcon_context_t **out_handle)
 	// ------------------------------------------------------------
 	// SETUP INTERNAL I2S ADC
 	// ------------------------------------------------------------
-
 	i2s_config_t i2s_cfg = {
 		.mode = (i2s_mode_t)(I2S_MODE_MASTER | I2S_MODE_RX | I2S_MODE_ADC_BUILT_IN),
 		.sample_rate = 40000,
@@ -139,6 +144,7 @@ esp_err_t gitcon_init(gitcon_context_t **out_handle)
 		.dma_buf_len = 1024,
 		.use_apll = false,
 		.fixed_mclk = 0};
+	ESP_LOGI(TAG, "Initializing I2S ADC\n%d", i2s_cfg);
 
 	ESP_ERROR_CHECK(i2s_driver_install(I2S_NUM_0, &i2s_cfg, 0, NULL));
 	ESP_ERROR_CHECK(i2s_set_adc_mode((adc_unit_t)INTERNAL_ADC_UNIT, (adc1_channel_t)INTERNAL_ADC));
@@ -164,6 +170,8 @@ esp_err_t gitcon_init(gitcon_context_t **out_handle)
 	// INIT RTOS
 	// ------------------------------------------------------------
 
+	ESP_LOGI(TAG, "Creating RTOS tasks and queues...");
+	// create queue for midi messages
 	gitcon_cfg->midi_queue = xQueueCreate(10, sizeof(midi_message_t *));
 	if (!gitcon_cfg->midi_queue)
 		return ESP_ERR_NO_MEM;

@@ -14,6 +14,7 @@
 #define MIDI_BYTE_SIZE_SHORT 2
 
 static const char *TAG = "MIDI";
+static const char *MIDI_MON = "MIDI MONITOR";
 
 /**
  * @brief MIDI Context (internal! not to be accessed externally, use midi_handle_t instead)
@@ -38,6 +39,8 @@ esp_err_t midi_init(midi_context_t **out_ctx, midi_config_t *out_cfg)
 
 	*ctx = (midi_context_t){
 		.cfg = *out_cfg};
+
+	ESP_LOGI(TAG, "Initializing MIDI on %d (rx:%d, tx:%d) with %d baud...", ctx->cfg.uart_num, ctx->cfg.rx_io, ctx->cfg.tx_io, ctx->cfg.baudrate);
 
 	// Configure UART
 	gpio_config_t rx_pin_config = {
@@ -88,7 +91,7 @@ esp_err_t midi_exit(midi_handle_t midi_handle)
 
 esp_err_t midi_write(midi_handle_t handle, midi_message_t *msg)
 {
-	ESP_LOGI(TAG, "TX MIDI: %02X %02X %02X", msg->status, msg->param1, msg->param2);
+	ESP_LOGI(MIDI_MON, "Status: %02X\tChannel: %02X\t Data:%02X\t %02X", msg->status, msg->channel, msg->param1, msg->param2);
 
 	// ------------------------------------------------------------
 	// SEND MIDI MESSAGE

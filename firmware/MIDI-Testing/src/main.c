@@ -31,13 +31,11 @@ static void adc_reader_task(void *args)
 		vTaskDelay(1000 / portTICK_PERIOD_MS);
 	}
 }
-
 typedef struct
 {
 	QueueHandle_t i2s_queue;
 	size_t *audio_buffer_pos;
 	size_t *current_audio_buffer;
-
 } i2s_sampler_t;
 
 void app_main(void)
@@ -50,19 +48,19 @@ void app_main(void)
 		return;
 	}
 
-	QueueHandle_t i2s_queue;
+	// QueueHandle_t i2s_queue;
 
-	i2s_config_t i2s_cfg = {
-		.mode = (i2s_mode_t)(I2S_MODE_MASTER | I2S_MODE_RX | I2S_MODE_ADC_BUILT_IN),
-		.sample_rate = 40000,
-		.bits_per_sample = I2S_BITS_PER_SAMPLE_16BIT,
-		.channel_format = I2S_CHANNEL_FMT_ONLY_LEFT,
-		.communication_format = I2S_COMM_FORMAT_STAND_I2S,
-		.intr_alloc_flags = ESP_INTR_FLAG_LEVEL1,
-		.dma_buf_count = 4,
-		.dma_buf_len = 1024,
-		.use_apll = false,
-		.fixed_mclk = 0};
+	// i2s_config_t i2s_cfg = {
+	// 	.mode = (i2s_mode_t)(I2S_MODE_MASTER | I2S_MODE_RX | I2S_MODE_ADC_BUILT_IN),
+	// 	.sample_rate = 40000,
+	// 	.bits_per_sample = I2S_BITS_PER_SAMPLE_16BIT,
+	// 	.channel_format = I2S_CHANNEL_FMT_ONLY_LEFT,
+	// 	.communication_format = I2S_COMM_FORMAT_STAND_I2S,
+	// 	.intr_alloc_flags = ESP_INTR_FLAG_LEVEL1,
+	// 	.dma_buf_count = 4,
+	// 	.dma_buf_len = 1024,
+	// 	.use_apll = false,
+	// 	.fixed_mclk = 0};
 
 	// ESP_ERROR_CHECK(i2s_driver_install(I2S_NUM_0, &i2s_cfg, 0, &i2s_queue));
 	// ESP_ERROR_CHECK(i2s_set_adc_mode(ADC_UNIT_1, ADC_CHANNEL_1));
