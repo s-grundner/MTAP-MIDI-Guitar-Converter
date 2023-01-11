@@ -37,7 +37,6 @@ static void dsp_task(void *arg)
 	float ratio = (float)F_SAMPLE_HZ / (float)FFT_SIZE;
 	char file_buffer[FFT_SIZE];
 
-
 	for (;;)
 	{
 		// Do DSP here
@@ -227,11 +226,6 @@ esp_err_t gitcon_init(gitcon_context_t **out_handle)
 }
 
 esp_err_t gitcon_exit(gitcon_handle_t handle)
-	*out_handle = gitcon_cfg;
-	return ESP_OK;
-}
-
-esp_err_t gitcon_exit(gitcon_handle_t handle)
 {
 	ESP_ERROR_CHECK(midi_exit(handle->midi_handle));
 
@@ -242,21 +236,6 @@ esp_err_t gitcon_exit(gitcon_handle_t handle)
 #ifdef USE_INTERNAL_ADC
 	ESP_ERROR_CHECK(i2s_driver_uninstall(I2S_NUM_0));
 #endif
-
-	free(handle);
-	return ESP_OK;
-}
-{
-	ESP_ERROR_CHECK(midi_exit(handle->midi_handle));
-
-#ifdef USE_MCP3201
-	ESP_ERROR_CHECK(mcp3201_exit(handle->mcp3201));
-#endif
-
-#ifdef USE_INTERNAL_ADC
-	ESP_ERROR_CHECK(i2s_driver_uninstall(I2S_NUM_0));
-#endif
-
 	free(handle);
 	return ESP_OK;
 }
