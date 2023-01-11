@@ -1,9 +1,0 @@
-PC board specifications: 
-Board thickness:   	1.670000mm
-Board type:       	FR4
-Number of layers:  	2
-End copper thickness:	35.000000um
-Stop mask color:   	black
-Silk screen color: 	white
-Surface finish:    	HASL lead free
-Silk screen trim: 	Trim on solder mask opening pads

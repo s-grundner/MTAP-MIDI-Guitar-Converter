@@ -10,6 +10,7 @@
  */
 
 #include "gitcon.h"
+#include "processed-data.h"
 
 static const char *TAG = "gitcon";
 
@@ -27,11 +28,41 @@ static void dma_task(void *arg)
 
 static void dsp_task(void *arg)
 {
+	gitcon_handle_t gitcon_handle = (gitcon_handle_t)arg;
+	midi_status_t test_status = MIDI_STATUS_NOTE_OFF;
+	float fft_buffer[FFT_SIZE];
+	float magnitude[FFT_SIZE / 2];
+	float frequency[FFT_SIZE / 2];
+	float keyNR[FFT_SIZE / 2];
+	float ratio = (float)F_SAMPLE_HZ / (float)FFT_SIZE;
+	char file_buffer[FFT_SIZE];
+
 	for (;;)
 	{
+		// Do DSP here
+
 		// ------------------------------------------------------------
 		// DSP STEPS
 		// ------------------------------------------------------------
+
+		fft_config_t *real_fft_plan = fft_init(FFT_SIZE, FFT_REAL, FFT_FORWARD, test_buffer, fft_buffer);
+
+		fft_execute(real_fft_plan);
+
+		for (int k = 1; k < FFT_SIZE / 2; k++)
+		{
+			magnitude[k] = 2 * sqrt(pow(fft_buffer[2 * k], 2) + pow(fft_buffer[2 * k + 1], 2)) / FFT_SIZE;
+			frequency[k] = k * ratio;
+			keyNR[k] = log2(frequency[k] / 440) * 12 + 49;
+
+			if (magnitude[k] >= 0.5)
+			{
+				printf("%d-th magnitude: %f => corresponds to %f Hz\n", k, magnitude[k], frequency[k]);
+				printf("keyNR: %d\n", (int)round(keyNR[k]));
+			}
+			// printf("%f\n", magnitude[k]);
+		}
+		// printf("Middle component : %f\n", fft_buffer[1]); // N/2 is real and stored at [1]
 
 		// 1. read ADC to DMA buffer
 		// 2. analyze audio data (FFT, etc.)
@@ -42,13 +73,26 @@ static void dsp_task(void *arg)
 		// 5.1 delete saved note
 		// 6. send saved notes to MIDI queue
 
-		// (!note) velocity of the note is determined by the initial amplitude of a transient frequency
-
 		// at a later point, the message should be created from the DSP result
 		// eventually, the message should be created in the MIDI task and not in the DSP task
 		// instead, the DSP task should send the rawest possible data to the MIDI task
 		// the MIDI task should then create the MIDI message from the raw data
 		// the raw data could be the a buffer in which, currently on/off notes are stored
+
+		// (!note) velocity of the note is determined by the initial amplitude of a transient frequency
+
+		ESP_LOGI(TAG, "Sending MIDI message from DSP task");
+
+		// send dummy message
+		midi_message_t msg = {
+			.status = test_status,
+			.channel = 0,
+			.param1 = 0x3C, // C4
+			.param2 = 0x7F};
+		// toggle note on/off for testing purposes
+		test_status = (test_status == MIDI_STATUS_NOTE_OFF) ? MIDI_STATUS_NOTE_ON : MIDI_STATUS_NOTE_OFF;
+
+		xQueueSend(gitcon_handle->midi_queue, &msg, portMAX_DELAY);
 		vTaskDelay(1000 / portTICK_PERIOD_MS);
 	}
 }
@@ -62,9 +106,9 @@ static void midi_task(void *arg)
 		if (xQueueReceive(gitcon_handle->midi_queue, &msg, portMAX_DELAY) == pdTRUE)
 		{
 			// send message to MIDI UART
-			ESP_ERROR_CHECK_WITHOUT_ABORT(midi_write(gitcon_handle->midi_handle, &msg));
+			ESP_ERROR_CHECK(midi_write(gitcon_handle->midi_handle, &msg));
 		}
-		vTaskDelay(10 / portTICK_PERIOD_MS);
+		vTaskDelay(1000 / portTICK_PERIOD_MS);
 	}
 }
 
@@ -109,6 +153,7 @@ esp_err_t gitcon_init(gitcon_context_t **out_handle)
 	// ------------------------------------------------------------
 	// SETUP INTERNAL I2S ADC
 	// ------------------------------------------------------------
+
 	i2s_config_t i2s_cfg = {
 		.mode = (i2s_mode_t)(I2S_MODE_MASTER | I2S_MODE_RX | I2S_MODE_ADC_BUILT_IN),
 		.sample_rate = 40000,
@@ -120,7 +165,6 @@ esp_err_t gitcon_init(gitcon_context_t **out_handle)
 		.dma_buf_len = 1024,
 		.use_apll = false,
 		.fixed_mclk = 0};
-	ESP_LOGI(TAG, "Initializing I2S ADC\n%d", i2s_cfg);
 
 	ESP_ERROR_CHECK(i2s_driver_install(I2S_NUM_0, &i2s_cfg, 0, NULL));
 	ESP_ERROR_CHECK(i2s_set_adc_mode((adc_unit_t)INTERNAL_ADC_UNIT, (adc1_channel_t)INTERNAL_ADC));
@@ -146,9 +190,7 @@ esp_err_t gitcon_init(gitcon_context_t **out_handle)
 	// INIT RTOS
 	// ------------------------------------------------------------
 
-	ESP_LOGI(TAG, "Creating RTOS tasks and queues...");
-	// create queue for midi messages
-	gitcon_cfg->midi_queue = xQueueCreate(10, sizeof(midi_message_t));
+	gitcon_cfg->midi_queue = xQueueCreate(10, sizeof(midi_message_t *));
 	if (!gitcon_cfg->midi_queue)
 		return ESP_ERR_NO_MEM;
 
@@ -178,7 +220,6 @@ esp_err_t gitcon_exit(gitcon_handle_t handle)
 #ifdef USE_INTERNAL_ADC
 	ESP_ERROR_CHECK(i2s_driver_uninstall(I2S_NUM_0));
 #endif
-
 	free(handle);
 	return ESP_OK;
 }
