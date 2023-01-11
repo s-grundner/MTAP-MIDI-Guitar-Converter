@@ -64,12 +64,14 @@ static void dsp_task(void *arg)
 		}
 		// printf("Middle component : %f\n", fft_buffer[1]); // N/2 is real and stored at [1]
 
-		// send dummy message
-		midi_message_t msg = {
-			.status = test_status,
-			.channel = 0,
-			.param1 = 0x3C, // C4
-			.param2 = 0x7F};
+		// 1. read ADC to DMA buffer
+		// 2. analyze audio data (FFT, etc.)
+		// 3. detect fundamental frequencies and convert to note number on piano roll
+		// 4. detect if frequency is transient
+		// 4.1 save note on transient ()
+		// 5. check if already on notes are below a certain threshold
+		// 5.1 delete saved note
+		// 6. send saved notes to MIDI queue
 
 		// at a later point, the message should be created from the DSP result
 		// eventually, the message should be created in the MIDI task and not in the DSP task
@@ -77,40 +79,22 @@ static void dsp_task(void *arg)
 		// the MIDI task should then create the MIDI message from the raw data
 		// the raw data could be the a buffer in which, currently on/off notes are stored
 
+		// (!note) velocity of the note is determined by the initial amplitude of a transient frequency
+
+		ESP_LOGI(TAG, "Sending MIDI message from DSP task");
+
+		// send dummy message
+		midi_message_t msg = {
+			.status = test_status,
+			.channel = 0,
+			.param1 = 0x3C, // C4
+			.param2 = 0x7F};
+		// toggle note on/off for testing purposes
+		test_status = (test_status == MIDI_STATUS_NOTE_OFF) ? MIDI_STATUS_NOTE_ON : MIDI_STATUS_NOTE_OFF;
+
 		xQueueSend(gitcon_handle->midi_queue, &msg, portMAX_DELAY);
 		vTaskDelay(1000 / portTICK_PERIOD_MS);
 	}
-	// 1. read ADC to DMA buffer
-	// 2. analyze audio data (FFT, etc.)
-	// 3. detect fundamental frequencies and convert to note number on piano roll
-	// 4. detect if frequency is transient
-	// 4.1 save note on transient ()
-	// 5. check if already on notes are below a certain threshold
-	// 5.1 delete saved note
-	// 6. send saved notes to MIDI queue
-
-	// (!note) velocity of the note is determined by the initial amplitude of a transient frequency
-
-	ESP_LOGI(TAG, "Sending MIDI message from DSP task");
-
-	// toggle note on/off for testing purposes
-	test_status = (test_status == MIDI_STATUS_NOTE_OFF) ? MIDI_STATUS_NOTE_ON : MIDI_STATUS_NOTE_OFF;
-
-	// send dummy message
-	midi_message_t msg = {
-		.status = test_status,
-		.channel = 1,
-		.param1 = 0x3C, // C4
-		.param2 = 0x7F};
-
-	// at a later point, the message should be created from the DSP result
-	// eventually, the message should be created in the MIDI task and not in the DSP task
-	// instead, the DSP task should send the rawest possible data to the MIDI task
-	// the MIDI task should then create the MIDI message from the raw data
-	// the raw data could be the a buffer in which, currently on/off notes are stored
-
-	xQueueSend(gitcon_handle->midi_queue, &msg, portMAX_DELAY);
-	vTaskDelay(1000 / portTICK_PERIOD_MS);
 }
 
 static void midi_task(void *arg)
