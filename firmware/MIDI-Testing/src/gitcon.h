@@ -19,8 +19,8 @@
 /**
  * @brief Gitcon Configuration
  * @param mcp3201 MCP3201 ADC
+ * @param midi_handle MIDI Handle
  * @param midi_queue MIDI Queue
- * @param post_fft_dsp_queue analysis result processing queue
  */
 typedef struct
 {

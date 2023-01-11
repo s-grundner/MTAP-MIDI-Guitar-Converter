@@ -17,6 +17,7 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/queue.h"
+#include "freertos/timers.h"
 
 #include "driver/gpio.h"
 #include "driver/spi_master.h"
@@ -34,8 +35,8 @@
 #define SPI_CS (GPIO_NUM_5)
 #define SPI_DEV (VSPI_HOST)
 
-#define INTERNAL_ADC_UNIT (ADC_UNIT_2)
-#define INTERNAL_ADC (ADC2_CHANNEL_0)
+#define INTERNAL_ADC_UNIT (ADC_UNIT_1)
+#define INTERNAL_ADC (ADC_CHANNEL_0)
 #define INTERNAL_ADC_IO (GPIO_NUM_4)
 
 #define MIDI_UART (UART_NUM_1)

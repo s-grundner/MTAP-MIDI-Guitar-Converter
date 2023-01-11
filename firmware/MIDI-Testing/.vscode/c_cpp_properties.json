@@ -131,6 +131,8 @@
                 "C:/Users/simon/.platformio/packages/framework-espidf/components/ulp/include",
                 "C:/Users/simon/.platformio/packages/framework-espidf/components/wifi_provisioning/include",
                 "C:/Users/simon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio",
+                "C:/Users/simon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/dip",
+                "C:/Users/simon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/.pio/libdeps/az-delivery-devkit-v4/Unity/src",
                 ""
             ],
             "browse": {
@@ -259,6 +261,8 @@
                     "C:/Users/simon/.platformio/packages/framework-espidf/components/ulp/include",
                     "C:/Users/simon/.platformio/packages/framework-espidf/components/wifi_provisioning/include",
                     "C:/Users/simon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio",
+                    "C:/Users/simon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/dip",
+                    "C:/Users/simon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/.pio/libdeps/az-delivery-devkit-v4/Unity/src",
                     ""
                 ]
             },
