@@ -10,7 +10,6 @@
  */
 
 #include "gitcon.h"
-#include "dip.h"
 
 #define USER_LOCAL_LEVEL ESP_LOG_ERROR
 static const char *TAG = "main";
