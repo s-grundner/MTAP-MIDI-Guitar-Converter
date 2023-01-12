@@ -28,7 +28,8 @@ typedef struct
   mcp3201_handle_t mcp3201;
 #endif
   midi_handle_t midi_handle;
-  QueueHandle_t midi_queue;
+  QueueHandle_t midi_queue; // TODO: merge into midi_handle
+  i2s_sampler_t* sampler;
 } gitcon_context_t;
 typedef gitcon_context_t* gitcon_handle_t;
 

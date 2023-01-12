@@ -8,10 +8,12 @@
  * @copyright Copyright (c) 2022
  *
  */
-#pragma once
+#ifndef CONFIG_H
+#define CONFIG_H
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <math.h>
 
 #include "freertos/FreeRTOS.h"
@@ -27,8 +29,8 @@
 #include "esp_adc_cal.h"
 #include "esp_log.h"
 
-#include "esp_log.h"
 #include "fft.h"
+#include "i2s_sampler.h"
 #include "mcp3201.h"
 #include "midi.h"
 
@@ -39,9 +41,9 @@
 #define SPI_DEV (VSPI_HOST)
 
 #define ADC_RES_BITS 12
-#define ADC_SAMPLES_COUNT (1 << ADC_RES_BITS)
+#define ADC_SAMPLES_COUNT 2*(1 << ADC_RES_BITS)
 #define INTERNAL_ADC_UNIT (ADC_UNIT_1)
-#define INTERNAL_ADC (ADC_CHANNEL_0)
+#define INTERNAL_ADC_CHANNEL (ADC_CHANNEL_0)
 #define INTERNAL_ADC_IO (GPIO_NUM_4)
 #define DMA_CHAN 1
 
@@ -55,3 +57,5 @@
 
  // #define USE_MCP3201
 #define USE_INTERNAL_ADC
+
+#endif // CONFIG_H

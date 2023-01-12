@@ -27,8 +27,14 @@ static void dsp_task(void* arg)
 		// DSP STEPS
 		// ------------------------------------------------------------
 
-		// 1. read ADC to DMA buffer
-		// 2. analyze audio data (FFT, etc.)
+		if (xQueueReceive(handle->sampler->dsp_queue, &audio_buffer, portMAX_DELAY) == pdTRUE)
+		{
+			ESP_LOGI(TAG, "DSP: received audio buffer");
+			// uart_write_bytes(UART_NUM_1, audio_buffer, sizeof(audio_buffer));
+		}
+
+		// 1. read ADC to DMA buffer [x]
+		// 2. analyze audio data (FFT, etc.) 
 		// 3. detect fundamental frequencies and convert to note number on piano roll
 		// 4. detect if frequency is transient
 		// 4.1 save note on transient ()
@@ -101,7 +107,8 @@ esp_err_t gitcon_init(gitcon_context_t** out_handle)
 #endif
 
 #ifdef USE_INTERNAL_ADC
-
+	i2s_sampler_t* sampler = sampler_start(INTERNAL_ADC_CHANNEL, ADC_SAMPLES_COUNT);
+	gitcon_cfg->sampler = sampler;
 #endif
 
 	// ------------------------------------------------------------
@@ -153,9 +160,7 @@ esp_err_t gitcon_exit(gitcon_handle_t handle)
 	ESP_ERROR_CHECK(mcp3201_exit(handle->mcp3201));
 #endif
 
-#ifdef USE_INTERNAL_ADC
-	ESP_ERROR_CHECK(i2s_driver_uninstall(I2S_NUM_0));
-#endif
+	sampler_stop(handle->sampler);
 
 	free(handle);
 	return ESP_OK;
