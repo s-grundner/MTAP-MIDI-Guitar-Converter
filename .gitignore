@@ -13,3 +13,4 @@ manufacturing/invoice/*
 .vscode
 sdkconfig.*
 c_cpp_properties.json
+firmware/MIDI-Testing/.editorconfig
