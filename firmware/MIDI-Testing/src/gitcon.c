@@ -11,22 +11,16 @@
 
 #include "gitcon.h"
 
-static const char *TAG = "gitcon";
+static const char* TAG = "gitcon";
 
 // ------------------------------------------------------------
 // ISR and static functions
 // ------------------------------------------------------------
-static void dma_task(void *arg)
-{
-	for (;;)
-	{
-		// Do DMA here
-		vTaskDelay(1000 / portTICK_PERIOD_MS);
-	}
-}
 
-static void dsp_task(void *arg)
+static void dsp_task(void* arg)
 {
+	gitcon_handle_t handle = (gitcon_handle_t)arg;
+	size_t* audio_buffer = NULL;
 	for (;;)
 	{
 		// ------------------------------------------------------------
@@ -49,11 +43,11 @@ static void dsp_task(void *arg)
 		// instead, the DSP task should send the rawest possible data to the MIDI task
 		// the MIDI task should then create the MIDI message from the raw data
 		// the raw data could be the a buffer in which, currently on/off notes are stored
-		vTaskDelay(1000 / portTICK_PERIOD_MS);
 	}
+	vTaskDelay(1000 / portTICK_PERIOD_MS);
 }
 
-static void midi_task(void *arg)
+static void midi_task(void* arg)
 {
 	gitcon_handle_t gitcon_handle = (gitcon_handle_t)arg;
 	midi_message_t msg;
@@ -72,9 +66,9 @@ static void midi_task(void *arg)
 // non-static functions
 // ------------------------------------------------------------
 
-esp_err_t gitcon_init(gitcon_context_t **out_handle)
+esp_err_t gitcon_init(gitcon_context_t** out_handle)
 {
-	gitcon_context_t *gitcon_cfg = (gitcon_context_t *)malloc(sizeof(gitcon_context_t));
+	gitcon_context_t* gitcon_cfg = (gitcon_context_t*)malloc(sizeof(gitcon_context_t));
 	if (!gitcon_cfg)
 		return ESP_ERR_NO_MEM;
 
@@ -99,32 +93,15 @@ esp_err_t gitcon_init(gitcon_context_t **out_handle)
 		.host = SPI_DEV,
 		.cs_io = SPI_CS,
 		.miso_io = SPI_MISO,
-		.mosi_io = SPI_MOSI};
+		.mosi_io = SPI_MOSI
+	};
 	// initialize ADC and store in gitcon handle
 	ESP_ERROR_CHECK(mcp3201_init(&adc_handle, &adc_cfg));
 	cfg->mcp3201 = adc_handle;
 #endif
 
 #ifdef USE_INTERNAL_ADC
-	// ------------------------------------------------------------
-	// SETUP INTERNAL I2S ADC
-	// ------------------------------------------------------------
-	i2s_config_t i2s_cfg = {
-		.mode = (i2s_mode_t)(I2S_MODE_MASTER | I2S_MODE_RX | I2S_MODE_ADC_BUILT_IN),
-		.sample_rate = 40000,
-		.bits_per_sample = I2S_BITS_PER_SAMPLE_16BIT,
-		.channel_format = I2S_CHANNEL_FMT_ONLY_LEFT,
-		.communication_format = I2S_COMM_FORMAT_STAND_I2S,
-		.intr_alloc_flags = ESP_INTR_FLAG_LEVEL1,
-		.dma_buf_count = 4,
-		.dma_buf_len = 1024,
-		.use_apll = false,
-		.fixed_mclk = 0};
-	ESP_LOGI(TAG, "Initializing I2S ADC\n%d", i2s_cfg);
 
-	ESP_ERROR_CHECK(i2s_driver_install(I2S_NUM_0, &i2s_cfg, 0, NULL));
-	ESP_ERROR_CHECK(i2s_set_adc_mode((adc_unit_t)INTERNAL_ADC_UNIT, (adc1_channel_t)INTERNAL_ADC));
-	ESP_ERROR_CHECK(i2s_adc_enable(I2S_NUM_0));
 #endif
 
 	// ------------------------------------------------------------
@@ -137,7 +114,7 @@ esp_err_t gitcon_init(gitcon_context_t **out_handle)
 		.uart_num = MIDI_UART,
 		.baudrate = MIDI_BAUD,
 		.rx_io = MIDI_RX,
-		.tx_io = MIDI_TX};
+		.tx_io = MIDI_TX };
 	// Initialize MIDI and store in gitcon handle
 	ESP_ERROR_CHECK(midi_init(&midi_handle, &midi_cfg));
 	gitcon_cfg->midi_handle = midi_handle;
@@ -147,19 +124,20 @@ esp_err_t gitcon_init(gitcon_context_t **out_handle)
 	// ------------------------------------------------------------
 
 	ESP_LOGI(TAG, "Creating RTOS tasks and queues...");
+
 	// create queue for midi messages
 	gitcon_cfg->midi_queue = xQueueCreate(10, sizeof(midi_message_t));
 	if (!gitcon_cfg->midi_queue)
 		return ESP_ERR_NO_MEM;
 
-	// DMA task: reads audio data from ADC and sends it to DSP task
-	if (xTaskCreatePinnedToCore(dma_task, "dma_task", 2048, gitcon_cfg, 5, NULL, 0) == pdFALSE)
-		return ESP_ERR_NO_MEM;
 	// DSP task: receives audio data from DMA task and sends midi messages to midi task
-	if (xTaskCreatePinnedToCore(dsp_task, "dsp_task", 2048, gitcon_cfg, 5, NULL, 1) == pdFALSE)
+	TaskHandle_t dsp_task_handle;
+	if (xTaskCreatePinnedToCore(dsp_task, "dsp_task", 2048, gitcon_cfg, 5, &dsp_task_handle, 1) == pdFALSE)
 		return ESP_ERR_NO_MEM;
+
 	// MIDI task: receives midi messages from DSP task and sends them to MIDI UART
-	if (xTaskCreatePinnedToCore(midi_task, "midi_task", 2048, gitcon_cfg, 5, NULL, 0) == pdFALSE)
+	TaskHandle_t midi_task_handle;
+	if (xTaskCreatePinnedToCore(midi_task, "midi_task", 2048, gitcon_cfg, 5, &midi_task_handle, 0) == pdFALSE)
 		return ESP_ERR_NO_MEM;
 
 	// Pass final configuration to outer parameters
