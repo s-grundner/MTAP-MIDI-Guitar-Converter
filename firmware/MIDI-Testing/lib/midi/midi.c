@@ -14,7 +14,7 @@
 #define MIDI_BYTE_SIZE_SHORT 2
 
 static const char *TAG = "MIDI";
-static const char *MIDI_MON = "MIDI MONITOR";
+// static const char *MIDI_MON = "MIDI MONITOR";
 
 /**
  * @brief MIDI Context (internal! not to be accessed externally, use midi_handle_t instead)
@@ -91,7 +91,7 @@ esp_err_t midi_exit(midi_handle_t midi_handle)
 
 esp_err_t midi_write(midi_handle_t handle, midi_message_t *msg)
 {
-	ESP_LOGI(MIDI_MON, "Status: %02X\tChannel: %02X\t Data: %02X %02X", msg->status, msg->channel, msg->param1, msg->param2);
+	// ESP_LOGI(MIDI_MON, "Status: %02X\tChannel: %02X\t Data: %02X %02X", msg->status, msg->channel, msg->param1, msg->param2);
 
 	// ------------------------------------------------------------
 	// SEND MIDI MESSAGE

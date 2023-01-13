@@ -11,16 +11,16 @@
 
 #include "gitcon.h"
 
-static const char* TAG = "gitcon";
+static const char *TAG = "gitcon";
 
 // ------------------------------------------------------------
 // ISR and static functions
 // ------------------------------------------------------------
 
-static void IRAM_ATTR dsp_task(void* arg)
+static void IRAM_ATTR dsp_task(void *arg)
 {
 	gitcon_handle_t handle = (gitcon_handle_t)arg;
-	size_t* audio_buffer = NULL;
+	size_t *audio_buffer = NULL;
 	for (;;)
 	{
 		// ------------------------------------------------------------
@@ -33,7 +33,7 @@ static void IRAM_ATTR dsp_task(void* arg)
 		}
 
 		// 1. read ADC to DMA buffer [x]
-		// 2. analyze audio data (FFT, etc.) 
+		// 2. analyze audio data (FFT, etc.)
 		// 3. detect fundamental frequencies and convert to note number on piano roll
 		// 4. detect if frequency is transient
 		// 4.1 save note on transient ()
@@ -52,7 +52,7 @@ static void IRAM_ATTR dsp_task(void* arg)
 	vTaskDelay(1000 / portTICK_PERIOD_MS);
 }
 
-static void midi_task(void* arg)
+static void midi_task(void *arg)
 {
 	gitcon_handle_t gitcon_handle = (gitcon_handle_t)arg;
 	midi_message_t msg;
@@ -71,9 +71,9 @@ static void midi_task(void* arg)
 // non-static functions
 // ------------------------------------------------------------
 
-esp_err_t gitcon_init(gitcon_context_t** out_handle)
+esp_err_t gitcon_init(gitcon_context_t **out_handle)
 {
-	gitcon_context_t* gitcon_cfg = (gitcon_context_t*)malloc(sizeof(gitcon_context_t));
+	gitcon_context_t *gitcon_cfg = (gitcon_context_t *)malloc(sizeof(gitcon_context_t));
 	if (!gitcon_cfg)
 		return ESP_ERR_NO_MEM;
 
@@ -98,15 +98,14 @@ esp_err_t gitcon_init(gitcon_context_t** out_handle)
 		.host = SPI_DEV,
 		.cs_io = SPI_CS,
 		.miso_io = SPI_MISO,
-		.mosi_io = SPI_MOSI
-	};
+		.mosi_io = SPI_MOSI};
 	// initialize ADC and store in gitcon handle
 	ESP_ERROR_CHECK(mcp3201_init(&adc_handle, &adc_cfg));
 	cfg->mcp3201 = adc_handle;
 #endif
 
 #ifdef USE_INTERNAL_ADC
-	i2s_sampler_t* sampler = sampler_start(INTERNAL_ADC_CHANNEL, AUDIO_BUFFER_SIZE, F_SAMPLE_HZ);
+	i2s_sampler_t *sampler = sampler_start(INTERNAL_ADC_CHANNEL, AUDIO_BUFFER_SIZE, F_SAMPLE_HZ);
 	gitcon_cfg->sampler = sampler;
 #endif
 
@@ -120,7 +119,7 @@ esp_err_t gitcon_init(gitcon_context_t** out_handle)
 		.uart_num = MIDI_UART,
 		.baudrate = MIDI_BAUD,
 		.rx_io = MIDI_RX,
-		.tx_io = MIDI_TX };
+		.tx_io = MIDI_TX};
 	// Initialize MIDI and store in gitcon handle
 	ESP_ERROR_CHECK(midi_init(&midi_handle, &midi_cfg));
 	gitcon_cfg->midi_handle = midi_handle;
