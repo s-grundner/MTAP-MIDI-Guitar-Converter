@@ -40,20 +40,20 @@
 #define SPI_CS (GPIO_NUM_5)
 #define SPI_DEV (VSPI_HOST)
 
-#define ADC_RES_BITS 12
-#define ADC_SAMPLES_COUNT 2*(1 << ADC_RES_BITS)
-#define INTERNAL_ADC_UNIT (ADC_UNIT_1)
-#define INTERNAL_ADC_CHANNEL (ADC_CHANNEL_0)
-#define INTERNAL_ADC_IO (GPIO_NUM_4)
-#define DMA_CHAN 1
-
 #define MIDI_UART (UART_NUM_1)
 #define MIDI_BAUD (115200)
 #define MIDI_TX (GPIO_NUM_17)
 #define MIDI_RX (GPIO_NUM_16)
 
-#define FFT_SIZE 8192	  // Amount of samples to take for FFT
-#define F_SAMPLE_HZ 44100 // Sample rate of FFT
+#define DMA_CHAN 1
+#define ADC_RES_BITS 12
+#define INTERNAL_ADC_UNIT (ADC_UNIT_1)
+#define INTERNAL_ADC_CHANNEL (ADC_CHANNEL_0)
+#define INTERNAL_ADC_IO (GPIO_NUM_4)
+
+#define AUDIO_BUFFER_SIZE 512			// Size of buffer for I2S DMA
+#define F_SAMPLE_HZ 44100 				// Sample rate of FFT
+#define FFT_SIZE (AUDIO_BUFFER_SIZE)	// Amount of samples to take for FFT
 
  // #define USE_MCP3201
 #define USE_INTERNAL_ADC

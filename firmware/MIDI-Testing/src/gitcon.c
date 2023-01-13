@@ -17,7 +17,7 @@ static const char* TAG = "gitcon";
 // ISR and static functions
 // ------------------------------------------------------------
 
-static void dsp_task(void* arg)
+static void IRAM_ATTR dsp_task(void* arg)
 {
 	gitcon_handle_t handle = (gitcon_handle_t)arg;
 	size_t* audio_buffer = NULL;
@@ -29,8 +29,7 @@ static void dsp_task(void* arg)
 
 		if (xQueueReceive(handle->sampler->dsp_queue, &audio_buffer, portMAX_DELAY) == pdTRUE)
 		{
-			ESP_LOGI(TAG, "DSP: received audio buffer");
-			// uart_write_bytes(UART_NUM_1, audio_buffer, sizeof(audio_buffer));
+			printf("Buffer: %d\n", *audio_buffer);
 		}
 
 		// 1. read ADC to DMA buffer [x]
@@ -107,7 +106,7 @@ esp_err_t gitcon_init(gitcon_context_t** out_handle)
 #endif
 
 #ifdef USE_INTERNAL_ADC
-	i2s_sampler_t* sampler = sampler_start(INTERNAL_ADC_CHANNEL, ADC_SAMPLES_COUNT);
+	i2s_sampler_t* sampler = sampler_start(INTERNAL_ADC_CHANNEL, AUDIO_BUFFER_SIZE, F_SAMPLE_HZ);
 	gitcon_cfg->sampler = sampler;
 #endif
 
@@ -133,13 +132,13 @@ esp_err_t gitcon_init(gitcon_context_t** out_handle)
 	ESP_LOGI(TAG, "Creating RTOS tasks and queues...");
 
 	// create queue for midi messages
-	gitcon_cfg->midi_queue = xQueueCreate(10, sizeof(midi_message_t));
+	gitcon_cfg->midi_queue = xQueueCreate(5, sizeof(midi_message_t));
 	if (!gitcon_cfg->midi_queue)
 		return ESP_ERR_NO_MEM;
 
 	// DSP task: receives audio data from DMA task and sends midi messages to midi task
 	TaskHandle_t dsp_task_handle;
-	if (xTaskCreatePinnedToCore(dsp_task, "dsp_task", 2048, gitcon_cfg, 5, &dsp_task_handle, 1) == pdFALSE)
+	if (xTaskCreatePinnedToCore(dsp_task, "dsp_task", 1 << 16, gitcon_cfg, 5, &dsp_task_handle, 1) == pdFALSE)
 		return ESP_ERR_NO_MEM;
 
 	// MIDI task: receives midi messages from DSP task and sends them to MIDI UART

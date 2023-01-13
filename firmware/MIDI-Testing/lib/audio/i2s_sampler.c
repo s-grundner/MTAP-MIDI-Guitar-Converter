@@ -9,36 +9,31 @@ static void IRAM_ATTR sampler_task(void* arg)
 		i2s_event_t evt;
 		if (xQueueReceive(sampler->dma_queue, &evt, portMAX_DELAY) == pdTRUE)
 		{
-			ESP_LOGI(TAG, "I2S event: %d", evt.type);
 			if (evt.type == I2S_EVENT_RX_DONE)
 			{
 				size_t bytes_read = 0;
-				do
-				{
+				do {
 					// fill audio buffer
 					size_t bytes_to_read = 2 * (sampler->buffer_size - sampler->buffer_pos);
 					void* buffer_position = (void*)(sampler->buffer + sampler->buffer_pos);
-					// read data from i2s
-					i2s_read(I2S_NUM_0, buffer_position, bytes_to_read, &bytes_read, 10 / portTICK_PERIOD_MS);
-					sampler->buffer_pos += bytes_read / 2;
 
-					ESP_LOGI(TAG, "Audio buffer position: %d, %d, %d", sampler->buffer_pos, bytes_read, bytes_to_read);
+					// read data from i2s
+					i2s_read(I2S_NUM_0, buffer_position, bytes_to_read, &bytes_read, 1 / portTICK_PERIOD_MS);
+					sampler->buffer_pos += bytes_read / 2;
 
 					if (sampler->buffer_pos == sampler->buffer_size)
 					{
 						// send data to DSP queue
 						sampler->buffer_pos = 0;
 						xQueueSend(sampler->dsp_queue, &sampler->buffer, portMAX_DELAY);
-						ESP_LOGI(TAG, "Audio buffer sent to DSP queue");
 					}
-
 				} while (bytes_read > 0);
 			}
 		}
 	}
 }
 
-i2s_sampler_t* sampler_start(adc_channel_t adc1_channel, size_t buffer_size)
+i2s_sampler_t* sampler_start(adc_channel_t adc1_channel, size_t buffer_size, size_t sample_rate)
 {
 	ESP_LOGI(TAG, "Initializing I2S Sampler...");
 
@@ -46,7 +41,7 @@ i2s_sampler_t* sampler_start(adc_channel_t adc1_channel, size_t buffer_size)
 
 	i2s_config_t i2s_cfg = {
 		.mode = (i2s_mode_t)(I2S_MODE_MASTER | I2S_MODE_RX | I2S_MODE_ADC_BUILT_IN),
-		.sample_rate = 10000,
+		.sample_rate = sample_rate,
 		.bits_per_sample = I2S_BITS_PER_SAMPLE_16BIT,
 		.channel_format = I2S_CHANNEL_FMT_ONLY_LEFT,
 		.communication_format = I2S_COMM_FORMAT_STAND_I2S,
@@ -73,7 +68,7 @@ i2s_sampler_t* sampler_start(adc_channel_t adc1_channel, size_t buffer_size)
 
 	// DMA task: receives audio data from ADC and sends it to DSP task
 	TaskHandle_t sampler_task_handle;
-	if (xTaskCreatePinnedToCore(sampler_task, "reader_task", 8192, sampler, 5, &sampler_task_handle, 0) == pdFALSE)
+	if (xTaskCreatePinnedToCore(sampler_task, "reader_task", 2 * buffer_size, sampler, 5, &sampler_task_handle, 0) == pdFALSE)
 		return NULL;
 
 	return sampler;
