@@ -54,11 +54,11 @@ static void IRAM_ATTR dip_isr(void* args)
 		midi_message_t msg = {
 			.status = (midi_status_t)(dip_switch->current_dip[i]) ? MIDI_STATUS_NOTE_ON : MIDI_STATUS_NOTE_OFF,
 			.channel = 0,
-			.param1 = 0x3C + WHOLE_TONE[i], // C4
+			.param1 = 0x3C + WHOLE_TONE[i], // C4 + WHOLE_TONE[i]
 			.param2 = 127 };
 		xQueueSendFromISR(dip_switch->midi_queue, &msg, NULL);
 
-		// disable interrupts for gpios
+		// disable interrupts for gpios to debounce
 		ESP_ERROR_CHECK(gpio_intr_disable(DIP_IO[i]));
 		dip_switch->previous_dip[i] = dip_switch->current_dip[i];
 		xTimerStartFromISR(dip_switch->timer[i], NULL);
@@ -94,7 +94,8 @@ void app_main(void)
 		.current_dip = current_dip,
 		.previous_dip = previous_dip,
 		.timer = debounce_timers,
-		.midi_queue = handle->midi_queue };
+		.midi_queue = handle->midi_queue
+	};
 
 	// setup interrupt for DIP switches
 	ESP_ERROR_CHECK(gpio_install_isr_service(0));

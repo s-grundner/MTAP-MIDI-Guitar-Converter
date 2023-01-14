@@ -25,18 +25,20 @@
 typedef struct
 {
 #ifdef USE_MCP3201
-  mcp3201_handle_t mcp3201;
-#endif
-  midi_handle_t midi_handle;
-  QueueHandle_t midi_queue; // TODO: merge into midi_handle
+  mcp3201_sampler_t* sampler;
+#else
   i2s_sampler_t* sampler;
+#endif
+
+  midi_handle_t midi_handle;
+  QueueHandle_t midi_queue; // TODO: merge with midi_handle
 } gitcon_context_t;
 typedef gitcon_context_t* gitcon_handle_t;
 
 /**
  * @brief initializes gitcon
  *
- * @param out_handle
+ * @param[out] out_handle
  * @return esp_err_t
  */
 esp_err_t gitcon_init(gitcon_handle_t* out_handle);

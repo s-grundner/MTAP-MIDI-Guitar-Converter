@@ -11,30 +11,31 @@
 
 #include "mcp3201.h"
 
-static const char *TAG = "mcp3201";
+static const char* TAG = "mcp3201";
 
 struct mcp3201_context_t
 {
 	mcp3201_config_t cfg;
 	spi_device_handle_t spi;
+	spi_transaction_t* ongoing_transaction;
 };
 typedef struct mcp3201_context_t mcp3201_context_t;
 
-static void cs_low(spi_transaction_t *t)
+static void cs_low(spi_transaction_t* t)
 {
 	mcp3201_handle_t mcp_handle = (mcp3201_handle_t)t->user;
 	gpio_set_level(mcp_handle->cfg.cs_io, 0);
 }
 
-static void cs_high(spi_transaction_t *t)
+static void cs_high(spi_transaction_t* t)
 {
 	mcp3201_handle_t mcp_handle = (mcp3201_handle_t)t->user;
 	gpio_set_level(mcp_handle->cfg.cs_io, 1);
 }
 
-esp_err_t mcp3201_init(mcp3201_context_t **out_ctx, const mcp3201_config_t *cfg)
+esp_err_t mcp3201_init(mcp3201_context_t** out_ctx, const mcp3201_config_t* cfg)
 {
-	mcp3201_context_t *ctx = (mcp3201_context_t *)malloc(sizeof(mcp3201_context_t));
+	mcp3201_context_t* ctx = (mcp3201_context_t*)malloc(sizeof(mcp3201_context_t));
 	esp_err_t err = ESP_OK;
 	if (ctx == NULL)
 	{
@@ -43,7 +44,7 @@ esp_err_t mcp3201_init(mcp3201_context_t **out_ctx, const mcp3201_config_t *cfg)
 	}
 
 	*ctx = (mcp3201_context_t){
-		.cfg = *cfg};
+		.cfg = *cfg };
 
 	spi_device_interface_config_t dev_cfg = {
 		.clock_speed_hz = ADC_CLK,
@@ -78,11 +79,11 @@ cleanup:
 	return err;
 }
 
-esp_err_t mcp3201_read(mcp3201_context_t *ctx, uint16_t *out_value)
+esp_err_t mcp3201_read(mcp3201_context_t* ctx, uint16_t* out_value)
 {
 	esp_err_t err = ESP_OK;
 	spi_transaction_t t = {
-		.user = (void *)ctx,
+		.user = (void*)ctx,
 		.length = 16,
 		.rx_buffer = out_value,
 	};

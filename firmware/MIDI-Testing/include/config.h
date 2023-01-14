@@ -55,7 +55,7 @@
 #define F_SAMPLE_HZ 96000			 // Sample rate of FFT and sampler
 #define FFT_SIZE (AUDIO_BUFFER_SIZE) // Amount of samples to take for FFT
 
+ // leave this commented out to use internal ADC
 // #define USE_MCP3201
-#define USE_INTERNAL_ADC
 
 #endif // CONFIG_H

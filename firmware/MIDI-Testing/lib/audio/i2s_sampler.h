@@ -18,7 +18,7 @@ typedef struct
 	size_t buffer_size;
 } i2s_sampler_t;
 
-i2s_sampler_t* sampler_start(adc_channel_t adc1_channel, size_t buffer_size, size_t sample_rate);
-esp_err_t sampler_stop(i2s_sampler_t* sampler);
+i2s_sampler_t* i2s_sampler_start(adc_channel_t adc1_channel, QueueHandle_t recv_queue, size_t buffer_size, size_t f_sample);
+esp_err_t i2s_sampler_stop(i2s_sampler_t* sampler);
 
 #endif // SAMPLING_H

@@ -22,17 +22,17 @@
 #define MIDI_BYTE_SIZE_DEFAULT 3
 #define MIDI_BYTE_SIZE_SHORT 2
 
-/**
- * @brief MIDI Status Bytes
- * @enum midi_status_t
- * @param MIDI_STATUS_NOTE_OFF 0x80 requires param2
- * @param MIDI_STATUS_NOTE_ON 0x90 requires param2
- * @param MIDI_STATUS_POLYPHONIC_KEY_PRESSURE 0xA0 param2 is not used
- * @param MIDI_STATUS_CONTROL_CHANGE 0xB0 requires param2
- * @param MIDI_STATUS_PROGRAM_CHANGE 0xC0 param2 is is not used
- * @param MIDI_STATUS_CHANNEL_PRESSURE 0xD0 param2 is is not used
- * @param MIDI_STATUS_PITCH_BEND 0xE0 requires param2
- */
+ /**
+  * @brief MIDI Status Bytes
+  * @enum midi_status_t
+  * @param MIDI_STATUS_NOTE_OFF 0x80 requires param2
+  * @param MIDI_STATUS_NOTE_ON 0x90 requires param2
+  * @param MIDI_STATUS_POLYPHONIC_KEY_PRESSURE 0xA0 param2 is not used
+  * @param MIDI_STATUS_CONTROL_CHANGE 0xB0 requires param2
+  * @param MIDI_STATUS_PROGRAM_CHANGE 0xC0 param2 is is not used
+  * @param MIDI_STATUS_CHANNEL_PRESSURE 0xD0 param2 is is not used
+  * @param MIDI_STATUS_PITCH_BEND 0xE0 requires param2
+  */
 typedef enum
 {
 	MIDI_STATUS_NOTE_OFF = 0x80,
@@ -75,16 +75,16 @@ typedef struct
 	gpio_num_t rx_io;
 	gpio_num_t tx_io;
 } midi_config_t;
-typedef struct midi_context_t *midi_handle_t;
+typedef struct midi_context_t* midi_handle_t;
 
 /**
  * @brief initializes MIDI
  *
- * @param out_handle MIDI Handle to be initialized
- * @param out_cfg MIDI Configuration
+ * @param[out] out_handle MIDI Handle to be initialized
+ * @param[out] out_cfg MIDI Configuration
  * @return esp_err_t
  */
-esp_err_t midi_init(midi_handle_t *out_handle, midi_config_t *out_cfg);
+esp_err_t midi_init(midi_handle_t* out_handle, midi_config_t* out_cfg);
 
 /**
  * @brief Exits MIDI and frees all resources
@@ -101,7 +101,7 @@ esp_err_t midi_exit(midi_handle_t midi_handle);
  * @param msg MIDI Message to be sent
  * @return esp_err_t
  */
-esp_err_t midi_write(midi_handle_t midi_handle, midi_message_t *msg);
+esp_err_t midi_write(midi_handle_t midi_handle, midi_message_t* msg);
 
 /**
  * @brief Reads MIDI Message from UART
@@ -110,7 +110,7 @@ esp_err_t midi_write(midi_handle_t midi_handle, midi_message_t *msg);
  * @param msg MIDI Message to be read
  * @return esp_err_t
  */
-esp_err_t midi_read(midi_handle_t midi_handle, midi_message_t *msg);
+esp_err_t midi_read(midi_handle_t midi_handle, midi_message_t* msg);
 
 // functions to configure midi messages
 midi_message_t note_off(uint8_t channel, uint8_t key_num, uint8_t velocity);
