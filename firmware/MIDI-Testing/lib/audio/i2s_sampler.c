@@ -1,5 +1,5 @@
 #include "i2s_sampler.h"
-static const char* TAG = "I2S_SAMPLER";
+static const char *TAG = "I2S_SAMPLER";
 
 #define RESAMPLE_DIVIDER 2
 #define READER_TIMEOUT_MS 10
@@ -7,9 +7,9 @@ static const char* TAG = "I2S_SAMPLER";
 
 static TaskHandle_t sampler_task_handle;
 
-static void IRAM_ATTR sampler_task(void* arg)
+static void IRAM_ATTR sampler_task(void *arg)
 {
-	i2s_sampler_t* sampler = (i2s_sampler_t*)arg;
+	i2s_sampler_t *sampler = (i2s_sampler_t *)arg;
 	for (;;)
 	{
 		i2s_event_t evt;
@@ -18,10 +18,11 @@ static void IRAM_ATTR sampler_task(void* arg)
 			if (evt.type == I2S_EVENT_RX_DONE)
 			{
 				size_t bytes_read = 0;
-				do {
+				do
+				{
 					// fill audio buffer
 					size_t bytes_to_read = RESAMPLE_DIVIDER * (sampler->buffer_size - sampler->buffer_pos);
-					void* buffer_position = (void*)(sampler->buffer + sampler->buffer_pos);
+					void *buffer_position = (void *)(sampler->buffer + sampler->buffer_pos);
 
 					// read data from i2s
 					i2s_read(I2S_NUM_0, buffer_position, bytes_to_read, &bytes_read, READER_TIMEOUT_TICKS);
@@ -39,7 +40,7 @@ static void IRAM_ATTR sampler_task(void* arg)
 	}
 }
 
-i2s_sampler_t* i2s_sampler_start(adc_channel_t adc1_channel, QueueHandle_t recv_queue, const size_t buffer_size, const size_t f_sample)
+i2s_sampler_t *i2s_sampler_start(adc_channel_t adc1_channel, QueueHandle_t recv_queue, const size_t buffer_size, const size_t f_sample)
 {
 	ESP_LOGI(TAG, "Initializing I2S Sampler...");
 
@@ -55,30 +56,30 @@ i2s_sampler_t* i2s_sampler_start(adc_channel_t adc1_channel, QueueHandle_t recv_
 		.dma_buf_count = 4,
 		.dma_buf_len = 1024,
 		.use_apll = false,
-		.fixed_mclk = 0 };
+		.fixed_mclk = 0};
 
 	// Initialize ADC
 	ESP_ERROR_CHECK(i2s_driver_install(I2S_NUM_0, &i2s_cfg, 4, &dma_queue));
 	ESP_ERROR_CHECK(i2s_set_adc_mode(ADC_UNIT_1, adc1_channel));
 	ESP_ERROR_CHECK(i2s_adc_enable(I2S_NUM_0));
 
-	i2s_sampler_t* sampler = (i2s_sampler_t*)malloc(sizeof(i2s_sampler_t));
+	i2s_sampler_t *sampler = (i2s_sampler_t *)malloc(sizeof(i2s_sampler_t));
 
 	*sampler = (i2s_sampler_t){
-		.buffer = (size_t*)malloc(buffer_size * sizeof(size_t)),
+		.buffer = (size_t *)malloc(buffer_size * sizeof(size_t)),
 		.buffer_pos = 0,
 		.buffer_size = buffer_size,
 		.dma_queue = dma_queue,
-		.dsp_queue = recv_queue };
+		.dsp_queue = recv_queue};
 
 	// DMA task: receives audio data from ADC and sends it to DSP task
-	if (xTaskCreatePinnedToCore(sampler_task, "sampler_task", RESAMPLE_DIVIDER * buffer_size, sampler, 5, &sampler_task_handle, 0) == pdFALSE)
+	if (xTaskCreatePinnedToCore(sampler_task, "sampler_task", 1 << 14, sampler, 5, &sampler_task_handle, 0) == pdFALSE)
 		return NULL;
 
 	return sampler;
 }
 
-esp_err_t i2s_sampler_stop(i2s_sampler_t* sampler)
+esp_err_t i2s_sampler_stop(i2s_sampler_t *sampler)
 {
 	ESP_LOGI(TAG, "Stopping I2S Sampler...");
 
