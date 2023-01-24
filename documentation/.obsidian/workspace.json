@@ -4,35 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "73d42075bf209a35",
+        "id": "59afeb641a077e18",
         "type": "tabs",
         "children": [
           {
-            "id": "a0d0002a3e5ad169",
+            "id": "17a753695d182040",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Pflichtenheft.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "897e45e653e35ee5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Software-Doku.md",
-                "mode": "source",
+                "file": "sw-docs/FFT.md",
+                "mode": "preview",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -61,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#Input",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -78,8 +65,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -99,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Software-Doku.md",
+                "file": "sw-docs/FFT.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Software-Doku.md",
+                "file": "sw-docs/FFT.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -139,8 +125,24 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Software-Doku.md"
+                "file": "sw-docs/FFT.md"
               }
+            }
+          },
+          {
+            "id": "dbe0ae24465bab37",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
+          },
+          {
+            "id": "8e251e2097c4a135",
+            "type": "leaf",
+            "state": {
+              "type": "reminder-list",
+              "state": {}
             }
           }
         ]
@@ -150,10 +152,14 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "6d7b1bcb58692b48",
+  "active": "17a753695d182040",
   "lastOpenFiles": [
-    "Pflichtenheft.md",
     "Software-Doku.md",
+    "images/SWD-FFT-Geogebra.png",
+    "images/SWD-FFT-plotter.png",
+    "Pasted image 20221130112335.png.md",
+    "Pasted image 20221130111604.png.md",
+    "Pflichtenheft.md",
     "Lastenheft.md"
   ]
 }
