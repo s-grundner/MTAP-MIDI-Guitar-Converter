@@ -1,6 +1,6 @@
 # Fast Fourier Transform Visualisierung
 ## FFT-Tests mit Beispielsignal
-Note A4 ($440Hz$) mit note C#6 ($1108.7$) überlagert
+Note A4 ( $440Hz$ ) mit note C#6 ( $1108.7Hz$ ) überlagert
 
 der FFT Zeit-Koeffizient 
 
