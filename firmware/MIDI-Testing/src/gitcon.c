@@ -57,12 +57,10 @@ static void dsp_task(void *arg)
 
 			if (magnitude[k] >= 0.5)
 			{
-				printf("%d-th magnitude: %f => corresponds to %f Hz\n", k, magnitude[k], frequency[k]);
-				printf("keyNR: %d\n", (int)round(keyNR[k]));
+				ESP_LOGI(TAG, "%d-th magnitude: %f => corresponds to %f Hz\n", k, magnitude[k], frequency[k]);
+				ESP_LOGI(TAG, "keyNR: %d\n", (int)round(keyNR[k]));
 			}
-			// printf("%f\n", magnitude[k]);
 		}
-		// printf("Middle component : %f\n", fft_buffer[1]); // N/2 is real and stored at [1]
 
 		// 1. read ADC to DMA buffer
 		// 2. analyze audio data (FFT, etc.)
