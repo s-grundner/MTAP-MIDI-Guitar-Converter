@@ -8,7 +8,7 @@ MTAP-Embedded-exportpro.dru
 MTAP-Embedded-exportpro2.cfg
 DRILEGEND.CFG
 MTAP-Embedded.pro
-manufacturing/invoice/*
+invoice
 .pio
 .vscode
 sdkconfig.*
