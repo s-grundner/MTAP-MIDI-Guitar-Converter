@@ -47,15 +47,17 @@
 
 #define DMA_CHAN 1
 #define ADC_RES_BITS 12
+#define ADC_RES (1 << ADC_RES_BITS)
 #define INTERNAL_ADC_UNIT (ADC_UNIT_1)
 #define INTERNAL_ADC_CHANNEL (ADC_CHANNEL_0)
 #define INTERNAL_ADC_IO (GPIO_NUM_4)
 
-#define AUDIO_BUFFER_SIZE 512
-#define F_SAMPLE_HZ 96000			 // Sample rate of FFT and sampler
-#define FFT_SIZE (AUDIO_BUFFER_SIZE) // Amount of samples to take for FFT
+#define AUDIO_BUFFER_SIZE 512						   // Size of buffer for FFT and sampler
+#define F_SAMPLE_HZ 44100							   // Sample rate of FFT and sampler
+#define FFT_WINDOW_SIZE 2							   // Amount of buffers to take for FFT
+#define FFT_SIZE (AUDIO_BUFFER_SIZE * FFT_WINDOW_SIZE) // Amount of samples to take for FFT
 
- // leave this commented out to use internal ADC
+// leave this commented out to use internal ADC
 // #define USE_MCP3201
 
 #endif // CONFIG_H
