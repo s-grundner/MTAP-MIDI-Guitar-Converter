@@ -14,3 +14,10 @@ manufacturing/invoice/*
 sdkconfig.*
 c_cpp_properties.json
 firmware/MIDI-Testing/.editorconfig
+org/invoice/AMS1117.pdf
+org/invoice/Audio_jack.pdf
+org/invoice/Audio_jack_fem.pdf
+org/invoice/DSP_book.pdf
+org/invoice/MOUSER_Invoice_71583363.pdf
+org/invoice/pcb-and-stencil.pdf
+org/invoice/USB-Bridges.pdf
