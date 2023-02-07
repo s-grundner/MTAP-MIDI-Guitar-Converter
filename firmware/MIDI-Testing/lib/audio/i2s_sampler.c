@@ -30,7 +30,6 @@ static void IRAM_ATTR sampler_task(void *arg)
 
 					if (sampler->buffer_pos == sampler->buffer_size)
 					{
-						// send data to DSP queue
 						sampler->buffer_pos = 0;
 						xQueueSend(sampler->dsp_queue, &sampler->buffer, portMAX_DELAY);
 					}
