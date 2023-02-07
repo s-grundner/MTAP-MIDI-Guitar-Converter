@@ -1,6 +1,6 @@
 /**
  * @file gitcon.h
- * @author @s-grundner
+ * @author @s-grundner @l-hoelzl
  * @brief
  * @version 0.1
  * @date 2022-12-23

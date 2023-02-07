@@ -1,6 +1,6 @@
 /**
  * @file gitcon.c
- * @author @s-grundner
+ * @author @s-grundner @l-hoelzl
  * @brief
  * @version 0.1
  * @date 2022-12-23
@@ -196,7 +196,7 @@ esp_err_t gitcon_init(gitcon_context_t **out_handle)
 	if (xTaskCreatePinnedToCore(dma_task, "dma_task", 2048, gitcon_cfg, 5, NULL, 0) == pdFALSE)
 		return ESP_ERR_NO_MEM;
 	// DSP task: receives audio data from DMA task and sends midi messages to midi task
-	if (xTaskCreatePinnedToCore(dsp_task, "dsp_task", 2048, gitcon_cfg, 5, NULL, 1) == pdFALSE)
+	if (xTaskCreatePinnedToCore(dsp_task, "dsp_task", 65536, gitcon_cfg, 5, NULL, 1) == pdFALSE)
 		return ESP_ERR_NO_MEM;
 	// MIDI task: receives midi messages from DSP task and sends them to MIDI UART
 	if (xTaskCreatePinnedToCore(midi_task, "midi_task", 2048, gitcon_cfg, 5, NULL, 0) == pdFALSE)
