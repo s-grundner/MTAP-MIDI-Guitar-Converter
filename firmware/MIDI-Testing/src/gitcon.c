@@ -35,12 +35,10 @@ static void dsp_task(void *arg)
 	float frequency[FFT_SIZE / 2];
 	float keyNR[FFT_SIZE / 2];
 	float ratio = (float)F_SAMPLE_HZ / (float)FFT_SIZE;
-	char file_buffer[FFT_SIZE];
+	unsigned char active_notes[127] = {0};
 
 	for (;;)
 	{
-		// Do DSP here
-
 		// ------------------------------------------------------------
 		// DSP STEPS
 		// ------------------------------------------------------------
@@ -59,8 +57,12 @@ static void dsp_task(void *arg)
 			{
 				ESP_LOGI(TAG, "%d-th magnitude: %f => corresponds to %f Hz\n", k, magnitude[k], frequency[k]);
 				ESP_LOGI(TAG, "keyNR: %d\n", (int)round(keyNR[k]));
+				active_notes[k] = 1;
+				xQueueSend(gitcon_handle->midi_queue, &active_notes, portMAX_DELAY);
 			}
 		}
+
+		fft_destroy(real_fft_plan);
 
 		// 1. read ADC to DMA buffer
 		// 2. analyze audio data (FFT, etc.)
@@ -82,29 +84,28 @@ static void dsp_task(void *arg)
 		ESP_LOGI(TAG, "Sending MIDI message from DSP task");
 
 		// send dummy message
-		midi_message_t msg = {
+		/*midi_message_t msg = {
 			.status = test_status,
 			.channel = 0,
 			.param1 = 0x3C, // C4
 			.param2 = 0x7F};
 		// toggle note on/off for testing purposes
 		test_status = (test_status == MIDI_STATUS_NOTE_OFF) ? MIDI_STATUS_NOTE_ON : MIDI_STATUS_NOTE_OFF;
-
-		xQueueSend(gitcon_handle->midi_queue, &msg, portMAX_DELAY);
+		*/
 		vTaskDelay(1000 / portTICK_PERIOD_MS);
 	}
 }
 
-static void midi_task(void *arg)
+static void midi_task(void *arg) //TODO: notesending with bool array
 {
 	gitcon_handle_t gitcon_handle = (gitcon_handle_t)arg;
-	midi_message_t msg;
+	unsigned char active_notes[127] = {0};
 	for (;;)
 	{
-		if (xQueueReceive(gitcon_handle->midi_queue, &msg, portMAX_DELAY) == pdTRUE)
+		if (xQueueReceive(gitcon_handle->midi_queue, &active_notes, portMAX_DELAY) == pdTRUE)
 		{
 			// send message to MIDI UART
-			ESP_ERROR_CHECK(midi_write(gitcon_handle->midi_handle, &msg));
+			ESP_ERROR_CHECK(midi_write(gitcon_handle->midi_handle, &active_notes));
 		}
 		vTaskDelay(1000 / portTICK_PERIOD_MS);
 	}
@@ -188,7 +189,7 @@ esp_err_t gitcon_init(gitcon_context_t **out_handle)
 	// INIT RTOS
 	// ------------------------------------------------------------
 
-	gitcon_cfg->midi_queue = xQueueCreate(10, sizeof(midi_message_t *));
+	gitcon_cfg->midi_queue = xQueueCreate(10, sizeof(unsigned char *));
 	if (!gitcon_cfg->midi_queue)
 		return ESP_ERR_NO_MEM;
 
