@@ -3,7 +3,10 @@
 [![Drawn with: Diagrams](https://img.shields.io/badge/drawn%20with-diagrams.net-ff8c00)](https://app.diagrams.net/)
 
 # MTAP-MIDI-Guitar-Converter [DE]
-![[MTAP-logo-weiss.png]]
+<picture>
+ <source media="(prefers-color-scheme: dark)" srcset="/documentation/images/MTAP-logo-weiss.png" align="right" width="450px"/>
+ <img alt="Logo" src="/documentation/images/MTAP-logo-schwarz.png" align="right" width="450px"/>
+</picture>
 
 ## Kurzberschreibung
 Das vorliegende Projekt ermöglicht die Verwendung einer E-Gitarre als MIDI-Device. Das Gerät soll einzelne Noten und Akkorde zuverlässig mit möglichst geringer Latenz in das MIDI-Format umwandeln. Die MIDI-Signale werden an die USB-Schnittstelle eines PCs übertragen, von welchem die Signale beliebig interpretiert werden können.
@@ -48,7 +51,7 @@ Die Vollständige Technische Dokumentation wird auf der Gitbook Page zu finden s
 
 ## Mitwirkende
 ### Betreuer
-[DI Siegbert Schrempf](https://www.linkedin.com/in/siegbert-schrempf-aa1189a)
+[Schrempf, Prof. Dipl.-Ing. Siegbert](https://www.linkedin.com/in/siegbert-schrempf-aa1189a)
 ### Entwickler
 - [Simon Grundner](https://github.com/s-grundner)
 - [Laurenz Hölzl](https://github.com/Laurenz03)
