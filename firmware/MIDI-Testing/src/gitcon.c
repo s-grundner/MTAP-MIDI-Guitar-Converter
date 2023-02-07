@@ -60,6 +60,10 @@ static void dsp_task(void *arg)
 				active_notes[k] = 1;
 				xQueueSend(gitcon_handle->midi_queue, &active_notes, portMAX_DELAY);
 			}
+			else
+			{
+				active_notes[k] = 0;
+			}
 		}
 
 		fft_destroy(real_fft_plan);
@@ -96,16 +100,41 @@ static void dsp_task(void *arg)
 	}
 }
 
-static void midi_task(void *arg) //TODO: notesending with bool array
+static void midi_task(void *arg) // TODO: notesending with bool array
 {
 	gitcon_handle_t gitcon_handle = (gitcon_handle_t)arg;
 	unsigned char active_notes[127] = {0};
+	unsigned char previous_notes[127] = {0};
+
 	for (;;)
 	{
+		*previous_notes = *active_notes;
 		if (xQueueReceive(gitcon_handle->midi_queue, &active_notes, portMAX_DELAY) == pdTRUE)
 		{
 			// send message to MIDI UART
-			ESP_ERROR_CHECK(midi_write(gitcon_handle->midi_handle, &active_notes));
+			for (size_t i = 0; i < 127; i++)
+			{
+				if (active_notes[i] != previous_notes[i])
+				{
+					if (active_notes[i] == 1)
+					{
+						midi_message_t msg = {
+							.status = test_status,
+							.channel = 0,
+							.param1 = 0x3C, // C4
+							.param2 = 0x7F};
+					}
+					else
+					{
+						midi_message_t msg = {
+							.status = test_status,
+							.channel = 0,
+							.param1 = 0x3C, // C4
+							.param2 = 0x7F};
+					}
+				}
+				ESP_ERROR_CHECK(midi_write(gitcon_handle->midi_handle, &msg));
+			}
 		}
 		vTaskDelay(1000 / portTICK_PERIOD_MS);
 	}
