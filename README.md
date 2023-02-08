@@ -40,6 +40,13 @@ Planungsvorgänge können unter dem Reiter *[Projects](https://github.com/s-grun
 |-|-|
 |![](/documentation/images/MTAP-Embedded.png)|![](/documentation/images/MTAP-Embedded-bot.png)|
 
+### Assemblierter Prototyp
+
+| <img src="/documentation/images/PCB-prot-iso-outline.png" width="200"/> | <img src="/documentation/images/PCB-prot-outline.png" width="200"/> |
+|-|-|
+
+
+
 ## Repository Struktur
 - [**Lastenheft**](documentation/Lastenheft.md)
 - [**Pflichtenheft**](documentation/Pflichtenheft.md)
@@ -51,7 +58,7 @@ Die Vollständige Technische Dokumentation wird auf der Gitbook Page zu finden s
 
 ## Mitwirkende
 ### Betreuer
-[DI Siegbert Schrempf](https://www.linkedin.com/in/siegbert-schrempf-aa1189a)
+[Schrempf, Prof. Dipl.-Ing. Siegbert](https://www.linkedin.com/in/siegbert-schrempf-aa1189a)
 ### Entwickler
 - [Simon Grundner](https://github.com/s-grundner)
 - [Laurenz Hölzl](https://github.com/Laurenz03)

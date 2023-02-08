@@ -4,15 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "1a819f111a0d1967",
+        "id": "59afeb641a077e18",
         "type": "tabs",
         "children": [
           {
-            "id": "2ab7bd54bf371286",
+            "id": "17a753695d182040",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "sw-docs/FFT.md",
+                "mode": "preview",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "sw-docs/FFT.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "sw-docs/FFT.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "sw-docs/FFT.md"
+              }
             }
           },
           {
@@ -144,23 +152,12 @@
     "width": 300,
     "collapsed": true
   },
-  "left-ribbon": {
-    "hiddenItems": {
-      "table-editor-obsidian:Advanced Tables Toolbar": false,
-      "templater-obsidian:Templater": false,
-      "open-vscode:VSCode": false,
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "markdown-importer:Open format converter": false
-    }
-  },
-  "active": "2ab7bd54bf371286",
+  "active": "17a753695d182040",
   "lastOpenFiles": [
     "Software-Doku.md",
+    "images/SWD-FFT-Geogebra.png",
+    "images/SWD-FFT-plotter.png",
+    "Pasted image 20221130112335.png.md",
     "Pasted image 20221130111604.png.md",
     "Pflichtenheft.md",
     "Lastenheft.md"
