@@ -119,21 +119,22 @@ static void midi_task(void *arg) // TODO: notesending with bool array
 					if (active_notes[i] == 1)
 					{
 						midi_message_t msg = {
-							.status = test_status,
+							.status = MIDI_STATUS_NOTE_ON,
 							.channel = 0,
-							.param1 = 0x3C, // C4
+							.param1 = i,
 							.param2 = 0x7F};
 					}
 					else
 					{
 						midi_message_t msg = {
-							.status = test_status,
+							.status = MIDI_STATUS_NOTE_OFF,
 							.channel = 0,
-							.param1 = 0x3C, // C4
+							.param1 = i,
 							.param2 = 0x7F};
 					}
 				}
 				ESP_ERROR_CHECK(midi_write(gitcon_handle->midi_handle, &msg));
+				*previous_notes = *active_notes;
 			}
 		}
 		vTaskDelay(1000 / portTICK_PERIOD_MS);
