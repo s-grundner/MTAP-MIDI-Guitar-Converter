@@ -1,6 +1,6 @@
 /**
  * @file gitcon.h
- * @author @s-grundner
+ * @author @s-grundner @Laurenz03
  * @brief
  * @version 0.1
  * @date 2022-12-23
@@ -16,24 +16,24 @@
 
 #define GITCON_LOG_LEVEL ESP_LOG_ERROR
 
- /**
-  * @brief Gitcon Configuration
-  * @param mcp3201 MCP3201 ADC
-  * @param midi_handle MIDI Handle
-  * @param midi_queue MIDI Queue
-  */
+/**
+ * @brief Gitcon Configuration
+ * @param mcp3201 MCP3201 ADC
+ * @param midi_handle MIDI Handle
+ * @param midi_queue MIDI Queue
+ */
 typedef struct
 {
 #ifdef USE_MCP3201
-  mcp3201_sampler_t* sampler;
+  mcp3201_sampler_t *sampler;
 #else
-  i2s_sampler_t* sampler;
+  i2s_sampler_t *sampler;
 #endif
 
   midi_handle_t midi_handle;
   QueueHandle_t midi_queue; // TODO: merge with midi_handle
 } gitcon_context_t;
-typedef gitcon_context_t* gitcon_handle_t;
+typedef gitcon_context_t *gitcon_handle_t;
 
 /**
  * @brief initializes gitcon
@@ -41,7 +41,7 @@ typedef gitcon_context_t* gitcon_handle_t;
  * @param[out] out_handle
  * @return esp_err_t
  */
-esp_err_t gitcon_init(gitcon_handle_t* out_handle);
+esp_err_t gitcon_init(gitcon_handle_t *out_handle);
 
 /**
  * @brief frees all resources

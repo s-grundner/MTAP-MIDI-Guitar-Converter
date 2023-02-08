@@ -1,6 +1,6 @@
 /**
  * @file gitcon.c
- * @author @s-grundner @l-hoelzl
+ * @author @s-grundner @Laurenz03
  * @brief
  * @version 0.1
  * @date 2022-12-23
@@ -10,6 +10,7 @@
  */
 
 #include "gitcon.h"
+#include "processed-data.h"
 
 static const char *TAG = "gitcon";
 
@@ -20,117 +21,88 @@ static TaskHandle_t dsp_task_handle;
 // ISR and static functions
 // ------------------------------------------------------------
 
-static void IRAM_ATTR dsp_task(void *arg)
+static void dsp_task(void *arg)
 {
-	gitcon_handle_t handle = (gitcon_handle_t)arg;
-	uint16_t *audio_buffer = NULL;
-
-	float float_audio[FFT_SIZE];
+	gitcon_handle_t gitcon_handle = (gitcon_handle_t)arg;
 	float fft_buffer[FFT_SIZE];
 	float magnitude[FFT_SIZE / 2];
 	float frequency[FFT_SIZE / 2];
 	float keyNR[FFT_SIZE / 2];
 	float ratio = (float)F_SAMPLE_HZ / (float)FFT_SIZE;
 	unsigned char active_notes[127] = {0};
+	uint16_t *audio_buffer = NULL;
 
 	for (;;)
 	{
+		/// @note velocity of the note is determined by the initial amplitude of a transient frequency
+
 		// ------------------------------------------------------------
 		// DSP STEPS
 		// ------------------------------------------------------------
 
 		// 1. read ADC to DMA buffer
-		if (xQueueReceive(handle->sampler->dsp_queue, &audio_buffer, portMAX_DELAY) == pdTRUE)
-		{
+		if (xQueueReceive(gitcon_handle->sampler->dsp_queue, &audio_buffer, portMAX_DELAY) == pdTRUE)
+			; // do stuff with audio_buffer
 
+		// 2. analyze audio data (FFT, etc.)
+		fft_config_t *real_fft_plan = fft_init(FFT_SIZE, FFT_REAL, FFT_FORWARD, test_buffer, fft_buffer);
+
+		fft_execute(real_fft_plan);
+
+		for (int k = 1; k < FFT_SIZE / 2; k++)
+		{
+			// 3. detect fundamental frequencies and convert to note number on piano roll
 			magnitude[k] = 2 * sqrt(pow(fft_buffer[2 * k], 2) + pow(fft_buffer[2 * k + 1], 2)) / FFT_SIZE;
 			frequency[k] = k * ratio;
 			keyNR[k] = log2(frequency[k] / 440) * 12 + 49;
 
+			// 4. detect if frequency is transient
 			if (magnitude[k] >= 0.5)
 			{
+				// 4.1 save note on transient ()
 				ESP_LOGI(TAG, "%d-th magnitude: %f => corresponds to %f Hz\n", k, magnitude[k], frequency[k]);
 				ESP_LOGI(TAG, "keyNR: %d\n", (int)round(keyNR[k]));
-				active_notes[k] = 1;
-				xQueueSend(gitcon_handle->midi_queue, &active_notes, portMAX_DELAY);
+				active_notes[(int)round(keyNR[k])] = 1;
 			}
+			// 5. check if already on notes are below a certain threshold
 			else
 			{
-				active_notes[k] = 0;
+				// 5.1 delete saved note
+				active_notes[(int)round(keyNR[k])] = 0;
 			}
+			// active_notes[(int)round(keyNR[k]] = (magnitude[k] >= 0.5); // if else statement above in one line
 		}
-
-		fft_destroy(real_fft_plan);
-
-		// 1. read ADC to DMA buffer
-
-		// 2. analyze audio data (FFT, etc.)
-		// 3. detect fundamental frequencies and convert to note number on piano roll
-		// 4. detect if frequency is transient
-		// 4.1 save note on transient
-		// 5. check if already on notes are below a certain threshold
-		// 5.1 delete saved note
 		// 6. send saved notes to MIDI queue
-
-		// (!note) velocity of the note is determined by the initial amplitude of a transient frequency
-
-		// at a later point, the message should be created from the DSP result
-		// eventually, the message should be created in the MIDI task and not in the DSP task
-		// instead, the DSP task should send the rawest possible data to the MIDI task
-		// the MIDI task should then create the MIDI message from the raw data
-		// the raw data could be the a buffer in which, currently on/off notes are stored
-		// (!note) velocity of the note is determined by the initial amplitude of a transient frequency
-
-		ESP_LOGI(TAG, "Sending MIDI message from DSP task");
-
-		// send dummy message
-		/*midi_message_t msg = {
-			.status = test_status,
-			.channel = 0,
-			.param1 = 0x3C, // C4
-			.param2 = 0x7F};
-		// toggle note on/off for testing purposes
-		test_status = (test_status == MIDI_STATUS_NOTE_OFF) ? MIDI_STATUS_NOTE_ON : MIDI_STATUS_NOTE_OFF;
-		*/
-		vTaskDelay(1000 / portTICK_PERIOD_MS);
+		xQueueSend(gitcon_handle->midi_queue, &active_notes, portMAX_DELAY);
+		fft_destroy(real_fft_plan);
+		vTaskDelay(10 / portTICK_PERIOD_MS);
 	}
 }
 
 static void midi_task(void *arg) // TODO: notesending with bool array
 {
 	gitcon_handle_t gitcon_handle = (gitcon_handle_t)arg;
-	unsigned char active_notes[127] = {0};
-	unsigned char previous_notes[127] = {0};
+	unsigned char active_notes[128] = {0};
+	unsigned char previous_notes[128] = {0};
 
 	for (;;)
 	{
-		*previous_notes = *active_notes;
 		if (xQueueReceive(gitcon_handle->midi_queue, &active_notes, portMAX_DELAY) == pdTRUE)
 		{
-			// send message to MIDI UART
-			for (size_t i = 0; i < 127; i++)
+			for (size_t i = 0; i < 128; i++)
 			{
-				if (active_notes[i] != previous_notes[i])
-				{
-					if (active_notes[i] == 1)
-					{
-						midi_message_t msg = {
-							.status = MIDI_STATUS_NOTE_ON,
-							.channel = 0,
-							.param1 = i,
-							.param2 = 0x7F};
-					}
-					else
-					{
-						midi_message_t msg = {
-							.status = MIDI_STATUS_NOTE_OFF,
-							.channel = 0,
-							.param1 = i,
-							.param2 = 0x7F};
-					}
-				}
+				if (active_notes[i] == previous_notes[i])
+					continue;
+
+				midi_message_t msg = {
+					.channel = 0,
+					.status = (active_notes[i]) ? MIDI_STATUS_NOTE_ON : MIDI_STATUS_NOTE_OFF,
+					.param1 = i,
+					.param2 = 0x7F};
+
+				// send message to MIDI UART
 				ESP_ERROR_CHECK(midi_write(gitcon_handle->midi_handle, &msg));
-				*previous_notes = *active_notes;
+				previous_notes[i] = active_notes[i];
 			}
 		}
 		vTaskDelay(10 / portTICK_PERIOD_MS);
