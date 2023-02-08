@@ -44,26 +44,10 @@ static void IRAM_ATTR dsp_task(void *arg)
 		// 1. read ADC to DMA buffer
 		if (xQueueReceive(handle->sampler->dsp_queue, &audio_buffer, portMAX_DELAY) == pdTRUE)
 		{
-			// printf("%d\n", *audio_buffer);
-
-			for (size_t i = 0; i < AUDIO_BUFFER_SIZE; i++)
-				float_audio[AUDIO_BUFFER_SIZE * buf_count + i] = (float)audio_buffer[i] / (float)(ADC_RES);
-			buf_count++;
+			printf("%d\n", *audio_buffer);
 		}
+		
 		// 2. analyze audio data (FFT, etc.)
-		if (buf_count == (FFT_SIZE / AUDIO_BUFFER_SIZE))
-		{
-			buf_count = 0;
-			fft_execute(fft_config);
-			for (int k = 1; k < FFT_SIZE / 2; k++)
-			{
-				magnitude[k] = 2.0 * sqrt(pow(fft_buffer[2 * k], 2) + pow(fft_buffer[2 * k - 1], 2)) / FFT_SIZE;
-				frequency[k] = k * ratio;
-				if (magnitude[k] > 0.1)
-					printf("%f, %f\n", frequency[k], magnitude[k]);
-			}
-		}
-
 		// 3. detect fundamental frequencies and convert to note number on piano roll
 		// 4. detect if frequency is transient
 		// 4.1 save note on transient
