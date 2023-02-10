@@ -10,11 +10,10 @@ DRILEGEND.CFG
 MTAP-Embedded.pro
 
 # Docs and firmware
-.obsidian
 invoice
+build
+.obsidian
 .pio
 .vscode
 sdkconfig.*
 c_cpp_properties.json
-.editorconfig
-build
