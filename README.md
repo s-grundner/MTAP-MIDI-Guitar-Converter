@@ -58,7 +58,7 @@ Die Vollständige Technische Dokumentation wird auf der Gitbook Page zu finden s
 
 ## Mitwirkende
 ### Betreuer
-[Schrempf, Prof. Dipl.-Ing. Siegbert](https://www.linkedin.com/in/siegbert-schrempf-aa1189a)
+[Prof. Dipl.-Ing. Siegbert Schrempf](https://www.linkedin.com/in/siegbert-schrempf-aa1189a)
 ### Entwickler
 - [Simon Grundner](https://github.com/s-grundner)
 - [Laurenz Hölzl](https://github.com/Laurenz03)
