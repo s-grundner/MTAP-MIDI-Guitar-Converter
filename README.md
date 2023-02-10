@@ -43,7 +43,7 @@ Planungsvorgänge können unter dem Reiter *[Projects](https://github.com/s-grun
 
 ### Assemblierter Prototyp
 
-| <img src="/documentation/images/PCB-prot-iso-outline.png" width="200"/> | <img src="/documentation/images/PCB-prot-outline.png" width="200"/> |
+| <img src="/documentation/images/PCB-prot-iso-outline.png" width="400"/> | <img src="/documentation/images/PCB-prot-outline.png" width="200"/> |
 |-|-|
 
 ## Repository Struktur
