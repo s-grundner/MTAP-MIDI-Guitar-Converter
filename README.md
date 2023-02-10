@@ -31,6 +31,7 @@ Planungsvorgänge können unter dem Reiter *[Projects](https://github.com/s-grun
 - Das Grundgerüst der Codebase ist bereits ausgearbeitet
 - Die Firmware läuft bereits auf einem RTOS, in welchem die priorisierung der einzelen Tasks gehandled wird, sowie eine stabile Kommunikation zwischen den beiden Kernen am ESP32
 - Benötigte Bibliotheken sind ausprogrammiert bzw implementiert
+- (nicht kontinuierliche) FFT von Gitarrensamples sind möglich
 
 ### 3D Renderung der Platine
 
@@ -45,8 +46,6 @@ Planungsvorgänge können unter dem Reiter *[Projects](https://github.com/s-grun
 | <img src="/documentation/images/PCB-prot-iso-outline.png" width="200"/> | <img src="/documentation/images/PCB-prot-outline.png" width="200"/> |
 |-|-|
 
-
-
 ## Repository Struktur
 - [**Lastenheft**](documentation/Lastenheft.md)
 - [**Pflichtenheft**](documentation/Pflichtenheft.md)
@@ -58,7 +57,7 @@ Die Vollständige Technische Dokumentation wird auf der Gitbook Page zu finden s
 
 ## Mitwirkende
 ### Betreuer
-[Schrempf, Prof. Dipl.-Ing. Siegbert](https://www.linkedin.com/in/siegbert-schrempf-aa1189a)
+[Prof. Dipl.-Ing. Siegbert Schrempf](https://www.linkedin.com/in/siegbert-schrempf-aa1189a)
 ### Entwickler
 - [Simon Grundner](https://github.com/s-grundner)
 - [Laurenz Hölzl](https://github.com/Laurenz03)
