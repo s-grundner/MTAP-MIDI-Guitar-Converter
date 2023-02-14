@@ -15869,12 +15869,12 @@ Eagle Ver. 7.6.0&lt;br&gt;</description>
 <attributes>
 <attribute name="ABTEILUNG" value="Technische Informatik"/>
 <attribute name="BEARBEITER" value="Simon Grundner"/>
-<attribute name="DATUM" value="2022/10/05"/>
+<attribute name="DATUM" value="2022/12/29"/>
 <attribute name="DOKUMENTART" value="Schaltplan"/>
 <attribute name="GEZ" value="GruS"/>
-<attribute name="ID" value="4AHEL"/>
+<attribute name="ID" value="5AHEL"/>
 <attribute name="REV" value="1"/>
-<attribute name="SCHALTPLAN" value="MTAP-MIDI-GC"/>
+<attribute name="SCHALTPLAN" value="Gitcon"/>
 <attribute name="STATUS" value="Prototyp"/>
 <attribute name="VER" value="1.0"/>
 </attributes>
@@ -16362,7 +16362,7 @@ Eagle Ver. 7.6.0&lt;br&gt;</description>
 </nets>
 </sheet>
 <sheet>
-<description>Embedded</description>
+<description>USB &amp; Supply</description>
 <plain>
 <text x="25.4" y="71.12" size="1.27" layer="97" font="vector">UART Driver 0:
 Progrqam and Debug
@@ -16432,13 +16432,13 @@ DTR RTS -&gt; EN  IO0
 <attribute name="NAME" x="49.784" y="139.1666" size="1.6764" layer="95" font="vector" align="bottom-right"/>
 <attribute name="VALUE" x="49.784" y="136.3726" size="1.27" layer="96" font="vector" align="bottom-right"/>
 </instance>
-<instance part="V1" gate="G$1" x="55.88" y="220.98" smashed="yes">
-<attribute name="NAME" x="50.8" y="223.52" size="1.6764" layer="95" font="vector" align="bottom-center"/>
-<attribute name="VALUE" x="50.8" y="221.488" size="1.27" layer="96" font="vector" align="bottom-center"/>
+<instance part="V1" gate="G$1" x="55.88" y="233.68" smashed="yes">
+<attribute name="NAME" x="50.8" y="236.22" size="1.6764" layer="95" font="vector" align="bottom-center"/>
+<attribute name="VALUE" x="50.8" y="234.188" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
-<instance part="V2" gate="G$1" x="55.88" y="203.2" smashed="yes" rot="MR180">
-<attribute name="NAME" x="50.8" y="205.74" size="1.6764" layer="95" font="vector" rot="MR0" align="bottom-center"/>
-<attribute name="VALUE" x="50.8" y="203.962" size="1.27" layer="96" font="vector" rot="MR0" align="bottom-center"/>
+<instance part="V2" gate="G$1" x="55.88" y="215.9" smashed="yes" rot="MR180">
+<attribute name="NAME" x="50.8" y="218.44" size="1.6764" layer="95" font="vector" rot="MR0" align="bottom-center"/>
+<attribute name="VALUE" x="50.8" y="216.662" size="1.27" layer="96" font="vector" rot="MR0" align="bottom-center"/>
 </instance>
 <instance part="V4" gate="G$1" x="137.16" y="139.7" smashed="yes" rot="R270">
 <attribute name="NAME" x="133.35" y="142.24" size="1.778" layer="95" font="vector" rot="R270"/>
@@ -16459,13 +16459,13 @@ DTR RTS -&gt; EN  IO0
 <instance part="+5V2" gate="G$1" x="152.4" y="157.48" smashed="yes">
 <attribute name="VALUE" x="152.4" y="158.496" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
-<instance part="R4" gate="G$1" x="43.18" y="220.98" smashed="yes">
-<attribute name="NAME" x="43.18" y="223.7486" size="1.6764" layer="95" font="vector" align="bottom-center"/>
-<attribute name="VALUE" x="43.18" y="222.25" size="1.27" layer="96" font="vector" align="bottom-center"/>
+<instance part="R4" gate="G$1" x="43.18" y="233.68" smashed="yes">
+<attribute name="NAME" x="43.18" y="236.4486" size="1.6764" layer="95" font="vector" align="bottom-center"/>
+<attribute name="VALUE" x="43.18" y="234.95" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
-<instance part="R6" gate="G$1" x="43.18" y="203.2" smashed="yes">
-<attribute name="NAME" x="43.18" y="205.9686" size="1.6764" layer="95" font="vector" align="bottom-center"/>
-<attribute name="VALUE" x="43.18" y="204.47" size="1.27" layer="96" font="vector" align="bottom-center"/>
+<instance part="R6" gate="G$1" x="43.18" y="215.9" smashed="yes">
+<attribute name="NAME" x="43.18" y="218.6686" size="1.6764" layer="95" font="vector" align="bottom-center"/>
+<attribute name="VALUE" x="43.18" y="217.17" size="1.27" layer="96" font="vector" align="bottom-center"/>
 </instance>
 <instance part="VBUS1" gate="G$2" x="137.16" y="157.48" smashed="yes">
 <attribute name="VALUE" x="137.16" y="158.496" size="1.27" layer="96" font="vector" align="bottom-center"/>
@@ -16646,9 +16646,9 @@ DTR RTS -&gt; EN  IO0
 <net name="GPIO0" class="0">
 <segment>
 <pinref part="V2" gate="G$1" pin="C"/>
-<wire x1="58.42" y1="198.12" x2="58.42" y2="195.58" width="0.1524" layer="91"/>
-<wire x1="58.42" y1="195.58" x2="60.96" y2="195.58" width="0.1524" layer="91"/>
-<label x="60.96" y="195.58" size="1.27" layer="95" font="vector" xref="yes"/>
+<wire x1="58.42" y1="210.82" x2="58.42" y2="208.28" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="208.28" x2="60.96" y2="208.28" width="0.1524" layer="91"/>
+<label x="60.96" y="208.28" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 <segment>
 <pinref part="C8" gate="G$1" pin="1"/>
@@ -16756,15 +16756,15 @@ DTR RTS -&gt; EN  IO0
 <net name="DTR" class="0">
 <segment>
 <pinref part="V2" gate="G$1" pin="E"/>
-<wire x1="58.42" y1="208.28" x2="58.42" y2="210.82" width="0.1524" layer="91"/>
-<wire x1="58.42" y1="210.82" x2="43.18" y2="210.82" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="220.98" x2="58.42" y2="223.52" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="223.52" x2="43.18" y2="223.52" width="0.1524" layer="91"/>
 <pinref part="R4" gate="G$1" pin="1"/>
-<wire x1="35.56" y1="220.98" x2="38.1" y2="220.98" width="0.1524" layer="91"/>
-<wire x1="35.56" y1="220.98" x2="33.02" y2="220.98" width="0.1524" layer="91"/>
-<label x="33.02" y="220.98" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
-<wire x1="35.56" y1="220.98" x2="35.56" y2="218.44" width="0.1524" layer="91"/>
-<junction x="35.56" y="220.98"/>
-<wire x1="35.56" y1="218.44" x2="43.18" y2="210.82" width="0.1524" layer="91"/>
+<wire x1="35.56" y1="233.68" x2="38.1" y2="233.68" width="0.1524" layer="91"/>
+<wire x1="35.56" y1="233.68" x2="33.02" y2="233.68" width="0.1524" layer="91"/>
+<label x="33.02" y="233.68" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
+<wire x1="35.56" y1="233.68" x2="35.56" y2="231.14" width="0.1524" layer="91"/>
+<junction x="35.56" y="233.68"/>
+<wire x1="35.56" y1="231.14" x2="43.18" y2="223.52" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <wire x1="160.02" y1="226.06" x2="165.1" y2="226.06" width="0.1524" layer="91"/>
@@ -16776,28 +16776,28 @@ DTR RTS -&gt; EN  IO0
 <segment>
 <pinref part="V1" gate="G$1" pin="B"/>
 <pinref part="R4" gate="G$1" pin="2"/>
-<wire x1="53.34" y1="220.98" x2="48.26" y2="220.98" width="0.1524" layer="91"/>
+<wire x1="53.34" y1="233.68" x2="48.26" y2="233.68" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$16" class="0">
 <segment>
 <pinref part="V2" gate="G$1" pin="B"/>
 <pinref part="R6" gate="G$1" pin="2"/>
-<wire x1="53.34" y1="203.2" x2="48.26" y2="203.2" width="0.1524" layer="91"/>
+<wire x1="53.34" y1="215.9" x2="48.26" y2="215.9" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="RTS" class="0">
 <segment>
 <pinref part="V1" gate="G$1" pin="E"/>
-<wire x1="58.42" y1="215.9" x2="58.42" y2="213.36" width="0.1524" layer="91"/>
-<wire x1="58.42" y1="213.36" x2="43.18" y2="213.36" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="228.6" x2="58.42" y2="226.06" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="226.06" x2="43.18" y2="226.06" width="0.1524" layer="91"/>
 <pinref part="R6" gate="G$1" pin="1"/>
-<wire x1="38.1" y1="203.2" x2="35.56" y2="203.2" width="0.1524" layer="91"/>
-<label x="33.02" y="203.2" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
-<wire x1="35.56" y1="203.2" x2="33.02" y2="203.2" width="0.1524" layer="91"/>
-<wire x1="35.56" y1="203.2" x2="35.56" y2="205.74" width="0.1524" layer="91"/>
-<junction x="35.56" y="203.2"/>
-<wire x1="35.56" y1="205.74" x2="43.18" y2="213.36" width="0.1524" layer="91"/>
+<wire x1="38.1" y1="215.9" x2="35.56" y2="215.9" width="0.1524" layer="91"/>
+<label x="33.02" y="215.9" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
+<wire x1="35.56" y1="215.9" x2="33.02" y2="215.9" width="0.1524" layer="91"/>
+<wire x1="35.56" y1="215.9" x2="35.56" y2="218.44" width="0.1524" layer="91"/>
+<junction x="35.56" y="215.9"/>
+<wire x1="35.56" y1="218.44" x2="43.18" y2="226.06" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <wire x1="160.02" y1="215.9" x2="165.1" y2="215.9" width="0.1524" layer="91"/>
@@ -16808,9 +16808,9 @@ DTR RTS -&gt; EN  IO0
 <net name="EN" class="0">
 <segment>
 <pinref part="V1" gate="G$1" pin="C"/>
-<wire x1="58.42" y1="228.6" x2="58.42" y2="226.06" width="0.1524" layer="91"/>
-<wire x1="58.42" y1="228.6" x2="60.96" y2="228.6" width="0.1524" layer="91"/>
-<label x="60.96" y="228.6" size="1.27" layer="95" font="vector" xref="yes"/>
+<wire x1="58.42" y1="241.3" x2="58.42" y2="238.76" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="241.3" x2="60.96" y2="241.3" width="0.1524" layer="91"/>
+<label x="60.96" y="241.3" size="1.27" layer="95" font="vector" xref="yes"/>
 </segment>
 <segment>
 <pinref part="C9" gate="G$1" pin="1"/>
@@ -17046,7 +17046,7 @@ DTR RTS -&gt; EN  IO0
 </nets>
 </sheet>
 <sheet>
-<description>Analog</description>
+<description>Analogue Front End</description>
 <plain>
 <wire x1="20.32" y1="231.14" x2="20.32" y2="182.88" width="0.1524" layer="97" style="dashdot"/>
 <wire x1="20.32" y1="182.88" x2="119.38" y2="182.88" width="0.1524" layer="97" style="dashdot"/>
