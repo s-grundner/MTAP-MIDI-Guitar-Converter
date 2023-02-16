@@ -1,9 +1,9 @@
-Circuit: * C:\Users\simon\source\MTAP-MIDI-Guitar-Converter\simulations\SallenKey-Redesign.asc
+Circuit: * C:\Users\Smon\source\MTAP-MIDI-Guitar-Converter\simulations\SallenKey-Redesign.asc
 
 Direct Newton iteration for .op point succeeded.
 
-Date: Thu Jan 26 13:07:33 2023
-Total elapsed time: 0.125 seconds.
+Date: Wed Feb 15 16:46:23 2023
+Total elapsed time: 0.042 seconds.
 
 tnom = 27
 temp = 27
