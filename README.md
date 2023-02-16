@@ -46,9 +46,6 @@ Planungsvorgänge können unter dem Reiter *[Projects](https://github.com/s-grun
 | <img src="/documentation/images/PCB-prot-iso-outline.png" width="400"/> | <img src="/documentation/images/PCB-prot-outline.png" width="200"/> |
 |-|-|
 
-## [Dokumentation](https://app.gitbook.com/o/Qwl1YBxcvnIgpDva1OFB/s/MkWAoR5yK34IMWYoVd5u/)
-Die Vollständige Technische Dokumentation wird auf der Gitbook Page zu finden sein 
-
 ## Mitwirkende
 ### Betreuer
 [Prof. Dipl.-Ing. Siegbert Schrempf](https://www.linkedin.com/in/siegbert-schrempf-aa1189a)
