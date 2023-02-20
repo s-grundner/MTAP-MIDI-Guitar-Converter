@@ -13,7 +13,6 @@ MTAP-Embedded.pro
 invoice
 build
 .obsidian
-.trash
 .pio
 .vscode
 sdkconfig.*
