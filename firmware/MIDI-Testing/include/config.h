@@ -42,8 +42,8 @@
 
 #define MIDI_UART (UART_NUM_1)
 #define MIDI_BAUD (115200)
-#define MIDI_TX (GPIO_NUM_17)
-#define MIDI_RX (GPIO_NUM_16)
+#define MIDI_TX (GPIO_NUM_26)
+#define MIDI_RX (GPIO_NUM_27)
 
 #define DMA_CHAN 1
 #define ADC_RES_BITS 12
@@ -52,10 +52,10 @@
 #define INTERNAL_ADC_CHANNEL (ADC_CHANNEL_0)
 #define INTERNAL_ADC_IO (GPIO_NUM_4)
 
-#define AUDIO_BUFFER_SIZE 512						   // Size of buffer for FFT and sampler
-#define F_SAMPLE_HZ 44100							   // Sample rate of FFT and sampler
-#define FFT_WINDOW_SIZE 2							   // Amount of buffers to take for FFT
-#define FFT_SIZE 4096   //(AUDIO_BUFFER_SIZE * FFT_WINDOW_SIZE)  Amount of samples to take for FFT
+#define AUDIO_BUFFER_SIZE 512 // Size of buffer for FFT and sampler
+#define F_SAMPLE_HZ 44100	  // Sample rate of FFT and sampler
+#define FFT_WINDOW_SIZE 2	  // Amount of buffers to take for FFT
+#define FFT_SIZE 4096		  //(AUDIO_BUFFER_SIZE * FFT_WINDOW_SIZE)  Amount of samples to take for FFT
 
 // leave this commented out to use internal ADC
 // #define USE_MCP3201
