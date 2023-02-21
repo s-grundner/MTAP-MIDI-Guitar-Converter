@@ -29,7 +29,7 @@ static void dsp_task(void *arg)
 	float frequency[FFT_SIZE / 2];
 	float keyNR[FFT_SIZE / 2];
 	float ratio = (float)F_SAMPLE_HZ / (float)FFT_SIZE;
-	unsigned char active_notes[127] = {0};
+	unsigned char active_notes[128] = {0};
 	uint16_t *audio_buffer = NULL;
 	unsigned char check = 0;
 
@@ -46,53 +46,54 @@ static void dsp_task(void *arg)
 			; // do stuff with audio_buffer
 
 		// 2. analyze audio data (FFT, etc.)
-		fft_config_t *real_fft_plan = fft_init(FFT_SIZE, FFT_REAL, FFT_FORWARD, test_buffer, fft_buffer);
+		// fft_config_t *real_fft_plan = fft_init(FFT_SIZE, FFT_REAL, FFT_FORWARD, test_buffer, fft_buffer);
 
-		fft_execute(real_fft_plan);
+		// fft_execute(real_fft_plan);
 
-		for (int k = 1; k < FFT_SIZE / 2; k++)
-		{
-			// 3. detect fundamental frequencies and convert to note number on piano roll
-			magnitude[k] = 2 * sqrt(pow(fft_buffer[2 * k], 2) + pow(fft_buffer[2 * k + 1], 2)) / FFT_SIZE;
-			frequency[k] = k * ratio;
-			keyNR[k] = log2(frequency[k] / 440) * 12 + 49;
-		}
+		// for (int k = 1; k < FFT_SIZE / 2; k++)
+		// {
+		// 	// 3. detect fundamental frequencies and convert to note number on piano roll
+		// 	magnitude[k] = 2 * sqrt(pow(fft_buffer[2 * k], 2) + pow(fft_buffer[2 * k + 1], 2)) / FFT_SIZE;
+		// 	frequency[k] = k * ratio;
+		// 	keyNR[k] = log2(frequency[k] / 440) * 12 + 49;
+		// }
 
-		float max = 0;
-		for (int i = 0; i < FFT_SIZE / 2; i++)
-		{
-			if (magnitude[i] > max)
-			{
-				max = magnitude[i];
-			}
-		}
+		// float max = 0;
+		// for (int i = 0; i < FFT_SIZE / 2; i++)
+		// {
+		// 	if (magnitude[i] > max)
+		// 	{
+		// 		max = magnitude[i];
+		// 	}
+		// }
 
-		for (int k = 1; k < FFT_SIZE / 2; k++)
-		{
+		// for (int k = 1; k < FFT_SIZE / 2; k++)
+		// {
 
-			if (magnitude[k] >= max * 0.5)
-			{
-				// 4.1 save note on transient ()
-				ESP_LOGI(TAG, "%d-th magnitude: %f => corresponds to %f Hz\n", k, magnitude[k], frequency[k]);
-				ESP_LOGI(TAG, "keyNR: %d\n", (int)round(keyNR[k]));
+		// 	if (magnitude[k] >= max * 0.5)
+		// 	{
+		// 		// 4.1 save note on transient ()
+		// 		ESP_LOGI(TAG, "%d-th magnitude: %f => corresponds to %f Hz\n", k, magnitude[k], frequency[k]);
+		// 		ESP_LOGI(TAG, "keyNR: %d\n", (int)round(keyNR[k]));
 
-				if (check == 0)	// only activates deepest note
-				{
-					active_notes[(int)round(keyNR[k])] = 1;
-					check = 1;
-				}
-			}
-			// 5. check if already on notes are below a certain threshold
-			else
-			{
-				// 5.1 delete saved note
-				active_notes[(int)round(keyNR[k])] = 0;
-			}
-			// active_notes[(int)round(keyNR[k]] = (magnitude[k] >= 0.5); // if else statement above in one line
-		}
+		// 		if (check == 0) // only activates deepest note
+		// 		{
+		// 			active_notes[(int)round(keyNR[k])] = 1;
+		// 			check = 1;
+		// 		}
+		// 	}
+		// 	// 5. check if already on notes are below a certain threshold
+		// 	else
+		// 	{
+		// 		// 5.1 delete saved note
+		// 		active_notes[(int)round(keyNR[k])] = 0;
+		// 	}
+		// active_notes[(int)round(keyNR[k]] = (magnitude[k] >= 0.5); // if else statement above in one line
+		// }
 		// 6. send saved notes to MIDI queue
+		ESP_LOGI(TAG, "Sending active notes to MIDI queue");
 		xQueueSend(gitcon_handle->midi_queue, &active_notes, portMAX_DELAY);
-		fft_destroy(real_fft_plan);
+		// fft_destroy(real_fft_plan);
 		vTaskDelay(10 / portTICK_PERIOD_MS);
 	}
 }
@@ -119,6 +120,7 @@ static void midi_task(void *arg) // TODO: notesending with bool array
 					.param2 = 0x7F};
 
 				// send message to MIDI UART
+				ESP_LOGI(TAG, "Sending MIDI message: %d %d %d %d", msg.channel, msg.status, msg.param1, msg.param2);
 				ESP_ERROR_CHECK(midi_write(gitcon_handle->midi_handle, &msg));
 				previous_notes[i] = active_notes[i];
 			}
@@ -141,7 +143,7 @@ esp_err_t gitcon_init(gitcon_context_t **out_handle)
 	QueueHandle_t dsp_queue = xQueueCreate(10, sizeof(size_t *));
 
 	// create queue for midi messages
-	gitcon_cfg->midi_queue = xQueueCreate(5, sizeof(midi_message_t));
+	gitcon_cfg->midi_queue = xQueueCreate(5, sizeof(unsigned char *));
 	if (!gitcon_cfg->midi_queue)
 		return ESP_ERR_NO_MEM;
 
@@ -193,11 +195,6 @@ esp_err_t gitcon_init(gitcon_context_t **out_handle)
 	// ------------------------------------------------------------
 
 	ESP_LOGI(TAG, "Creating RTOS tasks...");
-
-	gitcon_cfg->midi_queue = xQueueCreate(10, sizeof(unsigned char *));
-	if (!gitcon_cfg->midi_queue)
-		return ESP_ERR_NO_MEM;
-
 	// DSP task: receives audio data from DMA task and sends midi messages to midi task
 	if (xTaskCreatePinnedToCore(dsp_task, "dsp_task", 1 << 16, gitcon_cfg, 5, &dsp_task_handle, 1) == pdFALSE)
 		return ESP_ERR_NO_MEM;
