@@ -31,6 +31,7 @@ static void dsp_task(void *arg)
 	float ratio = (float)F_SAMPLE_HZ / (float)FFT_SIZE;
 	unsigned char active_notes[127] = {0};
 	uint16_t *audio_buffer = NULL;
+	unsigned char check = 0;
 
 	for (;;)
 	{
@@ -69,12 +70,17 @@ static void dsp_task(void *arg)
 		for (int k = 1; k < FFT_SIZE / 2; k++)
 		{
 
-			if (magnitude[k] >= max*0.5)
+			if (magnitude[k] >= max * 0.5)
 			{
 				// 4.1 save note on transient ()
 				ESP_LOGI(TAG, "%d-th magnitude: %f => corresponds to %f Hz\n", k, magnitude[k], frequency[k]);
 				ESP_LOGI(TAG, "keyNR: %d\n", (int)round(keyNR[k]));
-				active_notes[(int)round(keyNR[k])] = 1;
+
+				if (check == 0)	// only activates deepest note
+				{
+					active_notes[(int)round(keyNR[k])] = 1;
+					check = 1;
+				}
 			}
 			// 5. check if already on notes are below a certain threshold
 			else
