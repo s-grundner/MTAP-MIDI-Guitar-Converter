@@ -55,7 +55,7 @@
 #define AUDIO_BUFFER_SIZE 512						   // Size of buffer for FFT and sampler
 #define F_SAMPLE_HZ 44100							   // Sample rate of FFT and sampler
 #define FFT_WINDOW_SIZE 2							   // Amount of buffers to take for FFT
-#define FFT_SIZE (AUDIO_BUFFER_SIZE * FFT_WINDOW_SIZE) // Amount of samples to take for FFT
+#define FFT_SIZE 4096   //(AUDIO_BUFFER_SIZE * FFT_WINDOW_SIZE)  Amount of samples to take for FFT
 
 // leave this commented out to use internal ADC
 // #define USE_MCP3201

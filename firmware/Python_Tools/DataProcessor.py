@@ -27,3 +27,4 @@ with open('processed-data.h', 'w') as d:
     d.close()
 
 shutil.copyfile('processed-data.h', '/home/laurenz/Dokumente/GitHub/MTAP-MIDI-Guitar-Converter/firmware/ESP_DSP/src/processed-data.h')
+shutil.copyfile('processed-data.h', '/home/laurenz/Dokumente/GitHub/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/include/processed-data.h')
