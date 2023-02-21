@@ -55,9 +55,21 @@ static void dsp_task(void *arg)
 			magnitude[k] = 2 * sqrt(pow(fft_buffer[2 * k], 2) + pow(fft_buffer[2 * k + 1], 2)) / FFT_SIZE;
 			frequency[k] = k * ratio;
 			keyNR[k] = log2(frequency[k] / 440) * 12 + 49;
+		}
 
-			// 4. detect if frequency is transient
-			if (magnitude[k] >= 0.5)
+		float max = 0;
+		for (int i = 0; i < FFT_SIZE / 2; i++)
+		{
+			if (magnitude[i] > max)
+			{
+				max = magnitude[i];
+			}
+		}
+
+		for (int k = 1; k < FFT_SIZE / 2; k++)
+		{
+
+			if (magnitude[k] >= max*0.5)
 			{
 				// 4.1 save note on transient ()
 				ESP_LOGI(TAG, "%d-th magnitude: %f => corresponds to %f Hz\n", k, magnitude[k], frequency[k]);
