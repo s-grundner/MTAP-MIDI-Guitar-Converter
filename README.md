@@ -23,12 +23,12 @@ Der Vorteil des MIDI-Formats ist, dass es der Standard vieler Musikproduktionsum
 Das Projekt befindet sich derzeit in der Entwicklungsphase. Funktionalitäten sind noch in Planung.
 Planungsvorgänge können unter dem Reiter *[Projects](https://github.com/s-grundner/MTAP-MIDI-Guitar-Converter/projects?query=is%3Aopen)* eingesehen werden.
 
-- Der Schaltplan sowie die Platine sind bereits fertig.
+- Der Schaltplan sowie die Platine sind fertig.
 - Simulationen für das Analogue-Frontend stimmen
-- Die FFT eines künstlich generierten Signals ist bereits möglich
+- Die FFT eines künstlich generierten Signals ist möglich
 - Frequenz zu Noten Konversion möglich
-- Die hardwaretechnische Realisierung des AFE Prototypen ist bereits Vorhanden
-- Das Grundgerüst der Codebase ist bereits ausgearbeitet
+- Die hardwaretechnische Realisierung des AFE Prototypen ist Vorhanden
+- Das Grundgerüst der Codebase ist ausgearbeitet
 - Die Firmware läuft bereits auf einem RTOS, in welchem die priorisierung der einzelen Tasks gehandled wird, sowie eine stabile Kommunikation zwischen den beiden Kernen am ESP32
 - Benötigte Bibliotheken sind ausprogrammiert bzw implementiert
 - (nicht kontinuierliche) FFT von Gitarrensamples sind möglich
