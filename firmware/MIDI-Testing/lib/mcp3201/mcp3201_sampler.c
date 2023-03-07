@@ -40,7 +40,10 @@ static void IRAM_ATTR sampler_task(void *arg)
 						.rx_buffer = buffer_position,
 					};
 					sampler->mcp_handle->ongoing_transaction = &t;
-					spi_device_get_trans_result(sampler->mcp_handle->spi, &t, READER_TIMEOUT_TICKS);
+					spi_device_get_trans_result(
+						sampler->mcp_handle->spi,
+						(spi_transaction_t **)(sampler->mcp_handle->ongoing_transaction),
+						READER_TIMEOUT_TICKS);
 					bytes_read = t.rxlength;
 
 					sampler->buffer_pos += bytes_read / RESAMPLE_DIVIDER;
