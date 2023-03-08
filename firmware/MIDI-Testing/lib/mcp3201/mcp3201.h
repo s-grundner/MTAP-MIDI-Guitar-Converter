@@ -43,6 +43,16 @@ typedef struct
 } mcp3201_config_t;
 typedef struct mcp3201_context_t* mcp3201_handle_t;
 
+/**
+ * @brief MCP3201 Sampler. Samples continuously and puts the samples into a queue.
+ * @param mcp_handle MCP3201 Handle
+ * @param dma_queue DMA Queue. Will be created by the sampler.
+ * @param[out] dsp_queue DSP Queue. Has to be created by the user. 
+ * @param buffer Buffer
+ * @param buffer_pos Buffer Position
+ * @param buffer_size Buffer Size
+ * @typedef mcp3201_sampler_t
+ */
 typedef struct
 {
 	mcp3201_handle_t mcp_handle;
