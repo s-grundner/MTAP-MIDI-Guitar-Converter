@@ -1,0 +1,291 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="midi__utils_8c" kind="file" language="C++">
+    <compoundname>midi_utils.c</compoundname>
+    <includes refid="midi_8h" local="yes">midi.h</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>midi.h</label>
+        <link refid="midi_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi_utils.c</label>
+        <link refid="midi__utils_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>driver/gpio.h</label>
+      </node>
+      <node id="6">
+        <label>driver/uart.h</label>
+      </node>
+      <node id="7">
+        <label>esp_log.h</label>
+      </node>
+      <node id="4">
+        <label>stdint.h</label>
+      </node>
+      <node id="3">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="midi__utils_8c_1a5420c8cf31003518e18002e256fb6efb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structmidi__message__t" kindref="compound">midi_message_t</ref></type>
+        <definition>midi_message_t note_off</definition>
+        <argsstring>(uint8_t channel, uint8_t key_num, uint8_t velocity)</argsstring>
+        <name>note_off</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>key_num</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>velocity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi_utils.c" line="7" column="16" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi_utils.c" bodystart="7" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="midi__utils_8c_1a19ea9f06293f713229ffbf1673dfb3c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structmidi__message__t" kindref="compound">midi_message_t</ref></type>
+        <definition>midi_message_t note_on</definition>
+        <argsstring>(uint8_t channel, uint8_t key_num, uint8_t velocity)</argsstring>
+        <name>note_on</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>key_num</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>velocity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi_utils.c" line="17" column="16" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi_utils.c" bodystart="17" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="midi__utils_8c_1a84c158ecad666015c3eee20aa67a8dc2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structmidi__message__t" kindref="compound">midi_message_t</ref></type>
+        <definition>midi_message_t poly_key_pressure</definition>
+        <argsstring>(uint8_t channel, uint8_t key_num, uint8_t value)</argsstring>
+        <name>poly_key_pressure</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>key_num</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi_utils.c" line="27" column="16" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi_utils.c" bodystart="27" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="midi__utils_8c_1a18d4efd2f7b7b960461a402d9c5f8535" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structmidi__message__t" kindref="compound">midi_message_t</ref></type>
+        <definition>midi_message_t ctrl_change</definition>
+        <argsstring>(uint8_t channel, uint8_t controller_num, uint8_t value)</argsstring>
+        <name>ctrl_change</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>controller_num</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi_utils.c" line="37" column="16" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi_utils.c" bodystart="37" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="midi__utils_8c_1a74a04b0fd0b0f0ad4b05ee2cdce13f8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structmidi__message__t" kindref="compound">midi_message_t</ref></type>
+        <definition>midi_message_t prg_change</definition>
+        <argsstring>(uint8_t channel, uint8_t program)</argsstring>
+        <name>prg_change</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>program</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi_utils.c" line="47" column="16" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi_utils.c" bodystart="47" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="midi__utils_8c_1a65c6c5647ad8c4acb13b5c17acd04b54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structmidi__message__t" kindref="compound">midi_message_t</ref></type>
+        <definition>midi_message_t channel_pressure</definition>
+        <argsstring>(uint8_t channel, uint8_t value)</argsstring>
+        <name>channel_pressure</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi_utils.c" line="57" column="16" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi_utils.c" bodystart="57" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="midi__utils_8c_1afc61f6a3b91a428edc2b1b0962573176" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structmidi__message__t" kindref="compound">midi_message_t</ref></type>
+        <definition>midi_message_t pitch_bend</definition>
+        <argsstring>(uint8_t channel, uint16_t value)</argsstring>
+        <name>pitch_bend</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi_utils.c" line="67" column="16" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi_utils.c" bodystart="67" bodyend="75"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="midi_8h" kindref="compound">midi.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>MIDI<sp/>UTILS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><ref refid="structmidi__message__t" kindref="compound">midi_message_t</ref><sp/>note_off(uint8_t<sp/>channel,<sp/>uint8_t<sp/>key_num,<sp/>uint8_t<sp/>velocity)</highlight></codeline>
+<codeline lineno="8"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structmidi__message__t" kindref="compound">midi_message_t</ref><sp/>msg<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.status<sp/>=<sp/>MIDI_STATUS_NOTE_OFF,</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.channel<sp/>=<sp/>channel,</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.param1<sp/>=<sp/>key_num,</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.param2<sp/>=<sp/>velocity};</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>msg;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><ref refid="structmidi__message__t" kindref="compound">midi_message_t</ref><sp/>note_on(uint8_t<sp/>channel,<sp/>uint8_t<sp/>key_num,<sp/>uint8_t<sp/>velocity)</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structmidi__message__t" kindref="compound">midi_message_t</ref><sp/>msg<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.status<sp/>=<sp/>MIDI_STATUS_NOTE_ON,</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.channel<sp/>=<sp/>channel,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.param1<sp/>=<sp/>key_num,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.param2<sp/>=<sp/>velocity};</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>msg;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><ref refid="structmidi__message__t" kindref="compound">midi_message_t</ref><sp/>poly_key_pressure(uint8_t<sp/>channel,<sp/>uint8_t<sp/>key_num,<sp/>uint8_t<sp/>value)</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structmidi__message__t" kindref="compound">midi_message_t</ref><sp/>msg<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.status<sp/>=<sp/>MIDI_STATUS_POLYPHONIC_KEY_PRESSURE,</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.channel<sp/>=<sp/>channel,</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.param1<sp/>=<sp/>key_num,</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.param2<sp/>=<sp/>value};</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>msg;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><ref refid="structmidi__message__t" kindref="compound">midi_message_t</ref><sp/>ctrl_change(uint8_t<sp/>channel,<sp/>uint8_t<sp/>controller_num,<sp/>uint8_t<sp/>value)</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structmidi__message__t" kindref="compound">midi_message_t</ref><sp/>msg<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.status<sp/>=<sp/>MIDI_STATUS_CONTROL_CHANGE,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.channel<sp/>=<sp/>channel,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.param1<sp/>=<sp/>controller_num,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.param2<sp/>=<sp/>value};</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>msg;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><ref refid="structmidi__message__t" kindref="compound">midi_message_t</ref><sp/>prg_change(uint8_t<sp/>channel,<sp/>uint8_t<sp/>program)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structmidi__message__t" kindref="compound">midi_message_t</ref><sp/>msg<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.status<sp/>=<sp/>MIDI_STATUS_PROGRAM_CHANGE,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.channel<sp/>=<sp/>channel,</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.param1<sp/>=<sp/>program,</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.param2<sp/>=<sp/>0};</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>msg;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><ref refid="structmidi__message__t" kindref="compound">midi_message_t</ref><sp/>channel_pressure(uint8_t<sp/>channel,<sp/>uint8_t<sp/>value)</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structmidi__message__t" kindref="compound">midi_message_t</ref><sp/>msg<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.status<sp/>=<sp/>MIDI_STATUS_CHANNEL_PRESSURE,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.channel<sp/>=<sp/>channel,</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.param1<sp/>=<sp/>value,</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.param2<sp/>=<sp/>0};</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>msg;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><ref refid="structmidi__message__t" kindref="compound">midi_message_t</ref><sp/>pitch_bend(uint8_t<sp/>channel,<sp/>uint16_t<sp/>value)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structmidi__message__t" kindref="compound">midi_message_t</ref><sp/>msg<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.status<sp/>=<sp/>MIDI_STATUS_PITCH_BEND,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.channel<sp/>=<sp/>channel,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.param1<sp/>=<sp/>value<sp/>&amp;<sp/>0x7F,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.param2<sp/>=<sp/>(value<sp/>&gt;&gt;<sp/>7)<sp/>&amp;<sp/>0x7F};</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>msg;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi_utils.c"/>
+  </compounddef>
+</doxygen>

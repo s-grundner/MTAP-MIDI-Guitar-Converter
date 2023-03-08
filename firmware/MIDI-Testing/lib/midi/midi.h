@@ -80,6 +80,8 @@ typedef struct
 	gpio_num_t rx_io;
 	gpio_num_t tx_io;
 } midi_config_t;
+
+/// @typedef *midi_handle_t MIDI Context Handler
 typedef struct midi_context_t *midi_handle_t;
 
 /**

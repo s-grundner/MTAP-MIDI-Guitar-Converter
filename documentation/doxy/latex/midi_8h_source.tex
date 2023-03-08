@@ -1,0 +1,72 @@
+\hypertarget{midi_8h_source}{}\doxysection{midi.\+h}
+\label{midi_8h_source}\index{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/midi/midi.h@{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/midi/midi.h}}
+\mbox{\hyperlink{midi_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#ifndef MIDI\_H}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define MIDI\_H}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}driver/gpio.h"{}}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}driver/uart.h"{}}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include "{}esp\_log.h"{}}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define MIDI\_LOG\_LEVEL ESP\_LOG\_ERROR}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define MIDI\_BYTE\_SIZE\_DEFAULT 3}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define MIDI\_BYTE\_SIZE\_SHORT 2}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define MIDI\_PITCH\_BEND\_MIN (0)}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define MIDI\_PITCH\_BEND\_MAX (16383)}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define MIDI\_PITCH\_BEND\_CENTER (8192)}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{41 \textcolor{keyword}{typedef} \textcolor{keyword}{enum}}
+\DoxyCodeLine{42 \{}
+\DoxyCodeLine{43     MIDI\_STATUS\_NOTE\_OFF = 0x80,}
+\DoxyCodeLine{44     MIDI\_STATUS\_NOTE\_ON = 0x90,}
+\DoxyCodeLine{45     MIDI\_STATUS\_POLYPHONIC\_KEY\_PRESSURE = 0xA0,}
+\DoxyCodeLine{46     MIDI\_STATUS\_CONTROL\_CHANGE = 0xB0,}
+\DoxyCodeLine{47     MIDI\_STATUS\_PROGRAM\_CHANGE = 0xC0,}
+\DoxyCodeLine{48     MIDI\_STATUS\_CHANNEL\_PRESSURE = 0xD0,}
+\DoxyCodeLine{49     MIDI\_STATUS\_PITCH\_BEND = 0xE0,}
+\DoxyCodeLine{50 \} \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3}{midi\_status\_t}};}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{60 \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
+\DoxyCodeLine{61 \{}
+\DoxyCodeLine{62     uint8\_t param1;}
+\DoxyCodeLine{63     \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3}{midi\_status\_t}} status;}
+\DoxyCodeLine{64     uint8\_t channel;}
+\DoxyCodeLine{65     uint8\_t param2;}
+\DoxyCodeLine{66 \} \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}};}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{76 \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
+\DoxyCodeLine{77 \{}
+\DoxyCodeLine{78     uart\_port\_t uart\_num;}
+\DoxyCodeLine{79     uint baudrate;}
+\DoxyCodeLine{80     gpio\_num\_t rx\_io;}
+\DoxyCodeLine{81     gpio\_num\_t tx\_io;}
+\DoxyCodeLine{82 \} \mbox{\hyperlink{structmidi__config__t}{midi\_config\_t}};}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{85 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structmidi__context__t}{midi\_context\_t}} *\mbox{\hyperlink{structmidi__context__t}{midi\_handle\_t}};}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{94 esp\_err\_t \mbox{\hyperlink{midi_8h_ae650454d0c1ee0e1ccde60b84d5396be}{midi\_init}}(\mbox{\hyperlink{structmidi__context__t}{midi\_handle\_t}} *out\_handle, \mbox{\hyperlink{structmidi__config__t}{midi\_config\_t}} *out\_cfg);}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{102 esp\_err\_t \mbox{\hyperlink{midi_8h_a6eff3a43d514679b4da21f8cca9e2316}{midi\_exit}}(\mbox{\hyperlink{structmidi__context__t}{midi\_handle\_t}} midi\_handle);}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{111 esp\_err\_t \mbox{\hyperlink{midi_8h_a5aa4e2de2cfe3d569d4968df337cb846}{midi\_write}}(\mbox{\hyperlink{structmidi__context__t}{midi\_handle\_t}} midi\_handle, \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} *msg);}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{120 esp\_err\_t \mbox{\hyperlink{midi_8h_a19339a5613e1e14bcffb4469675ec2db}{midi\_read}}(\mbox{\hyperlink{structmidi__context__t}{midi\_handle\_t}} midi\_handle, \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} *msg, TickType\_t timeout);}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122 \textcolor{comment}{// functions to configure midi messages}}
+\DoxyCodeLine{123 \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} note\_off(uint8\_t channel, uint8\_t key\_num, uint8\_t velocity);}
+\DoxyCodeLine{124 \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} note\_on(uint8\_t channel, uint8\_t key\_num, uint8\_t velocity);}
+\DoxyCodeLine{125 \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} poly\_key\_pressure(uint8\_t channel, uint8\_t key\_num, uint8\_t value);}
+\DoxyCodeLine{126 \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} ctrl\_change(uint8\_t channel, uint8\_t controller\_num, uint8\_t value);}
+\DoxyCodeLine{127 \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} prg\_change(uint8\_t channel, uint8\_t program);}
+\DoxyCodeLine{128 \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} channel\_pressure(uint8\_t channel, uint8\_t value);}
+\DoxyCodeLine{129 \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} pitch\_bend(uint8\_t channel, uint16\_t value);}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// MIDI\_H}}
+
+\end{DoxyCode}

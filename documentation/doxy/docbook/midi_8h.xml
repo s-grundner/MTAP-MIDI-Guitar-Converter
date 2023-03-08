@@ -1,0 +1,371 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_midi_8h" xml:lang="en-US">
+<title>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi.h File Reference</title>
+<indexterm><primary>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi.h</primary></indexterm>
+<para>
+
+<para>midi driver for esp32 </para>
+ 
+</para>
+<programlisting linenumbering="unnumbered">#include &lt;stdio.h&gt;<?linebreak?>#include &lt;stdint.h&gt;<?linebreak?>#include &quot;driver/gpio.h&quot;<?linebreak?>#include &quot;driver/uart.h&quot;<?linebreak?>#include &quot;esp_log.h&quot;<?linebreak?></programlisting>Include dependency graph for midi.h:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="midi_8h__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+This graph shows which files directly or indirectly include this file:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="midi_8h__dep__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Data Structures    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_structmidi__message__t">midi_message_t</link></para>
+
+<para>MIDI Message. </para>
+</listitem>
+            <listitem><para>struct <link linkend="_structmidi__config__t">midi_config_t</link></para>
+
+<para>MIDI UART Configuration. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_midi_8h_1a3ce5bc79e80bfeb2d39acb2ab2866cbb"/>#define <emphasis role="strong">MIDI_LOG_LEVEL</emphasis>&#160;&#160;&#160;ESP_LOG_ERROR</para>
+</listitem>
+            <listitem><para><anchor xml:id="_midi_8h_1a8cbacf606a13d650a7b4352a6d63ffc6"/>#define <emphasis role="strong">MIDI_BYTE_SIZE_DEFAULT</emphasis>&#160;&#160;&#160;3</para>
+</listitem>
+            <listitem><para><anchor xml:id="_midi_8h_1a185713012c0788a3e5309b017dc76228"/>#define <emphasis role="strong">MIDI_BYTE_SIZE_SHORT</emphasis>&#160;&#160;&#160;2</para>
+</listitem>
+            <listitem><para><anchor xml:id="_midi_8h_1a502f2aeb3c96dd726974e602bced0e15"/>#define <emphasis role="strong">MIDI_PITCH_BEND_MIN</emphasis>&#160;&#160;&#160;(0)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_midi_8h_1af02cd8b82872f196f2d10b3248442bc8"/>#define <emphasis role="strong">MIDI_PITCH_BEND_MAX</emphasis>&#160;&#160;&#160;(16383)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_midi_8h_1a9e7f98c080083d0a47d1a656df111cdb"/>#define <emphasis role="strong">MIDI_PITCH_BEND_CENTER</emphasis>&#160;&#160;&#160;(8192)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_midi_8h_1acff464a25313f690f0543752b33c4716"/>typedef struct <link linkend="_structmidi__context__t">midi_context_t</link> * <emphasis role="strong">midi_handle_t</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Enumerations    </title>
+        <itemizedlist>
+            <listitem><para>enum <link linkend="_midi_8h_1a37a498aac35ac1332061a8b453ec7ae3">midi_status_t</link> { <?linebreak?><emphasis role="strong">MIDI_STATUS_NOTE_OFF</emphasis> = 0x80
+, <emphasis role="strong">MIDI_STATUS_NOTE_ON</emphasis> = 0x90
+, <emphasis role="strong">MIDI_STATUS_POLYPHONIC_KEY_PRESSURE</emphasis> = 0xA0
+, <emphasis role="strong">MIDI_STATUS_CONTROL_CHANGE</emphasis> = 0xB0
+, <?linebreak?><emphasis role="strong">MIDI_STATUS_PROGRAM_CHANGE</emphasis> = 0xC0
+, <emphasis role="strong">MIDI_STATUS_CHANNEL_PRESSURE</emphasis> = 0xD0
+, <emphasis role="strong">MIDI_STATUS_PITCH_BEND</emphasis> = 0xE0
+ }</para>
+
+<para>MIDI Status Bytes. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>esp_err_t <link linkend="_midi_8h_1ae650454d0c1ee0e1ccde60b84d5396be">midi_init</link> (<link linkend="_structmidi__context__t">midi_handle_t</link> *out_handle, <link linkend="_structmidi__config__t">midi_config_t</link> *out_cfg)</para>
+
+<para>initializes MIDI and allocates driver resources </para>
+</listitem>
+            <listitem><para>esp_err_t <link linkend="_midi_8h_1a6eff3a43d514679b4da21f8cca9e2316">midi_exit</link> (<link linkend="_structmidi__context__t">midi_handle_t</link> midi_handle)</para>
+
+<para>Exits MIDI and frees all resources. </para>
+</listitem>
+            <listitem><para>esp_err_t <link linkend="_midi_8h_1a5aa4e2de2cfe3d569d4968df337cb846">midi_write</link> (<link linkend="_structmidi__context__t">midi_handle_t</link> midi_handle, <link linkend="_structmidi__message__t">midi_message_t</link> *msg)</para>
+
+<para>Writes MIDI Message to UART. </para>
+</listitem>
+            <listitem><para>esp_err_t <link linkend="_midi_8h_1a19339a5613e1e14bcffb4469675ec2db">midi_read</link> (<link linkend="_structmidi__context__t">midi_handle_t</link> midi_handle, <link linkend="_structmidi__message__t">midi_message_t</link> *msg, TickType_t timeout)</para>
+
+<para>Reads MIDI Message from UART. </para>
+</listitem>
+            <listitem><para><anchor xml:id="_midi_8h_1a5420c8cf31003518e18002e256fb6efb"/><link linkend="_structmidi__message__t">midi_message_t</link> <emphasis role="strong">note_off</emphasis> (uint8_t channel, uint8_t key_num, uint8_t velocity)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_midi_8h_1a19ea9f06293f713229ffbf1673dfb3c5"/><link linkend="_structmidi__message__t">midi_message_t</link> <emphasis role="strong">note_on</emphasis> (uint8_t channel, uint8_t key_num, uint8_t velocity)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_midi_8h_1a84c158ecad666015c3eee20aa67a8dc2"/><link linkend="_structmidi__message__t">midi_message_t</link> <emphasis role="strong">poly_key_pressure</emphasis> (uint8_t channel, uint8_t key_num, uint8_t value)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_midi_8h_1a18d4efd2f7b7b960461a402d9c5f8535"/><link linkend="_structmidi__message__t">midi_message_t</link> <emphasis role="strong">ctrl_change</emphasis> (uint8_t channel, uint8_t controller_num, uint8_t value)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_midi_8h_1a74a04b0fd0b0f0ad4b05ee2cdce13f8f"/><link linkend="_structmidi__message__t">midi_message_t</link> <emphasis role="strong">prg_change</emphasis> (uint8_t channel, uint8_t program)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_midi_8h_1a65c6c5647ad8c4acb13b5c17acd04b54"/><link linkend="_structmidi__message__t">midi_message_t</link> <emphasis role="strong">channel_pressure</emphasis> (uint8_t channel, uint8_t value)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_midi_8h_1afc61f6a3b91a428edc2b1b0962573176"/><link linkend="_structmidi__message__t">midi_message_t</link> <emphasis role="strong">pitch_bend</emphasis> (uint8_t channel, uint16_t value)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>midi driver for esp32 </para>
+
+<para><formalpara><title>Author</title>
+
+<para>@s-grundner </para>
+</formalpara>
+<formalpara><title>Version</title>
+
+<para>0.1 </para>
+</formalpara>
+<formalpara><title>Date</title>
+
+<para>2022-12-23</para>
+</formalpara>
+<formalpara><title>Copyright</title>
+
+<para>Copyright (c) 2022 </para>
+</formalpara>
+</para>
+</section>
+<section>
+<title>Enumeration Type Documentation</title>
+<anchor xml:id="_midi_8h_1a37a498aac35ac1332061a8b453ec7ae3"/><section>
+    <title>midi_status_t</title>
+<indexterm><primary>midi_status_t</primary><secondary>midi.h</secondary></indexterm>
+<indexterm><primary>midi.h</primary><secondary>midi_status_t</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_midi_8h_1a37a498aac35ac1332061a8b453ec7ae3">midi_status_t</link></computeroutput></para><para>
+
+<para>MIDI Status Bytes. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>MIDI_STATUS_NOTE_OFF</entry><entry>
+<para>0x80, requires param2 </para>
+</entry>
+                            </row>
+                            <row>
+<entry>MIDI_STATUS_NOTE_ON</entry><entry>
+<para>0x90, requires param2 </para>
+</entry>
+                            </row>
+                            <row>
+<entry>MIDI_STATUS_POLYPHONIC_KEY_PRESSURE</entry><entry>
+<para>0xA0, param2 is not used </para>
+</entry>
+                            </row>
+                            <row>
+<entry>MIDI_STATUS_CONTROL_CHANGE</entry><entry>
+<para>0xB0, requires param2 </para>
+</entry>
+                            </row>
+                            <row>
+<entry>MIDI_STATUS_PROGRAM_CHANGE</entry><entry>
+<para>0xC0, param2 is is not used </para>
+</entry>
+                            </row>
+                            <row>
+<entry>MIDI_STATUS_CHANNEL_PRESSURE</entry><entry>
+<para>0xD0, param2 is is not used </para>
+</entry>
+                            </row>
+                            <row>
+<entry>MIDI_STATUS_PITCH_BEND</entry><entry>
+<para>0xE0, requires param2 </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_midi_8h_1a6eff3a43d514679b4da21f8cca9e2316"/><section>
+    <title>midi_exit()</title>
+<indexterm><primary>midi_exit</primary><secondary>midi.h</secondary></indexterm>
+<indexterm><primary>midi.h</primary><secondary>midi_exit</secondary></indexterm>
+<para><computeroutput>esp_err_t midi_exit (<link linkend="_structmidi__context__t">midi_handle_t</link> midi_handle)</computeroutput></para><para>
+
+<para>Exits MIDI and frees all resources. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>midi_handle</entry><entry>
+<para>MIDI Handle to be freed </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>esp_err_t </para>
+</formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="midi_8h_a6eff3a43d514679b4da21f8cca9e2316_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_midi_8h_1ae650454d0c1ee0e1ccde60b84d5396be"/><section>
+    <title>midi_init()</title>
+<indexterm><primary>midi_init</primary><secondary>midi.h</secondary></indexterm>
+<indexterm><primary>midi.h</primary><secondary>midi_init</secondary></indexterm>
+<para><computeroutput>esp_err_t midi_init (<link linkend="_structmidi__context__t">midi_handle_t</link> * out_handle, <link linkend="_structmidi__config__t">midi_config_t</link> * out_cfg)</computeroutput></para><para>
+
+<para>initializes MIDI and allocates driver resources </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>out</entry><entry>out_handle</entry><entry>
+<para>MIDI Handle to be initialized </para>
+</entry>
+                            </row>
+                            <row>
+<entry>out</entry><entry>out_cfg</entry><entry>
+<para>MIDI Configuration </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>esp_err_t </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_midi_8h_1a19339a5613e1e14bcffb4469675ec2db"/><section>
+    <title>midi_read()</title>
+<indexterm><primary>midi_read</primary><secondary>midi.h</secondary></indexterm>
+<indexterm><primary>midi.h</primary><secondary>midi_read</secondary></indexterm>
+<para><computeroutput>esp_err_t midi_read (<link linkend="_structmidi__context__t">midi_handle_t</link> midi_handle, <link linkend="_structmidi__message__t">midi_message_t</link> * msg, TickType_t timeout)</computeroutput></para><para>
+
+<para>Reads MIDI Message from UART. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>midi_handle</entry><entry>
+<para>MIDI Handle to pass parameters </para>
+</entry>
+                            </row>
+                            <row>
+<entry>msg</entry><entry>
+<para>MIDI Message to be read </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>esp_err_t </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_midi_8h_1a5aa4e2de2cfe3d569d4968df337cb846"/><section>
+    <title>midi_write()</title>
+<indexterm><primary>midi_write</primary><secondary>midi.h</secondary></indexterm>
+<indexterm><primary>midi.h</primary><secondary>midi_write</secondary></indexterm>
+<para><computeroutput>esp_err_t midi_write (<link linkend="_structmidi__context__t">midi_handle_t</link> midi_handle, <link linkend="_structmidi__message__t">midi_message_t</link> * msg)</computeroutput></para><para>
+
+<para>Writes MIDI Message to UART. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>midi_handle</entry><entry>
+<para>MIDI Handle to pass parameters </para>
+</entry>
+                            </row>
+                            <row>
+<entry>msg</entry><entry>
+<para>MIDI Message to be sent </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>esp_err_t </para>
+</formalpara>
+</para>
+</section>
+</section>
+</section>

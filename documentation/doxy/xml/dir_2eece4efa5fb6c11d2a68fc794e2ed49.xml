@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="dir_2eece4efa5fb6c11d2a68fc794e2ed49" kind="dir">
+    <compoundname>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib</compoundname>
+    <innerdir refid="dir_7fdb04358d4b565fa62e8a243cd32268">C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio</innerdir>
+    <innerdir refid="dir_cb32f5fcdc7a33b46d2de819a275b253">C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft</innerdir>
+    <innerdir refid="dir_90211605ec832030dc634f0c45ef2d1c">C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201</innerdir>
+    <innerdir refid="dir_0ead6e45edfdb4ee7338c02bc58b004b">C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/"/>
+  </compounddef>
+</doxygen>

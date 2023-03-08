@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_fft_8h_source" xml:lang="en-US">
+<title>fft.h</title>
+<indexterm><primary>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 
+26 <emphasis role="preprocessor">#ifndef&#32;__FFT_H__</emphasis>
+27 <emphasis role="preprocessor">#define&#32;__FFT_H__</emphasis>
+28 
+29 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">enum</emphasis>
+30 {
+31 &#32;&#32;FFT_REAL,
+32 &#32;&#32;FFT_COMPLEX
+33 }&#32;fft_type_t;
+34 
+35 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">enum</emphasis>
+36 {
+37 &#32;&#32;FFT_FORWARD,
+38 &#32;&#32;FFT_BACKWARD
+39 }&#32;fft_direction_t;
+40 
+41 <emphasis role="preprocessor">#define&#32;FFT_OWN_INPUT_MEM&#32;1</emphasis>
+42 <emphasis role="preprocessor">#define&#32;FFT_OWN_OUTPUT_MEM&#32;2</emphasis>
+43 
+44 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct</emphasis>
+45 {
+46 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;size;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;FFT&#32;size</emphasis>
+47 &#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;*input;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;pointer&#32;to&#32;input&#32;buffer</emphasis>
+48 &#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;*output;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;pointer&#32;to&#32;output&#32;buffer</emphasis>
+49 &#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;*twiddle_factors;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;pointer&#32;to&#32;buffer&#32;holding&#32;twiddle&#32;factors</emphasis>
+50 &#32;&#32;fft_type_t&#32;type;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;real&#32;or&#32;complex</emphasis>
+51 &#32;&#32;fft_direction_t&#32;direction;&#32;<emphasis role="comment">//&#32;forward&#32;or&#32;backward</emphasis>
+52 &#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;flags;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;FFT&#32;flags</emphasis>
+53 }&#32;<link linkend="_structfft__config__t">fft_config_t</link>;
+54 
+55 <link linkend="_structfft__config__t">fft_config_t</link>&#32;*fft_init(<emphasis role="keywordtype">int</emphasis>&#32;size,&#32;fft_type_t&#32;type,&#32;fft_direction_t&#32;direction,&#32;<emphasis role="keywordtype">float</emphasis>&#32;*input,&#32;<emphasis role="keywordtype">float</emphasis>&#32;*output);
+56 <emphasis role="keywordtype">void</emphasis>&#32;fft_destroy(<link linkend="_structfft__config__t">fft_config_t</link>&#32;*config);
+57 <emphasis role="keywordtype">void</emphasis>&#32;fft_execute(<link linkend="_structfft__config__t">fft_config_t</link>&#32;*config);
+58 <emphasis role="keywordtype">void</emphasis>&#32;fft(<emphasis role="keywordtype">float</emphasis>&#32;*input,&#32;<emphasis role="keywordtype">float</emphasis>&#32;*output,&#32;<emphasis role="keywordtype">float</emphasis>&#32;*twiddle_factors,&#32;<emphasis role="keywordtype">int</emphasis>&#32;n);
+59 <emphasis role="keywordtype">void</emphasis>&#32;ifft(<emphasis role="keywordtype">float</emphasis>&#32;*input,&#32;<emphasis role="keywordtype">float</emphasis>&#32;*output,&#32;<emphasis role="keywordtype">float</emphasis>&#32;*twiddle_factors,&#32;<emphasis role="keywordtype">int</emphasis>&#32;n);
+60 <emphasis role="keywordtype">void</emphasis>&#32;rfft(<emphasis role="keywordtype">float</emphasis>&#32;*x,&#32;<emphasis role="keywordtype">float</emphasis>&#32;*y,&#32;<emphasis role="keywordtype">float</emphasis>&#32;*twiddle_factors,&#32;<emphasis role="keywordtype">int</emphasis>&#32;n);
+61 <emphasis role="keywordtype">void</emphasis>&#32;irfft(<emphasis role="keywordtype">float</emphasis>&#32;*x,&#32;<emphasis role="keywordtype">float</emphasis>&#32;*y,&#32;<emphasis role="keywordtype">float</emphasis>&#32;*twiddle_factors,&#32;<emphasis role="keywordtype">int</emphasis>&#32;n);
+62 <emphasis role="keywordtype">void</emphasis>&#32;fft_primitive(<emphasis role="keywordtype">float</emphasis>&#32;*x,&#32;<emphasis role="keywordtype">float</emphasis>&#32;*y,&#32;<emphasis role="keywordtype">int</emphasis>&#32;n,&#32;<emphasis role="keywordtype">int</emphasis>&#32;stride,&#32;<emphasis role="keywordtype">float</emphasis>&#32;*twiddle_factors,&#32;<emphasis role="keywordtype">int</emphasis>&#32;tw_stride);
+63 <emphasis role="keywordtype">void</emphasis>&#32;split_radix_fft(<emphasis role="keywordtype">float</emphasis>&#32;*x,&#32;<emphasis role="keywordtype">float</emphasis>&#32;*y,&#32;<emphasis role="keywordtype">int</emphasis>&#32;n,&#32;<emphasis role="keywordtype">int</emphasis>&#32;stride,&#32;<emphasis role="keywordtype">float</emphasis>&#32;*twiddle_factors,&#32;<emphasis role="keywordtype">int</emphasis>&#32;tw_stride);
+64 <emphasis role="keywordtype">void</emphasis>&#32;ifft_primitive(<emphasis role="keywordtype">float</emphasis>&#32;*input,&#32;<emphasis role="keywordtype">float</emphasis>&#32;*output,&#32;<emphasis role="keywordtype">int</emphasis>&#32;n,&#32;<emphasis role="keywordtype">int</emphasis>&#32;stride,&#32;<emphasis role="keywordtype">float</emphasis>&#32;*twiddle_factors,&#32;<emphasis role="keywordtype">int</emphasis>&#32;tw_stride);
+65 <emphasis role="keywordtype">void</emphasis>&#32;fft8(<emphasis role="keywordtype">float</emphasis>&#32;*input,&#32;<emphasis role="keywordtype">int</emphasis>&#32;stride_in,&#32;<emphasis role="keywordtype">float</emphasis>&#32;*output,&#32;<emphasis role="keywordtype">int</emphasis>&#32;stride_out);
+66 <emphasis role="keywordtype">void</emphasis>&#32;fft4(<emphasis role="keywordtype">float</emphasis>&#32;*input,&#32;<emphasis role="keywordtype">int</emphasis>&#32;stride_in,&#32;<emphasis role="keywordtype">float</emphasis>&#32;*output,&#32;<emphasis role="keywordtype">int</emphasis>&#32;stride_out);
+67 
+68 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__FFT_H__</emphasis>
+</programlisting></section>

@@ -1,0 +1,337 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="i2s__sampler_8c" kind="file" language="C++">
+    <compoundname>i2s_sampler.c</compoundname>
+    <includes refid="i2s__sampler_8h" local="yes">i2s_sampler.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/i2s_sampler.c</label>
+        <link refid="i2s__sampler_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>i2s_sampler.h</label>
+        <link refid="i2s__sampler_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>driver/i2s.h</label>
+      </node>
+      <node id="9">
+        <label>esp_log.h</label>
+      </node>
+      <node id="5">
+        <label>freertos/FreeRTOS.h</label>
+      </node>
+      <node id="7">
+        <label>freertos/queue.h</label>
+      </node>
+      <node id="6">
+        <label>freertos/task.h</label>
+      </node>
+      <node id="8">
+        <label>freertos/timers.h</label>
+      </node>
+      <node id="3">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="i2s__sampler_8c_1a828111412830c4436552027ba36cfcad" prot="public" static="no">
+        <name>RESAMPLE_DIVIDER</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/i2s_sampler.c" line="4" column="9" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/i2s_sampler.c" bodystart="4" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="i2s__sampler_8c_1a4f85605dc744cf7ad2f8283b2af38f3f" prot="public" static="no">
+        <name>READER_TIMEOUT_MS</name>
+        <initializer>10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/i2s_sampler.c" line="5" column="9" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/i2s_sampler.c" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="i2s__sampler_8c_1a89218c3a1a1e133c6bee85aa1d79acae" prot="public" static="no">
+        <name>READER_TIMEOUT_TICKS</name>
+        <initializer>(READER_TIMEOUT_MS / portTICK_PERIOD_MS)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/i2s_sampler.c" line="6" column="9" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/i2s_sampler.c" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="i2s__sampler_8c_1a5a85b9c772bbeb480b209a3e6ea92b4c" prot="public" static="yes" mutable="no">
+        <type>const char *</type>
+        <definition>const char* TAG</definition>
+        <argsstring></argsstring>
+        <name>TAG</name>
+        <initializer>= &quot;I2S_SAMPLER&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/i2s_sampler.c" line="2" column="19" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/i2s_sampler.c" bodystart="2" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="i2s__sampler_8c_1a408012191feb8f662616d50eef5d3f18" prot="public" static="yes" mutable="no">
+        <type>TaskHandle_t</type>
+        <definition>TaskHandle_t sampler_task_handle</definition>
+        <argsstring></argsstring>
+        <name>sampler_task_handle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/i2s_sampler.c" line="8" column="21" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/i2s_sampler.c" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="i2s__sampler_8c_1aac9c6fe4e61110c03a89744928cd0934" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void IRAM_ATTR</type>
+        <definition>static void IRAM_ATTR sampler_task</definition>
+        <argsstring>(void *arg)</argsstring>
+        <name>sampler_task</name>
+        <param>
+          <type>void *</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/i2s_sampler.c" line="10" column="23" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/i2s_sampler.c" bodystart="10" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="i2s__sampler_8c_1a4cea4daf97a0f289cd8c5f3ae3a86fa3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structi2s__sampler__t" kindref="compound">i2s_sampler_t</ref> *</type>
+        <definition>i2s_sampler_t * i2s_sampler_start</definition>
+        <argsstring>(adc_channel_t adc1_channel, QueueHandle_t recv_queue, const size_t buffer_size, const size_t f_sample)</argsstring>
+        <name>i2s_sampler_start</name>
+        <param>
+          <type>adc_channel_t</type>
+          <declname>adc1_channel</declname>
+        </param>
+        <param>
+          <type>QueueHandle_t</type>
+          <declname>recv_queue</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>buffer_size</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>f_sample</declname>
+        </param>
+        <briefdescription>
+<para>Starts a sampler Task that samples from the given ADC1 Channel and sends the samples to the given Queue. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>adc1_channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC1 Channel to use </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>recv_queue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Queue to send samples to </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of the buffer in samples </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>f_sample</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sample rate </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>i2s_sampler_t* Sampler handle or NULL if failed </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/i2s_sampler.c" line="42" column="15" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/i2s_sampler.c" bodystart="42" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="i2s__sampler_8c_1a2084807167ecf9a0ee15c945ccff4191" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>esp_err_t</type>
+        <definition>esp_err_t i2s_sampler_stop</definition>
+        <argsstring>(i2s_sampler_t *sampler)</argsstring>
+        <name>i2s_sampler_stop</name>
+        <param>
+          <type><ref refid="structi2s__sampler__t" kindref="compound">i2s_sampler_t</ref> *</type>
+          <declname>sampler</declname>
+        </param>
+        <briefdescription>
+<para>Deletes sampler Task, frees memory and uninstalls adc as well as i2s driver. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sampler</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sampler to stop </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>ESP_OK if successful </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/i2s_sampler.c" line="81" column="11" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/i2s_sampler.c" bodystart="81" bodyend="97"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;i2s_sampler.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*TAG<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;I2S_SAMPLER&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RESAMPLE_DIVIDER<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>READER_TIMEOUT_MS<sp/>10</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>READER_TIMEOUT_TICKS<sp/>(READER_TIMEOUT_MS<sp/>/<sp/>portTICK_PERIOD_MS)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>TaskHandle_t<sp/>sampler_task_handle;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>IRAM_ATTR<sp/>sampler_task(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*arg)</highlight></codeline>
+<codeline lineno="11"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structi2s__sampler__t" kindref="compound">i2s_sampler_t</ref><sp/>*sampler<sp/>=<sp/>(<ref refid="structi2s__sampler__t" kindref="compound">i2s_sampler_t</ref><sp/>*)arg;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(;;)</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i2s_event_t<sp/>evt;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(xQueueReceive(sampler-&gt;dma_queue,<sp/>&amp;evt,<sp/>portMAX_DELAY)<sp/>==<sp/>pdTRUE)</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(evt.type<sp/>==<sp/>I2S_EVENT_RX_DONE)</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>bytes_read<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>fill<sp/>audio<sp/>buffer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>bytes_to_read<sp/>=<sp/>RESAMPLE_DIVIDER<sp/>*<sp/>(sampler-&gt;buffer_size<sp/>-<sp/>sampler-&gt;buffer_pos);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*buffer_position<sp/>=<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)(sampler-&gt;buffer<sp/>+<sp/>sampler-&gt;buffer_pos);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>read<sp/>data<sp/>from<sp/>i2s</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i2s_read(I2S_NUM_0,<sp/>buffer_position,<sp/>bytes_to_read,<sp/>&amp;bytes_read,<sp/>READER_TIMEOUT_TICKS);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sampler-&gt;buffer_pos<sp/>+=<sp/>bytes_read<sp/>/<sp/>RESAMPLE_DIVIDER;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sampler-&gt;buffer_pos<sp/>==<sp/>sampler-&gt;buffer_size)</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sampler-&gt;buffer_pos<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xQueueSend(sampler-&gt;dsp_queue,<sp/>&amp;sampler-&gt;buffer,<sp/>portMAX_DELAY);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(bytes_read<sp/>&gt;<sp/>0);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><ref refid="structi2s__sampler__t" kindref="compound">i2s_sampler_t</ref><sp/>*i2s_sampler_start(adc_channel_t<sp/>adc1_channel,<sp/>QueueHandle_t<sp/>recv_queue,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>buffer_size,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>f_sample)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(TAG,<sp/></highlight><highlight class="stringliteral">&quot;Initializing<sp/>I2S<sp/>Sampler...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>QueueHandle_t<sp/>dma_queue;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>i2s_config_t<sp/>i2s_cfg<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.mode<sp/>=<sp/>(i2s_mode_t)(I2S_MODE_MASTER<sp/>|<sp/>I2S_MODE_RX<sp/>|<sp/>I2S_MODE_ADC_BUILT_IN),</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.sample_rate<sp/>=<sp/>f_sample,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.bits_per_sample<sp/>=<sp/>I2S_BITS_PER_SAMPLE_16BIT,</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.channel_format<sp/>=<sp/>I2S_CHANNEL_FMT_ONLY_LEFT,</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.communication_format<sp/>=<sp/>I2S_COMM_FORMAT_STAND_I2S,</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.intr_alloc_flags<sp/>=<sp/>ESP_INTR_FLAG_LEVEL1,</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.dma_buf_count<sp/>=<sp/>4,</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.dma_buf_len<sp/>=<sp/>1024,</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.use_apll<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.fixed_mclk<sp/>=<sp/>0};</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>ADC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_ERROR_CHECK(i2s_driver_install(I2S_NUM_0,<sp/>&amp;i2s_cfg,<sp/>4,<sp/>&amp;dma_queue));</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_ERROR_CHECK(i2s_set_adc_mode(ADC_UNIT_1,<sp/>adc1_channel));</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_ERROR_CHECK(i2s_adc_enable(I2S_NUM_0));</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structi2s__sampler__t" kindref="compound">i2s_sampler_t</ref><sp/>*sampler<sp/>=<sp/>(<ref refid="structi2s__sampler__t" kindref="compound">i2s_sampler_t</ref><sp/>*)malloc(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="structi2s__sampler__t" kindref="compound">i2s_sampler_t</ref>));</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>*sampler<sp/>=<sp/>(<ref refid="structi2s__sampler__t" kindref="compound">i2s_sampler_t</ref>){</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.buffer<sp/>=<sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>*)malloc(buffer_size<sp/>*<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">)),</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.buffer_pos<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.buffer_size<sp/>=<sp/>buffer_size,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.dma_queue<sp/>=<sp/>dma_queue,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.dsp_queue<sp/>=<sp/>recv_queue};</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>DMA<sp/>task:<sp/>receives<sp/>audio<sp/>data<sp/>from<sp/>ADC<sp/>and<sp/>sends<sp/>it<sp/>to<sp/>DSP<sp/>task</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(xTaskCreatePinnedToCore(sampler_task,<sp/></highlight><highlight class="stringliteral">&quot;sampler_task&quot;</highlight><highlight class="normal">,<sp/>1<sp/>&lt;&lt;<sp/>14,<sp/>sampler,<sp/>5,<sp/>&amp;sampler_task_handle,<sp/>0)<sp/>==<sp/>pdFALSE)</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sampler;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal">esp_err_t<sp/>i2s_sampler_stop(<ref refid="structi2s__sampler__t" kindref="compound">i2s_sampler_t</ref><sp/>*sampler)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(TAG,<sp/></highlight><highlight class="stringliteral">&quot;Stopping<sp/>I2S<sp/>Sampler...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>esp_err_t<sp/>err;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>stop<sp/>i2s</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_ERROR_CHECK(i2s_adc_disable(I2S_NUM_0));</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_ERROR_CHECK(i2s_driver_uninstall(I2S_NUM_0));</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>stop<sp/>task</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>vTaskDelete(sampler_task_handle);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>free<sp/>memory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>free(sampler-&gt;buffer);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>free(sampler);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ESP_OK;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/i2s_sampler.c"/>
+  </compounddef>
+</doxygen>

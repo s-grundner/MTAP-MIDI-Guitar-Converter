@@ -1,0 +1,65 @@
+\hypertarget{mcp3201_8c}{}\doxysection{C\+:/\+Users/\+Smon/source/\+MTAP-\/\+MIDI-\/\+Guitar-\/\+Converter/firmware/\+MIDI-\/\+Testing/lib/mcp3201/mcp3201.c File Reference}
+\label{mcp3201_8c}\index{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/mcp3201/mcp3201.c@{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/mcp3201/mcp3201.c}}
+{\ttfamily \#include \char`\"{}mcp3201.\+h\char`\"{}}\newline
+Include dependency graph for mcp3201.\+c\+:
+% FIG 0
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structmcp3201__context__t}{mcp3201\+\_\+context\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em MCP3201 Context struct for internal use. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{mcp3201_8c_a5b6eb8ead610fcf3be79b9922131cf40}\label{mcp3201_8c_a5b6eb8ead610fcf3be79b9922131cf40}} 
+typedef struct \mbox{\hyperlink{structmcp3201__context__t}{mcp3201\+\_\+context\+\_\+t}} {\bfseries mcp3201\+\_\+context\+\_\+t}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{mcp3201_8c_af5ddae9d2322ad9c6a7979cf2789ff1d}\label{mcp3201_8c_af5ddae9d2322ad9c6a7979cf2789ff1d}} 
+esp\+\_\+err\+\_\+t {\bfseries mcp3201\+\_\+init} (\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\+\_\+context\+\_\+t}} $\ast$$\ast$out\+\_\+ctx, const \mbox{\hyperlink{structmcp3201__config__t}{mcp3201\+\_\+config\+\_\+t}} $\ast$cfg)
+\item 
+\mbox{\Hypertarget{mcp3201_8c_af9620a282321a415a2c9808e73d28a66}\label{mcp3201_8c_af9620a282321a415a2c9808e73d28a66}} 
+esp\+\_\+err\+\_\+t {\bfseries mcp3201\+\_\+read} (\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\+\_\+context\+\_\+t}} $\ast$ctx, uint16\+\_\+t $\ast$out\+\_\+value)
+\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{mcp3201_8c_acacc7f3f14eb9108f7c053d4cc370e00}{mcp3201\+\_\+exit}} (\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\+\_\+handle\+\_\+t}} mcp\+\_\+handle)
+\begin{DoxyCompactList}\small\item\em Exits the MCP3201 ADC device and frees all resources. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+@s-\/grundner 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022-\/12-\/24
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2022 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mcp3201_8c_acacc7f3f14eb9108f7c053d4cc370e00}\label{mcp3201_8c_acacc7f3f14eb9108f7c053d4cc370e00}} 
+\index{mcp3201.c@{mcp3201.c}!mcp3201\_exit@{mcp3201\_exit}}
+\index{mcp3201\_exit@{mcp3201\_exit}!mcp3201.c@{mcp3201.c}}
+\doxysubsubsection{\texorpdfstring{mcp3201\_exit()}{mcp3201\_exit()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t mcp3201\+\_\+exit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\+\_\+handle\+\_\+t}}}]{mcp\+\_\+handle }\end{DoxyParamCaption})}
+
+
+
+Exits the MCP3201 ADC device and frees all resources. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mcp\+\_\+handle} & MCP3201 Device to exit \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ESP\+\_\+\+OK on success 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 1

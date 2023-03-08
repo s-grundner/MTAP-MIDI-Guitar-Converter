@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_mcp3201_8c" xml:lang="en-US">
+<title>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/mcp3201.c File Reference</title>
+<indexterm><primary>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/mcp3201.c</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;mcp3201.h&quot;<?linebreak?></programlisting>Include dependency graph for mcp3201.c:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="mcp3201_8c__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Data Structures    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_structmcp3201__context__t">mcp3201_context_t</link></para>
+
+<para>MCP3201 Context struct for internal use. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_mcp3201_8c_1a5b6eb8ead610fcf3be79b9922131cf40"/>typedef struct <link linkend="_structmcp3201__context__t">mcp3201_context_t</link> <emphasis role="strong">mcp3201_context_t</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_mcp3201_8c_1af5ddae9d2322ad9c6a7979cf2789ff1d"/>esp_err_t <emphasis role="strong">mcp3201_init</emphasis> (<link linkend="_structmcp3201__context__t">mcp3201_context_t</link> **out_ctx, const <link linkend="_structmcp3201__config__t">mcp3201_config_t</link> *cfg)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_mcp3201_8c_1af9620a282321a415a2c9808e73d28a66"/>esp_err_t <emphasis role="strong">mcp3201_read</emphasis> (<link linkend="_structmcp3201__context__t">mcp3201_context_t</link> *ctx, uint16_t *out_value)</para>
+</listitem>
+            <listitem><para>esp_err_t <link linkend="_mcp3201_8c_1acacc7f3f14eb9108f7c053d4cc370e00">mcp3201_exit</link> (<link linkend="_structmcp3201__context__t">mcp3201_handle_t</link> mcp_handle)</para>
+
+<para>Exits the MCP3201 ADC device and frees all resources. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para><formalpara><title>Author</title>
+
+<para>@s-grundner </para>
+</formalpara>
+<formalpara><title>Version</title>
+
+<para>0.1 </para>
+</formalpara>
+<formalpara><title>Date</title>
+
+<para>2022-12-24</para>
+</formalpara>
+<formalpara><title>Copyright</title>
+
+<para>Copyright (c) 2022 </para>
+</formalpara>
+</para>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_mcp3201_8c_1acacc7f3f14eb9108f7c053d4cc370e00"/><section>
+    <title>mcp3201_exit()</title>
+<indexterm><primary>mcp3201_exit</primary><secondary>mcp3201.c</secondary></indexterm>
+<indexterm><primary>mcp3201.c</primary><secondary>mcp3201_exit</secondary></indexterm>
+<para><computeroutput>esp_err_t mcp3201_exit (<link linkend="_structmcp3201__context__t">mcp3201_handle_t</link> mcp_handle)</computeroutput></para><para>
+
+<para>Exits the MCP3201 ADC device and frees all resources. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>mcp_handle</entry><entry>
+<para>MCP3201 Device to exit </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>ESP_OK on success </para>
+</formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="mcp3201_8c_acacc7f3f14eb9108f7c053d4cc370e00_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+</section>

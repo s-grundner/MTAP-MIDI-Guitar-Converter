@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="structgitcon__context__t" kind="struct" language="C++" prot="public">
+    <compoundname>gitcon_context_t</compoundname>
+    <includes refid="gitcon_8h" local="no">gitcon.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structgitcon__context__t_1ad03ad4f112560cc5c290a0a7b5192fbc" prot="public" static="no" mutable="no">
+        <type><ref refid="structi2s__sampler__t" kindref="compound">i2s_sampler_t</ref> *</type>
+        <definition>i2s_sampler_t* sampler</definition>
+        <argsstring></argsstring>
+        <name>sampler</name>
+        <qualifiedname>gitcon_context_t::sampler</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.h" line="30" column="17" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structgitcon__context__t_1ac3ff9d611225b2ed35a5ff50d79bcc60" prot="public" static="no" mutable="no">
+        <type><ref refid="structmidi__context__t" kindref="compound">midi_handle_t</ref></type>
+        <definition>midi_handle_t midi_handle</definition>
+        <argsstring></argsstring>
+        <name>midi_handle</name>
+        <qualifiedname>gitcon_context_t::midi_handle</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.h" line="32" column="17" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structgitcon__context__t_1aced3bb31b67f3a71c6afdcc851a839eb" prot="public" static="no" mutable="no">
+        <type>QueueHandle_t</type>
+        <definition>QueueHandle_t midi_queue</definition>
+        <argsstring></argsstring>
+        <name>midi_queue</name>
+        <qualifiedname>gitcon_context_t::midi_queue</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.h" line="33" column="17" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Gitcon Configuration. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mcp3201</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MCP3201 ADC </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>midi_handle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MIDI Context Handler </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>midi_queue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MIDI Queue </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>gitcon_context_t</label>
+        <link refid="structgitcon__context__t"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>sampler</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>midi_handle</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>i2s_sampler_t</label>
+        <link refid="structi2s__sampler__t"/>
+      </node>
+      <node id="4">
+        <label>midi_config_t</label>
+        <link refid="structmidi__config__t"/>
+      </node>
+      <node id="3">
+        <label>midi_context_t</label>
+        <link refid="structmidi__context__t"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>cfg</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.h" line="25" column="1" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.h" bodystart="26" bodyend="34"/>
+    <listofallmembers>
+      <member refid="structgitcon__context__t_1ac3ff9d611225b2ed35a5ff50d79bcc60" prot="public" virt="non-virtual"><scope>gitcon_context_t</scope><name>midi_handle</name></member>
+      <member refid="structgitcon__context__t_1aced3bb31b67f3a71c6afdcc851a839eb" prot="public" virt="non-virtual"><scope>gitcon_context_t</scope><name>midi_queue</name></member>
+      <member refid="structgitcon__context__t_1ad03ad4f112560cc5c290a0a7b5192fbc" prot="public" virt="non-virtual"><scope>gitcon_context_t</scope><name>sampler</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

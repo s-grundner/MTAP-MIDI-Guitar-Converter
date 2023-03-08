@@ -81,10 +81,10 @@ i2s_sampler_t *i2s_sampler_start(adc_channel_t adc1_channel, QueueHandle_t recv_
 esp_err_t i2s_sampler_stop(i2s_sampler_t *sampler)
 {
 	ESP_LOGI(TAG, "Stopping I2S Sampler...");
-
+	esp_err_t err;
 	// stop i2s
-	i2s_adc_disable(I2S_NUM_0);
-	i2s_driver_uninstall(I2S_NUM_0);
+	ESP_ERROR_CHECK(i2s_adc_disable(I2S_NUM_0));
+	ESP_ERROR_CHECK(i2s_driver_uninstall(I2S_NUM_0));
 
 	// stop task
 	vTaskDelete(sampler_task_handle);

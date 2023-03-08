@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structgitcon__context__t" xml:lang="en-US">
+<title>gitcon_context_t Struct Reference</title>
+<indexterm><primary>gitcon_context_t</primary></indexterm>
+<para>
+
+<para>Gitcon Configuration. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;gitcon.h&gt;</computeroutput>
+</para>
+Collaboration diagram for gitcon_context_t:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="structgitcon__context__t__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Data Fields    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_structgitcon__context__t_1ad03ad4f112560cc5c290a0a7b5192fbc"/><link linkend="_structi2s__sampler__t">i2s_sampler_t</link> * <emphasis role="strong">sampler</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_structgitcon__context__t_1ac3ff9d611225b2ed35a5ff50d79bcc60"/><link linkend="_structmidi__context__t">midi_handle_t</link> <emphasis role="strong">midi_handle</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_structgitcon__context__t_1aced3bb31b67f3a71c6afdcc851a839eb"/>QueueHandle_t <emphasis role="strong">midi_queue</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Gitcon Configuration. </para>
+
+
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>mcp3201</entry><entry>
+<para>MCP3201 ADC </para>
+</entry>
+                            </row>
+                            <row>
+<entry>midi_handle</entry><entry>
+<para>MIDI Context Handler </para>
+</entry>
+                            </row>
+                            <row>
+<entry>midi_queue</entry><entry>
+<para>MIDI Queue </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/<link linkend="_gitcon_8h">gitcon.h</link></section>
+</section>

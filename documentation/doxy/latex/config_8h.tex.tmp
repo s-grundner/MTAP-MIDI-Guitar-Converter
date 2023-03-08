@@ -1,0 +1,100 @@
+\hypertarget{config_8h}{}\doxysection{C\+:/\+Users/\+Smon/source/\+MTAP-\/\+MIDI-\/\+Guitar-\/\+Converter/firmware/\+MIDI-\/\+Testing/include/config.h File Reference}
+\label{config_8h}\index{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/include/config.h@{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/include/config.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}freertos/\+Free\+RTOS.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}freertos/task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}freertos/queue.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}freertos/timers.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}driver/gpio.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}driver/spi\+\_\+master.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}driver/uart.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}driver/adc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}driver/i2s.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+adc\+\_\+cal.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+log.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fft.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}i2s\+\_\+sampler.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mcp3201.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}midi.\+h\char`\"{}}\newline
+Include dependency graph for config.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{config_8h_a7dbebab5f7dd57885adccf6711b13592}\label{config_8h_a7dbebab5f7dd57885adccf6711b13592}} 
+\#define {\bfseries SPI\+\_\+\+MOSI}~(GPIO\+\_\+\+NUM\+\_\+23)
+\item 
+\mbox{\Hypertarget{config_8h_ab142cc77dfa97010c9d2b616d0992b64}\label{config_8h_ab142cc77dfa97010c9d2b616d0992b64}} 
+\#define {\bfseries SPI\+\_\+\+MISO}~(GPIO\+\_\+\+NUM\+\_\+19)
+\item 
+\mbox{\Hypertarget{config_8h_aefec442ab2dbec4785b387b3e88faa66}\label{config_8h_aefec442ab2dbec4785b387b3e88faa66}} 
+\#define {\bfseries SPI\+\_\+\+SCLK}~(GPIO\+\_\+\+NUM\+\_\+18)
+\item 
+\mbox{\Hypertarget{config_8h_ade4259fa3cbb71732a4e73c18dcb9b0d}\label{config_8h_ade4259fa3cbb71732a4e73c18dcb9b0d}} 
+\#define {\bfseries SPI\+\_\+\+CS}~(GPIO\+\_\+\+NUM\+\_\+5)
+\item 
+\mbox{\Hypertarget{config_8h_a38ce3824ec7a3243b3b966e64017d50c}\label{config_8h_a38ce3824ec7a3243b3b966e64017d50c}} 
+\#define {\bfseries SPI\+\_\+\+DEV}~(VSPI\+\_\+\+HOST)
+\item 
+\mbox{\Hypertarget{config_8h_a57e9b955863a0270f6bdf5317003d6a4}\label{config_8h_a57e9b955863a0270f6bdf5317003d6a4}} 
+\#define {\bfseries MIDI\+\_\+\+UART}~(UART\+\_\+\+NUM\+\_\+1)
+\item 
+\mbox{\Hypertarget{config_8h_a5cdf0322e10deeff92bbdf233382bca6}\label{config_8h_a5cdf0322e10deeff92bbdf233382bca6}} 
+\#define {\bfseries MIDI\+\_\+\+BAUD}~(115200)
+\item 
+\mbox{\Hypertarget{config_8h_af4773f7c0246cf1f8feea3de02c2bf86}\label{config_8h_af4773f7c0246cf1f8feea3de02c2bf86}} 
+\#define {\bfseries MIDI\+\_\+\+TX}~(GPIO\+\_\+\+NUM\+\_\+26)
+\item 
+\mbox{\Hypertarget{config_8h_a3aa0cfef819ce6e845bee426c4f94431}\label{config_8h_a3aa0cfef819ce6e845bee426c4f94431}} 
+\#define {\bfseries MIDI\+\_\+\+RX}~(GPIO\+\_\+\+NUM\+\_\+27)
+\item 
+\mbox{\Hypertarget{config_8h_a5c8e512df4a72e57db32aca9123c172f}\label{config_8h_a5c8e512df4a72e57db32aca9123c172f}} 
+\#define {\bfseries DMA\+\_\+\+CHAN}~1
+\item 
+\mbox{\Hypertarget{config_8h_aad793a45ce7e7d22d082d0a92edece6e}\label{config_8h_aad793a45ce7e7d22d082d0a92edece6e}} 
+\#define {\bfseries ADC\+\_\+\+RES\+\_\+\+BITS}~12
+\item 
+\mbox{\Hypertarget{config_8h_ab298faea909e0aa62203195aa3d6ca80}\label{config_8h_ab298faea909e0aa62203195aa3d6ca80}} 
+\#define {\bfseries ADC\+\_\+\+RES}~(1 $<$$<$ ADC\+\_\+\+RES\+\_\+\+BITS)
+\item 
+\mbox{\Hypertarget{config_8h_ae28cb709c4dc3114500354fecc02ca23}\label{config_8h_ae28cb709c4dc3114500354fecc02ca23}} 
+\#define {\bfseries INTERNAL\+\_\+\+ADC\+\_\+\+UNIT}~(ADC\+\_\+\+UNIT\+\_\+1)
+\item 
+\mbox{\Hypertarget{config_8h_a17da56be7ac4bd74a5996123898edfdb}\label{config_8h_a17da56be7ac4bd74a5996123898edfdb}} 
+\#define {\bfseries INTERNAL\+\_\+\+ADC\+\_\+\+CHANNEL}~(ADC\+\_\+\+CHANNEL\+\_\+0)
+\item 
+\mbox{\Hypertarget{config_8h_a7c504a66f7fc0240d2b3f04cb88be20d}\label{config_8h_a7c504a66f7fc0240d2b3f04cb88be20d}} 
+\#define {\bfseries INTERNAL\+\_\+\+ADC\+\_\+\+IO}~(GPIO\+\_\+\+NUM\+\_\+4)
+\item 
+\mbox{\Hypertarget{config_8h_a1d48237cb63c5ae67aab6d00cc64afb6}\label{config_8h_a1d48237cb63c5ae67aab6d00cc64afb6}} 
+\#define {\bfseries AUDIO\+\_\+\+BUFFER\+\_\+\+SIZE}~512
+\item 
+\mbox{\Hypertarget{config_8h_a2203c75072f0cfea39f8d48f21ff097c}\label{config_8h_a2203c75072f0cfea39f8d48f21ff097c}} 
+\#define {\bfseries F\+\_\+\+SAMPLE\+\_\+\+HZ}~44100
+\item 
+\mbox{\Hypertarget{config_8h_a6fb55daf48579b8ab77d976c01ffae3a}\label{config_8h_a6fb55daf48579b8ab77d976c01ffae3a}} 
+\#define {\bfseries FFT\+\_\+\+WINDOW\+\_\+\+SIZE}~2
+\item 
+\mbox{\Hypertarget{config_8h_a636ddc19af00bc87969a07c88331f105}\label{config_8h_a636ddc19af00bc87969a07c88331f105}} 
+\#define {\bfseries FFT\+\_\+\+SIZE}~4096
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+@s-\/grundner 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022-\/12-\/24
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2022 
+\end{DoxyCopyright}

@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="structmidi__message__t" kind="struct" language="C++" prot="public">
+    <compoundname>midi_message_t</compoundname>
+    <includes refid="midi_8h" local="no">midi.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structmidi__message__t_1aec4226da1b99c821237b6805c4e31333" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t param1</definition>
+        <argsstring></argsstring>
+        <name>param1</name>
+        <qualifiedname>midi_message_t::param1</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi.h" line="62" column="9" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmidi__message__t_1aff4bb9542c2091c2a7b80c4a74df778c" prot="public" static="no" mutable="no">
+        <type><ref refid="midi_8h_1a37a498aac35ac1332061a8b453ec7ae3" kindref="member">midi_status_t</ref></type>
+        <definition>midi_status_t status</definition>
+        <argsstring></argsstring>
+        <name>status</name>
+        <qualifiedname>midi_message_t::status</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi.h" line="63" column="15" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmidi__message__t_1a715f5cb061d11eb75981741eda4dafcd" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t channel</definition>
+        <argsstring></argsstring>
+        <name>channel</name>
+        <qualifiedname>midi_message_t::channel</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi.h" line="64" column="9" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmidi__message__t_1a2edf9aa267374101b30d34d98a041ebe" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t param2</definition>
+        <argsstring></argsstring>
+        <name>param2</name>
+        <qualifiedname>midi_message_t::param2</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi.h" line="65" column="9" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>MIDI Message. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>status</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MIDI Status Byte </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MIDI Channel </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>param1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MIDI Parameter 1 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>param2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MIDI Parameter 2 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi.h" line="60" column="1" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi.h" bodystart="61" bodyend="66"/>
+    <listofallmembers>
+      <member refid="structmidi__message__t_1a715f5cb061d11eb75981741eda4dafcd" prot="public" virt="non-virtual"><scope>midi_message_t</scope><name>channel</name></member>
+      <member refid="structmidi__message__t_1aec4226da1b99c821237b6805c4e31333" prot="public" virt="non-virtual"><scope>midi_message_t</scope><name>param1</name></member>
+      <member refid="structmidi__message__t_1a2edf9aa267374101b30d34d98a041ebe" prot="public" virt="non-virtual"><scope>midi_message_t</scope><name>param2</name></member>
+      <member refid="structmidi__message__t_1aff4bb9542c2091c2a7b80c4a74df778c" prot="public" virt="non-virtual"><scope>midi_message_t</scope><name>status</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

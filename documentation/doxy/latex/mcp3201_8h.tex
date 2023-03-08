@@ -1,0 +1,171 @@
+\hypertarget{mcp3201_8h}{}\doxysection{C\+:/\+Users/\+Smon/source/\+MTAP-\/\+MIDI-\/\+Guitar-\/\+Converter/firmware/\+MIDI-\/\+Testing/lib/mcp3201/mcp3201.h File Reference}
+\label{mcp3201_8h}\index{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/mcp3201/mcp3201.h@{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/mcp3201/mcp3201.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}freertos/\+Free\+RTOS.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}freertos/task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}freertos/queue.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}driver/gpio.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}driver/spi\+\_\+master.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hal/spi\+\_\+types.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+log.\+h\char`\"{}}\newline
+Include dependency graph for mcp3201.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structmcp3201__config__t}{mcp3201\+\_\+config\+\_\+t}}
+\item 
+struct \mbox{\hyperlink{structmcp3201__sampler__t}{mcp3201\+\_\+sampler\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{mcp3201_8h_a44d38ab4d4e88e679184bbbffdac00dd}\label{mcp3201_8h_a44d38ab4d4e88e679184bbbffdac00dd}} 
+\#define {\bfseries ADC\+\_\+\+CLK}~SPI\+\_\+\+MASTER\+\_\+\+FREQ\+\_\+8M
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{mcp3201_8h_a394f6b43329fb768aeb634cdfee4ebef}\label{mcp3201_8h_a394f6b43329fb768aeb634cdfee4ebef}} 
+typedef struct \mbox{\hyperlink{structmcp3201__context__t}{mcp3201\+\_\+context\+\_\+t}} $\ast$ {\bfseries mcp3201\+\_\+handle\+\_\+t}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{mcp3201_8h_a69c1d4c194693ad14af26415e51cd4d5}{mcp3201\+\_\+init}} (\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\+\_\+handle\+\_\+t}} $\ast$out\+\_\+handle, const \mbox{\hyperlink{structmcp3201__config__t}{mcp3201\+\_\+config\+\_\+t}} $\ast$cfg)
+\begin{DoxyCompactList}\small\item\em Initializes the MCP3201 ADC device. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{mcp3201_8h_acacc7f3f14eb9108f7c053d4cc370e00}{mcp3201\+\_\+exit}} (\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\+\_\+handle\+\_\+t}} mcp\+\_\+handle)
+\begin{DoxyCompactList}\small\item\em Exits the MCP3201 ADC device and frees all resources. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{mcp3201_8h_ad2a98b7c4cafab98b390b467b976cc9f}{mcp3201\+\_\+read}} (\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\+\_\+handle\+\_\+t}} handle, uint16\+\_\+t $\ast$out\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Reads a single value from the MCP3201 ADC. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structmcp3201__sampler__t}{mcp3201\+\_\+sampler\+\_\+t}} $\ast$ \mbox{\hyperlink{mcp3201_8h_a597661bdfb234321b4ba0648dc161451}{mcp3201\+\_\+sampler\+\_\+start}} (\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\+\_\+handle\+\_\+t}} mcp\+\_\+handle, Queue\+Handle\+\_\+t recv\+\_\+queue, const size\+\_\+t buffer\+\_\+size, const size\+\_\+t f\+\_\+sample)
+\begin{DoxyCompactList}\small\item\em Starts the MCP3201 Sampler, which samples continuously and puts the samples into a queue. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mcp3201_8h_a09942c72d6880306a561ca69a5ecac80}{mcp3201\+\_\+sampler\+\_\+stop}} (\mbox{\hyperlink{structmcp3201__sampler__t}{mcp3201\+\_\+sampler\+\_\+t}} $\ast$sampler)
+\begin{DoxyCompactList}\small\item\em Stops the MCP3201 Sampler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+@s-\/grundner 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022-\/12-\/24
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2022 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mcp3201_8h_acacc7f3f14eb9108f7c053d4cc370e00}\label{mcp3201_8h_acacc7f3f14eb9108f7c053d4cc370e00}} 
+\index{mcp3201.h@{mcp3201.h}!mcp3201\_exit@{mcp3201\_exit}}
+\index{mcp3201\_exit@{mcp3201\_exit}!mcp3201.h@{mcp3201.h}}
+\doxysubsubsection{\texorpdfstring{mcp3201\_exit()}{mcp3201\_exit()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t mcp3201\+\_\+exit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\+\_\+handle\+\_\+t}}}]{mcp\+\_\+handle }\end{DoxyParamCaption})}
+
+
+
+Exits the MCP3201 ADC device and frees all resources. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mcp\+\_\+handle} & MCP3201 Device to exit \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ESP\+\_\+\+OK on success 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{mcp3201_8h_a69c1d4c194693ad14af26415e51cd4d5}\label{mcp3201_8h_a69c1d4c194693ad14af26415e51cd4d5}} 
+\index{mcp3201.h@{mcp3201.h}!mcp3201\_init@{mcp3201\_init}}
+\index{mcp3201\_init@{mcp3201\_init}!mcp3201.h@{mcp3201.h}}
+\doxysubsubsection{\texorpdfstring{mcp3201\_init()}{mcp3201\_init()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t mcp3201\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\+\_\+handle\+\_\+t}} $\ast$}]{out\+\_\+handle,  }\item[{const \mbox{\hyperlink{structmcp3201__config__t}{mcp3201\+\_\+config\+\_\+t}} $\ast$}]{cfg }\end{DoxyParamCaption})}
+
+
+
+Initializes the MCP3201 ADC device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out\+\_\+handle} & MCP3201 Handler to store initialization data \\
+\hline
+{\em cfg} & MCP3201 Configuration \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{mcp3201_8h_ad2a98b7c4cafab98b390b467b976cc9f}\label{mcp3201_8h_ad2a98b7c4cafab98b390b467b976cc9f}} 
+\index{mcp3201.h@{mcp3201.h}!mcp3201\_read@{mcp3201\_read}}
+\index{mcp3201\_read@{mcp3201\_read}!mcp3201.h@{mcp3201.h}}
+\doxysubsubsection{\texorpdfstring{mcp3201\_read()}{mcp3201\_read()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t mcp3201\+\_\+read (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\+\_\+handle\+\_\+t}}}]{handle,  }\item[{uint16\+\_\+t $\ast$}]{out\+\_\+value }\end{DoxyParamCaption})}
+
+
+
+Reads a single value from the MCP3201 ADC. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em handle} & MCP3201 Device \\
+\hline
+\mbox{\texttt{ out}}  & {\em out\+\_\+value} & Value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ESP\+\_\+\+OK on success 
+\end{DoxyReturn}
+\mbox{\Hypertarget{mcp3201_8h_a597661bdfb234321b4ba0648dc161451}\label{mcp3201_8h_a597661bdfb234321b4ba0648dc161451}} 
+\index{mcp3201.h@{mcp3201.h}!mcp3201\_sampler\_start@{mcp3201\_sampler\_start}}
+\index{mcp3201\_sampler\_start@{mcp3201\_sampler\_start}!mcp3201.h@{mcp3201.h}}
+\doxysubsubsection{\texorpdfstring{mcp3201\_sampler\_start()}{mcp3201\_sampler\_start()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmcp3201__sampler__t}{mcp3201\+\_\+sampler\+\_\+t}} $\ast$ mcp3201\+\_\+sampler\+\_\+start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\+\_\+handle\+\_\+t}}}]{mcp\+\_\+handle,  }\item[{Queue\+Handle\+\_\+t}]{recv\+\_\+queue,  }\item[{const size\+\_\+t}]{buffer\+\_\+size,  }\item[{const size\+\_\+t}]{f\+\_\+sample }\end{DoxyParamCaption})}
+
+
+
+Starts the MCP3201 Sampler, which samples continuously and puts the samples into a queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mcp\+\_\+handle} & MCP3201 Device Handler \\
+\hline
+{\em recv\+\_\+queue} & queue to send the samples into \\
+\hline
+{\em buffer\+\_\+size} & size of the audio buffer \\
+\hline
+{\em f\+\_\+sample} & Sample rate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mcp3201\+\_\+sampler\+\_\+t$\ast$ Sampler Handler 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{mcp3201_8h_a09942c72d6880306a561ca69a5ecac80}\label{mcp3201_8h_a09942c72d6880306a561ca69a5ecac80}} 
+\index{mcp3201.h@{mcp3201.h}!mcp3201\_sampler\_stop@{mcp3201\_sampler\_stop}}
+\index{mcp3201\_sampler\_stop@{mcp3201\_sampler\_stop}!mcp3201.h@{mcp3201.h}}
+\doxysubsubsection{\texorpdfstring{mcp3201\_sampler\_stop()}{mcp3201\_sampler\_stop()}}
+{\footnotesize\ttfamily void mcp3201\+\_\+sampler\+\_\+stop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmcp3201__sampler__t}{mcp3201\+\_\+sampler\+\_\+t}} $\ast$}]{sampler }\end{DoxyParamCaption})}
+
+
+
+Stops the MCP3201 Sampler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sampler} & Sampler Handler \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 5
+Here is the caller graph for this function\+:
+% FIG 6

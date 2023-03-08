@@ -1,0 +1,226 @@
+\hypertarget{midi_8h}{}\doxysection{C\+:/\+Users/\+Smon/source/\+MTAP-\/\+MIDI-\/\+Guitar-\/\+Converter/firmware/\+MIDI-\/\+Testing/lib/midi/midi.h File Reference}
+\label{midi_8h}\index{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/midi/midi.h@{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/midi/midi.h}}
+
+
+midi driver for esp32  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}driver/gpio.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}driver/uart.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+log.\+h\char`\"{}}\newline
+Include dependency graph for midi.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structmidi__message__t}{midi\+\_\+message\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em MIDI Message. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structmidi__config__t}{midi\+\_\+config\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em MIDI UART Configuration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{midi_8h_a3ce5bc79e80bfeb2d39acb2ab2866cbb}\label{midi_8h_a3ce5bc79e80bfeb2d39acb2ab2866cbb}} 
+\#define {\bfseries MIDI\+\_\+\+LOG\+\_\+\+LEVEL}~ESP\+\_\+\+LOG\+\_\+\+ERROR
+\item 
+\mbox{\Hypertarget{midi_8h_a8cbacf606a13d650a7b4352a6d63ffc6}\label{midi_8h_a8cbacf606a13d650a7b4352a6d63ffc6}} 
+\#define {\bfseries MIDI\+\_\+\+BYTE\+\_\+\+SIZE\+\_\+\+DEFAULT}~3
+\item 
+\mbox{\Hypertarget{midi_8h_a185713012c0788a3e5309b017dc76228}\label{midi_8h_a185713012c0788a3e5309b017dc76228}} 
+\#define {\bfseries MIDI\+\_\+\+BYTE\+\_\+\+SIZE\+\_\+\+SHORT}~2
+\item 
+\mbox{\Hypertarget{midi_8h_a502f2aeb3c96dd726974e602bced0e15}\label{midi_8h_a502f2aeb3c96dd726974e602bced0e15}} 
+\#define {\bfseries MIDI\+\_\+\+PITCH\+\_\+\+BEND\+\_\+\+MIN}~(0)
+\item 
+\mbox{\Hypertarget{midi_8h_af02cd8b82872f196f2d10b3248442bc8}\label{midi_8h_af02cd8b82872f196f2d10b3248442bc8}} 
+\#define {\bfseries MIDI\+\_\+\+PITCH\+\_\+\+BEND\+\_\+\+MAX}~(16383)
+\item 
+\mbox{\Hypertarget{midi_8h_a9e7f98c080083d0a47d1a656df111cdb}\label{midi_8h_a9e7f98c080083d0a47d1a656df111cdb}} 
+\#define {\bfseries MIDI\+\_\+\+PITCH\+\_\+\+BEND\+\_\+\+CENTER}~(8192)
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{midi_8h_acff464a25313f690f0543752b33c4716}\label{midi_8h_acff464a25313f690f0543752b33c4716}} 
+typedef struct \mbox{\hyperlink{structmidi__context__t}{midi\+\_\+context\+\_\+t}} $\ast$ {\bfseries midi\+\_\+handle\+\_\+t}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3}{midi\+\_\+status\+\_\+t}} \{ \newline
+{\bfseries MIDI\+\_\+\+STATUS\+\_\+\+NOTE\+\_\+\+OFF} = 0x80
+, {\bfseries MIDI\+\_\+\+STATUS\+\_\+\+NOTE\+\_\+\+ON} = 0x90
+, {\bfseries MIDI\+\_\+\+STATUS\+\_\+\+POLYPHONIC\+\_\+\+KEY\+\_\+\+PRESSURE} = 0x\+A0
+, {\bfseries MIDI\+\_\+\+STATUS\+\_\+\+CONTROL\+\_\+\+CHANGE} = 0x\+B0
+, \newline
+{\bfseries MIDI\+\_\+\+STATUS\+\_\+\+PROGRAM\+\_\+\+CHANGE} = 0x\+C0
+, {\bfseries MIDI\+\_\+\+STATUS\+\_\+\+CHANNEL\+\_\+\+PRESSURE} = 0x\+D0
+, {\bfseries MIDI\+\_\+\+STATUS\+\_\+\+PITCH\+\_\+\+BEND} = 0x\+E0
+ \}
+\begin{DoxyCompactList}\small\item\em MIDI Status Bytes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{midi_8h_ae650454d0c1ee0e1ccde60b84d5396be}{midi\+\_\+init}} (\mbox{\hyperlink{structmidi__context__t}{midi\+\_\+handle\+\_\+t}} $\ast$out\+\_\+handle, \mbox{\hyperlink{structmidi__config__t}{midi\+\_\+config\+\_\+t}} $\ast$out\+\_\+cfg)
+\begin{DoxyCompactList}\small\item\em initializes MIDI and allocates driver resources \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{midi_8h_a6eff3a43d514679b4da21f8cca9e2316}{midi\+\_\+exit}} (\mbox{\hyperlink{structmidi__context__t}{midi\+\_\+handle\+\_\+t}} midi\+\_\+handle)
+\begin{DoxyCompactList}\small\item\em Exits MIDI and frees all resources. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{midi_8h_a5aa4e2de2cfe3d569d4968df337cb846}{midi\+\_\+write}} (\mbox{\hyperlink{structmidi__context__t}{midi\+\_\+handle\+\_\+t}} midi\+\_\+handle, \mbox{\hyperlink{structmidi__message__t}{midi\+\_\+message\+\_\+t}} $\ast$msg)
+\begin{DoxyCompactList}\small\item\em Writes MIDI Message to UART. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{midi_8h_a19339a5613e1e14bcffb4469675ec2db}{midi\+\_\+read}} (\mbox{\hyperlink{structmidi__context__t}{midi\+\_\+handle\+\_\+t}} midi\+\_\+handle, \mbox{\hyperlink{structmidi__message__t}{midi\+\_\+message\+\_\+t}} $\ast$msg, Tick\+Type\+\_\+t timeout)
+\begin{DoxyCompactList}\small\item\em Reads MIDI Message from UART. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{midi_8h_a5420c8cf31003518e18002e256fb6efb}\label{midi_8h_a5420c8cf31003518e18002e256fb6efb}} 
+\mbox{\hyperlink{structmidi__message__t}{midi\+\_\+message\+\_\+t}} {\bfseries note\+\_\+off} (uint8\+\_\+t channel, uint8\+\_\+t key\+\_\+num, uint8\+\_\+t velocity)
+\item 
+\mbox{\Hypertarget{midi_8h_a19ea9f06293f713229ffbf1673dfb3c5}\label{midi_8h_a19ea9f06293f713229ffbf1673dfb3c5}} 
+\mbox{\hyperlink{structmidi__message__t}{midi\+\_\+message\+\_\+t}} {\bfseries note\+\_\+on} (uint8\+\_\+t channel, uint8\+\_\+t key\+\_\+num, uint8\+\_\+t velocity)
+\item 
+\mbox{\Hypertarget{midi_8h_a84c158ecad666015c3eee20aa67a8dc2}\label{midi_8h_a84c158ecad666015c3eee20aa67a8dc2}} 
+\mbox{\hyperlink{structmidi__message__t}{midi\+\_\+message\+\_\+t}} {\bfseries poly\+\_\+key\+\_\+pressure} (uint8\+\_\+t channel, uint8\+\_\+t key\+\_\+num, uint8\+\_\+t value)
+\item 
+\mbox{\Hypertarget{midi_8h_a18d4efd2f7b7b960461a402d9c5f8535}\label{midi_8h_a18d4efd2f7b7b960461a402d9c5f8535}} 
+\mbox{\hyperlink{structmidi__message__t}{midi\+\_\+message\+\_\+t}} {\bfseries ctrl\+\_\+change} (uint8\+\_\+t channel, uint8\+\_\+t controller\+\_\+num, uint8\+\_\+t value)
+\item 
+\mbox{\Hypertarget{midi_8h_a74a04b0fd0b0f0ad4b05ee2cdce13f8f}\label{midi_8h_a74a04b0fd0b0f0ad4b05ee2cdce13f8f}} 
+\mbox{\hyperlink{structmidi__message__t}{midi\+\_\+message\+\_\+t}} {\bfseries prg\+\_\+change} (uint8\+\_\+t channel, uint8\+\_\+t program)
+\item 
+\mbox{\Hypertarget{midi_8h_a65c6c5647ad8c4acb13b5c17acd04b54}\label{midi_8h_a65c6c5647ad8c4acb13b5c17acd04b54}} 
+\mbox{\hyperlink{structmidi__message__t}{midi\+\_\+message\+\_\+t}} {\bfseries channel\+\_\+pressure} (uint8\+\_\+t channel, uint8\+\_\+t value)
+\item 
+\mbox{\Hypertarget{midi_8h_afc61f6a3b91a428edc2b1b0962573176}\label{midi_8h_afc61f6a3b91a428edc2b1b0962573176}} 
+\mbox{\hyperlink{structmidi__message__t}{midi\+\_\+message\+\_\+t}} {\bfseries pitch\+\_\+bend} (uint8\+\_\+t channel, uint16\+\_\+t value)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+midi driver for esp32 
+
+\begin{DoxyAuthor}{Author}
+@s-\/grundner 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022-\/12-\/23
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2022 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{midi_8h_a37a498aac35ac1332061a8b453ec7ae3}\label{midi_8h_a37a498aac35ac1332061a8b453ec7ae3}} 
+\index{midi.h@{midi.h}!midi\_status\_t@{midi\_status\_t}}
+\index{midi\_status\_t@{midi\_status\_t}!midi.h@{midi.h}}
+\doxysubsubsection{\texorpdfstring{midi\_status\_t}{midi\_status\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3}{midi\+\_\+status\+\_\+t}}}
+
+
+
+MIDI Status Bytes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em MIDI\+\_\+\+STATUS\+\_\+\+NOTE\+\_\+\+OFF} & 0x80, requires param2 \\
+\hline
+{\em MIDI\+\_\+\+STATUS\+\_\+\+NOTE\+\_\+\+ON} & 0x90, requires param2 \\
+\hline
+{\em MIDI\+\_\+\+STATUS\+\_\+\+POLYPHONIC\+\_\+\+KEY\+\_\+\+PRESSURE} & 0x\+A0, param2 is not used \\
+\hline
+{\em MIDI\+\_\+\+STATUS\+\_\+\+CONTROL\+\_\+\+CHANGE} & 0x\+B0, requires param2 \\
+\hline
+{\em MIDI\+\_\+\+STATUS\+\_\+\+PROGRAM\+\_\+\+CHANGE} & 0x\+C0, param2 is is not used \\
+\hline
+{\em MIDI\+\_\+\+STATUS\+\_\+\+CHANNEL\+\_\+\+PRESSURE} & 0x\+D0, param2 is is not used \\
+\hline
+{\em MIDI\+\_\+\+STATUS\+\_\+\+PITCH\+\_\+\+BEND} & 0x\+E0, requires param2 \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{midi_8h_a6eff3a43d514679b4da21f8cca9e2316}\label{midi_8h_a6eff3a43d514679b4da21f8cca9e2316}} 
+\index{midi.h@{midi.h}!midi\_exit@{midi\_exit}}
+\index{midi\_exit@{midi\_exit}!midi.h@{midi.h}}
+\doxysubsubsection{\texorpdfstring{midi\_exit()}{midi\_exit()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t midi\+\_\+exit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmidi__context__t}{midi\+\_\+handle\+\_\+t}}}]{midi\+\_\+handle }\end{DoxyParamCaption})}
+
+
+
+Exits MIDI and frees all resources. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em midi\+\_\+handle} & MIDI Handle to be freed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{midi_8h_ae650454d0c1ee0e1ccde60b84d5396be}\label{midi_8h_ae650454d0c1ee0e1ccde60b84d5396be}} 
+\index{midi.h@{midi.h}!midi\_init@{midi\_init}}
+\index{midi\_init@{midi\_init}!midi.h@{midi.h}}
+\doxysubsubsection{\texorpdfstring{midi\_init()}{midi\_init()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t midi\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmidi__context__t}{midi\+\_\+handle\+\_\+t}} $\ast$}]{out\+\_\+handle,  }\item[{\mbox{\hyperlink{structmidi__config__t}{midi\+\_\+config\+\_\+t}} $\ast$}]{out\+\_\+cfg }\end{DoxyParamCaption})}
+
+
+
+initializes MIDI and allocates driver resources 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em out\+\_\+handle} & MIDI Handle to be initialized \\
+\hline
+\mbox{\texttt{ out}}  & {\em out\+\_\+cfg} & MIDI Configuration \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{midi_8h_a19339a5613e1e14bcffb4469675ec2db}\label{midi_8h_a19339a5613e1e14bcffb4469675ec2db}} 
+\index{midi.h@{midi.h}!midi\_read@{midi\_read}}
+\index{midi\_read@{midi\_read}!midi.h@{midi.h}}
+\doxysubsubsection{\texorpdfstring{midi\_read()}{midi\_read()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t midi\+\_\+read (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmidi__context__t}{midi\+\_\+handle\+\_\+t}}}]{midi\+\_\+handle,  }\item[{\mbox{\hyperlink{structmidi__message__t}{midi\+\_\+message\+\_\+t}} $\ast$}]{msg,  }\item[{Tick\+Type\+\_\+t}]{timeout }\end{DoxyParamCaption})}
+
+
+
+Reads MIDI Message from UART. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em midi\+\_\+handle} & MIDI Handle to pass parameters \\
+\hline
+{\em msg} & MIDI Message to be read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{midi_8h_a5aa4e2de2cfe3d569d4968df337cb846}\label{midi_8h_a5aa4e2de2cfe3d569d4968df337cb846}} 
+\index{midi.h@{midi.h}!midi\_write@{midi\_write}}
+\index{midi\_write@{midi\_write}!midi.h@{midi.h}}
+\doxysubsubsection{\texorpdfstring{midi\_write()}{midi\_write()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t midi\+\_\+write (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmidi__context__t}{midi\+\_\+handle\+\_\+t}}}]{midi\+\_\+handle,  }\item[{\mbox{\hyperlink{structmidi__message__t}{midi\+\_\+message\+\_\+t}} $\ast$}]{msg }\end{DoxyParamCaption})}
+
+
+
+Writes MIDI Message to UART. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em midi\+\_\+handle} & MIDI Handle to pass parameters \\
+\hline
+{\em msg} & MIDI Message to be sent \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t 
+\end{DoxyReturn}

@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structmidi__context__t" xml:lang="en-US">
+<title>midi_context_t Struct Reference</title>
+<indexterm><primary>midi_context_t</primary></indexterm>
+<para>
+
+<para>MIDI Context (internal! not to be accessed externally, use midi_handle_t instead) </para>
+ 
+</para>
+Collaboration diagram for midi_context_t:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="structmidi__context__t__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Data Fields    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_structmidi__context__t_1adfd767895f1b8c59b841da03147ad208"/><link linkend="_structmidi__config__t">midi_config_t</link> <emphasis role="strong">cfg</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>MIDI Context (internal! not to be accessed externally, use midi_handle_t instead) </para>
+
+
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>cfg</entry><entry>
+<para>MIDI Config </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/<link linkend="_midi_8c">midi.c</link></section>
+</section>

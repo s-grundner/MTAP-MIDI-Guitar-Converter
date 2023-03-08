@@ -1,0 +1,244 @@
+\hypertarget{scale_8h}{}\doxysection{C\+:/\+Users/\+Smon/source/\+MTAP-\/\+MIDI-\/\+Guitar-\/\+Converter/firmware/\+MIDI-\/\+Testing/lib/audio/scale.h File Reference}
+\label{scale_8h}\index{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/audio/scale.h@{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/audio/scale.h}}
+
+
+Basic Functions for Frequency calculation.  
+
+
+{\ttfamily \#include \char`\"{}inttypes.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+Include dependency graph for scale.\+h\+:
+% FIG 0
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{scale_8h_a27e3cb840f25eb40966bafa038f78163}\label{scale_8h_a27e3cb840f25eb40966bafa038f78163}} 
+\#define {\bfseries CONCERT\+\_\+\+PITCH}~440.\+0
+\item 
+\mbox{\Hypertarget{scale_8h_a3a63fb6f00694ff9f4318b4142c5c868}\label{scale_8h_a3a63fb6f00694ff9f4318b4142c5c868}} 
+\#define {\bfseries ADC\+\_\+\+MAX\+\_\+\+VAL}~255.\+0
+\item 
+\mbox{\Hypertarget{scale_8h_ab755f2311382cd364012cde17f505dd2}\label{scale_8h_ab755f2311382cd364012cde17f505dd2}} 
+\#define {\bfseries A0\+\_\+\+NUM}~49
+\item 
+\mbox{\Hypertarget{scale_8h_ae5e8264f75773a387e241e5e9d1c1d74}\label{scale_8h_ae5e8264f75773a387e241e5e9d1c1d74}} 
+\#define {\bfseries MODAL\+\_\+\+COUNT}~4
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{scale_8h_a63f1e76d4ef85743386f533dd918035b}\label{scale_8h_a63f1e76d4ef85743386f533dd918035b}} 
+enum {\bfseries key\+\_\+name\+\_\+t} \{ \newline
+{\bfseries KEY\+\_\+A} = 0
+, {\bfseries KEY\+\_\+\+AS} = 1
+, {\bfseries KEY\+\_\+B} = 2
+, {\bfseries KEY\+\_\+C} = 3
+, \newline
+{\bfseries KEY\+\_\+\+CS} = 4
+, {\bfseries KEY\+\_\+D} = 5
+, {\bfseries KEY\+\_\+\+DS} = 6
+, {\bfseries KEY\+\_\+E} = 7
+, \newline
+{\bfseries KEY\+\_\+F} = 8
+, {\bfseries KEY\+\_\+\+FS} = 9
+, {\bfseries KEY\+\_\+G} = 10
+, {\bfseries KEY\+\_\+\+GS} = 11
+ \}
+\item 
+enum \mbox{\hyperlink{scale_8h_a6edfc50fa1ad976c9cbf84ac859c4b54}{modal\+\_\+name\+\_\+t}} \{ {\bfseries MAJ} = 0
+, {\bfseries MIN} = 1
+, {\bfseries HMJ} = 2
+, {\bfseries HMN} = 3
+ \}
+\begin{DoxyCompactList}\small\item\em Modal Names. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{scale_8h_a7e5dced1f4ec1583890131af61b49f07}{get\+\_\+pitch\+\_\+hz}} (uint8\+\_\+t key\+\_\+num)
+\begin{DoxyCompactList}\small\item\em Convert Keynumber to Frequency. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{scale_8h_ad264c4b750e8922861e5c3f56d67acc6}{get\+\_\+key\+\_\+num}} (double freq)
+\begin{DoxyCompactList}\small\item\em Convert Frequency to Keynumber. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{scale_8h_a7ad1b3de87418feaa674a96009e80d92}{print\+\_\+key\+\_\+name}} (uint8\+\_\+t key\+\_\+num)
+\begin{DoxyCompactList}\small\item\em print Keyname \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{scale_8h_a5c4ac05d54321fd52a582ce3493f5e3a}{adc\+\_\+to\+\_\+pitch}} (uint8\+\_\+t adc\+\_\+val, uint8\+\_\+t oct\+\_\+offset)
+\begin{DoxyCompactList}\small\item\em Convert ADC Value to Frequency. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{scale_8h_ab3708331e3a3f78b08549a23c0ef249a}{adc\+\_\+to\+\_\+num}} (uint8\+\_\+t adc\+\_\+val, uint8\+\_\+t oct\+\_\+offset)
+\begin{DoxyCompactList}\small\item\em Convert ADC Value to Keynumber. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{scale_8h_abe9622ab264356cf01526b06f5da996d}{get\+\_\+key\+\_\+name}} (uint8\+\_\+t key\+\_\+num)
+\begin{DoxyCompactList}\small\item\em Get a key name. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{scale_8h_a3f0fe955807ea6ce77a5d46e557c00c4}{get\+\_\+modal\+\_\+name}} (uint8\+\_\+t modal\+\_\+num)
+\begin{DoxyCompactList}\small\item\em Get a modal name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Basic Functions for Frequency calculation. 
+
+\begin{DoxyAuthor}{Author}
+@h-\/ihninger 
+
+@s-\/grundner 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022-\/05-\/05
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2022 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{scale_8h_a6edfc50fa1ad976c9cbf84ac859c4b54}\label{scale_8h_a6edfc50fa1ad976c9cbf84ac859c4b54}} 
+\index{scale.h@{scale.h}!modal\_name\_t@{modal\_name\_t}}
+\index{modal\_name\_t@{modal\_name\_t}!scale.h@{scale.h}}
+\doxysubsubsection{\texorpdfstring{modal\_name\_t}{modal\_name\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{scale_8h_a6edfc50fa1ad976c9cbf84ac859c4b54}{modal\+\_\+name\+\_\+t}}}
+
+
+
+Modal Names. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em MAJ} & Major \\
+\hline
+{\em MIN} & Minor \\
+\hline
+{\em HMJ} & Harmonic Major \\
+\hline
+{\em HMN} & Harmonic Minor \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{scale_8h_ab3708331e3a3f78b08549a23c0ef249a}\label{scale_8h_ab3708331e3a3f78b08549a23c0ef249a}} 
+\index{scale.h@{scale.h}!adc\_to\_num@{adc\_to\_num}}
+\index{adc\_to\_num@{adc\_to\_num}!scale.h@{scale.h}}
+\doxysubsubsection{\texorpdfstring{adc\_to\_num()}{adc\_to\_num()}}
+{\footnotesize\ttfamily uint8\+\_\+t adc\+\_\+to\+\_\+num (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{adc\+\_\+val,  }\item[{uint8\+\_\+t}]{oct\+\_\+offset }\end{DoxyParamCaption})}
+
+
+
+Convert ADC Value to Keynumber. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em adc\+\_\+val} & ADC Value \\
+\hline
+{\em oct\+\_\+offset} & Octave Offset \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t Keynumber 
+\end{DoxyReturn}
+\mbox{\Hypertarget{scale_8h_a5c4ac05d54321fd52a582ce3493f5e3a}\label{scale_8h_a5c4ac05d54321fd52a582ce3493f5e3a}} 
+\index{scale.h@{scale.h}!adc\_to\_pitch@{adc\_to\_pitch}}
+\index{adc\_to\_pitch@{adc\_to\_pitch}!scale.h@{scale.h}}
+\doxysubsubsection{\texorpdfstring{adc\_to\_pitch()}{adc\_to\_pitch()}}
+{\footnotesize\ttfamily double adc\+\_\+to\+\_\+pitch (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{adc\+\_\+val,  }\item[{uint8\+\_\+t}]{oct\+\_\+offset }\end{DoxyParamCaption})}
+
+
+
+Convert ADC Value to Frequency. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em adc\+\_\+val} & ADC Value \\
+\hline
+{\em oct\+\_\+offset} & Octave Offset \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double Frequency 
+\end{DoxyReturn}
+\mbox{\Hypertarget{scale_8h_abe9622ab264356cf01526b06f5da996d}\label{scale_8h_abe9622ab264356cf01526b06f5da996d}} 
+\index{scale.h@{scale.h}!get\_key\_name@{get\_key\_name}}
+\index{get\_key\_name@{get\_key\_name}!scale.h@{scale.h}}
+\doxysubsubsection{\texorpdfstring{get\_key\_name()}{get\_key\_name()}}
+{\footnotesize\ttfamily char $\ast$ get\+\_\+key\+\_\+name (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{key\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+Get a key name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key\+\_\+num} & Key number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$ Keyname 
+\end{DoxyReturn}
+\mbox{\Hypertarget{scale_8h_ad264c4b750e8922861e5c3f56d67acc6}\label{scale_8h_ad264c4b750e8922861e5c3f56d67acc6}} 
+\index{scale.h@{scale.h}!get\_key\_num@{get\_key\_num}}
+\index{get\_key\_num@{get\_key\_num}!scale.h@{scale.h}}
+\doxysubsubsection{\texorpdfstring{get\_key\_num()}{get\_key\_num()}}
+{\footnotesize\ttfamily uint8\+\_\+t get\+\_\+key\+\_\+num (\begin{DoxyParamCaption}\item[{double}]{freq }\end{DoxyParamCaption})}
+
+
+
+Convert Frequency to Keynumber. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em freq} & Frequency \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t Keynumber 
+\end{DoxyReturn}
+\mbox{\Hypertarget{scale_8h_a3f0fe955807ea6ce77a5d46e557c00c4}\label{scale_8h_a3f0fe955807ea6ce77a5d46e557c00c4}} 
+\index{scale.h@{scale.h}!get\_modal\_name@{get\_modal\_name}}
+\index{get\_modal\_name@{get\_modal\_name}!scale.h@{scale.h}}
+\doxysubsubsection{\texorpdfstring{get\_modal\_name()}{get\_modal\_name()}}
+{\footnotesize\ttfamily char $\ast$ get\+\_\+modal\+\_\+name (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{modal\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+Get a modal name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em modal\+\_\+num} & Number of the modal \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{scale_8h_a7e5dced1f4ec1583890131af61b49f07}\label{scale_8h_a7e5dced1f4ec1583890131af61b49f07}} 
+\index{scale.h@{scale.h}!get\_pitch\_hz@{get\_pitch\_hz}}
+\index{get\_pitch\_hz@{get\_pitch\_hz}!scale.h@{scale.h}}
+\doxysubsubsection{\texorpdfstring{get\_pitch\_hz()}{get\_pitch\_hz()}}
+{\footnotesize\ttfamily double get\+\_\+pitch\+\_\+hz (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{key\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+Convert Keynumber to Frequency. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key\+\_\+num} & Keynumber \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double Frequency 
+\end{DoxyReturn}
+\mbox{\Hypertarget{scale_8h_a7ad1b3de87418feaa674a96009e80d92}\label{scale_8h_a7ad1b3de87418feaa674a96009e80d92}} 
+\index{scale.h@{scale.h}!print\_key\_name@{print\_key\_name}}
+\index{print\_key\_name@{print\_key\_name}!scale.h@{scale.h}}
+\doxysubsubsection{\texorpdfstring{print\_key\_name()}{print\_key\_name()}}
+{\footnotesize\ttfamily void print\+\_\+key\+\_\+name (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{key\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+print Keyname 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key\+\_\+num} & Keynumber \\
+\hline
+\end{DoxyParams}

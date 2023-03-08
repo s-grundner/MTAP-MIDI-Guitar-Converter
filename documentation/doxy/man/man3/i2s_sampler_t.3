@@ -1,0 +1,54 @@
+.TH "i2s_sampler_t" 3 "Wed Mar 8 2023" "Gitcon" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+i2s_sampler_t \- Sampler Configuration\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <i2s_sampler\&.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "QueueHandle_t \fBdma_queue\fP"
+.br
+.ti -1c
+.RI "QueueHandle_t \fBdsp_queue\fP"
+.br
+.ti -1c
+.RI "size_t * \fBbuffer\fP"
+.br
+.ti -1c
+.RI "size_t \fBbuffer_pos\fP"
+.br
+.ti -1c
+.RI "size_t \fBbuffer_size\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Sampler Configuration\&. 
+
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIdma_queue\fP Samples are sent to this queue by the DMA 
+.br
+\fIdsp_queue\fP Queue to send samples to 
+.br
+\fIbuffer\fP Buffer to store samples in 
+.br
+\fIbuffer_pos\fP Current position in buffer 
+.br
+\fIbuffer_size\fP Size of the buffer in samples 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Gitcon from the source code\&.

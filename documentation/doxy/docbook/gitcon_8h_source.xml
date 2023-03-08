@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_gitcon_8h_source" xml:lang="en-US">
+<title>gitcon.h</title>
+<indexterm><primary>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 
+12 <emphasis role="preprocessor">#ifndef&#32;GITCON_H</emphasis>
+13 <emphasis role="preprocessor">#define&#32;GITCON_H</emphasis>
+14 
+15 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_config_8h">config.h</link>&quot;</emphasis>
+16 
+17 <emphasis role="preprocessor">#define&#32;GITCON_LOG_LEVEL&#32;ESP_LOG_ERROR</emphasis>
+18 
+25 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct</emphasis>
+26 {
+27 <emphasis role="preprocessor">#ifdef&#32;USE_MCP3201</emphasis>
+28 &#32;&#32;<link linkend="_structmcp3201__sampler__t">mcp3201_sampler_t</link>&#32;*sampler;
+29 <emphasis role="preprocessor">#else</emphasis>
+30 &#32;&#32;<link linkend="_structi2s__sampler__t">i2s_sampler_t</link>&#32;*sampler;
+31 <emphasis role="preprocessor">#endif</emphasis>
+32 &#32;&#32;<link linkend="_structmidi__context__t">midi_handle_t</link>&#32;midi_handle;
+33 &#32;&#32;QueueHandle_t&#32;midi_queue;&#32;<emphasis role="comment">//&#32;TODO:&#32;merge&#32;with&#32;midi_handle</emphasis>
+34 }&#32;<link linkend="_structgitcon__context__t">gitcon_context_t</link>;
+35 <emphasis role="keyword">typedef</emphasis>&#32;<link linkend="_structgitcon__context__t">gitcon_context_t</link>&#32;*<link linkend="_structgitcon__context__t">gitcon_handle_t</link>;
+36 
+43 esp_err_t&#32;<link linkend="_gitcon_8h_1a99e7f3808bee46708eb81bd55cae4a37">gitcon_init</link>(<link linkend="_structgitcon__context__t">gitcon_handle_t</link>&#32;*out_handle);
+44 
+51 esp_err_t&#32;<link linkend="_gitcon_8h_1a34f972a4c96245ce63d26a5256c75e24">gitcon_exit</link>(<link linkend="_structgitcon__context__t">gitcon_handle_t</link>&#32;handle);
+52 
+53 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;GITCON_H</emphasis>
+</programlisting></section>

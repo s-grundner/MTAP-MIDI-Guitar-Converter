@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structmcp3201__context__t" xml:lang="en-US">
+<title>mcp3201_context_t Struct Reference</title>
+<indexterm><primary>mcp3201_context_t</primary></indexterm>
+<para>
+
+<para>MCP3201 Context struct for internal use. </para>
+ 
+</para>
+Collaboration diagram for mcp3201_context_t:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="structmcp3201__context__t__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Data Fields    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_structmcp3201__context__t_1a67eb2e10c7970f2bb7be144d2af56e4a"/><link linkend="_structmcp3201__config__t">mcp3201_config_t</link> <emphasis role="strong">cfg</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_structmcp3201__context__t_1af04b0de520c6e42f039c5edf47b13dc2"/>spi_device_handle_t <emphasis role="strong">spi</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_structmcp3201__context__t_1ae4e49bbcd1e3f9e5f8c90b82c6bdd899"/>spi_transaction_t * <emphasis role="strong">ongoing_transaction</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>MCP3201 Context struct for internal use. </para>
+
+
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>cfg</entry><entry>
+<para>MCP3201 Configuration </para>
+</entry>
+                            </row>
+                            <row>
+<entry>spi</entry><entry>
+<para>SPI Device Handle </para>
+</entry>
+                            </row>
+                            <row>
+<entry>ongoing_transaction</entry><entry>
+<para>Ongoing SPI Transaction </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+The documentation for this struct was generated from the following files:</para>
+C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/<link linkend="_mcp3201_8c">mcp3201.c</link>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/mcp3201_sampler.c</section>
+</section>

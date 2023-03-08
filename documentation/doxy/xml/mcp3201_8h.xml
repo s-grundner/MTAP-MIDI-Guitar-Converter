@@ -1,0 +1,408 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="mcp3201_8h" kind="file" language="C++">
+    <compoundname>mcp3201.h</compoundname>
+    <includes local="no">stdio.h</includes>
+    <includes local="yes">freertos/FreeRTOS.h</includes>
+    <includes local="yes">freertos/task.h</includes>
+    <includes local="yes">freertos/queue.h</includes>
+    <includes local="yes">driver/gpio.h</includes>
+    <includes local="yes">driver/spi_master.h</includes>
+    <includes local="yes">hal/spi_types.h</includes>
+    <includes local="yes">esp_log.h</includes>
+    <includedby refid="config_8h" local="yes">C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/include/config.h</includedby>
+    <includedby refid="mcp3201_8c" local="yes">C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/mcp3201.c</includedby>
+    <includedby refid="mcp3201__sampler_8c" local="yes">C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/mcp3201_sampler.c</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/mcp3201.h</label>
+        <link refid="mcp3201_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>driver/gpio.h</label>
+      </node>
+      <node id="7">
+        <label>driver/spi_master.h</label>
+      </node>
+      <node id="9">
+        <label>esp_log.h</label>
+      </node>
+      <node id="3">
+        <label>freertos/FreeRTOS.h</label>
+      </node>
+      <node id="5">
+        <label>freertos/queue.h</label>
+      </node>
+      <node id="4">
+        <label>freertos/task.h</label>
+      </node>
+      <node id="8">
+        <label>hal/spi_types.h</label>
+      </node>
+      <node id="2">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/include/config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/mcp3201.c</label>
+        <link refid="mcp3201_8c"/>
+      </node>
+      <node id="1">
+        <label>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/mcp3201.h</label>
+        <link refid="mcp3201_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.c</label>
+        <link refid="gitcon_8c"/>
+      </node>
+      <node id="3">
+        <label>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.h</label>
+        <link refid="gitcon_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/main.c</label>
+        <link refid="main_8c"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structmcp3201__config__t" prot="public">mcp3201_config_t</innerclass>
+    <innerclass refid="structmcp3201__sampler__t" prot="public">mcp3201_sampler_t</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="mcp3201_8h_1a44d38ab4d4e88e679184bbbffdac00dd" prot="public" static="no">
+        <name>ADC_CLK</name>
+        <initializer>SPI_MASTER_FREQ_8M</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/mcp3201.h" line="24" column="9" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/mcp3201.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="mcp3201_8h_1a394f6b43329fb768aeb634cdfee4ebef" prot="public" static="no">
+        <type>struct <ref refid="structmcp3201__context__t" kindref="compound">mcp3201_context_t</ref> *</type>
+        <definition>typedef struct mcp3201_context_t* mcp3201_handle_t</definition>
+        <argsstring></argsstring>
+        <name>mcp3201_handle_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/mcp3201.h" line="46" column="32" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/mcp3201.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="mcp3201_8h_1a69c1d4c194693ad14af26415e51cd4d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>esp_err_t</type>
+        <definition>esp_err_t mcp3201_init</definition>
+        <argsstring>(mcp3201_handle_t *out_handle, const mcp3201_config_t *cfg)</argsstring>
+        <name>mcp3201_init</name>
+        <param>
+          <type><ref refid="structmcp3201__context__t" kindref="compound">mcp3201_handle_t</ref> *</type>
+          <declname>out_handle</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structmcp3201__config__t" kindref="compound">mcp3201_config_t</ref> *</type>
+          <declname>cfg</declname>
+        </param>
+        <briefdescription>
+<para>Initializes the MCP3201 ADC device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>out_handle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MCP3201 Handler to store initialization data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cfg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MCP3201 Configuration </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/mcp3201.h" line="75" column="11" declfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/mcp3201.h" declline="75" declcolumn="11"/>
+      </memberdef>
+      <memberdef kind="function" id="mcp3201_8h_1acacc7f3f14eb9108f7c053d4cc370e00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>esp_err_t</type>
+        <definition>esp_err_t mcp3201_exit</definition>
+        <argsstring>(mcp3201_handle_t mcp_handle)</argsstring>
+        <name>mcp3201_exit</name>
+        <param>
+          <type><ref refid="structmcp3201__context__t" kindref="compound">mcp3201_handle_t</ref></type>
+          <declname>mcp_handle</declname>
+        </param>
+        <briefdescription>
+<para>Exits the MCP3201 ADC device and frees all resources. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mcp_handle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MCP3201 Device to exit </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>ESP_OK on success </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/mcp3201.h" line="83" column="11" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/mcp3201.c" bodystart="105" bodyend="122" declfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/mcp3201.h" declline="83" declcolumn="11"/>
+        <referencedby refid="gitcon_8c_1a34f972a4c96245ce63d26a5256c75e24" compoundref="gitcon_8c" startline="217" endline="235">gitcon_exit</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="mcp3201_8h_1ad2a98b7c4cafab98b390b467b976cc9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>esp_err_t</type>
+        <definition>esp_err_t mcp3201_read</definition>
+        <argsstring>(mcp3201_handle_t handle, uint16_t *out_value)</argsstring>
+        <name>mcp3201_read</name>
+        <param>
+          <type><ref refid="structmcp3201__context__t" kindref="compound">mcp3201_handle_t</ref></type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>out_value</declname>
+        </param>
+        <briefdescription>
+<para>Reads a single value from the MCP3201 ADC. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>handle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MCP3201 Device </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">out_value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>ESP_OK on success </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/mcp3201.h" line="92" column="11" declfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/mcp3201.h" declline="92" declcolumn="11"/>
+      </memberdef>
+      <memberdef kind="function" id="mcp3201_8h_1a597661bdfb234321b4ba0648dc161451" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structmcp3201__sampler__t" kindref="compound">mcp3201_sampler_t</ref> *</type>
+        <definition>mcp3201_sampler_t * mcp3201_sampler_start</definition>
+        <argsstring>(mcp3201_handle_t mcp_handle, QueueHandle_t recv_queue, const size_t buffer_size, const size_t f_sample)</argsstring>
+        <name>mcp3201_sampler_start</name>
+        <param>
+          <type><ref refid="structmcp3201__context__t" kindref="compound">mcp3201_handle_t</ref></type>
+          <declname>mcp_handle</declname>
+        </param>
+        <param>
+          <type>QueueHandle_t</type>
+          <declname>recv_queue</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>buffer_size</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>f_sample</declname>
+        </param>
+        <briefdescription>
+<para>Starts the MCP3201 Sampler, which samples continuously and puts the samples into a queue. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mcp_handle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MCP3201 Device Handler </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>recv_queue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>queue to send the samples into </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>size of the audio buffer </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>f_sample</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sample rate </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>mcp3201_sampler_t* Sampler Handler </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/mcp3201.h" line="103" column="19" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/mcp3201_sampler.c" bodystart="74" bodyend="98" declfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/mcp3201.h" declline="103" declcolumn="19"/>
+        <references refid="mcp3201_8h_1a597661bdfb234321b4ba0648dc161451" compoundref="mcp3201__sampler_8c" startline="74" endline="98">mcp3201_sampler_start</references>
+        <referencedby refid="mcp3201_8h_1a597661bdfb234321b4ba0648dc161451" compoundref="mcp3201__sampler_8c" startline="74" endline="98">mcp3201_sampler_start</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="mcp3201_8h_1a09942c72d6880306a561ca69a5ecac80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mcp3201_sampler_stop</definition>
+        <argsstring>(mcp3201_sampler_t *sampler)</argsstring>
+        <name>mcp3201_sampler_stop</name>
+        <param>
+          <type><ref refid="structmcp3201__sampler__t" kindref="compound">mcp3201_sampler_t</ref> *</type>
+          <declname>sampler</declname>
+        </param>
+        <briefdescription>
+<para>Stops the MCP3201 Sampler. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sampler</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sampler Handler </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/mcp3201.h" line="110" column="6" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/mcp3201_sampler.c" bodystart="100" bodyend="112" declfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/mcp3201.h" declline="110" declcolumn="6"/>
+        <references refid="mcp3201_8h_1a09942c72d6880306a561ca69a5ecac80" compoundref="mcp3201__sampler_8c" startline="100" endline="112">mcp3201_sampler_stop</references>
+        <referencedby refid="gitcon_8c_1a34f972a4c96245ce63d26a5256c75e24" compoundref="gitcon_8c" startline="217" endline="235">gitcon_exit</referencedby>
+        <referencedby refid="mcp3201_8h_1a09942c72d6880306a561ca69a5ecac80" compoundref="mcp3201__sampler_8c" startline="100" endline="112">mcp3201_sampler_stop</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>@s-grundner </para>
+</simplesect>
+<simplesect kind="version"><para>0.1 </para>
+</simplesect>
+<simplesect kind="date"><para>2022-12-24</para>
+</simplesect>
+<simplesect kind="copyright"><para>Copyright (c) 2022 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MCP3201_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MCP3201_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;freertos/FreeRTOS.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;freertos/task.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;freertos/queue.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;driver/gpio.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;driver/spi_master.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;hal/spi_types.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;esp_log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ADC_CLK<sp/>SPI_MASTER_FREQ_8M</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="structmcp3201__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>spi_host_device_t<sp/>host;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_num_t<sp/>cs_io;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_num_t<sp/>miso_io;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_num_t<sp/>mosi_io;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dma_chan;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}<sp/><ref refid="structmcp3201__config__t" kindref="compound">mcp3201_config_t</ref>;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structmcp3201__context__t" kindref="compound">mcp3201_context_t</ref><sp/>*<ref refid="structmcp3201__context__t" kindref="compound">mcp3201_handle_t</ref>;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="structmcp3201__sampler__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structmcp3201__context__t" kindref="compound">mcp3201_handle_t</ref><sp/>mcp_handle;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>QueueHandle_t<sp/>dma_queue;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>QueueHandle_t<sp/>dsp_queue;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>*buffer;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>buffer_pos;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>buffer_size;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">}<sp/><ref refid="structmcp3201__sampler__t" kindref="compound">mcp3201_sampler_t</ref>;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="mcp3201_8h_1a69c1d4c194693ad14af26415e51cd4d5" refkind="member"><highlight class="normal">esp_err_t<sp/><ref refid="mcp3201_8h_1a69c1d4c194693ad14af26415e51cd4d5" kindref="member">mcp3201_init</ref>(<ref refid="structmcp3201__context__t" kindref="compound">mcp3201_handle_t</ref><sp/>*out_handle,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structmcp3201__config__t" kindref="compound">mcp3201_config_t</ref><sp/>*cfg);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal">esp_err_t<sp/><ref refid="mcp3201_8h_1acacc7f3f14eb9108f7c053d4cc370e00" kindref="member">mcp3201_exit</ref>(<ref refid="structmcp3201__context__t" kindref="compound">mcp3201_handle_t</ref><sp/>mcp_handle);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="mcp3201_8h_1ad2a98b7c4cafab98b390b467b976cc9f" refkind="member"><highlight class="normal">esp_err_t<sp/><ref refid="mcp3201_8h_1ad2a98b7c4cafab98b390b467b976cc9f" kindref="member">mcp3201_read</ref>(<ref refid="structmcp3201__context__t" kindref="compound">mcp3201_handle_t</ref><sp/>handle,<sp/>uint16_t<sp/>*out_value);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><ref refid="structmcp3201__sampler__t" kindref="compound">mcp3201_sampler_t</ref><sp/>*<ref refid="mcp3201_8h_1a597661bdfb234321b4ba0648dc161451" kindref="member">mcp3201_sampler_start</ref>(<ref refid="structmcp3201__context__t" kindref="compound">mcp3201_handle_t</ref><sp/>mcp_handle,<sp/>QueueHandle_t<sp/>recv_queue,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>buffer_size,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>f_sample);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="mcp3201_8h_1a09942c72d6880306a561ca69a5ecac80" kindref="member">mcp3201_sampler_stop</ref>(<ref refid="structmcp3201__sampler__t" kindref="compound">mcp3201_sampler_t</ref><sp/>*sampler);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>MCP3201_H</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/mcp3201.h"/>
+  </compounddef>
+</doxygen>

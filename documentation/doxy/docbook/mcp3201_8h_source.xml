@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_mcp3201_8h_source" xml:lang="en-US">
+<title>mcp3201.h</title>
+<indexterm><primary>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/mcp3201.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 
+12 <emphasis role="preprocessor">#ifndef&#32;MCP3201_H</emphasis>
+13 <emphasis role="preprocessor">#define&#32;MCP3201_H</emphasis>
+14 
+15 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
+16 <emphasis role="preprocessor">#include&#32;&quot;freertos/FreeRTOS.h&quot;</emphasis>
+17 <emphasis role="preprocessor">#include&#32;&quot;freertos/task.h&quot;</emphasis>
+18 <emphasis role="preprocessor">#include&#32;&quot;freertos/queue.h&quot;</emphasis>
+19 <emphasis role="preprocessor">#include&#32;&quot;driver/gpio.h&quot;</emphasis>
+20 <emphasis role="preprocessor">#include&#32;&quot;driver/spi_master.h&quot;</emphasis>
+21 <emphasis role="preprocessor">#include&#32;&quot;hal/spi_types.h&quot;</emphasis>
+22 <emphasis role="preprocessor">#include&#32;&quot;esp_log.h&quot;</emphasis>
+23 
+24 <emphasis role="preprocessor">#define&#32;ADC_CLK&#32;SPI_MASTER_FREQ_8M</emphasis>
+25 
+36 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct</emphasis>
+37 {
+38 &#32;&#32;&#32;&#32;spi_host_device_t&#32;host;
+39 &#32;&#32;&#32;&#32;gpio_num_t&#32;cs_io;
+40 &#32;&#32;&#32;&#32;gpio_num_t&#32;miso_io;
+41 &#32;&#32;&#32;&#32;gpio_num_t&#32;mosi_io;
+42 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;dma_chan;
+43 }&#32;<link linkend="_structmcp3201__config__t">mcp3201_config_t</link>;
+44 
+46 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structmcp3201__context__t">mcp3201_context_t</link>&#32;*<link linkend="_structmcp3201__context__t">mcp3201_handle_t</link>;
+47 
+58 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct</emphasis>
+59 {
+60 &#32;&#32;&#32;&#32;<link linkend="_structmcp3201__context__t">mcp3201_handle_t</link>&#32;mcp_handle;
+61 &#32;&#32;&#32;&#32;QueueHandle_t&#32;dma_queue;
+62 &#32;&#32;&#32;&#32;QueueHandle_t&#32;dsp_queue;
+63 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;*buffer;
+64 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;buffer_pos;
+65 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;buffer_size;
+66 }&#32;<link linkend="_structmcp3201__sampler__t">mcp3201_sampler_t</link>;
+67 
+75 esp_err_t&#32;<link linkend="_mcp3201_8h_1a69c1d4c194693ad14af26415e51cd4d5">mcp3201_init</link>(<link linkend="_structmcp3201__context__t">mcp3201_handle_t</link>&#32;*out_handle,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structmcp3201__config__t">mcp3201_config_t</link>&#32;*cfg);
+76 
+83 esp_err_t&#32;<link linkend="_mcp3201_8h_1acacc7f3f14eb9108f7c053d4cc370e00">mcp3201_exit</link>(<link linkend="_structmcp3201__context__t">mcp3201_handle_t</link>&#32;mcp_handle);
+84 
+92 esp_err_t&#32;<link linkend="_mcp3201_8h_1ad2a98b7c4cafab98b390b467b976cc9f">mcp3201_read</link>(<link linkend="_structmcp3201__context__t">mcp3201_handle_t</link>&#32;handle,&#32;uint16_t&#32;*out_value);
+93 
+103 <link linkend="_structmcp3201__sampler__t">mcp3201_sampler_t</link>&#32;*<link linkend="_mcp3201_8h_1a597661bdfb234321b4ba0648dc161451">mcp3201_sampler_start</link>(<link linkend="_structmcp3201__context__t">mcp3201_handle_t</link>&#32;mcp_handle,&#32;QueueHandle_t&#32;recv_queue,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;buffer_size,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;f_sample);
+104 
+110 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_mcp3201_8h_1a09942c72d6880306a561ca69a5ecac80">mcp3201_sampler_stop</link>(<link linkend="_structmcp3201__sampler__t">mcp3201_sampler_t</link>&#32;*sampler);
+111 
+112 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;MCP3201_H</emphasis>
+</programlisting></section>

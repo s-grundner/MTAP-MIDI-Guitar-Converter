@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_midi_8h_source" xml:lang="en-US">
+<title>midi.h</title>
+<indexterm><primary>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/midi/midi.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 
+12 <emphasis role="preprocessor">#ifndef&#32;MIDI_H</emphasis>
+13 <emphasis role="preprocessor">#define&#32;MIDI_H</emphasis>
+14 
+15 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
+16 <emphasis role="preprocessor">#include&#32;&lt;stdint.h&gt;</emphasis>
+17 <emphasis role="preprocessor">#include&#32;&quot;driver/gpio.h&quot;</emphasis>
+18 <emphasis role="preprocessor">#include&#32;&quot;driver/uart.h&quot;</emphasis>
+19 <emphasis role="preprocessor">#include&#32;&quot;esp_log.h&quot;</emphasis>
+20 
+21 <emphasis role="preprocessor">#define&#32;MIDI_LOG_LEVEL&#32;ESP_LOG_ERROR</emphasis>
+22 
+23 <emphasis role="preprocessor">#define&#32;MIDI_BYTE_SIZE_DEFAULT&#32;3</emphasis>
+24 <emphasis role="preprocessor">#define&#32;MIDI_BYTE_SIZE_SHORT&#32;2</emphasis>
+25 
+26 <emphasis role="preprocessor">#define&#32;MIDI_PITCH_BEND_MIN&#32;(0)</emphasis>
+27 <emphasis role="preprocessor">#define&#32;MIDI_PITCH_BEND_MAX&#32;(16383)</emphasis>
+28 <emphasis role="preprocessor">#define&#32;MIDI_PITCH_BEND_CENTER&#32;(8192)</emphasis>
+29 
+41 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">enum</emphasis>
+42 {
+43 &#32;&#32;&#32;&#32;MIDI_STATUS_NOTE_OFF&#32;=&#32;0x80,
+44 &#32;&#32;&#32;&#32;MIDI_STATUS_NOTE_ON&#32;=&#32;0x90,
+45 &#32;&#32;&#32;&#32;MIDI_STATUS_POLYPHONIC_KEY_PRESSURE&#32;=&#32;0xA0,
+46 &#32;&#32;&#32;&#32;MIDI_STATUS_CONTROL_CHANGE&#32;=&#32;0xB0,
+47 &#32;&#32;&#32;&#32;MIDI_STATUS_PROGRAM_CHANGE&#32;=&#32;0xC0,
+48 &#32;&#32;&#32;&#32;MIDI_STATUS_CHANNEL_PRESSURE&#32;=&#32;0xD0,
+49 &#32;&#32;&#32;&#32;MIDI_STATUS_PITCH_BEND&#32;=&#32;0xE0,
+50 }&#32;<link linkend="_midi_8h_1a37a498aac35ac1332061a8b453ec7ae3">midi_status_t</link>;
+51 
+60 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct</emphasis>
+61 {
+62 &#32;&#32;&#32;&#32;uint8_t&#32;param1;
+63 &#32;&#32;&#32;&#32;<link linkend="_midi_8h_1a37a498aac35ac1332061a8b453ec7ae3">midi_status_t</link>&#32;status;
+64 &#32;&#32;&#32;&#32;uint8_t&#32;channel;
+65 &#32;&#32;&#32;&#32;uint8_t&#32;param2;
+66 }&#32;<link linkend="_structmidi__message__t">midi_message_t</link>;
+67 
+76 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct</emphasis>
+77 {
+78 &#32;&#32;&#32;&#32;uart_port_t&#32;uart_num;
+79 &#32;&#32;&#32;&#32;uint&#32;baudrate;
+80 &#32;&#32;&#32;&#32;gpio_num_t&#32;rx_io;
+81 &#32;&#32;&#32;&#32;gpio_num_t&#32;tx_io;
+82 }&#32;<link linkend="_structmidi__config__t">midi_config_t</link>;
+83 
+85 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structmidi__context__t">midi_context_t</link>&#32;*<link linkend="_structmidi__context__t">midi_handle_t</link>;
+86 
+94 esp_err_t&#32;<link linkend="_midi_8h_1ae650454d0c1ee0e1ccde60b84d5396be">midi_init</link>(<link linkend="_structmidi__context__t">midi_handle_t</link>&#32;*out_handle,&#32;<link linkend="_structmidi__config__t">midi_config_t</link>&#32;*out_cfg);
+95 
+102 esp_err_t&#32;<link linkend="_midi_8h_1a6eff3a43d514679b4da21f8cca9e2316">midi_exit</link>(<link linkend="_structmidi__context__t">midi_handle_t</link>&#32;midi_handle);
+103 
+111 esp_err_t&#32;<link linkend="_midi_8h_1a5aa4e2de2cfe3d569d4968df337cb846">midi_write</link>(<link linkend="_structmidi__context__t">midi_handle_t</link>&#32;midi_handle,&#32;<link linkend="_structmidi__message__t">midi_message_t</link>&#32;*msg);
+112 
+120 esp_err_t&#32;<link linkend="_midi_8h_1a19339a5613e1e14bcffb4469675ec2db">midi_read</link>(<link linkend="_structmidi__context__t">midi_handle_t</link>&#32;midi_handle,&#32;<link linkend="_structmidi__message__t">midi_message_t</link>&#32;*msg,&#32;TickType_t&#32;timeout);
+121 
+122 <emphasis role="comment">//&#32;functions&#32;to&#32;configure&#32;midi&#32;messages</emphasis>
+123 <link linkend="_structmidi__message__t">midi_message_t</link>&#32;note_off(uint8_t&#32;channel,&#32;uint8_t&#32;key_num,&#32;uint8_t&#32;velocity);
+124 <link linkend="_structmidi__message__t">midi_message_t</link>&#32;note_on(uint8_t&#32;channel,&#32;uint8_t&#32;key_num,&#32;uint8_t&#32;velocity);
+125 <link linkend="_structmidi__message__t">midi_message_t</link>&#32;poly_key_pressure(uint8_t&#32;channel,&#32;uint8_t&#32;key_num,&#32;uint8_t&#32;value);
+126 <link linkend="_structmidi__message__t">midi_message_t</link>&#32;ctrl_change(uint8_t&#32;channel,&#32;uint8_t&#32;controller_num,&#32;uint8_t&#32;value);
+127 <link linkend="_structmidi__message__t">midi_message_t</link>&#32;prg_change(uint8_t&#32;channel,&#32;uint8_t&#32;program);
+128 <link linkend="_structmidi__message__t">midi_message_t</link>&#32;channel_pressure(uint8_t&#32;channel,&#32;uint8_t&#32;value);
+129 <link linkend="_structmidi__message__t">midi_message_t</link>&#32;pitch_bend(uint8_t&#32;channel,&#32;uint16_t&#32;value);
+130 
+131 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;MIDI_H</emphasis>
+</programlisting></section>

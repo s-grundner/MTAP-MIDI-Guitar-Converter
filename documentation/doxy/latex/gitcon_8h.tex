@@ -1,0 +1,87 @@
+\hypertarget{gitcon_8h}{}\doxysection{C\+:/\+Users/\+Smon/source/\+MTAP-\/\+MIDI-\/\+Guitar-\/\+Converter/firmware/\+MIDI-\/\+Testing/src/gitcon.h File Reference}
+\label{gitcon_8h}\index{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/src/gitcon.h@{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/src/gitcon.h}}
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\newline
+Include dependency graph for gitcon.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structgitcon__context__t}{gitcon\+\_\+context\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Gitcon Configuration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{gitcon_8h_af41740c58c92b4864c2e8fa77ee56fd9}\label{gitcon_8h_af41740c58c92b4864c2e8fa77ee56fd9}} 
+\#define {\bfseries GITCON\+\_\+\+LOG\+\_\+\+LEVEL}~ESP\+\_\+\+LOG\+\_\+\+ERROR
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{gitcon_8h_a898b59703ba05e8a28c233508755ed60}\label{gitcon_8h_a898b59703ba05e8a28c233508755ed60}} 
+typedef \mbox{\hyperlink{structgitcon__context__t}{gitcon\+\_\+context\+\_\+t}} $\ast$ {\bfseries gitcon\+\_\+handle\+\_\+t}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{gitcon_8h_a99e7f3808bee46708eb81bd55cae4a37}{gitcon\+\_\+init}} (\mbox{\hyperlink{structgitcon__context__t}{gitcon\+\_\+handle\+\_\+t}} $\ast$out\+\_\+handle)
+\begin{DoxyCompactList}\small\item\em initializes gitcon device \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{gitcon_8h_a34f972a4c96245ce63d26a5256c75e24}{gitcon\+\_\+exit}} (\mbox{\hyperlink{structgitcon__context__t}{gitcon\+\_\+handle\+\_\+t}} handle)
+\begin{DoxyCompactList}\small\item\em frees all resources \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+@s-\/grundner @\+Laurenz03 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022-\/12-\/23
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2022 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{gitcon_8h_a34f972a4c96245ce63d26a5256c75e24}\label{gitcon_8h_a34f972a4c96245ce63d26a5256c75e24}} 
+\index{gitcon.h@{gitcon.h}!gitcon\_exit@{gitcon\_exit}}
+\index{gitcon\_exit@{gitcon\_exit}!gitcon.h@{gitcon.h}}
+\doxysubsubsection{\texorpdfstring{gitcon\_exit()}{gitcon\_exit()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t gitcon\+\_\+exit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgitcon__context__t}{gitcon\+\_\+handle\+\_\+t}}}]{handle }\end{DoxyParamCaption})}
+
+
+
+frees all resources 
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle} & gitcon context handler \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ESP\+\_\+\+OK on success 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{gitcon_8h_a99e7f3808bee46708eb81bd55cae4a37}\label{gitcon_8h_a99e7f3808bee46708eb81bd55cae4a37}} 
+\index{gitcon.h@{gitcon.h}!gitcon\_init@{gitcon\_init}}
+\index{gitcon\_init@{gitcon\_init}!gitcon.h@{gitcon.h}}
+\doxysubsubsection{\texorpdfstring{gitcon\_init()}{gitcon\_init()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t gitcon\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgitcon__context__t}{gitcon\+\_\+handle\+\_\+t}} $\ast$}]{out\+\_\+handle }\end{DoxyParamCaption})}
+
+
+
+initializes gitcon device 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em out\+\_\+handle} & gitcon context handler \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+esp\+\_\+err\+\_\+t ESP\+\_\+\+OK on success, ESP\+\_\+\+ERR\+\_\+\+NO\+\_\+\+MEM on memory allocation error 
+\end{DoxyReturn}

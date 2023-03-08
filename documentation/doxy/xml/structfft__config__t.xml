@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="structfft__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>fft_config_t</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structfft__config__t_1a439227feff9d7f55384e8780cfc2eb82" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <qualifiedname>fft_config_t::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" line="46" column="7" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structfft__config__t_1aa92d3f73b33ca1a03e06415ee1db06eb" prot="public" static="no" mutable="no">
+        <type>float *</type>
+        <definition>float* input</definition>
+        <argsstring></argsstring>
+        <name>input</name>
+        <qualifiedname>fft_config_t::input</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" line="47" column="9" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structfft__config__t_1aed212f452362fd47d3c6530a2433cbca" prot="public" static="no" mutable="no">
+        <type>float *</type>
+        <definition>float* output</definition>
+        <argsstring></argsstring>
+        <name>output</name>
+        <qualifiedname>fft_config_t::output</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" line="48" column="9" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structfft__config__t_1a00c7a5a420128f70fb1aff6d175cb95b" prot="public" static="no" mutable="no">
+        <type>float *</type>
+        <definition>float* twiddle_factors</definition>
+        <argsstring></argsstring>
+        <name>twiddle_factors</name>
+        <qualifiedname>fft_config_t::twiddle_factors</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" line="49" column="9" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structfft__config__t_1a4a3502eb022ff0f5a5446d93c9dcdfec" prot="public" static="no" mutable="no">
+        <type>fft_type_t</type>
+        <definition>fft_type_t type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>fft_config_t::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" line="50" column="14" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structfft__config__t_1ae3ffe1db0831689395bc3e81ef5e748e" prot="public" static="no" mutable="no">
+        <type>fft_direction_t</type>
+        <definition>fft_direction_t direction</definition>
+        <argsstring></argsstring>
+        <name>direction</name>
+        <qualifiedname>fft_config_t::direction</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" line="51" column="19" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structfft__config__t_1ac92588540e8c1d014a08cd8a45462b19" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int flags</definition>
+        <argsstring></argsstring>
+        <name>flags</name>
+        <qualifiedname>fft_config_t::flags</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" line="52" column="16" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" line="44" column="1" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" bodystart="45" bodyend="53"/>
+    <listofallmembers>
+      <member refid="structfft__config__t_1ae3ffe1db0831689395bc3e81ef5e748e" prot="public" virt="non-virtual"><scope>fft_config_t</scope><name>direction</name></member>
+      <member refid="structfft__config__t_1ac92588540e8c1d014a08cd8a45462b19" prot="public" virt="non-virtual"><scope>fft_config_t</scope><name>flags</name></member>
+      <member refid="structfft__config__t_1aa92d3f73b33ca1a03e06415ee1db06eb" prot="public" virt="non-virtual"><scope>fft_config_t</scope><name>input</name></member>
+      <member refid="structfft__config__t_1aed212f452362fd47d3c6530a2433cbca" prot="public" virt="non-virtual"><scope>fft_config_t</scope><name>output</name></member>
+      <member refid="structfft__config__t_1a439227feff9d7f55384e8780cfc2eb82" prot="public" virt="non-virtual"><scope>fft_config_t</scope><name>size</name></member>
+      <member refid="structfft__config__t_1a00c7a5a420128f70fb1aff6d175cb95b" prot="public" virt="non-virtual"><scope>fft_config_t</scope><name>twiddle_factors</name></member>
+      <member refid="structfft__config__t_1a4a3502eb022ff0f5a5446d93c9dcdfec" prot="public" virt="non-virtual"><scope>fft_config_t</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

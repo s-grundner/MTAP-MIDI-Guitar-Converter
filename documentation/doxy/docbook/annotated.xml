@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_annotated" xml:lang="en-US">
+<title>Data Structures</title>
+Here are the data structures with brief descriptions:<link linkend="_structfft__config__t">fft_config_t</link><link linkend="_structgitcon__context__t">gitcon_context_t</link>
+<para>Gitcon Configuration </para>
+<link linkend="_structi2s__sampler__t">i2s_sampler_t</link>
+<para>Sampler Configuration </para>
+<link linkend="_structmcp3201__config__t">mcp3201_config_t</link><link linkend="_structmcp3201__context__t">mcp3201_context_t</link>
+<para>MCP3201 Context struct for internal use </para>
+<link linkend="_structmcp3201__sampler__t">mcp3201_sampler_t</link><link linkend="_structmidi__config__t">midi_config_t</link>
+<para>MIDI UART Configuration </para>
+<link linkend="_structmidi__context__t">midi_context_t</link>
+<para>MIDI Context (internal! not to be accessed externally, use midi_handle_t instead) </para>
+<link linkend="_structmidi__message__t">midi_message_t</link>
+<para>MIDI Message </para>
+</section>

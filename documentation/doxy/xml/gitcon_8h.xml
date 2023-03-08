@@ -1,0 +1,319 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="gitcon_8h" kind="file" language="C++">
+    <compoundname>gitcon.h</compoundname>
+    <includes refid="config_8h" local="yes">config.h</includes>
+    <includedby refid="gitcon_8c" local="yes">C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.c</includedby>
+    <includedby refid="main_8c" local="yes">C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/main.c</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>i2s_sampler.h</label>
+        <link refid="i2s__sampler_8h_source"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>fft.h</label>
+        <link refid="fft_8h_source"/>
+      </node>
+      <node id="21">
+        <label>mcp3201.h</label>
+        <link refid="mcp3201_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>midi.h</label>
+        <link refid="midi_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.h</label>
+        <link refid="gitcon_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>driver/adc.h</label>
+      </node>
+      <node id="11">
+        <label>driver/gpio.h</label>
+      </node>
+      <node id="15">
+        <label>driver/i2s.h</label>
+      </node>
+      <node id="12">
+        <label>driver/spi_master.h</label>
+      </node>
+      <node id="13">
+        <label>driver/uart.h</label>
+      </node>
+      <node id="16">
+        <label>esp_adc_cal.h</label>
+      </node>
+      <node id="17">
+        <label>esp_log.h</label>
+      </node>
+      <node id="7">
+        <label>freertos/FreeRTOS.h</label>
+      </node>
+      <node id="9">
+        <label>freertos/queue.h</label>
+      </node>
+      <node id="8">
+        <label>freertos/task.h</label>
+      </node>
+      <node id="10">
+        <label>freertos/timers.h</label>
+      </node>
+      <node id="22">
+        <label>hal/spi_types.h</label>
+      </node>
+      <node id="6">
+        <label>math.h</label>
+      </node>
+      <node id="20">
+        <label>stdint.h</label>
+      </node>
+      <node id="3">
+        <label>stdio.h</label>
+      </node>
+      <node id="4">
+        <label>stdlib.h</label>
+      </node>
+      <node id="5">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.c</label>
+        <link refid="gitcon_8c"/>
+      </node>
+      <node id="1">
+        <label>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.h</label>
+        <link refid="gitcon_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/main.c</label>
+        <link refid="main_8c"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structgitcon__context__t" prot="public">gitcon_context_t</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="gitcon_8h_1af41740c58c92b4864c2e8fa77ee56fd9" prot="public" static="no">
+        <name>GITCON_LOG_LEVEL</name>
+        <initializer>ESP_LOG_ERROR</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.h" line="17" column="9" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="gitcon_8h_1a898b59703ba05e8a28c233508755ed60" prot="public" static="no">
+        <type><ref refid="structgitcon__context__t" kindref="compound">gitcon_context_t</ref> *</type>
+        <definition>typedef gitcon_context_t* gitcon_handle_t</definition>
+        <argsstring></argsstring>
+        <name>gitcon_handle_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.h" line="35" column="26" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="gitcon_8h_1a99e7f3808bee46708eb81bd55cae4a37" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>esp_err_t</type>
+        <definition>esp_err_t gitcon_init</definition>
+        <argsstring>(gitcon_handle_t *out_handle)</argsstring>
+        <name>gitcon_init</name>
+        <param>
+          <type><ref refid="structgitcon__context__t" kindref="compound">gitcon_handle_t</ref> *</type>
+          <declname>out_handle</declname>
+        </param>
+        <briefdescription>
+<para>initializes gitcon device </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">out_handle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>gitcon context handler </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>esp_err_t ESP_OK on success, ESP_ERR_NO_MEM on memory allocation error </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.h" line="43" column="11" declfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.h" declline="43" declcolumn="11"/>
+      </memberdef>
+      <memberdef kind="function" id="gitcon_8h_1a34f972a4c96245ce63d26a5256c75e24" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>esp_err_t</type>
+        <definition>esp_err_t gitcon_exit</definition>
+        <argsstring>(gitcon_handle_t handle)</argsstring>
+        <name>gitcon_exit</name>
+        <param>
+          <type><ref refid="structgitcon__context__t" kindref="compound">gitcon_handle_t</ref></type>
+          <declname>handle</declname>
+        </param>
+        <briefdescription>
+<para>frees all resources </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>handle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>gitcon context handler </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>ESP_OK on success </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.h" line="51" column="11" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.c" bodystart="217" bodyend="235" declfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.h" declline="51" declcolumn="11"/>
+        <references refid="mcp3201_8c_1acacc7f3f14eb9108f7c053d4cc370e00" compoundref="mcp3201_8c" startline="105" endline="122">mcp3201_exit</references>
+        <references refid="mcp3201_8h_1a09942c72d6880306a561ca69a5ecac80" compoundref="mcp3201__sampler_8c" startline="100" endline="112">mcp3201_sampler_stop</references>
+        <references refid="midi_8c_1a6eff3a43d514679b4da21f8cca9e2316" compoundref="midi_8c" startline="80" endline="86">midi_exit</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>@s-grundner @Laurenz03 </para>
+</simplesect>
+<simplesect kind="version"><para>0.1 </para>
+</simplesect>
+<simplesect kind="date"><para>2022-12-23</para>
+</simplesect>
+<simplesect kind="copyright"><para>Copyright (c) 2022 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>GITCON_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>GITCON_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="config_8h" kindref="compound">config.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>GITCON_LOG_LEVEL<sp/>ESP_LOG_ERROR</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="structgitcon__context__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>USE_MCP3201</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><ref refid="structmcp3201__sampler__t" kindref="compound">mcp3201_sampler_t</ref><sp/>*sampler;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><ref refid="structi2s__sampler__t" kindref="compound">i2s_sampler_t</ref><sp/>*sampler;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><ref refid="structmidi__context__t" kindref="compound">midi_handle_t</ref><sp/>midi_handle;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/>QueueHandle_t<sp/>midi_queue;<sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>merge<sp/>with<sp/>midi_handle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}<sp/><ref refid="structgitcon__context__t" kindref="compound">gitcon_context_t</ref>;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="structgitcon__context__t" kindref="compound">gitcon_context_t</ref><sp/>*<ref refid="structgitcon__context__t" kindref="compound">gitcon_handle_t</ref>;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="gitcon_8h_1a99e7f3808bee46708eb81bd55cae4a37" refkind="member"><highlight class="normal">esp_err_t<sp/><ref refid="gitcon_8h_1a99e7f3808bee46708eb81bd55cae4a37" kindref="member">gitcon_init</ref>(<ref refid="structgitcon__context__t" kindref="compound">gitcon_handle_t</ref><sp/>*out_handle);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal">esp_err_t<sp/><ref refid="gitcon_8h_1a34f972a4c96245ce63d26a5256c75e24" kindref="member">gitcon_exit</ref>(<ref refid="structgitcon__context__t" kindref="compound">gitcon_handle_t</ref><sp/>handle);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>GITCON_H</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.h"/>
+  </compounddef>
+</doxygen>

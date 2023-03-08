@@ -1,0 +1,369 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="scale_8c" kind="file" language="C++">
+    <compoundname>scale.c</compoundname>
+    <includes refid="scale_8h" local="yes">scale.h</includes>
+    <includes local="yes">esp_log.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/scale.c</label>
+        <link refid="scale_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>scale.h</label>
+        <link refid="scale_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>esp_log.h</label>
+      </node>
+      <node id="3">
+        <label>inttypes.h</label>
+      </node>
+      <node id="4">
+        <label>math.h</label>
+      </node>
+      <node id="5">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="scale_8c_1a5a85b9c772bbeb480b209a3e6ea92b4c" prot="public" static="yes" mutable="no">
+        <type>const char *</type>
+        <definition>const char* TAG</definition>
+        <argsstring></argsstring>
+        <name>TAG</name>
+        <initializer>= &quot;scale&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/scale.c" line="4" column="19" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/scale.c" bodystart="4" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="scale_8c_1a725714268d24586bc4db71b962b45983" prot="public" static="yes" mutable="no">
+        <type>char</type>
+        <definition>char key_name[12][3]</definition>
+        <argsstring>[12][3]</argsstring>
+        <name>key_name</name>
+        <initializer>= { &quot;G* &quot;, &quot;A  &quot;, &quot;A* &quot;, &quot;B  &quot;, &quot;C  &quot;, &quot;C* &quot;, &quot;D  &quot;, &quot;D* &quot;, &quot;E  &quot;, &quot;F  &quot;, &quot;F* &quot;, &quot;G  &quot; }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/scale.c" line="6" column="13" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/scale.c" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="scale_8c_1ac7755ef7ea8745a2f0a3f2d15147540f" prot="public" static="yes" mutable="no">
+        <type>char</type>
+        <definition>char modal_name[MODAL_COUNT][3]</definition>
+        <argsstring>[MODAL_COUNT][3]</argsstring>
+        <name>modal_name</name>
+        <initializer>= { &quot;MAJ&quot;, &quot;MIN&quot;, &quot;HMJ&quot;, &quot;HMN&quot; }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/scale.c" line="7" column="13" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/scale.c" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="scale_8c_1ad264c4b750e8922861e5c3f56d67acc6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t get_key_num</definition>
+        <argsstring>(double freq)</argsstring>
+        <name>get_key_num</name>
+        <param>
+          <type>double</type>
+          <declname>freq</declname>
+        </param>
+        <briefdescription>
+<para>Convert Frequency to Keynumber. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>freq</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Frequency </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>uint8_t Keynumber </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/scale.c" line="9" column="9" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/scale.c" bodystart="9" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="scale_8c_1a7e5dced1f4ec1583890131af61b49f07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double get_pitch_hz</definition>
+        <argsstring>(uint8_t key_num)</argsstring>
+        <name>get_pitch_hz</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>key_num</declname>
+        </param>
+        <briefdescription>
+<para>Convert Keynumber to Frequency. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key_num</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Keynumber </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>double Frequency </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/scale.c" line="16" column="8" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/scale.c" bodystart="16" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="scale_8c_1a7ad1b3de87418feaa674a96009e80d92" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void print_key_name</definition>
+        <argsstring>(uint8_t key_num)</argsstring>
+        <name>print_key_name</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>key_num</declname>
+        </param>
+        <briefdescription>
+<para>print Keyname </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key_num</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Keynumber </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/scale.c" line="21" column="6" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/scale.c" bodystart="21" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="scale_8c_1abe9622ab264356cf01526b06f5da996d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * get_key_name</definition>
+        <argsstring>(uint8_t key_num)</argsstring>
+        <name>get_key_name</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>key_num</declname>
+        </param>
+        <briefdescription>
+<para>Get a key name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key_num</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Key number </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>char* Keyname </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/scale.c" line="26" column="6" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/scale.c" bodystart="26" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="scale_8c_1a3f0fe955807ea6ce77a5d46e557c00c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * get_modal_name</definition>
+        <argsstring>(uint8_t modal_num)</argsstring>
+        <name>get_modal_name</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>modal_num</declname>
+        </param>
+        <briefdescription>
+<para>Get a modal name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>modal_num</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of the modal </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>char* </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/scale.c" line="31" column="6" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/scale.c" bodystart="31" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="scale_8c_1a5c4ac05d54321fd52a582ce3493f5e3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double adc_to_pitch</definition>
+        <argsstring>(uint8_t adc_val, uint8_t oct_offset)</argsstring>
+        <name>adc_to_pitch</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>adc_val</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>oct_offset</declname>
+        </param>
+        <briefdescription>
+<para>Convert ADC Value to Frequency. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>adc_val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC Value </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>oct_offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Octave Offset </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>double Frequency </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/scale.c" line="36" column="8" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/scale.c" bodystart="36" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="scale_8c_1ab3708331e3a3f78b08549a23c0ef249a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t adc_to_num</definition>
+        <argsstring>(uint8_t adc_val, uint8_t oct_offset)</argsstring>
+        <name>adc_to_num</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>adc_val</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>oct_offset</declname>
+        </param>
+        <briefdescription>
+<para>Convert ADC Value to Keynumber. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>adc_val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC Value </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>oct_offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Octave Offset </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>uint8_t Keynumber </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/scale.c" line="41" column="9" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/scale.c" bodystart="41" bodyend="44"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="scale_8h" kindref="compound">scale.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;esp_log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>TAG<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;scale&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>key_name[12][3]<sp/>=<sp/>{<sp/></highlight><highlight class="stringliteral">&quot;G*<sp/>&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;A<sp/><sp/>&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;A*<sp/>&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;B<sp/><sp/>&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;C<sp/><sp/>&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;C*<sp/>&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;D<sp/><sp/>&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;D*<sp/>&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;E<sp/><sp/>&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;F<sp/><sp/>&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;F*<sp/>&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;G<sp/><sp/>&quot;</highlight><highlight class="normal"><sp/>};</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>modal_name[MODAL_COUNT][3]<sp/>=<sp/>{<sp/></highlight><highlight class="stringliteral">&quot;MAJ&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;MIN&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;HMJ&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;HMN&quot;</highlight><highlight class="normal"><sp/>};</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="scale_8h_1ad264c4b750e8922861e5c3f56d67acc6" refkind="member"><highlight class="normal">uint8_t<sp/>get_key_num(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>freq)</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(freq<sp/>&lt;=<sp/>0)</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>log2(freq<sp/>/<sp/>CONCERT_PITCH)<sp/>*<sp/>12.0<sp/>+<sp/>(double)A0_NUM;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="scale_8h_1a7e5dced1f4ec1583890131af61b49f07" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>get_pitch_hz(uint8_t<sp/>key_num)</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pow(2.0,<sp/>((</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">)key_num<sp/>-<sp/>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">)A0_NUM)<sp/>/<sp/>12.0)<sp/>*<sp/>CONCERT_PITCH;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="scale_8h_1a7ad1b3de87418feaa674a96009e80d92" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>print_key_name(uint8_t<sp/>key_num)</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(TAG,<sp/></highlight><highlight class="stringliteral">&quot;%c%c%d&quot;</highlight><highlight class="normal">,<sp/>key_name[key_num<sp/>%<sp/>12][0],<sp/>key_name[key_num<sp/>%<sp/>12][1],<sp/>1<sp/>+<sp/>((key_num<sp/>-<sp/>4)<sp/>/<sp/>12));</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="scale_8h_1abe9622ab264356cf01526b06f5da996d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>get_key_name(uint8_t<sp/>key_num)</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>key_name[key_num<sp/>%<sp/>12];</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="scale_8h_1a3f0fe955807ea6ce77a5d46e557c00c4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>get_modal_name(uint8_t<sp/>modal_num)</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>modal_name[modal_num];</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="scale_8h_1a5c4ac05d54321fd52a582ce3493f5e3a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>adc_to_pitch(uint8_t<sp/>adc_val,<sp/>uint8_t<sp/>oct_offset)</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>get_pitch_hz(adc_to_num(adc_val,<sp/>oct_offset));</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="scale_8h_1ab3708331e3a3f78b08549a23c0ef249a" refkind="member"><highlight class="normal">uint8_t<sp/>adc_to_num(uint8_t<sp/>adc_val,<sp/>uint8_t<sp/>oct_offset)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(12.0<sp/>*<sp/>((</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)oct_offset<sp/>+<sp/>2.0<sp/>*<sp/>((</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)adc_val<sp/>/<sp/>ADC_MAX_VAL)))<sp/>+<sp/>0.5;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/scale.c"/>
+  </compounddef>
+</doxygen>

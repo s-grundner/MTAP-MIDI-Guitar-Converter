@@ -1,0 +1,298 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="test__midi_8c" kind="file" language="C++">
+    <compoundname>test_midi.c</compoundname>
+    <includes refid="midi_8h" local="no">midi.h</includes>
+    <includes local="no">unity.h</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>midi.h</label>
+        <link refid="midi_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/test/test_midi.c</label>
+        <link refid="test__midi_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>driver/gpio.h</label>
+      </node>
+      <node id="6">
+        <label>driver/uart.h</label>
+      </node>
+      <node id="7">
+        <label>esp_log.h</label>
+      </node>
+      <node id="4">
+        <label>stdint.h</label>
+      </node>
+      <node id="3">
+        <label>stdio.h</label>
+      </node>
+      <node id="8">
+        <label>unity.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="test__midi_8c_1a57e9b955863a0270f6bdf5317003d6a4" prot="public" static="no">
+        <name>MIDI_UART</name>
+        <initializer>(UART_NUM_1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/test/test_midi.c" line="6" column="9" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/test/test_midi.c" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="test__midi_8c_1a5cdf0322e10deeff92bbdf233382bca6" prot="public" static="no">
+        <name>MIDI_BAUD</name>
+        <initializer>(115200)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/test/test_midi.c" line="7" column="9" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/test/test_midi.c" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="test__midi_8c_1af4773f7c0246cf1f8feea3de02c2bf86" prot="public" static="no">
+        <name>MIDI_TX</name>
+        <initializer>(GPIO_NUM_26)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/test/test_midi.c" line="8" column="9" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/test/test_midi.c" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="test__midi_8c_1a3aa0cfef819ce6e845bee426c4f94431" prot="public" static="no">
+        <name>MIDI_RX</name>
+        <initializer>(GPIO_NUM_27)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/test/test_midi.c" line="9" column="9" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/test/test_midi.c" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="test__midi_8c_1ac3ff9d611225b2ed35a5ff50d79bcc60" prot="public" static="yes" mutable="no">
+        <type><ref refid="structmidi__context__t" kindref="compound">midi_handle_t</ref></type>
+        <definition>midi_handle_t midi_handle</definition>
+        <argsstring></argsstring>
+        <name>midi_handle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/test/test_midi.c" line="4" column="22" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/test/test_midi.c" bodystart="4" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="test__midi_8c_1a95c834d6178047ce9e1bce7cbfea2836" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setUp</definition>
+        <argsstring>(void)</argsstring>
+        <name>setUp</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/test/test_midi.c" line="11" column="6" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/test/test_midi.c" bodystart="11" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="test__midi_8c_1a9909011e5fea0c018842eec4d93d0662" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tearDown</definition>
+        <argsstring>(void)</argsstring>
+        <name>tearDown</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/test/test_midi.c" line="21" column="6" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/test/test_midi.c" bodystart="21" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="test__midi_8c_1a5c3ebb25c11455b687e32d3dc7b18f27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void test_midi_blink</definition>
+        <argsstring>(void)</argsstring>
+        <name>test_midi_blink</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/test/test_midi.c" line="26" column="6" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/test/test_midi.c" bodystart="26" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="test__midi_8c_1a4776631b017a19e2246cd7d1bbb23893" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void test_midi_bend</definition>
+        <argsstring>(void)</argsstring>
+        <name>test_midi_bend</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/test/test_midi.c" line="35" column="6" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/test/test_midi.c" bodystart="35" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="test__midi_8c_1aa5115d89d142fd93fe6bf0dee72c7be2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void test_midi_bent_note</definition>
+        <argsstring>(void)</argsstring>
+        <name>test_midi_bent_note</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/test/test_midi.c" line="47" column="6" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/test/test_midi.c" bodystart="47" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="test__midi_8c_1abce06be17fc37d675118a678a8100a36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void app_main</definition>
+        <argsstring>()</argsstring>
+        <name>app_main</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/test/test_midi.c" line="76" column="6" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/test/test_midi.c" bodystart="76" bodyend="85"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;<ref refid="midi_8h" kindref="compound">midi.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unity.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structmidi__context__t" kindref="compound">midi_handle_t</ref><sp/>midi_handle;</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MIDI_UART<sp/>(UART_NUM_1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MIDI_BAUD<sp/>(115200)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MIDI_TX<sp/>(GPIO_NUM_26)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MIDI_RX<sp/>(GPIO_NUM_27)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setUp(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structmidi__config__t" kindref="compound">midi_config_t</ref><sp/>midi_cfg<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.uart_num<sp/>=<sp/>MIDI_UART,</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.baudrate<sp/>=<sp/>MIDI_BAUD,</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.rx_io<sp/>=<sp/>MIDI_RX,</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.tx_io<sp/>=<sp/>MIDI_TX};</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_ERROR_CHECK(midi_init(&amp;midi_handle,<sp/>&amp;midi_cfg));</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>tearDown(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="midi_8c_1a6eff3a43d514679b4da21f8cca9e2316" kindref="member">midi_exit</ref>(midi_handle);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>test_midi_blink(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structmidi__message__t" kindref="compound">midi_message_t</ref><sp/>msg<sp/>=<sp/>note_on(0,<sp/>0x3C,<sp/>0x7F);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>TEST_ASSERT_EQUAL(ESP_OK,<sp/><ref refid="midi_8c_1ac6d19507fa71da416c31fbe9b38684fa" kindref="member">midi_write</ref>(midi_handle,<sp/>&amp;msg));</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>vTaskDelay(1000<sp/>/<sp/>portTICK_PERIOD_MS);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>msg.status<sp/>=<sp/>MIDI_STATUS_NOTE_OFF;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>TEST_ASSERT_EQUAL(ESP_OK,<sp/><ref refid="midi_8c_1ac6d19507fa71da416c31fbe9b38684fa" kindref="member">midi_write</ref>(midi_handle,<sp/>&amp;msg));</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>test_midi_bend(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structmidi__message__t" kindref="compound">midi_message_t</ref><sp/>msg<sp/>=<sp/>pitch_bend(0,<sp/>MIDI_PITCH_BEND_MAX);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>TEST_ASSERT_EQUAL(ESP_OK,<sp/><ref refid="midi_8c_1ac6d19507fa71da416c31fbe9b38684fa" kindref="member">midi_write</ref>(midi_handle,<sp/>&amp;msg));</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>vTaskDelay(1000<sp/>/<sp/>portTICK_PERIOD_MS);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>msg<sp/>=<sp/>pitch_bend(0,<sp/>MIDI_PITCH_BEND_MIN);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>TEST_ASSERT_EQUAL(ESP_OK,<sp/><ref refid="midi_8c_1ac6d19507fa71da416c31fbe9b38684fa" kindref="member">midi_write</ref>(midi_handle,<sp/>&amp;msg));</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>vTaskDelay(1000<sp/>/<sp/>portTICK_PERIOD_MS);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>msg<sp/>=<sp/>pitch_bend(0,<sp/>MIDI_PITCH_BEND_CENTER);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>TEST_ASSERT_EQUAL(ESP_OK,<sp/><ref refid="midi_8c_1ac6d19507fa71da416c31fbe9b38684fa" kindref="member">midi_write</ref>(midi_handle,<sp/>&amp;msg));</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>test_midi_bent_note(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structmidi__message__t" kindref="compound">midi_message_t</ref><sp/>msg<sp/>=<sp/>note_on(0,<sp/>0x3C,<sp/>0x7F);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>TEST_ASSERT_EQUAL(ESP_OK,<sp/><ref refid="midi_8c_1ac6d19507fa71da416c31fbe9b38684fa" kindref="member">midi_write</ref>(midi_handle,<sp/>&amp;msg));</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ramp<sp/>up<sp/>and<sp/>down<sp/>pitch<sp/>bend<sp/>in<sp/>1<sp/>second</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structmidi__message__t" kindref="compound">midi_message_t</ref><sp/>msg_bend<sp/>=<sp/>pitch_bend(0,<sp/>MIDI_PITCH_BEND_CENTER);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>MIDI_PITCH_BEND_CENTER;<sp/>i<sp/>&lt;=<sp/>MIDI_PITCH_BEND_MAX;<sp/>i<sp/>+=<sp/>128)</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg_bend<sp/>=<sp/>pitch_bend(0,<sp/>i);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TEST_ASSERT_EQUAL(ESP_OK,<sp/><ref refid="midi_8c_1ac6d19507fa71da416c31fbe9b38684fa" kindref="member">midi_write</ref>(midi_handle,<sp/>&amp;msg_bend));</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vTaskDelay(4<sp/>/<sp/>portTICK_PERIOD_MS);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>MIDI_PITCH_BEND_MAX;<sp/>i<sp/>&gt;=<sp/>MIDI_PITCH_BEND_MIN;<sp/>i<sp/>-=<sp/>128)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg_bend<sp/>=<sp/>pitch_bend(0,<sp/>i);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TEST_ASSERT_EQUAL(ESP_OK,<sp/><ref refid="midi_8c_1ac6d19507fa71da416c31fbe9b38684fa" kindref="member">midi_write</ref>(midi_handle,<sp/>&amp;msg_bend));</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vTaskDelay(2<sp/>/<sp/>portTICK_PERIOD_MS);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>MIDI_PITCH_BEND_MIN;<sp/>i<sp/>&lt;=<sp/>MIDI_PITCH_BEND_CENTER;<sp/>i<sp/>+=<sp/>128)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg_bend<sp/>=<sp/>pitch_bend(0,<sp/>i);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TEST_ASSERT_EQUAL(ESP_OK,<sp/><ref refid="midi_8c_1ac6d19507fa71da416c31fbe9b38684fa" kindref="member">midi_write</ref>(midi_handle,<sp/>&amp;msg_bend));</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vTaskDelay(4<sp/>/<sp/>portTICK_PERIOD_MS);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>msg.status<sp/>=<sp/>MIDI_STATUS_NOTE_OFF;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>TEST_ASSERT_EQUAL(ESP_OK,<sp/><ref refid="midi_8c_1ac6d19507fa71da416c31fbe9b38684fa" kindref="member">midi_write</ref>(midi_handle,<sp/>&amp;msg));</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>app_main()</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>UNITY_BEGIN();</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>RUN_TEST(test_midi_blink);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>RUN_TEST(test_midi_bend);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>RUN_TEST(test_midi_bent_note);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>UNITY_END();</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/test/test_midi.c"/>
+  </compounddef>
+</doxygen>

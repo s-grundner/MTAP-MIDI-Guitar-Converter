@@ -1,0 +1,10 @@
+digraph "midi_context_t"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  Node1 [label="midi_context_t",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="MIDI Context (internal! not to be accessed externally, use midi_handle_t instead)"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",style="dashed",label=" cfg" ];
+  Node2 [label="midi_config_t",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$structmidi__config__t.html",tooltip="MIDI UART Configuration."];
+}

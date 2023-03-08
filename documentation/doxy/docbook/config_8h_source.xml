@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_config_8h_source" xml:lang="en-US">
+<title>config.h</title>
+<indexterm><primary>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/include/config.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 
+11 <emphasis role="preprocessor">#ifndef&#32;CONFIG_H</emphasis>
+12 <emphasis role="preprocessor">#define&#32;CONFIG_H</emphasis>
+13 
+14 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
+15 <emphasis role="preprocessor">#include&#32;&lt;stdlib.h&gt;</emphasis>
+16 <emphasis role="preprocessor">#include&#32;&lt;string.h&gt;</emphasis>
+17 <emphasis role="preprocessor">#include&#32;&lt;math.h&gt;</emphasis>
+18 
+19 <emphasis role="preprocessor">#include&#32;&quot;freertos/FreeRTOS.h&quot;</emphasis>
+20 <emphasis role="preprocessor">#include&#32;&quot;freertos/task.h&quot;</emphasis>
+21 <emphasis role="preprocessor">#include&#32;&quot;freertos/queue.h&quot;</emphasis>
+22 <emphasis role="preprocessor">#include&#32;&quot;freertos/timers.h&quot;</emphasis>
+23 
+24 <emphasis role="preprocessor">#include&#32;&quot;driver/gpio.h&quot;</emphasis>
+25 <emphasis role="preprocessor">#include&#32;&quot;driver/spi_master.h&quot;</emphasis>
+26 <emphasis role="preprocessor">#include&#32;&quot;driver/uart.h&quot;</emphasis>
+27 <emphasis role="preprocessor">#include&#32;&quot;driver/adc.h&quot;</emphasis>
+28 <emphasis role="preprocessor">#include&#32;&quot;driver/i2s.h&quot;</emphasis>
+29 <emphasis role="preprocessor">#include&#32;&quot;esp_adc_cal.h&quot;</emphasis>
+30 <emphasis role="preprocessor">#include&#32;&quot;esp_log.h&quot;</emphasis>
+31 
+32 <emphasis role="preprocessor">#include&#32;&quot;fft.h&quot;</emphasis>
+33 <emphasis role="preprocessor">#include&#32;&quot;i2s_sampler.h&quot;</emphasis>
+34 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_mcp3201_8h">mcp3201.h</link>&quot;</emphasis>
+35 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_midi_8h">midi.h</link>&quot;</emphasis>
+36 
+37 <emphasis role="preprocessor">#define&#32;SPI_MOSI&#32;(GPIO_NUM_23)</emphasis>
+38 <emphasis role="preprocessor">#define&#32;SPI_MISO&#32;(GPIO_NUM_19)</emphasis>
+39 <emphasis role="preprocessor">#define&#32;SPI_SCLK&#32;(GPIO_NUM_18)</emphasis>
+40 <emphasis role="preprocessor">#define&#32;SPI_CS&#32;(GPIO_NUM_5)</emphasis>
+41 <emphasis role="preprocessor">#define&#32;SPI_DEV&#32;(VSPI_HOST)</emphasis>
+42 
+43 <emphasis role="preprocessor">#define&#32;MIDI_UART&#32;(UART_NUM_1)</emphasis>
+44 <emphasis role="preprocessor">#define&#32;MIDI_BAUD&#32;(115200)</emphasis>
+45 <emphasis role="preprocessor">#define&#32;MIDI_TX&#32;(GPIO_NUM_26)</emphasis>
+46 <emphasis role="preprocessor">#define&#32;MIDI_RX&#32;(GPIO_NUM_27)</emphasis>
+47 
+48 <emphasis role="preprocessor">#define&#32;DMA_CHAN&#32;1</emphasis>
+49 <emphasis role="preprocessor">#define&#32;ADC_RES_BITS&#32;12</emphasis>
+50 <emphasis role="preprocessor">#define&#32;ADC_RES&#32;(1&#32;&lt;&lt;&#32;ADC_RES_BITS)</emphasis>
+51 <emphasis role="preprocessor">#define&#32;INTERNAL_ADC_UNIT&#32;(ADC_UNIT_1)</emphasis>
+52 <emphasis role="preprocessor">#define&#32;INTERNAL_ADC_CHANNEL&#32;(ADC_CHANNEL_0)</emphasis>
+53 <emphasis role="preprocessor">#define&#32;INTERNAL_ADC_IO&#32;(GPIO_NUM_4)</emphasis>
+54 
+55 <emphasis role="preprocessor">#define&#32;AUDIO_BUFFER_SIZE&#32;512&#32;</emphasis><emphasis role="comment">//&#32;Size&#32;of&#32;buffer&#32;for&#32;FFT&#32;and&#32;sampler</emphasis>
+56 <emphasis role="preprocessor">#define&#32;F_SAMPLE_HZ&#32;44100&#32;&#32;&#32;&#32;&#32;</emphasis><emphasis role="comment">//&#32;Sample&#32;rate&#32;of&#32;FFT&#32;and&#32;sampler</emphasis>
+57 <emphasis role="preprocessor">#define&#32;FFT_WINDOW_SIZE&#32;2&#32;&#32;&#32;&#32;&#32;</emphasis><emphasis role="comment">//&#32;Amount&#32;of&#32;buffers&#32;to&#32;take&#32;for&#32;FFT</emphasis>
+58 <emphasis role="preprocessor">#define&#32;FFT_SIZE&#32;4096&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</emphasis><emphasis role="comment">//(AUDIO_BUFFER_SIZE&#32;*&#32;FFT_WINDOW_SIZE)&#32;&#32;Amount&#32;of&#32;samples&#32;to&#32;take&#32;for&#32;FFT</emphasis>
+59 
+60 <emphasis role="comment">//&#32;leave&#32;this&#32;commented&#32;out&#32;to&#32;use&#32;internal&#32;ADC</emphasis>
+61 <emphasis role="comment">//&#32;#define&#32;USE_MCP3201</emphasis>
+62 
+63 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;CONFIG_H</emphasis>
+</programlisting></section>

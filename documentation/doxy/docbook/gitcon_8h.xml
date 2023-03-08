@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_gitcon_8h" xml:lang="en-US">
+<title>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.h File Reference</title>
+<indexterm><primary>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;config.h&quot;<?linebreak?></programlisting>Include dependency graph for gitcon.h:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="gitcon_8h__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+This graph shows which files directly or indirectly include this file:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="gitcon_8h__dep__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Data Structures    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_structgitcon__context__t">gitcon_context_t</link></para>
+
+<para>Gitcon Configuration. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_gitcon_8h_1af41740c58c92b4864c2e8fa77ee56fd9"/>#define <emphasis role="strong">GITCON_LOG_LEVEL</emphasis>&#160;&#160;&#160;ESP_LOG_ERROR</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_gitcon_8h_1a898b59703ba05e8a28c233508755ed60"/>typedef <link linkend="_structgitcon__context__t">gitcon_context_t</link> * <emphasis role="strong">gitcon_handle_t</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>esp_err_t <link linkend="_gitcon_8h_1a99e7f3808bee46708eb81bd55cae4a37">gitcon_init</link> (<link linkend="_structgitcon__context__t">gitcon_handle_t</link> *out_handle)</para>
+
+<para>initializes gitcon device </para>
+</listitem>
+            <listitem><para>esp_err_t <link linkend="_gitcon_8h_1a34f972a4c96245ce63d26a5256c75e24">gitcon_exit</link> (<link linkend="_structgitcon__context__t">gitcon_handle_t</link> handle)</para>
+
+<para>frees all resources </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para><formalpara><title>Author</title>
+
+<para>@s-grundner @Laurenz03 </para>
+</formalpara>
+<formalpara><title>Version</title>
+
+<para>0.1 </para>
+</formalpara>
+<formalpara><title>Date</title>
+
+<para>2022-12-23</para>
+</formalpara>
+<formalpara><title>Copyright</title>
+
+<para>Copyright (c) 2022 </para>
+</formalpara>
+</para>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_gitcon_8h_1a34f972a4c96245ce63d26a5256c75e24"/><section>
+    <title>gitcon_exit()</title>
+<indexterm><primary>gitcon_exit</primary><secondary>gitcon.h</secondary></indexterm>
+<indexterm><primary>gitcon.h</primary><secondary>gitcon_exit</secondary></indexterm>
+<para><computeroutput>esp_err_t gitcon_exit (<link linkend="_structgitcon__context__t">gitcon_handle_t</link> handle)</computeroutput></para><para>
+
+<para>frees all resources </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>handle</entry><entry>
+<para>gitcon context handler </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>ESP_OK on success </para>
+</formalpara>
+</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="gitcon_8h_a34f972a4c96245ce63d26a5256c75e24_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_gitcon_8h_1a99e7f3808bee46708eb81bd55cae4a37"/><section>
+    <title>gitcon_init()</title>
+<indexterm><primary>gitcon_init</primary><secondary>gitcon.h</secondary></indexterm>
+<indexterm><primary>gitcon.h</primary><secondary>gitcon_init</secondary></indexterm>
+<para><computeroutput>esp_err_t gitcon_init (<link linkend="_structgitcon__context__t">gitcon_handle_t</link> * out_handle)</computeroutput></para><para>
+
+<para>initializes gitcon device </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="3" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>out</entry><entry>out_handle</entry><entry>
+<para>gitcon context handler </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>esp_err_t ESP_OK on success, ESP_ERR_NO_MEM on memory allocation error </para>
+</formalpara>
+</para>
+</section>
+</section>
+</section>

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_i2s__sampler_8h_source" xml:lang="en-US">
+<title>i2s_sampler.h</title>
+<indexterm><primary>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/i2s_sampler.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;SAMPLING_H</emphasis>
+2 <emphasis role="preprocessor">#define&#32;SAMPLING_H</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&lt;stdint.h&gt;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&quot;driver/i2s.h&quot;</emphasis>
+6 <emphasis role="preprocessor">#include&#32;&quot;freertos/FreeRTOS.h&quot;</emphasis>
+7 <emphasis role="preprocessor">#include&#32;&quot;freertos/task.h&quot;</emphasis>
+8 <emphasis role="preprocessor">#include&#32;&quot;freertos/queue.h&quot;</emphasis>
+9 <emphasis role="preprocessor">#include&#32;&quot;freertos/timers.h&quot;</emphasis>
+10 <emphasis role="preprocessor">#include&#32;&quot;esp_log.h&quot;</emphasis>
+11 
+20 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct</emphasis>
+21 {
+22 &#32;&#32;&#32;&#32;QueueHandle_t&#32;dma_queue;
+23 &#32;&#32;&#32;&#32;QueueHandle_t&#32;dsp_queue;
+24 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;*buffer;
+25 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;buffer_pos;
+26 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;buffer_size;
+27 }&#32;<link linkend="_structi2s__sampler__t">i2s_sampler_t</link>;
+28 
+38 <link linkend="_structi2s__sampler__t">i2s_sampler_t</link>&#32;*i2s_sampler_start(adc_channel_t&#32;adc1_channel,&#32;QueueHandle_t&#32;recv_queue,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;buffer_size,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;f_sample);
+39 
+45 esp_err_t&#32;i2s_sampler_stop(<link linkend="_structi2s__sampler__t">i2s_sampler_t</link>&#32;*sampler);
+46 
+47 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;SAMPLING_H</emphasis>
+</programlisting></section>

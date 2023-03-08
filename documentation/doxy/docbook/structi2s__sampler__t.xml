@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structi2s__sampler__t" xml:lang="en-US">
+<title>i2s_sampler_t Struct Reference</title>
+<indexterm><primary>i2s_sampler_t</primary></indexterm>
+<para>
+
+<para>Sampler Configuration. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;i2s_sampler.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Data Fields    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_structi2s__sampler__t_1a01668835337313a60bcb16756c005b12"/>QueueHandle_t <emphasis role="strong">dma_queue</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_structi2s__sampler__t_1ac5aaa47703a07b7ca5bac6f7e7331b8b"/>QueueHandle_t <emphasis role="strong">dsp_queue</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_structi2s__sampler__t_1aebedcefcc64e1f3236580fbaa899869e"/>size_t * <emphasis role="strong">buffer</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_structi2s__sampler__t_1ad772d2f9803cdbdf265ba17194a1314c"/>size_t <emphasis role="strong">buffer_pos</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_structi2s__sampler__t_1a799a743b3abd553a37fc01ad3097df08"/>size_t <emphasis role="strong">buffer_size</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Sampler Configuration. </para>
+
+
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>dma_queue</entry><entry>
+<para>Samples are sent to this queue by the DMA </para>
+</entry>
+                            </row>
+                            <row>
+<entry>dsp_queue</entry><entry>
+<para>Queue to send samples to </para>
+</entry>
+                            </row>
+                            <row>
+<entry>buffer</entry><entry>
+<para>Buffer to store samples in </para>
+</entry>
+                            </row>
+                            <row>
+<entry>buffer_pos</entry><entry>
+<para>Current position in buffer </para>
+</entry>
+                            </row>
+                            <row>
+<entry>buffer_size</entry><entry>
+<para>Size of the buffer in samples </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/i2s_sampler.h</section>
+</section>

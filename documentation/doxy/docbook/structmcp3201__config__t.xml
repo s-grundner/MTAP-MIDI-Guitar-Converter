@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structmcp3201__config__t" xml:lang="en-US">
+<title>mcp3201_config_t Struct Reference</title>
+<indexterm><primary>mcp3201_config_t</primary></indexterm>
+<simplesect>
+    <title>Data Fields    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_structmcp3201__config__t_1af2bc3d31ad0099123ad13e726b96cb8f"/>spi_host_device_t <emphasis role="strong">host</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_structmcp3201__config__t_1a7a38bd9dda941e0eb854430f514097bd"/>gpio_num_t <emphasis role="strong">cs_io</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_structmcp3201__config__t_1a81741dc79605ea0869eccb6123c8f87a"/>gpio_num_t <emphasis role="strong">miso_io</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_structmcp3201__config__t_1a9914529f78253bf211a2fcfdd7fdaa08"/>gpio_num_t <emphasis role="strong">mosi_io</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_structmcp3201__config__t_1a456684b326733e9d7a283b12f7316770"/>int <emphasis role="strong">dma_chan</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this struct was generated from the following file:</para>
+C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/<link linkend="_mcp3201_8h">mcp3201.h</link></section>

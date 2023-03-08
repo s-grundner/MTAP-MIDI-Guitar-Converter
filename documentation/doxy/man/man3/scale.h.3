@@ -1,0 +1,239 @@
+.TH "C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/scale.h" 3 "Wed Mar 8 2023" "Gitcon" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/scale.h \- Basic Functions for Frequency calculation\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'inttypes\&.h'\fP
+.br
+\fC#include <math\&.h>\fP
+.br
+\fC#include <stdio\&.h>\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBCONCERT_PITCH\fP   440\&.0"
+.br
+.ti -1c
+.RI "#define \fBADC_MAX_VAL\fP   255\&.0"
+.br
+.ti -1c
+.RI "#define \fBA0_NUM\fP   49"
+.br
+.ti -1c
+.RI "#define \fBMODAL_COUNT\fP   4"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBkey_name_t\fP { \fBKEY_A\fP = 0, \fBKEY_AS\fP = 1, \fBKEY_B\fP = 2, \fBKEY_C\fP = 3, \fBKEY_CS\fP = 4, \fBKEY_D\fP = 5, \fBKEY_DS\fP = 6, \fBKEY_E\fP = 7, \fBKEY_F\fP = 8, \fBKEY_FS\fP = 9, \fBKEY_G\fP = 10, \fBKEY_GS\fP = 11 }"
+.br
+.ti -1c
+.RI "enum \fBmodal_name_t\fP { \fBMAJ\fP = 0, \fBMIN\fP = 1, \fBHMJ\fP = 2, \fBHMN\fP = 3 }"
+.br
+.RI "Modal Names\&. "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "double \fBget_pitch_hz\fP (uint8_t key_num)"
+.br
+.RI "Convert Keynumber to Frequency\&. "
+.ti -1c
+.RI "uint8_t \fBget_key_num\fP (double freq)"
+.br
+.RI "Convert Frequency to Keynumber\&. "
+.ti -1c
+.RI "void \fBprint_key_name\fP (uint8_t key_num)"
+.br
+.RI "print Keyname "
+.ti -1c
+.RI "double \fBadc_to_pitch\fP (uint8_t adc_val, uint8_t oct_offset)"
+.br
+.RI "Convert ADC Value to Frequency\&. "
+.ti -1c
+.RI "uint8_t \fBadc_to_num\fP (uint8_t adc_val, uint8_t oct_offset)"
+.br
+.RI "Convert ADC Value to Keynumber\&. "
+.ti -1c
+.RI "char * \fBget_key_name\fP (uint8_t key_num)"
+.br
+.RI "Get a key name\&. "
+.ti -1c
+.RI "char * \fBget_modal_name\fP (uint8_t modal_num)"
+.br
+.RI "Get a modal name\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Basic Functions for Frequency calculation\&. 
+
+
+.PP
+\fBAuthor\fP
+.RS 4
+@h-ihninger 
+.PP
+@s-grundner 
+.RE
+.PP
+\fBVersion\fP
+.RS 4
+0\&.1 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+2022-05-05
+.RE
+.PP
+\fBCopyright\fP
+.RS 4
+Copyright (c) 2022 
+.RE
+.PP
+
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBmodal_name_t\fP"
+
+.PP
+Modal Names\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIMAJ\fP Major 
+.br
+\fIMIN\fP Minor 
+.br
+\fIHMJ\fP Harmonic Major 
+.br
+\fIHMN\fP Harmonic Minor 
+.RE
+.PP
+
+.SH "Function Documentation"
+.PP 
+.SS "uint8_t adc_to_num (uint8_t adc_val, uint8_t oct_offset)"
+
+.PP
+Convert ADC Value to Keynumber\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIadc_val\fP ADC Value 
+.br
+\fIoct_offset\fP Octave Offset 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+uint8_t Keynumber 
+.RE
+.PP
+
+.SS "double adc_to_pitch (uint8_t adc_val, uint8_t oct_offset)"
+
+.PP
+Convert ADC Value to Frequency\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIadc_val\fP ADC Value 
+.br
+\fIoct_offset\fP Octave Offset 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+double Frequency 
+.RE
+.PP
+
+.SS "char * get_key_name (uint8_t key_num)"
+
+.PP
+Get a key name\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIkey_num\fP Key number 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+char* Keyname 
+.RE
+.PP
+
+.SS "uint8_t get_key_num (double freq)"
+
+.PP
+Convert Frequency to Keynumber\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfreq\fP Frequency 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+uint8_t Keynumber 
+.RE
+.PP
+
+.SS "char * get_modal_name (uint8_t modal_num)"
+
+.PP
+Get a modal name\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fImodal_num\fP Number of the modal 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+char* 
+.RE
+.PP
+
+.SS "double get_pitch_hz (uint8_t key_num)"
+
+.PP
+Convert Keynumber to Frequency\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIkey_num\fP Keynumber 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+double Frequency 
+.RE
+.PP
+
+.SS "void print_key_name (uint8_t key_num)"
+
+.PP
+print Keyname 
+.PP
+\fBParameters\fP
+.RS 4
+\fIkey_num\fP Keynumber 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Gitcon from the source code\&.

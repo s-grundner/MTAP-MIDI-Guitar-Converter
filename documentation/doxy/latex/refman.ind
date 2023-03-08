@@ -1,0 +1,135 @@
+\begin{theindex}
+
+  \item {adc\_to\_num}
+    \subitem {scale.h}, \hyperpage{14}
+  \item {adc\_to\_pitch}
+    \subitem {scale.h}, \hyperpage{15}
+
+  \indexspace
+
+  \item {C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/include/config.h}, 
+		\hyperpage{11}
+  \item {C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/include/processed-\/data.h}, 
+		\hyperpage{12}
+  \item {C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/audio/i2s\_sampler.h}, 
+		\hyperpage{12}
+  \item {C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/audio/scale.h}, 
+		\hyperpage{13}, \hyperpage{17}
+  \item {C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/fft/fft.h}, 
+		\hyperpage{18}
+  \item {C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/mcp3201/mcp3201.c}, 
+		\hyperpage{18}
+  \item {C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/mcp3201/mcp3201.h}, 
+		\hyperpage{19}, \hyperpage{23}
+  \item {C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/midi/midi.c}, 
+		\hyperpage{23}
+  \item {C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/midi/midi.h}, 
+		\hyperpage{26}, \hyperpage{29}
+  \item {C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/src/gitcon.c}, 
+		\hyperpage{30}
+  \item {C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/src/gitcon.h}, 
+		\hyperpage{31}, \hyperpage{33}
+  \item {C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/src/main.c}, 
+		\hyperpage{33}
+
+  \indexspace
+
+  \item {fft\_config\_t}, \hyperpage{5}
+
+  \indexspace
+
+  \item {get\_key\_name}
+    \subitem {scale.h}, \hyperpage{15}
+  \item {get\_key\_num}
+    \subitem {scale.h}, \hyperpage{15}
+  \item {get\_modal\_name}
+    \subitem {scale.h}, \hyperpage{16}
+  \item {get\_pitch\_hz}
+    \subitem {scale.h}, \hyperpage{16}
+  \item {gitcon.c}
+    \subitem {gitcon\_exit}, \hyperpage{31}
+  \item {gitcon.h}
+    \subitem {gitcon\_exit}, \hyperpage{32}
+    \subitem {gitcon\_init}, \hyperpage{33}
+  \item {gitcon\_context\_t}, \hyperpage{5}
+  \item {gitcon\_exit}
+    \subitem {gitcon.c}, \hyperpage{31}
+    \subitem {gitcon.h}, \hyperpage{32}
+  \item {gitcon\_init}
+    \subitem {gitcon.h}, \hyperpage{33}
+
+  \indexspace
+
+  \item {i2s\_sampler\_t}, \hyperpage{6}
+
+  \indexspace
+
+  \item {mcp3201.c}
+    \subitem {mcp3201\_exit}, \hyperpage{19}
+  \item {mcp3201.h}
+    \subitem {mcp3201\_exit}, \hyperpage{21}
+    \subitem {mcp3201\_init}, \hyperpage{21}
+    \subitem {mcp3201\_read}, \hyperpage{21}
+    \subitem {mcp3201\_sampler\_start}, \hyperpage{22}
+    \subitem {mcp3201\_sampler\_stop}, \hyperpage{22}
+  \item {mcp3201\_config\_t}, \hyperpage{6}
+  \item {mcp3201\_context\_t}, \hyperpage{7}
+  \item {mcp3201\_exit}
+    \subitem {mcp3201.c}, \hyperpage{19}
+    \subitem {mcp3201.h}, \hyperpage{21}
+  \item {mcp3201\_init}
+    \subitem {mcp3201.h}, \hyperpage{21}
+  \item {mcp3201\_read}
+    \subitem {mcp3201.h}, \hyperpage{21}
+  \item {mcp3201\_sampler\_start}
+    \subitem {mcp3201.h}, \hyperpage{22}
+  \item {mcp3201\_sampler\_stop}
+    \subitem {mcp3201.h}, \hyperpage{22}
+  \item {mcp3201\_sampler\_t}, \hyperpage{7}
+  \item {midi.c}
+    \subitem {midi\_exit}, \hyperpage{24}
+    \subitem {midi\_read}, \hyperpage{25}
+    \subitem {midi\_write}, \hyperpage{25}
+  \item {midi.h}
+    \subitem {midi\_exit}, \hyperpage{28}
+    \subitem {midi\_init}, \hyperpage{28}
+    \subitem {midi\_read}, \hyperpage{29}
+    \subitem {midi\_status\_t}, \hyperpage{27}
+    \subitem {midi\_write}, \hyperpage{29}
+  \item {midi\_config\_t}, \hyperpage{8}
+  \item {midi\_context\_t}, \hyperpage{8}
+  \item {midi\_exit}
+    \subitem {midi.c}, \hyperpage{24}
+    \subitem {midi.h}, \hyperpage{28}
+  \item {midi\_init}
+    \subitem {midi.h}, \hyperpage{28}
+  \item {midi\_message\_t}, \hyperpage{9}
+  \item {midi\_read}
+    \subitem {midi.c}, \hyperpage{25}
+    \subitem {midi.h}, \hyperpage{29}
+  \item {midi\_status\_t}
+    \subitem {midi.h}, \hyperpage{27}
+  \item {midi\_write}
+    \subitem {midi.c}, \hyperpage{25}
+    \subitem {midi.h}, \hyperpage{29}
+  \item {modal\_name\_t}
+    \subitem {scale.h}, \hyperpage{14}
+
+  \indexspace
+
+  \item {print\_key\_name}
+    \subitem {scale.h}, \hyperpage{17}
+
+  \indexspace
+
+  \item {scale.h}
+    \subitem {adc\_to\_num}, \hyperpage{14}
+    \subitem {adc\_to\_pitch}, \hyperpage{15}
+    \subitem {get\_key\_name}, \hyperpage{15}
+    \subitem {get\_key\_num}, \hyperpage{15}
+    \subitem {get\_modal\_name}, \hyperpage{16}
+    \subitem {get\_pitch\_hz}, \hyperpage{16}
+    \subitem {modal\_name\_t}, \hyperpage{14}
+    \subitem {print\_key\_name}, \hyperpage{17}
+
+\end{theindex}

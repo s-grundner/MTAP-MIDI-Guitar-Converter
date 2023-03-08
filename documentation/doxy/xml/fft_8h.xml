@@ -1,0 +1,529 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="fft_8h" kind="file" language="C++">
+    <compoundname>fft.h</compoundname>
+    <includedby refid="config_8h" local="yes">C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/include/config.h</includedby>
+    <includedby refid="fft_8c" local="yes">C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.c</includedby>
+    <invincdepgraph>
+      <node id="2">
+        <label>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/include/config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h</label>
+        <link refid="fft_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.c</label>
+        <link refid="gitcon_8c"/>
+      </node>
+      <node id="3">
+        <label>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.h</label>
+        <link refid="gitcon_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/main.c</label>
+        <link refid="main_8c"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structfft__config__t" prot="public">fft_config_t</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="fft_8h_1ad2a04e717ebe86bf08875e879e7c24fa" prot="public" static="no">
+        <name>FFT_OWN_INPUT_MEM</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" line="41" column="9" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="fft_8h_1a75136cb97002566d690469bc4d96a54e" prot="public" static="no">
+        <name>FFT_OWN_OUTPUT_MEM</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" line="42" column="9" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="fft_8h_1a2f03b0c86da045ed0aa03c83e2bb90e3" prot="public" static="no" strong="no">
+        <type></type>
+        <name>fft_type_t</name>
+        <enumvalue id="fft_8h_1a2f03b0c86da045ed0aa03c83e2bb90e3aa35f248b935d5b32f1e254b3843caaa0" prot="public">
+          <name>FFT_REAL</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="fft_8h_1a2f03b0c86da045ed0aa03c83e2bb90e3af226b92e6e73d2c1fba99afa79665052" prot="public">
+          <name>FFT_COMPLEX</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>ESP32 FFT. This provides a vanilla radix-2 FFT implementation and a test example. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="author"><para>This code was written by <ulink url="http://www.robinscheibler.org">Robin Scheibler</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>during rainy days in October 2017. </para>
+</simplesect>
+<simplesect kind="copyright"><para>(c) 2017 Robin Scheibler Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &quot;Software&quot;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</para>
+</simplesect>
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</para>
+<para>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" line="29" column="1" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" bodystart="30" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="enum" id="fft_8h_1a7400df7c8f32ea8e6b010199d1813fe5" prot="public" static="no" strong="no">
+        <type></type>
+        <name>fft_direction_t</name>
+        <enumvalue id="fft_8h_1a7400df7c8f32ea8e6b010199d1813fe5a7052223ae26883446425d6fc3338a869" prot="public">
+          <name>FFT_FORWARD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="fft_8h_1a7400df7c8f32ea8e6b010199d1813fe5a94b2b900505b2cd82482f612244a54d3" prot="public">
+          <name>FFT_BACKWARD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" line="35" column="1" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" bodystart="36" bodyend="39"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="fft_8h_1a99b7a87d5783b2727dac866314f2774d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structfft__config__t" kindref="compound">fft_config_t</ref> *</type>
+        <definition>fft_config_t * fft_init</definition>
+        <argsstring>(int size, fft_type_t type, fft_direction_t direction, float *input, float *output)</argsstring>
+        <name>fft_init</name>
+        <param>
+          <type>int</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>fft_type_t</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>fft_direction_t</type>
+          <declname>direction</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>output</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" line="55" column="14" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.c" bodystart="13" bodyend="78" declfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" declline="55" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="fft_8h_1a0532ef3e893952fd108b183d5a14cd0d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fft_destroy</definition>
+        <argsstring>(fft_config_t *config)</argsstring>
+        <name>fft_destroy</name>
+        <param>
+          <type><ref refid="structfft__config__t" kindref="compound">fft_config_t</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" line="56" column="6" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.c" bodystart="80" bodyend="90" declfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" declline="56" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="fft_8h_1aa0d01a17b65373896f2100bc63883ca3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fft_execute</definition>
+        <argsstring>(fft_config_t *config)</argsstring>
+        <name>fft_execute</name>
+        <param>
+          <type><ref refid="structfft__config__t" kindref="compound">fft_config_t</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" line="57" column="6" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.c" bodystart="92" bodyend="102" declfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" declline="57" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="fft_8h_1ab4cb498bf7686f0d200752cc5a6ea3d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fft</definition>
+        <argsstring>(float *input, float *output, float *twiddle_factors, int n)</argsstring>
+        <name>fft</name>
+        <param>
+          <type>float *</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>output</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>twiddle_factors</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" line="58" column="6" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.c" bodystart="104" bodyend="127" declfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" declline="58" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="fft_8h_1a77e61a567a4628991819bbd4230b561f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ifft</definition>
+        <argsstring>(float *input, float *output, float *twiddle_factors, int n)</argsstring>
+        <name>ifft</name>
+        <param>
+          <type>float *</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>output</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>twiddle_factors</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" line="59" column="6" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.c" bodystart="129" bodyend="147" declfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" declline="59" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="fft_8h_1a015dbb99fdfd93f586de17ddb23858ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void rfft</definition>
+        <argsstring>(float *x, float *y, float *twiddle_factors, int n)</argsstring>
+        <name>rfft</name>
+        <param>
+          <type>float *</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>twiddle_factors</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" line="60" column="6" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.c" bodystart="149" bodyend="195" declfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" declline="60" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="fft_8h_1a9d0c64b4392dd56fee766d29f01edccb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void irfft</definition>
+        <argsstring>(float *x, float *y, float *twiddle_factors, int n)</argsstring>
+        <name>irfft</name>
+        <param>
+          <type>float *</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>twiddle_factors</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" line="61" column="6" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.c" bodystart="197" bodyend="235" declfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" declline="61" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="fft_8h_1ab7790bb2c7fbd236af346a627c7c0ba9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fft_primitive</definition>
+        <argsstring>(float *x, float *y, int n, int stride, float *twiddle_factors, int tw_stride)</argsstring>
+        <name>fft_primitive</name>
+        <param>
+          <type>float *</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>stride</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>twiddle_factors</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>tw_stride</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" line="62" column="6" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.c" bodystart="237" bodyend="323" declfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" declline="62" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="fft_8h_1a9dc6fcc26d03fd8439ca431177a231cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void split_radix_fft</definition>
+        <argsstring>(float *x, float *y, int n, int stride, float *twiddle_factors, int tw_stride)</argsstring>
+        <name>split_radix_fft</name>
+        <param>
+          <type>float *</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>stride</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>twiddle_factors</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>tw_stride</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" line="63" column="6" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.c" bodystart="325" bodyend="462" declfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" declline="63" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="fft_8h_1af0de060a6248093afe01317a1684e734" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ifft_primitive</definition>
+        <argsstring>(float *input, float *output, int n, int stride, float *twiddle_factors, int tw_stride)</argsstring>
+        <name>ifft_primitive</name>
+        <param>
+          <type>float *</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>output</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>stride</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>twiddle_factors</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>tw_stride</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" line="64" column="6" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.c" bodystart="464" bodyend="498" declfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" declline="64" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="fft_8h_1a12468a362aeaa6675a5c3c6b08a1af56" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void fft8</definition>
+        <argsstring>(float *input, int stride_in, float *output, int stride_out)</argsstring>
+        <name>fft8</name>
+        <param>
+          <type>float *</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>stride_in</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>output</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>stride_out</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" line="65" column="6" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.c" bodystart="500" bodyend="625" declfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" declline="65" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="fft_8h_1aa6e142d986a6a8f5da0f1196ba01068b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void fft4</definition>
+        <argsstring>(float *input, int stride_in, float *output, int stride_out)</argsstring>
+        <name>fft4</name>
+        <param>
+          <type>float *</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>stride_in</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>output</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>stride_out</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" line="66" column="6" bodyfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.c" bodystart="627" bodyend="653" declfile="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h" declline="66" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__FFT_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__FFT_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/>FFT_REAL,</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/>FFT_COMPLEX</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}<sp/>fft_type_t;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/>FFT_FORWARD,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/>FFT_BACKWARD</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}<sp/>fft_direction_t;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FFT_OWN_INPUT_MEM<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FFT_OWN_OUTPUT_MEM<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="structfft__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>size;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>FFT<sp/>size</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*input;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>pointer<sp/>to<sp/>input<sp/>buffer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*output;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>pointer<sp/>to<sp/>output<sp/>buffer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*twiddle_factors;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>pointer<sp/>to<sp/>buffer<sp/>holding<sp/>twiddle<sp/>factors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/>fft_type_t<sp/>type;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>real<sp/>or<sp/>complex</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>fft_direction_t<sp/>direction;<sp/></highlight><highlight class="comment">//<sp/>forward<sp/>or<sp/>backward</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flags;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>FFT<sp/>flags</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}<sp/><ref refid="structfft__config__t" kindref="compound">fft_config_t</ref>;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><ref refid="structfft__config__t" kindref="compound">fft_config_t</ref><sp/>*fft_init(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>size,<sp/>fft_type_t<sp/>type,<sp/>fft_direction_t<sp/>direction,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*input,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*output);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>fft_destroy(<ref refid="structfft__config__t" kindref="compound">fft_config_t</ref><sp/>*config);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>fft_execute(<ref refid="structfft__config__t" kindref="compound">fft_config_t</ref><sp/>*config);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>fft(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*input,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*output,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*twiddle_factors,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ifft(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*input,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*output,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*twiddle_factors,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>rfft(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*y,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*twiddle_factors,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>irfft(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*y,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*twiddle_factors,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>fft_primitive(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*y,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stride,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*twiddle_factors,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>tw_stride);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>split_radix_fft(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*y,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stride,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*twiddle_factors,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>tw_stride);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ifft_primitive(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*input,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*output,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stride,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*twiddle_factors,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>tw_stride);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>fft8(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*input,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stride_in,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*output,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stride_out);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>fft4(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*input,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stride_in,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*output,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stride_out);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>__FFT_H__</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/fft/fft.h"/>
+  </compounddef>
+</doxygen>

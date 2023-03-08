@@ -1,0 +1,31 @@
+\hypertarget{i2s__sampler_8h_source}{}\doxysection{i2s\+\_\+sampler.\+h}
+\label{i2s__sampler_8h_source}\index{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/audio/i2s\_sampler.h@{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/audio/i2s\_sampler.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef SAMPLING\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define SAMPLING\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}driver/i2s.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}freertos/FreeRTOS.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}freertos/task.h"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}freertos/queue.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}freertos/timers.h"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}esp\_log.h"{}}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{20 \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
+\DoxyCodeLine{21 \{}
+\DoxyCodeLine{22     QueueHandle\_t dma\_queue;}
+\DoxyCodeLine{23     QueueHandle\_t dsp\_queue;}
+\DoxyCodeLine{24     \textcolor{keywordtype}{size\_t} *buffer;}
+\DoxyCodeLine{25     \textcolor{keywordtype}{size\_t} buffer\_pos;}
+\DoxyCodeLine{26     \textcolor{keywordtype}{size\_t} buffer\_size;}
+\DoxyCodeLine{27 \} \mbox{\hyperlink{structi2s__sampler__t}{i2s\_sampler\_t}};}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{38 \mbox{\hyperlink{structi2s__sampler__t}{i2s\_sampler\_t}} *i2s\_sampler\_start(adc\_channel\_t adc1\_channel, QueueHandle\_t recv\_queue, \textcolor{keywordtype}{size\_t} buffer\_size, \textcolor{keywordtype}{size\_t} f\_sample);}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{45 esp\_err\_t i2s\_sampler\_stop(\mbox{\hyperlink{structi2s__sampler__t}{i2s\_sampler\_t}} *sampler);}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// SAMPLING\_H}}
+
+\end{DoxyCode}

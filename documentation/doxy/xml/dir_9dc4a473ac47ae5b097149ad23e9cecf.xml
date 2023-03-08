@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="dir_9dc4a473ac47ae5b097149ad23e9cecf" kind="dir">
+    <compoundname>C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src</compoundname>
+    <innerfile refid="gitcon_8c">gitcon.c</innerfile>
+    <innerfile refid="gitcon_8h">gitcon.h</innerfile>
+    <innerfile refid="main_8c">main.c</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/"/>
+  </compounddef>
+</doxygen>
