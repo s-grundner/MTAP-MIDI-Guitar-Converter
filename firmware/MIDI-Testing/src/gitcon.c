@@ -18,28 +18,32 @@ static TaskHandle_t midi_task_handle;
 static TaskHandle_t dsp_task_handle;
 
 // ------------------------------------------------------------
-// ISR and static functions
+// static functions
 // ------------------------------------------------------------
 
+/**
+ * @brief Task to handle Digital Signal Processing
+ * @param arg gitcon_handle_t, context handler
+ */
 static void dsp_task(void *arg)
 {
+	// parameter handler
 	gitcon_handle_t gitcon_handle = (gitcon_handle_t)arg;
+	uint16_t *audio_buffer = NULL;
+
+	// fft variables
 	float fft_buffer[FFT_SIZE];
 	float magnitude[FFT_SIZE / 2];
 	float frequency[FFT_SIZE / 2];
 	unsigned char keyNR[FFT_SIZE / 2];
 	float ratio = (float)F_SAMPLE_HZ / (float)FFT_SIZE;
+
+	// active notes resulting from fft
 	unsigned char *active_notes = (unsigned char *)malloc(128 * sizeof(unsigned char));
 	if (active_notes == NULL)
-	{
 		ESP_LOGE(TAG, "Could not allocate memory for active_notes");
-	}
-	uint16_t *audio_buffer = NULL;
-
 	for (int i = 0; i < 128; i++)
-	{
 		active_notes[i] = 0;
-	}
 
 	for (;;)
 	{
@@ -48,54 +52,49 @@ static void dsp_task(void *arg)
 		// DSP STEPS
 		// ------------------------------------------------------------
 
-		// 1. read ADC to DMA buffer
+		///@note 1. read ADC to DMA buffer
 		if (xQueueReceive(gitcon_handle->sampler->dsp_queue, &audio_buffer, portMAX_DELAY) == pdTRUE)
 		{
 			// do stuff with audio_buffer
 			// this is where the audio buffer is available and the FFT is executed
 		}
 
-		// 2. analyze audio data (FFT, etc.)
+		///@note  2. analyze audio data (FFT, etc.)
 		fft_config_t *real_fft_plan = fft_init(FFT_SIZE, FFT_REAL, FFT_FORWARD, test_buffer, fft_buffer);
 		if (real_fft_plan == NULL)
 		{
 			ESP_LOGE(TAG, "FFT plan could not be created");
 			vTaskDelay(1000 / portTICK_PERIOD_MS);
-			continue;
+			break;
 		}
 		fft_execute(real_fft_plan);
 
 		for (int k = 1; k < FFT_SIZE / 2; k++)
 		{
-			// 3. detect fundamental frequencies and convert to note number on piano roll
+			///@note  3. detect fundamental frequencies and convert to note number on piano roll
 			magnitude[k] = 2 * sqrt(pow(fft_buffer[2 * k], 2) + pow(fft_buffer[2 * k + 1], 2)) / FFT_SIZE;
 			frequency[k] = k * ratio;
-			keyNR[k] = (unsigned char)round(log2(frequency[k] / 440) * 12 + 49) % 128;
+			keyNR[k] = (unsigned char)round(log2(frequency[k] / 440) * 12 + 69) % 128;
 		}
 
 		float max = 0;
 		for (int i = 0; i < FFT_SIZE / 2; i++)
 			max = (magnitude[i] > max) ? magnitude[i] : max;
 
+		///@note  4. check if fundamental frequencies are above a certain threshold
+		///@note  4.1 save note on transient
+		///@note  5. check if already on notes are below a certain threshold and delete saved note
 		for (int k = 1; k < FFT_SIZE / 2; k++)
+		{
 			active_notes[keyNR[k]] = (magnitude[k] >= max * 0.5);
-		// {
-		// if (magnitude[k] >= max * 0.5)
-		// {
-		// 	// 4.1 save note on transient
-		// 	ESP_LOGI(TAG, "%d-th magnitude: %f => corresponds to %f Hz\n", k, magnitude[k], frequency[k]);
-		// 	ESP_LOGI(TAG, "keyNR: %d\n", keyNR[k]);
-		// 	active_notes[keyNR[k]] = 1;
-		// }
-		// // 5. check if already on notes are below a certain threshold
-		// else
-		// {
-		// 	// 5.1 delete saved note
-		// 	active_notes[keyNR[k]] = 0;
-		// }
-		// }
-
-		// 6. send saved notes to MIDI queue
+			if (active_notes[keyNR[k]])
+			{
+				// 4.1 save note on transient
+				ESP_LOGI(TAG, "%d-th magnitude: %f => corresponds to %f Hz\n", k, magnitude[k], frequency[k]);
+				ESP_LOGI(TAG, "keyNR: %d\n", keyNR[k]);
+			}
+		}
+		///@note  6. send saved notes to MIDI queue
 		xQueueSend(gitcon_handle->midi_queue, &active_notes, portMAX_DELAY);
 		fft_destroy(real_fft_plan);
 		vTaskDelay(10 / portTICK_PERIOD_MS);
@@ -114,9 +113,8 @@ static void midi_task(void *arg)
 		{
 			for (size_t i = 0; i < 128; i++)
 			{
-				// needed when fed with continuous data stream
-				// if (active_notes[i] == previous_notes[i])
-				// 	continue;
+				if (active_notes[i] == previous_notes[i])
+					continue;
 
 				midi_message_t msg = {
 					.channel = 0,
@@ -125,7 +123,6 @@ static void midi_task(void *arg)
 					.param2 = 0x7F};
 
 				// send message to MIDI UART
-				// ESP_LOGI(TAG, "Sending MIDI message: %d %d %d %d", msg.channel, msg.status, msg.param1, msg.param2);
 				ESP_ERROR_CHECK(midi_write(gitcon_handle->midi_handle, &msg));
 				previous_notes[i] = active_notes[i];
 			}
