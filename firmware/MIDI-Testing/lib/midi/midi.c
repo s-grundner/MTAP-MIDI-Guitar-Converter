@@ -74,7 +74,7 @@ esp_err_t midi_init(midi_context_t **out_ctx, midi_config_t *out_cfg)
 
 	// Pass configured context to outer parameters
 	*out_ctx = ctx;
-	return 0;
+	return ESP_OK;
 }
 
 esp_err_t midi_exit(midi_handle_t midi_handle)
@@ -91,10 +91,6 @@ esp_err_t midi_exit(midi_handle_t midi_handle)
 
 esp_err_t midi_write(midi_handle_t handle, midi_message_t *msg)
 {
-
-	// ------------------------------------------------------------
-	// SEND MIDI MESSAGE
-	// ------------------------------------------------------------
 	int len = 0;
 	const char data[] = {msg->status | msg->channel, msg->param1, msg->param2};
 
@@ -117,21 +113,53 @@ esp_err_t midi_write(midi_handle_t handle, midi_message_t *msg)
 		return ESP_ERR_INVALID_ARG;
 		break;
 	}
-	if (len == -1)
+	switch (len)
 	{
+	case -1:
 		ESP_LOGE(TAG, "uart_write_bytes failed");
 		return ESP_FAIL;
+		break;
+	case 0:
+		ESP_LOGE(TAG, "uart_write_bytes timed out");
+		return ESP_ERR_TIMEOUT;
+		break;
+	default:
+		break;
 	}
 	ESP_LOGI(MIDI_MON, "Status: %02X\tChannel: %02X\t Data: %02X %02X\t Length:%d", msg->status, msg->channel, msg->param1, msg->param2, len);
 	return ESP_OK;
 }
 
-esp_err_t midi_read(midi_handle_t midi_handle, midi_message_t *msg)
+esp_err_t midi_read(midi_handle_t midi_handle, midi_message_t *msg, TickType_t timeout)
 {
-	// interrupt whenever a midi message is received
-	// read the message and return it
-	// if no message is received, return ESP_ERR_TIMEOUT
-	// if an error occurs, return ESP_FAIL
-	// if the message is invalid, return ESP_ERR_INVALID_ARG
+	char data[3];
+	int len = uart_read_bytes(midi_handle->cfg.uart_num, (uint8_t *)data, 3, timeout);
+	switch (len)
+	{
+	case -1:
+		ESP_LOGE(TAG, "uart_read_bytes failed");
+		return ESP_FAIL;
+		break;
+	case 0:
+		ESP_LOGE(TAG, "uart_read_bytes timeout");
+		return ESP_ERR_TIMEOUT;
+		break;
+	case 2:
+		msg->status = data[0] & 0xF0;
+		msg->channel = data[0] & 0x0F;
+		msg->param1 = data[1];
+		msg->param2 = 0;
+		break;
+	case 3:
+		msg->status = data[0] & 0xF0;
+		msg->channel = data[0] & 0x0F;
+		msg->param1 = data[1];
+		msg->param2 = data[2];
+		break;
+	default:
+		ESP_LOGE(TAG, "uart_read_bytes invalid message");
+		return ESP_ERR_INVALID_ARG;
+		break;
+	}
 	return ESP_OK;
 }

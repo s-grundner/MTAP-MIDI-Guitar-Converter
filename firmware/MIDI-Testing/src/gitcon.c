@@ -41,7 +41,12 @@ static void dsp_task(void *arg)
 	// active notes resulting from fft
 	unsigned char *active_notes = (unsigned char *)malloc(128 * sizeof(unsigned char));
 	if (active_notes == NULL)
+	{
 		ESP_LOGE(TAG, "Could not allocate memory for active_notes");
+		gitcon_exit(gitcon_handle);
+		return;
+	}
+
 	for (int i = 0; i < 128; i++)
 		active_notes[i] = 0;
 
@@ -65,7 +70,7 @@ static void dsp_task(void *arg)
 		{
 			ESP_LOGE(TAG, "FFT plan could not be created");
 			vTaskDelay(1000 / portTICK_PERIOD_MS);
-			break;
+			continue;
 		}
 		fft_execute(real_fft_plan);
 
@@ -81,15 +86,14 @@ static void dsp_task(void *arg)
 		for (int i = 0; i < FFT_SIZE / 2; i++)
 			max = (magnitude[i] > max) ? magnitude[i] : max;
 
-		///@note  4. check if fundamental frequencies are above a certain threshold
-		///@note  4.1 save note on transient
-		///@note  5. check if already on notes are below a certain threshold and delete saved note
 		for (int k = 1; k < FFT_SIZE / 2; k++)
 		{
+			///@note  4. check if fundamental frequencies are above a certain threshold
+			///@note  4.1 save note on transient
+			///@note  5. check if already on notes are below a certain threshold and delete saved note
 			active_notes[keyNR[k]] = (magnitude[k] >= max * 0.5);
 			if (active_notes[keyNR[k]])
 			{
-				// 4.1 save note on transient
 				ESP_LOGI(TAG, "%d-th magnitude: %f => corresponds to %f Hz\n", k, magnitude[k], frequency[k]);
 				ESP_LOGI(TAG, "keyNR: %d\n", keyNR[k]);
 			}
