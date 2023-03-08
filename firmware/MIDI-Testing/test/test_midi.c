@@ -34,10 +34,10 @@ void test_midi_blink(void)
 
 void test_midi_bend(void)
 {
-	midi_message_t msg = pitch_bend(0, MIDI_PITCH_BEND_MIN);
+	midi_message_t msg = pitch_bend(0, MIDI_PITCH_BEND_MAX);
 	TEST_ASSERT_EQUAL(ESP_OK, midi_write(midi_handle, &msg));
 	vTaskDelay(1000 / portTICK_PERIOD_MS);
-	msg = pitch_bend(0, MIDI_PITCH_BEND_MAX);
+	msg = pitch_bend(0, MIDI_PITCH_BEND_MIN);
 	TEST_ASSERT_EQUAL(ESP_OK, midi_write(midi_handle, &msg));
 	vTaskDelay(1000 / portTICK_PERIOD_MS);
 	msg = pitch_bend(0, MIDI_PITCH_BEND_CENTER);
