@@ -9,8 +9,8 @@
  *
  */
 
-#ifndef MCP3201_H
-#define MCP3201_H
+#ifndef MCP3201_DRIVER_H
+#define MCP3201_DRIVER_H
 
 #include <stdio.h>
 #include "freertos/FreeRTOS.h"
@@ -105,7 +105,7 @@ mcp3201_sampler_t *mcp3201_sampler_start(mcp3201_handle_t mcp_handle, QueueHandl
 /**
  * @brief Stops the MCP3201 Sampler
  *
- * @param sampler Sampler Handler
+ * @param sampler Sampler Handler to stop
  */
 void mcp3201_sampler_stop(mcp3201_sampler_t *sampler);
 

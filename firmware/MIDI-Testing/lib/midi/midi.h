@@ -1,7 +1,7 @@
 /**
  * @file midi.h
  * @author @s-grundner
- * @brief midi driver for esp32
+ * @brief midi uart driver for esp32
  * @version 0.1
  * @date 2022-12-23
  *
@@ -9,8 +9,8 @@
  *
  */
 
-#ifndef MIDI_H
-#define MIDI_H
+#ifndef MIDI_DRIVER_H
+#define MIDI_DRIVER_H
 
 #include <stdio.h>
 #include <stdint.h>
@@ -128,4 +128,4 @@ midi_message_t prg_change(uint8_t channel, uint8_t program);
 midi_message_t channel_pressure(uint8_t channel, uint8_t value);
 midi_message_t pitch_bend(uint8_t channel, uint16_t value);
 
-#endif // MIDI_H
+#endif // MIDI_DRIVER_H
