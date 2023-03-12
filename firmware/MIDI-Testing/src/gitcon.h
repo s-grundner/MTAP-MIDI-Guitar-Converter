@@ -1,7 +1,7 @@
 /**
  * @file gitcon.h
  * @author @s-grundner @Laurenz03
- * @brief
+ * @brief Gitcon Device Driver
  * @version 0.1
  * @date 2022-12-23
  *
