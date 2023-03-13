@@ -18,9 +18,9 @@
 
 /**
  * @brief Gitcon Configuration
- * @param mcp3201 MCP3201 ADC
- * @param midi_handle MIDI Context Handler
- * @param midi_queue MIDI Queue
+ * @param sampler Sampler Handler (MCP3201 or I2S)
+ * @param midi_handle MIDI Driver Context (MIDI over UART)
+ * @param midi_queue MIDI Queue Handler
  */
 typedef struct
 {
@@ -32,10 +32,12 @@ typedef struct
   midi_handle_t midi_handle;
   QueueHandle_t midi_queue; // TODO: merge with midi_handle
 } gitcon_context_t;
+
+/// @typedef gitcon_context_t *gitcon_handle_t Gitcon Context Handler pointer
 typedef gitcon_context_t *gitcon_handle_t;
 
 /**
- * @brief initializes gitcon device
+ * @brief initializes gitcon device and installs peripheral drivers
  *
  * @param[out] out_handle gitcon context handler
  * @return esp_err_t ESP_OK on success, ESP_ERR_NO_MEM on memory allocation error

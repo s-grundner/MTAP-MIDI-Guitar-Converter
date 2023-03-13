@@ -12,7 +12,7 @@
 /**
  * @brief Sampler Configuration
  * @param dma_queue Samples are sent to this queue by the DMA
- * @param dsp_queue Queue to send samples to
+ * @param dsp_queue Sampling result is sent to this queue
  * @param buffer Buffer to store samples in
  * @param buffer_pos Current position in buffer
  * @param buffer_size Size of the buffer in samples
@@ -29,11 +29,11 @@ typedef struct
 /**
  * @brief Starts a sampler Task that samples from the given ADC1 Channel and sends the samples to the given Queue
  *
- * @param adc1_channel ADC1 Channel to use
+ * @param adc1_channel ADC1 Channel to use (Only ADC1 Channels are supported)
  * @param recv_queue Queue to send samples to
  * @param buffer_size Size of the buffer in samples
  * @param f_sample Sample rate
- * @return i2s_sampler_t* Sampler handle or NULL if failed
+ * @return i2s_sampler_t* Sampler context or NULL if failed
  */
 i2s_sampler_t *i2s_sampler_start(adc_channel_t adc1_channel, QueueHandle_t recv_queue, size_t buffer_size, size_t f_sample);
 
