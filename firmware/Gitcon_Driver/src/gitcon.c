@@ -1,7 +1,7 @@
 /**
  * @file gitcon.c
  * @author @s-grundner @Laurenz03
- * @brief Gitcon Device Driver
+ * @brief
  * @version 0.1
  * @date 2022-12-23
  *
@@ -102,8 +102,8 @@ static void dsp_task(void *arg)
 		xQueueSend(gitcon_handle->midi_queue, &active_notes, portMAX_DELAY);
 		fft_destroy(real_fft_plan);
 		vTaskDelay(10 / portTICK_PERIOD_MS);
-	}
-}
+	} // for(;;)
+} // dsp_task
 
 static void midi_task(void *arg)
 {
@@ -132,8 +132,8 @@ static void midi_task(void *arg)
 			}
 		}
 		vTaskDelay(10 / portTICK_PERIOD_MS);
-	}
-}
+	} // for(;;)
+} // midi_task
 
 // ------------------------------------------------------------
 // non-static functions
