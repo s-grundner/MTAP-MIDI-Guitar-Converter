@@ -7,8 +7,6 @@
 #define FFT_WINDOW_SIZE 2	  // Amount of buffers to take for FFT
 #define FFT_SIZE 4096		  //(AUDIO_BUFFER_SIZE * FFT_WINDOW_SIZE)  Amount of samples to take for FFT
 
-const char *TAG = "test_fft";
-
 void setUp(void)
 {
 }
@@ -19,7 +17,6 @@ void tearDown(void)
 
 void test_processed_data(void)
 {
-
 	// fft variables
 	float fft_buffer[FFT_SIZE];
 	float magnitude[FFT_SIZE / 2];
@@ -33,7 +30,6 @@ void test_processed_data(void)
 
 	for (int k = 1; k < FFT_SIZE / 2; k++)
 	{
-		///@note  3. detect fundamental frequencies and convert to note number on piano roll
 		magnitude[k] = 2 * sqrt(pow(fft_buffer[2 * k], 2) + pow(fft_buffer[2 * k + 1], 2)) / FFT_SIZE;
 		frequency[k] = k * ratio;
 		keyNR[k] = (unsigned char)round(log2(frequency[k] / 440) * 12 + 69) % 128;
@@ -47,16 +43,15 @@ void test_processed_data(void)
 	{
 		if (magnitude[k] >= max * 0.5)
 		{
-			TEST_ASSERT_EQUAL(0, keyNR[k]);
-			TEST_ASSERT_EQUAL(0, frequency[k]);
+			TEST_ASSERT_EQUAL(45, keyNR[k]);
 		}
 	}
 	fft_destroy(real_fft_plan);
-} // dsp_task
+}
 
 void app_main()
 {
 	UNITY_BEGIN();
-
+	RUN_TEST(test_processed_data);
 	UNITY_END();
 }
