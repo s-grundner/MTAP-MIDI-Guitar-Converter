@@ -1,6 +1,6 @@
 #include "mcp3201.h"
 
-#define RESAMPLE_DIVIDER 2
+#define RESAMPLE_DENOMINATOR 2
 #define READER_TIMEOUT_MS 10
 #define READER_TIMEOUT_TICKS (READER_TIMEOUT_MS / portTICK_PERIOD_MS)
 
@@ -30,7 +30,7 @@ static void IRAM_ATTR sampler_task(void *arg)
 				do
 				{
 					// fill audio buffer
-					size_t bytes_to_read = RESAMPLE_DIVIDER * (sampler->buffer_size - sampler->buffer_pos);
+					size_t bytes_to_read = RESAMPLE_DENOMINATOR * (sampler->buffer_size - sampler->buffer_pos);
 					void *buffer_position = (void *)(sampler->buffer + sampler->buffer_pos);
 
 					// read data from spi
@@ -46,7 +46,7 @@ static void IRAM_ATTR sampler_task(void *arg)
 						READER_TIMEOUT_TICKS);
 					bytes_read = t.rxlength;
 
-					sampler->buffer_pos += bytes_read / RESAMPLE_DIVIDER;
+					sampler->buffer_pos += bytes_read / RESAMPLE_DENOMINATOR;
 
 					if (sampler->buffer_pos == sampler->buffer_size)
 					{
@@ -91,7 +91,7 @@ mcp3201_sampler_t *mcp3201_sampler_start(mcp3201_handle_t mcp_handle, QueueHandl
 	while (spi_device_acquire_bus(mcp_handle->spi, portMAX_DELAY) != ESP_OK)
 		ESP_LOGE(TAG, "Failed to acquire bus\n retrying...");
 
-	xTaskCreatePinnedToCore(sampler_task, "sampler_task", RESAMPLE_DIVIDER * buffer_size, sampler, 5, &sampler_task_handle, 0);
+	xTaskCreatePinnedToCore(sampler_task, "sampler_task", RESAMPLE_DENOMINATOR * buffer_size, sampler, 5, &sampler_task_handle, 0);
 	xTaskCreatePinnedToCore(reader_task, "reader_task", 2048, sampler, 5, &reader_task_handle, 0);
 
 	return sampler;

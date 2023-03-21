@@ -1,9 +1,10 @@
 #include "i2s_sampler.h"
 static const char *TAG = "I2S_SAMPLER";
 
-#define RESAMPLE_DIVIDER 2
+#define RESAMPLE_DENOMINATOR 2
 #define READER_TIMEOUT_MS 10
 #define READER_TIMEOUT_TICKS (READER_TIMEOUT_MS / portTICK_PERIOD_MS)
+
 
 static TaskHandle_t sampler_task_handle;
 
@@ -21,12 +22,12 @@ static void IRAM_ATTR sampler_task(void *arg)
 				do
 				{
 					// fill audio buffer
-					size_t bytes_to_read = RESAMPLE_DIVIDER * (sampler->buffer_size - sampler->buffer_pos);
+					size_t bytes_to_read = RESAMPLE_DENOMINATOR * (sampler->buffer_size - sampler->buffer_pos);
 					void *buffer_position = (void *)(sampler->buffer + sampler->buffer_pos);
 
 					// read data from i2s
 					i2s_read(I2S_NUM_0, buffer_position, bytes_to_read, &bytes_read, READER_TIMEOUT_TICKS);
-					sampler->buffer_pos += bytes_read / RESAMPLE_DIVIDER;
+					sampler->buffer_pos += bytes_read / RESAMPLE_DENOMINATOR;
 
 					if (sampler->buffer_pos == sampler->buffer_size)
 					{

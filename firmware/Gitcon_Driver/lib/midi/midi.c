@@ -109,7 +109,7 @@ esp_err_t midi_write(midi_handle_t handle, midi_message_t *msg)
 		len = uart_write_bytes(handle->cfg.uart_num, data, MIDI_BYTE_SIZE_SHORT);
 		break;
 	default:
-		ESP_LOGE(TAG, "midi_send: invalid status");
+		ESP_LOGE(TAG, "midi_send: invalid status: %02X", msg->status);
 		return ESP_ERR_INVALID_ARG;
 		break;
 	}
@@ -124,9 +124,9 @@ esp_err_t midi_write(midi_handle_t handle, midi_message_t *msg)
 		return ESP_ERR_TIMEOUT;
 		break;
 	default:
+		// ESP_LOGI(MIDI_MON, "Status: %02X\tChannel: %02X\t Data: %02X %02X\t Length:%d", msg->status, msg->channel, msg->param1, msg->param2, len);
 		break;
 	}
-	ESP_LOGI(MIDI_MON, "Status: %02X\tChannel: %02X\t Data: %02X %02X\t Length:%d", msg->status, msg->channel, msg->param1, msg->param2, len);
 	return ESP_OK;
 }
 

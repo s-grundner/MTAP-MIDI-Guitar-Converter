@@ -17,6 +17,9 @@ static const char *TAG = "gitcon";
 static TaskHandle_t midi_task_handle;
 static TaskHandle_t dsp_task_handle;
 
+#define FLOAT_TO_UINT16(x) ((uint16_t)((x)*32767.0f))
+#define UINT16_TO_FLOAT(x) ((float)(x) / 32767.0f)
+
 // ------------------------------------------------------------
 // static functions
 // ------------------------------------------------------------
@@ -62,46 +65,48 @@ static void dsp_task(void *arg)
 		{
 			// do stuff with audio_buffer
 			// this is where the audio buffer is available and the FFT is executed
-		}
+			// convert a uint16_t array to a float array
+			float audio_buffer_float[AUDIO_BUFFER_SIZE];
+			for (int i = 0; i < AUDIO_BUFFER_SIZE; i++)
+				audio_buffer_float[i] = UINT16_TO_FLOAT(audio_buffer[i]);
 
-		///@note  2. analyze audio data (FFT, etc.)
-		fft_config_t *real_fft_plan = fft_init(FFT_SIZE, FFT_REAL, FFT_FORWARD, test_buffer, fft_buffer);
-		if (real_fft_plan == NULL)
-		{
-			ESP_LOGE(TAG, "FFT plan could not be created");
-			vTaskDelay(1000 / portTICK_PERIOD_MS);
-			continue;
-		}
-		fft_execute(real_fft_plan);
-
-		for (int k = 1; k < FFT_SIZE / 2; k++)
-		{
-			///@note  3. detect fundamental frequencies and convert to note number on piano roll
-			magnitude[k] = 2 * sqrt(pow(fft_buffer[2 * k], 2) + pow(fft_buffer[2 * k + 1], 2)) / FFT_SIZE;
-			frequency[k] = k * ratio;
-			keyNR[k] = (unsigned char)round(log2(frequency[k] / 440) * 12 + 69) % 128;
-		}
-
-		float max = 0;
-		for (int i = 0; i < FFT_SIZE / 2; i++)
-			max = (magnitude[i] > max) ? magnitude[i] : max;
-
-		for (int k = 1; k < FFT_SIZE / 2; k++)
-		{
-			///@note  4. check if fundamental frequencies are above a certain threshold
-			///@note  4.1 save note on transient
-			///@note  5. check if already on notes are below a certain threshold and delete saved note
-			active_notes[keyNR[k]] = (magnitude[k] >= max * 0.5);
-			if (active_notes[keyNR[k]])
+			///@note  2. analyze audio data (FFT, etc.)
+			fft_config_t *real_fft_plan = fft_init(FFT_SIZE, FFT_REAL, FFT_FORWARD, audio_buffer_float, fft_buffer);
+			if (real_fft_plan == NULL)
 			{
-				ESP_LOGI(TAG, "%d-th magnitude: %f => corresponds to %f Hz\n", k, magnitude[k], frequency[k]);
-				ESP_LOGI(TAG, "keyNR: %d\n", keyNR[k]);
+				ESP_LOGE(TAG, "FFT plan could not be created");
+				vTaskDelay(1000 / portTICK_PERIOD_MS);
+				continue;
 			}
+			fft_execute(real_fft_plan);
+
+			for (int k = 1; k < FFT_SIZE / 2; k++)
+			{
+				///@note  3. detect fundamental frequencies and convert to note number on piano roll
+				magnitude[k] = 2 * sqrt(pow(fft_buffer[2 * k], 2) + pow(fft_buffer[2 * k + 1], 2)) / FFT_SIZE;
+				frequency[k] = k * ratio;
+				keyNR[k] = (unsigned char)round(log2(frequency[k] / 440) * 12 + 69) % 128;
+			}
+
+			float max = 0;
+			for (int i = 0; i < FFT_SIZE / 2; i++)
+			{
+				max = (magnitude[i] > max) ? magnitude[i] : max;
+			}
+
+			if (max < 0.001)
+				max = 100;
+
+			for (int k = 1; k < FFT_SIZE / 2; k++)
+				///@note  4. check if fundamental frequencies are above a certain threshold
+				///@note  4.1 save note on transient
+				///@note  5. check if already on notes are below a certain threshold and delete saved note
+				active_notes[keyNR[k]] = (magnitude[k] >= max * 0.5);
+			///@note  6. send saved notes to MIDI queue
+			xQueueSend(gitcon_handle->midi_queue, &active_notes, portMAX_DELAY);
+			fft_destroy(real_fft_plan);
 		}
-		///@note  6. send saved notes to MIDI queue
-		xQueueSend(gitcon_handle->midi_queue, &active_notes, portMAX_DELAY);
-		fft_destroy(real_fft_plan);
-		vTaskDelay(10 / portTICK_PERIOD_MS);
+		vTaskDelay(100 / portTICK_PERIOD_MS);
 	} // for(;;)
 } // dsp_task
 
