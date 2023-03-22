@@ -32,6 +32,8 @@ Planungsvorgänge können unter dem Reiter *[Projects](https://github.com/s-grun
 - Die Firmware läuft bereits auf einem RTOS, in welchem die priorisierung der einzelen Tasks gehandled wird, sowie eine stabile Kommunikation zwischen den beiden Kernen am ESP32
 - Benötigte Bibliotheken sind ausprogrammiert bzw implementiert
 - (nicht kontinuierliche) FFT von Gitarrensamples sind möglich
+- kontinuierliches Sampling implementiert
+- MIDI noten werden berechnet (momentan werden auch oberwellen in MIDI umgewandelt)
 
 ### 3D Renderung der Platine
 
