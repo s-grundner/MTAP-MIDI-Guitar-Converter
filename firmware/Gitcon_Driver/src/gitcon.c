@@ -107,13 +107,13 @@ static void dsp_task(void *arg)
 				///@note  4.1 save note on transient
 				///@note  5. check if already on notes are below a certain threshold and delete saved note
 
-				if (magnitude[k] >= max * 0.5)
+				if (magnitude[k] < max * 0.5)
 				{
-					active_notes[keyNR[k]].status = MIDI_STATUS_NOTE_ON;
-					active_notes[keyNR[k]].param2 = (uint8_t)(magnitude[k] / max * 127);
+					active_notes[keyNR[k]].status = MIDI_STATUS_NOTE_OFF;
 					continue;
 				}
-				active_notes[keyNR[k]].status = MIDI_STATUS_NOTE_OFF;
+				active_notes[keyNR[k]].status = MIDI_STATUS_NOTE_ON;
+				active_notes[keyNR[k]].param2 = (uint8_t)(magnitude[k] / max * 127);
 			}
 			///@note  6. send saved notes to MIDI queue
 			xQueueSend(gitcon_handle->midi_queue, &active_notes, portMAX_DELAY);
