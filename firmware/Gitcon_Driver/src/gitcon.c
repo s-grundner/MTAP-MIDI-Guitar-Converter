@@ -90,9 +90,7 @@ static void dsp_task(void *arg)
 
 			float max = 0;
 			for (int i = 0; i < FFT_SIZE / 2; i++)
-			{
 				max = (magnitude[i] > max) ? magnitude[i] : max;
-			}
 
 			if (max < 0.001)
 				max = 100;
