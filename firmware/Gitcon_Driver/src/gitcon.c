@@ -42,7 +42,7 @@ static void dsp_task(void *arg)
 	float ratio = (float)F_SAMPLE_HZ / (float)FFT_SIZE;
 
 	// active notes resulting from fft
-	unsigned char *active_notes = (unsigned char *)malloc(128 * sizeof(unsigned char));
+	midi_message_t *active_notes = (midi_message_t *)malloc(128 * sizeof(midi_message_t));
 	if (active_notes == NULL)
 	{
 		ESP_LOGE(TAG, "Could not allocate memory for active_notes");
@@ -50,8 +50,14 @@ static void dsp_task(void *arg)
 		return;
 	}
 
+	// initialize active_notes
 	for (int i = 0; i < 128; i++)
-		active_notes[i] = 0;
+	{
+		active_notes[i].channel = 0;
+		active_notes[i].status = MIDI_STATUS_NOTE_OFF;
+		active_notes[i].param1 = i;
+		active_notes[i].param2 = 0;
+	}
 
 	for (;;)
 	{
@@ -83,25 +89,32 @@ static void dsp_task(void *arg)
 			for (int k = 1; k < FFT_SIZE / 2; k++)
 			{
 				///@note  3. detect fundamental frequencies and convert to note number on piano roll
+				keyNR[k] = (unsigned char)round(log2(frequency[k] / 440) * 12 + 69) % 128;
 				magnitude[k] = 2 * sqrt(pow(fft_buffer[2 * k], 2) + pow(fft_buffer[2 * k + 1], 2)) / FFT_SIZE;
 				frequency[k] = k * ratio;
-				keyNR[k] = (unsigned char)round(log2(frequency[k] / 440) * 12 + 69) % 128;
 			}
 
 			float max = 0;
 			for (int i = 0; i < FFT_SIZE / 2; i++)
-			{
 				max = (magnitude[i] > max) ? magnitude[i] : max;
-			}
 
-			if (max < 0.001)
+			if (max < 0.0005)
 				max = 100;
 
 			for (int k = 1; k < FFT_SIZE / 2; k++)
+			{
 				///@note  4. check if fundamental frequencies are above a certain threshold
 				///@note  4.1 save note on transient
 				///@note  5. check if already on notes are below a certain threshold and delete saved note
-				active_notes[keyNR[k]] = (magnitude[k] >= max * 0.5);
+
+				if (magnitude[k] >= max * 0.5)
+				{
+					active_notes[keyNR[k]].status = MIDI_STATUS_NOTE_ON;
+					active_notes[keyNR[k]].param2 = (uint8_t)(magnitude[k] / max * 127);
+					continue;
+				}
+				active_notes[keyNR[k]].status = MIDI_STATUS_NOTE_OFF;
+			}
 			///@note  6. send saved notes to MIDI queue
 			xQueueSend(gitcon_handle->midi_queue, &active_notes, portMAX_DELAY);
 			fft_destroy(real_fft_plan);
@@ -113,8 +126,8 @@ static void dsp_task(void *arg)
 static void midi_task(void *arg)
 {
 	gitcon_handle_t gitcon_handle = (gitcon_handle_t)arg;
-	unsigned char *active_notes = NULL;
-	unsigned char previous_notes[128] = {0};
+	midi_message_t *active_notes = NULL;
+	midi_status_t previous_states[128] = {0};
 
 	for (;;)
 	{
@@ -122,18 +135,12 @@ static void midi_task(void *arg)
 		{
 			for (size_t i = 0; i < 128; i++)
 			{
-				if (active_notes[i] == previous_notes[i])
+				if (active_notes[i].status == previous_states[i])
 					continue;
 
-				midi_message_t msg = {
-					.channel = 0,
-					.status = (active_notes[i] ? MIDI_STATUS_NOTE_ON : MIDI_STATUS_NOTE_OFF),
-					.param1 = i,
-					.param2 = 0x7F};
-
 				// send message to MIDI UART
-				ESP_ERROR_CHECK(midi_write(gitcon_handle->midi_handle, &msg));
-				previous_notes[i] = active_notes[i];
+				ESP_ERROR_CHECK(midi_write(gitcon_handle->midi_handle, &active_notes[i]));
+				previous_states[i] = active_notes[i].status;
 			}
 		}
 		vTaskDelay(10 / portTICK_PERIOD_MS);
@@ -154,7 +161,7 @@ esp_err_t gitcon_init(gitcon_context_t **out_handle)
 	QueueHandle_t dsp_queue = xQueueCreate(10, sizeof(size_t *));
 
 	// create queue for midi messages
-	gitcon_cfg->midi_queue = xQueueCreate(5, sizeof(unsigned char *));
+	gitcon_cfg->midi_queue = xQueueCreate(5, sizeof(midi_handle_t *));
 	if (!gitcon_cfg->midi_queue)
 		return ESP_ERR_NO_MEM;
 
