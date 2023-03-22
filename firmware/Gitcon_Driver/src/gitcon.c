@@ -56,7 +56,7 @@ static void dsp_task(void *arg)
 		active_notes[i].channel = 0;
 		active_notes[i].status = MIDI_STATUS_NOTE_OFF;
 		active_notes[i].param1 = i;
-		active_notes[i].param2 = 1;
+		active_notes[i].param2 = 0;
 	}
 
 	for (;;)
@@ -106,15 +106,14 @@ static void dsp_task(void *arg)
 				///@note  4. check if fundamental frequencies are above a certain threshold
 				///@note  4.1 save note on transient
 				///@note  5. check if already on notes are below a certain threshold and delete saved note
+
 				if (magnitude[k] >= max * 0.5)
 				{
 					active_notes[keyNR[k]].status = MIDI_STATUS_NOTE_ON;
 					active_notes[keyNR[k]].param2 = (uint8_t)(magnitude[k] / max * 127);
+					continue;
 				}
-				else
-				{
-					active_notes[keyNR[k]].status = MIDI_STATUS_NOTE_OFF;
-				}
+				active_notes[keyNR[k]].status = MIDI_STATUS_NOTE_OFF;
 			}
 			///@note  6. send saved notes to MIDI queue
 			xQueueSend(gitcon_handle->midi_queue, &active_notes, portMAX_DELAY);
