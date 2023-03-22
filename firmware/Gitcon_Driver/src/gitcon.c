@@ -33,6 +33,8 @@ static void dsp_task(void *arg)
 	// parameter handler
 	gitcon_handle_t gitcon_handle = (gitcon_handle_t)arg;
 	uint16_t *audio_buffer = NULL;
+	uint16_t *audio_buffer_int = (uint16_t *)malloc(FFT_SIZE * sizeof(uint16_t));
+	float audio_buffer_float[FFT_SIZE];
 
 	// fft variables
 	float fft_buffer[FFT_SIZE];
@@ -59,6 +61,8 @@ static void dsp_task(void *arg)
 		active_notes[i].param2 = 0;
 	}
 
+	int window_counter = 0;
+
 	for (;;)
 	{
 		/// @note velocity of the note is determined by the initial amplitude of a transient frequency
@@ -71,10 +75,23 @@ static void dsp_task(void *arg)
 		{
 			// do stuff with audio_buffer
 			// this is where the audio buffer is available and the FFT is executed
-			// convert a uint16_t array to a float array
-			float audio_buffer_float[AUDIO_BUFFER_SIZE];
+
+			// append the audio_buffer to audio_buffer_int fifo style
+			uint16_t *start_pos = audio_buffer_int;
+			audio_buffer_int += (FFT_SIZE * window_counter);
+			window_counter = (window_counter + 1) % (FFT_WINDOW_SIZE);
+
 			for (int i = 0; i < AUDIO_BUFFER_SIZE; i++)
-				audio_buffer_float[i] = UINT16_TO_FLOAT(audio_buffer[i]);
+				audio_buffer_int[i] = audio_buffer[i];
+
+			audio_buffer_int = start_pos;
+
+			///@note convert a uint16_t array to a float array
+			for (int i = 0; i < FFT_SIZE; i++)
+			{
+				audio_buffer_float[i] = UINT16_TO_FLOAT(audio_buffer_int[i]);
+				// printf("%f\n", audio_buffer_float[i]);
+			}
 
 			///@note  2. analyze audio data (FFT, etc.)
 			fft_config_t *real_fft_plan = fft_init(FFT_SIZE, FFT_REAL, FFT_FORWARD, audio_buffer_float, fft_buffer);
@@ -112,7 +129,9 @@ static void dsp_task(void *arg)
 					active_notes[keyNR[k]].status = MIDI_STATUS_NOTE_OFF;
 					continue;
 				}
+				ESP_LOGI(TAG, "keyNR: %d, magnitude: %f, frequency: %f", keyNR[k], magnitude[k], frequency[k]);
 				active_notes[keyNR[k]].status = MIDI_STATUS_NOTE_ON;
+				active_notes[keyNR[k]].param1 = keyNR[k];
 				active_notes[keyNR[k]].param2 = (uint8_t)(magnitude[k] / max * 127);
 			}
 			///@note  6. send saved notes to MIDI queue
