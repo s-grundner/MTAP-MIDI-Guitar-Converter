@@ -5,7 +5,6 @@ static const char *TAG = "I2S_SAMPLER";
 #define READER_TIMEOUT_MS 10
 #define READER_TIMEOUT_TICKS (READER_TIMEOUT_MS / portTICK_PERIOD_MS)
 
-
 static TaskHandle_t sampler_task_handle;
 
 static void IRAM_ATTR sampler_task(void *arg)
