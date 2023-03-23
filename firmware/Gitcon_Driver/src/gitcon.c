@@ -43,7 +43,7 @@ static void dsp_task(void *arg)
 	float *audio_buffer_float = (float *)malloc(FFT_SIZE * sizeof(float));
 	if (audio_buffer_float == NULL)
 	{
-		ESP_LOGE(TAG, "Could not allocate memory for audio_buffer_int");
+		ESP_LOGE(TAG, "Could not allocate memory for audio_buffer_float");
 		gitcon_exit(gitcon_handle);
 		return;
 	}
@@ -64,7 +64,6 @@ static void dsp_task(void *arg)
 		return;
 	}
 
-	// initialize active_notes
 	for (int i = 0; i < 128; i++)
 	{
 		active_notes[i].channel = 0;
