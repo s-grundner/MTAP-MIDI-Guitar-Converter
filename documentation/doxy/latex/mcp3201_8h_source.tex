@@ -1,53 +1,53 @@
 \hypertarget{mcp3201_8h_source}{}\doxysection{mcp3201.\+h}
-\label{mcp3201_8h_source}\index{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/mcp3201/mcp3201.h@{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/mcp3201/mcp3201.h}}
+\label{mcp3201_8h_source}\index{lib/mcp3201/mcp3201.h@{lib/mcp3201/mcp3201.h}}
 \mbox{\hyperlink{mcp3201_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{1 }
-\DoxyCodeLine{12 \textcolor{preprocessor}{\#ifndef MCP3201\_H}}
-\DoxyCodeLine{13 \textcolor{preprocessor}{\#define MCP3201\_H}}
-\DoxyCodeLine{14 }
-\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <stdio.h>}}
-\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}freertos/FreeRTOS.h"{}}}
-\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}freertos/task.h"{}}}
-\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}freertos/queue.h"{}}}
-\DoxyCodeLine{19 \textcolor{preprocessor}{\#include "{}driver/gpio.h"{}}}
-\DoxyCodeLine{20 \textcolor{preprocessor}{\#include "{}driver/spi\_master.h"{}}}
-\DoxyCodeLine{21 \textcolor{preprocessor}{\#include "{}hal/spi\_types.h"{}}}
-\DoxyCodeLine{22 \textcolor{preprocessor}{\#include "{}esp\_log.h"{}}}
-\DoxyCodeLine{23 }
-\DoxyCodeLine{24 \textcolor{preprocessor}{\#define ADC\_CLK SPI\_MASTER\_FREQ\_8M}}
-\DoxyCodeLine{25 }
-\DoxyCodeLine{36 \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
-\DoxyCodeLine{37 \{}
-\DoxyCodeLine{38     spi\_host\_device\_t host;}
-\DoxyCodeLine{39     gpio\_num\_t cs\_io;}
-\DoxyCodeLine{40     gpio\_num\_t miso\_io;}
-\DoxyCodeLine{41     gpio\_num\_t mosi\_io;}
-\DoxyCodeLine{42     \textcolor{keywordtype}{int} dma\_chan;}
-\DoxyCodeLine{43 \} \mbox{\hyperlink{structmcp3201__config__t}{mcp3201\_config\_t}};}
-\DoxyCodeLine{44 }
-\DoxyCodeLine{46 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_context\_t}} *\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_handle\_t}};}
-\DoxyCodeLine{47 }
-\DoxyCodeLine{58 \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
-\DoxyCodeLine{59 \{}
-\DoxyCodeLine{60     \mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_handle\_t}} mcp\_handle;}
-\DoxyCodeLine{61     QueueHandle\_t dma\_queue;}
-\DoxyCodeLine{62     QueueHandle\_t dsp\_queue;}
-\DoxyCodeLine{63     \textcolor{keywordtype}{size\_t} *buffer;}
-\DoxyCodeLine{64     \textcolor{keywordtype}{size\_t} buffer\_pos;}
-\DoxyCodeLine{65     \textcolor{keywordtype}{size\_t} buffer\_size;}
-\DoxyCodeLine{66 \} \mbox{\hyperlink{structmcp3201__sampler__t}{mcp3201\_sampler\_t}};}
-\DoxyCodeLine{67 }
-\DoxyCodeLine{75 esp\_err\_t \mbox{\hyperlink{mcp3201_8h_a69c1d4c194693ad14af26415e51cd4d5}{mcp3201\_init}}(\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_handle\_t}} *out\_handle, \textcolor{keyword}{const} \mbox{\hyperlink{structmcp3201__config__t}{mcp3201\_config\_t}} *cfg);}
-\DoxyCodeLine{76 }
-\DoxyCodeLine{83 esp\_err\_t \mbox{\hyperlink{mcp3201_8h_acacc7f3f14eb9108f7c053d4cc370e00}{mcp3201\_exit}}(\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_handle\_t}} mcp\_handle);}
-\DoxyCodeLine{84 }
-\DoxyCodeLine{92 esp\_err\_t \mbox{\hyperlink{mcp3201_8h_ad2a98b7c4cafab98b390b467b976cc9f}{mcp3201\_read}}(\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_handle\_t}} handle, uint16\_t *out\_value);}
-\DoxyCodeLine{93 }
-\DoxyCodeLine{103 \mbox{\hyperlink{structmcp3201__sampler__t}{mcp3201\_sampler\_t}} *\mbox{\hyperlink{mcp3201_8h_a597661bdfb234321b4ba0648dc161451}{mcp3201\_sampler\_start}}(\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_handle\_t}} mcp\_handle, QueueHandle\_t recv\_queue, \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} buffer\_size, \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} f\_sample);}
-\DoxyCodeLine{104 }
-\DoxyCodeLine{110 \textcolor{keywordtype}{void} \mbox{\hyperlink{mcp3201_8h_a09942c72d6880306a561ca69a5ecac80}{mcp3201\_sampler\_stop}}(\mbox{\hyperlink{structmcp3201__sampler__t}{mcp3201\_sampler\_t}} *sampler);}
-\DoxyCodeLine{111 }
-\DoxyCodeLine{112 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// MCP3201\_H}}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00012}00012 \textcolor{preprocessor}{\#ifndef MCP3201\_DRIVER\_H}}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00013}00013 \textcolor{preprocessor}{\#define MCP3201\_DRIVER\_H}}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00015}00015 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00016}00016 \textcolor{preprocessor}{\#include "{}freertos/FreeRTOS.h"{}}}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00017}00017 \textcolor{preprocessor}{\#include "{}freertos/task.h"{}}}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00018}00018 \textcolor{preprocessor}{\#include "{}freertos/queue.h"{}}}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00019}00019 \textcolor{preprocessor}{\#include "{}driver/gpio.h"{}}}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00020}00020 \textcolor{preprocessor}{\#include "{}driver/spi\_master.h"{}}}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00021}00021 \textcolor{preprocessor}{\#include "{}hal/spi\_types.h"{}}}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00022}00022 \textcolor{preprocessor}{\#include "{}esp\_log.h"{}}}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00024}\mbox{\hyperlink{mcp3201_8h_a44d38ab4d4e88e679184bbbffdac00dd}{00024}} \textcolor{preprocessor}{\#define ADC\_CLK SPI\_MASTER\_FREQ\_8M}}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00036}\mbox{\hyperlink{structmcp3201__config__t}{00036}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00037}00037 \{}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00038}\mbox{\hyperlink{structmcp3201__config__t_af2bc3d31ad0099123ad13e726b96cb8f}{00038}}     spi\_host\_device\_t \mbox{\hyperlink{structmcp3201__config__t_af2bc3d31ad0099123ad13e726b96cb8f}{host}};}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00039}\mbox{\hyperlink{structmcp3201__config__t_a7a38bd9dda941e0eb854430f514097bd}{00039}}     gpio\_num\_t \mbox{\hyperlink{structmcp3201__config__t_a7a38bd9dda941e0eb854430f514097bd}{cs\_io}};}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00040}\mbox{\hyperlink{structmcp3201__config__t_a81741dc79605ea0869eccb6123c8f87a}{00040}}     gpio\_num\_t \mbox{\hyperlink{structmcp3201__config__t_a81741dc79605ea0869eccb6123c8f87a}{miso\_io}};}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00041}\mbox{\hyperlink{structmcp3201__config__t_a9914529f78253bf211a2fcfdd7fdaa08}{00041}}     gpio\_num\_t \mbox{\hyperlink{structmcp3201__config__t_a9914529f78253bf211a2fcfdd7fdaa08}{mosi\_io}};}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00042}\mbox{\hyperlink{structmcp3201__config__t_a456684b326733e9d7a283b12f7316770}{00042}}     \textcolor{keywordtype}{int} \mbox{\hyperlink{structmcp3201__config__t_a456684b326733e9d7a283b12f7316770}{dma\_chan}};}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00043}00043 \} \mbox{\hyperlink{structmcp3201__config__t}{mcp3201\_config\_t}};}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00046}\mbox{\hyperlink{mcp3201_8h_a394f6b43329fb768aeb634cdfee4ebef}{00046}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_context\_t}} *\mbox{\hyperlink{mcp3201_8h_a394f6b43329fb768aeb634cdfee4ebef}{mcp3201\_handle\_t}};}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00058}\mbox{\hyperlink{structmcp3201__sampler__t}{00058}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00059}00059 \{}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00060}\mbox{\hyperlink{structmcp3201__sampler__t_a255cd594fc3f4a9d5c0fd146ceb4ca23}{00060}}     \mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_handle\_t}} \mbox{\hyperlink{structmcp3201__sampler__t_a255cd594fc3f4a9d5c0fd146ceb4ca23}{mcp\_handle}};}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00061}\mbox{\hyperlink{structmcp3201__sampler__t_a01668835337313a60bcb16756c005b12}{00061}}     QueueHandle\_t \mbox{\hyperlink{structmcp3201__sampler__t_a01668835337313a60bcb16756c005b12}{dma\_queue}};}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00062}\mbox{\hyperlink{structmcp3201__sampler__t_ac5aaa47703a07b7ca5bac6f7e7331b8b}{00062}}     QueueHandle\_t \mbox{\hyperlink{structmcp3201__sampler__t_ac5aaa47703a07b7ca5bac6f7e7331b8b}{dsp\_queue}};}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00063}\mbox{\hyperlink{structmcp3201__sampler__t_aebedcefcc64e1f3236580fbaa899869e}{00063}}     \textcolor{keywordtype}{size\_t} *\mbox{\hyperlink{structmcp3201__sampler__t_aebedcefcc64e1f3236580fbaa899869e}{buffer}};}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00064}\mbox{\hyperlink{structmcp3201__sampler__t_ad772d2f9803cdbdf265ba17194a1314c}{00064}}     \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{structmcp3201__sampler__t_ad772d2f9803cdbdf265ba17194a1314c}{buffer\_pos}};}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00065}\mbox{\hyperlink{structmcp3201__sampler__t_a799a743b3abd553a37fc01ad3097df08}{00065}}     \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{structmcp3201__sampler__t_a799a743b3abd553a37fc01ad3097df08}{buffer\_size}};}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00066}00066 \} \mbox{\hyperlink{structmcp3201__sampler__t}{mcp3201\_sampler\_t}};}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00075}\mbox{\hyperlink{mcp3201_8h_a69c1d4c194693ad14af26415e51cd4d5}{00075}} esp\_err\_t \mbox{\hyperlink{mcp3201_8h_a69c1d4c194693ad14af26415e51cd4d5}{mcp3201\_init}}(\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_handle\_t}} *out\_handle, \textcolor{keyword}{const} \mbox{\hyperlink{structmcp3201__config__t}{mcp3201\_config\_t}} *\mbox{\hyperlink{structmcp3201__context__t_a67eb2e10c7970f2bb7be144d2af56e4a}{cfg}});}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00083}00083 esp\_err\_t \mbox{\hyperlink{mcp3201_8h_acacc7f3f14eb9108f7c053d4cc370e00}{mcp3201\_exit}}(\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_handle\_t}} mcp\_handle);}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00092}\mbox{\hyperlink{mcp3201_8h_ad2a98b7c4cafab98b390b467b976cc9f}{00092}} esp\_err\_t \mbox{\hyperlink{mcp3201_8h_ad2a98b7c4cafab98b390b467b976cc9f}{mcp3201\_read}}(\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_handle\_t}} handle, uint16\_t *out\_value);}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00103}00103 \mbox{\hyperlink{structmcp3201__sampler__t}{mcp3201\_sampler\_t}} *\mbox{\hyperlink{mcp3201_8h_a597661bdfb234321b4ba0648dc161451}{mcp3201\_sampler\_start}}(\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_handle\_t}} mcp\_handle, QueueHandle\_t recv\_queue, \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} buffer\_size, \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} f\_sample);}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00104}00104 }
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00110}00110 \textcolor{keywordtype}{void} \mbox{\hyperlink{mcp3201_8h_a09942c72d6880306a561ca69a5ecac80}{mcp3201\_sampler\_stop}}(\mbox{\hyperlink{structmcp3201__sampler__t}{mcp3201\_sampler\_t}} *sampler);}
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00111}00111 }
+\DoxyCodeLine{\Hypertarget{mcp3201_8h_source_l00112}00112 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// MCP3201\_H}}
 
 \end{DoxyCode}

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Gitcon: C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/audio/i2s_sampler.h Source File</title>
+<title>Gitcon: lib/audio/i2s_sampler.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -20,7 +20,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="MTAP-logo-schwarz.png"/></td>
   <td id="projectalign">
    <div id="projectname">Gitcon
    </div>
@@ -70,39 +69,47 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_d9edf6c004b4a7ff14fe9ae7a92214ee.html">firmware</a></li><li class="navelem"><a class="el" href="dir_6bc3a76d1c909537939dc4ec93b93555.html">MIDI-Testing</a></li><li class="navelem"><a class="el" href="dir_2eece4efa5fb6c11d2a68fc794e2ed49.html">lib</a></li><li class="navelem"><a class="el" href="dir_7fdb04358d4b565fa62e8a243cd32268.html">audio</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_fa8612f5210f0990886d3229a5410c0b.html">audio</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">i2s_sampler.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef SAMPLING_H</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define SAMPLING_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;driver/i2s.h&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;freertos/FreeRTOS.h&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;freertos/task.h&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;freertos/queue.h&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;freertos/timers.h&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;esp_log.h&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="structi2s__sampler__t.html">   20</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    QueueHandle_t dma_queue;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    QueueHandle_t dsp_queue;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordtype">size_t</span> *buffer;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">size_t</span> buffer_pos;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordtype">size_t</span> buffer_size;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>} <a class="code hl_struct" href="structi2s__sampler__t.html">i2s_sampler_t</a>;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><a class="code hl_struct" href="structi2s__sampler__t.html">i2s_sampler_t</a> *i2s_sampler_start(adc_channel_t adc1_channel, QueueHandle_t recv_queue, <span class="keywordtype">size_t</span> buffer_size, <span class="keywordtype">size_t</span> f_sample);</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>esp_err_t i2s_sampler_stop(<a class="code hl_struct" href="structi2s__sampler__t.html">i2s_sampler_t</a> *sampler);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#endif </span><span class="comment">// SAMPLING_H</span></div>
-<div class="ttc" id="astructi2s__sampler__t_html"><div class="ttname"><a href="structi2s__sampler__t.html">i2s_sampler_t</a></div><div class="ttdoc">Sampler Configuration.</div><div class="ttdef"><b>Definition:</b> i2s_sampler.h:21</div></div>
+<a href="i2s__sampler_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#ifndef SAMPLING_H</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#define SAMPLING_H</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;driver/i2s.h&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;freertos/FreeRTOS.h&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;freertos/task.h&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;freertos/queue.h&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;freertos/timers.h&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;esp_log.h&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="structi2s__sampler__t.html">   30</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>{</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="structi2s__sampler__t.html#a01668835337313a60bcb16756c005b12">   32</a></span>    QueueHandle_t <a class="code hl_variable" href="structi2s__sampler__t.html#a01668835337313a60bcb16756c005b12">dma_queue</a>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="structi2s__sampler__t.html#ac5aaa47703a07b7ca5bac6f7e7331b8b">   33</a></span>    QueueHandle_t <a class="code hl_variable" href="structi2s__sampler__t.html#ac5aaa47703a07b7ca5bac6f7e7331b8b">dsp_queue</a>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="structi2s__sampler__t.html#aebedcefcc64e1f3236580fbaa899869e">   34</a></span>    <span class="keywordtype">size_t</span> *<a class="code hl_variable" href="structi2s__sampler__t.html#aebedcefcc64e1f3236580fbaa899869e">buffer</a>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="structi2s__sampler__t.html#ad772d2f9803cdbdf265ba17194a1314c">   35</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structi2s__sampler__t.html#ad772d2f9803cdbdf265ba17194a1314c">buffer_pos</a>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="structi2s__sampler__t.html#a799a743b3abd553a37fc01ad3097df08">   36</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structi2s__sampler__t.html#a799a743b3abd553a37fc01ad3097df08">buffer_size</a>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>} <a class="code hl_struct" href="structi2s__sampler__t.html">i2s_sampler_t</a>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><a class="code hl_struct" href="structi2s__sampler__t.html">i2s_sampler_t</a> *<a class="code hl_function" href="i2s__sampler_8h.html#a9f207e31199bd786a5c5a7b0f279c62e">i2s_sampler_start</a>(adc_channel_t adc1_channel, QueueHandle_t recv_queue, <span class="keywordtype">size_t</span> buffer_size, <span class="keywordtype">size_t</span> f_sample);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>esp_err_t <a class="code hl_function" href="i2s__sampler_8h.html#a2084807167ecf9a0ee15c945ccff4191">i2s_sampler_stop</a>(<a class="code hl_struct" href="structi2s__sampler__t.html">i2s_sampler_t</a> *sampler);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">#endif </span><span class="comment">// SAMPLING_H</span></div>
+<div class="ttc" id="ai2s__sampler_8h_html_a2084807167ecf9a0ee15c945ccff4191"><div class="ttname"><a href="i2s__sampler_8h.html#a2084807167ecf9a0ee15c945ccff4191">i2s_sampler_stop</a></div><div class="ttdeci">esp_err_t i2s_sampler_stop(i2s_sampler_t *sampler)</div><div class="ttdoc">Deletes sampler Task, frees memory and uninstalls adc as well as i2s driver.</div><div class="ttdef"><b>Definition:</b> <a href="i2s__sampler_8c_source.html#l00092">i2s_sampler.c:92</a></div></div>
+<div class="ttc" id="ai2s__sampler_8h_html_a9f207e31199bd786a5c5a7b0f279c62e"><div class="ttname"><a href="i2s__sampler_8h.html#a9f207e31199bd786a5c5a7b0f279c62e">i2s_sampler_start</a></div><div class="ttdeci">i2s_sampler_t * i2s_sampler_start(adc_channel_t adc1_channel, QueueHandle_t recv_queue, size_t buffer_size, size_t f_sample)</div><div class="ttdoc">Starts a sampler Task that samples from the given ADC1 Channel and sends the samples to the given Que...</div><div class="ttdef"><b>Definition:</b> <a href="i2s__sampler_8c_source.html#l00053">i2s_sampler.c:53</a></div></div>
+<div class="ttc" id="astructi2s__sampler__t_html"><div class="ttname"><a href="structi2s__sampler__t.html">i2s_sampler_t</a></div><div class="ttdoc">Sampler Configuration.</div><div class="ttdef"><b>Definition:</b> <a href="i2s__sampler_8h_source.html#l00030">i2s_sampler.h:31</a></div></div>
+<div class="ttc" id="astructi2s__sampler__t_html_a01668835337313a60bcb16756c005b12"><div class="ttname"><a href="structi2s__sampler__t.html#a01668835337313a60bcb16756c005b12">i2s_sampler_t::dma_queue</a></div><div class="ttdeci">QueueHandle_t dma_queue</div><div class="ttdef"><b>Definition:</b> <a href="i2s__sampler_8h_source.html#l00032">i2s_sampler.h:32</a></div></div>
+<div class="ttc" id="astructi2s__sampler__t_html_a799a743b3abd553a37fc01ad3097df08"><div class="ttname"><a href="structi2s__sampler__t.html#a799a743b3abd553a37fc01ad3097df08">i2s_sampler_t::buffer_size</a></div><div class="ttdeci">size_t buffer_size</div><div class="ttdef"><b>Definition:</b> <a href="i2s__sampler_8h_source.html#l00036">i2s_sampler.h:36</a></div></div>
+<div class="ttc" id="astructi2s__sampler__t_html_ac5aaa47703a07b7ca5bac6f7e7331b8b"><div class="ttname"><a href="structi2s__sampler__t.html#ac5aaa47703a07b7ca5bac6f7e7331b8b">i2s_sampler_t::dsp_queue</a></div><div class="ttdeci">QueueHandle_t dsp_queue</div><div class="ttdef"><b>Definition:</b> <a href="i2s__sampler_8h_source.html#l00033">i2s_sampler.h:33</a></div></div>
+<div class="ttc" id="astructi2s__sampler__t_html_ad772d2f9803cdbdf265ba17194a1314c"><div class="ttname"><a href="structi2s__sampler__t.html#ad772d2f9803cdbdf265ba17194a1314c">i2s_sampler_t::buffer_pos</a></div><div class="ttdeci">size_t buffer_pos</div><div class="ttdef"><b>Definition:</b> <a href="i2s__sampler_8h_source.html#l00035">i2s_sampler.h:35</a></div></div>
+<div class="ttc" id="astructi2s__sampler__t_html_aebedcefcc64e1f3236580fbaa899869e"><div class="ttname"><a href="structi2s__sampler__t.html#aebedcefcc64e1f3236580fbaa899869e">i2s_sampler_t::buffer</a></div><div class="ttdeci">size_t * buffer</div><div class="ttdef"><b>Definition:</b> <a href="i2s__sampler_8h_source.html#l00034">i2s_sampler.h:34</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

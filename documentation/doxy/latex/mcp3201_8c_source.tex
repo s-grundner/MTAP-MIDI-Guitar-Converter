@@ -1,0 +1,112 @@
+\hypertarget{mcp3201_8c_source}{}\doxysection{mcp3201.\+c}
+\label{mcp3201_8c_source}\index{lib/mcp3201/mcp3201.c@{lib/mcp3201/mcp3201.c}}
+\mbox{\hyperlink{mcp3201_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00012}00012 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{mcp3201_8h}{mcp3201.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00014}00014 \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *TAG = \textcolor{stringliteral}{"{}mcp3201"{}};}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00022}\mbox{\hyperlink{structmcp3201__context__t}{00022}} \textcolor{keyword}{struct }\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_context\_t}}}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00023}00023 \{}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00024}\mbox{\hyperlink{structmcp3201__context__t_a67eb2e10c7970f2bb7be144d2af56e4a}{00024}}     \mbox{\hyperlink{structmcp3201__config__t}{mcp3201\_config\_t}} \mbox{\hyperlink{structmcp3201__context__t_a67eb2e10c7970f2bb7be144d2af56e4a}{cfg}};}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00025}\mbox{\hyperlink{structmcp3201__context__t_af04b0de520c6e42f039c5edf47b13dc2}{00025}}     spi\_device\_handle\_t \mbox{\hyperlink{structmcp3201__context__t_af04b0de520c6e42f039c5edf47b13dc2}{spi}};}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00026}\mbox{\hyperlink{structmcp3201__context__t_ae4e49bbcd1e3f9e5f8c90b82c6bdd899}{00026}}     spi\_transaction\_t *\mbox{\hyperlink{structmcp3201__context__t_ae4e49bbcd1e3f9e5f8c90b82c6bdd899}{ongoing\_transaction}};}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00027}00027 \};}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00028}\mbox{\hyperlink{mcp3201_8c_a5b6eb8ead610fcf3be79b9922131cf40}{00028}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_context\_t}} \mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_context\_t}};}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00030}00030 \textcolor{keyword}{static} \textcolor{keywordtype}{void} cs\_low(spi\_transaction\_t *t)}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00031}00031 \{}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00032}00032     \mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_handle\_t}} mcp\_handle = (\mbox{\hyperlink{mcp3201_8h_a394f6b43329fb768aeb634cdfee4ebef}{mcp3201\_handle\_t}})t-\/>user;}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00033}00033     gpio\_set\_level(mcp\_handle-\/>\mbox{\hyperlink{structmcp3201__context__t_a67eb2e10c7970f2bb7be144d2af56e4a}{cfg}}.\mbox{\hyperlink{structmcp3201__config__t_a7a38bd9dda941e0eb854430f514097bd}{cs\_io}}, 0);}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00034}00034 \}}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00036}00036 \textcolor{keyword}{static} \textcolor{keywordtype}{void} cs\_high(spi\_transaction\_t *t)}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00037}00037 \{}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00038}00038     \mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_handle\_t}} mcp\_handle = (\mbox{\hyperlink{mcp3201_8h_a394f6b43329fb768aeb634cdfee4ebef}{mcp3201\_handle\_t}})t-\/>user;}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00039}00039     gpio\_set\_level(mcp\_handle-\/>\mbox{\hyperlink{structmcp3201__context__t_a67eb2e10c7970f2bb7be144d2af56e4a}{cfg}}.\mbox{\hyperlink{structmcp3201__config__t_a7a38bd9dda941e0eb854430f514097bd}{cs\_io}}, 1);}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00040}00040 \}}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00042}\mbox{\hyperlink{mcp3201_8c_af5ddae9d2322ad9c6a7979cf2789ff1d}{00042}} esp\_err\_t \mbox{\hyperlink{mcp3201_8c_af5ddae9d2322ad9c6a7979cf2789ff1d}{mcp3201\_init}}(\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_context\_t}} **out\_ctx, \textcolor{keyword}{const} \mbox{\hyperlink{structmcp3201__config__t}{mcp3201\_config\_t}} *\mbox{\hyperlink{structmcp3201__context__t_a67eb2e10c7970f2bb7be144d2af56e4a}{cfg}})}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00043}00043 \{}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00044}00044     \mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_context\_t}} *ctx = (\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_context\_t}} *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_context\_t}}));}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00045}00045     esp\_err\_t err = ESP\_OK;}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00046}00046     \textcolor{keywordflow}{if} (ctx == NULL)}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00047}00047     \{}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00048}00048         ESP\_LOGE(TAG, \textcolor{stringliteral}{"{}Failed to allocate memory for mcp3201 context"{}});}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00049}00049         \textcolor{keywordflow}{return} ESP\_ERR\_NO\_MEM;}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00050}00050     \}}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00052}00052     *ctx = (\mbox{\hyperlink{mcp3201_8c_a5b6eb8ead610fcf3be79b9922131cf40}{mcp3201\_context\_t}})\{}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00053}00053         .\mbox{\hyperlink{structmcp3201__context__t_a67eb2e10c7970f2bb7be144d2af56e4a}{cfg}} = *\mbox{\hyperlink{structmcp3201__context__t_a67eb2e10c7970f2bb7be144d2af56e4a}{cfg}}\};}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00055}00055     spi\_device\_interface\_config\_t dev\_cfg = \{}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00056}00056         .clock\_speed\_hz = \mbox{\hyperlink{mcp3201_8h_a44d38ab4d4e88e679184bbbffdac00dd}{ADC\_CLK}},}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00057}00057         .mode = 0,}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00058}00058         .spics\_io\_num = ctx-\/>\mbox{\hyperlink{structmcp3201__context__t_a67eb2e10c7970f2bb7be144d2af56e4a}{cfg}}.\mbox{\hyperlink{structmcp3201__config__t_a7a38bd9dda941e0eb854430f514097bd}{cs\_io}},}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00059}00059         .queue\_size = 1,}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00060}00060         .pre\_cb = cs\_low,}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00061}00061         .post\_cb = cs\_high,}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00062}00062         .command\_bits = 0,}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00063}00063         .address\_bits = 0,}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00064}00064         .dummy\_bits = 0,}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00065}00065         .flags = 0,}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00066}00066     \};}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00068}00068     err = spi\_bus\_add\_device(ctx-\/>\mbox{\hyperlink{structmcp3201__context__t_a67eb2e10c7970f2bb7be144d2af56e4a}{cfg}}.\mbox{\hyperlink{structmcp3201__config__t_af2bc3d31ad0099123ad13e726b96cb8f}{host}}, \&dev\_cfg, \&ctx-\/>\mbox{\hyperlink{structmcp3201__context__t_af04b0de520c6e42f039c5edf47b13dc2}{spi}});}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00069}00069     ESP\_ERROR\_CHECK(err);}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00070}00070     \textcolor{keywordflow}{if} (err != ESP\_OK)}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00071}00071     \{}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00072}00072         ESP\_LOGE(TAG, \textcolor{stringliteral}{"{}Failed to add device to spi bus"{}});}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00073}00073         \textcolor{keywordflow}{goto} cleanup;}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00074}00074     \}}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00075}00075     *out\_ctx = ctx;}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00076}00076     \textcolor{keywordflow}{return} err;}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00078}00078 cleanup:}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00079}00079     \textcolor{keywordflow}{if} (ctx-\/>\mbox{\hyperlink{structmcp3201__context__t_af04b0de520c6e42f039c5edf47b13dc2}{spi}})}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00080}00080     \{}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00081}00081         spi\_bus\_remove\_device(ctx-\/>\mbox{\hyperlink{structmcp3201__context__t_af04b0de520c6e42f039c5edf47b13dc2}{spi}});}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00082}00082         ctx-\/>\mbox{\hyperlink{structmcp3201__context__t_af04b0de520c6e42f039c5edf47b13dc2}{spi}} = NULL;}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00083}00083     \}}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00084}00084     free(ctx);}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00085}00085     \textcolor{keywordflow}{return} err;}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00086}00086 \}}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00088}\mbox{\hyperlink{mcp3201_8c_af9620a282321a415a2c9808e73d28a66}{00088}} esp\_err\_t \mbox{\hyperlink{mcp3201_8c_af9620a282321a415a2c9808e73d28a66}{mcp3201\_read}}(\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_context\_t}} *ctx, uint16\_t *out\_value)}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00089}00089 \{}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00090}00090     esp\_err\_t err = ESP\_OK;}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00091}00091     spi\_transaction\_t t = \{}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00092}00092         .user = (\textcolor{keywordtype}{void} *)ctx,}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00093}00093         .length = 16,}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00094}00094         .rx\_buffer = out\_value,}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00095}00095     \};}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00096}00096     err = spi\_device\_polling\_transmit(ctx-\/>\mbox{\hyperlink{structmcp3201__context__t_af04b0de520c6e42f039c5edf47b13dc2}{spi}}, \&t);}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00097}00097     \textcolor{keywordflow}{if} (err != ESP\_OK)}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00098}00098     \{}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00099}00099         ESP\_LOGE(TAG, \textcolor{stringliteral}{"{}Failed to transmit to mcp3201"{}});}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00100}00100         \textcolor{keywordflow}{return} err;}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00101}00101     \}}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00102}00102     \textcolor{keywordflow}{return} err;}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00103}00103 \}}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00104}00104 }
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00105}\mbox{\hyperlink{mcp3201_8c_acacc7f3f14eb9108f7c053d4cc370e00}{00105}} esp\_err\_t \mbox{\hyperlink{mcp3201_8c_acacc7f3f14eb9108f7c053d4cc370e00}{mcp3201\_exit}}(\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_handle\_t}} mcp\_handle)}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00106}00106 \{}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00107}00107     esp\_err\_t err = ESP\_OK;}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00109}00109     \textcolor{keywordflow}{if} (mcp\_handle-\/>\mbox{\hyperlink{structmcp3201__context__t_af04b0de520c6e42f039c5edf47b13dc2}{spi}})}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00110}00110     \{}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00111}00111         err = spi\_bus\_remove\_device(mcp\_handle-\/>\mbox{\hyperlink{structmcp3201__context__t_af04b0de520c6e42f039c5edf47b13dc2}{spi}});}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00112}00112         \textcolor{keywordflow}{if} (err != ESP\_OK)}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00113}00113         \{}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00114}00114             ESP\_LOGE(TAG, \textcolor{stringliteral}{"{}Failed to remove device from spi bus"{}});}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00115}00115             \textcolor{keywordflow}{return} err;}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00116}00116         \}}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00117}00117         mcp\_handle-\/>\mbox{\hyperlink{structmcp3201__context__t_af04b0de520c6e42f039c5edf47b13dc2}{spi}} = NULL;}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00118}00118     \}}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00119}00119 }
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00120}00120     free(mcp\_handle);}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00121}00121     \textcolor{keywordflow}{return} err;}
+\DoxyCodeLine{\Hypertarget{mcp3201_8c_source_l00122}00122 \}}
+
+\end{DoxyCode}

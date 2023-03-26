@@ -1,0 +1,139 @@
+\hypertarget{test__fft_8c}{}\doxysection{test/test\+\_\+fft/test\+\_\+fft.c File Reference}
+\label{test__fft_8c}\index{test/test\_fft/test\_fft.c@{test/test\_fft/test\_fft.c}}
+
+
+Unit Test for FFT.  
+
+
+{\ttfamily \#include $<$processed-\/data.\+h$>$}\newline
+{\ttfamily \#include $<$fft.\+h$>$}\newline
+{\ttfamily \#include $<$unity.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{test__fft_8c_a1d48237cb63c5ae67aab6d00cc64afb6}{AUDIO\+\_\+\+BUFFER\+\_\+\+SIZE}}~512
+\item 
+\#define \mbox{\hyperlink{test__fft_8c_a2203c75072f0cfea39f8d48f21ff097c}{F\+\_\+\+SAMPLE\+\_\+\+HZ}}~44100
+\item 
+\#define \mbox{\hyperlink{test__fft_8c_a6fb55daf48579b8ab77d976c01ffae3a}{FFT\+\_\+\+WINDOW\+\_\+\+SIZE}}~2
+\item 
+\#define \mbox{\hyperlink{test__fft_8c_a636ddc19af00bc87969a07c88331f105}{FFT\+\_\+\+SIZE}}~4096
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{test__fft_8c_a95c834d6178047ce9e1bce7cbfea2836}{set\+Up}} (void)
+\item 
+void \mbox{\hyperlink{test__fft_8c_a9909011e5fea0c018842eec4d93d0662}{tear\+Down}} (void)
+\item 
+void \mbox{\hyperlink{test__fft_8c_a4ef2de7798ad1e4a01ea861311e3f731}{test\+\_\+processed\+\_\+data}} (void)
+\item 
+void \mbox{\hyperlink{test__fft_8c_abce06be17fc37d675118a678a8100a36}{app\+\_\+main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Unit Test for FFT. 
+
+\begin{DoxyAuthor}{Author}
+@s-\/grundner 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/03-\/26
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+Definition in file \mbox{\hyperlink{test__fft_8c_source}{test\+\_\+fft.\+c}}.
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{test__fft_8c_a1d48237cb63c5ae67aab6d00cc64afb6}\label{test__fft_8c_a1d48237cb63c5ae67aab6d00cc64afb6}} 
+\index{test\_fft.c@{test\_fft.c}!AUDIO\_BUFFER\_SIZE@{AUDIO\_BUFFER\_SIZE}}
+\index{AUDIO\_BUFFER\_SIZE@{AUDIO\_BUFFER\_SIZE}!test\_fft.c@{test\_fft.c}}
+\doxysubsubsection{\texorpdfstring{AUDIO\_BUFFER\_SIZE}{AUDIO\_BUFFER\_SIZE}}
+{\footnotesize\ttfamily \#define AUDIO\+\_\+\+BUFFER\+\_\+\+SIZE~512}
+
+
+
+Definition at line \mbox{\hyperlink{test__fft_8c_source_l00015}{15}} of file \mbox{\hyperlink{test__fft_8c_source}{test\+\_\+fft.\+c}}.
+
+\mbox{\Hypertarget{test__fft_8c_a2203c75072f0cfea39f8d48f21ff097c}\label{test__fft_8c_a2203c75072f0cfea39f8d48f21ff097c}} 
+\index{test\_fft.c@{test\_fft.c}!F\_SAMPLE\_HZ@{F\_SAMPLE\_HZ}}
+\index{F\_SAMPLE\_HZ@{F\_SAMPLE\_HZ}!test\_fft.c@{test\_fft.c}}
+\doxysubsubsection{\texorpdfstring{F\_SAMPLE\_HZ}{F\_SAMPLE\_HZ}}
+{\footnotesize\ttfamily \#define F\+\_\+\+SAMPLE\+\_\+\+HZ~44100}
+
+
+
+Definition at line \mbox{\hyperlink{test__fft_8c_source_l00016}{16}} of file \mbox{\hyperlink{test__fft_8c_source}{test\+\_\+fft.\+c}}.
+
+\mbox{\Hypertarget{test__fft_8c_a636ddc19af00bc87969a07c88331f105}\label{test__fft_8c_a636ddc19af00bc87969a07c88331f105}} 
+\index{test\_fft.c@{test\_fft.c}!FFT\_SIZE@{FFT\_SIZE}}
+\index{FFT\_SIZE@{FFT\_SIZE}!test\_fft.c@{test\_fft.c}}
+\doxysubsubsection{\texorpdfstring{FFT\_SIZE}{FFT\_SIZE}}
+{\footnotesize\ttfamily \#define FFT\+\_\+\+SIZE~4096}
+
+
+
+Definition at line \mbox{\hyperlink{test__fft_8c_source_l00018}{18}} of file \mbox{\hyperlink{test__fft_8c_source}{test\+\_\+fft.\+c}}.
+
+\mbox{\Hypertarget{test__fft_8c_a6fb55daf48579b8ab77d976c01ffae3a}\label{test__fft_8c_a6fb55daf48579b8ab77d976c01ffae3a}} 
+\index{test\_fft.c@{test\_fft.c}!FFT\_WINDOW\_SIZE@{FFT\_WINDOW\_SIZE}}
+\index{FFT\_WINDOW\_SIZE@{FFT\_WINDOW\_SIZE}!test\_fft.c@{test\_fft.c}}
+\doxysubsubsection{\texorpdfstring{FFT\_WINDOW\_SIZE}{FFT\_WINDOW\_SIZE}}
+{\footnotesize\ttfamily \#define FFT\+\_\+\+WINDOW\+\_\+\+SIZE~2}
+
+
+
+Definition at line \mbox{\hyperlink{test__fft_8c_source_l00017}{17}} of file \mbox{\hyperlink{test__fft_8c_source}{test\+\_\+fft.\+c}}.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{test__fft_8c_abce06be17fc37d675118a678a8100a36}\label{test__fft_8c_abce06be17fc37d675118a678a8100a36}} 
+\index{test\_fft.c@{test\_fft.c}!app\_main@{app\_main}}
+\index{app\_main@{app\_main}!test\_fft.c@{test\_fft.c}}
+\doxysubsubsection{\texorpdfstring{app\_main()}{app\_main()}}
+{\footnotesize\ttfamily void app\+\_\+main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{test__fft_8c_source_l00062}{62}} of file \mbox{\hyperlink{test__fft_8c_source}{test\+\_\+fft.\+c}}.
+
+\mbox{\Hypertarget{test__fft_8c_a95c834d6178047ce9e1bce7cbfea2836}\label{test__fft_8c_a95c834d6178047ce9e1bce7cbfea2836}} 
+\index{test\_fft.c@{test\_fft.c}!setUp@{setUp}}
+\index{setUp@{setUp}!test\_fft.c@{test\_fft.c}}
+\doxysubsubsection{\texorpdfstring{setUp()}{setUp()}}
+{\footnotesize\ttfamily void set\+Up (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{test__fft_8c_source_l00020}{20}} of file \mbox{\hyperlink{test__fft_8c_source}{test\+\_\+fft.\+c}}.
+
+\mbox{\Hypertarget{test__fft_8c_a9909011e5fea0c018842eec4d93d0662}\label{test__fft_8c_a9909011e5fea0c018842eec4d93d0662}} 
+\index{test\_fft.c@{test\_fft.c}!tearDown@{tearDown}}
+\index{tearDown@{tearDown}!test\_fft.c@{test\_fft.c}}
+\doxysubsubsection{\texorpdfstring{tearDown()}{tearDown()}}
+{\footnotesize\ttfamily void tear\+Down (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{test__fft_8c_source_l00024}{24}} of file \mbox{\hyperlink{test__fft_8c_source}{test\+\_\+fft.\+c}}.
+
+\mbox{\Hypertarget{test__fft_8c_a4ef2de7798ad1e4a01ea861311e3f731}\label{test__fft_8c_a4ef2de7798ad1e4a01ea861311e3f731}} 
+\index{test\_fft.c@{test\_fft.c}!test\_processed\_data@{test\_processed\_data}}
+\index{test\_processed\_data@{test\_processed\_data}!test\_fft.c@{test\_fft.c}}
+\doxysubsubsection{\texorpdfstring{test\_processed\_data()}{test\_processed\_data()}}
+{\footnotesize\ttfamily void test\+\_\+processed\+\_\+data (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{test__fft_8c_source_l00028}{28}} of file \mbox{\hyperlink{test__fft_8c_source}{test\+\_\+fft.\+c}}.
+

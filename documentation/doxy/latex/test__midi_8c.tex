@@ -1,0 +1,162 @@
+\hypertarget{test__midi_8c}{}\doxysection{test/test\+\_\+midi/test\+\_\+midi.c File Reference}
+\label{test__midi_8c}\index{test/test\_midi/test\_midi.c@{test/test\_midi/test\_midi.c}}
+
+
+Unit Tests for MIDI Driver.  
+
+
+{\ttfamily \#include $<$midi.\+h$>$}\newline
+{\ttfamily \#include $<$unity.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{test__midi_8c_a57e9b955863a0270f6bdf5317003d6a4}{MIDI\+\_\+\+UART}}~(UART\+\_\+\+NUM\+\_\+1)
+\item 
+\#define \mbox{\hyperlink{test__midi_8c_a5cdf0322e10deeff92bbdf233382bca6}{MIDI\+\_\+\+BAUD}}~(115200)
+\item 
+\#define \mbox{\hyperlink{test__midi_8c_af4773f7c0246cf1f8feea3de02c2bf86}{MIDI\+\_\+\+TX}}~(GPIO\+\_\+\+NUM\+\_\+26)
+\item 
+\#define \mbox{\hyperlink{test__midi_8c_a3aa0cfef819ce6e845bee426c4f94431}{MIDI\+\_\+\+RX}}~(GPIO\+\_\+\+NUM\+\_\+27)
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{test__midi_8c_a95c834d6178047ce9e1bce7cbfea2836}{set\+Up}} (void)
+\item 
+void \mbox{\hyperlink{test__midi_8c_a9909011e5fea0c018842eec4d93d0662}{tear\+Down}} (void)
+\item 
+void \mbox{\hyperlink{test__midi_8c_a5c3ebb25c11455b687e32d3dc7b18f27}{test\+\_\+midi\+\_\+blink}} (void)
+\item 
+void \mbox{\hyperlink{test__midi_8c_a4776631b017a19e2246cd7d1bbb23893}{test\+\_\+midi\+\_\+bend}} (void)
+\item 
+void \mbox{\hyperlink{test__midi_8c_aa5115d89d142fd93fe6bf0dee72c7be2}{test\+\_\+midi\+\_\+bent\+\_\+note}} (void)
+\item 
+void \mbox{\hyperlink{test__midi_8c_abce06be17fc37d675118a678a8100a36}{app\+\_\+main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Unit Tests for MIDI Driver. 
+
+\begin{DoxyAuthor}{Author}
+@s-\/grundner 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/03-\/26
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+Definition in file \mbox{\hyperlink{test__midi_8c_source}{test\+\_\+midi.\+c}}.
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{test__midi_8c_a5cdf0322e10deeff92bbdf233382bca6}\label{test__midi_8c_a5cdf0322e10deeff92bbdf233382bca6}} 
+\index{test\_midi.c@{test\_midi.c}!MIDI\_BAUD@{MIDI\_BAUD}}
+\index{MIDI\_BAUD@{MIDI\_BAUD}!test\_midi.c@{test\_midi.c}}
+\doxysubsubsection{\texorpdfstring{MIDI\_BAUD}{MIDI\_BAUD}}
+{\footnotesize\ttfamily \#define MIDI\+\_\+\+BAUD~(115200)}
+
+
+
+Definition at line \mbox{\hyperlink{test__midi_8c_source_l00018}{18}} of file \mbox{\hyperlink{test__midi_8c_source}{test\+\_\+midi.\+c}}.
+
+\mbox{\Hypertarget{test__midi_8c_a3aa0cfef819ce6e845bee426c4f94431}\label{test__midi_8c_a3aa0cfef819ce6e845bee426c4f94431}} 
+\index{test\_midi.c@{test\_midi.c}!MIDI\_RX@{MIDI\_RX}}
+\index{MIDI\_RX@{MIDI\_RX}!test\_midi.c@{test\_midi.c}}
+\doxysubsubsection{\texorpdfstring{MIDI\_RX}{MIDI\_RX}}
+{\footnotesize\ttfamily \#define MIDI\+\_\+\+RX~(GPIO\+\_\+\+NUM\+\_\+27)}
+
+
+
+Definition at line \mbox{\hyperlink{test__midi_8c_source_l00020}{20}} of file \mbox{\hyperlink{test__midi_8c_source}{test\+\_\+midi.\+c}}.
+
+\mbox{\Hypertarget{test__midi_8c_af4773f7c0246cf1f8feea3de02c2bf86}\label{test__midi_8c_af4773f7c0246cf1f8feea3de02c2bf86}} 
+\index{test\_midi.c@{test\_midi.c}!MIDI\_TX@{MIDI\_TX}}
+\index{MIDI\_TX@{MIDI\_TX}!test\_midi.c@{test\_midi.c}}
+\doxysubsubsection{\texorpdfstring{MIDI\_TX}{MIDI\_TX}}
+{\footnotesize\ttfamily \#define MIDI\+\_\+\+TX~(GPIO\+\_\+\+NUM\+\_\+26)}
+
+
+
+Definition at line \mbox{\hyperlink{test__midi_8c_source_l00019}{19}} of file \mbox{\hyperlink{test__midi_8c_source}{test\+\_\+midi.\+c}}.
+
+\mbox{\Hypertarget{test__midi_8c_a57e9b955863a0270f6bdf5317003d6a4}\label{test__midi_8c_a57e9b955863a0270f6bdf5317003d6a4}} 
+\index{test\_midi.c@{test\_midi.c}!MIDI\_UART@{MIDI\_UART}}
+\index{MIDI\_UART@{MIDI\_UART}!test\_midi.c@{test\_midi.c}}
+\doxysubsubsection{\texorpdfstring{MIDI\_UART}{MIDI\_UART}}
+{\footnotesize\ttfamily \#define MIDI\+\_\+\+UART~(UART\+\_\+\+NUM\+\_\+1)}
+
+
+
+Definition at line \mbox{\hyperlink{test__midi_8c_source_l00017}{17}} of file \mbox{\hyperlink{test__midi_8c_source}{test\+\_\+midi.\+c}}.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{test__midi_8c_abce06be17fc37d675118a678a8100a36}\label{test__midi_8c_abce06be17fc37d675118a678a8100a36}} 
+\index{test\_midi.c@{test\_midi.c}!app\_main@{app\_main}}
+\index{app\_main@{app\_main}!test\_midi.c@{test\_midi.c}}
+\doxysubsubsection{\texorpdfstring{app\_main()}{app\_main()}}
+{\footnotesize\ttfamily void app\+\_\+main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{test__midi_8c_source_l00087}{87}} of file \mbox{\hyperlink{test__midi_8c_source}{test\+\_\+midi.\+c}}.
+
+\mbox{\Hypertarget{test__midi_8c_a95c834d6178047ce9e1bce7cbfea2836}\label{test__midi_8c_a95c834d6178047ce9e1bce7cbfea2836}} 
+\index{test\_midi.c@{test\_midi.c}!setUp@{setUp}}
+\index{setUp@{setUp}!test\_midi.c@{test\_midi.c}}
+\doxysubsubsection{\texorpdfstring{setUp()}{setUp()}}
+{\footnotesize\ttfamily void set\+Up (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{test__midi_8c_source_l00022}{22}} of file \mbox{\hyperlink{test__midi_8c_source}{test\+\_\+midi.\+c}}.
+
+\mbox{\Hypertarget{test__midi_8c_a9909011e5fea0c018842eec4d93d0662}\label{test__midi_8c_a9909011e5fea0c018842eec4d93d0662}} 
+\index{test\_midi.c@{test\_midi.c}!tearDown@{tearDown}}
+\index{tearDown@{tearDown}!test\_midi.c@{test\_midi.c}}
+\doxysubsubsection{\texorpdfstring{tearDown()}{tearDown()}}
+{\footnotesize\ttfamily void tear\+Down (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{test__midi_8c_source_l00032}{32}} of file \mbox{\hyperlink{test__midi_8c_source}{test\+\_\+midi.\+c}}.
+
+\mbox{\Hypertarget{test__midi_8c_a4776631b017a19e2246cd7d1bbb23893}\label{test__midi_8c_a4776631b017a19e2246cd7d1bbb23893}} 
+\index{test\_midi.c@{test\_midi.c}!test\_midi\_bend@{test\_midi\_bend}}
+\index{test\_midi\_bend@{test\_midi\_bend}!test\_midi.c@{test\_midi.c}}
+\doxysubsubsection{\texorpdfstring{test\_midi\_bend()}{test\_midi\_bend()}}
+{\footnotesize\ttfamily void test\+\_\+midi\+\_\+bend (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{test__midi_8c_source_l00046}{46}} of file \mbox{\hyperlink{test__midi_8c_source}{test\+\_\+midi.\+c}}.
+
+\mbox{\Hypertarget{test__midi_8c_aa5115d89d142fd93fe6bf0dee72c7be2}\label{test__midi_8c_aa5115d89d142fd93fe6bf0dee72c7be2}} 
+\index{test\_midi.c@{test\_midi.c}!test\_midi\_bent\_note@{test\_midi\_bent\_note}}
+\index{test\_midi\_bent\_note@{test\_midi\_bent\_note}!test\_midi.c@{test\_midi.c}}
+\doxysubsubsection{\texorpdfstring{test\_midi\_bent\_note()}{test\_midi\_bent\_note()}}
+{\footnotesize\ttfamily void test\+\_\+midi\+\_\+bent\+\_\+note (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{test__midi_8c_source_l00058}{58}} of file \mbox{\hyperlink{test__midi_8c_source}{test\+\_\+midi.\+c}}.
+
+\mbox{\Hypertarget{test__midi_8c_a5c3ebb25c11455b687e32d3dc7b18f27}\label{test__midi_8c_a5c3ebb25c11455b687e32d3dc7b18f27}} 
+\index{test\_midi.c@{test\_midi.c}!test\_midi\_blink@{test\_midi\_blink}}
+\index{test\_midi\_blink@{test\_midi\_blink}!test\_midi.c@{test\_midi.c}}
+\doxysubsubsection{\texorpdfstring{test\_midi\_blink()}{test\_midi\_blink()}}
+{\footnotesize\ttfamily void test\+\_\+midi\+\_\+blink (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{test__midi_8c_source_l00037}{37}} of file \mbox{\hyperlink{test__midi_8c_source}{test\+\_\+midi.\+c}}.
+

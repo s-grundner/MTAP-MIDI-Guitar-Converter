@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Gitcon: C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/include/config.h Source File</title>
+<title>Gitcon: include/config.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -20,7 +20,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="MTAP-logo-schwarz.png"/></td>
   <td id="projectalign">
    <div id="projectname">Gitcon
    </div>
@@ -70,7 +69,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_d9edf6c004b4a7ff14fe9ae7a92214ee.html">firmware</a></li><li class="navelem"><a class="el" href="dir_6bc3a76d1c909537939dc4ec93b93555.html">MIDI-Testing</a></li><li class="navelem"><a class="el" href="dir_0feffc5574dd583f4515c7e6df01e22b.html">include</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -99,40 +98,42 @@ $(function() {
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &quot;esp_adc_cal.h&quot;</span></div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &quot;esp_log.h&quot;</span></div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &quot;fft.h&quot;</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &quot;i2s_sampler.h&quot;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &quot;<a class="code" href="fft_8h.html">fft.h</a>&quot;</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &quot;<a class="code" href="i2s__sampler_8h.html">i2s_sampler.h</a>&quot;</span></div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &quot;<a class="code" href="mcp3201_8h.html">mcp3201.h</a>&quot;</span></div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#include &quot;<a class="code" href="midi_8h.html">midi.h</a>&quot;</span></div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#define SPI_MOSI (GPIO_NUM_23)</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#define SPI_MISO (GPIO_NUM_19)</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#define SPI_SCLK (GPIO_NUM_18)</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#define SPI_CS (GPIO_NUM_5)</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#define SPI_DEV (VSPI_HOST)</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="config_8h.html#a7dbebab5f7dd57885adccf6711b13592">   37</a></span><span class="preprocessor">#define SPI_MOSI (GPIO_NUM_23)</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="config_8h.html#ab142cc77dfa97010c9d2b616d0992b64">   38</a></span><span class="preprocessor">#define SPI_MISO (GPIO_NUM_19)</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="config_8h.html#aefec442ab2dbec4785b387b3e88faa66">   39</a></span><span class="preprocessor">#define SPI_SCLK (GPIO_NUM_18)</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="config_8h.html#ade4259fa3cbb71732a4e73c18dcb9b0d">   40</a></span><span class="preprocessor">#define SPI_CS (GPIO_NUM_5)</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="config_8h.html#a38ce3824ec7a3243b3b966e64017d50c">   41</a></span><span class="preprocessor">#define SPI_DEV (VSPI_HOST)</span></div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#define MIDI_UART (UART_NUM_1)</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#define MIDI_BAUD (115200)</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#define MIDI_TX (GPIO_NUM_26)</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#define MIDI_RX (GPIO_NUM_27)</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="config_8h.html#a57e9b955863a0270f6bdf5317003d6a4">   43</a></span><span class="preprocessor">#define MIDI_UART (UART_NUM_1)</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="config_8h.html#a5cdf0322e10deeff92bbdf233382bca6">   44</a></span><span class="preprocessor">#define MIDI_BAUD (115200)</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="config_8h.html#af4773f7c0246cf1f8feea3de02c2bf86">   45</a></span><span class="preprocessor">#define MIDI_TX (GPIO_NUM_26)</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="config_8h.html#a3aa0cfef819ce6e845bee426c4f94431">   46</a></span><span class="preprocessor">#define MIDI_RX (GPIO_NUM_27)</span></div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#define DMA_CHAN 1</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#define ADC_RES_BITS 12</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#define ADC_RES (1 &lt;&lt; ADC_RES_BITS)</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#define INTERNAL_ADC_UNIT (ADC_UNIT_1)</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#define INTERNAL_ADC_CHANNEL (ADC_CHANNEL_0)</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#define INTERNAL_ADC_IO (GPIO_NUM_4)</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="config_8h.html#a5c8e512df4a72e57db32aca9123c172f">   48</a></span><span class="preprocessor">#define DMA_CHAN 1</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="config_8h.html#aad793a45ce7e7d22d082d0a92edece6e">   49</a></span><span class="preprocessor">#define ADC_RES_BITS 12</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="config_8h.html#ab298faea909e0aa62203195aa3d6ca80">   50</a></span><span class="preprocessor">#define ADC_RES (1 &lt;&lt; ADC_RES_BITS)</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="config_8h.html#ae28cb709c4dc3114500354fecc02ca23">   51</a></span><span class="preprocessor">#define INTERNAL_ADC_UNIT (ADC_UNIT_1)</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="config_8h.html#a17da56be7ac4bd74a5996123898edfdb">   52</a></span><span class="preprocessor">#define INTERNAL_ADC_CHANNEL (ADC_CHANNEL_5)</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="config_8h.html#a7c504a66f7fc0240d2b3f04cb88be20d">   53</a></span><span class="preprocessor">#define INTERNAL_ADC_IO (GPIO_NUM_33)</span></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">#define AUDIO_BUFFER_SIZE 512 </span><span class="comment">// Size of buffer for FFT and sampler</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#define F_SAMPLE_HZ 44100     </span><span class="comment">// Sample rate of FFT and sampler</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">#define FFT_WINDOW_SIZE 2     </span><span class="comment">// Amount of buffers to take for FFT</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#define FFT_SIZE 4096         </span><span class="comment">//(AUDIO_BUFFER_SIZE * FFT_WINDOW_SIZE)  Amount of samples to take for FFT</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="config_8h.html#a1d48237cb63c5ae67aab6d00cc64afb6">   55</a></span><span class="preprocessor">#define AUDIO_BUFFER_SIZE 512                          </span><span class="comment">// Size of buffer for FFT and sampler</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="config_8h.html#a2203c75072f0cfea39f8d48f21ff097c">   56</a></span><span class="preprocessor">#define F_SAMPLE_HZ 15000                              </span><span class="comment">// Sample rate of FFT and sampler</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="config_8h.html#a6fb55daf48579b8ab77d976c01ffae3a">   57</a></span><span class="preprocessor">#define FFT_WINDOW_SIZE 4                              </span><span class="comment">// Amount of buffers to take for FFT</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="config_8h.html#a636ddc19af00bc87969a07c88331f105">   58</a></span><span class="preprocessor">#define FFT_SIZE (AUDIO_BUFFER_SIZE * FFT_WINDOW_SIZE) </span><span class="comment">// Amount of samples to take for FFT</span></div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">// leave this commented out to use internal ADC</span></div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">// #define USE_MCP3201</span></div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#endif </span><span class="comment">// CONFIG_H</span></div>
+<div class="ttc" id="afft_8h_html"><div class="ttname"><a href="fft_8h.html">fft.h</a></div></div>
+<div class="ttc" id="ai2s__sampler_8h_html"><div class="ttname"><a href="i2s__sampler_8h.html">i2s_sampler.h</a></div><div class="ttdoc">I2S Sampler Driver for ESP32.</div></div>
 <div class="ttc" id="amcp3201_8h_html"><div class="ttname"><a href="mcp3201_8h.html">mcp3201.h</a></div></div>
-<div class="ttc" id="amidi_8h_html"><div class="ttname"><a href="midi_8h.html">midi.h</a></div><div class="ttdoc">midi driver for esp32</div></div>
+<div class="ttc" id="amidi_8h_html"><div class="ttname"><a href="midi_8h.html">midi.h</a></div><div class="ttdoc">MIDI UART Driver for ESP32.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,135 +1,615 @@
 \begin{theindex}
 
-  \item {adc\_to\_num}
-    \subitem {scale.h}, \hyperpage{14}
-  \item {adc\_to\_pitch}
-    \subitem {scale.h}, \hyperpage{15}
+  \item {ADC\_CLK}
+    \subitem {mcp3201.h}, \hyperpage{85}
+  \item {ADC\_RES}
+    \subitem {config.h}, \hyperpage{20}
+  \item {ADC\_RES\_BITS}
+    \subitem {config.h}, \hyperpage{20}
+  \item {app\_main}
+    \subitem {main.c}, \hyperpage{118}
+    \subitem {test\_fft.c}, \hyperpage{122}
+    \subitem {test\_midi.c}, \hyperpage{125}
+  \item {AUDIO\_BUFFER\_SIZE}
+    \subitem {config.h}, \hyperpage{21}
+    \subitem {test\_fft.c}, \hyperpage{121}
 
   \indexspace
 
-  \item {C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/include/config.h}, 
-		\hyperpage{11}
-  \item {C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/include/processed-\/data.h}, 
-		\hyperpage{12}
-  \item {C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/audio/i2s\_sampler.h}, 
-		\hyperpage{12}
-  \item {C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/audio/scale.h}, 
-		\hyperpage{13}, \hyperpage{17}
-  \item {C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/fft/fft.h}, 
-		\hyperpage{18}
-  \item {C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/mcp3201/mcp3201.c}, 
-		\hyperpage{18}
-  \item {C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/mcp3201/mcp3201.h}, 
-		\hyperpage{19}, \hyperpage{23}
-  \item {C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/midi/midi.c}, 
-		\hyperpage{23}
-  \item {C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/midi/midi.h}, 
-		\hyperpage{26}, \hyperpage{29}
-  \item {C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/src/gitcon.c}, 
-		\hyperpage{30}
-  \item {C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/src/gitcon.h}, 
-		\hyperpage{31}, \hyperpage{33}
-  \item {C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/src/main.c}, 
-		\hyperpage{33}
+  \item {baudrate}
+    \subitem {midi\_config\_t}, \hyperpage{14}
+  \item {buffer}
+    \subitem {i2s\_sampler\_t}, \hyperpage{8}
+    \subitem {mcp3201\_sampler\_t}, \hyperpage{12}
+  \item {buffer\_pos}
+    \subitem {i2s\_sampler\_t}, \hyperpage{9}
+    \subitem {mcp3201\_sampler\_t}, \hyperpage{12}
+  \item {buffer\_size}
+    \subitem {i2s\_sampler\_t}, \hyperpage{9}
+    \subitem {mcp3201\_sampler\_t}, \hyperpage{12}
 
   \indexspace
 
+  \item {cfg}
+    \subitem {mcp3201\_context\_t}, \hyperpage{11}
+    \subitem {midi\_context\_t}, \hyperpage{16}
+  \item {channel}
+    \subitem {midi\_message\_t}, \hyperpage{17}
+  \item {channel\_pressure}
+    \subitem {midi.h}, \hyperpage{101}
+    \subitem {midi\_utils.c}, \hyperpage{106}
+  \item {CONCERT\_A}
+    \subitem {gitcon.c}, \hyperpage{109}
+  \item {CONCERT\_A\_NOTE}
+    \subitem {gitcon.c}, \hyperpage{109}
+  \item {config.h}
+    \subitem {ADC\_RES}, \hyperpage{20}
+    \subitem {ADC\_RES\_BITS}, \hyperpage{20}
+    \subitem {AUDIO\_BUFFER\_SIZE}, \hyperpage{21}
+    \subitem {DMA\_CHAN}, \hyperpage{21}
+    \subitem {F\_SAMPLE\_HZ}, \hyperpage{21}
+    \subitem {FFT\_SIZE}, \hyperpage{21}
+    \subitem {FFT\_WINDOW\_SIZE}, \hyperpage{21}
+    \subitem {INTERNAL\_ADC\_CHANNEL}, \hyperpage{21}
+    \subitem {INTERNAL\_ADC\_IO}, \hyperpage{22}
+    \subitem {INTERNAL\_ADC\_UNIT}, \hyperpage{22}
+    \subitem {MIDI\_BAUD}, \hyperpage{22}
+    \subitem {MIDI\_RX}, \hyperpage{22}
+    \subitem {MIDI\_TX}, \hyperpage{22}
+    \subitem {MIDI\_UART}, \hyperpage{22}
+    \subitem {SPI\_CS}, \hyperpage{23}
+    \subitem {SPI\_DEV}, \hyperpage{23}
+    \subitem {SPI\_MISO}, \hyperpage{23}
+    \subitem {SPI\_MOSI}, \hyperpage{23}
+    \subitem {SPI\_SCLK}, \hyperpage{23}
+  \item {cs\_io}
+    \subitem {mcp3201\_config\_t}, \hyperpage{10}
+  \item {ctrl\_change}
+    \subitem {midi.h}, \hyperpage{101}
+    \subitem {midi\_utils.c}, \hyperpage{106}
+
+  \indexspace
+
+  \item {direction}
+    \subitem {fft\_config\_t}, \hyperpage{5}
+  \item {DMA\_CHAN}
+    \subitem {config.h}, \hyperpage{21}
+  \item {dma\_chan}
+    \subitem {mcp3201\_config\_t}, \hyperpage{10}
+  \item {dma\_queue}
+    \subitem {i2s\_sampler\_t}, \hyperpage{9}
+    \subitem {mcp3201\_sampler\_t}, \hyperpage{13}
+  \item {dsp\_queue}
+    \subitem {i2s\_sampler\_t}, \hyperpage{9}
+    \subitem {mcp3201\_sampler\_t}, \hyperpage{13}
+
+  \indexspace
+
+  \item {F\_SAMPLE\_HZ}
+    \subitem {config.h}, \hyperpage{21}
+    \subitem {test\_fft.c}, \hyperpage{121}
+  \item {fft}
+    \subitem {fft.c}, \hyperpage{65}
+    \subitem {fft.h}, \hyperpage{77}
+  \item {fft.c}
+    \subitem {fft}, \hyperpage{65}
+    \subitem {fft4}, \hyperpage{65}
+    \subitem {fft8}, \hyperpage{65}
+    \subitem {fft\_destroy}, \hyperpage{65}
+    \subitem {fft\_execute}, \hyperpage{66}
+    \subitem {fft\_init}, \hyperpage{66}
+    \subitem {fft\_primitive}, \hyperpage{66}
+    \subitem {ifft}, \hyperpage{66}
+    \subitem {ifft\_primitive}, \hyperpage{66}
+    \subitem {irfft}, \hyperpage{67}
+    \subitem {LARGE\_BASE\_CASE}, \hyperpage{64}
+    \subitem {rfft}, \hyperpage{67}
+    \subitem {split\_radix\_fft}, \hyperpage{67}
+    \subitem {TWO\_PI}, \hyperpage{64}
+    \subitem {USE\_SPLIT\_RADIX}, \hyperpage{65}
+  \item {fft.h}
+    \subitem {fft}, \hyperpage{77}
+    \subitem {fft4}, \hyperpage{78}
+    \subitem {fft8}, \hyperpage{78}
+    \subitem {FFT\_BACKWARD}, \hyperpage{76}
+    \subitem {FFT\_COMPLEX}, \hyperpage{77}
+    \subitem {fft\_destroy}, \hyperpage{78}
+    \subitem {fft\_direction\_t}, \hyperpage{76}
+    \subitem {fft\_execute}, \hyperpage{78}
+    \subitem {FFT\_FORWARD}, \hyperpage{76}
+    \subitem {fft\_init}, \hyperpage{78}
+    \subitem {FFT\_OWN\_INPUT\_MEM}, \hyperpage{76}
+    \subitem {FFT\_OWN\_OUTPUT\_MEM}, \hyperpage{76}
+    \subitem {fft\_primitive}, \hyperpage{79}
+    \subitem {FFT\_REAL}, \hyperpage{77}
+    \subitem {fft\_type\_t}, \hyperpage{77}
+    \subitem {ifft}, \hyperpage{79}
+    \subitem {ifft\_primitive}, \hyperpage{79}
+    \subitem {irfft}, \hyperpage{79}
+    \subitem {rfft}, \hyperpage{80}
+    \subitem {split\_radix\_fft}, \hyperpage{80}
+  \item {fft4}
+    \subitem {fft.c}, \hyperpage{65}
+    \subitem {fft.h}, \hyperpage{78}
+  \item {fft8}
+    \subitem {fft.c}, \hyperpage{65}
+    \subitem {fft.h}, \hyperpage{78}
+  \item {FFT\_BACKWARD}
+    \subitem {fft.h}, \hyperpage{76}
+  \item {FFT\_COMPLEX}
+    \subitem {fft.h}, \hyperpage{77}
   \item {fft\_config\_t}, \hyperpage{5}
+    \subitem {direction}, \hyperpage{5}
+    \subitem {flags}, \hyperpage{5}
+    \subitem {input}, \hyperpage{6}
+    \subitem {output}, \hyperpage{6}
+    \subitem {size}, \hyperpage{6}
+    \subitem {twiddle\_factors}, \hyperpage{6}
+    \subitem {type}, \hyperpage{6}
+  \item {fft\_destroy}
+    \subitem {fft.c}, \hyperpage{65}
+    \subitem {fft.h}, \hyperpage{78}
+  \item {fft\_direction\_t}
+    \subitem {fft.h}, \hyperpage{76}
+  \item {fft\_execute}
+    \subitem {fft.c}, \hyperpage{66}
+    \subitem {fft.h}, \hyperpage{78}
+  \item {FFT\_FORWARD}
+    \subitem {fft.h}, \hyperpage{76}
+  \item {fft\_init}
+    \subitem {fft.c}, \hyperpage{66}
+    \subitem {fft.h}, \hyperpage{78}
+  \item {FFT\_OWN\_INPUT\_MEM}
+    \subitem {fft.h}, \hyperpage{76}
+  \item {FFT\_OWN\_OUTPUT\_MEM}
+    \subitem {fft.h}, \hyperpage{76}
+  \item {fft\_primitive}
+    \subitem {fft.c}, \hyperpage{66}
+    \subitem {fft.h}, \hyperpage{79}
+  \item {FFT\_REAL}
+    \subitem {fft.h}, \hyperpage{77}
+  \item {FFT\_SIZE}
+    \subitem {config.h}, \hyperpage{21}
+    \subitem {test\_fft.c}, \hyperpage{121}
+  \item {fft\_type\_t}
+    \subitem {fft.h}, \hyperpage{77}
+  \item {FFT\_WINDOW\_SIZE}
+    \subitem {config.h}, \hyperpage{21}
+    \subitem {test\_fft.c}, \hyperpage{121}
+  \item {flags}
+    \subitem {fft\_config\_t}, \hyperpage{5}
+  \item {FLOAT\_TO\_UINT16}
+    \subitem {gitcon.c}, \hyperpage{109}
 
   \indexspace
 
-  \item {get\_key\_name}
-    \subitem {scale.h}, \hyperpage{15}
-  \item {get\_key\_num}
-    \subitem {scale.h}, \hyperpage{15}
-  \item {get\_modal\_name}
-    \subitem {scale.h}, \hyperpage{16}
-  \item {get\_pitch\_hz}
-    \subitem {scale.h}, \hyperpage{16}
   \item {gitcon.c}
-    \subitem {gitcon\_exit}, \hyperpage{31}
+    \subitem {CONCERT\_A}, \hyperpage{109}
+    \subitem {CONCERT\_A\_NOTE}, \hyperpage{109}
+    \subitem {FLOAT\_TO\_UINT16}, \hyperpage{109}
+    \subitem {gitcon\_exit}, \hyperpage{110}
+    \subitem {gitcon\_init}, \hyperpage{111}
+    \subitem {MIDI\_HIGHEST\_NOTE}, \hyperpage{110}
+    \subitem {MIDI\_KEY\_BOUNDARY}, \hyperpage{110}
+    \subitem {MIDI\_LOWEST\_NOTE}, \hyperpage{110}
+    \subitem {SENSITIVITY}, \hyperpage{110}
+    \subitem {UINT16\_TO\_FLOAT}, \hyperpage{110}
   \item {gitcon.h}
-    \subitem {gitcon\_exit}, \hyperpage{32}
-    \subitem {gitcon\_init}, \hyperpage{33}
-  \item {gitcon\_context\_t}, \hyperpage{5}
+    \subitem {gitcon\_exit}, \hyperpage{116}
+    \subitem {gitcon\_handle\_t}, \hyperpage{116}
+    \subitem {gitcon\_init}, \hyperpage{116}
+    \subitem {GITCON\_LOG\_LEVEL}, \hyperpage{115}
+  \item {gitcon\_context\_t}, \hyperpage{7}
+    \subitem {midi\_handle}, \hyperpage{7}
+    \subitem {midi\_queue}, \hyperpage{7}
+    \subitem {sampler}, \hyperpage{7}
   \item {gitcon\_exit}
-    \subitem {gitcon.c}, \hyperpage{31}
-    \subitem {gitcon.h}, \hyperpage{32}
+    \subitem {gitcon.c}, \hyperpage{110}
+    \subitem {gitcon.h}, \hyperpage{116}
+  \item {gitcon\_handle\_t}
+    \subitem {gitcon.h}, \hyperpage{116}
   \item {gitcon\_init}
-    \subitem {gitcon.h}, \hyperpage{33}
+    \subitem {gitcon.c}, \hyperpage{111}
+    \subitem {gitcon.h}, \hyperpage{116}
+  \item {GITCON\_LOG\_LEVEL}
+    \subitem {gitcon.h}, \hyperpage{115}
 
   \indexspace
 
-  \item {i2s\_sampler\_t}, \hyperpage{6}
+  \item {host}
+    \subitem {mcp3201\_config\_t}, \hyperpage{10}
 
   \indexspace
 
+  \item {i2s\_sampler.c}
+    \subitem {i2s\_sampler\_start}, \hyperpage{59}
+    \subitem {i2s\_sampler\_stop}, \hyperpage{60}
+    \subitem {READER\_TIMEOUT\_MS}, \hyperpage{59}
+    \subitem {READER\_TIMEOUT\_TICKS}, \hyperpage{59}
+    \subitem {RESAMPLE\_DENOMINATOR}, \hyperpage{59}
+  \item {i2s\_sampler.h}
+    \subitem {i2s\_sampler\_start}, \hyperpage{62}
+    \subitem {i2s\_sampler\_stop}, \hyperpage{63}
+  \item {i2s\_sampler\_start}
+    \subitem {i2s\_sampler.c}, \hyperpage{59}
+    \subitem {i2s\_sampler.h}, \hyperpage{62}
+  \item {i2s\_sampler\_stop}
+    \subitem {i2s\_sampler.c}, \hyperpage{60}
+    \subitem {i2s\_sampler.h}, \hyperpage{63}
+  \item {i2s\_sampler\_t}, \hyperpage{8}
+    \subitem {buffer}, \hyperpage{8}
+    \subitem {buffer\_pos}, \hyperpage{9}
+    \subitem {buffer\_size}, \hyperpage{9}
+    \subitem {dma\_queue}, \hyperpage{9}
+    \subitem {dsp\_queue}, \hyperpage{9}
+  \item {ifft}
+    \subitem {fft.c}, \hyperpage{66}
+    \subitem {fft.h}, \hyperpage{79}
+  \item {ifft\_primitive}
+    \subitem {fft.c}, \hyperpage{66}
+    \subitem {fft.h}, \hyperpage{79}
+  \item {include/config.h}, \hyperpage{19}, \hyperpage{24}
+  \item {include/processed-\/data.h}, \hyperpage{24}, \hyperpage{58}
+  \item {input}
+    \subitem {fft\_config\_t}, \hyperpage{6}
+  \item {INTERNAL\_ADC\_CHANNEL}
+    \subitem {config.h}, \hyperpage{21}
+  \item {INTERNAL\_ADC\_IO}
+    \subitem {config.h}, \hyperpage{22}
+  \item {INTERNAL\_ADC\_UNIT}
+    \subitem {config.h}, \hyperpage{22}
+  \item {irfft}
+    \subitem {fft.c}, \hyperpage{67}
+    \subitem {fft.h}, \hyperpage{79}
+
+  \indexspace
+
+  \item {LARGE\_BASE\_CASE}
+    \subitem {fft.c}, \hyperpage{64}
+  \item {lib/audio/i2s\_sampler.c}, \hyperpage{58}, \hyperpage{60}
+  \item {lib/audio/i2s\_sampler.h}, \hyperpage{61}, \hyperpage{63}
+  \item {lib/fft/fft.c}, \hyperpage{64}, \hyperpage{68}
+  \item {lib/fft/fft.h}, \hyperpage{75}, \hyperpage{80}
+  \item {lib/mcp3201/mcp3201.c}, \hyperpage{81}, \hyperpage{83}
+  \item {lib/mcp3201/mcp3201.h}, \hyperpage{84}, \hyperpage{88}
+  \item {lib/mcp3201/mcp3201\_sampler.c}, \hyperpage{88}, 
+		\hyperpage{91}
+  \item {lib/midi/midi.c}, \hyperpage{93}, \hyperpage{96}
+  \item {lib/midi/midi.h}, \hyperpage{98}, \hyperpage{104}
+  \item {lib/midi/midi\_utils.c}, \hyperpage{105}, \hyperpage{107}
+
+  \indexspace
+
+  \item {main.c}
+    \subitem {app\_main}, \hyperpage{118}
+    \subitem {PROTOTYPE}, \hyperpage{118}
+    \subitem {USER\_LOCAL\_LEVEL}, \hyperpage{118}
   \item {mcp3201.c}
-    \subitem {mcp3201\_exit}, \hyperpage{19}
+    \subitem {mcp3201\_context\_t}, \hyperpage{82}
+    \subitem {mcp3201\_exit}, \hyperpage{82}
+    \subitem {mcp3201\_init}, \hyperpage{82}
+    \subitem {mcp3201\_read}, \hyperpage{83}
   \item {mcp3201.h}
-    \subitem {mcp3201\_exit}, \hyperpage{21}
-    \subitem {mcp3201\_init}, \hyperpage{21}
-    \subitem {mcp3201\_read}, \hyperpage{21}
-    \subitem {mcp3201\_sampler\_start}, \hyperpage{22}
-    \subitem {mcp3201\_sampler\_stop}, \hyperpage{22}
-  \item {mcp3201\_config\_t}, \hyperpage{6}
-  \item {mcp3201\_context\_t}, \hyperpage{7}
+    \subitem {ADC\_CLK}, \hyperpage{85}
+    \subitem {mcp3201\_exit}, \hyperpage{86}
+    \subitem {mcp3201\_handle\_t}, \hyperpage{86}
+    \subitem {mcp3201\_init}, \hyperpage{86}
+    \subitem {mcp3201\_read}, \hyperpage{87}
+    \subitem {mcp3201\_sampler\_start}, \hyperpage{87}
+    \subitem {mcp3201\_sampler\_stop}, \hyperpage{87}
+  \item {mcp3201\_config\_t}, \hyperpage{9}
+    \subitem {cs\_io}, \hyperpage{10}
+    \subitem {dma\_chan}, \hyperpage{10}
+    \subitem {host}, \hyperpage{10}
+    \subitem {miso\_io}, \hyperpage{10}
+    \subitem {mosi\_io}, \hyperpage{10}
+  \item {mcp3201\_context\_t}, \hyperpage{11}
+    \subitem {cfg}, \hyperpage{11}
+    \subitem {mcp3201.c}, \hyperpage{82}
+    \subitem {mcp3201\_sampler.c}, \hyperpage{90}
+    \subitem {ongoing\_transaction}, \hyperpage{11}
+    \subitem {spi}, \hyperpage{11}
   \item {mcp3201\_exit}
-    \subitem {mcp3201.c}, \hyperpage{19}
-    \subitem {mcp3201.h}, \hyperpage{21}
+    \subitem {mcp3201.c}, \hyperpage{82}
+    \subitem {mcp3201.h}, \hyperpage{86}
+  \item {mcp3201\_handle\_t}
+    \subitem {mcp3201.h}, \hyperpage{86}
   \item {mcp3201\_init}
-    \subitem {mcp3201.h}, \hyperpage{21}
+    \subitem {mcp3201.c}, \hyperpage{82}
+    \subitem {mcp3201.h}, \hyperpage{86}
   \item {mcp3201\_read}
-    \subitem {mcp3201.h}, \hyperpage{21}
+    \subitem {mcp3201.c}, \hyperpage{83}
+    \subitem {mcp3201.h}, \hyperpage{87}
+  \item {mcp3201\_sampler.c}
+    \subitem {mcp3201\_context\_t}, \hyperpage{90}
+    \subitem {mcp3201\_sampler\_start}, \hyperpage{90}
+    \subitem {mcp3201\_sampler\_stop}, \hyperpage{91}
+    \subitem {READER\_TIMEOUT\_MS}, \hyperpage{89}
+    \subitem {READER\_TIMEOUT\_TICKS}, \hyperpage{90}
+    \subitem {RESAMPLE\_DENOMINATOR}, \hyperpage{90}
   \item {mcp3201\_sampler\_start}
-    \subitem {mcp3201.h}, \hyperpage{22}
+    \subitem {mcp3201.h}, \hyperpage{87}
+    \subitem {mcp3201\_sampler.c}, \hyperpage{90}
   \item {mcp3201\_sampler\_stop}
-    \subitem {mcp3201.h}, \hyperpage{22}
-  \item {mcp3201\_sampler\_t}, \hyperpage{7}
+    \subitem {mcp3201.h}, \hyperpage{87}
+    \subitem {mcp3201\_sampler.c}, \hyperpage{91}
+  \item {mcp3201\_sampler\_t}, \hyperpage{12}
+    \subitem {buffer}, \hyperpage{12}
+    \subitem {buffer\_pos}, \hyperpage{12}
+    \subitem {buffer\_size}, \hyperpage{12}
+    \subitem {dma\_queue}, \hyperpage{13}
+    \subitem {dsp\_queue}, \hyperpage{13}
+    \subitem {mcp\_handle}, \hyperpage{13}
+  \item {mcp\_handle}
+    \subitem {mcp3201\_sampler\_t}, \hyperpage{13}
   \item {midi.c}
-    \subitem {midi\_exit}, \hyperpage{24}
-    \subitem {midi\_read}, \hyperpage{25}
-    \subitem {midi\_write}, \hyperpage{25}
+    \subitem {MIDI\_BYTE\_SIZE\_DEFAULT}, \hyperpage{94}
+    \subitem {MIDI\_BYTE\_SIZE\_SHORT}, \hyperpage{94}
+    \subitem {midi\_context\_t}, \hyperpage{94}
+    \subitem {midi\_exit}, \hyperpage{94}
+    \subitem {midi\_init}, \hyperpage{95}
+    \subitem {midi\_read}, \hyperpage{95}
+    \subitem {midi\_write}, \hyperpage{95}
   \item {midi.h}
-    \subitem {midi\_exit}, \hyperpage{28}
-    \subitem {midi\_init}, \hyperpage{28}
-    \subitem {midi\_read}, \hyperpage{29}
-    \subitem {midi\_status\_t}, \hyperpage{27}
-    \subitem {midi\_write}, \hyperpage{29}
-  \item {midi\_config\_t}, \hyperpage{8}
-  \item {midi\_context\_t}, \hyperpage{8}
+    \subitem {channel\_pressure}, \hyperpage{101}
+    \subitem {ctrl\_change}, \hyperpage{101}
+    \subitem {MIDI\_BYTE\_SIZE\_DEFAULT}, \hyperpage{99}
+    \subitem {MIDI\_BYTE\_SIZE\_SHORT}, \hyperpage{99}
+    \subitem {midi\_exit}, \hyperpage{101}
+    \subitem {midi\_handle\_t}, \hyperpage{100}
+    \subitem {midi\_init}, \hyperpage{102}
+    \subitem {MIDI\_LOG\_LEVEL}, \hyperpage{99}
+    \subitem {MIDI\_PITCH\_BEND\_CENTER}, \hyperpage{99}
+    \subitem {MIDI\_PITCH\_BEND\_MAX}, \hyperpage{100}
+    \subitem {MIDI\_PITCH\_BEND\_MIN}, \hyperpage{100}
+    \subitem {midi\_read}, \hyperpage{102}
+    \subitem {MIDI\_STATUS\_CHANNEL\_PRESSURE}, \hyperpage{101}
+    \subitem {MIDI\_STATUS\_CONTROL\_CHANGE}, \hyperpage{101}
+    \subitem {MIDI\_STATUS\_NOTE\_OFF}, \hyperpage{101}
+    \subitem {MIDI\_STATUS\_NOTE\_ON}, \hyperpage{101}
+    \subitem {MIDI\_STATUS\_PITCH\_BEND}, \hyperpage{101}
+    \subitem {MIDI\_STATUS\_POLYPHONIC\_KEY\_PRESSURE}, \hyperpage{101}
+    \subitem {MIDI\_STATUS\_PROGRAM\_CHANGE}, \hyperpage{101}
+    \subitem {midi\_status\_t}, \hyperpage{100}
+    \subitem {midi\_write}, \hyperpage{102}
+    \subitem {note\_off}, \hyperpage{103}
+    \subitem {note\_on}, \hyperpage{103}
+    \subitem {pitch\_bend}, \hyperpage{103}
+    \subitem {poly\_key\_pressure}, \hyperpage{103}
+    \subitem {prg\_change}, \hyperpage{104}
+  \item {MIDI\_BAUD}
+    \subitem {config.h}, \hyperpage{22}
+    \subitem {test\_midi.c}, \hyperpage{124}
+  \item {MIDI\_BYTE\_SIZE\_DEFAULT}
+    \subitem {midi.c}, \hyperpage{94}
+    \subitem {midi.h}, \hyperpage{99}
+  \item {MIDI\_BYTE\_SIZE\_SHORT}
+    \subitem {midi.c}, \hyperpage{94}
+    \subitem {midi.h}, \hyperpage{99}
+  \item {midi\_config\_t}, \hyperpage{13}
+    \subitem {baudrate}, \hyperpage{14}
+    \subitem {rx\_io}, \hyperpage{14}
+    \subitem {tx\_io}, \hyperpage{14}
+    \subitem {uart\_num}, \hyperpage{14}
+  \item {midi\_context\_t}, \hyperpage{15}
+    \subitem {cfg}, \hyperpage{16}
+    \subitem {midi.c}, \hyperpage{94}
   \item {midi\_exit}
-    \subitem {midi.c}, \hyperpage{24}
-    \subitem {midi.h}, \hyperpage{28}
+    \subitem {midi.c}, \hyperpage{94}
+    \subitem {midi.h}, \hyperpage{101}
+  \item {midi\_handle}
+    \subitem {gitcon\_context\_t}, \hyperpage{7}
+  \item {midi\_handle\_t}
+    \subitem {midi.h}, \hyperpage{100}
+  \item {MIDI\_HIGHEST\_NOTE}
+    \subitem {gitcon.c}, \hyperpage{110}
   \item {midi\_init}
-    \subitem {midi.h}, \hyperpage{28}
-  \item {midi\_message\_t}, \hyperpage{9}
+    \subitem {midi.c}, \hyperpage{95}
+    \subitem {midi.h}, \hyperpage{102}
+  \item {MIDI\_KEY\_BOUNDARY}
+    \subitem {gitcon.c}, \hyperpage{110}
+  \item {MIDI\_LOG\_LEVEL}
+    \subitem {midi.h}, \hyperpage{99}
+  \item {MIDI\_LOWEST\_NOTE}
+    \subitem {gitcon.c}, \hyperpage{110}
+  \item {midi\_message\_t}, \hyperpage{16}
+    \subitem {channel}, \hyperpage{17}
+    \subitem {param1}, \hyperpage{17}
+    \subitem {param2}, \hyperpage{17}
+    \subitem {status}, \hyperpage{17}
+  \item {MIDI\_PITCH\_BEND\_CENTER}
+    \subitem {midi.h}, \hyperpage{99}
+  \item {MIDI\_PITCH\_BEND\_MAX}
+    \subitem {midi.h}, \hyperpage{100}
+  \item {MIDI\_PITCH\_BEND\_MIN}
+    \subitem {midi.h}, \hyperpage{100}
+  \item {midi\_queue}
+    \subitem {gitcon\_context\_t}, \hyperpage{7}
   \item {midi\_read}
-    \subitem {midi.c}, \hyperpage{25}
-    \subitem {midi.h}, \hyperpage{29}
+    \subitem {midi.c}, \hyperpage{95}
+    \subitem {midi.h}, \hyperpage{102}
+  \item {MIDI\_RX}
+    \subitem {config.h}, \hyperpage{22}
+    \subitem {test\_midi.c}, \hyperpage{124}
+  \item {MIDI\_STATUS\_CHANNEL\_PRESSURE}
+    \subitem {midi.h}, \hyperpage{101}
+  \item {MIDI\_STATUS\_CONTROL\_CHANGE}
+    \subitem {midi.h}, \hyperpage{101}
+  \item {MIDI\_STATUS\_NOTE\_OFF}
+    \subitem {midi.h}, \hyperpage{101}
+  \item {MIDI\_STATUS\_NOTE\_ON}
+    \subitem {midi.h}, \hyperpage{101}
+  \item {MIDI\_STATUS\_PITCH\_BEND}
+    \subitem {midi.h}, \hyperpage{101}
+  \item {MIDI\_STATUS\_POLYPHONIC\_KEY\_PRESSURE}
+    \subitem {midi.h}, \hyperpage{101}
+  \item {MIDI\_STATUS\_PROGRAM\_CHANGE}
+    \subitem {midi.h}, \hyperpage{101}
   \item {midi\_status\_t}
-    \subitem {midi.h}, \hyperpage{27}
+    \subitem {midi.h}, \hyperpage{100}
+  \item {MIDI\_TX}
+    \subitem {config.h}, \hyperpage{22}
+    \subitem {test\_midi.c}, \hyperpage{124}
+  \item {MIDI\_UART}
+    \subitem {config.h}, \hyperpage{22}
+    \subitem {test\_midi.c}, \hyperpage{125}
+  \item {midi\_utils.c}
+    \subitem {channel\_pressure}, \hyperpage{106}
+    \subitem {ctrl\_change}, \hyperpage{106}
+    \subitem {note\_off}, \hyperpage{106}
+    \subitem {note\_on}, \hyperpage{106}
+    \subitem {pitch\_bend}, \hyperpage{106}
+    \subitem {poly\_key\_pressure}, \hyperpage{107}
+    \subitem {prg\_change}, \hyperpage{107}
   \item {midi\_write}
-    \subitem {midi.c}, \hyperpage{25}
-    \subitem {midi.h}, \hyperpage{29}
-  \item {modal\_name\_t}
-    \subitem {scale.h}, \hyperpage{14}
+    \subitem {midi.c}, \hyperpage{95}
+    \subitem {midi.h}, \hyperpage{102}
+  \item {miso\_io}
+    \subitem {mcp3201\_config\_t}, \hyperpage{10}
+  \item {mosi\_io}
+    \subitem {mcp3201\_config\_t}, \hyperpage{10}
 
   \indexspace
 
-  \item {print\_key\_name}
-    \subitem {scale.h}, \hyperpage{17}
+  \item {note\_off}
+    \subitem {midi.h}, \hyperpage{103}
+    \subitem {midi\_utils.c}, \hyperpage{106}
+  \item {note\_on}
+    \subitem {midi.h}, \hyperpage{103}
+    \subitem {midi\_utils.c}, \hyperpage{106}
 
   \indexspace
 
-  \item {scale.h}
-    \subitem {adc\_to\_num}, \hyperpage{14}
-    \subitem {adc\_to\_pitch}, \hyperpage{15}
-    \subitem {get\_key\_name}, \hyperpage{15}
-    \subitem {get\_key\_num}, \hyperpage{15}
-    \subitem {get\_modal\_name}, \hyperpage{16}
-    \subitem {get\_pitch\_hz}, \hyperpage{16}
-    \subitem {modal\_name\_t}, \hyperpage{14}
-    \subitem {print\_key\_name}, \hyperpage{17}
+  \item {ongoing\_transaction}
+    \subitem {mcp3201\_context\_t}, \hyperpage{11}
+  \item {output}
+    \subitem {fft\_config\_t}, \hyperpage{6}
+
+  \indexspace
+
+  \item {param1}
+    \subitem {midi\_message\_t}, \hyperpage{17}
+  \item {param2}
+    \subitem {midi\_message\_t}, \hyperpage{17}
+  \item {pitch\_bend}
+    \subitem {midi.h}, \hyperpage{103}
+    \subitem {midi\_utils.c}, \hyperpage{106}
+  \item {poly\_key\_pressure}
+    \subitem {midi.h}, \hyperpage{103}
+    \subitem {midi\_utils.c}, \hyperpage{107}
+  \item {prg\_change}
+    \subitem {midi.h}, \hyperpage{104}
+    \subitem {midi\_utils.c}, \hyperpage{107}
+  \item {processed-\/data.h}
+    \subitem {test\_buffer}, \hyperpage{41}
+  \item {PROTOTYPE}
+    \subitem {main.c}, \hyperpage{118}
+
+  \indexspace
+
+  \item {READER\_TIMEOUT\_MS}
+    \subitem {i2s\_sampler.c}, \hyperpage{59}
+    \subitem {mcp3201\_sampler.c}, \hyperpage{89}
+  \item {READER\_TIMEOUT\_TICKS}
+    \subitem {i2s\_sampler.c}, \hyperpage{59}
+    \subitem {mcp3201\_sampler.c}, \hyperpage{90}
+  \item {RESAMPLE\_DENOMINATOR}
+    \subitem {i2s\_sampler.c}, \hyperpage{59}
+    \subitem {mcp3201\_sampler.c}, \hyperpage{90}
+  \item {rfft}
+    \subitem {fft.c}, \hyperpage{67}
+    \subitem {fft.h}, \hyperpage{80}
+  \item {rx\_io}
+    \subitem {midi\_config\_t}, \hyperpage{14}
+
+  \indexspace
+
+  \item {sampler}
+    \subitem {gitcon\_context\_t}, \hyperpage{7}
+  \item {SENSITIVITY}
+    \subitem {gitcon.c}, \hyperpage{110}
+  \item {setUp}
+    \subitem {test\_fft.c}, \hyperpage{122}
+    \subitem {test\_midi.c}, \hyperpage{125}
+  \item {size}
+    \subitem {fft\_config\_t}, \hyperpage{6}
+  \item {spi}
+    \subitem {mcp3201\_context\_t}, \hyperpage{11}
+  \item {SPI\_CS}
+    \subitem {config.h}, \hyperpage{23}
+  \item {SPI\_DEV}
+    \subitem {config.h}, \hyperpage{23}
+  \item {SPI\_MISO}
+    \subitem {config.h}, \hyperpage{23}
+  \item {SPI\_MOSI}
+    \subitem {config.h}, \hyperpage{23}
+  \item {SPI\_SCLK}
+    \subitem {config.h}, \hyperpage{23}
+  \item {split\_radix\_fft}
+    \subitem {fft.c}, \hyperpage{67}
+    \subitem {fft.h}, \hyperpage{80}
+  \item {src/gitcon.c}, \hyperpage{108}, \hyperpage{111}
+  \item {src/gitcon.h}, \hyperpage{114}, \hyperpage{117}
+  \item {src/main.c}, \hyperpage{117}, \hyperpage{119}
+  \item {status}
+    \subitem {midi\_message\_t}, \hyperpage{17}
+
+  \indexspace
+
+  \item {tearDown}
+    \subitem {test\_fft.c}, \hyperpage{122}
+    \subitem {test\_midi.c}, \hyperpage{125}
+  \item {test/test\_fft/test\_fft.c}, \hyperpage{120}, \hyperpage{123}
+  \item {test/test\_midi/test\_midi.c}, \hyperpage{123}, 
+		\hyperpage{126}
+  \item {test\_buffer}
+    \subitem {processed-\/data.h}, \hyperpage{41}
+  \item {test\_fft.c}
+    \subitem {app\_main}, \hyperpage{122}
+    \subitem {AUDIO\_BUFFER\_SIZE}, \hyperpage{121}
+    \subitem {F\_SAMPLE\_HZ}, \hyperpage{121}
+    \subitem {FFT\_SIZE}, \hyperpage{121}
+    \subitem {FFT\_WINDOW\_SIZE}, \hyperpage{121}
+    \subitem {setUp}, \hyperpage{122}
+    \subitem {tearDown}, \hyperpage{122}
+    \subitem {test\_processed\_data}, \hyperpage{122}
+  \item {test\_midi.c}
+    \subitem {app\_main}, \hyperpage{125}
+    \subitem {MIDI\_BAUD}, \hyperpage{124}
+    \subitem {MIDI\_RX}, \hyperpage{124}
+    \subitem {MIDI\_TX}, \hyperpage{124}
+    \subitem {MIDI\_UART}, \hyperpage{125}
+    \subitem {setUp}, \hyperpage{125}
+    \subitem {tearDown}, \hyperpage{125}
+    \subitem {test\_midi\_bend}, \hyperpage{125}
+    \subitem {test\_midi\_bent\_note}, \hyperpage{126}
+    \subitem {test\_midi\_blink}, \hyperpage{126}
+  \item {test\_midi\_bend}
+    \subitem {test\_midi.c}, \hyperpage{125}
+  \item {test\_midi\_bent\_note}
+    \subitem {test\_midi.c}, \hyperpage{126}
+  \item {test\_midi\_blink}
+    \subitem {test\_midi.c}, \hyperpage{126}
+  \item {test\_processed\_data}
+    \subitem {test\_fft.c}, \hyperpage{122}
+  \item {twiddle\_factors}
+    \subitem {fft\_config\_t}, \hyperpage{6}
+  \item {TWO\_PI}
+    \subitem {fft.c}, \hyperpage{64}
+  \item {tx\_io}
+    \subitem {midi\_config\_t}, \hyperpage{14}
+  \item {type}
+    \subitem {fft\_config\_t}, \hyperpage{6}
+
+  \indexspace
+
+  \item {uart\_num}
+    \subitem {midi\_config\_t}, \hyperpage{14}
+  \item {UINT16\_TO\_FLOAT}
+    \subitem {gitcon.c}, \hyperpage{110}
+  \item {USE\_SPLIT\_RADIX}
+    \subitem {fft.c}, \hyperpage{65}
+  \item {USER\_LOCAL\_LEVEL}
+    \subitem {main.c}, \hyperpage{118}
 
 \end{theindex}

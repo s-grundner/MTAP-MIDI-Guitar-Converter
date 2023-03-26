@@ -1,0 +1,659 @@
+\hypertarget{fft_8c_source}{}\doxysection{fft.\+c}
+\label{fft_8c_source}\index{lib/fft/fft.c@{lib/fft/fft.c}}
+\mbox{\hyperlink{fft_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00002}00002 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00003}00003 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00004}00004 \textcolor{preprocessor}{\#include <math.h>}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00005}00005 \textcolor{preprocessor}{\#include <complex.h>}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00007}00007 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{fft_8h}{fft.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00009}\mbox{\hyperlink{fft_8c_a3b947f4b635461030ff2d87833e5049e}{00009}} \textcolor{preprocessor}{\#define TWO\_PI 6.28318530}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00010}\mbox{\hyperlink{fft_8c_a4818ced076eecee15519b676abbde6b9}{00010}} \textcolor{preprocessor}{\#define USE\_SPLIT\_RADIX 1}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00011}\mbox{\hyperlink{fft_8c_a9f15cf3faf10a0df95445d7e7211d07f}{00011}} \textcolor{preprocessor}{\#define LARGE\_BASE\_CASE 1}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00013}\mbox{\hyperlink{fft_8c_a99b7a87d5783b2727dac866314f2774d}{00013}} \mbox{\hyperlink{structfft__config__t}{fft\_config\_t}}* \mbox{\hyperlink{fft_8c_a99b7a87d5783b2727dac866314f2774d}{fft\_init}}(\textcolor{keywordtype}{int} size, \mbox{\hyperlink{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3}{fft\_type\_t}} type, \mbox{\hyperlink{fft_8h_a7400df7c8f32ea8e6b010199d1813fe5}{fft\_direction\_t}} direction, \textcolor{keywordtype}{float}* input, \textcolor{keywordtype}{float}* output)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00014}00014 \{}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00015}00015     \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00016}00016 \textcolor{comment}{     * Prepare an FFT of correct size and types.}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00017}00017 \textcolor{comment}{     *}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00018}00018 \textcolor{comment}{     * If no input or output buffers are provided, they will be allocated.}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00019}00019 \textcolor{comment}{     */}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00020}00020     \textcolor{keywordtype}{int} k, m;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00022}00022     \mbox{\hyperlink{structfft__config__t}{fft\_config\_t}}* config = (\mbox{\hyperlink{structfft__config__t}{fft\_config\_t}}*)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structfft__config__t}{fft\_config\_t}}));}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00024}00024     \textcolor{comment}{// Check if the size is a power of two}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00025}00025     \textcolor{keywordflow}{if} ((size \& (size -\/ 1)) != 0) \textcolor{comment}{// tests if size is a power of two}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00026}00026         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00028}00028     \textcolor{comment}{// start configuration}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00029}00029     config-\/>\mbox{\hyperlink{structfft__config__t_ac92588540e8c1d014a08cd8a45462b19}{flags}} = 0;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00030}00030     config-\/>\mbox{\hyperlink{structfft__config__t_a4a3502eb022ff0f5a5446d93c9dcdfec}{type}} = type;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00031}00031     config-\/>\mbox{\hyperlink{structfft__config__t_ae3ffe1db0831689395bc3e81ef5e748e}{direction}} = direction;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00032}00032     config-\/>\mbox{\hyperlink{structfft__config__t_a439227feff9d7f55384e8780cfc2eb82}{size}} = size;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00034}00034     \textcolor{comment}{// Allocate and precompute twiddle factors}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00035}00035     config-\/>\mbox{\hyperlink{structfft__config__t_a00c7a5a420128f70fb1aff6d175cb95b}{twiddle\_factors}} = (\textcolor{keywordtype}{float}*)malloc(2 * config-\/>\mbox{\hyperlink{structfft__config__t_a439227feff9d7f55384e8780cfc2eb82}{size}} * \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}));}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00037}00037     \textcolor{keywordtype}{float} two\_pi\_by\_n = \mbox{\hyperlink{fft_8c_a3b947f4b635461030ff2d87833e5049e}{TWO\_PI}} / config-\/>\mbox{\hyperlink{structfft__config__t_a439227feff9d7f55384e8780cfc2eb82}{size}};}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00039}00039     \textcolor{keywordflow}{for} (k = 0, m = 0; k < config-\/>\mbox{\hyperlink{structfft__config__t_a439227feff9d7f55384e8780cfc2eb82}{size}}; k++, m += 2)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00040}00040     \{}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00041}00041         config-\/>\mbox{\hyperlink{structfft__config__t_a00c7a5a420128f70fb1aff6d175cb95b}{twiddle\_factors}}[m] = cosf(two\_pi\_by\_n * k);     \textcolor{comment}{// real}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00042}00042         config-\/>\mbox{\hyperlink{structfft__config__t_a00c7a5a420128f70fb1aff6d175cb95b}{twiddle\_factors}}[m + 1] = sinf(two\_pi\_by\_n * k); \textcolor{comment}{// imag}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00043}00043     \}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00045}00045     \textcolor{comment}{// Allocate input buffer}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00046}00046     \textcolor{keywordflow}{if} (input != NULL)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00047}00047         config-\/>\mbox{\hyperlink{structfft__config__t_aa92d3f73b33ca1a03e06415ee1db06eb}{input}} = input;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00048}00048     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00049}00049     \{}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00050}00050         \textcolor{keywordflow}{if} (config-\/>\mbox{\hyperlink{structfft__config__t_a4a3502eb022ff0f5a5446d93c9dcdfec}{type}} == \mbox{\hyperlink{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3aa35f248b935d5b32f1e254b3843caaa0}{FFT\_REAL}})}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00051}00051             config-\/>\mbox{\hyperlink{structfft__config__t_aa92d3f73b33ca1a03e06415ee1db06eb}{input}} = (\textcolor{keywordtype}{float}*)malloc(config-\/>\mbox{\hyperlink{structfft__config__t_a439227feff9d7f55384e8780cfc2eb82}{size}} * \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}));}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00052}00052         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (config-\/>\mbox{\hyperlink{structfft__config__t_a4a3502eb022ff0f5a5446d93c9dcdfec}{type}} == \mbox{\hyperlink{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3af226b92e6e73d2c1fba99afa79665052}{FFT\_COMPLEX}})}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00053}00053             config-\/>\mbox{\hyperlink{structfft__config__t_aa92d3f73b33ca1a03e06415ee1db06eb}{input}} = (\textcolor{keywordtype}{float}*)malloc(2 * config-\/>\mbox{\hyperlink{structfft__config__t_a439227feff9d7f55384e8780cfc2eb82}{size}} * \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}));}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00055}00055         config-\/>\mbox{\hyperlink{structfft__config__t_ac92588540e8c1d014a08cd8a45462b19}{flags}} |= \mbox{\hyperlink{fft_8h_ad2a04e717ebe86bf08875e879e7c24fa}{FFT\_OWN\_INPUT\_MEM}};}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00056}00056     \}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00058}00058     \textcolor{keywordflow}{if} (config-\/>\mbox{\hyperlink{structfft__config__t_aa92d3f73b33ca1a03e06415ee1db06eb}{input}} == NULL)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00059}00059         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00061}00061     \textcolor{comment}{// Allocate output buffer}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00062}00062     \textcolor{keywordflow}{if} (output != NULL)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00063}00063         config-\/>\mbox{\hyperlink{structfft__config__t_aed212f452362fd47d3c6530a2433cbca}{output}} = output;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00064}00064     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00065}00065     \{}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00066}00066         \textcolor{keywordflow}{if} (config-\/>\mbox{\hyperlink{structfft__config__t_a4a3502eb022ff0f5a5446d93c9dcdfec}{type}} == \mbox{\hyperlink{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3aa35f248b935d5b32f1e254b3843caaa0}{FFT\_REAL}})}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00067}00067             config-\/>\mbox{\hyperlink{structfft__config__t_aed212f452362fd47d3c6530a2433cbca}{output}} = (\textcolor{keywordtype}{float}*)malloc(config-\/>\mbox{\hyperlink{structfft__config__t_a439227feff9d7f55384e8780cfc2eb82}{size}} * \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}));}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00068}00068         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (config-\/>\mbox{\hyperlink{structfft__config__t_a4a3502eb022ff0f5a5446d93c9dcdfec}{type}} == \mbox{\hyperlink{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3af226b92e6e73d2c1fba99afa79665052}{FFT\_COMPLEX}})}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00069}00069             config-\/>\mbox{\hyperlink{structfft__config__t_aed212f452362fd47d3c6530a2433cbca}{output}} = (\textcolor{keywordtype}{float}*)malloc(2 * config-\/>\mbox{\hyperlink{structfft__config__t_a439227feff9d7f55384e8780cfc2eb82}{size}} * \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}));}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00071}00071         config-\/>\mbox{\hyperlink{structfft__config__t_ac92588540e8c1d014a08cd8a45462b19}{flags}} |= \mbox{\hyperlink{fft_8h_a75136cb97002566d690469bc4d96a54e}{FFT\_OWN\_OUTPUT\_MEM}};}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00072}00072     \}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00074}00074     \textcolor{keywordflow}{if} (config-\/>\mbox{\hyperlink{structfft__config__t_aed212f452362fd47d3c6530a2433cbca}{output}} == NULL)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00075}00075         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00077}00077     \textcolor{keywordflow}{return} config;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00078}00078 \}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00080}\mbox{\hyperlink{fft_8c_a0532ef3e893952fd108b183d5a14cd0d}{00080}} \textcolor{keywordtype}{void} \mbox{\hyperlink{fft_8c_a0532ef3e893952fd108b183d5a14cd0d}{fft\_destroy}}(\mbox{\hyperlink{structfft__config__t}{fft\_config\_t}}* config)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00081}00081 \{}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00082}00082     \textcolor{keywordflow}{if} (config-\/>\mbox{\hyperlink{structfft__config__t_ac92588540e8c1d014a08cd8a45462b19}{flags}} \& \mbox{\hyperlink{fft_8h_ad2a04e717ebe86bf08875e879e7c24fa}{FFT\_OWN\_INPUT\_MEM}})}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00083}00083         free(config-\/>\mbox{\hyperlink{structfft__config__t_aa92d3f73b33ca1a03e06415ee1db06eb}{input}});}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00085}00085     \textcolor{keywordflow}{if} (config-\/>\mbox{\hyperlink{structfft__config__t_ac92588540e8c1d014a08cd8a45462b19}{flags}} \& \mbox{\hyperlink{fft_8h_a75136cb97002566d690469bc4d96a54e}{FFT\_OWN\_OUTPUT\_MEM}})}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00086}00086         free(config-\/>\mbox{\hyperlink{structfft__config__t_aed212f452362fd47d3c6530a2433cbca}{output}});}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00088}00088     free(config-\/>\mbox{\hyperlink{structfft__config__t_a00c7a5a420128f70fb1aff6d175cb95b}{twiddle\_factors}});}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00089}00089     free(config);}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00090}00090 \}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00092}\mbox{\hyperlink{fft_8c_aa0d01a17b65373896f2100bc63883ca3}{00092}} \textcolor{keywordtype}{void} \mbox{\hyperlink{fft_8c_aa0d01a17b65373896f2100bc63883ca3}{fft\_execute}}(\mbox{\hyperlink{structfft__config__t}{fft\_config\_t}}* config)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00093}00093 \{}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00094}00094     \textcolor{keywordflow}{if} (config-\/>\mbox{\hyperlink{structfft__config__t_a4a3502eb022ff0f5a5446d93c9dcdfec}{type}} == \mbox{\hyperlink{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3aa35f248b935d5b32f1e254b3843caaa0}{FFT\_REAL}} \&\& config-\/>\mbox{\hyperlink{structfft__config__t_ae3ffe1db0831689395bc3e81ef5e748e}{direction}} == \mbox{\hyperlink{fft_8h_a7400df7c8f32ea8e6b010199d1813fe5a7052223ae26883446425d6fc3338a869}{FFT\_FORWARD}})}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00095}00095         \mbox{\hyperlink{fft_8c_a015dbb99fdfd93f586de17ddb23858ca}{rfft}}(config-\/>\mbox{\hyperlink{structfft__config__t_aa92d3f73b33ca1a03e06415ee1db06eb}{input}}, config-\/>\mbox{\hyperlink{structfft__config__t_aed212f452362fd47d3c6530a2433cbca}{output}}, config-\/>\mbox{\hyperlink{structfft__config__t_a00c7a5a420128f70fb1aff6d175cb95b}{twiddle\_factors}}, config-\/>\mbox{\hyperlink{structfft__config__t_a439227feff9d7f55384e8780cfc2eb82}{size}});}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00096}00096     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (config-\/>\mbox{\hyperlink{structfft__config__t_a4a3502eb022ff0f5a5446d93c9dcdfec}{type}} == \mbox{\hyperlink{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3aa35f248b935d5b32f1e254b3843caaa0}{FFT\_REAL}} \&\& config-\/>\mbox{\hyperlink{structfft__config__t_ae3ffe1db0831689395bc3e81ef5e748e}{direction}} == \mbox{\hyperlink{fft_8h_a7400df7c8f32ea8e6b010199d1813fe5a94b2b900505b2cd82482f612244a54d3}{FFT\_BACKWARD}})}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00097}00097         \mbox{\hyperlink{fft_8c_a9d0c64b4392dd56fee766d29f01edccb}{irfft}}(config-\/>\mbox{\hyperlink{structfft__config__t_aa92d3f73b33ca1a03e06415ee1db06eb}{input}}, config-\/>\mbox{\hyperlink{structfft__config__t_aed212f452362fd47d3c6530a2433cbca}{output}}, config-\/>\mbox{\hyperlink{structfft__config__t_a00c7a5a420128f70fb1aff6d175cb95b}{twiddle\_factors}}, config-\/>\mbox{\hyperlink{structfft__config__t_a439227feff9d7f55384e8780cfc2eb82}{size}});}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00098}00098     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (config-\/>\mbox{\hyperlink{structfft__config__t_a4a3502eb022ff0f5a5446d93c9dcdfec}{type}} == \mbox{\hyperlink{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3af226b92e6e73d2c1fba99afa79665052}{FFT\_COMPLEX}} \&\& config-\/>\mbox{\hyperlink{structfft__config__t_ae3ffe1db0831689395bc3e81ef5e748e}{direction}} == \mbox{\hyperlink{fft_8h_a7400df7c8f32ea8e6b010199d1813fe5a7052223ae26883446425d6fc3338a869}{FFT\_FORWARD}})}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00099}00099         \mbox{\hyperlink{fft_8c_ab4cb498bf7686f0d200752cc5a6ea3d3}{fft}}(config-\/>\mbox{\hyperlink{structfft__config__t_aa92d3f73b33ca1a03e06415ee1db06eb}{input}}, config-\/>\mbox{\hyperlink{structfft__config__t_aed212f452362fd47d3c6530a2433cbca}{output}}, config-\/>\mbox{\hyperlink{structfft__config__t_a00c7a5a420128f70fb1aff6d175cb95b}{twiddle\_factors}}, config-\/>\mbox{\hyperlink{structfft__config__t_a439227feff9d7f55384e8780cfc2eb82}{size}});}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00100}00100     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (config-\/>\mbox{\hyperlink{structfft__config__t_a4a3502eb022ff0f5a5446d93c9dcdfec}{type}} == \mbox{\hyperlink{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3af226b92e6e73d2c1fba99afa79665052}{FFT\_COMPLEX}} \&\& config-\/>\mbox{\hyperlink{structfft__config__t_ae3ffe1db0831689395bc3e81ef5e748e}{direction}} == \mbox{\hyperlink{fft_8h_a7400df7c8f32ea8e6b010199d1813fe5a94b2b900505b2cd82482f612244a54d3}{FFT\_BACKWARD}})}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00101}00101         \mbox{\hyperlink{fft_8c_a77e61a567a4628991819bbd4230b561f}{ifft}}(config-\/>\mbox{\hyperlink{structfft__config__t_aa92d3f73b33ca1a03e06415ee1db06eb}{input}}, config-\/>\mbox{\hyperlink{structfft__config__t_aed212f452362fd47d3c6530a2433cbca}{output}}, config-\/>\mbox{\hyperlink{structfft__config__t_a00c7a5a420128f70fb1aff6d175cb95b}{twiddle\_factors}}, config-\/>\mbox{\hyperlink{structfft__config__t_a439227feff9d7f55384e8780cfc2eb82}{size}});}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00102}00102 \}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00103}00103 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00104}\mbox{\hyperlink{fft_8c_ab4cb498bf7686f0d200752cc5a6ea3d3}{00104}} \textcolor{keywordtype}{void} \mbox{\hyperlink{fft_8c_ab4cb498bf7686f0d200752cc5a6ea3d3}{fft}}(\textcolor{keywordtype}{float}* input, \textcolor{keywordtype}{float}* output, \textcolor{keywordtype}{float}* twiddle\_factors, \textcolor{keywordtype}{int} n)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00105}00105 \{}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00106}00106     \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00107}00107 \textcolor{comment}{     * Forward fast Fourier transform}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00108}00108 \textcolor{comment}{     * DIT, radix-\/2, out-\/of-\/place implementation}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00109}00109 \textcolor{comment}{     *}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00110}00110 \textcolor{comment}{     * Parameters}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00111}00111 \textcolor{comment}{     * -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00112}00112 \textcolor{comment}{     *  input (float *)}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00113}00113 \textcolor{comment}{     *    The input array containing the complex samples with}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00114}00114 \textcolor{comment}{     *    real/imaginary parts interleaved [Re(x0), Im(x0), ..., Re(x\_n-\/1), Im(x\_n-\/1)]}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00115}00115 \textcolor{comment}{     *  output (float *)}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00116}00116 \textcolor{comment}{     *    The output array containing the complex samples with}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00117}00117 \textcolor{comment}{     *    real/imaginary parts interleaved [Re(x0), Im(x0), ..., Re(x\_n-\/1), Im(x\_n-\/1)]}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00118}00118 \textcolor{comment}{     *  n (int)}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00119}00119 \textcolor{comment}{     *    The FFT size, should be a power of 2}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00120}00120 \textcolor{comment}{     */}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00121}00121 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00122}00122 \textcolor{preprocessor}{\#if USE\_SPLIT\_RADIX}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00123}00123     \mbox{\hyperlink{fft_8c_a9dc6fcc26d03fd8439ca431177a231cd}{split\_radix\_fft}}(input, output, n, 2, twiddle\_factors, 2);}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00124}00124 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00125}00125     \mbox{\hyperlink{fft_8c_ab7790bb2c7fbd236af346a627c7c0ba9}{fft\_primitive}}(input, output, n, 2, twiddle\_factors, 2);}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00126}00126 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00127}00127 \}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00128}00128 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00129}\mbox{\hyperlink{fft_8c_a77e61a567a4628991819bbd4230b561f}{00129}} \textcolor{keywordtype}{void} \mbox{\hyperlink{fft_8c_a77e61a567a4628991819bbd4230b561f}{ifft}}(\textcolor{keywordtype}{float}* input, \textcolor{keywordtype}{float}* output, \textcolor{keywordtype}{float}* twiddle\_factors, \textcolor{keywordtype}{int} n)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00130}00130 \{}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00131}00131     \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00132}00132 \textcolor{comment}{     * Inverse fast Fourier transform}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00133}00133 \textcolor{comment}{     * DIT, radix-\/2, out-\/of-\/place implementation}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00134}00134 \textcolor{comment}{     *}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00135}00135 \textcolor{comment}{     * Parameters}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00136}00136 \textcolor{comment}{     * -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00137}00137 \textcolor{comment}{     *  input (float *)}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00138}00138 \textcolor{comment}{     *    The input array containing the complex samples with}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00139}00139 \textcolor{comment}{     *    real/imaginary parts interleaved [Re(x0), Im(x0), ..., Re(x\_n-\/1), Im(x\_n-\/1)]}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00140}00140 \textcolor{comment}{     *  output (float *)}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00141}00141 \textcolor{comment}{     *    The output array containing the complex samples with}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00142}00142 \textcolor{comment}{     *    real/imaginary parts interleaved [Re(x0), Im(x0), ..., Re(x\_n-\/1), Im(x\_n-\/1)]}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00143}00143 \textcolor{comment}{     *  n (int)}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00144}00144 \textcolor{comment}{     *    The FFT size, should be a power of 2}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00145}00145 \textcolor{comment}{     */}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00146}00146     \mbox{\hyperlink{fft_8c_af0de060a6248093afe01317a1684e734}{ifft\_primitive}}(input, output, n, 2, twiddle\_factors, 2);}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00147}00147 \}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00148}00148 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00149}\mbox{\hyperlink{fft_8c_a015dbb99fdfd93f586de17ddb23858ca}{00149}} \textcolor{keywordtype}{void} \mbox{\hyperlink{fft_8c_a015dbb99fdfd93f586de17ddb23858ca}{rfft}}(\textcolor{keywordtype}{float}* x, \textcolor{keywordtype}{float}* y, \textcolor{keywordtype}{float}* twiddle\_factors, \textcolor{keywordtype}{int} n)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00150}00150 \{}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00151}00151 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00152}00152     \textcolor{comment}{// This code uses the two-\/for-\/the-\/price-\/of-\/one strategy}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00153}00153 \textcolor{preprocessor}{\#if USE\_SPLIT\_RADIX}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00154}00154     \mbox{\hyperlink{fft_8c_a9dc6fcc26d03fd8439ca431177a231cd}{split\_radix\_fft}}(x, y, n / 2, 2, twiddle\_factors, 4);}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00155}00155 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00156}00156     \mbox{\hyperlink{fft_8c_ab7790bb2c7fbd236af346a627c7c0ba9}{fft\_primitive}}(x, y, n / 2, 2, twiddle\_factors, 4);}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00157}00157 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00158}00158 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00159}00159     \textcolor{comment}{// Now apply post processing to recover positive}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00160}00160     \textcolor{comment}{// frequencies of the real FFT}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00161}00161     \textcolor{keywordtype}{float} t = y[0];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00162}00162     y[0] = t + y[1]; \textcolor{comment}{// DC coefficient}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00163}00163     y[1] = t -\/ y[1]; \textcolor{comment}{// Center coefficient}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00164}00164 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00165}00165     \textcolor{comment}{// Apply post processing to quarter element}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00166}00166     \textcolor{comment}{// this boils down to taking complex conjugate}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00167}00167     y[n / 2 + 1] = -\/y[n / 2 + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00168}00168 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00169}00169     \textcolor{comment}{// Now process all the other frequencies}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00170}00170     \textcolor{keywordtype}{int} k;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00171}00171     \textcolor{keywordflow}{for} (k = 2; k < n / 2; k += 2)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00172}00172     \{}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00173}00173         \textcolor{keywordtype}{float} xer, xei, xor\_t, xoi, c, s, tr, ti;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00174}00174 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00175}00175         c = twiddle\_factors[k];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00176}00176         s = twiddle\_factors[k + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00177}00177 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00178}00178         \textcolor{comment}{// even half coefficient}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00179}00179         xer = 0.5 * (y[k] + y[n -\/ k]);}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00180}00180         xei = 0.5 * (y[k + 1] -\/ y[n -\/ k + 1]);}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00181}00181 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00182}00182         \textcolor{comment}{// odd half coefficient}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00183}00183         xor\_t = 0.5 * (y[k + 1] + y[n -\/ k + 1]);}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00184}00184         xoi = -\/0.5 * (y[k] -\/ y[n -\/ k]);}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00185}00185 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00186}00186         tr = c * xor\_t + s * xoi;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00187}00187         ti = -\/s * xor\_t + c * xoi;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00188}00188 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00189}00189         y[k] = xer + tr;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00190}00190         y[k + 1] = xei + ti;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00191}00191 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00192}00192         y[n -\/ k] = xer -\/ tr;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00193}00193         y[n -\/ k + 1] = -\/(xei -\/ ti);}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00194}00194     \}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00195}00195 \}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00196}00196 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00197}\mbox{\hyperlink{fft_8c_a9d0c64b4392dd56fee766d29f01edccb}{00197}} \textcolor{keywordtype}{void} \mbox{\hyperlink{fft_8c_a9d0c64b4392dd56fee766d29f01edccb}{irfft}}(\textcolor{keywordtype}{float}* x, \textcolor{keywordtype}{float}* y, \textcolor{keywordtype}{float}* twiddle\_factors, \textcolor{keywordtype}{int} n)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00198}00198 \{}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00199}00199     \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00200}00200 \textcolor{comment}{     * Destroys content of input vector}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00201}00201 \textcolor{comment}{     */}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00202}00202     \textcolor{keywordtype}{int} k;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00203}00203 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00204}00204     \textcolor{comment}{// Here we need to apply a pre-\/processing first}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00205}00205     \textcolor{keywordtype}{float} t = x[0];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00206}00206     x[0] = 0.5 * (t + x[1]);}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00207}00207     x[1] = 0.5 * (t -\/ x[1]);}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00208}00208 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00209}00209     x[n / 2 + 1] = -\/x[n / 2 + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00210}00210 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00211}00211     \textcolor{keywordflow}{for} (k = 2; k < n / 2; k += 2)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00212}00212     \{}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00213}00213         \textcolor{keywordtype}{float} xer, xei, xor\_t, xoi, c, s, tr, ti;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00214}00214 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00215}00215         c = twiddle\_factors[k];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00216}00216         s = twiddle\_factors[k + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00217}00217 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00218}00218         xer = 0.5 * (x[k] + x[n -\/ k]);}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00219}00219         tr = 0.5 * (x[k] -\/ x[n -\/ k]);}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00220}00220 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00221}00221         xei = 0.5 * (x[k + 1] -\/ x[n -\/ k + 1]);}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00222}00222         ti = 0.5 * (x[k + 1] + x[n -\/ k + 1]);}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00223}00223 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00224}00224         xor\_t = c * tr -\/ s * ti;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00225}00225         xoi = s * tr + c * ti;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00226}00226 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00227}00227         x[k] = xer -\/ xoi;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00228}00228         x[k + 1] = xor\_t + xei;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00229}00229 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00230}00230         x[n -\/ k] = xer + xoi;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00231}00231         x[n -\/ k + 1] = xor\_t -\/ xei;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00232}00232     \}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00233}00233 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00234}00234     \mbox{\hyperlink{fft_8c_af0de060a6248093afe01317a1684e734}{ifft\_primitive}}(x, y, n / 2, 2, twiddle\_factors, 4);}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00235}00235 \}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00236}00236 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00237}\mbox{\hyperlink{fft_8c_ab7790bb2c7fbd236af346a627c7c0ba9}{00237}} \textcolor{keywordtype}{void} \mbox{\hyperlink{fft_8c_ab7790bb2c7fbd236af346a627c7c0ba9}{fft\_primitive}}(\textcolor{keywordtype}{float}* x, \textcolor{keywordtype}{float}* y, \textcolor{keywordtype}{int} n, \textcolor{keywordtype}{int} stride, \textcolor{keywordtype}{float}* twiddle\_factors, \textcolor{keywordtype}{int} tw\_stride)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00238}00238 \{}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00239}00239     \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00240}00240 \textcolor{comment}{     * This code will compute the FFT of the input vector x}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00241}00241 \textcolor{comment}{     *}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00242}00242 \textcolor{comment}{     * The input data is assumed to be real/imag interleaved}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00243}00243 \textcolor{comment}{     *}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00244}00244 \textcolor{comment}{     * The size n should be a power of two}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00245}00245 \textcolor{comment}{     *}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00246}00246 \textcolor{comment}{     * y is an output buffer of size 2n to accomodate for complex numbers}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00247}00247 \textcolor{comment}{     *}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00248}00248 \textcolor{comment}{     * Forward fast Fourier transform}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00249}00249 \textcolor{comment}{     * DIT, radix-\/2, out-\/of-\/place implementation}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00250}00250 \textcolor{comment}{     *}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00251}00251 \textcolor{comment}{     * For a complex FFT, call first stage as:}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00252}00252 \textcolor{comment}{     * fft(x, y, n, 2, 2);}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00253}00253 \textcolor{comment}{     *}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00254}00254 \textcolor{comment}{     * Parameters}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00255}00255 \textcolor{comment}{     * -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00256}00256 \textcolor{comment}{     *  x (float *)}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00257}00257 \textcolor{comment}{     *    The input array containing the complex samples with}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00258}00258 \textcolor{comment}{     *    real/imaginary parts interleaved [Re(x0), Im(x0), ..., Re(x\_n-\/1), Im(x\_n-\/1)]}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00259}00259 \textcolor{comment}{     *  y (float *)}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00260}00260 \textcolor{comment}{     *    The output array containing the complex samples with}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00261}00261 \textcolor{comment}{     *    real/imaginary parts interleaved [Re(x0), Im(x0), ..., Re(x\_n-\/1), Im(x\_n-\/1)]}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00262}00262 \textcolor{comment}{     *  n (int)}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00263}00263 \textcolor{comment}{     *    The FFT size, should be a power of 2}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00264}00264 \textcolor{comment}{     *  stride (int)}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00265}00265 \textcolor{comment}{     *    The number of elements to skip between two successive samples}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00266}00266 \textcolor{comment}{     *  tw\_stride (int)}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00267}00267 \textcolor{comment}{     *    The number of elements to skip between two successive twiddle factors}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00268}00268 \textcolor{comment}{     */}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00269}00269     \textcolor{keywordtype}{int} k;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00270}00270     \textcolor{keywordtype}{float} t;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00271}00271 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00272}00272 \textcolor{preprocessor}{\#if LARGE\_BASE\_CASE}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00273}00273     \textcolor{comment}{// End condition, stop at n=8 to avoid one trivial recursion}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00274}00274     \textcolor{keywordflow}{if} (n == 8)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00275}00275     \{}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00276}00276         \mbox{\hyperlink{fft_8c_a12468a362aeaa6675a5c3c6b08a1af56}{fft8}}(x, stride, y, 2);}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00277}00277         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00278}00278     \}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00279}00279 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00280}00280     \textcolor{comment}{// End condition, stop at n=2 to avoid one trivial recursion}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00281}00281     \textcolor{keywordflow}{if} (n == 2)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00282}00282     \{}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00283}00283         y[0] = x[0] + x[stride];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00284}00284         y[1] = x[1] + x[stride + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00285}00285         y[2] = x[0] -\/ x[stride];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00286}00286         y[3] = x[1] -\/ x[stride + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00287}00287         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00288}00288     \}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00289}00289 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00290}00290 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00291}00291     \textcolor{comment}{// Recursion -\/-\/ Decimation In Time algorithm}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00292}00292     \mbox{\hyperlink{fft_8c_ab7790bb2c7fbd236af346a627c7c0ba9}{fft\_primitive}}(x, y, n / 2, 2 * stride, twiddle\_factors, 2 * tw\_stride);              \textcolor{comment}{// even half}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00293}00293     \mbox{\hyperlink{fft_8c_ab7790bb2c7fbd236af346a627c7c0ba9}{fft\_primitive}}(x + stride, y + n, n / 2, 2 * stride, twiddle\_factors, 2 * tw\_stride); \textcolor{comment}{// odd half}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00294}00294 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00295}00295     \textcolor{comment}{// Stitch back together}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00296}00296 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00297}00297     \textcolor{comment}{// We can a few multiplications in the first step}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00298}00298     t = y[0];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00299}00299     y[0] = t + y[n];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00300}00300     y[n] = t -\/ y[n];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00301}00301 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00302}00302     t = y[1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00303}00303     y[1] = t + y[n + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00304}00304     y[n + 1] = t -\/ y[n + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00305}00305 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00306}00306     \textcolor{keywordflow}{for} (k = 1; k < n / 2; k++)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00307}00307     \{}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00308}00308         \textcolor{keywordtype}{float} x1r, x1i, x2r, x2i, c, s;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00309}00309         c = twiddle\_factors[k * tw\_stride];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00310}00310         s = twiddle\_factors[k * tw\_stride + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00311}00311 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00312}00312         x1r = y[2 * k];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00313}00313         x1i = y[2 * k + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00314}00314         x2r = c * y[n + 2 * k] + s * y[n + 2 * k + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00315}00315         x2i = -\/s * y[n + 2 * k] + c * y[n + 2 * k + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00316}00316 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00317}00317         y[2 * k] = x1r + x2r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00318}00318         y[2 * k + 1] = x1i + x2i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00319}00319 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00320}00320         y[n + 2 * k] = x1r -\/ x2r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00321}00321         y[n + 2 * k + 1] = x1i -\/ x2i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00322}00322     \}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00323}00323 \}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00324}00324 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00325}\mbox{\hyperlink{fft_8c_a9dc6fcc26d03fd8439ca431177a231cd}{00325}} \textcolor{keywordtype}{void} \mbox{\hyperlink{fft_8c_a9dc6fcc26d03fd8439ca431177a231cd}{split\_radix\_fft}}(\textcolor{keywordtype}{float}* x, \textcolor{keywordtype}{float}* y, \textcolor{keywordtype}{int} n, \textcolor{keywordtype}{int} stride, \textcolor{keywordtype}{float}* twiddle\_factors, \textcolor{keywordtype}{int} tw\_stride)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00326}00326 \{}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00327}00327     \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00328}00328 \textcolor{comment}{     * This code will compute the FFT of the input vector x}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00329}00329 \textcolor{comment}{     *}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00330}00330 \textcolor{comment}{     * The input data is assumed to be real/imag interleaved}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00331}00331 \textcolor{comment}{     *}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00332}00332 \textcolor{comment}{     * The size n should be a power of two}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00333}00333 \textcolor{comment}{     *}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00334}00334 \textcolor{comment}{     * y is an output buffer of size 2n to accomodate for complex numbers}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00335}00335 \textcolor{comment}{     *}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00336}00336 \textcolor{comment}{     * Forward fast Fourier transform}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00337}00337 \textcolor{comment}{     * Split-\/Radix}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00338}00338 \textcolor{comment}{     * DIT, radix-\/2, out-\/of-\/place implementation}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00339}00339 \textcolor{comment}{     *}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00340}00340 \textcolor{comment}{     * For a complex FFT, call first stage as:}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00341}00341 \textcolor{comment}{     * fft(x, y, n, 2, 2);}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00342}00342 \textcolor{comment}{     *}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00343}00343 \textcolor{comment}{     * Parameters}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00344}00344 \textcolor{comment}{     * -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00345}00345 \textcolor{comment}{     *  x (float *)}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00346}00346 \textcolor{comment}{     *    The input array containing the complex samples with}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00347}00347 \textcolor{comment}{     *    real/imaginary parts interleaved [Re(x0), Im(x0), ..., Re(x\_n-\/1), Im(x\_n-\/1)]}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00348}00348 \textcolor{comment}{     *  y (float *)}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00349}00349 \textcolor{comment}{     *    The output array containing the complex samples with}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00350}00350 \textcolor{comment}{     *    real/imaginary parts interleaved [Re(x0), Im(x0), ..., Re(x\_n-\/1), Im(x\_n-\/1)]}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00351}00351 \textcolor{comment}{     *  n (int)}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00352}00352 \textcolor{comment}{     *    The FFT size, should be a power of 2}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00353}00353 \textcolor{comment}{     *  stride (int)}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00354}00354 \textcolor{comment}{     *    The number of elements to skip between two successive samples}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00355}00355 \textcolor{comment}{     *  twiddle\_factors (float *)}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00356}00356 \textcolor{comment}{     *    The array of twiddle factors}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00357}00357 \textcolor{comment}{     *  tw\_stride (int)}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00358}00358 \textcolor{comment}{     *    The number of elements to skip between two successive twiddle factors}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00359}00359 \textcolor{comment}{     */}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00360}00360     \textcolor{keywordtype}{int} k;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00361}00361 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00362}00362 \textcolor{preprocessor}{\#if LARGE\_BASE\_CASE}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00363}00363     \textcolor{comment}{// End condition, stop at n=2 to avoid one trivial recursion}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00364}00364     \textcolor{keywordflow}{if} (n == 8)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00365}00365     \{}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00366}00366         \mbox{\hyperlink{fft_8c_a12468a362aeaa6675a5c3c6b08a1af56}{fft8}}(x, stride, y, 2);}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00367}00367         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00368}00368     \}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00369}00369     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (n == 4)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00370}00370     \{}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00371}00371         \mbox{\hyperlink{fft_8c_aa6e142d986a6a8f5da0f1196ba01068b}{fft4}}(x, stride, y, 2);}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00372}00372         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00373}00373     \}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00374}00374 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00375}00375     \textcolor{comment}{// End condition, stop at n=2 to avoid one trivial recursion}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00376}00376     \textcolor{keywordflow}{if} (n == 2)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00377}00377     \{}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00378}00378         y[0] = x[0] + x[stride];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00379}00379         y[1] = x[1] + x[stride + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00380}00380         y[2] = x[0] -\/ x[stride];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00381}00381         y[3] = x[1] -\/ x[stride + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00382}00382         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00383}00383     \}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00384}00384     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (n == 1)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00385}00385     \{}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00386}00386         y[0] = x[0];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00387}00387         y[1] = x[1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00388}00388         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00389}00389     \}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00390}00390 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00391}00391 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00392}00392     \textcolor{comment}{// Recursion -\/-\/ Decimation In Time algorithm}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00393}00393     \mbox{\hyperlink{fft_8c_a9dc6fcc26d03fd8439ca431177a231cd}{split\_radix\_fft}}(x, y, n / 2, 2 * stride, twiddle\_factors, 2 * tw\_stride);}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00394}00394     \mbox{\hyperlink{fft_8c_a9dc6fcc26d03fd8439ca431177a231cd}{split\_radix\_fft}}(x + stride, y + n, n / 4, 4 * stride, twiddle\_factors, 4 * tw\_stride);}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00395}00395     \mbox{\hyperlink{fft_8c_a9dc6fcc26d03fd8439ca431177a231cd}{split\_radix\_fft}}(x + 3 * stride, y + n + n / 2, n / 4, 4 * stride, twiddle\_factors, 4 * tw\_stride);}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00396}00396 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00397}00397     \textcolor{comment}{// Stitch together the output}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00398}00398     \textcolor{keywordtype}{float} u1r, u1i, u2r, u2i, x1r, x1i, x2r, x2i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00399}00399     \textcolor{keywordtype}{float} t;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00400}00400 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00401}00401     \textcolor{comment}{// We can save a few multiplications in the first step}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00402}00402     u1r = y[0];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00403}00403     u1i = y[1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00404}00404     u2r = y[n / 2];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00405}00405     u2i = y[n / 2 + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00406}00406 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00407}00407     x1r = y[n];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00408}00408     x1i = y[n + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00409}00409     x2r = y[n / 2 + n];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00410}00410     x2i = y[n / 2 + n + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00411}00411 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00412}00412     t = x1r + x2r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00413}00413     y[0] = u1r + t;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00414}00414     y[n] = u1r -\/ t;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00415}00415 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00416}00416     t = x1i + x2i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00417}00417     y[1] = u1i + t;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00418}00418     y[n + 1] = u1i -\/ t;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00419}00419 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00420}00420     t = x2i -\/ x1i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00421}00421     y[n / 2] = u2r -\/ t;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00422}00422     y[n + n / 2] = u2r + t;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00423}00423 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00424}00424     t = x1r -\/ x2r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00425}00425     y[n / 2 + 1] = u2i -\/ t;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00426}00426     y[n + n / 2 + 1] = u2i + t;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00427}00427 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00428}00428     \textcolor{keywordflow}{for} (k = 1; k < n / 4; k++)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00429}00429     \{}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00430}00430         \textcolor{keywordtype}{float} u1r, u1i, u2r, u2i, x1r, x1i, x2r, x2i, c1, s1, c2, s2;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00431}00431         c1 = twiddle\_factors[k * tw\_stride];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00432}00432         s1 = twiddle\_factors[k * tw\_stride + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00433}00433         c2 = twiddle\_factors[3 * k * tw\_stride];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00434}00434         s2 = twiddle\_factors[3 * k * tw\_stride + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00435}00435 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00436}00436         u1r = y[2 * k];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00437}00437         u1i = y[2 * k + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00438}00438         u2r = y[2 * k + n / 2];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00439}00439         u2i = y[2 * k + n / 2 + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00440}00440 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00441}00441         x1r = c1 * y[n + 2 * k] + s1 * y[n + 2 * k + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00442}00442         x1i = -\/s1 * y[n + 2 * k] + c1 * y[n + 2 * k + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00443}00443         x2r = c2 * y[n / 2 + n + 2 * k] + s2 * y[n / 2 + n + 2 * k + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00444}00444         x2i = -\/s2 * y[n / 2 + n + 2 * k] + c2 * y[n / 2 + n + 2 * k + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00445}00445 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00446}00446         t = x1r + x2r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00447}00447         y[2 * k] = u1r + t;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00448}00448         y[2 * k + n] = u1r -\/ t;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00449}00449 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00450}00450         t = x1i + x2i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00451}00451         y[2 * k + 1] = u1i + t;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00452}00452         y[2 * k + n + 1] = u1i -\/ t;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00453}00453 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00454}00454         t = x2i -\/ x1i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00455}00455         y[2 * k + n / 2] = u2r -\/ t;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00456}00456         y[2 * k + n + n / 2] = u2r + t;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00457}00457 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00458}00458         t = x1r -\/ x2r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00459}00459         y[2 * k + n / 2 + 1] = u2i -\/ t;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00460}00460         y[2 * k + n + n / 2 + 1] = u2i + t;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00461}00461     \}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00462}00462 \}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00463}00463 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00464}\mbox{\hyperlink{fft_8c_af0de060a6248093afe01317a1684e734}{00464}} \textcolor{keywordtype}{void} \mbox{\hyperlink{fft_8c_af0de060a6248093afe01317a1684e734}{ifft\_primitive}}(\textcolor{keywordtype}{float}* input, \textcolor{keywordtype}{float}* output, \textcolor{keywordtype}{int} n, \textcolor{keywordtype}{int} stride, \textcolor{keywordtype}{float}* twiddle\_factors, \textcolor{keywordtype}{int} tw\_stride)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00465}00465 \{}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00466}00466 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00467}00467 \textcolor{preprocessor}{\#if USE\_SPLIT\_RADIX}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00468}00468     \mbox{\hyperlink{fft_8c_a9dc6fcc26d03fd8439ca431177a231cd}{split\_radix\_fft}}(input, output, n, stride, twiddle\_factors, tw\_stride);}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00469}00469 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00470}00470     \mbox{\hyperlink{fft_8c_ab7790bb2c7fbd236af346a627c7c0ba9}{fft\_primitive}}(input, output, n, stride, twiddle\_factors, tw\_stride);}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00471}00471 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00472}00472 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00473}00473     \textcolor{keywordtype}{int} ks;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00474}00474 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00475}00475     \textcolor{keywordtype}{int} ns = n * stride;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00476}00476 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00477}00477     \textcolor{comment}{// reverse all coefficients from 1 to n / 2 -\/ 1}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00478}00478     \textcolor{keywordflow}{for} (ks = stride; ks < ns / 2; ks += stride)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00479}00479     \{}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00480}00480         \textcolor{keywordtype}{float} t;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00481}00481 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00482}00482         t = output[ks];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00483}00483         output[ks] = output[ns -\/ ks];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00484}00484         output[ns -\/ ks] = t;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00485}00485 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00486}00486         t = output[ks + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00487}00487         output[ks + 1] = output[ns -\/ ks + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00488}00488         output[ns -\/ ks + 1] = t;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00489}00489     \}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00490}00490 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00491}00491     \textcolor{comment}{// Apply normalization}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00492}00492     \textcolor{keywordtype}{float} norm = 1. / n;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00493}00493     \textcolor{keywordflow}{for} (ks = 0; ks < ns; ks += stride)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00494}00494     \{}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00495}00495         output[ks] *= norm;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00496}00496         output[ks + 1] *= norm;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00497}00497     \}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00498}00498 \}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00499}00499 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00500}\mbox{\hyperlink{fft_8c_a12468a362aeaa6675a5c3c6b08a1af56}{00500}} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{fft_8c_a12468a362aeaa6675a5c3c6b08a1af56}{fft8}}(\textcolor{keywordtype}{float}* input, \textcolor{keywordtype}{int} stride\_in, \textcolor{keywordtype}{float}* output, \textcolor{keywordtype}{int} stride\_out)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00501}00501 \{}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00502}00502     \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00503}00503 \textcolor{comment}{     * Unrolled implementation of FFT8 for a little more performance}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00504}00504 \textcolor{comment}{     */}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00505}00505     \textcolor{keywordtype}{float} a0r, a1r, a2r, a3r, a4r, a5r, a6r, a7r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00506}00506     \textcolor{keywordtype}{float} a0i, a1i, a2i, a3i, a4i, a5i, a6i, a7i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00507}00507     \textcolor{keywordtype}{float} b0r, b1r, b2r, b3r, b4r, b5r, b6r, b7r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00508}00508     \textcolor{keywordtype}{float} b0i, b1i, b2i, b3i, b4i, b5i, b6i, b7i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00509}00509     \textcolor{keywordtype}{float} t;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00510}00510     \textcolor{keywordtype}{float} sin\_pi\_4 = 0.7071067812;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00511}00511 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00512}00512     a0r = input[0];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00513}00513     a0i = input[1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00514}00514     a1r = input[stride\_in];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00515}00515     a1i = input[stride\_in + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00516}00516     a2r = input[2 * stride\_in];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00517}00517     a2i = input[2 * stride\_in + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00518}00518     a3r = input[3 * stride\_in];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00519}00519     a3i = input[3 * stride\_in + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00520}00520     a4r = input[4 * stride\_in];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00521}00521     a4i = input[4 * stride\_in + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00522}00522     a5r = input[5 * stride\_in];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00523}00523     a5i = input[5 * stride\_in + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00524}00524     a6r = input[6 * stride\_in];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00525}00525     a6i = input[6 * stride\_in + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00526}00526     a7r = input[7 * stride\_in];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00527}00527     a7i = input[7 * stride\_in + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00528}00528 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00529}00529     \textcolor{comment}{// Stage 1}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00530}00530 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00531}00531     b0r = a0r + a4r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00532}00532     b0i = a0i + a4i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00533}00533 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00534}00534     b1r = a1r + a5r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00535}00535     b1i = a1i + a5i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00536}00536 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00537}00537     b2r = a2r + a6r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00538}00538     b2i = a2i + a6i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00539}00539 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00540}00540     b3r = a3r + a7r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00541}00541     b3i = a3i + a7i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00542}00542 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00543}00543     b4r = a0r -\/ a4r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00544}00544     b4i = a0i -\/ a4i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00545}00545 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00546}00546     b5r = a1r -\/ a5r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00547}00547     b5i = a1i -\/ a5i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00548}00548     \textcolor{comment}{// W\_8\string^1 = 1/sqrt(2) -\/ j / sqrt(2)}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00549}00549     t = b5r + b5i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00550}00550     b5i = (b5i -\/ b5r) * sin\_pi\_4;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00551}00551     b5r = t * sin\_pi\_4;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00552}00552 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00553}00553     \textcolor{comment}{// W\_8\string^2 = -\/j}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00554}00554     b6r = a2i -\/ a6i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00555}00555     b6i = a6r -\/ a2r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00556}00556 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00557}00557     b7r = a3r -\/ a7r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00558}00558     b7i = a3i -\/ a7i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00559}00559     \textcolor{comment}{// W\_8\string^3 = -\/1 / sqrt(2) + j / sqrt(2)}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00560}00560     t = sin\_pi\_4 * (b7i -\/ b7r);}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00561}00561     b7i = -\/(b7r + b7i) * sin\_pi\_4;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00562}00562     b7r = t;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00563}00563 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00564}00564     \textcolor{comment}{// Stage 2}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00565}00565 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00566}00566     a0r = b0r + b2r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00567}00567     a0i = b0i + b2i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00568}00568 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00569}00569     a1r = b1r + b3r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00570}00570     a1i = b1i + b3i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00571}00571 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00572}00572     a2r = b0r -\/ b2r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00573}00573     a2i = b0i -\/ b2i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00574}00574 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00575}00575     \textcolor{comment}{// * j}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00576}00576     a3r = b1i -\/ b3i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00577}00577     a3i = b3r -\/ b1r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00578}00578 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00579}00579     a4r = b4r + b6r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00580}00580     a4i = b4i + b6i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00581}00581 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00582}00582     a5r = b5r + b7r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00583}00583     a5i = b5i + b7i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00584}00584 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00585}00585     a6r = b4r -\/ b6r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00586}00586     a6i = b4i -\/ b6i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00587}00587 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00588}00588     \textcolor{comment}{// * j}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00589}00589     a7r = b5i -\/ b7i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00590}00590     a7i = b7r -\/ b5r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00591}00591 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00592}00592     \textcolor{comment}{// Stage 3}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00593}00593 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00594}00594     \textcolor{comment}{// X[0]}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00595}00595     output[0] = a0r + a1r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00596}00596     output[1] = a0i + a1i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00597}00597 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00598}00598     \textcolor{comment}{// X[4]}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00599}00599     output[4 * stride\_out] = a0r -\/ a1r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00600}00600     output[4 * stride\_out + 1] = a0i -\/ a1i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00601}00601 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00602}00602     \textcolor{comment}{// X[2]}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00603}00603     output[2 * stride\_out] = a2r + a3r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00604}00604     output[2 * stride\_out + 1] = a2i + a3i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00605}00605 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00606}00606     \textcolor{comment}{// X[6]}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00607}00607     output[6 * stride\_out] = a2r -\/ a3r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00608}00608     output[6 * stride\_out + 1] = a2i -\/ a3i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00609}00609 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00610}00610     \textcolor{comment}{// X[1]}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00611}00611     output[stride\_out] = a4r + a5r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00612}00612     output[stride\_out + 1] = a4i + a5i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00613}00613 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00614}00614     \textcolor{comment}{// X[5]}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00615}00615     output[5 * stride\_out] = a4r -\/ a5r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00616}00616     output[5 * stride\_out + 1] = a4i -\/ a5i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00617}00617 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00618}00618     \textcolor{comment}{// X[3]}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00619}00619     output[3 * stride\_out] = a6r + a7r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00620}00620     output[3 * stride\_out + 1] = a6i + a7i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00621}00621 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00622}00622     \textcolor{comment}{// X[7]}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00623}00623     output[7 * stride\_out] = a6r -\/ a7r;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00624}00624     output[7 * stride\_out + 1] = a6i -\/ a7i;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00625}00625 \}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00626}00626 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00627}\mbox{\hyperlink{fft_8c_aa6e142d986a6a8f5da0f1196ba01068b}{00627}} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{fft_8c_aa6e142d986a6a8f5da0f1196ba01068b}{fft4}}(\textcolor{keywordtype}{float}* input, \textcolor{keywordtype}{int} stride\_in, \textcolor{keywordtype}{float}* output, \textcolor{keywordtype}{int} stride\_out)}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00628}00628 \{}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00629}00629     \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00630}00630 \textcolor{comment}{     * Unrolled implementation of FFT4 for a little more performance}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00631}00631 \textcolor{comment}{     */}}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00632}00632     \textcolor{keywordtype}{float} t1, t2;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00633}00633 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00634}00634     t1 = input[0] + input[2 * stride\_in];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00635}00635     t2 = input[stride\_in] + input[3 * stride\_in];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00636}00636     output[0] = t1 + t2;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00637}00637     output[2 * stride\_out] = t1 -\/ t2;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00638}00638 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00639}00639     t1 = input[1] + input[2 * stride\_in + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00640}00640     t2 = input[stride\_in + 1] + input[3 * stride\_in + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00641}00641     output[1] = t1 + t2;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00642}00642     output[2 * stride\_out + 1] = t1 -\/ t2;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00643}00643 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00644}00644     t1 = input[0] -\/ input[2 * stride\_in];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00645}00645     t2 = input[stride\_in + 1] -\/ input[3 * stride\_in + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00646}00646     output[stride\_out] = t1 + t2;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00647}00647     output[3 * stride\_out] = t1 -\/ t2;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00648}00648 }
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00649}00649     t1 = input[1] -\/ input[2 * stride\_in + 1];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00650}00650     t2 = input[3 * stride\_in] -\/ input[stride\_in];}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00651}00651     output[stride\_out + 1] = t1 + t2;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00652}00652     output[3 * stride\_out + 1] = t1 -\/ t2;}
+\DoxyCodeLine{\Hypertarget{fft_8c_source_l00653}00653 \}}
+
+\end{DoxyCode}

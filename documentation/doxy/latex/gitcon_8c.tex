@@ -1,20 +1,43 @@
-\hypertarget{gitcon_8c}{}\doxysection{C\+:/\+Users/\+Smon/source/\+MTAP-\/\+MIDI-\/\+Guitar-\/\+Converter/firmware/\+MIDI-\/\+Testing/src/gitcon.c File Reference}
-\label{gitcon_8c}\index{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/src/gitcon.c@{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/src/gitcon.c}}
+\hypertarget{gitcon_8c}{}\doxysection{src/gitcon.c File Reference}
+\label{gitcon_8c}\index{src/gitcon.c@{src/gitcon.c}}
+
+
+Gitcon Driver Source.  
+
+
 {\ttfamily \#include \char`\"{}gitcon.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}processed-\/data.\+h\char`\"{}}\newline
-Include dependency graph for gitcon.\+c\+:
-% FIG 0
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{gitcon_8c_a14a8a62510d35192cd1d09c145c19e99}{FLOAT\+\_\+\+TO\+\_\+\+UINT16}}(x)~((uint16\+\_\+t)((x)$\ast$32767.\+0f))
+\item 
+\#define \mbox{\hyperlink{gitcon_8c_ad21e94252f5e4b0f8f51a70e74fc8a1a}{UINT16\+\_\+\+TO\+\_\+\+FLOAT}}(x)~((float)(x) / 32767.\+0f)
+\item 
+\#define \mbox{\hyperlink{gitcon_8c_aa6ac8087ed34271031291f59014fe310}{SENSITIVITY}}~0.\+5f
+\item 
+\#define \mbox{\hyperlink{gitcon_8c_a3a549d9a8c4b5f963919484bdbebb394}{MIDI\+\_\+\+LOWEST\+\_\+\+NOTE}}~21
+\item 
+\#define \mbox{\hyperlink{gitcon_8c_af486e64d4f890f2d7df096ce7e075f52}{MIDI\+\_\+\+HIGHEST\+\_\+\+NOTE}}~108
+\item 
+\#define \mbox{\hyperlink{gitcon_8c_aaafafd7f4beba122aed9bb8974571653}{MIDI\+\_\+\+KEY\+\_\+\+BOUNDARY}}(x)~((x) $<$ \mbox{\hyperlink{gitcon_8c_a3a549d9a8c4b5f963919484bdbebb394}{MIDI\+\_\+\+LOWEST\+\_\+\+NOTE}} $\vert$$\vert$ (x) $>$ \mbox{\hyperlink{gitcon_8c_af486e64d4f890f2d7df096ce7e075f52}{MIDI\+\_\+\+HIGHEST\+\_\+\+NOTE}})
+\item 
+\#define \mbox{\hyperlink{gitcon_8c_af77f88f1698659519867edf734066b66}{CONCERT\+\_\+A}}~440.\+0f
+\item 
+\#define \mbox{\hyperlink{gitcon_8c_a18bafff0520f1d53a2760225c0b0b36e}{CONCERT\+\_\+\+A\+\_\+\+NOTE}}~69
+\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{gitcon_8c_a287f8fb099fc7f164ba0bb50d12ad982}\label{gitcon_8c_a287f8fb099fc7f164ba0bb50d12ad982}} 
-esp\+\_\+err\+\_\+t {\bfseries gitcon\+\_\+init} (\mbox{\hyperlink{structgitcon__context__t}{gitcon\+\_\+context\+\_\+t}} $\ast$$\ast$out\+\_\+handle)
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{gitcon_8c_a287f8fb099fc7f164ba0bb50d12ad982}{gitcon\+\_\+init}} (\mbox{\hyperlink{structgitcon__context__t}{gitcon\+\_\+context\+\_\+t}} $\ast$$\ast$out\+\_\+handle)
 \item 
-esp\+\_\+err\+\_\+t \mbox{\hyperlink{gitcon_8c_a34f972a4c96245ce63d26a5256c75e24}{gitcon\+\_\+exit}} (\mbox{\hyperlink{structgitcon__context__t}{gitcon\+\_\+handle\+\_\+t}} handle)
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{gitcon_8c_a34f972a4c96245ce63d26a5256c75e24}{gitcon\+\_\+exit}} (\mbox{\hyperlink{gitcon_8h_a898b59703ba05e8a28c233508755ed60}{gitcon\+\_\+handle\+\_\+t}} handle)
 \begin{DoxyCompactList}\small\item\em frees all resources \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
+Gitcon Driver Source. 
+
 \begin{DoxyAuthor}{Author}
 @s-\/grundner @\+Laurenz03 
 \end{DoxyAuthor}
@@ -29,12 +52,99 @@ Copyright (c) 2022
 \end{DoxyCopyright}
 
 
+Definition in file \mbox{\hyperlink{gitcon_8c_source}{gitcon.\+c}}.
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{gitcon_8c_af77f88f1698659519867edf734066b66}\label{gitcon_8c_af77f88f1698659519867edf734066b66}} 
+\index{gitcon.c@{gitcon.c}!CONCERT\_A@{CONCERT\_A}}
+\index{CONCERT\_A@{CONCERT\_A}!gitcon.c@{gitcon.c}}
+\doxysubsubsection{\texorpdfstring{CONCERT\_A}{CONCERT\_A}}
+{\footnotesize\ttfamily \#define CONCERT\+\_\+A~440.\+0f}
+
+
+
+Definition at line \mbox{\hyperlink{gitcon_8c_source_l00026}{26}} of file \mbox{\hyperlink{gitcon_8c_source}{gitcon.\+c}}.
+
+\mbox{\Hypertarget{gitcon_8c_a18bafff0520f1d53a2760225c0b0b36e}\label{gitcon_8c_a18bafff0520f1d53a2760225c0b0b36e}} 
+\index{gitcon.c@{gitcon.c}!CONCERT\_A\_NOTE@{CONCERT\_A\_NOTE}}
+\index{CONCERT\_A\_NOTE@{CONCERT\_A\_NOTE}!gitcon.c@{gitcon.c}}
+\doxysubsubsection{\texorpdfstring{CONCERT\_A\_NOTE}{CONCERT\_A\_NOTE}}
+{\footnotesize\ttfamily \#define CONCERT\+\_\+\+A\+\_\+\+NOTE~69}
+
+
+
+Definition at line \mbox{\hyperlink{gitcon_8c_source_l00027}{27}} of file \mbox{\hyperlink{gitcon_8c_source}{gitcon.\+c}}.
+
+\mbox{\Hypertarget{gitcon_8c_a14a8a62510d35192cd1d09c145c19e99}\label{gitcon_8c_a14a8a62510d35192cd1d09c145c19e99}} 
+\index{gitcon.c@{gitcon.c}!FLOAT\_TO\_UINT16@{FLOAT\_TO\_UINT16}}
+\index{FLOAT\_TO\_UINT16@{FLOAT\_TO\_UINT16}!gitcon.c@{gitcon.c}}
+\doxysubsubsection{\texorpdfstring{FLOAT\_TO\_UINT16}{FLOAT\_TO\_UINT16}}
+{\footnotesize\ttfamily \#define FLOAT\+\_\+\+TO\+\_\+\+UINT16(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((uint16\+\_\+t)((x)$\ast$32767.\+0f))}
+
+
+
+Definition at line \mbox{\hyperlink{gitcon_8c_source_l00020}{20}} of file \mbox{\hyperlink{gitcon_8c_source}{gitcon.\+c}}.
+
+\mbox{\Hypertarget{gitcon_8c_af486e64d4f890f2d7df096ce7e075f52}\label{gitcon_8c_af486e64d4f890f2d7df096ce7e075f52}} 
+\index{gitcon.c@{gitcon.c}!MIDI\_HIGHEST\_NOTE@{MIDI\_HIGHEST\_NOTE}}
+\index{MIDI\_HIGHEST\_NOTE@{MIDI\_HIGHEST\_NOTE}!gitcon.c@{gitcon.c}}
+\doxysubsubsection{\texorpdfstring{MIDI\_HIGHEST\_NOTE}{MIDI\_HIGHEST\_NOTE}}
+{\footnotesize\ttfamily \#define MIDI\+\_\+\+HIGHEST\+\_\+\+NOTE~108}
+
+
+
+Definition at line \mbox{\hyperlink{gitcon_8c_source_l00024}{24}} of file \mbox{\hyperlink{gitcon_8c_source}{gitcon.\+c}}.
+
+\mbox{\Hypertarget{gitcon_8c_aaafafd7f4beba122aed9bb8974571653}\label{gitcon_8c_aaafafd7f4beba122aed9bb8974571653}} 
+\index{gitcon.c@{gitcon.c}!MIDI\_KEY\_BOUNDARY@{MIDI\_KEY\_BOUNDARY}}
+\index{MIDI\_KEY\_BOUNDARY@{MIDI\_KEY\_BOUNDARY}!gitcon.c@{gitcon.c}}
+\doxysubsubsection{\texorpdfstring{MIDI\_KEY\_BOUNDARY}{MIDI\_KEY\_BOUNDARY}}
+{\footnotesize\ttfamily \#define MIDI\+\_\+\+KEY\+\_\+\+BOUNDARY(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((x) $<$ \mbox{\hyperlink{gitcon_8c_a3a549d9a8c4b5f963919484bdbebb394}{MIDI\+\_\+\+LOWEST\+\_\+\+NOTE}} $\vert$$\vert$ (x) $>$ \mbox{\hyperlink{gitcon_8c_af486e64d4f890f2d7df096ce7e075f52}{MIDI\+\_\+\+HIGHEST\+\_\+\+NOTE}})}
+
+
+
+Definition at line \mbox{\hyperlink{gitcon_8c_source_l00025}{25}} of file \mbox{\hyperlink{gitcon_8c_source}{gitcon.\+c}}.
+
+\mbox{\Hypertarget{gitcon_8c_a3a549d9a8c4b5f963919484bdbebb394}\label{gitcon_8c_a3a549d9a8c4b5f963919484bdbebb394}} 
+\index{gitcon.c@{gitcon.c}!MIDI\_LOWEST\_NOTE@{MIDI\_LOWEST\_NOTE}}
+\index{MIDI\_LOWEST\_NOTE@{MIDI\_LOWEST\_NOTE}!gitcon.c@{gitcon.c}}
+\doxysubsubsection{\texorpdfstring{MIDI\_LOWEST\_NOTE}{MIDI\_LOWEST\_NOTE}}
+{\footnotesize\ttfamily \#define MIDI\+\_\+\+LOWEST\+\_\+\+NOTE~21}
+
+
+
+Definition at line \mbox{\hyperlink{gitcon_8c_source_l00023}{23}} of file \mbox{\hyperlink{gitcon_8c_source}{gitcon.\+c}}.
+
+\mbox{\Hypertarget{gitcon_8c_aa6ac8087ed34271031291f59014fe310}\label{gitcon_8c_aa6ac8087ed34271031291f59014fe310}} 
+\index{gitcon.c@{gitcon.c}!SENSITIVITY@{SENSITIVITY}}
+\index{SENSITIVITY@{SENSITIVITY}!gitcon.c@{gitcon.c}}
+\doxysubsubsection{\texorpdfstring{SENSITIVITY}{SENSITIVITY}}
+{\footnotesize\ttfamily \#define SENSITIVITY~0.\+5f}
+
+
+
+Definition at line \mbox{\hyperlink{gitcon_8c_source_l00022}{22}} of file \mbox{\hyperlink{gitcon_8c_source}{gitcon.\+c}}.
+
+\mbox{\Hypertarget{gitcon_8c_ad21e94252f5e4b0f8f51a70e74fc8a1a}\label{gitcon_8c_ad21e94252f5e4b0f8f51a70e74fc8a1a}} 
+\index{gitcon.c@{gitcon.c}!UINT16\_TO\_FLOAT@{UINT16\_TO\_FLOAT}}
+\index{UINT16\_TO\_FLOAT@{UINT16\_TO\_FLOAT}!gitcon.c@{gitcon.c}}
+\doxysubsubsection{\texorpdfstring{UINT16\_TO\_FLOAT}{UINT16\_TO\_FLOAT}}
+{\footnotesize\ttfamily \#define UINT16\+\_\+\+TO\+\_\+\+FLOAT(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((float)(x) / 32767.\+0f)}
+
+
+
+Definition at line \mbox{\hyperlink{gitcon_8c_source_l00021}{21}} of file \mbox{\hyperlink{gitcon_8c_source}{gitcon.\+c}}.
+
+
+
 \doxysubsection{Function Documentation}
 \mbox{\Hypertarget{gitcon_8c_a34f972a4c96245ce63d26a5256c75e24}\label{gitcon_8c_a34f972a4c96245ce63d26a5256c75e24}} 
 \index{gitcon.c@{gitcon.c}!gitcon\_exit@{gitcon\_exit}}
 \index{gitcon\_exit@{gitcon\_exit}!gitcon.c@{gitcon.c}}
 \doxysubsubsection{\texorpdfstring{gitcon\_exit()}{gitcon\_exit()}}
-{\footnotesize\ttfamily esp\+\_\+err\+\_\+t gitcon\+\_\+exit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgitcon__context__t}{gitcon\+\_\+handle\+\_\+t}}}]{handle }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t gitcon\+\_\+exit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gitcon_8h_a898b59703ba05e8a28c233508755ed60}{gitcon\+\_\+handle\+\_\+t}}}]{handle }\end{DoxyParamCaption})}
 
 
 
@@ -48,5 +158,22 @@ frees all resources
 \begin{DoxyReturn}{Returns}
 ESP\+\_\+\+OK on success 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-% FIG 1
+
+
+Definition at line \mbox{\hyperlink{gitcon_8c_source_l00271}{271}} of file \mbox{\hyperlink{gitcon_8c_source}{gitcon.\+c}}.
+
+\mbox{\Hypertarget{gitcon_8c_a287f8fb099fc7f164ba0bb50d12ad982}\label{gitcon_8c_a287f8fb099fc7f164ba0bb50d12ad982}} 
+\index{gitcon.c@{gitcon.c}!gitcon\_init@{gitcon\_init}}
+\index{gitcon\_init@{gitcon\_init}!gitcon.c@{gitcon.c}}
+\doxysubsubsection{\texorpdfstring{gitcon\_init()}{gitcon\_init()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t gitcon\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgitcon__context__t}{gitcon\+\_\+context\+\_\+t}} $\ast$$\ast$}]{out\+\_\+handle }\end{DoxyParamCaption})}
+
+\begin{DoxyNote}{Note}
+DSP task\+: receives audio data from DMA task and sends audio data to MIDI task
+
+MIDI task\+: receives midi messages from DSP task and sends them to MIDI UART
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{gitcon_8c_source_l00196}{196}} of file \mbox{\hyperlink{gitcon_8c_source}{gitcon.\+c}}.
+

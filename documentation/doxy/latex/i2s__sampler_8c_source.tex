@@ -1,0 +1,104 @@
+\hypertarget{i2s__sampler_8c_source}{}\doxysection{i2s\+\_\+sampler.\+c}
+\label{i2s__sampler_8c_source}\index{lib/audio/i2s\_sampler.c@{lib/audio/i2s\_sampler.c}}
+\mbox{\hyperlink{i2s__sampler_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00012}00012 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{i2s__sampler_8h}{i2s\_sampler.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00013}00013 \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *TAG = \textcolor{stringliteral}{"{}I2S\_SAMPLER"{}};}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00015}\mbox{\hyperlink{i2s__sampler_8c_aefeb1c9d5a6dbed18eb5ee26e1256870}{00015}} \textcolor{preprocessor}{\#define RESAMPLE\_DENOMINATOR 2}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00016}\mbox{\hyperlink{i2s__sampler_8c_a4f85605dc744cf7ad2f8283b2af38f3f}{00016}} \textcolor{preprocessor}{\#define READER\_TIMEOUT\_MS 10}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00017}\mbox{\hyperlink{i2s__sampler_8c_a89218c3a1a1e133c6bee85aa1d79acae}{00017}} \textcolor{preprocessor}{\#define READER\_TIMEOUT\_TICKS (READER\_TIMEOUT\_MS / portTICK\_PERIOD\_MS)}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00019}00019 \textcolor{keyword}{static} TaskHandle\_t sampler\_task\_handle;}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00021}00021 \textcolor{keyword}{static} \textcolor{keywordtype}{void} IRAM\_ATTR sampler\_task(\textcolor{keywordtype}{void} *arg)}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00022}00022 \{}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00023}00023     \mbox{\hyperlink{structi2s__sampler__t}{i2s\_sampler\_t}} *sampler = (\mbox{\hyperlink{structi2s__sampler__t}{i2s\_sampler\_t}} *)arg;}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00024}00024     \textcolor{keywordflow}{for} (;;)}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00025}00025     \{}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00026}00026         i2s\_event\_t evt;}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00027}00027         \textcolor{keywordflow}{if} (xQueueReceive(sampler-\/>\mbox{\hyperlink{structi2s__sampler__t_a01668835337313a60bcb16756c005b12}{dma\_queue}}, \&evt, portMAX\_DELAY) == pdTRUE)}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00028}00028         \{}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00029}00029             \textcolor{keywordflow}{if} (evt.type == I2S\_EVENT\_RX\_DONE)}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00030}00030             \{}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00031}00031                 \textcolor{keywordtype}{size\_t} bytes\_read = 0;}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00032}00032                 \textcolor{keywordflow}{do}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00033}00033                 \{}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00034}00034                     \textcolor{comment}{// fill audio buffer}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00035}00035                     \textcolor{keywordtype}{size\_t} bytes\_to\_read = \mbox{\hyperlink{i2s__sampler_8c_aefeb1c9d5a6dbed18eb5ee26e1256870}{RESAMPLE\_DENOMINATOR}} * (sampler-\/>\mbox{\hyperlink{structi2s__sampler__t_a799a743b3abd553a37fc01ad3097df08}{buffer\_size}} -\/ sampler-\/>\mbox{\hyperlink{structi2s__sampler__t_ad772d2f9803cdbdf265ba17194a1314c}{buffer\_pos}});}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00036}00036                     \textcolor{keywordtype}{void} *buffer\_position = (\textcolor{keywordtype}{void} *)(sampler-\/>\mbox{\hyperlink{structi2s__sampler__t_aebedcefcc64e1f3236580fbaa899869e}{buffer}} + sampler-\/>\mbox{\hyperlink{structi2s__sampler__t_ad772d2f9803cdbdf265ba17194a1314c}{buffer\_pos}});}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00038}00038                     \textcolor{comment}{// read data from i2s}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00039}00039                     i2s\_read(I2S\_NUM\_0, buffer\_position, bytes\_to\_read, \&bytes\_read, \mbox{\hyperlink{i2s__sampler_8c_a89218c3a1a1e133c6bee85aa1d79acae}{READER\_TIMEOUT\_TICKS}});}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00040}00040                     sampler-\/>\mbox{\hyperlink{structi2s__sampler__t_ad772d2f9803cdbdf265ba17194a1314c}{buffer\_pos}} += bytes\_read / \mbox{\hyperlink{i2s__sampler_8c_aefeb1c9d5a6dbed18eb5ee26e1256870}{RESAMPLE\_DENOMINATOR}};}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00042}00042                     \textcolor{keywordflow}{if} (sampler-\/>\mbox{\hyperlink{structi2s__sampler__t_ad772d2f9803cdbdf265ba17194a1314c}{buffer\_pos}} == sampler-\/>\mbox{\hyperlink{structi2s__sampler__t_a799a743b3abd553a37fc01ad3097df08}{buffer\_size}})}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00043}00043                     \{}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00044}00044                         sampler-\/>\mbox{\hyperlink{structi2s__sampler__t_ad772d2f9803cdbdf265ba17194a1314c}{buffer\_pos}} = 0;}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00045}00045                         xQueueSend(sampler-\/>\mbox{\hyperlink{structi2s__sampler__t_ac5aaa47703a07b7ca5bac6f7e7331b8b}{dsp\_queue}}, \&sampler-\/>\mbox{\hyperlink{structi2s__sampler__t_aebedcefcc64e1f3236580fbaa899869e}{buffer}}, portMAX\_DELAY);}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00046}00046                     \}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00047}00047                 \} \textcolor{keywordflow}{while} (bytes\_read > 0);}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00048}00048             \}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00049}00049         \}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00050}00050     \}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00051}00051 \}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00053}\mbox{\hyperlink{i2s__sampler_8c_a4cea4daf97a0f289cd8c5f3ae3a86fa3}{00053}} \mbox{\hyperlink{structi2s__sampler__t}{i2s\_sampler\_t}} *\mbox{\hyperlink{i2s__sampler_8c_a4cea4daf97a0f289cd8c5f3ae3a86fa3}{i2s\_sampler\_start}}(adc\_channel\_t adc1\_channel, QueueHandle\_t recv\_queue, \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} buffer\_size, \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} f\_sample)}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00054}00054 \{}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00055}00055     ESP\_LOGI(TAG, \textcolor{stringliteral}{"{}Initializing I2S Sampler..."{}});}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00057}00057     QueueHandle\_t dma\_queue;}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00059}00059     i2s\_config\_t i2s\_cfg = \{}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00060}00060         .mode = (i2s\_mode\_t)(I2S\_MODE\_MASTER | I2S\_MODE\_RX | I2S\_MODE\_ADC\_BUILT\_IN),}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00061}00061         .sample\_rate = f\_sample,}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00062}00062         .bits\_per\_sample = I2S\_BITS\_PER\_SAMPLE\_16BIT,}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00063}00063         .channel\_format = I2S\_CHANNEL\_FMT\_ONLY\_LEFT,}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00064}00064         .communication\_format = I2S\_COMM\_FORMAT\_STAND\_I2S,}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00065}00065         .intr\_alloc\_flags = ESP\_INTR\_FLAG\_LEVEL1,}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00066}00066         .dma\_buf\_count = 4,}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00067}00067         .dma\_buf\_len = 1024,}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00068}00068         .use\_apll = \textcolor{keyword}{false},}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00069}00069         .fixed\_mclk = 0\};}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00071}00071     \textcolor{comment}{// Initialize ADC}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00072}00072     ESP\_ERROR\_CHECK(i2s\_driver\_install(I2S\_NUM\_0, \&i2s\_cfg, 4, \&dma\_queue));}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00073}00073     ESP\_ERROR\_CHECK(i2s\_set\_adc\_mode(ADC\_UNIT\_1, adc1\_channel));}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00074}00074     ESP\_ERROR\_CHECK(i2s\_adc\_enable(I2S\_NUM\_0));}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00076}00076     \mbox{\hyperlink{structi2s__sampler__t}{i2s\_sampler\_t}} *sampler = (\mbox{\hyperlink{structi2s__sampler__t}{i2s\_sampler\_t}} *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structi2s__sampler__t}{i2s\_sampler\_t}}));}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00078}00078     *sampler = (\mbox{\hyperlink{structi2s__sampler__t}{i2s\_sampler\_t}})\{}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00079}00079         .\mbox{\hyperlink{structi2s__sampler__t_aebedcefcc64e1f3236580fbaa899869e}{buffer}} = (\textcolor{keywordtype}{size\_t} *)malloc(buffer\_size * \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{size\_t})),}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00080}00080         .buffer\_pos = 0,}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00081}00081         .buffer\_size = buffer\_size,}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00082}00082         .dma\_queue = dma\_queue,}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00083}00083         .dsp\_queue = recv\_queue\};}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00085}00085     \textcolor{comment}{// DMA task: receives audio data from ADC and sends it to DSP task}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00086}00086     \textcolor{keywordflow}{if} (xTaskCreatePinnedToCore(sampler\_task, \textcolor{stringliteral}{"{}sampler\_task"{}}, 1 << 14, sampler, 5, \&sampler\_task\_handle, 0) == pdFALSE)}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00087}00087         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00089}00089     \textcolor{keywordflow}{return} sampler;}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00090}00090 \}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00092}\mbox{\hyperlink{i2s__sampler_8c_a2084807167ecf9a0ee15c945ccff4191}{00092}} esp\_err\_t \mbox{\hyperlink{i2s__sampler_8c_a2084807167ecf9a0ee15c945ccff4191}{i2s\_sampler\_stop}}(\mbox{\hyperlink{structi2s__sampler__t}{i2s\_sampler\_t}} *sampler)}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00093}00093 \{}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00094}00094     ESP\_LOGI(TAG, \textcolor{stringliteral}{"{}Stopping I2S Sampler..."{}});}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00095}00095     esp\_err\_t err;}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00096}00096     \textcolor{comment}{// stop i2s}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00097}00097     ESP\_ERROR\_CHECK(i2s\_adc\_disable(I2S\_NUM\_0));}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00098}00098     ESP\_ERROR\_CHECK(i2s\_driver\_uninstall(I2S\_NUM\_0));}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00099}00099 }
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00100}00100     \textcolor{comment}{// stop task}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00101}00101     vTaskDelete(sampler\_task\_handle);}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00102}00102 }
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00103}00103     \textcolor{comment}{// free memory}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00104}00104     free(sampler-\/>\mbox{\hyperlink{structi2s__sampler__t_aebedcefcc64e1f3236580fbaa899869e}{buffer}});}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00105}00105     free(sampler);}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00106}00106 }
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00107}00107     \textcolor{keywordflow}{return} ESP\_OK;}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8c_source_l00108}00108 \}}
+
+\end{DoxyCode}

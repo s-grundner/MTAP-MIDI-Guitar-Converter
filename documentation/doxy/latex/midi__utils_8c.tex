@@ -1,0 +1,119 @@
+\hypertarget{midi__utils_8c}{}\doxysection{lib/midi/midi\+\_\+utils.c File Reference}
+\label{midi__utils_8c}\index{lib/midi/midi\_utils.c@{lib/midi/midi\_utils.c}}
+
+
+MIDI Message Utilities.  
+
+
+{\ttfamily \#include \char`\"{}midi.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structmidi__message__t}{midi\+\_\+message\+\_\+t}} \mbox{\hyperlink{midi__utils_8c_a5420c8cf31003518e18002e256fb6efb}{note\+\_\+off}} (uint8\+\_\+t channel, uint8\+\_\+t key\+\_\+num, uint8\+\_\+t velocity)
+\item 
+\mbox{\hyperlink{structmidi__message__t}{midi\+\_\+message\+\_\+t}} \mbox{\hyperlink{midi__utils_8c_a19ea9f06293f713229ffbf1673dfb3c5}{note\+\_\+on}} (uint8\+\_\+t channel, uint8\+\_\+t key\+\_\+num, uint8\+\_\+t velocity)
+\item 
+\mbox{\hyperlink{structmidi__message__t}{midi\+\_\+message\+\_\+t}} \mbox{\hyperlink{midi__utils_8c_a84c158ecad666015c3eee20aa67a8dc2}{poly\+\_\+key\+\_\+pressure}} (uint8\+\_\+t channel, uint8\+\_\+t key\+\_\+num, uint8\+\_\+t value)
+\item 
+\mbox{\hyperlink{structmidi__message__t}{midi\+\_\+message\+\_\+t}} \mbox{\hyperlink{midi__utils_8c_a18d4efd2f7b7b960461a402d9c5f8535}{ctrl\+\_\+change}} (uint8\+\_\+t channel, uint8\+\_\+t controller\+\_\+num, uint8\+\_\+t value)
+\item 
+\mbox{\hyperlink{structmidi__message__t}{midi\+\_\+message\+\_\+t}} \mbox{\hyperlink{midi__utils_8c_a74a04b0fd0b0f0ad4b05ee2cdce13f8f}{prg\+\_\+change}} (uint8\+\_\+t channel, uint8\+\_\+t program)
+\item 
+\mbox{\hyperlink{structmidi__message__t}{midi\+\_\+message\+\_\+t}} \mbox{\hyperlink{midi__utils_8c_a65c6c5647ad8c4acb13b5c17acd04b54}{channel\+\_\+pressure}} (uint8\+\_\+t channel, uint8\+\_\+t value)
+\item 
+\mbox{\hyperlink{structmidi__message__t}{midi\+\_\+message\+\_\+t}} \mbox{\hyperlink{midi__utils_8c_afc61f6a3b91a428edc2b1b0962573176}{pitch\+\_\+bend}} (uint8\+\_\+t channel, uint16\+\_\+t value)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+MIDI Message Utilities. 
+
+\begin{DoxyAuthor}{Author}
+@s-\/grundner 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/03-\/26
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+Definition in file \mbox{\hyperlink{midi__utils_8c_source}{midi\+\_\+utils.\+c}}.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{midi__utils_8c_a65c6c5647ad8c4acb13b5c17acd04b54}\label{midi__utils_8c_a65c6c5647ad8c4acb13b5c17acd04b54}} 
+\index{midi\_utils.c@{midi\_utils.c}!channel\_pressure@{channel\_pressure}}
+\index{channel\_pressure@{channel\_pressure}!midi\_utils.c@{midi\_utils.c}}
+\doxysubsubsection{\texorpdfstring{channel\_pressure()}{channel\_pressure()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmidi__message__t}{midi\+\_\+message\+\_\+t}} channel\+\_\+pressure (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{midi__utils_8c_source_l00067}{67}} of file \mbox{\hyperlink{midi__utils_8c_source}{midi\+\_\+utils.\+c}}.
+
+\mbox{\Hypertarget{midi__utils_8c_a18d4efd2f7b7b960461a402d9c5f8535}\label{midi__utils_8c_a18d4efd2f7b7b960461a402d9c5f8535}} 
+\index{midi\_utils.c@{midi\_utils.c}!ctrl\_change@{ctrl\_change}}
+\index{ctrl\_change@{ctrl\_change}!midi\_utils.c@{midi\_utils.c}}
+\doxysubsubsection{\texorpdfstring{ctrl\_change()}{ctrl\_change()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmidi__message__t}{midi\+\_\+message\+\_\+t}} ctrl\+\_\+change (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel,  }\item[{uint8\+\_\+t}]{controller\+\_\+num,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{midi__utils_8c_source_l00047}{47}} of file \mbox{\hyperlink{midi__utils_8c_source}{midi\+\_\+utils.\+c}}.
+
+\mbox{\Hypertarget{midi__utils_8c_a5420c8cf31003518e18002e256fb6efb}\label{midi__utils_8c_a5420c8cf31003518e18002e256fb6efb}} 
+\index{midi\_utils.c@{midi\_utils.c}!note\_off@{note\_off}}
+\index{note\_off@{note\_off}!midi\_utils.c@{midi\_utils.c}}
+\doxysubsubsection{\texorpdfstring{note\_off()}{note\_off()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmidi__message__t}{midi\+\_\+message\+\_\+t}} note\+\_\+off (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel,  }\item[{uint8\+\_\+t}]{key\+\_\+num,  }\item[{uint8\+\_\+t}]{velocity }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{midi__utils_8c_source_l00017}{17}} of file \mbox{\hyperlink{midi__utils_8c_source}{midi\+\_\+utils.\+c}}.
+
+\mbox{\Hypertarget{midi__utils_8c_a19ea9f06293f713229ffbf1673dfb3c5}\label{midi__utils_8c_a19ea9f06293f713229ffbf1673dfb3c5}} 
+\index{midi\_utils.c@{midi\_utils.c}!note\_on@{note\_on}}
+\index{note\_on@{note\_on}!midi\_utils.c@{midi\_utils.c}}
+\doxysubsubsection{\texorpdfstring{note\_on()}{note\_on()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmidi__message__t}{midi\+\_\+message\+\_\+t}} note\+\_\+on (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel,  }\item[{uint8\+\_\+t}]{key\+\_\+num,  }\item[{uint8\+\_\+t}]{velocity }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{midi__utils_8c_source_l00027}{27}} of file \mbox{\hyperlink{midi__utils_8c_source}{midi\+\_\+utils.\+c}}.
+
+\mbox{\Hypertarget{midi__utils_8c_afc61f6a3b91a428edc2b1b0962573176}\label{midi__utils_8c_afc61f6a3b91a428edc2b1b0962573176}} 
+\index{midi\_utils.c@{midi\_utils.c}!pitch\_bend@{pitch\_bend}}
+\index{pitch\_bend@{pitch\_bend}!midi\_utils.c@{midi\_utils.c}}
+\doxysubsubsection{\texorpdfstring{pitch\_bend()}{pitch\_bend()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmidi__message__t}{midi\+\_\+message\+\_\+t}} pitch\+\_\+bend (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel,  }\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{midi__utils_8c_source_l00077}{77}} of file \mbox{\hyperlink{midi__utils_8c_source}{midi\+\_\+utils.\+c}}.
+
+\mbox{\Hypertarget{midi__utils_8c_a84c158ecad666015c3eee20aa67a8dc2}\label{midi__utils_8c_a84c158ecad666015c3eee20aa67a8dc2}} 
+\index{midi\_utils.c@{midi\_utils.c}!poly\_key\_pressure@{poly\_key\_pressure}}
+\index{poly\_key\_pressure@{poly\_key\_pressure}!midi\_utils.c@{midi\_utils.c}}
+\doxysubsubsection{\texorpdfstring{poly\_key\_pressure()}{poly\_key\_pressure()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmidi__message__t}{midi\+\_\+message\+\_\+t}} poly\+\_\+key\+\_\+pressure (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel,  }\item[{uint8\+\_\+t}]{key\+\_\+num,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{midi__utils_8c_source_l00037}{37}} of file \mbox{\hyperlink{midi__utils_8c_source}{midi\+\_\+utils.\+c}}.
+
+\mbox{\Hypertarget{midi__utils_8c_a74a04b0fd0b0f0ad4b05ee2cdce13f8f}\label{midi__utils_8c_a74a04b0fd0b0f0ad4b05ee2cdce13f8f}} 
+\index{midi\_utils.c@{midi\_utils.c}!prg\_change@{prg\_change}}
+\index{prg\_change@{prg\_change}!midi\_utils.c@{midi\_utils.c}}
+\doxysubsubsection{\texorpdfstring{prg\_change()}{prg\_change()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmidi__message__t}{midi\+\_\+message\+\_\+t}} prg\+\_\+change (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel,  }\item[{uint8\+\_\+t}]{program }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{midi__utils_8c_source_l00057}{57}} of file \mbox{\hyperlink{midi__utils_8c_source}{midi\+\_\+utils.\+c}}.
+

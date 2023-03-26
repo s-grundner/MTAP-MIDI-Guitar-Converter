@@ -1,0 +1,118 @@
+\hypertarget{main_8c_source}{}\doxysection{main.\+c}
+\label{main_8c_source}\index{src/main.c@{src/main.c}}
+\mbox{\hyperlink{main_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00012}00012 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{gitcon_8h}{gitcon.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00014}\mbox{\hyperlink{main_8c_a00229fcc298bc75c8f5324ca0363f37e}{00014}} \textcolor{preprocessor}{\#define USER\_LOCAL\_LEVEL ESP\_LOG\_ERROR}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00016}00016 \textcolor{comment}{// when PROTOTYPE is 1, the prototype board is used}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00017}\mbox{\hyperlink{main_8c_a810d07925e4cc1375dcd6ff0b6c0264f}{00017}} \textcolor{preprocessor}{\#define PROTOTYPE 0}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00019}00019 \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *TAG = \textcolor{stringliteral}{"{}main"{}};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00021}00021 \textcolor{preprocessor}{\#if PROTOTYPE == 1}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00022}00022 \textcolor{preprocessor}{\#define DIP\_POL 8}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00023}00023 \textcolor{preprocessor}{\#define DEBOUNCE\_TIME\_MS 50}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00025}00025 \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} WHOLE\_TONE[8] = \{0, 2, 4, 5, 7, 9, 11, 12\};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00027}00027 \textcolor{keyword}{static} \textcolor{keyword}{const} gpio\_num\_t DIP\_IO[DIP\_POL] = \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00028}00028     GPIO\_NUM\_32,}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00029}00029     GPIO\_NUM\_33,}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00030}00030     GPIO\_NUM\_25,}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00031}00031     GPIO\_NUM\_26,}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00032}00032     GPIO\_NUM\_27,}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00033}00033     GPIO\_NUM\_14,}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00034}00034     GPIO\_NUM\_12,}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00035}00035     GPIO\_NUM\_13,}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00036}00036 \};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00038}00038 \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00039}00039 \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00040}00040     QueueHandle\_t midi\_queue;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00041}00041     \textcolor{keywordtype}{size\_t} *current\_dip;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00042}00042     \textcolor{keywordtype}{size\_t} *previous\_dip;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00043}00043     TimerHandle\_t *timer;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00044}00044 \} dip\_switch\_t;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00046}00046 \textcolor{keyword}{static} \textcolor{keywordtype}{void} IRAM\_ATTR dip\_isr(\textcolor{keywordtype}{void} *args)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00047}00047 \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00048}00048     dip\_switch\_t *dip\_switch = (dip\_switch\_t *)args;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00049}00049     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < DIP\_POL; i++)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00050}00050     \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00051}00051         \textcolor{comment}{// read DIP switch}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00052}00052         dip\_switch-\/>current\_dip[i] = !gpio\_get\_level(DIP\_IO[i]);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00054}00054         \textcolor{comment}{// continue if the dip state hasn't changed}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00055}00055         \textcolor{keywordflow}{if} (dip\_switch-\/>current\_dip[i] == dip\_switch-\/>previous\_dip[i])}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00056}00056             \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00058}00058         \textcolor{comment}{// send MIDI message}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00059}00059         \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} msg = \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00060}00060             .\mbox{\hyperlink{structmidi__message__t_aff4bb9542c2091c2a7b80c4a74df778c}{status}} = (\mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3}{midi\_status\_t}})(dip\_switch-\/>current\_dip[i]) ? \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3abe99811e428031d0f15688014e2cf5a8}{MIDI\_STATUS\_NOTE\_ON}} : \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3a78dea1a5ae83e056e851a48a7f0c3563}{MIDI\_STATUS\_NOTE\_OFF}},}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00061}00061             .channel = 0,}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00062}00062             .param1 = 0x3C + WHOLE\_TONE[i], \textcolor{comment}{// C4 + WHOLE\_TONE[i]}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00063}00063             .param2 = 127\};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00064}00064         xQueueSendFromISR(dip\_switch-\/>midi\_queue, \&msg, NULL);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00066}00066         \textcolor{comment}{// disable interrupts for gpios to debounce}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00067}00067         ESP\_ERROR\_CHECK(gpio\_intr\_disable(DIP\_IO[i]));}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00068}00068         dip\_switch-\/>previous\_dip[i] = dip\_switch-\/>current\_dip[i];}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00069}00069         xTimerStartFromISR(dip\_switch-\/>timer[i], NULL);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00070}00070     \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00071}00071 \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00073}00073 \textcolor{keyword}{static} \textcolor{keywordtype}{void} IRAM\_ATTR debounce\_task(TimerHandle\_t debounce\_timer)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00074}00074 \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00075}00075     \textcolor{keywordtype}{int} i = (int)pvTimerGetTimerID(debounce\_timer);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00076}00076     gpio\_intr\_enable(DIP\_IO[i]);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00077}00077 \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00078}00078 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00080}\mbox{\hyperlink{main_8c_a630544a7f0a2cc40d8a7fefab7e2fe70}{00080}} \textcolor{keywordtype}{void} \mbox{\hyperlink{main_8c_a630544a7f0a2cc40d8a7fefab7e2fe70}{app\_main}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00081}00081 \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00082}00082     \mbox{\hyperlink{structgitcon__context__t}{gitcon\_handle\_t}} handle;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00083}00083     \textcolor{keywordflow}{if} (\mbox{\hyperlink{gitcon_8c_a287f8fb099fc7f164ba0bb50d12ad982}{gitcon\_init}}(\&handle) != ESP\_OK)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00084}00084     \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00085}00085         ESP\_LOGE(TAG, \textcolor{stringliteral}{"{}gitcon\_init failed"{}});}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00086}00086         ESP\_ERROR\_CHECK(\mbox{\hyperlink{gitcon_8c_a34f972a4c96245ce63d26a5256c75e24}{gitcon\_exit}}(handle));}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00087}00087         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00088}00088     \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00089}00089 \textcolor{preprocessor}{\#if PROTOTYPE == 1}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00090}00090     xTimerHandle debounce\_timers[DIP\_POL];}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00092}00092     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < DIP\_POL; i++)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00093}00093         debounce\_timers[i] = xTimerCreate(\textcolor{stringliteral}{"{}dip\_switch"{}}, pdMS\_TO\_TICKS(DEBOUNCE\_TIME\_MS), pdFALSE, (\textcolor{keywordtype}{void} *)i, debounce\_task);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00094}00094 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00095}00095     \textcolor{keywordtype}{size\_t} current\_dip[DIP\_POL] = \{0\};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00096}00096     \textcolor{keywordtype}{size\_t} previous\_dip[DIP\_POL] = \{0\};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00097}00097 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00098}00098     \textcolor{comment}{// setup debouncing for DIP Switches}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00099}00099     dip\_switch\_t dip\_switch = \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00100}00100         .current\_dip = current\_dip,}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00101}00101         .previous\_dip = previous\_dip,}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00102}00102         .timer = debounce\_timers,}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00103}00103         .midi\_queue = handle-\/>\mbox{\hyperlink{structgitcon__context__t_aced3bb31b67f3a71c6afdcc851a839eb}{midi\_queue}}\};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00104}00104 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00105}00105     \textcolor{comment}{// setup interrupt for DIP switches}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00106}00106     ESP\_ERROR\_CHECK(gpio\_install\_isr\_service(0));}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00107}00107     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < DIP\_POL; i++)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00108}00108     \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00109}00109         gpio\_config\_t io\_conf = \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00110}00110             .pin\_bit\_mask = (1ULL << DIP\_IO[i]),}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00111}00111             .mode = GPIO\_MODE\_INPUT,}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00112}00112             .pull\_up\_en = GPIO\_PULLUP\_ENABLE,}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00113}00113             .pull\_down\_en = GPIO\_PULLDOWN\_DISABLE,}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00114}00114             .intr\_type = GPIO\_INTR\_ANYEDGE\};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00115}00115 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00116}00116         ESP\_ERROR\_CHECK(gpio\_config(\&io\_conf));}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00117}00117         ESP\_ERROR\_CHECK(gpio\_isr\_handler\_add(DIP\_IO[i], dip\_isr, \&dip\_switch));}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00118}00118     \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00119}00119 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00120}00120     \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00121}00121         vTaskDelay(1000 / portTICK\_PERIOD\_MS);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00122}00122 \}}
+
+\end{DoxyCode}

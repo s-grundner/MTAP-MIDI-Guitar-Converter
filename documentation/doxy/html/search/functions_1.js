@@ -1,9 +1,5 @@
 var searchData=
 [
-  ['get_5fkey_5fname_0',['get_key_name',['../scale_8h.html#abe9622ab264356cf01526b06f5da996d',1,'scale.c']]],
-  ['get_5fkey_5fnum_1',['get_key_num',['../scale_8h.html#ad264c4b750e8922861e5c3f56d67acc6',1,'scale.c']]],
-  ['get_5fmodal_5fname_2',['get_modal_name',['../scale_8h.html#a3f0fe955807ea6ce77a5d46e557c00c4',1,'scale.c']]],
-  ['get_5fpitch_5fhz_3',['get_pitch_hz',['../scale_8h.html#a7e5dced1f4ec1583890131af61b49f07',1,'scale.c']]],
-  ['gitcon_5fexit_4',['gitcon_exit',['../gitcon_8c.html#a34f972a4c96245ce63d26a5256c75e24',1,'gitcon_exit(gitcon_handle_t handle):&#160;gitcon.c'],['../gitcon_8h.html#a34f972a4c96245ce63d26a5256c75e24',1,'gitcon_exit(gitcon_handle_t handle):&#160;gitcon.c']]],
-  ['gitcon_5finit_5',['gitcon_init',['../gitcon_8h.html#a99e7f3808bee46708eb81bd55cae4a37',1,'gitcon.h']]]
+  ['channel_5fpressure_0',['channel_pressure',['../midi_8h.html#a65c6c5647ad8c4acb13b5c17acd04b54',1,'channel_pressure(uint8_t channel, uint8_t value):&#160;midi_utils.c'],['../midi__utils_8c.html#a65c6c5647ad8c4acb13b5c17acd04b54',1,'channel_pressure(uint8_t channel, uint8_t value):&#160;midi_utils.c']]],
+  ['ctrl_5fchange_1',['ctrl_change',['../midi_8h.html#a18d4efd2f7b7b960461a402d9c5f8535',1,'ctrl_change(uint8_t channel, uint8_t controller_num, uint8_t value):&#160;midi_utils.c'],['../midi__utils_8c.html#a18d4efd2f7b7b960461a402d9c5f8535',1,'ctrl_change(uint8_t channel, uint8_t controller_num, uint8_t value):&#160;midi_utils.c']]]
 ];

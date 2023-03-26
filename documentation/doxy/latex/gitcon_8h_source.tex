@@ -1,31 +1,32 @@
 \hypertarget{gitcon_8h_source}{}\doxysection{gitcon.\+h}
-\label{gitcon_8h_source}\index{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/src/gitcon.h@{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/src/gitcon.h}}
+\label{gitcon_8h_source}\index{src/gitcon.h@{src/gitcon.h}}
 \mbox{\hyperlink{gitcon_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{1 }
-\DoxyCodeLine{12 \textcolor{preprocessor}{\#ifndef GITCON\_H}}
-\DoxyCodeLine{13 \textcolor{preprocessor}{\#define GITCON\_H}}
-\DoxyCodeLine{14 }
-\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{config_8h}{config.h}}"{}}}
-\DoxyCodeLine{16 }
-\DoxyCodeLine{17 \textcolor{preprocessor}{\#define GITCON\_LOG\_LEVEL ESP\_LOG\_ERROR}}
-\DoxyCodeLine{18 }
-\DoxyCodeLine{25 \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
-\DoxyCodeLine{26 \{}
-\DoxyCodeLine{27 \textcolor{preprocessor}{\#ifdef USE\_MCP3201}}
-\DoxyCodeLine{28   \mbox{\hyperlink{structmcp3201__sampler__t}{mcp3201\_sampler\_t}} *sampler;}
-\DoxyCodeLine{29 \textcolor{preprocessor}{\#else}}
-\DoxyCodeLine{30   \mbox{\hyperlink{structi2s__sampler__t}{i2s\_sampler\_t}} *sampler;}
-\DoxyCodeLine{31 \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{32   \mbox{\hyperlink{structmidi__context__t}{midi\_handle\_t}} midi\_handle;}
-\DoxyCodeLine{33   QueueHandle\_t midi\_queue; \textcolor{comment}{// TODO: merge with midi\_handle}}
-\DoxyCodeLine{34 \} \mbox{\hyperlink{structgitcon__context__t}{gitcon\_context\_t}};}
-\DoxyCodeLine{35 \textcolor{keyword}{typedef} \mbox{\hyperlink{structgitcon__context__t}{gitcon\_context\_t}} *\mbox{\hyperlink{structgitcon__context__t}{gitcon\_handle\_t}};}
-\DoxyCodeLine{36 }
-\DoxyCodeLine{43 esp\_err\_t \mbox{\hyperlink{gitcon_8h_a99e7f3808bee46708eb81bd55cae4a37}{gitcon\_init}}(\mbox{\hyperlink{structgitcon__context__t}{gitcon\_handle\_t}} *out\_handle);}
-\DoxyCodeLine{44 }
-\DoxyCodeLine{51 esp\_err\_t \mbox{\hyperlink{gitcon_8h_a34f972a4c96245ce63d26a5256c75e24}{gitcon\_exit}}(\mbox{\hyperlink{structgitcon__context__t}{gitcon\_handle\_t}} handle);}
-\DoxyCodeLine{52 }
-\DoxyCodeLine{53 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// GITCON\_H}}
+\DoxyCodeLine{\Hypertarget{gitcon_8h_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{gitcon_8h_source_l00012}00012 \textcolor{preprocessor}{\#ifndef GITCON\_H}}
+\DoxyCodeLine{\Hypertarget{gitcon_8h_source_l00013}00013 \textcolor{preprocessor}{\#define GITCON\_H}}
+\DoxyCodeLine{\Hypertarget{gitcon_8h_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{gitcon_8h_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{config_8h}{config.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{gitcon_8h_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{gitcon_8h_source_l00017}\mbox{\hyperlink{gitcon_8h_af41740c58c92b4864c2e8fa77ee56fd9}{00017}} \textcolor{preprocessor}{\#define GITCON\_LOG\_LEVEL ESP\_LOG\_ERROR}}
+\DoxyCodeLine{\Hypertarget{gitcon_8h_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{gitcon_8h_source_l00025}\mbox{\hyperlink{structgitcon__context__t}{00025}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
+\DoxyCodeLine{\Hypertarget{gitcon_8h_source_l00026}00026 \{}
+\DoxyCodeLine{\Hypertarget{gitcon_8h_source_l00027}00027 \textcolor{preprocessor}{\#ifdef USE\_MCP3201}}
+\DoxyCodeLine{\Hypertarget{gitcon_8h_source_l00028}00028   \mbox{\hyperlink{structmcp3201__sampler__t}{mcp3201\_sampler\_t}} *sampler;}
+\DoxyCodeLine{\Hypertarget{gitcon_8h_source_l00029}00029 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{gitcon_8h_source_l00030}\mbox{\hyperlink{structgitcon__context__t_ad03ad4f112560cc5c290a0a7b5192fbc}{00030}}   \mbox{\hyperlink{structi2s__sampler__t}{i2s\_sampler\_t}} *\mbox{\hyperlink{structgitcon__context__t_ad03ad4f112560cc5c290a0a7b5192fbc}{sampler}};}
+\DoxyCodeLine{\Hypertarget{gitcon_8h_source_l00031}00031 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{gitcon_8h_source_l00032}\mbox{\hyperlink{structgitcon__context__t_ac3ff9d611225b2ed35a5ff50d79bcc60}{00032}}   \mbox{\hyperlink{structmidi__context__t}{midi\_handle\_t}} \mbox{\hyperlink{structgitcon__context__t_ac3ff9d611225b2ed35a5ff50d79bcc60}{midi\_handle}};}
+\DoxyCodeLine{\Hypertarget{gitcon_8h_source_l00033}\mbox{\hyperlink{structgitcon__context__t_aced3bb31b67f3a71c6afdcc851a839eb}{00033}}   QueueHandle\_t \mbox{\hyperlink{structgitcon__context__t_aced3bb31b67f3a71c6afdcc851a839eb}{midi\_queue}};}
+\DoxyCodeLine{\Hypertarget{gitcon_8h_source_l00034}00034 \} \mbox{\hyperlink{structgitcon__context__t}{gitcon\_context\_t}};}
+\DoxyCodeLine{\Hypertarget{gitcon_8h_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{gitcon_8h_source_l00037}\mbox{\hyperlink{gitcon_8h_a898b59703ba05e8a28c233508755ed60}{00037}} \textcolor{keyword}{typedef} \mbox{\hyperlink{structgitcon__context__t}{gitcon\_context\_t}} *\mbox{\hyperlink{gitcon_8h_a898b59703ba05e8a28c233508755ed60}{gitcon\_handle\_t}};}
+\DoxyCodeLine{\Hypertarget{gitcon_8h_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{gitcon_8h_source_l00045}\mbox{\hyperlink{gitcon_8h_a99e7f3808bee46708eb81bd55cae4a37}{00045}} esp\_err\_t \mbox{\hyperlink{gitcon_8h_a99e7f3808bee46708eb81bd55cae4a37}{gitcon\_init}}(\mbox{\hyperlink{structgitcon__context__t}{gitcon\_handle\_t}} *out\_handle);}
+\DoxyCodeLine{\Hypertarget{gitcon_8h_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{gitcon_8h_source_l00053}00053 esp\_err\_t \mbox{\hyperlink{gitcon_8h_a34f972a4c96245ce63d26a5256c75e24}{gitcon\_exit}}(\mbox{\hyperlink{structgitcon__context__t}{gitcon\_handle\_t}} handle);}
+\DoxyCodeLine{\Hypertarget{gitcon_8h_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{gitcon_8h_source_l00055}00055 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// GITCON\_H}}
 
 \end{DoxyCode}

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Gitcon: C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/lib/mcp3201/mcp3201.h Source File</title>
+<title>Gitcon: lib/mcp3201/mcp3201.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -20,7 +20,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="MTAP-logo-schwarz.png"/></td>
   <td id="projectalign">
    <div id="projectname">Gitcon
    </div>
@@ -70,7 +69,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_d9edf6c004b4a7ff14fe9ae7a92214ee.html">firmware</a></li><li class="navelem"><a class="el" href="dir_6bc3a76d1c909537939dc4ec93b93555.html">MIDI-Testing</a></li><li class="navelem"><a class="el" href="dir_2eece4efa5fb6c11d2a68fc794e2ed49.html">lib</a></li><li class="navelem"><a class="el" href="dir_90211605ec832030dc634f0c45ef2d1c.html">mcp3201</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_d598d584098aba086e3c03a7695988f5.html">mcp3201</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -78,8 +77,8 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="mcp3201_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifndef MCP3201_H</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define MCP3201_H</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifndef MCP3201_DRIVER_H</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define MCP3201_DRIVER_H</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;freertos/FreeRTOS.h&quot;</span></div>
@@ -90,30 +89,30 @@ $(function() {
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;hal/spi_types.h&quot;</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;esp_log.h&quot;</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#define ADC_CLK SPI_MASTER_FREQ_8M</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="mcp3201_8h.html#a44d38ab4d4e88e679184bbbffdac00dd">   24</a></span><span class="preprocessor">#define ADC_CLK SPI_MASTER_FREQ_8M</span></div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="structmcp3201__config__t.html">   36</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>{</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    spi_host_device_t host;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    gpio_num_t cs_io;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    gpio_num_t miso_io;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    gpio_num_t mosi_io;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">int</span> dma_chan;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="structmcp3201__config__t.html#af2bc3d31ad0099123ad13e726b96cb8f">   38</a></span>    spi_host_device_t <a class="code hl_variable" href="structmcp3201__config__t.html#af2bc3d31ad0099123ad13e726b96cb8f">host</a>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="structmcp3201__config__t.html#a7a38bd9dda941e0eb854430f514097bd">   39</a></span>    gpio_num_t <a class="code hl_variable" href="structmcp3201__config__t.html#a7a38bd9dda941e0eb854430f514097bd">cs_io</a>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="structmcp3201__config__t.html#a81741dc79605ea0869eccb6123c8f87a">   40</a></span>    gpio_num_t <a class="code hl_variable" href="structmcp3201__config__t.html#a81741dc79605ea0869eccb6123c8f87a">miso_io</a>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="structmcp3201__config__t.html#a9914529f78253bf211a2fcfdd7fdaa08">   41</a></span>    gpio_num_t <a class="code hl_variable" href="structmcp3201__config__t.html#a9914529f78253bf211a2fcfdd7fdaa08">mosi_io</a>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="structmcp3201__config__t.html#a456684b326733e9d7a283b12f7316770">   42</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structmcp3201__config__t.html#a456684b326733e9d7a283b12f7316770">dma_chan</a>;</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>} <a class="code hl_struct" href="structmcp3201__config__t.html">mcp3201_config_t</a>;</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structmcp3201__context__t.html">mcp3201_context_t</a> *<a class="code hl_struct" href="structmcp3201__context__t.html">mcp3201_handle_t</a>;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="mcp3201_8h.html#a394f6b43329fb768aeb634cdfee4ebef">   46</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structmcp3201__context__t.html">mcp3201_context_t</a> *<a class="code hl_typedef" href="mcp3201_8h.html#a394f6b43329fb768aeb634cdfee4ebef">mcp3201_handle_t</a>;</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="structmcp3201__sampler__t.html">   58</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>{</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <a class="code hl_struct" href="structmcp3201__context__t.html">mcp3201_handle_t</a> mcp_handle;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    QueueHandle_t dma_queue;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    QueueHandle_t dsp_queue;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordtype">size_t</span> *buffer;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordtype">size_t</span> buffer_pos;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">size_t</span> buffer_size;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="structmcp3201__sampler__t.html#a255cd594fc3f4a9d5c0fd146ceb4ca23">   60</a></span>    <a class="code hl_struct" href="structmcp3201__context__t.html">mcp3201_handle_t</a> <a class="code hl_variable" href="structmcp3201__sampler__t.html#a255cd594fc3f4a9d5c0fd146ceb4ca23">mcp_handle</a>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="structmcp3201__sampler__t.html#a01668835337313a60bcb16756c005b12">   61</a></span>    QueueHandle_t <a class="code hl_variable" href="structmcp3201__sampler__t.html#a01668835337313a60bcb16756c005b12">dma_queue</a>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="structmcp3201__sampler__t.html#ac5aaa47703a07b7ca5bac6f7e7331b8b">   62</a></span>    QueueHandle_t <a class="code hl_variable" href="structmcp3201__sampler__t.html#ac5aaa47703a07b7ca5bac6f7e7331b8b">dsp_queue</a>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="structmcp3201__sampler__t.html#aebedcefcc64e1f3236580fbaa899869e">   63</a></span>    <span class="keywordtype">size_t</span> *<a class="code hl_variable" href="structmcp3201__sampler__t.html#aebedcefcc64e1f3236580fbaa899869e">buffer</a>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="structmcp3201__sampler__t.html#ad772d2f9803cdbdf265ba17194a1314c">   64</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structmcp3201__sampler__t.html#ad772d2f9803cdbdf265ba17194a1314c">buffer_pos</a>;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="structmcp3201__sampler__t.html#a799a743b3abd553a37fc01ad3097df08">   65</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structmcp3201__sampler__t.html#a799a743b3abd553a37fc01ad3097df08">buffer_size</a>;</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>} <a class="code hl_struct" href="structmcp3201__sampler__t.html">mcp3201_sampler_t</a>;</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="mcp3201_8h.html#a69c1d4c194693ad14af26415e51cd4d5">   75</a></span>esp_err_t <a class="code hl_function" href="mcp3201_8h.html#a69c1d4c194693ad14af26415e51cd4d5">mcp3201_init</a>(<a class="code hl_struct" href="structmcp3201__context__t.html">mcp3201_handle_t</a> *out_handle, <span class="keyword">const</span> <a class="code hl_struct" href="structmcp3201__config__t.html">mcp3201_config_t</a> *cfg);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="mcp3201_8h.html#a69c1d4c194693ad14af26415e51cd4d5">   75</a></span>esp_err_t <a class="code hl_function" href="mcp3201_8h.html#a69c1d4c194693ad14af26415e51cd4d5">mcp3201_init</a>(<a class="code hl_struct" href="structmcp3201__context__t.html">mcp3201_handle_t</a> *out_handle, <span class="keyword">const</span> <a class="code hl_struct" href="structmcp3201__config__t.html">mcp3201_config_t</a> *<a class="code hl_variable" href="structmcp3201__context__t.html#a67eb2e10c7970f2bb7be144d2af56e4a">cfg</a>);</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>esp_err_t <a class="code hl_function" href="mcp3201_8h.html#acacc7f3f14eb9108f7c053d4cc370e00">mcp3201_exit</a>(<a class="code hl_struct" href="structmcp3201__context__t.html">mcp3201_handle_t</a> mcp_handle);</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
@@ -124,14 +123,27 @@ $(function() {
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="keywordtype">void</span> <a class="code hl_function" href="mcp3201_8h.html#a09942c72d6880306a561ca69a5ecac80">mcp3201_sampler_stop</a>(<a class="code hl_struct" href="structmcp3201__sampler__t.html">mcp3201_sampler_t</a> *sampler);</div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="preprocessor">#endif </span><span class="comment">// MCP3201_H</span></div>
-<div class="ttc" id="amcp3201_8h_html_a09942c72d6880306a561ca69a5ecac80"><div class="ttname"><a href="mcp3201_8h.html#a09942c72d6880306a561ca69a5ecac80">mcp3201_sampler_stop</a></div><div class="ttdeci">void mcp3201_sampler_stop(mcp3201_sampler_t *sampler)</div><div class="ttdoc">Stops the MCP3201 Sampler.</div><div class="ttdef"><b>Definition:</b> mcp3201_sampler.c:100</div></div>
-<div class="ttc" id="amcp3201_8h_html_a597661bdfb234321b4ba0648dc161451"><div class="ttname"><a href="mcp3201_8h.html#a597661bdfb234321b4ba0648dc161451">mcp3201_sampler_start</a></div><div class="ttdeci">mcp3201_sampler_t * mcp3201_sampler_start(mcp3201_handle_t mcp_handle, QueueHandle_t recv_queue, const size_t buffer_size, const size_t f_sample)</div><div class="ttdoc">Starts the MCP3201 Sampler, which samples continuously and puts the samples into a queue.</div><div class="ttdef"><b>Definition:</b> mcp3201_sampler.c:74</div></div>
+<div class="ttc" id="amcp3201_8h_html_a09942c72d6880306a561ca69a5ecac80"><div class="ttname"><a href="mcp3201_8h.html#a09942c72d6880306a561ca69a5ecac80">mcp3201_sampler_stop</a></div><div class="ttdeci">void mcp3201_sampler_stop(mcp3201_sampler_t *sampler)</div><div class="ttdoc">Stops the MCP3201 Sampler.</div><div class="ttdef"><b>Definition:</b> <a href="mcp3201__sampler_8c_source.html#l00110">mcp3201_sampler.c:110</a></div></div>
+<div class="ttc" id="amcp3201_8h_html_a394f6b43329fb768aeb634cdfee4ebef"><div class="ttname"><a href="mcp3201_8h.html#a394f6b43329fb768aeb634cdfee4ebef">mcp3201_handle_t</a></div><div class="ttdeci">struct mcp3201_context_t * mcp3201_handle_t</div><div class="ttdef"><b>Definition:</b> <a href="mcp3201_8h_source.html#l00046">mcp3201.h:46</a></div></div>
+<div class="ttc" id="amcp3201_8h_html_a597661bdfb234321b4ba0648dc161451"><div class="ttname"><a href="mcp3201_8h.html#a597661bdfb234321b4ba0648dc161451">mcp3201_sampler_start</a></div><div class="ttdeci">mcp3201_sampler_t * mcp3201_sampler_start(mcp3201_handle_t mcp_handle, QueueHandle_t recv_queue, const size_t buffer_size, const size_t f_sample)</div><div class="ttdoc">Starts the MCP3201 Sampler, which samples continuously and puts the samples into a queue.</div><div class="ttdef"><b>Definition:</b> <a href="mcp3201__sampler_8c_source.html#l00084">mcp3201_sampler.c:84</a></div></div>
 <div class="ttc" id="amcp3201_8h_html_a69c1d4c194693ad14af26415e51cd4d5"><div class="ttname"><a href="mcp3201_8h.html#a69c1d4c194693ad14af26415e51cd4d5">mcp3201_init</a></div><div class="ttdeci">esp_err_t mcp3201_init(mcp3201_handle_t *out_handle, const mcp3201_config_t *cfg)</div><div class="ttdoc">Initializes the MCP3201 ADC device.</div></div>
-<div class="ttc" id="amcp3201_8h_html_acacc7f3f14eb9108f7c053d4cc370e00"><div class="ttname"><a href="mcp3201_8h.html#acacc7f3f14eb9108f7c053d4cc370e00">mcp3201_exit</a></div><div class="ttdeci">esp_err_t mcp3201_exit(mcp3201_handle_t mcp_handle)</div><div class="ttdoc">Exits the MCP3201 ADC device and frees all resources.</div><div class="ttdef"><b>Definition:</b> mcp3201.c:105</div></div>
+<div class="ttc" id="amcp3201_8h_html_acacc7f3f14eb9108f7c053d4cc370e00"><div class="ttname"><a href="mcp3201_8h.html#acacc7f3f14eb9108f7c053d4cc370e00">mcp3201_exit</a></div><div class="ttdeci">esp_err_t mcp3201_exit(mcp3201_handle_t mcp_handle)</div><div class="ttdoc">Exits the MCP3201 ADC device and frees all resources.</div><div class="ttdef"><b>Definition:</b> <a href="mcp3201_8c_source.html#l00105">mcp3201.c:105</a></div></div>
 <div class="ttc" id="amcp3201_8h_html_ad2a98b7c4cafab98b390b467b976cc9f"><div class="ttname"><a href="mcp3201_8h.html#ad2a98b7c4cafab98b390b467b976cc9f">mcp3201_read</a></div><div class="ttdeci">esp_err_t mcp3201_read(mcp3201_handle_t handle, uint16_t *out_value)</div><div class="ttdoc">Reads a single value from the MCP3201 ADC.</div></div>
-<div class="ttc" id="astructmcp3201__config__t_html"><div class="ttname"><a href="structmcp3201__config__t.html">mcp3201_config_t</a></div><div class="ttdef"><b>Definition:</b> mcp3201.h:37</div></div>
-<div class="ttc" id="astructmcp3201__context__t_html"><div class="ttname"><a href="structmcp3201__context__t.html">mcp3201_context_t</a></div><div class="ttdoc">MCP3201 Context struct for internal use.</div><div class="ttdef"><b>Definition:</b> mcp3201.c:23</div></div>
-<div class="ttc" id="astructmcp3201__sampler__t_html"><div class="ttname"><a href="structmcp3201__sampler__t.html">mcp3201_sampler_t</a></div><div class="ttdef"><b>Definition:</b> mcp3201.h:59</div></div>
+<div class="ttc" id="astructmcp3201__config__t_html"><div class="ttname"><a href="structmcp3201__config__t.html">mcp3201_config_t</a></div><div class="ttdef"><b>Definition:</b> <a href="mcp3201_8h_source.html#l00036">mcp3201.h:37</a></div></div>
+<div class="ttc" id="astructmcp3201__config__t_html_a456684b326733e9d7a283b12f7316770"><div class="ttname"><a href="structmcp3201__config__t.html#a456684b326733e9d7a283b12f7316770">mcp3201_config_t::dma_chan</a></div><div class="ttdeci">int dma_chan</div><div class="ttdef"><b>Definition:</b> <a href="mcp3201_8h_source.html#l00042">mcp3201.h:42</a></div></div>
+<div class="ttc" id="astructmcp3201__config__t_html_a7a38bd9dda941e0eb854430f514097bd"><div class="ttname"><a href="structmcp3201__config__t.html#a7a38bd9dda941e0eb854430f514097bd">mcp3201_config_t::cs_io</a></div><div class="ttdeci">gpio_num_t cs_io</div><div class="ttdef"><b>Definition:</b> <a href="mcp3201_8h_source.html#l00039">mcp3201.h:39</a></div></div>
+<div class="ttc" id="astructmcp3201__config__t_html_a81741dc79605ea0869eccb6123c8f87a"><div class="ttname"><a href="structmcp3201__config__t.html#a81741dc79605ea0869eccb6123c8f87a">mcp3201_config_t::miso_io</a></div><div class="ttdeci">gpio_num_t miso_io</div><div class="ttdef"><b>Definition:</b> <a href="mcp3201_8h_source.html#l00040">mcp3201.h:40</a></div></div>
+<div class="ttc" id="astructmcp3201__config__t_html_a9914529f78253bf211a2fcfdd7fdaa08"><div class="ttname"><a href="structmcp3201__config__t.html#a9914529f78253bf211a2fcfdd7fdaa08">mcp3201_config_t::mosi_io</a></div><div class="ttdeci">gpio_num_t mosi_io</div><div class="ttdef"><b>Definition:</b> <a href="mcp3201_8h_source.html#l00041">mcp3201.h:41</a></div></div>
+<div class="ttc" id="astructmcp3201__config__t_html_af2bc3d31ad0099123ad13e726b96cb8f"><div class="ttname"><a href="structmcp3201__config__t.html#af2bc3d31ad0099123ad13e726b96cb8f">mcp3201_config_t::host</a></div><div class="ttdeci">spi_host_device_t host</div><div class="ttdef"><b>Definition:</b> <a href="mcp3201_8h_source.html#l00038">mcp3201.h:38</a></div></div>
+<div class="ttc" id="astructmcp3201__context__t_html"><div class="ttname"><a href="structmcp3201__context__t.html">mcp3201_context_t</a></div><div class="ttdoc">MCP3201 Context struct for internal use.</div><div class="ttdef"><b>Definition:</b> <a href="mcp3201_8c_source.html#l00022">mcp3201.c:23</a></div></div>
+<div class="ttc" id="astructmcp3201__context__t_html_a67eb2e10c7970f2bb7be144d2af56e4a"><div class="ttname"><a href="structmcp3201__context__t.html#a67eb2e10c7970f2bb7be144d2af56e4a">mcp3201_context_t::cfg</a></div><div class="ttdeci">mcp3201_config_t cfg</div><div class="ttdef"><b>Definition:</b> <a href="mcp3201_8c_source.html#l00024">mcp3201.c:24</a></div></div>
+<div class="ttc" id="astructmcp3201__sampler__t_html"><div class="ttname"><a href="structmcp3201__sampler__t.html">mcp3201_sampler_t</a></div><div class="ttdef"><b>Definition:</b> <a href="mcp3201_8h_source.html#l00058">mcp3201.h:59</a></div></div>
+<div class="ttc" id="astructmcp3201__sampler__t_html_a01668835337313a60bcb16756c005b12"><div class="ttname"><a href="structmcp3201__sampler__t.html#a01668835337313a60bcb16756c005b12">mcp3201_sampler_t::dma_queue</a></div><div class="ttdeci">QueueHandle_t dma_queue</div><div class="ttdef"><b>Definition:</b> <a href="mcp3201_8h_source.html#l00061">mcp3201.h:61</a></div></div>
+<div class="ttc" id="astructmcp3201__sampler__t_html_a255cd594fc3f4a9d5c0fd146ceb4ca23"><div class="ttname"><a href="structmcp3201__sampler__t.html#a255cd594fc3f4a9d5c0fd146ceb4ca23">mcp3201_sampler_t::mcp_handle</a></div><div class="ttdeci">mcp3201_handle_t mcp_handle</div><div class="ttdef"><b>Definition:</b> <a href="mcp3201_8h_source.html#l00060">mcp3201.h:60</a></div></div>
+<div class="ttc" id="astructmcp3201__sampler__t_html_a799a743b3abd553a37fc01ad3097df08"><div class="ttname"><a href="structmcp3201__sampler__t.html#a799a743b3abd553a37fc01ad3097df08">mcp3201_sampler_t::buffer_size</a></div><div class="ttdeci">size_t buffer_size</div><div class="ttdef"><b>Definition:</b> <a href="mcp3201_8h_source.html#l00065">mcp3201.h:65</a></div></div>
+<div class="ttc" id="astructmcp3201__sampler__t_html_ac5aaa47703a07b7ca5bac6f7e7331b8b"><div class="ttname"><a href="structmcp3201__sampler__t.html#ac5aaa47703a07b7ca5bac6f7e7331b8b">mcp3201_sampler_t::dsp_queue</a></div><div class="ttdeci">QueueHandle_t dsp_queue</div><div class="ttdef"><b>Definition:</b> <a href="mcp3201_8h_source.html#l00062">mcp3201.h:62</a></div></div>
+<div class="ttc" id="astructmcp3201__sampler__t_html_ad772d2f9803cdbdf265ba17194a1314c"><div class="ttname"><a href="structmcp3201__sampler__t.html#ad772d2f9803cdbdf265ba17194a1314c">mcp3201_sampler_t::buffer_pos</a></div><div class="ttdeci">size_t buffer_pos</div><div class="ttdef"><b>Definition:</b> <a href="mcp3201_8h_source.html#l00064">mcp3201.h:64</a></div></div>
+<div class="ttc" id="astructmcp3201__sampler__t_html_aebedcefcc64e1f3236580fbaa899869e"><div class="ttname"><a href="structmcp3201__sampler__t.html#aebedcefcc64e1f3236580fbaa899869e">mcp3201_sampler_t::buffer</a></div><div class="ttdeci">size_t * buffer</div><div class="ttdef"><b>Definition:</b> <a href="mcp3201_8h_source.html#l00063">mcp3201.h:63</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

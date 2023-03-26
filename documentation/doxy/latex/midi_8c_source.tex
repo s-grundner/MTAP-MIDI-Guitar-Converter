@@ -1,0 +1,157 @@
+\hypertarget{midi_8c_source}{}\doxysection{midi.\+c}
+\label{midi_8c_source}\index{lib/midi/midi.c@{lib/midi/midi.c}}
+\mbox{\hyperlink{midi_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00011}00011 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{midi_8h}{midi.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00013}\mbox{\hyperlink{midi_8c_a8cbacf606a13d650a7b4352a6d63ffc6}{00013}} \textcolor{preprocessor}{\#define MIDI\_BYTE\_SIZE\_DEFAULT 3}}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00014}\mbox{\hyperlink{midi_8c_a185713012c0788a3e5309b017dc76228}{00014}} \textcolor{preprocessor}{\#define MIDI\_BYTE\_SIZE\_SHORT 2}}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00016}00016 \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *TAG = \textcolor{stringliteral}{"{}MIDI"{}};}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00017}00017 \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *MIDI\_MON = \textcolor{stringliteral}{"{}MIDI MONITOR"{}};}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00024}\mbox{\hyperlink{structmidi__context__t}{00024}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structmidi__context__t}{midi\_context\_t}}}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00025}00025 \{}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00026}\mbox{\hyperlink{structmidi__context__t_adfd767895f1b8c59b841da03147ad208}{00026}}     \mbox{\hyperlink{structmidi__config__t}{midi\_config\_t}} \mbox{\hyperlink{structmidi__context__t_adfd767895f1b8c59b841da03147ad208}{cfg}};}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00027}\mbox{\hyperlink{midi_8c_a5855645fbf31fd98bce0ec481b16c667}{00027}} \} \mbox{\hyperlink{structmidi__context__t}{midi\_context\_t}};}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00029}00029 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00030}00030 \textcolor{comment}{// MIDI CONFIG}}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00031}00031 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00033}\mbox{\hyperlink{midi_8c_ac71f907a5e5b7c07d492d621cafc2bb4}{00033}} esp\_err\_t \mbox{\hyperlink{midi_8c_ac71f907a5e5b7c07d492d621cafc2bb4}{midi\_init}}(\mbox{\hyperlink{structmidi__context__t}{midi\_context\_t}} **out\_ctx, \mbox{\hyperlink{structmidi__config__t}{midi\_config\_t}} *out\_cfg)}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00034}00034 \{}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00035}00035     \textcolor{comment}{// Allocate memory for context}}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00036}00036     \mbox{\hyperlink{structmidi__context__t}{midi\_context\_t}} *ctx = (\mbox{\hyperlink{structmidi__context__t}{midi\_context\_t}} *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structmidi__context__t}{midi\_context\_t}}));}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00037}00037     \textcolor{keywordflow}{if} (!ctx)}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00038}00038         \textcolor{keywordflow}{return} ESP\_ERR\_NO\_MEM;}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00040}00040     *ctx = (\mbox{\hyperlink{structmidi__context__t}{midi\_context\_t}})\{}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00041}00041         .\mbox{\hyperlink{structmidi__context__t_adfd767895f1b8c59b841da03147ad208}{cfg}} = *out\_cfg\};}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00043}00043     ESP\_LOGI(TAG, \textcolor{stringliteral}{"{}Initializing MIDI on \%d (rx:\%d, tx:\%d) with \%d baud..."{}}, ctx-\/>\mbox{\hyperlink{structmidi__context__t_adfd767895f1b8c59b841da03147ad208}{cfg}}.\mbox{\hyperlink{structmidi__config__t_af9196701f783d56635f29eaf00081549}{uart\_num}}, ctx-\/>\mbox{\hyperlink{structmidi__context__t_adfd767895f1b8c59b841da03147ad208}{cfg}}.\mbox{\hyperlink{structmidi__config__t_ae8e37a431c746a9971126538f886f793}{rx\_io}}, ctx-\/>\mbox{\hyperlink{structmidi__context__t_adfd767895f1b8c59b841da03147ad208}{cfg}}.\mbox{\hyperlink{structmidi__config__t_a020f7f8adab469c9730c104af25230cf}{tx\_io}}, ctx-\/>\mbox{\hyperlink{structmidi__context__t_adfd767895f1b8c59b841da03147ad208}{cfg}}.\mbox{\hyperlink{structmidi__config__t_a8945523bdb018bd3eb478333250720aa}{baudrate}});}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00045}00045     \textcolor{comment}{// Configure UART}}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00046}00046     gpio\_config\_t rx\_pin\_config = \{}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00047}00047         .pin\_bit\_mask = (1ULL << ctx-\/>\mbox{\hyperlink{structmidi__context__t_adfd767895f1b8c59b841da03147ad208}{cfg}}.\mbox{\hyperlink{structmidi__config__t_ae8e37a431c746a9971126538f886f793}{rx\_io}}),}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00048}00048         .mode = GPIO\_MODE\_INPUT,}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00049}00049         .pull\_up\_en = GPIO\_PULLUP\_DISABLE,}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00050}00050         .pull\_down\_en = GPIO\_PULLDOWN\_DISABLE,}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00051}00051         .intr\_type = GPIO\_INTR\_DISABLE\};}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00053}00053     gpio\_config\_t tx\_pin\_config = \{}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00054}00054         .pin\_bit\_mask = (1ULL << ctx-\/>\mbox{\hyperlink{structmidi__context__t_adfd767895f1b8c59b841da03147ad208}{cfg}}.\mbox{\hyperlink{structmidi__config__t_a020f7f8adab469c9730c104af25230cf}{tx\_io}}),}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00055}00055         .mode = GPIO\_MODE\_OUTPUT,}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00056}00056         .pull\_up\_en = GPIO\_PULLUP\_DISABLE,}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00057}00057         .pull\_down\_en = GPIO\_PULLDOWN\_DISABLE,}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00058}00058         .intr\_type = GPIO\_INTR\_DISABLE\};}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00060}00060     ESP\_ERROR\_CHECK(gpio\_config(\&rx\_pin\_config));}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00061}00061     ESP\_ERROR\_CHECK(gpio\_config(\&tx\_pin\_config));}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00063}00063     uart\_config\_t uart\_config = \{}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00064}00064         .baud\_rate = ctx-\/>\mbox{\hyperlink{structmidi__context__t_adfd767895f1b8c59b841da03147ad208}{cfg}}.\mbox{\hyperlink{structmidi__config__t_a8945523bdb018bd3eb478333250720aa}{baudrate}},}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00065}00065         .data\_bits = UART\_DATA\_8\_BITS,}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00066}00066         .parity = UART\_PARITY\_DISABLE,}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00067}00067         .stop\_bits = UART\_STOP\_BITS\_1,}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00068}00068         .flow\_ctrl = UART\_HW\_FLOWCTRL\_DISABLE,}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00069}00069         .source\_clk = UART\_SCLK\_APB\};}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00071}00071     ESP\_ERROR\_CHECK(uart\_param\_config(ctx-\/>\mbox{\hyperlink{structmidi__context__t_adfd767895f1b8c59b841da03147ad208}{cfg}}.\mbox{\hyperlink{structmidi__config__t_af9196701f783d56635f29eaf00081549}{uart\_num}}, \&uart\_config));}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00072}00072     ESP\_ERROR\_CHECK(uart\_set\_pin(ctx-\/>\mbox{\hyperlink{structmidi__context__t_adfd767895f1b8c59b841da03147ad208}{cfg}}.\mbox{\hyperlink{structmidi__config__t_af9196701f783d56635f29eaf00081549}{uart\_num}}, ctx-\/>\mbox{\hyperlink{structmidi__context__t_adfd767895f1b8c59b841da03147ad208}{cfg}}.\mbox{\hyperlink{structmidi__config__t_a020f7f8adab469c9730c104af25230cf}{tx\_io}}, ctx-\/>\mbox{\hyperlink{structmidi__context__t_adfd767895f1b8c59b841da03147ad208}{cfg}}.\mbox{\hyperlink{structmidi__config__t_ae8e37a431c746a9971126538f886f793}{rx\_io}}, UART\_PIN\_NO\_CHANGE, UART\_PIN\_NO\_CHANGE));}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00073}00073     ESP\_ERROR\_CHECK(uart\_driver\_install(ctx-\/>\mbox{\hyperlink{structmidi__context__t_adfd767895f1b8c59b841da03147ad208}{cfg}}.\mbox{\hyperlink{structmidi__config__t_af9196701f783d56635f29eaf00081549}{uart\_num}}, 1024 * 2, 1024 * 2, 0, NULL, 0));}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00075}00075     \textcolor{comment}{// Pass configured context to outer parameters}}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00076}00076     *out\_ctx = ctx;}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00077}00077     \textcolor{keywordflow}{return} ESP\_OK;}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00078}00078 \}}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00080}\mbox{\hyperlink{midi_8c_a6eff3a43d514679b4da21f8cca9e2316}{00080}} esp\_err\_t \mbox{\hyperlink{midi_8c_a6eff3a43d514679b4da21f8cca9e2316}{midi\_exit}}(\mbox{\hyperlink{structmidi__context__t}{midi\_handle\_t}} midi\_handle)}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00081}00081 \{}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00082}00082     esp\_err\_t err = ESP\_OK;}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00083}00083     err = uart\_driver\_delete(midi\_handle-\/>\mbox{\hyperlink{structmidi__context__t_adfd767895f1b8c59b841da03147ad208}{cfg}}.\mbox{\hyperlink{structmidi__config__t_af9196701f783d56635f29eaf00081549}{uart\_num}});}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00084}00084     free(midi\_handle);}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00085}00085     \textcolor{keywordflow}{return} err;}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00086}00086 \}}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00088}00088 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00089}00089 \textcolor{comment}{// MIDI TRANSMISSIONS}}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00090}00090 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00092}\mbox{\hyperlink{midi_8c_ac6d19507fa71da416c31fbe9b38684fa}{00092}} esp\_err\_t \mbox{\hyperlink{midi_8c_ac6d19507fa71da416c31fbe9b38684fa}{midi\_write}}(\mbox{\hyperlink{structmidi__context__t}{midi\_handle\_t}} handle, \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} *msg)}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00093}00093 \{}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00094}00094     \textcolor{keywordtype}{int} len = 0;}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00095}00095     \textcolor{keyword}{const} \textcolor{keywordtype}{char} data[] = \{msg-\/>\mbox{\hyperlink{structmidi__message__t_aff4bb9542c2091c2a7b80c4a74df778c}{status}} | msg-\/>\mbox{\hyperlink{structmidi__message__t_a715f5cb061d11eb75981741eda4dafcd}{channel}}, msg-\/>\mbox{\hyperlink{structmidi__message__t_aec4226da1b99c821237b6805c4e31333}{param1}}, msg-\/>\mbox{\hyperlink{structmidi__message__t_a2edf9aa267374101b30d34d98a041ebe}{param2}}\};}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00096}00096 }
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00097}00097     \textcolor{comment}{// switch status to determine message length}}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00098}00098     \textcolor{keywordflow}{switch} (msg-\/>\mbox{\hyperlink{structmidi__message__t_aff4bb9542c2091c2a7b80c4a74df778c}{status}})}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00099}00099     \{}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00100}00100     \textcolor{keywordflow}{case} \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3a78dea1a5ae83e056e851a48a7f0c3563}{MIDI\_STATUS\_NOTE\_OFF}}:}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00101}00101     \textcolor{keywordflow}{case} \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3abe99811e428031d0f15688014e2cf5a8}{MIDI\_STATUS\_NOTE\_ON}}:}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00102}00102     \textcolor{keywordflow}{case} \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3ac24c51550cb54517b8a4d43ae7ad9ecd}{MIDI\_STATUS\_CONTROL\_CHANGE}}:}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00103}00103     \textcolor{keywordflow}{case} \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3a1f64d20cde10447a140d9f080c58e274}{MIDI\_STATUS\_PITCH\_BEND}}:}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00104}00104     \textcolor{keywordflow}{case} \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3aa7f1563cbb4918bb41382dc13918b033}{MIDI\_STATUS\_POLYPHONIC\_KEY\_PRESSURE}}:}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00105}00105         len = uart\_write\_bytes(handle-\/>\mbox{\hyperlink{structmidi__context__t_adfd767895f1b8c59b841da03147ad208}{cfg}}.\mbox{\hyperlink{structmidi__config__t_af9196701f783d56635f29eaf00081549}{uart\_num}}, data, \mbox{\hyperlink{midi_8c_a8cbacf606a13d650a7b4352a6d63ffc6}{MIDI\_BYTE\_SIZE\_DEFAULT}});}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00106}00106         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00107}00107     \textcolor{keywordflow}{case} \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3a8907e3e0d6d7aaae3a03020e319025a3}{MIDI\_STATUS\_PROGRAM\_CHANGE}}:}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00108}00108     \textcolor{keywordflow}{case} \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3a878bb42c1eab07194bfa44a5e773aef0}{MIDI\_STATUS\_CHANNEL\_PRESSURE}}:}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00109}00109         len = uart\_write\_bytes(handle-\/>\mbox{\hyperlink{structmidi__context__t_adfd767895f1b8c59b841da03147ad208}{cfg}}.\mbox{\hyperlink{structmidi__config__t_af9196701f783d56635f29eaf00081549}{uart\_num}}, data, \mbox{\hyperlink{midi_8c_a185713012c0788a3e5309b017dc76228}{MIDI\_BYTE\_SIZE\_SHORT}});}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00110}00110         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00111}00111     \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00112}00112         ESP\_LOGE(TAG, \textcolor{stringliteral}{"{}midi\_send: invalid status: \%02X"{}}, msg-\/>\mbox{\hyperlink{structmidi__message__t_aff4bb9542c2091c2a7b80c4a74df778c}{status}});}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00113}00113         \textcolor{keywordflow}{return} ESP\_ERR\_INVALID\_ARG;}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00114}00114         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00115}00115     \}}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00116}00116     \textcolor{keywordflow}{switch} (len)}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00117}00117     \{}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00118}00118     \textcolor{keywordflow}{case} -\/1:}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00119}00119         ESP\_LOGE(TAG, \textcolor{stringliteral}{"{}uart\_write\_bytes failed"{}});}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00120}00120         \textcolor{keywordflow}{return} ESP\_FAIL;}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00121}00121         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00122}00122     \textcolor{keywordflow}{case} 0:}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00123}00123         ESP\_LOGE(TAG, \textcolor{stringliteral}{"{}uart\_write\_bytes timed out"{}});}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00124}00124         \textcolor{keywordflow}{return} ESP\_ERR\_TIMEOUT;}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00125}00125         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00126}00126     \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00127}00127         \textcolor{comment}{// ESP\_LOGI(MIDI\_MON, "{}Status: \%02X\(\backslash\)tChannel: \%02X\(\backslash\)t Data: \%02X \%02X\(\backslash\)t Length:\%d"{}, msg-\/>status, msg-\/>channel, msg-\/>param1, msg-\/>param2, len);}}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00128}00128         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00129}00129     \}}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00130}00130     \textcolor{keywordflow}{return} ESP\_OK;}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00131}00131 \}}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00132}00132 }
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00133}\mbox{\hyperlink{midi_8c_a19339a5613e1e14bcffb4469675ec2db}{00133}} esp\_err\_t \mbox{\hyperlink{midi_8c_a19339a5613e1e14bcffb4469675ec2db}{midi\_read}}(\mbox{\hyperlink{structmidi__context__t}{midi\_handle\_t}} midi\_handle, \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} *msg, TickType\_t timeout)}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00134}00134 \{}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00135}00135     \textcolor{keywordtype}{char} data[3];}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00136}00136     \textcolor{keywordtype}{int} len = uart\_read\_bytes(midi\_handle-\/>\mbox{\hyperlink{structmidi__context__t_adfd767895f1b8c59b841da03147ad208}{cfg}}.\mbox{\hyperlink{structmidi__config__t_af9196701f783d56635f29eaf00081549}{uart\_num}}, (uint8\_t *)data, 3, timeout);}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00137}00137     \textcolor{keywordflow}{switch} (len)}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00138}00138     \{}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00139}00139     \textcolor{keywordflow}{case} -\/1:}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00140}00140         ESP\_LOGE(TAG, \textcolor{stringliteral}{"{}uart\_read\_bytes failed"{}});}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00141}00141         \textcolor{keywordflow}{return} ESP\_FAIL;}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00142}00142         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00143}00143     \textcolor{keywordflow}{case} 0:}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00144}00144         ESP\_LOGE(TAG, \textcolor{stringliteral}{"{}uart\_read\_bytes timeout"{}});}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00145}00145         \textcolor{keywordflow}{return} ESP\_ERR\_TIMEOUT;}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00146}00146         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00147}00147     \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00148}00148         msg-\/>\mbox{\hyperlink{structmidi__message__t_aff4bb9542c2091c2a7b80c4a74df778c}{status}} = data[0] \& 0xF0;}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00149}00149         msg-\/>\mbox{\hyperlink{structmidi__message__t_a715f5cb061d11eb75981741eda4dafcd}{channel}} = data[0] \& 0x0F;}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00150}00150         msg-\/>\mbox{\hyperlink{structmidi__message__t_aec4226da1b99c821237b6805c4e31333}{param1}} = data[1];}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00151}00151         msg-\/>\mbox{\hyperlink{structmidi__message__t_a2edf9aa267374101b30d34d98a041ebe}{param2}} = 0;}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00152}00152         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00153}00153     \textcolor{keywordflow}{case} 3:}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00154}00154         msg-\/>\mbox{\hyperlink{structmidi__message__t_aff4bb9542c2091c2a7b80c4a74df778c}{status}} = data[0] \& 0xF0;}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00155}00155         msg-\/>\mbox{\hyperlink{structmidi__message__t_a715f5cb061d11eb75981741eda4dafcd}{channel}} = data[0] \& 0x0F;}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00156}00156         msg-\/>\mbox{\hyperlink{structmidi__message__t_aec4226da1b99c821237b6805c4e31333}{param1}} = data[1];}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00157}00157         msg-\/>\mbox{\hyperlink{structmidi__message__t_a2edf9aa267374101b30d34d98a041ebe}{param2}} = data[2];}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00158}00158         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00159}00159     \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00160}00160         ESP\_LOGE(TAG, \textcolor{stringliteral}{"{}uart\_read\_bytes invalid message"{}});}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00161}00161         \textcolor{keywordflow}{return} ESP\_ERR\_INVALID\_ARG;}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00162}00162         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00163}00163     \}}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00164}00164     \textcolor{keywordflow}{return} ESP\_OK;}
+\DoxyCodeLine{\Hypertarget{midi_8c_source_l00165}00165 \}}
+
+\end{DoxyCode}

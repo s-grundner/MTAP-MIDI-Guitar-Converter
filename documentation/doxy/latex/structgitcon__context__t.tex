@@ -9,21 +9,14 @@ Gitcon Configuration.
 
 {\ttfamily \#include $<$gitcon.\+h$>$}
 
-
-
-Collaboration diagram for gitcon\+\_\+context\+\_\+t\+:
-% FIG 0
 \doxysubsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{structgitcon__context__t_ad03ad4f112560cc5c290a0a7b5192fbc}\label{structgitcon__context__t_ad03ad4f112560cc5c290a0a7b5192fbc}} 
-\mbox{\hyperlink{structi2s__sampler__t}{i2s\+\_\+sampler\+\_\+t}} $\ast$ {\bfseries sampler}
+\mbox{\hyperlink{structi2s__sampler__t}{i2s\+\_\+sampler\+\_\+t}} $\ast$ \mbox{\hyperlink{structgitcon__context__t_ad03ad4f112560cc5c290a0a7b5192fbc}{sampler}}
 \item 
-\mbox{\Hypertarget{structgitcon__context__t_ac3ff9d611225b2ed35a5ff50d79bcc60}\label{structgitcon__context__t_ac3ff9d611225b2ed35a5ff50d79bcc60}} 
-\mbox{\hyperlink{structmidi__context__t}{midi\+\_\+handle\+\_\+t}} {\bfseries midi\+\_\+handle}
+\mbox{\hyperlink{midi_8h_acff464a25313f690f0543752b33c4716}{midi\+\_\+handle\+\_\+t}} \mbox{\hyperlink{structgitcon__context__t_ac3ff9d611225b2ed35a5ff50d79bcc60}{midi\+\_\+handle}}
 \item 
-\mbox{\Hypertarget{structgitcon__context__t_aced3bb31b67f3a71c6afdcc851a839eb}\label{structgitcon__context__t_aced3bb31b67f3a71c6afdcc851a839eb}} 
-Queue\+Handle\+\_\+t {\bfseries midi\+\_\+queue}
+Queue\+Handle\+\_\+t \mbox{\hyperlink{structgitcon__context__t_aced3bb31b67f3a71c6afdcc851a839eb}{midi\+\_\+queue}}
 \end{DoxyCompactItemize}
 
 
@@ -32,15 +25,52 @@ Gitcon Configuration.
 
 
 \begin{DoxyParams}{Parameters}
-{\em mcp3201} & MCP3201 ADC \\
+{\em sampler} & Sampler Handler (MCP3201 or I2S) \\
 \hline
-{\em midi\+\_\+handle} & MIDI Context Handler \\
+{\em midi\+\_\+handle} & MIDI Driver Context (MIDI over UART) \\
 \hline
-{\em midi\+\_\+queue} & MIDI Queue \\
+{\em midi\+\_\+queue} & MIDI Queue Handler \\
 \hline
 \end{DoxyParams}
 
 
+Definition at line \mbox{\hyperlink{gitcon_8h_source_l00025}{25}} of file \mbox{\hyperlink{gitcon_8h_source}{gitcon.\+h}}.
+
+
+
+\doxysubsection{Field Documentation}
+\mbox{\Hypertarget{structgitcon__context__t_ac3ff9d611225b2ed35a5ff50d79bcc60}\label{structgitcon__context__t_ac3ff9d611225b2ed35a5ff50d79bcc60}} 
+\index{gitcon\_context\_t@{gitcon\_context\_t}!midi\_handle@{midi\_handle}}
+\index{midi\_handle@{midi\_handle}!gitcon\_context\_t@{gitcon\_context\_t}}
+\doxysubsubsection{\texorpdfstring{midi\_handle}{midi\_handle}}
+{\footnotesize\ttfamily \mbox{\hyperlink{midi_8h_acff464a25313f690f0543752b33c4716}{midi\+\_\+handle\+\_\+t}} midi\+\_\+handle}
+
+
+
+Definition at line \mbox{\hyperlink{gitcon_8h_source_l00032}{32}} of file \mbox{\hyperlink{gitcon_8h_source}{gitcon.\+h}}.
+
+\mbox{\Hypertarget{structgitcon__context__t_aced3bb31b67f3a71c6afdcc851a839eb}\label{structgitcon__context__t_aced3bb31b67f3a71c6afdcc851a839eb}} 
+\index{gitcon\_context\_t@{gitcon\_context\_t}!midi\_queue@{midi\_queue}}
+\index{midi\_queue@{midi\_queue}!gitcon\_context\_t@{gitcon\_context\_t}}
+\doxysubsubsection{\texorpdfstring{midi\_queue}{midi\_queue}}
+{\footnotesize\ttfamily Queue\+Handle\+\_\+t midi\+\_\+queue}
+
+
+
+Definition at line \mbox{\hyperlink{gitcon_8h_source_l00033}{33}} of file \mbox{\hyperlink{gitcon_8h_source}{gitcon.\+h}}.
+
+\mbox{\Hypertarget{structgitcon__context__t_ad03ad4f112560cc5c290a0a7b5192fbc}\label{structgitcon__context__t_ad03ad4f112560cc5c290a0a7b5192fbc}} 
+\index{gitcon\_context\_t@{gitcon\_context\_t}!sampler@{sampler}}
+\index{sampler@{sampler}!gitcon\_context\_t@{gitcon\_context\_t}}
+\doxysubsubsection{\texorpdfstring{sampler}{sampler}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structi2s__sampler__t}{i2s\+\_\+sampler\+\_\+t}}$\ast$ sampler}
+
+
+
+Definition at line \mbox{\hyperlink{gitcon_8h_source_l00030}{30}} of file \mbox{\hyperlink{gitcon_8h_source}{gitcon.\+h}}.
+
+
+
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/\+Users/\+Smon/source/\+MTAP-\/\+MIDI-\/\+Guitar-\/\+Converter/firmware/\+MIDI-\/\+Testing/src/\mbox{\hyperlink{gitcon_8h}{gitcon.\+h}}\end{DoxyCompactItemize}
+src/\mbox{\hyperlink{gitcon_8h}{gitcon.\+h}}\end{DoxyCompactItemize}

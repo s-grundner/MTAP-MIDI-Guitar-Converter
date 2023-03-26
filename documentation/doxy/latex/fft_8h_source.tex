@@ -1,50 +1,50 @@
 \hypertarget{fft_8h_source}{}\doxysection{fft.\+h}
-\label{fft_8h_source}\index{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/fft/fft.h@{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/fft/fft.h}}
-
+\label{fft_8h_source}\index{lib/fft/fft.h@{lib/fft/fft.h}}
+\mbox{\hyperlink{fft_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{1 }
-\DoxyCodeLine{26 \textcolor{preprocessor}{\#ifndef \_\_FFT\_H\_\_}}
-\DoxyCodeLine{27 \textcolor{preprocessor}{\#define \_\_FFT\_H\_\_}}
-\DoxyCodeLine{28 }
-\DoxyCodeLine{29 \textcolor{keyword}{typedef} \textcolor{keyword}{enum}}
-\DoxyCodeLine{30 \{}
-\DoxyCodeLine{31   FFT\_REAL,}
-\DoxyCodeLine{32   FFT\_COMPLEX}
-\DoxyCodeLine{33 \} fft\_type\_t;}
-\DoxyCodeLine{34 }
-\DoxyCodeLine{35 \textcolor{keyword}{typedef} \textcolor{keyword}{enum}}
-\DoxyCodeLine{36 \{}
-\DoxyCodeLine{37   FFT\_FORWARD,}
-\DoxyCodeLine{38   FFT\_BACKWARD}
-\DoxyCodeLine{39 \} fft\_direction\_t;}
-\DoxyCodeLine{40 }
-\DoxyCodeLine{41 \textcolor{preprocessor}{\#define FFT\_OWN\_INPUT\_MEM 1}}
-\DoxyCodeLine{42 \textcolor{preprocessor}{\#define FFT\_OWN\_OUTPUT\_MEM 2}}
-\DoxyCodeLine{43 }
-\DoxyCodeLine{44 \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
-\DoxyCodeLine{45 \{}
-\DoxyCodeLine{46   \textcolor{keywordtype}{int} size;                  \textcolor{comment}{// FFT size}}
-\DoxyCodeLine{47   \textcolor{keywordtype}{float} *input;              \textcolor{comment}{// pointer to input buffer}}
-\DoxyCodeLine{48   \textcolor{keywordtype}{float} *output;             \textcolor{comment}{// pointer to output buffer}}
-\DoxyCodeLine{49   \textcolor{keywordtype}{float} *twiddle\_factors;    \textcolor{comment}{// pointer to buffer holding twiddle factors}}
-\DoxyCodeLine{50   fft\_type\_t type;           \textcolor{comment}{// real or complex}}
-\DoxyCodeLine{51   fft\_direction\_t direction; \textcolor{comment}{// forward or backward}}
-\DoxyCodeLine{52   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} flags;        \textcolor{comment}{// FFT flags}}
-\DoxyCodeLine{53 \} \mbox{\hyperlink{structfft__config__t}{fft\_config\_t}};}
-\DoxyCodeLine{54 }
-\DoxyCodeLine{55 \mbox{\hyperlink{structfft__config__t}{fft\_config\_t}} *fft\_init(\textcolor{keywordtype}{int} size, fft\_type\_t type, fft\_direction\_t direction, \textcolor{keywordtype}{float} *input, \textcolor{keywordtype}{float} *output);}
-\DoxyCodeLine{56 \textcolor{keywordtype}{void} fft\_destroy(\mbox{\hyperlink{structfft__config__t}{fft\_config\_t}} *config);}
-\DoxyCodeLine{57 \textcolor{keywordtype}{void} fft\_execute(\mbox{\hyperlink{structfft__config__t}{fft\_config\_t}} *config);}
-\DoxyCodeLine{58 \textcolor{keywordtype}{void} fft(\textcolor{keywordtype}{float} *input, \textcolor{keywordtype}{float} *output, \textcolor{keywordtype}{float} *twiddle\_factors, \textcolor{keywordtype}{int} n);}
-\DoxyCodeLine{59 \textcolor{keywordtype}{void} ifft(\textcolor{keywordtype}{float} *input, \textcolor{keywordtype}{float} *output, \textcolor{keywordtype}{float} *twiddle\_factors, \textcolor{keywordtype}{int} n);}
-\DoxyCodeLine{60 \textcolor{keywordtype}{void} rfft(\textcolor{keywordtype}{float} *x, \textcolor{keywordtype}{float} *y, \textcolor{keywordtype}{float} *twiddle\_factors, \textcolor{keywordtype}{int} n);}
-\DoxyCodeLine{61 \textcolor{keywordtype}{void} irfft(\textcolor{keywordtype}{float} *x, \textcolor{keywordtype}{float} *y, \textcolor{keywordtype}{float} *twiddle\_factors, \textcolor{keywordtype}{int} n);}
-\DoxyCodeLine{62 \textcolor{keywordtype}{void} fft\_primitive(\textcolor{keywordtype}{float} *x, \textcolor{keywordtype}{float} *y, \textcolor{keywordtype}{int} n, \textcolor{keywordtype}{int} stride, \textcolor{keywordtype}{float} *twiddle\_factors, \textcolor{keywordtype}{int} tw\_stride);}
-\DoxyCodeLine{63 \textcolor{keywordtype}{void} split\_radix\_fft(\textcolor{keywordtype}{float} *x, \textcolor{keywordtype}{float} *y, \textcolor{keywordtype}{int} n, \textcolor{keywordtype}{int} stride, \textcolor{keywordtype}{float} *twiddle\_factors, \textcolor{keywordtype}{int} tw\_stride);}
-\DoxyCodeLine{64 \textcolor{keywordtype}{void} ifft\_primitive(\textcolor{keywordtype}{float} *input, \textcolor{keywordtype}{float} *output, \textcolor{keywordtype}{int} n, \textcolor{keywordtype}{int} stride, \textcolor{keywordtype}{float} *twiddle\_factors, \textcolor{keywordtype}{int} tw\_stride);}
-\DoxyCodeLine{65 \textcolor{keywordtype}{void} fft8(\textcolor{keywordtype}{float} *input, \textcolor{keywordtype}{int} stride\_in, \textcolor{keywordtype}{float} *output, \textcolor{keywordtype}{int} stride\_out);}
-\DoxyCodeLine{66 \textcolor{keywordtype}{void} fft4(\textcolor{keywordtype}{float} *input, \textcolor{keywordtype}{int} stride\_in, \textcolor{keywordtype}{float} *output, \textcolor{keywordtype}{int} stride\_out);}
-\DoxyCodeLine{67 }
-\DoxyCodeLine{68 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_\_FFT\_H\_\_}}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00025}00025 \textcolor{preprocessor}{\#ifndef \_\_FFT\_H\_\_}}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00026}00026 \textcolor{preprocessor}{\#define \_\_FFT\_H\_\_}}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00028}\mbox{\hyperlink{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3}{00028}} \textcolor{keyword}{typedef} \textcolor{keyword}{enum}}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00029}00029 \{}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00030}\mbox{\hyperlink{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3aa35f248b935d5b32f1e254b3843caaa0}{00030}}   \mbox{\hyperlink{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3aa35f248b935d5b32f1e254b3843caaa0}{FFT\_REAL}},}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00031}00031   \mbox{\hyperlink{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3af226b92e6e73d2c1fba99afa79665052}{FFT\_COMPLEX}}}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00032}\mbox{\hyperlink{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3af226b92e6e73d2c1fba99afa79665052}{00032}} \} \mbox{\hyperlink{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3}{fft\_type\_t}};}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00034}\mbox{\hyperlink{fft_8h_a7400df7c8f32ea8e6b010199d1813fe5}{00034}} \textcolor{keyword}{typedef} \textcolor{keyword}{enum}}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00035}00035 \{}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00036}\mbox{\hyperlink{fft_8h_a7400df7c8f32ea8e6b010199d1813fe5a7052223ae26883446425d6fc3338a869}{00036}}   \mbox{\hyperlink{fft_8h_a7400df7c8f32ea8e6b010199d1813fe5a7052223ae26883446425d6fc3338a869}{FFT\_FORWARD}},}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00037}00037   \mbox{\hyperlink{fft_8h_a7400df7c8f32ea8e6b010199d1813fe5a94b2b900505b2cd82482f612244a54d3}{FFT\_BACKWARD}}}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00038}\mbox{\hyperlink{fft_8h_a7400df7c8f32ea8e6b010199d1813fe5a94b2b900505b2cd82482f612244a54d3}{00038}} \} \mbox{\hyperlink{fft_8h_a7400df7c8f32ea8e6b010199d1813fe5}{fft\_direction\_t}};}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00040}\mbox{\hyperlink{fft_8h_ad2a04e717ebe86bf08875e879e7c24fa}{00040}} \textcolor{preprocessor}{\#define FFT\_OWN\_INPUT\_MEM 1}}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00041}\mbox{\hyperlink{fft_8h_a75136cb97002566d690469bc4d96a54e}{00041}} \textcolor{preprocessor}{\#define FFT\_OWN\_OUTPUT\_MEM 2}}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00043}\mbox{\hyperlink{structfft__config__t}{00043}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00044}00044 \{}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00045}\mbox{\hyperlink{structfft__config__t_a439227feff9d7f55384e8780cfc2eb82}{00045}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{structfft__config__t_a439227feff9d7f55384e8780cfc2eb82}{size}};                  \textcolor{comment}{// FFT size}}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00046}\mbox{\hyperlink{structfft__config__t_aa92d3f73b33ca1a03e06415ee1db06eb}{00046}}   \textcolor{keywordtype}{float} *\mbox{\hyperlink{structfft__config__t_aa92d3f73b33ca1a03e06415ee1db06eb}{input}};              \textcolor{comment}{// pointer to input buffer}}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00047}\mbox{\hyperlink{structfft__config__t_aed212f452362fd47d3c6530a2433cbca}{00047}}   \textcolor{keywordtype}{float} *\mbox{\hyperlink{structfft__config__t_aed212f452362fd47d3c6530a2433cbca}{output}};             \textcolor{comment}{// pointer to output buffer}}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00048}\mbox{\hyperlink{structfft__config__t_a00c7a5a420128f70fb1aff6d175cb95b}{00048}}   \textcolor{keywordtype}{float} *\mbox{\hyperlink{structfft__config__t_a00c7a5a420128f70fb1aff6d175cb95b}{twiddle\_factors}};    \textcolor{comment}{// pointer to buffer holding twiddle factors}}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00049}\mbox{\hyperlink{structfft__config__t_a4a3502eb022ff0f5a5446d93c9dcdfec}{00049}}   \mbox{\hyperlink{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3}{fft\_type\_t}} \mbox{\hyperlink{structfft__config__t_a4a3502eb022ff0f5a5446d93c9dcdfec}{type}};           \textcolor{comment}{// real or complex}}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00050}\mbox{\hyperlink{structfft__config__t_ae3ffe1db0831689395bc3e81ef5e748e}{00050}}   \mbox{\hyperlink{fft_8h_a7400df7c8f32ea8e6b010199d1813fe5}{fft\_direction\_t}} \mbox{\hyperlink{structfft__config__t_ae3ffe1db0831689395bc3e81ef5e748e}{direction}}; \textcolor{comment}{// forward or backward}}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00051}\mbox{\hyperlink{structfft__config__t_ac92588540e8c1d014a08cd8a45462b19}{00051}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{structfft__config__t_ac92588540e8c1d014a08cd8a45462b19}{flags}};        \textcolor{comment}{// FFT flags}}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00052}00052 \} \mbox{\hyperlink{structfft__config__t}{fft\_config\_t}};}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00054}00054 \mbox{\hyperlink{structfft__config__t}{fft\_config\_t}} *\mbox{\hyperlink{fft_8h_a99b7a87d5783b2727dac866314f2774d}{fft\_init}}(\textcolor{keywordtype}{int} size, \mbox{\hyperlink{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3}{fft\_type\_t}} type, \mbox{\hyperlink{fft_8h_a7400df7c8f32ea8e6b010199d1813fe5}{fft\_direction\_t}} direction, \textcolor{keywordtype}{float} *input, \textcolor{keywordtype}{float} *output);}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00055}00055 \textcolor{keywordtype}{void} \mbox{\hyperlink{fft_8h_a0532ef3e893952fd108b183d5a14cd0d}{fft\_destroy}}(\mbox{\hyperlink{structfft__config__t}{fft\_config\_t}} *config);}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00056}00056 \textcolor{keywordtype}{void} \mbox{\hyperlink{fft_8h_aa0d01a17b65373896f2100bc63883ca3}{fft\_execute}}(\mbox{\hyperlink{structfft__config__t}{fft\_config\_t}} *config);}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00057}00057 \textcolor{keywordtype}{void} \mbox{\hyperlink{fft_8h_ab4cb498bf7686f0d200752cc5a6ea3d3}{fft}}(\textcolor{keywordtype}{float} *input, \textcolor{keywordtype}{float} *output, \textcolor{keywordtype}{float} *twiddle\_factors, \textcolor{keywordtype}{int} n);}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00058}00058 \textcolor{keywordtype}{void} \mbox{\hyperlink{fft_8h_a77e61a567a4628991819bbd4230b561f}{ifft}}(\textcolor{keywordtype}{float} *input, \textcolor{keywordtype}{float} *output, \textcolor{keywordtype}{float} *twiddle\_factors, \textcolor{keywordtype}{int} n);}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00059}00059 \textcolor{keywordtype}{void} \mbox{\hyperlink{fft_8h_a015dbb99fdfd93f586de17ddb23858ca}{rfft}}(\textcolor{keywordtype}{float} *x, \textcolor{keywordtype}{float} *y, \textcolor{keywordtype}{float} *twiddle\_factors, \textcolor{keywordtype}{int} n);}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00060}00060 \textcolor{keywordtype}{void} \mbox{\hyperlink{fft_8h_a9d0c64b4392dd56fee766d29f01edccb}{irfft}}(\textcolor{keywordtype}{float} *x, \textcolor{keywordtype}{float} *y, \textcolor{keywordtype}{float} *twiddle\_factors, \textcolor{keywordtype}{int} n);}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00061}00061 \textcolor{keywordtype}{void} \mbox{\hyperlink{fft_8h_ab7790bb2c7fbd236af346a627c7c0ba9}{fft\_primitive}}(\textcolor{keywordtype}{float} *x, \textcolor{keywordtype}{float} *y, \textcolor{keywordtype}{int} n, \textcolor{keywordtype}{int} stride, \textcolor{keywordtype}{float} *twiddle\_factors, \textcolor{keywordtype}{int} tw\_stride);}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00062}00062 \textcolor{keywordtype}{void} \mbox{\hyperlink{fft_8h_a9dc6fcc26d03fd8439ca431177a231cd}{split\_radix\_fft}}(\textcolor{keywordtype}{float} *x, \textcolor{keywordtype}{float} *y, \textcolor{keywordtype}{int} n, \textcolor{keywordtype}{int} stride, \textcolor{keywordtype}{float} *twiddle\_factors, \textcolor{keywordtype}{int} tw\_stride);}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00063}00063 \textcolor{keywordtype}{void} \mbox{\hyperlink{fft_8h_af0de060a6248093afe01317a1684e734}{ifft\_primitive}}(\textcolor{keywordtype}{float} *input, \textcolor{keywordtype}{float} *output, \textcolor{keywordtype}{int} n, \textcolor{keywordtype}{int} stride, \textcolor{keywordtype}{float} *twiddle\_factors, \textcolor{keywordtype}{int} tw\_stride);}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00064}00064 \textcolor{keywordtype}{void} \mbox{\hyperlink{fft_8h_a12468a362aeaa6675a5c3c6b08a1af56}{fft8}}(\textcolor{keywordtype}{float} *input, \textcolor{keywordtype}{int} stride\_in, \textcolor{keywordtype}{float} *output, \textcolor{keywordtype}{int} stride\_out);}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00065}00065 \textcolor{keywordtype}{void} \mbox{\hyperlink{fft_8h_aa6e142d986a6a8f5da0f1196ba01068b}{fft4}}(\textcolor{keywordtype}{float} *input, \textcolor{keywordtype}{int} stride\_in, \textcolor{keywordtype}{float} *output, \textcolor{keywordtype}{int} stride\_out);}
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00066}00066 }
+\DoxyCodeLine{\Hypertarget{fft_8h_source_l00067}00067 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_\_FFT\_H\_\_}}
 
 \end{DoxyCode}

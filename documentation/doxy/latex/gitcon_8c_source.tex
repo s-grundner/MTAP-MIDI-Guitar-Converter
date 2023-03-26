@@ -1,0 +1,270 @@
+\hypertarget{gitcon_8c_source}{}\doxysection{gitcon.\+c}
+\label{gitcon_8c_source}\index{src/gitcon.c@{src/gitcon.c}}
+\mbox{\hyperlink{gitcon_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00012}00012 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{gitcon_8h}{gitcon.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00013}00013 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{processed-data_8h}{processed-\/data.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00015}00015 \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *TAG = \textcolor{stringliteral}{"{}gitcon"{}};}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00017}00017 \textcolor{keyword}{static} TaskHandle\_t midi\_task\_handle;}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00018}00018 \textcolor{keyword}{static} TaskHandle\_t dsp\_task\_handle;}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00020}\mbox{\hyperlink{gitcon_8c_a14a8a62510d35192cd1d09c145c19e99}{00020}} \textcolor{preprocessor}{\#define FLOAT\_TO\_UINT16(x) ((uint16\_t)((x)*32767.0f))}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00021}\mbox{\hyperlink{gitcon_8c_ad21e94252f5e4b0f8f51a70e74fc8a1a}{00021}} \textcolor{preprocessor}{\#define UINT16\_TO\_FLOAT(x) ((float)(x) / 32767.0f)}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00022}\mbox{\hyperlink{gitcon_8c_aa6ac8087ed34271031291f59014fe310}{00022}} \textcolor{preprocessor}{\#define SENSITIVITY 0.5f}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00023}\mbox{\hyperlink{gitcon_8c_a3a549d9a8c4b5f963919484bdbebb394}{00023}} \textcolor{preprocessor}{\#define MIDI\_LOWEST\_NOTE 21}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00024}\mbox{\hyperlink{gitcon_8c_af486e64d4f890f2d7df096ce7e075f52}{00024}} \textcolor{preprocessor}{\#define MIDI\_HIGHEST\_NOTE 108}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00025}\mbox{\hyperlink{gitcon_8c_aaafafd7f4beba122aed9bb8974571653}{00025}} \textcolor{preprocessor}{\#define MIDI\_KEY\_BOUNDARY(x) ((x) < MIDI\_LOWEST\_NOTE || (x) > MIDI\_HIGHEST\_NOTE)}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00026}\mbox{\hyperlink{gitcon_8c_af77f88f1698659519867edf734066b66}{00026}} \textcolor{preprocessor}{\#define CONCERT\_A 440.0f}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00027}\mbox{\hyperlink{gitcon_8c_a18bafff0520f1d53a2760225c0b0b36e}{00027}} \textcolor{preprocessor}{\#define CONCERT\_A\_NOTE 69}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00029}00029 \textcolor{comment}{// uncomment to enable debug output for better\_serial\_plotter software}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00030}00030 \textcolor{comment}{// \#define DEBUG\_BETTER\_SERIAL\_PLOTTER}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00032}00032 \textcolor{comment}{// uncomment to enable debug output for dsp\_task}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00033}00033 \textcolor{comment}{// \#define DEBUG\_DSP}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00035}00035 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00036}00036 \textcolor{comment}{// static functions}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00037}00037 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00043}00043 \textcolor{keyword}{static} \textcolor{keywordtype}{void} dsp\_task(\textcolor{keywordtype}{void} *arg)}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00044}00044 \{}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00045}00045     \textcolor{comment}{// gitcon driver context handler}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00046}00046     \mbox{\hyperlink{structgitcon__context__t}{gitcon\_handle\_t}} gitcon\_handle = (\mbox{\hyperlink{gitcon_8h_a898b59703ba05e8a28c233508755ed60}{gitcon\_handle\_t}})arg;}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00048}00048     \textcolor{comment}{// audio buffer variables}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00049}00049     uint16\_t *audio\_buffer = NULL;}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00050}00050     \textcolor{keywordtype}{float} *audio\_buffer\_float = (\textcolor{keywordtype}{float} *)malloc(\mbox{\hyperlink{config_8h_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}} * \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}));}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00051}00051     \textcolor{keywordflow}{if} (audio\_buffer\_float == NULL)}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00052}00052     \{}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00053}00053         ESP\_LOGE(TAG, \textcolor{stringliteral}{"{}Could not allocate memory for audio\_buffer\_float"{}});}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00054}00054         \mbox{\hyperlink{gitcon_8c_a34f972a4c96245ce63d26a5256c75e24}{gitcon\_exit}}(gitcon\_handle);}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00055}00055         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00056}00056     \}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00058}00058     \textcolor{comment}{// fft variables}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00059}00059     \textcolor{keywordtype}{float} fft\_buffer[\mbox{\hyperlink{config_8h_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}}];}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00060}00060     \textcolor{keywordtype}{float} magnitude[\mbox{\hyperlink{config_8h_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}} / 2];}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00061}00061     \textcolor{keywordtype}{float} frequency[\mbox{\hyperlink{config_8h_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}} / 2];}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00062}00062     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} keyNR[\mbox{\hyperlink{config_8h_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}} / 2];}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00063}00063     \textcolor{keywordtype}{float} ratio = (float)\mbox{\hyperlink{config_8h_a2203c75072f0cfea39f8d48f21ff097c}{F\_SAMPLE\_HZ}} / (\textcolor{keywordtype}{float})\mbox{\hyperlink{config_8h_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}};}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00065}00065     \textcolor{comment}{// active notes resulting from fft}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00066}00066     \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} *active\_notes = (\mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} *)malloc(128 * \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}}));}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00067}00067     \textcolor{keywordflow}{if} (active\_notes == NULL)}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00068}00068     \{}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00069}00069         ESP\_LOGE(TAG, \textcolor{stringliteral}{"{}Could not allocate memory for active\_notes"{}});}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00070}00070         \mbox{\hyperlink{gitcon_8c_a34f972a4c96245ce63d26a5256c75e24}{gitcon\_exit}}(gitcon\_handle);}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00071}00071         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00072}00072     \}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00074}00074     \textcolor{comment}{// initialize active\_notes}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00075}00075     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 128; i++)}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00076}00076     \{}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00077}00077         active\_notes[i].\mbox{\hyperlink{structmidi__message__t_a715f5cb061d11eb75981741eda4dafcd}{channel}} = 0;}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00078}00078         active\_notes[i].\mbox{\hyperlink{structmidi__message__t_aff4bb9542c2091c2a7b80c4a74df778c}{status}} = \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3a78dea1a5ae83e056e851a48a7f0c3563}{MIDI\_STATUS\_NOTE\_OFF}};}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00079}00079         active\_notes[i].\mbox{\hyperlink{structmidi__message__t_aec4226da1b99c821237b6805c4e31333}{param1}} = i;}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00080}00080         active\_notes[i].\mbox{\hyperlink{structmidi__message__t_a2edf9aa267374101b30d34d98a041ebe}{param2}} = 0;}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00081}00081     \}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00083}00083     \textcolor{comment}{// window counter to sweep through the audio\_buffer\_float}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00084}00084     \textcolor{keywordtype}{char} window\_counter = 0;}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00085}00085 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00086}00086     \textcolor{keywordflow}{for} (;;)}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00087}00087     \{}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00088}00088         \textcolor{comment}{// delay to avoid overflow and to allow other tasks to run}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00089}00089         vTaskDelay(10 / portTICK\_PERIOD\_MS);}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00091}00091         \textcolor{comment}{// get audio buffer from sampler}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00092}00092         \textcolor{keywordflow}{if} (xQueueReceive(gitcon\_handle-\/>\mbox{\hyperlink{structgitcon__context__t_ad03ad4f112560cc5c290a0a7b5192fbc}{sampler}}-\/>\mbox{\hyperlink{structi2s__sampler__t_ac5aaa47703a07b7ca5bac6f7e7331b8b}{dsp\_queue}}, \&audio\_buffer, portMAX\_DELAY) == pdFALSE)}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00093}00093             \textcolor{keywordflow}{continue}; \textcolor{comment}{// skip iteration if queue is empty}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00094}00094 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00097}00097         \textcolor{keywordtype}{float} *start\_pos = audio\_buffer\_float;}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00098}00098         audio\_buffer\_float += (\mbox{\hyperlink{config_8h_a1d48237cb63c5ae67aab6d00cc64afb6}{AUDIO\_BUFFER\_SIZE}} * window\_counter); \textcolor{comment}{// move pointer to the next window}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00099}00099         window\_counter = (window\_counter + 1) \% (\mbox{\hyperlink{config_8h_a6fb55daf48579b8ab77d976c01ffae3a}{FFT\_WINDOW\_SIZE}});   \textcolor{comment}{// increment window counter}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00100}00100 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00101}00101         \textcolor{comment}{// starting in a new window and fill the buffer with the new data}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00102}00102         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{config_8h_a1d48237cb63c5ae67aab6d00cc64afb6}{AUDIO\_BUFFER\_SIZE}}; i++)}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00103}00103             audio\_buffer\_float[i] = \mbox{\hyperlink{gitcon_8c_ad21e94252f5e4b0f8f51a70e74fc8a1a}{UINT16\_TO\_FLOAT}}(audio\_buffer[i]);}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00104}00104         audio\_buffer\_float = start\_pos;}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00105}00105 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00106}00106 \textcolor{preprocessor}{\#ifdef DEBUG\_BETTER\_SERIAL\_PLOTTER}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00107}00107         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{config_8h_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}}; i++)}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00108}00108             printf(\textcolor{stringliteral}{"{}\%f\(\backslash\)n"{}}, audio\_buffer\_float[i]); \textcolor{comment}{// for debugging in BetterSerialPlotter}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00109}00109 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00111}00111 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00113}00113         \mbox{\hyperlink{structfft__config__t}{fft\_config\_t}} *fft\_plan = \mbox{\hyperlink{fft_8c_a99b7a87d5783b2727dac866314f2774d}{fft\_init}}(\mbox{\hyperlink{config_8h_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}}, \mbox{\hyperlink{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3aa35f248b935d5b32f1e254b3843caaa0}{FFT\_REAL}}, \mbox{\hyperlink{fft_8h_a7400df7c8f32ea8e6b010199d1813fe5a7052223ae26883446425d6fc3338a869}{FFT\_FORWARD}}, audio\_buffer\_float, fft\_buffer);}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00114}00114         \textcolor{keywordflow}{if} (fft\_plan == NULL)}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00115}00115         \{}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00116}00116             ESP\_LOGE(TAG, \textcolor{stringliteral}{"{}FFT plan could not be created"{}});}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00117}00117             vTaskDelay(1000 / portTICK\_PERIOD\_MS);}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00118}00118             \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00119}00119         \}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00120}00120         \mbox{\hyperlink{fft_8c_aa0d01a17b65373896f2100bc63883ca3}{fft\_execute}}(fft\_plan);}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00121}00121 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00122}00122         \textcolor{keywordtype}{bool} invalid\_key = \textcolor{keyword}{false}; \textcolor{comment}{// invalid key flag}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00123}00123         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = 1; k < \mbox{\hyperlink{config_8h_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}} / 2; k++)}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00124}00124         \{}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00125}00125             \textcolor{comment}{// detect fundamental frequencies}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00126}00126             frequency[k] = k * ratio;}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00127}00127             \textcolor{comment}{// convert to note number on piano roll}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00128}00128             keyNR[k] = (\textcolor{keywordtype}{unsigned} char)round(log2(frequency[k] / \mbox{\hyperlink{gitcon_8c_af77f88f1698659519867edf734066b66}{CONCERT\_A}}) * 12 + \mbox{\hyperlink{gitcon_8c_a18bafff0520f1d53a2760225c0b0b36e}{CONCERT\_A\_NOTE}}) \% 128;}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00129}00129             \textcolor{comment}{// calculate magnitude (absolute value of complex number)}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00130}00130             magnitude[k] = 2 * sqrt(pow(fft\_buffer[2 * k], 2) + pow(fft\_buffer[2 * k + 1], 2)) / \mbox{\hyperlink{config_8h_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}};}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00131}00131         \}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00132}00132 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00133}00133         \textcolor{comment}{// calculate max magnitude for thresholding}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00134}00134         \textcolor{keywordtype}{float} max = 0;}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00135}00135         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{config_8h_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}} / 2; i++)}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00136}00136             max = (magnitude[i] > max) ? magnitude[i] : max;}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00137}00137 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00141}00141         \textcolor{keywordflow}{if} (max < 0.0005)}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00142}00142             max = 100;}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00143}00143 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00144}00144         \textcolor{comment}{// check if magnitudes pass a certain threshold}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00145}00145         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = 1; k < \mbox{\hyperlink{config_8h_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}} / 2; k++)}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00146}00146         \{}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00147}00147             \textcolor{comment}{// switch off notes that are not active}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00148}00148             \textcolor{keywordflow}{if} ((magnitude[k] < max * \mbox{\hyperlink{gitcon_8c_aa6ac8087ed34271031291f59014fe310}{SENSITIVITY}}) || \mbox{\hyperlink{gitcon_8c_aaafafd7f4beba122aed9bb8974571653}{MIDI\_KEY\_BOUNDARY}}(keyNR[k]))}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00149}00149             \{}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00150}00150                 active\_notes[keyNR[k]].\mbox{\hyperlink{structmidi__message__t_aff4bb9542c2091c2a7b80c4a74df778c}{status}} = \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3a78dea1a5ae83e056e851a48a7f0c3563}{MIDI\_STATUS\_NOTE\_OFF}};}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00151}00151                 \textcolor{keywordflow}{continue}; \textcolor{comment}{// skip to next iteration threshold is not passed}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00152}00152             \}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00153}00153 \textcolor{preprocessor}{\#ifdef DEBUG\_DSP}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00154}00154             ESP\_LOGI(TAG, \textcolor{stringliteral}{"{}keyNR: \%d, magnitude: \%f, frequency: \%f"{}}, keyNR[k], magnitude[k], frequency[k]);}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00155}00155 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00156}00156             active\_notes[keyNR[k]].\mbox{\hyperlink{structmidi__message__t_aff4bb9542c2091c2a7b80c4a74df778c}{status}} = \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3abe99811e428031d0f15688014e2cf5a8}{MIDI\_STATUS\_NOTE\_ON}};}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00157}00157             active\_notes[keyNR[k]].\mbox{\hyperlink{structmidi__message__t_a2edf9aa267374101b30d34d98a041ebe}{param2}} = (uint8\_t)(magnitude[k] / max * 127);}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00158}00158         \}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00159}00159         \textcolor{comment}{// send saved notes to MIDI queue}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00160}00160         xQueueSend(gitcon\_handle-\/>\mbox{\hyperlink{structgitcon__context__t_aced3bb31b67f3a71c6afdcc851a839eb}{midi\_queue}}, \&active\_notes, portMAX\_DELAY);}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00161}00161         \mbox{\hyperlink{fft_8c_a0532ef3e893952fd108b183d5a14cd0d}{fft\_destroy}}(fft\_plan);}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00162}00162     \} \textcolor{comment}{// for(;;)}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00163}00163 \} \textcolor{comment}{// dsp\_task}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00164}00164 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00165}00165 \textcolor{keyword}{static} \textcolor{keywordtype}{void} midi\_task(\textcolor{keywordtype}{void} *arg)}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00166}00166 \{}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00167}00167     \textcolor{comment}{// gitcon driver context handler}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00168}00168     \mbox{\hyperlink{structgitcon__context__t}{gitcon\_handle\_t}} gitcon\_handle = (\mbox{\hyperlink{gitcon_8h_a898b59703ba05e8a28c233508755ed60}{gitcon\_handle\_t}})arg;}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00169}00169     \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} *active\_notes = NULL;}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00170}00170     \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3}{midi\_status\_t}} previous\_states[128] = \{0\};}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00171}00171     \textcolor{keywordflow}{for} (;;)}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00172}00172     \{}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00174}00174         vTaskDelay(10 / portTICK\_PERIOD\_MS);}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00175}00175 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00176}00176         \textcolor{keywordflow}{if} (xQueueReceive(gitcon\_handle-\/>\mbox{\hyperlink{structgitcon__context__t_aced3bb31b67f3a71c6afdcc851a839eb}{midi\_queue}}, \&active\_notes, portMAX\_DELAY) == pdFALSE)}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00177}00177             \textcolor{keywordflow}{continue}; \textcolor{comment}{// skip iteration if queue is empty}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00178}00178 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00180}00180         \textcolor{comment}{// send MIDI messages to UART}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00181}00181         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < 128; i++)}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00182}00182         \{}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00183}00183             \textcolor{keywordflow}{if} (active\_notes[i].status == previous\_states[i])}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00184}00184                 \textcolor{keywordflow}{continue}; \textcolor{comment}{// continue if note has not changed}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00185}00185             \textcolor{comment}{// send message to MIDI UART}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00186}00186             ESP\_ERROR\_CHECK(\mbox{\hyperlink{midi_8c_ac6d19507fa71da416c31fbe9b38684fa}{midi\_write}}(gitcon\_handle-\/>\mbox{\hyperlink{structgitcon__context__t_ac3ff9d611225b2ed35a5ff50d79bcc60}{midi\_handle}}, \&active\_notes[i]));}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00187}00187             previous\_states[i] = active\_notes[i].\mbox{\hyperlink{structmidi__message__t_aff4bb9542c2091c2a7b80c4a74df778c}{status}};}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00188}00188         \}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00189}00189     \} \textcolor{comment}{// for(;;)}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00190}00190 \} \textcolor{comment}{// midi\_task}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00191}00191 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00192}00192 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00193}00193 \textcolor{comment}{// non-\/static functions}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00194}00194 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00195}00195 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00196}\mbox{\hyperlink{gitcon_8c_a287f8fb099fc7f164ba0bb50d12ad982}{00196}} esp\_err\_t \mbox{\hyperlink{gitcon_8c_a287f8fb099fc7f164ba0bb50d12ad982}{gitcon\_init}}(\mbox{\hyperlink{structgitcon__context__t}{gitcon\_context\_t}} **out\_handle)}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00197}00197 \{}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00198}00198     \mbox{\hyperlink{structgitcon__context__t}{gitcon\_context\_t}} *gitcon\_cfg = (\mbox{\hyperlink{structgitcon__context__t}{gitcon\_context\_t}} *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structgitcon__context__t}{gitcon\_context\_t}}));}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00199}00199     \textcolor{keywordflow}{if} (!gitcon\_cfg)}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00200}00200         \textcolor{keywordflow}{return} ESP\_ERR\_NO\_MEM;}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00201}00201 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00202}00202     \textcolor{comment}{// create queue for audio data (passed into sampler)}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00203}00203     QueueHandle\_t dsp\_queue = xQueueCreate(10, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{size\_t} *));}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00204}00204 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00205}00205     \textcolor{comment}{// create queue for midi messages}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00206}00206     gitcon\_cfg-\/>\mbox{\hyperlink{structgitcon__context__t_aced3bb31b67f3a71c6afdcc851a839eb}{midi\_queue}} = xQueueCreate(5, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structmidi__context__t}{midi\_handle\_t}} *));}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00207}00207     \textcolor{keywordflow}{if} (!gitcon\_cfg-\/>\mbox{\hyperlink{structgitcon__context__t_aced3bb31b67f3a71c6afdcc851a839eb}{midi\_queue}})}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00208}00208         \textcolor{keywordflow}{return} ESP\_ERR\_NO\_MEM;}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00209}00209 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00210}00210 \textcolor{preprocessor}{\#ifdef USE\_MCP3201}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00211}00211     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00212}00212     \textcolor{comment}{// SPI}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00213}00213     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00214}00214     spi\_bus\_config\_t bus\_cfg = \{}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00215}00215         .miso\_io\_num = \mbox{\hyperlink{config_8h_ab142cc77dfa97010c9d2b616d0992b64}{SPI\_MISO}},}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00216}00216         .mosi\_io\_num = \mbox{\hyperlink{config_8h_a7dbebab5f7dd57885adccf6711b13592}{SPI\_MOSI}},}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00217}00217         .sclk\_io\_num = \mbox{\hyperlink{config_8h_aefec442ab2dbec4785b387b3e88faa66}{SPI\_SCLK}},}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00218}00218         .max\_transfer\_sz = 32,}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00219}00219     \};}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00220}00220     spi\_bus\_initialize(\mbox{\hyperlink{config_8h_a38ce3824ec7a3243b3b966e64017d50c}{SPI\_DEV}}, \&bus\_cfg, \mbox{\hyperlink{config_8h_a5c8e512df4a72e57db32aca9123c172f}{DMA\_CHAN}});}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00221}00221 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00222}00222     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00223}00223     \textcolor{comment}{// MCP3201 (ADC)}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00224}00224     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00225}00225     \mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_handle\_t}} mcp\_handle;}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00226}00226     \mbox{\hyperlink{structmcp3201__config__t}{mcp3201\_config\_t}} mcp\_cfg = \{}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00227}00227         .\mbox{\hyperlink{structmcp3201__config__t_af2bc3d31ad0099123ad13e726b96cb8f}{host}} = \mbox{\hyperlink{config_8h_a38ce3824ec7a3243b3b966e64017d50c}{SPI\_DEV}},}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00228}00228         .cs\_io = \mbox{\hyperlink{config_8h_ade4259fa3cbb71732a4e73c18dcb9b0d}{SPI\_CS}},}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00229}00229         .miso\_io = \mbox{\hyperlink{config_8h_ab142cc77dfa97010c9d2b616d0992b64}{SPI\_MISO}},}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00230}00230         .mosi\_io = \mbox{\hyperlink{config_8h_a7dbebab5f7dd57885adccf6711b13592}{SPI\_MOSI}}\};}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00231}00231     \textcolor{comment}{// initialize ADC and store in gitcon handle}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00232}00232     ESP\_ERROR\_CHECK(\mbox{\hyperlink{mcp3201_8c_af5ddae9d2322ad9c6a7979cf2789ff1d}{mcp3201\_init}}(\&mcp\_handle, \&mcp\_cfg));}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00233}00233     gitcon\_cfg-\/>\mbox{\hyperlink{structgitcon__context__t_ad03ad4f112560cc5c290a0a7b5192fbc}{sampler}} = \mbox{\hyperlink{mcp3201_8h_a597661bdfb234321b4ba0648dc161451}{mcp3201\_sampler\_start}}(mcp\_handle, dsp\_queue, \mbox{\hyperlink{config_8h_a1d48237cb63c5ae67aab6d00cc64afb6}{AUDIO\_BUFFER\_SIZE}}, \mbox{\hyperlink{config_8h_a2203c75072f0cfea39f8d48f21ff097c}{F\_SAMPLE\_HZ}});}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00234}00234 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00235}00235     gitcon\_cfg-\/>\mbox{\hyperlink{structgitcon__context__t_ad03ad4f112560cc5c290a0a7b5192fbc}{sampler}} = \mbox{\hyperlink{i2s__sampler_8c_a4cea4daf97a0f289cd8c5f3ae3a86fa3}{i2s\_sampler\_start}}(\mbox{\hyperlink{config_8h_a17da56be7ac4bd74a5996123898edfdb}{INTERNAL\_ADC\_CHANNEL}}, dsp\_queue, \mbox{\hyperlink{config_8h_a1d48237cb63c5ae67aab6d00cc64afb6}{AUDIO\_BUFFER\_SIZE}}, \mbox{\hyperlink{config_8h_a2203c75072f0cfea39f8d48f21ff097c}{F\_SAMPLE\_HZ}});}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00236}00236 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00237}00237 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00238}00238     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00239}00239     \textcolor{comment}{// MIDI}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00240}00240     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00241}00241 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00242}00242     \textcolor{comment}{// Configure a handle parameter for MIDI}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00243}00243     \mbox{\hyperlink{structmidi__context__t}{midi\_handle\_t}} midi\_handle;}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00244}00244     \mbox{\hyperlink{structmidi__config__t}{midi\_config\_t}} midi\_cfg = \{}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00245}00245         .\mbox{\hyperlink{structmidi__config__t_af9196701f783d56635f29eaf00081549}{uart\_num}} = \mbox{\hyperlink{config_8h_a57e9b955863a0270f6bdf5317003d6a4}{MIDI\_UART}},}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00246}00246         .baudrate = \mbox{\hyperlink{config_8h_a5cdf0322e10deeff92bbdf233382bca6}{MIDI\_BAUD}},}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00247}00247         .rx\_io = \mbox{\hyperlink{config_8h_a3aa0cfef819ce6e845bee426c4f94431}{MIDI\_RX}},}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00248}00248         .tx\_io = \mbox{\hyperlink{config_8h_af4773f7c0246cf1f8feea3de02c2bf86}{MIDI\_TX}}\};}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00249}00249     \textcolor{comment}{// Initialize MIDI and store in gitcon handle}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00250}00250     ESP\_ERROR\_CHECK(\mbox{\hyperlink{midi_8c_ac71f907a5e5b7c07d492d621cafc2bb4}{midi\_init}}(\&midi\_handle, \&midi\_cfg));}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00251}00251     gitcon\_cfg-\/>\mbox{\hyperlink{structgitcon__context__t_ac3ff9d611225b2ed35a5ff50d79bcc60}{midi\_handle}} = midi\_handle;}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00252}00252 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00253}00253     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00254}00254     \textcolor{comment}{// INIT RTOS}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00255}00255     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00256}00256 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00257}00257     ESP\_LOGI(TAG, \textcolor{stringliteral}{"{}Creating RTOS tasks..."{}});}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00259}00259     \textcolor{keywordflow}{if} (xTaskCreatePinnedToCore(dsp\_task, \textcolor{stringliteral}{"{}dsp\_task"{}}, 1 << 16, gitcon\_cfg, 5, \&dsp\_task\_handle, 1) == pdFALSE)}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00260}00260         \textcolor{keywordflow}{return} ESP\_ERR\_NO\_MEM;}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00261}00261 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00263}00263     \textcolor{keywordflow}{if} (xTaskCreatePinnedToCore(midi\_task, \textcolor{stringliteral}{"{}midi\_task"{}}, 2048, gitcon\_cfg, 5, \&midi\_task\_handle, 0) == pdFALSE)}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00264}00264         \textcolor{keywordflow}{return} ESP\_ERR\_NO\_MEM;}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00265}00265 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00266}00266     \textcolor{comment}{// Pass final configuration to outer parameters}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00267}00267     *out\_handle = gitcon\_cfg;}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00268}00268     \textcolor{keywordflow}{return} ESP\_OK;}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00269}00269 \}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00270}00270 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00271}\mbox{\hyperlink{gitcon_8c_a34f972a4c96245ce63d26a5256c75e24}{00271}} esp\_err\_t \mbox{\hyperlink{gitcon_8c_a34f972a4c96245ce63d26a5256c75e24}{gitcon\_exit}}(\mbox{\hyperlink{structgitcon__context__t}{gitcon\_handle\_t}} handle)}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00272}00272 \{}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00273}00273     ESP\_ERROR\_CHECK(\mbox{\hyperlink{midi_8c_a6eff3a43d514679b4da21f8cca9e2316}{midi\_exit}}(handle-\/>\mbox{\hyperlink{structgitcon__context__t_ac3ff9d611225b2ed35a5ff50d79bcc60}{midi\_handle}}));}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00274}00274 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00275}00275     \textcolor{comment}{// stop tasks}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00276}00276     vTaskDelete(dsp\_task\_handle);}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00277}00277     vTaskDelete(midi\_task\_handle);}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00278}00278 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00279}00279     \textcolor{comment}{// stop sampler}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00280}00280 \textcolor{preprocessor}{\#ifdef USE\_MCP3201}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00281}00281     \mbox{\hyperlink{mcp3201_8h_a09942c72d6880306a561ca69a5ecac80}{mcp3201\_sampler\_stop}}(handle-\/>\mbox{\hyperlink{structgitcon__context__t_ad03ad4f112560cc5c290a0a7b5192fbc}{sampler}}-\/>mcp\_handle);}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00282}00282     ESP\_ERROR\_CHECK(\mbox{\hyperlink{mcp3201_8c_acacc7f3f14eb9108f7c053d4cc370e00}{mcp3201\_exit}}(handle-\/>\mbox{\hyperlink{structgitcon__context__t_ad03ad4f112560cc5c290a0a7b5192fbc}{sampler}}-\/>mcp\_handle));}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00283}00283 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00284}00284     \mbox{\hyperlink{i2s__sampler_8c_a2084807167ecf9a0ee15c945ccff4191}{i2s\_sampler\_stop}}(handle-\/>\mbox{\hyperlink{structgitcon__context__t_ad03ad4f112560cc5c290a0a7b5192fbc}{sampler}});}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00285}00285 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00286}00286 }
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00287}00287     free(handle);}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00288}00288     \textcolor{keywordflow}{return} ESP\_OK;}
+\DoxyCodeLine{\Hypertarget{gitcon_8c_source_l00289}00289 \}}
+
+\end{DoxyCode}

@@ -1,31 +1,32 @@
 \hypertarget{i2s__sampler_8h_source}{}\doxysection{i2s\+\_\+sampler.\+h}
-\label{i2s__sampler_8h_source}\index{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/audio/i2s\_sampler.h@{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/audio/i2s\_sampler.h}}
-
+\label{i2s__sampler_8h_source}\index{lib/audio/i2s\_sampler.h@{lib/audio/i2s\_sampler.h}}
+\mbox{\hyperlink{i2s__sampler_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef SAMPLING\_H}}
-\DoxyCodeLine{2 \textcolor{preprocessor}{\#define SAMPLING\_H}}
-\DoxyCodeLine{3 }
-\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <stdint.h>}}
-\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}driver/i2s.h"{}}}
-\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}freertos/FreeRTOS.h"{}}}
-\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}freertos/task.h"{}}}
-\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}freertos/queue.h"{}}}
-\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}freertos/timers.h"{}}}
-\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}esp\_log.h"{}}}
-\DoxyCodeLine{11 }
-\DoxyCodeLine{20 \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
-\DoxyCodeLine{21 \{}
-\DoxyCodeLine{22     QueueHandle\_t dma\_queue;}
-\DoxyCodeLine{23     QueueHandle\_t dsp\_queue;}
-\DoxyCodeLine{24     \textcolor{keywordtype}{size\_t} *buffer;}
-\DoxyCodeLine{25     \textcolor{keywordtype}{size\_t} buffer\_pos;}
-\DoxyCodeLine{26     \textcolor{keywordtype}{size\_t} buffer\_size;}
-\DoxyCodeLine{27 \} \mbox{\hyperlink{structi2s__sampler__t}{i2s\_sampler\_t}};}
-\DoxyCodeLine{28 }
-\DoxyCodeLine{38 \mbox{\hyperlink{structi2s__sampler__t}{i2s\_sampler\_t}} *i2s\_sampler\_start(adc\_channel\_t adc1\_channel, QueueHandle\_t recv\_queue, \textcolor{keywordtype}{size\_t} buffer\_size, \textcolor{keywordtype}{size\_t} f\_sample);}
-\DoxyCodeLine{39 }
-\DoxyCodeLine{45 esp\_err\_t i2s\_sampler\_stop(\mbox{\hyperlink{structi2s__sampler__t}{i2s\_sampler\_t}} *sampler);}
-\DoxyCodeLine{46 }
-\DoxyCodeLine{47 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// SAMPLING\_H}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8h_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8h_source_l00011}00011 \textcolor{preprocessor}{\#ifndef SAMPLING\_H}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8h_source_l00012}00012 \textcolor{preprocessor}{\#define SAMPLING\_H}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8h_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8h_source_l00014}00014 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8h_source_l00015}00015 \textcolor{preprocessor}{\#include "{}driver/i2s.h"{}}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8h_source_l00016}00016 \textcolor{preprocessor}{\#include "{}freertos/FreeRTOS.h"{}}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8h_source_l00017}00017 \textcolor{preprocessor}{\#include "{}freertos/task.h"{}}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8h_source_l00018}00018 \textcolor{preprocessor}{\#include "{}freertos/queue.h"{}}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8h_source_l00019}00019 \textcolor{preprocessor}{\#include "{}freertos/timers.h"{}}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8h_source_l00020}00020 \textcolor{preprocessor}{\#include "{}esp\_log.h"{}}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8h_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8h_source_l00030}\mbox{\hyperlink{structi2s__sampler__t}{00030}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8h_source_l00031}00031 \{}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8h_source_l00032}\mbox{\hyperlink{structi2s__sampler__t_a01668835337313a60bcb16756c005b12}{00032}}     QueueHandle\_t \mbox{\hyperlink{structi2s__sampler__t_a01668835337313a60bcb16756c005b12}{dma\_queue}};}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8h_source_l00033}\mbox{\hyperlink{structi2s__sampler__t_ac5aaa47703a07b7ca5bac6f7e7331b8b}{00033}}     QueueHandle\_t \mbox{\hyperlink{structi2s__sampler__t_ac5aaa47703a07b7ca5bac6f7e7331b8b}{dsp\_queue}};}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8h_source_l00034}\mbox{\hyperlink{structi2s__sampler__t_aebedcefcc64e1f3236580fbaa899869e}{00034}}     \textcolor{keywordtype}{size\_t} *\mbox{\hyperlink{structi2s__sampler__t_aebedcefcc64e1f3236580fbaa899869e}{buffer}};}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8h_source_l00035}\mbox{\hyperlink{structi2s__sampler__t_ad772d2f9803cdbdf265ba17194a1314c}{00035}}     \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{structi2s__sampler__t_ad772d2f9803cdbdf265ba17194a1314c}{buffer\_pos}};}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8h_source_l00036}\mbox{\hyperlink{structi2s__sampler__t_a799a743b3abd553a37fc01ad3097df08}{00036}}     \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{structi2s__sampler__t_a799a743b3abd553a37fc01ad3097df08}{buffer\_size}};}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8h_source_l00037}00037 \} \mbox{\hyperlink{structi2s__sampler__t}{i2s\_sampler\_t}};}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8h_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8h_source_l00048}00048 \mbox{\hyperlink{structi2s__sampler__t}{i2s\_sampler\_t}} *\mbox{\hyperlink{i2s__sampler_8h_a9f207e31199bd786a5c5a7b0f279c62e}{i2s\_sampler\_start}}(adc\_channel\_t adc1\_channel, QueueHandle\_t recv\_queue, \textcolor{keywordtype}{size\_t} buffer\_size, \textcolor{keywordtype}{size\_t} f\_sample);}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8h_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8h_source_l00055}00055 esp\_err\_t \mbox{\hyperlink{i2s__sampler_8h_a2084807167ecf9a0ee15c945ccff4191}{i2s\_sampler\_stop}}(\mbox{\hyperlink{structi2s__sampler__t}{i2s\_sampler\_t}} *sampler);}
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8h_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{i2s__sampler_8h_source_l00057}00057 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// SAMPLING\_H}}
 
 \end{DoxyCode}

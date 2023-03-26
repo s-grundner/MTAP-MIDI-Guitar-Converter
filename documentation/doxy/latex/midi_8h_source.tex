@@ -1,72 +1,72 @@
 \hypertarget{midi_8h_source}{}\doxysection{midi.\+h}
-\label{midi_8h_source}\index{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/midi/midi.h@{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/lib/midi/midi.h}}
+\label{midi_8h_source}\index{lib/midi/midi.h@{lib/midi/midi.h}}
 \mbox{\hyperlink{midi_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{1 }
-\DoxyCodeLine{12 \textcolor{preprocessor}{\#ifndef MIDI\_H}}
-\DoxyCodeLine{13 \textcolor{preprocessor}{\#define MIDI\_H}}
-\DoxyCodeLine{14 }
-\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <stdio.h>}}
-\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <stdint.h>}}
-\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}driver/gpio.h"{}}}
-\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}driver/uart.h"{}}}
-\DoxyCodeLine{19 \textcolor{preprocessor}{\#include "{}esp\_log.h"{}}}
-\DoxyCodeLine{20 }
-\DoxyCodeLine{21 \textcolor{preprocessor}{\#define MIDI\_LOG\_LEVEL ESP\_LOG\_ERROR}}
-\DoxyCodeLine{22 }
-\DoxyCodeLine{23 \textcolor{preprocessor}{\#define MIDI\_BYTE\_SIZE\_DEFAULT 3}}
-\DoxyCodeLine{24 \textcolor{preprocessor}{\#define MIDI\_BYTE\_SIZE\_SHORT 2}}
-\DoxyCodeLine{25 }
-\DoxyCodeLine{26 \textcolor{preprocessor}{\#define MIDI\_PITCH\_BEND\_MIN (0)}}
-\DoxyCodeLine{27 \textcolor{preprocessor}{\#define MIDI\_PITCH\_BEND\_MAX (16383)}}
-\DoxyCodeLine{28 \textcolor{preprocessor}{\#define MIDI\_PITCH\_BEND\_CENTER (8192)}}
-\DoxyCodeLine{29 }
-\DoxyCodeLine{41 \textcolor{keyword}{typedef} \textcolor{keyword}{enum}}
-\DoxyCodeLine{42 \{}
-\DoxyCodeLine{43     MIDI\_STATUS\_NOTE\_OFF = 0x80,}
-\DoxyCodeLine{44     MIDI\_STATUS\_NOTE\_ON = 0x90,}
-\DoxyCodeLine{45     MIDI\_STATUS\_POLYPHONIC\_KEY\_PRESSURE = 0xA0,}
-\DoxyCodeLine{46     MIDI\_STATUS\_CONTROL\_CHANGE = 0xB0,}
-\DoxyCodeLine{47     MIDI\_STATUS\_PROGRAM\_CHANGE = 0xC0,}
-\DoxyCodeLine{48     MIDI\_STATUS\_CHANNEL\_PRESSURE = 0xD0,}
-\DoxyCodeLine{49     MIDI\_STATUS\_PITCH\_BEND = 0xE0,}
-\DoxyCodeLine{50 \} \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3}{midi\_status\_t}};}
-\DoxyCodeLine{51 }
-\DoxyCodeLine{60 \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
-\DoxyCodeLine{61 \{}
-\DoxyCodeLine{62     uint8\_t param1;}
-\DoxyCodeLine{63     \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3}{midi\_status\_t}} status;}
-\DoxyCodeLine{64     uint8\_t channel;}
-\DoxyCodeLine{65     uint8\_t param2;}
-\DoxyCodeLine{66 \} \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}};}
-\DoxyCodeLine{67 }
-\DoxyCodeLine{76 \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
-\DoxyCodeLine{77 \{}
-\DoxyCodeLine{78     uart\_port\_t uart\_num;}
-\DoxyCodeLine{79     uint baudrate;}
-\DoxyCodeLine{80     gpio\_num\_t rx\_io;}
-\DoxyCodeLine{81     gpio\_num\_t tx\_io;}
-\DoxyCodeLine{82 \} \mbox{\hyperlink{structmidi__config__t}{midi\_config\_t}};}
-\DoxyCodeLine{83 }
-\DoxyCodeLine{85 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structmidi__context__t}{midi\_context\_t}} *\mbox{\hyperlink{structmidi__context__t}{midi\_handle\_t}};}
-\DoxyCodeLine{86 }
-\DoxyCodeLine{94 esp\_err\_t \mbox{\hyperlink{midi_8h_ae650454d0c1ee0e1ccde60b84d5396be}{midi\_init}}(\mbox{\hyperlink{structmidi__context__t}{midi\_handle\_t}} *out\_handle, \mbox{\hyperlink{structmidi__config__t}{midi\_config\_t}} *out\_cfg);}
-\DoxyCodeLine{95 }
-\DoxyCodeLine{102 esp\_err\_t \mbox{\hyperlink{midi_8h_a6eff3a43d514679b4da21f8cca9e2316}{midi\_exit}}(\mbox{\hyperlink{structmidi__context__t}{midi\_handle\_t}} midi\_handle);}
-\DoxyCodeLine{103 }
-\DoxyCodeLine{111 esp\_err\_t \mbox{\hyperlink{midi_8h_a5aa4e2de2cfe3d569d4968df337cb846}{midi\_write}}(\mbox{\hyperlink{structmidi__context__t}{midi\_handle\_t}} midi\_handle, \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} *msg);}
-\DoxyCodeLine{112 }
-\DoxyCodeLine{120 esp\_err\_t \mbox{\hyperlink{midi_8h_a19339a5613e1e14bcffb4469675ec2db}{midi\_read}}(\mbox{\hyperlink{structmidi__context__t}{midi\_handle\_t}} midi\_handle, \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} *msg, TickType\_t timeout);}
-\DoxyCodeLine{121 }
-\DoxyCodeLine{122 \textcolor{comment}{// functions to configure midi messages}}
-\DoxyCodeLine{123 \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} note\_off(uint8\_t channel, uint8\_t key\_num, uint8\_t velocity);}
-\DoxyCodeLine{124 \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} note\_on(uint8\_t channel, uint8\_t key\_num, uint8\_t velocity);}
-\DoxyCodeLine{125 \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} poly\_key\_pressure(uint8\_t channel, uint8\_t key\_num, uint8\_t value);}
-\DoxyCodeLine{126 \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} ctrl\_change(uint8\_t channel, uint8\_t controller\_num, uint8\_t value);}
-\DoxyCodeLine{127 \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} prg\_change(uint8\_t channel, uint8\_t program);}
-\DoxyCodeLine{128 \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} channel\_pressure(uint8\_t channel, uint8\_t value);}
-\DoxyCodeLine{129 \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} pitch\_bend(uint8\_t channel, uint16\_t value);}
-\DoxyCodeLine{130 }
-\DoxyCodeLine{131 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// MIDI\_H}}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00012}00012 \textcolor{preprocessor}{\#ifndef MIDI\_DRIVER\_H}}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00013}00013 \textcolor{preprocessor}{\#define MIDI\_DRIVER\_H}}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00015}00015 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00016}00016 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00017}00017 \textcolor{preprocessor}{\#include "{}driver/gpio.h"{}}}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00018}00018 \textcolor{preprocessor}{\#include "{}driver/uart.h"{}}}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00019}00019 \textcolor{preprocessor}{\#include "{}esp\_log.h"{}}}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00021}\mbox{\hyperlink{midi_8h_a3ce5bc79e80bfeb2d39acb2ab2866cbb}{00021}} \textcolor{preprocessor}{\#define MIDI\_LOG\_LEVEL ESP\_LOG\_ERROR}}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00023}\mbox{\hyperlink{midi_8h_a8cbacf606a13d650a7b4352a6d63ffc6}{00023}} \textcolor{preprocessor}{\#define MIDI\_BYTE\_SIZE\_DEFAULT 3}}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00024}\mbox{\hyperlink{midi_8h_a185713012c0788a3e5309b017dc76228}{00024}} \textcolor{preprocessor}{\#define MIDI\_BYTE\_SIZE\_SHORT 2}}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00026}\mbox{\hyperlink{midi_8h_a502f2aeb3c96dd726974e602bced0e15}{00026}} \textcolor{preprocessor}{\#define MIDI\_PITCH\_BEND\_MIN (0)}}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00027}\mbox{\hyperlink{midi_8h_af02cd8b82872f196f2d10b3248442bc8}{00027}} \textcolor{preprocessor}{\#define MIDI\_PITCH\_BEND\_MAX (16383)}}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00028}\mbox{\hyperlink{midi_8h_a9e7f98c080083d0a47d1a656df111cdb}{00028}} \textcolor{preprocessor}{\#define MIDI\_PITCH\_BEND\_CENTER (8192)}}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00041}\mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3}{00041}} \textcolor{keyword}{typedef} \textcolor{keyword}{enum}}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00042}00042 \{}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00043}\mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3a78dea1a5ae83e056e851a48a7f0c3563}{00043}}     \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3a78dea1a5ae83e056e851a48a7f0c3563}{MIDI\_STATUS\_NOTE\_OFF}} = 0x80,}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00044}\mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3abe99811e428031d0f15688014e2cf5a8}{00044}}     \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3abe99811e428031d0f15688014e2cf5a8}{MIDI\_STATUS\_NOTE\_ON}} = 0x90,}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00045}\mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3aa7f1563cbb4918bb41382dc13918b033}{00045}}     \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3aa7f1563cbb4918bb41382dc13918b033}{MIDI\_STATUS\_POLYPHONIC\_KEY\_PRESSURE}} = 0xA0,}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00046}\mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3ac24c51550cb54517b8a4d43ae7ad9ecd}{00046}}     \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3ac24c51550cb54517b8a4d43ae7ad9ecd}{MIDI\_STATUS\_CONTROL\_CHANGE}} = 0xB0,}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00047}\mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3a8907e3e0d6d7aaae3a03020e319025a3}{00047}}     \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3a8907e3e0d6d7aaae3a03020e319025a3}{MIDI\_STATUS\_PROGRAM\_CHANGE}} = 0xC0,}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00048}\mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3a878bb42c1eab07194bfa44a5e773aef0}{00048}}     \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3a878bb42c1eab07194bfa44a5e773aef0}{MIDI\_STATUS\_CHANNEL\_PRESSURE}} = 0xD0,}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00049}\mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3a1f64d20cde10447a140d9f080c58e274}{00049}}     \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3a1f64d20cde10447a140d9f080c58e274}{MIDI\_STATUS\_PITCH\_BEND}} = 0xE0,}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00050}00050 \} \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3}{midi\_status\_t}};}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00060}\mbox{\hyperlink{structmidi__message__t}{00060}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00061}00061 \{}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00062}\mbox{\hyperlink{structmidi__message__t_aec4226da1b99c821237b6805c4e31333}{00062}}     uint8\_t \mbox{\hyperlink{structmidi__message__t_aec4226da1b99c821237b6805c4e31333}{param1}};}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00063}\mbox{\hyperlink{structmidi__message__t_aff4bb9542c2091c2a7b80c4a74df778c}{00063}}     \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3}{midi\_status\_t}} \mbox{\hyperlink{structmidi__message__t_aff4bb9542c2091c2a7b80c4a74df778c}{status}};}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00064}\mbox{\hyperlink{structmidi__message__t_a715f5cb061d11eb75981741eda4dafcd}{00064}}     uint8\_t \mbox{\hyperlink{structmidi__message__t_a715f5cb061d11eb75981741eda4dafcd}{channel}};}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00065}\mbox{\hyperlink{structmidi__message__t_a2edf9aa267374101b30d34d98a041ebe}{00065}}     uint8\_t \mbox{\hyperlink{structmidi__message__t_a2edf9aa267374101b30d34d98a041ebe}{param2}};}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00066}00066 \} \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}};}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00076}\mbox{\hyperlink{structmidi__config__t}{00076}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00077}00077 \{}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00078}\mbox{\hyperlink{structmidi__config__t_af9196701f783d56635f29eaf00081549}{00078}}     uart\_port\_t \mbox{\hyperlink{structmidi__config__t_af9196701f783d56635f29eaf00081549}{uart\_num}};}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00079}\mbox{\hyperlink{structmidi__config__t_a8945523bdb018bd3eb478333250720aa}{00079}}     uint \mbox{\hyperlink{structmidi__config__t_a8945523bdb018bd3eb478333250720aa}{baudrate}};}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00080}\mbox{\hyperlink{structmidi__config__t_ae8e37a431c746a9971126538f886f793}{00080}}     gpio\_num\_t \mbox{\hyperlink{structmidi__config__t_ae8e37a431c746a9971126538f886f793}{rx\_io}};}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00081}\mbox{\hyperlink{structmidi__config__t_a020f7f8adab469c9730c104af25230cf}{00081}}     gpio\_num\_t \mbox{\hyperlink{structmidi__config__t_a020f7f8adab469c9730c104af25230cf}{tx\_io}};}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00082}00082 \} \mbox{\hyperlink{structmidi__config__t}{midi\_config\_t}};}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00083}00083 }
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00085}\mbox{\hyperlink{midi_8h_acff464a25313f690f0543752b33c4716}{00085}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structmidi__context__t}{midi\_context\_t}} *\mbox{\hyperlink{midi_8h_acff464a25313f690f0543752b33c4716}{midi\_handle\_t}};}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00094}\mbox{\hyperlink{midi_8h_ae650454d0c1ee0e1ccde60b84d5396be}{00094}} esp\_err\_t \mbox{\hyperlink{midi_8h_ae650454d0c1ee0e1ccde60b84d5396be}{midi\_init}}(\mbox{\hyperlink{structmidi__context__t}{midi\_handle\_t}} *out\_handle, \mbox{\hyperlink{structmidi__config__t}{midi\_config\_t}} *out\_cfg);}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00095}00095 }
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00102}00102 esp\_err\_t \mbox{\hyperlink{midi_8h_a6eff3a43d514679b4da21f8cca9e2316}{midi\_exit}}(\mbox{\hyperlink{structmidi__context__t}{midi\_handle\_t}} midi\_handle);}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00103}00103 }
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00111}00111 esp\_err\_t \mbox{\hyperlink{midi_8h_a5aa4e2de2cfe3d569d4968df337cb846}{midi\_write}}(\mbox{\hyperlink{structmidi__context__t}{midi\_handle\_t}} midi\_handle, \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} *msg);}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00112}00112 }
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00120}00120 esp\_err\_t \mbox{\hyperlink{midi_8h_a19339a5613e1e14bcffb4469675ec2db}{midi\_read}}(\mbox{\hyperlink{structmidi__context__t}{midi\_handle\_t}} midi\_handle, \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} *msg, TickType\_t timeout);}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00121}00121 }
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00122}00122 \textcolor{comment}{// functions to configure midi messages}}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00123}00123 \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} \mbox{\hyperlink{midi_8h_a5420c8cf31003518e18002e256fb6efb}{note\_off}}(uint8\_t channel, uint8\_t key\_num, uint8\_t velocity);}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00124}00124 \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} \mbox{\hyperlink{midi_8h_a19ea9f06293f713229ffbf1673dfb3c5}{note\_on}}(uint8\_t channel, uint8\_t key\_num, uint8\_t velocity);}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00125}00125 \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} \mbox{\hyperlink{midi_8h_a84c158ecad666015c3eee20aa67a8dc2}{poly\_key\_pressure}}(uint8\_t channel, uint8\_t key\_num, uint8\_t value);}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00126}00126 \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} \mbox{\hyperlink{midi_8h_a18d4efd2f7b7b960461a402d9c5f8535}{ctrl\_change}}(uint8\_t channel, uint8\_t controller\_num, uint8\_t value);}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00127}00127 \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} \mbox{\hyperlink{midi_8h_a74a04b0fd0b0f0ad4b05ee2cdce13f8f}{prg\_change}}(uint8\_t channel, uint8\_t program);}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00128}00128 \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} \mbox{\hyperlink{midi_8h_a65c6c5647ad8c4acb13b5c17acd04b54}{channel\_pressure}}(uint8\_t channel, uint8\_t value);}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00129}00129 \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} \mbox{\hyperlink{midi_8h_afc61f6a3b91a428edc2b1b0962573176}{pitch\_bend}}(uint8\_t channel, uint16\_t value);}
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00130}00130 }
+\DoxyCodeLine{\Hypertarget{midi_8h_source_l00131}00131 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// MIDI\_DRIVER\_H}}
 
 \end{DoxyCode}

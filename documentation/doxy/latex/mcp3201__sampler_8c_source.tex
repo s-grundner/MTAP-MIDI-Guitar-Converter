@@ -1,0 +1,119 @@
+\hypertarget{mcp3201__sampler_8c_source}{}\doxysection{mcp3201\+\_\+sampler.\+c}
+\label{mcp3201__sampler_8c_source}\index{lib/mcp3201/mcp3201\_sampler.c@{lib/mcp3201/mcp3201\_sampler.c}}
+\mbox{\hyperlink{mcp3201__sampler_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00011}00011 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{mcp3201_8h}{mcp3201.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00013}\mbox{\hyperlink{mcp3201__sampler_8c_aefeb1c9d5a6dbed18eb5ee26e1256870}{00013}} \textcolor{preprocessor}{\#define RESAMPLE\_DENOMINATOR 2}}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00014}\mbox{\hyperlink{mcp3201__sampler_8c_a4f85605dc744cf7ad2f8283b2af38f3f}{00014}} \textcolor{preprocessor}{\#define READER\_TIMEOUT\_MS 10}}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00015}\mbox{\hyperlink{mcp3201__sampler_8c_a89218c3a1a1e133c6bee85aa1d79acae}{00015}} \textcolor{preprocessor}{\#define READER\_TIMEOUT\_TICKS (READER\_TIMEOUT\_MS / portTICK\_PERIOD\_MS)}}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00017}00017 \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *TAG = \textcolor{stringliteral}{"{}MCP3201\_SAMPLER"{}};}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00018}00018 \textcolor{keyword}{struct }\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_context\_t}}}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00019}00019 \{}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00020}00020     \mbox{\hyperlink{structmcp3201__config__t}{mcp3201\_config\_t}} \mbox{\hyperlink{structmcp3201__context__t_a67eb2e10c7970f2bb7be144d2af56e4a}{cfg}};}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00021}00021     spi\_device\_handle\_t \mbox{\hyperlink{structmcp3201__context__t_af04b0de520c6e42f039c5edf47b13dc2}{spi}};}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00022}00022     spi\_transaction\_t *\mbox{\hyperlink{structmcp3201__context__t_ae4e49bbcd1e3f9e5f8c90b82c6bdd899}{ongoing\_transaction}};}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00023}00023 \};}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00024}\mbox{\hyperlink{mcp3201__sampler_8c_a5b6eb8ead610fcf3be79b9922131cf40}{00024}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_context\_t}} \mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_context\_t}};}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00026}00026 \textcolor{keyword}{static} TaskHandle\_t sampler\_task\_handle;}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00027}00027 \textcolor{keyword}{static} TaskHandle\_t reader\_task\_handle;}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00029}00029 \textcolor{keyword}{static} \textcolor{keywordtype}{void} IRAM\_ATTR sampler\_task(\textcolor{keywordtype}{void} *arg)}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00030}00030 \{}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00031}00031     \mbox{\hyperlink{structmcp3201__sampler__t}{mcp3201\_sampler\_t}} *sampler = (\mbox{\hyperlink{structmcp3201__sampler__t}{mcp3201\_sampler\_t}} *)arg;}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00032}00032     \textcolor{keywordflow}{for} (;;)}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00033}00033     \{}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00034}00034         spi\_event\_t evt;}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00035}00035         \textcolor{keywordflow}{if} (xQueueReceive(sampler-\/>\mbox{\hyperlink{structmcp3201__sampler__t_a01668835337313a60bcb16756c005b12}{dma\_queue}}, \&evt, portMAX\_DELAY) == pdTRUE)}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00036}00036         \{}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00037}00037             \textcolor{keywordflow}{if} (evt == SPI\_EV\_SEND\_DMA\_READY)}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00038}00038             \{}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00039}00039                 \textcolor{keywordtype}{size\_t} bytes\_read = 0;}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00040}00040                 \textcolor{keywordflow}{do}}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00041}00041                 \{}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00042}00042                     \textcolor{comment}{// fill audio buffer}}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00043}00043                     \textcolor{keywordtype}{size\_t} bytes\_to\_read = \mbox{\hyperlink{mcp3201__sampler_8c_aefeb1c9d5a6dbed18eb5ee26e1256870}{RESAMPLE\_DENOMINATOR}} * (sampler-\/>\mbox{\hyperlink{structmcp3201__sampler__t_a799a743b3abd553a37fc01ad3097df08}{buffer\_size}} -\/ sampler-\/>\mbox{\hyperlink{structmcp3201__sampler__t_ad772d2f9803cdbdf265ba17194a1314c}{buffer\_pos}});}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00044}00044                     \textcolor{keywordtype}{void} *buffer\_position = (\textcolor{keywordtype}{void} *)(sampler-\/>\mbox{\hyperlink{structmcp3201__sampler__t_aebedcefcc64e1f3236580fbaa899869e}{buffer}} + sampler-\/>\mbox{\hyperlink{structmcp3201__sampler__t_ad772d2f9803cdbdf265ba17194a1314c}{buffer\_pos}});}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00046}00046                     \textcolor{comment}{// read data from spi}}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00047}00047                     spi\_transaction\_t t = \{}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00048}00048                         .user = (\textcolor{keywordtype}{void} *)sampler-\/>\mbox{\hyperlink{structmcp3201__sampler__t_a255cd594fc3f4a9d5c0fd146ceb4ca23}{mcp\_handle}},}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00049}00049                         .length = bytes\_to\_read,}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00050}00050                         .rx\_buffer = buffer\_position,}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00051}00051                     \};}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00052}00052                     sampler-\/>\mbox{\hyperlink{structmcp3201__sampler__t_a255cd594fc3f4a9d5c0fd146ceb4ca23}{mcp\_handle}}-\/>\mbox{\hyperlink{structmcp3201__context__t_ae4e49bbcd1e3f9e5f8c90b82c6bdd899}{ongoing\_transaction}} = \&t;}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00053}00053                     spi\_device\_get\_trans\_result(}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00054}00054                         sampler-\/>\mbox{\hyperlink{structmcp3201__sampler__t_a255cd594fc3f4a9d5c0fd146ceb4ca23}{mcp\_handle}}-\/>\mbox{\hyperlink{structmcp3201__context__t_af04b0de520c6e42f039c5edf47b13dc2}{spi}},}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00055}00055                         (spi\_transaction\_t **)(sampler-\/>\mbox{\hyperlink{structmcp3201__sampler__t_a255cd594fc3f4a9d5c0fd146ceb4ca23}{mcp\_handle}}-\/>\mbox{\hyperlink{structmcp3201__context__t_ae4e49bbcd1e3f9e5f8c90b82c6bdd899}{ongoing\_transaction}}),}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00056}00056                         \mbox{\hyperlink{mcp3201__sampler_8c_a89218c3a1a1e133c6bee85aa1d79acae}{READER\_TIMEOUT\_TICKS}});}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00057}00057                     bytes\_read = t.rxlength;}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00059}00059                     sampler-\/>\mbox{\hyperlink{structmcp3201__sampler__t_ad772d2f9803cdbdf265ba17194a1314c}{buffer\_pos}} += bytes\_read / \mbox{\hyperlink{mcp3201__sampler_8c_aefeb1c9d5a6dbed18eb5ee26e1256870}{RESAMPLE\_DENOMINATOR}};}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00061}00061                     \textcolor{keywordflow}{if} (sampler-\/>\mbox{\hyperlink{structmcp3201__sampler__t_ad772d2f9803cdbdf265ba17194a1314c}{buffer\_pos}} == sampler-\/>\mbox{\hyperlink{structmcp3201__sampler__t_a799a743b3abd553a37fc01ad3097df08}{buffer\_size}})}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00062}00062                     \{}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00063}00063                         \textcolor{comment}{// send data to DSP queue}}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00064}00064                         sampler-\/>\mbox{\hyperlink{structmcp3201__sampler__t_ad772d2f9803cdbdf265ba17194a1314c}{buffer\_pos}} = 0;}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00065}00065                         xQueueSend(sampler-\/>\mbox{\hyperlink{structmcp3201__sampler__t_ac5aaa47703a07b7ca5bac6f7e7331b8b}{dsp\_queue}}, \&sampler-\/>\mbox{\hyperlink{structmcp3201__sampler__t_aebedcefcc64e1f3236580fbaa899869e}{buffer}}, portMAX\_DELAY);}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00066}00066                     \}}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00067}00067                 \} \textcolor{keywordflow}{while} (bytes\_read > 0);}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00068}00068             \}}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00069}00069         \}}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00070}00070     \}}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00071}00071 \}}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00073}00073 \textcolor{keyword}{static} \textcolor{keywordtype}{void} IRAM\_ATTR reader\_task(\textcolor{keywordtype}{void} *arg)}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00074}00074 \{}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00075}00075     \mbox{\hyperlink{structmcp3201__sampler__t}{mcp3201\_sampler\_t}} *sampler = (\mbox{\hyperlink{structmcp3201__sampler__t}{mcp3201\_sampler\_t}} *)arg;}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00076}00076     \textcolor{keywordflow}{for} (;;)}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00077}00077     \{}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00078}00078         spi\_device\_queue\_trans(sampler-\/>\mbox{\hyperlink{structmcp3201__sampler__t_a255cd594fc3f4a9d5c0fd146ceb4ca23}{mcp\_handle}}-\/>\mbox{\hyperlink{structmcp3201__context__t_af04b0de520c6e42f039c5edf47b13dc2}{spi}}, sampler-\/>\mbox{\hyperlink{structmcp3201__sampler__t_a255cd594fc3f4a9d5c0fd146ceb4ca23}{mcp\_handle}}-\/>\mbox{\hyperlink{structmcp3201__context__t_ae4e49bbcd1e3f9e5f8c90b82c6bdd899}{ongoing\_transaction}}, portMAX\_DELAY);}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00079}00079         spi\_event\_t evt = SPI\_EV\_SEND\_DMA\_READY;}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00080}00080         xQueueSendFromISR(sampler-\/>\mbox{\hyperlink{structmcp3201__sampler__t_a01668835337313a60bcb16756c005b12}{dma\_queue}}, \&evt, NULL);}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00081}00081     \}}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00082}00082 \}}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00083}00083 }
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00084}\mbox{\hyperlink{mcp3201_8h_a597661bdfb234321b4ba0648dc161451}{00084}} \mbox{\hyperlink{structmcp3201__sampler__t}{mcp3201\_sampler\_t}} *\mbox{\hyperlink{mcp3201__sampler_8c_a597661bdfb234321b4ba0648dc161451}{mcp3201\_sampler\_start}}(\mbox{\hyperlink{structmcp3201__context__t}{mcp3201\_handle\_t}} mcp\_handle, QueueHandle\_t recv\_queue, \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} buffer\_size, \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} f\_sample)}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00085}00085 \{}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00086}00086     \textcolor{keywordflow}{if} (mcp\_handle == NULL || recv\_queue == NULL || buffer\_size == 0 || f\_sample == 0)}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00087}00087     \{}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00088}00088         ESP\_LOGE(TAG, \textcolor{stringliteral}{"{}Invalid arguments"{}});}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00089}00089         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00090}00090     \}}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00092}00092     \mbox{\hyperlink{structmcp3201__sampler__t}{mcp3201\_sampler\_t}} *sampler = (\mbox{\hyperlink{structmcp3201__sampler__t}{mcp3201\_sampler\_t}} *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structmcp3201__sampler__t}{mcp3201\_sampler\_t}}));}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00093}00093     *sampler = (\mbox{\hyperlink{structmcp3201__sampler__t}{mcp3201\_sampler\_t}})\{}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00094}00094         .\mbox{\hyperlink{structmcp3201__sampler__t_a255cd594fc3f4a9d5c0fd146ceb4ca23}{mcp\_handle}} = mcp\_handle,}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00095}00095         .buffer\_size = buffer\_size,}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00096}00096         .buffer = (\textcolor{keywordtype}{size\_t} *)malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{size\_t}) * buffer\_size),}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00097}00097         .buffer\_pos = 0,}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00098}00098         .dma\_queue = xQueueCreate(4, \textcolor{keyword}{sizeof}(spi\_event\_t)),}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00099}00099         .dsp\_queue = recv\_queue\};}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00100}00100 }
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00101}00101     \textcolor{keywordflow}{while} (spi\_device\_acquire\_bus(mcp\_handle-\/>\mbox{\hyperlink{structmcp3201__context__t_af04b0de520c6e42f039c5edf47b13dc2}{spi}}, portMAX\_DELAY) != ESP\_OK)}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00102}00102         ESP\_LOGE(TAG, \textcolor{stringliteral}{"{}Failed to acquire bus\(\backslash\)n retrying..."{}});}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00103}00103 }
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00104}00104     xTaskCreatePinnedToCore(sampler\_task, \textcolor{stringliteral}{"{}sampler\_task"{}}, \mbox{\hyperlink{mcp3201__sampler_8c_aefeb1c9d5a6dbed18eb5ee26e1256870}{RESAMPLE\_DENOMINATOR}} * buffer\_size, sampler, 5, \&sampler\_task\_handle, 0);}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00105}00105     xTaskCreatePinnedToCore(reader\_task, \textcolor{stringliteral}{"{}reader\_task"{}}, 2048, sampler, 5, \&reader\_task\_handle, 0);}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00106}00106 }
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00107}00107     \textcolor{keywordflow}{return} sampler;}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00108}00108 \}}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00109}00109 }
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00110}\mbox{\hyperlink{mcp3201_8h_a09942c72d6880306a561ca69a5ecac80}{00110}} \textcolor{keywordtype}{void} \mbox{\hyperlink{mcp3201__sampler_8c_a09942c72d6880306a561ca69a5ecac80}{mcp3201\_sampler\_stop}}(\mbox{\hyperlink{structmcp3201__sampler__t}{mcp3201\_sampler\_t}} *sampler)}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00111}00111 \{}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00112}00112     vQueueDelete(sampler-\/>\mbox{\hyperlink{structmcp3201__sampler__t_a01668835337313a60bcb16756c005b12}{dma\_queue}});}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00113}00113     vQueueDelete(sampler-\/>\mbox{\hyperlink{structmcp3201__sampler__t_ac5aaa47703a07b7ca5bac6f7e7331b8b}{dsp\_queue}});}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00114}00114 }
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00115}00115     spi\_device\_release\_bus(sampler-\/>\mbox{\hyperlink{structmcp3201__sampler__t_a255cd594fc3f4a9d5c0fd146ceb4ca23}{mcp\_handle}}-\/>\mbox{\hyperlink{structmcp3201__context__t_af04b0de520c6e42f039c5edf47b13dc2}{spi}});}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00116}00116 }
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00117}00117     vTaskDelete(sampler\_task\_handle);}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00118}00118     vTaskDelete(reader\_task\_handle);}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00119}00119 }
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00120}00120     free(sampler-\/>\mbox{\hyperlink{structmcp3201__sampler__t_aebedcefcc64e1f3236580fbaa899869e}{buffer}});}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00121}00121     free(sampler);}
+\DoxyCodeLine{\Hypertarget{mcp3201__sampler_8c_source_l00122}00122 \}}
+
+\end{DoxyCode}

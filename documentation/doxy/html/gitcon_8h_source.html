@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Gitcon: C:/Users/Smon/source/MTAP-MIDI-Guitar-Converter/firmware/MIDI-Testing/src/gitcon.h Source File</title>
+<title>Gitcon: src/gitcon.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -20,7 +20,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="MTAP-logo-schwarz.png"/></td>
   <td id="projectalign">
    <div id="projectname">Gitcon
    </div>
@@ -70,7 +69,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_d9edf6c004b4a7ff14fe9ae7a92214ee.html">firmware</a></li><li class="navelem"><a class="el" href="dir_6bc3a76d1c909537939dc4ec93b93555.html">MIDI-Testing</a></li><li class="navelem"><a class="el" href="dir_9dc4a473ac47ae5b097149ad23e9cecf.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -83,32 +82,37 @@ $(function() {
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="config_8h.html">config.h</a>&quot;</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#define GITCON_LOG_LEVEL ESP_LOG_ERROR</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="gitcon_8h.html#af41740c58c92b4864c2e8fa77ee56fd9">   17</a></span><span class="preprocessor">#define GITCON_LOG_LEVEL ESP_LOG_ERROR</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structgitcon__context__t.html">   25</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>{</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#ifdef USE_MCP3201</span></div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  <a class="code hl_struct" href="structmcp3201__sampler__t.html">mcp3201_sampler_t</a> *sampler;</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  <a class="code hl_struct" href="structi2s__sampler__t.html">i2s_sampler_t</a> *sampler;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="structgitcon__context__t.html#ad03ad4f112560cc5c290a0a7b5192fbc">   30</a></span>  <a class="code hl_struct" href="structi2s__sampler__t.html">i2s_sampler_t</a> *<a class="code hl_variable" href="structgitcon__context__t.html#ad03ad4f112560cc5c290a0a7b5192fbc">sampler</a>;</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  <a class="code hl_struct" href="structmidi__context__t.html">midi_handle_t</a> midi_handle;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  QueueHandle_t midi_queue; <span class="comment">// TODO: merge with midi_handle</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="structgitcon__context__t.html#ac3ff9d611225b2ed35a5ff50d79bcc60">   32</a></span>  <a class="code hl_struct" href="structmidi__context__t.html">midi_handle_t</a> <a class="code hl_variable" href="structgitcon__context__t.html#ac3ff9d611225b2ed35a5ff50d79bcc60">midi_handle</a>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="structgitcon__context__t.html#aced3bb31b67f3a71c6afdcc851a839eb">   33</a></span>  QueueHandle_t <a class="code hl_variable" href="structgitcon__context__t.html#aced3bb31b67f3a71c6afdcc851a839eb">midi_queue</a>;</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>} <a class="code hl_struct" href="structgitcon__context__t.html">gitcon_context_t</a>;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">typedef</span> <a class="code hl_struct" href="structgitcon__context__t.html">gitcon_context_t</a> *<a class="code hl_struct" href="structgitcon__context__t.html">gitcon_handle_t</a>;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="gitcon_8h.html#a99e7f3808bee46708eb81bd55cae4a37">   43</a></span>esp_err_t <a class="code hl_function" href="gitcon_8h.html#a99e7f3808bee46708eb81bd55cae4a37">gitcon_init</a>(<a class="code hl_struct" href="structgitcon__context__t.html">gitcon_handle_t</a> *out_handle);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>esp_err_t <a class="code hl_function" href="gitcon_8h.html#a34f972a4c96245ce63d26a5256c75e24">gitcon_exit</a>(<a class="code hl_struct" href="structgitcon__context__t.html">gitcon_handle_t</a> handle);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#endif </span><span class="comment">// GITCON_H</span></div>
-<div class="ttc" id="aconfig_8h_html"><div class="ttname"><a href="config_8h.html">config.h</a></div></div>
-<div class="ttc" id="agitcon_8h_html_a34f972a4c96245ce63d26a5256c75e24"><div class="ttname"><a href="gitcon_8h.html#a34f972a4c96245ce63d26a5256c75e24">gitcon_exit</a></div><div class="ttdeci">esp_err_t gitcon_exit(gitcon_handle_t handle)</div><div class="ttdoc">frees all resources</div><div class="ttdef"><b>Definition:</b> gitcon.c:217</div></div>
-<div class="ttc" id="agitcon_8h_html_a99e7f3808bee46708eb81bd55cae4a37"><div class="ttname"><a href="gitcon_8h.html#a99e7f3808bee46708eb81bd55cae4a37">gitcon_init</a></div><div class="ttdeci">esp_err_t gitcon_init(gitcon_handle_t *out_handle)</div><div class="ttdoc">initializes gitcon device</div></div>
-<div class="ttc" id="astructgitcon__context__t_html"><div class="ttname"><a href="structgitcon__context__t.html">gitcon_context_t</a></div><div class="ttdoc">Gitcon Configuration.</div><div class="ttdef"><b>Definition:</b> gitcon.h:26</div></div>
-<div class="ttc" id="astructi2s__sampler__t_html"><div class="ttname"><a href="structi2s__sampler__t.html">i2s_sampler_t</a></div><div class="ttdoc">Sampler Configuration.</div><div class="ttdef"><b>Definition:</b> i2s_sampler.h:21</div></div>
-<div class="ttc" id="astructmcp3201__sampler__t_html"><div class="ttname"><a href="structmcp3201__sampler__t.html">mcp3201_sampler_t</a></div><div class="ttdef"><b>Definition:</b> mcp3201.h:59</div></div>
-<div class="ttc" id="astructmidi__context__t_html"><div class="ttname"><a href="structmidi__context__t.html">midi_context_t</a></div><div class="ttdoc">MIDI Context (internal! not to be accessed externally, use midi_handle_t instead)</div><div class="ttdef"><b>Definition:</b> midi.c:25</div></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="gitcon_8h.html#a898b59703ba05e8a28c233508755ed60">   37</a></span><span class="keyword">typedef</span> <a class="code hl_struct" href="structgitcon__context__t.html">gitcon_context_t</a> *<a class="code hl_typedef" href="gitcon_8h.html#a898b59703ba05e8a28c233508755ed60">gitcon_handle_t</a>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="gitcon_8h.html#a99e7f3808bee46708eb81bd55cae4a37">   45</a></span>esp_err_t <a class="code hl_function" href="gitcon_8h.html#a99e7f3808bee46708eb81bd55cae4a37">gitcon_init</a>(<a class="code hl_struct" href="structgitcon__context__t.html">gitcon_handle_t</a> *out_handle);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>esp_err_t <a class="code hl_function" href="gitcon_8h.html#a34f972a4c96245ce63d26a5256c75e24">gitcon_exit</a>(<a class="code hl_struct" href="structgitcon__context__t.html">gitcon_handle_t</a> handle);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">#endif </span><span class="comment">// GITCON_H</span></div>
+<div class="ttc" id="aconfig_8h_html"><div class="ttname"><a href="config_8h.html">config.h</a></div><div class="ttdoc">Gitcon Driver Configuration and Pin-Out File and dependencies.</div></div>
+<div class="ttc" id="agitcon_8h_html_a34f972a4c96245ce63d26a5256c75e24"><div class="ttname"><a href="gitcon_8h.html#a34f972a4c96245ce63d26a5256c75e24">gitcon_exit</a></div><div class="ttdeci">esp_err_t gitcon_exit(gitcon_handle_t handle)</div><div class="ttdoc">frees all resources</div><div class="ttdef"><b>Definition:</b> <a href="gitcon_8c_source.html#l00271">gitcon.c:271</a></div></div>
+<div class="ttc" id="agitcon_8h_html_a898b59703ba05e8a28c233508755ed60"><div class="ttname"><a href="gitcon_8h.html#a898b59703ba05e8a28c233508755ed60">gitcon_handle_t</a></div><div class="ttdeci">gitcon_context_t * gitcon_handle_t</div><div class="ttdef"><b>Definition:</b> <a href="gitcon_8h_source.html#l00037">gitcon.h:37</a></div></div>
+<div class="ttc" id="agitcon_8h_html_a99e7f3808bee46708eb81bd55cae4a37"><div class="ttname"><a href="gitcon_8h.html#a99e7f3808bee46708eb81bd55cae4a37">gitcon_init</a></div><div class="ttdeci">esp_err_t gitcon_init(gitcon_handle_t *out_handle)</div><div class="ttdoc">initializes gitcon device and installs peripheral drivers</div></div>
+<div class="ttc" id="astructgitcon__context__t_html"><div class="ttname"><a href="structgitcon__context__t.html">gitcon_context_t</a></div><div class="ttdoc">Gitcon Configuration.</div><div class="ttdef"><b>Definition:</b> <a href="gitcon_8h_source.html#l00025">gitcon.h:26</a></div></div>
+<div class="ttc" id="astructgitcon__context__t_html_ac3ff9d611225b2ed35a5ff50d79bcc60"><div class="ttname"><a href="structgitcon__context__t.html#ac3ff9d611225b2ed35a5ff50d79bcc60">gitcon_context_t::midi_handle</a></div><div class="ttdeci">midi_handle_t midi_handle</div><div class="ttdef"><b>Definition:</b> <a href="gitcon_8h_source.html#l00032">gitcon.h:32</a></div></div>
+<div class="ttc" id="astructgitcon__context__t_html_aced3bb31b67f3a71c6afdcc851a839eb"><div class="ttname"><a href="structgitcon__context__t.html#aced3bb31b67f3a71c6afdcc851a839eb">gitcon_context_t::midi_queue</a></div><div class="ttdeci">QueueHandle_t midi_queue</div><div class="ttdef"><b>Definition:</b> <a href="gitcon_8h_source.html#l00033">gitcon.h:33</a></div></div>
+<div class="ttc" id="astructgitcon__context__t_html_ad03ad4f112560cc5c290a0a7b5192fbc"><div class="ttname"><a href="structgitcon__context__t.html#ad03ad4f112560cc5c290a0a7b5192fbc">gitcon_context_t::sampler</a></div><div class="ttdeci">i2s_sampler_t * sampler</div><div class="ttdef"><b>Definition:</b> <a href="gitcon_8h_source.html#l00030">gitcon.h:30</a></div></div>
+<div class="ttc" id="astructi2s__sampler__t_html"><div class="ttname"><a href="structi2s__sampler__t.html">i2s_sampler_t</a></div><div class="ttdoc">Sampler Configuration.</div><div class="ttdef"><b>Definition:</b> <a href="i2s__sampler_8h_source.html#l00030">i2s_sampler.h:31</a></div></div>
+<div class="ttc" id="astructmcp3201__sampler__t_html"><div class="ttname"><a href="structmcp3201__sampler__t.html">mcp3201_sampler_t</a></div><div class="ttdef"><b>Definition:</b> <a href="mcp3201_8h_source.html#l00058">mcp3201.h:59</a></div></div>
+<div class="ttc" id="astructmidi__context__t_html"><div class="ttname"><a href="structmidi__context__t.html">midi_context_t</a></div><div class="ttdoc">MIDI Context (internal! not to be accessed externally, use midi_handle_t instead)</div><div class="ttdef"><b>Definition:</b> <a href="midi_8c_source.html#l00024">midi.c:25</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

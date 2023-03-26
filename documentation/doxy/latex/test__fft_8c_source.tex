@@ -1,0 +1,64 @@
+\hypertarget{test__fft_8c_source}{}\doxysection{test\+\_\+fft.\+c}
+\label{test__fft_8c_source}\index{test/test\_fft/test\_fft.c@{test/test\_fft/test\_fft.c}}
+\mbox{\hyperlink{test__fft_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00011}00011 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{processed-data_8h}{processed-\/data.h}}>}}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00012}00012 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{fft_8h}{fft.h}}>}}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00013}00013 \textcolor{preprocessor}{\#include <unity.h>}}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00015}\mbox{\hyperlink{test__fft_8c_a1d48237cb63c5ae67aab6d00cc64afb6}{00015}} \textcolor{preprocessor}{\#define AUDIO\_BUFFER\_SIZE 512 }\textcolor{comment}{// Size of buffer for FFT and sampler}}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00016}\mbox{\hyperlink{test__fft_8c_a2203c75072f0cfea39f8d48f21ff097c}{00016}} \textcolor{preprocessor}{\#define F\_SAMPLE\_HZ 44100     }\textcolor{comment}{// Sample rate of FFT and sampler}}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00017}\mbox{\hyperlink{test__fft_8c_a6fb55daf48579b8ab77d976c01ffae3a}{00017}} \textcolor{preprocessor}{\#define FFT\_WINDOW\_SIZE 2     }\textcolor{comment}{// Amount of buffers to take for FFT}}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00018}\mbox{\hyperlink{test__fft_8c_a636ddc19af00bc87969a07c88331f105}{00018}} \textcolor{preprocessor}{\#define FFT\_SIZE 4096         }\textcolor{comment}{//(AUDIO\_BUFFER\_SIZE * FFT\_WINDOW\_SIZE)  Amount of samples to take for FFT}}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00020}\mbox{\hyperlink{test__fft_8c_a95c834d6178047ce9e1bce7cbfea2836}{00020}} \textcolor{keywordtype}{void} \mbox{\hyperlink{test__fft_8c_a95c834d6178047ce9e1bce7cbfea2836}{setUp}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00021}00021 \{}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00022}00022 \}}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00024}\mbox{\hyperlink{test__fft_8c_a9909011e5fea0c018842eec4d93d0662}{00024}} \textcolor{keywordtype}{void} \mbox{\hyperlink{test__fft_8c_a9909011e5fea0c018842eec4d93d0662}{tearDown}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00025}00025 \{}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00026}00026 \}}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00028}\mbox{\hyperlink{test__fft_8c_a4ef2de7798ad1e4a01ea861311e3f731}{00028}} \textcolor{keywordtype}{void} \mbox{\hyperlink{test__fft_8c_a4ef2de7798ad1e4a01ea861311e3f731}{test\_processed\_data}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00029}00029 \{}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00030}00030     \textcolor{comment}{// fft variables}}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00031}00031     \textcolor{keywordtype}{float} fft\_buffer[\mbox{\hyperlink{test__fft_8c_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}}];}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00032}00032     \textcolor{keywordtype}{float} magnitude[\mbox{\hyperlink{test__fft_8c_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}} / 2];}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00033}00033     \textcolor{keywordtype}{float} frequency[\mbox{\hyperlink{test__fft_8c_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}} / 2];}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00034}00034     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} keyNR[\mbox{\hyperlink{test__fft_8c_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}} / 2];}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00035}00035     \textcolor{keywordtype}{float} ratio = (float)\mbox{\hyperlink{test__fft_8c_a2203c75072f0cfea39f8d48f21ff097c}{F\_SAMPLE\_HZ}} / (\textcolor{keywordtype}{float})\mbox{\hyperlink{test__fft_8c_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}};}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00037}00037     \mbox{\hyperlink{structfft__config__t}{fft\_config\_t}} *real\_fft\_plan = \mbox{\hyperlink{fft_8c_a99b7a87d5783b2727dac866314f2774d}{fft\_init}}(\mbox{\hyperlink{test__fft_8c_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}}, \mbox{\hyperlink{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3aa35f248b935d5b32f1e254b3843caaa0}{FFT\_REAL}}, \mbox{\hyperlink{fft_8h_a7400df7c8f32ea8e6b010199d1813fe5a7052223ae26883446425d6fc3338a869}{FFT\_FORWARD}}, \mbox{\hyperlink{processed-data_8h_a48b3d527a0b82638e1226590b0212ed8}{test\_buffer}}, fft\_buffer);}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00038}00038     TEST\_ASSERT\_NOT\_NULL(real\_fft\_plan);}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00039}00039     \mbox{\hyperlink{fft_8c_aa0d01a17b65373896f2100bc63883ca3}{fft\_execute}}(real\_fft\_plan);}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00041}00041     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = 1; k < \mbox{\hyperlink{test__fft_8c_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}} / 2; k++)}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00042}00042     \{}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00043}00043         magnitude[k] = 2 * sqrt(pow(fft\_buffer[2 * k], 2) + pow(fft\_buffer[2 * k + 1], 2)) / \mbox{\hyperlink{test__fft_8c_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}};}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00044}00044         frequency[k] = k * ratio;}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00045}00045         keyNR[k] = (\textcolor{keywordtype}{unsigned} char)round(log2(frequency[k] / 440) * 12 + 69) \% 128;}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00046}00046     \}}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00048}00048     \textcolor{keywordtype}{float} max = 0;}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00049}00049     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{test__fft_8c_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}} / 2; i++)}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00050}00050         max = (magnitude[i] > max) ? magnitude[i] : max;}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00052}00052     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = 1; k < \mbox{\hyperlink{test__fft_8c_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}} / 2; k++)}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00053}00053     \{}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00054}00054         \textcolor{keywordflow}{if} (magnitude[k] >= max * 0.5)}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00055}00055         \{}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00056}00056             TEST\_ASSERT\_EQUAL(45, keyNR[k]);}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00057}00057         \}}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00058}00058     \}}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00059}00059     \mbox{\hyperlink{fft_8c_a0532ef3e893952fd108b183d5a14cd0d}{fft\_destroy}}(real\_fft\_plan);}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00060}00060 \}}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00062}\mbox{\hyperlink{test__fft_8c_abce06be17fc37d675118a678a8100a36}{00062}} \textcolor{keywordtype}{void} \mbox{\hyperlink{test__fft_8c_abce06be17fc37d675118a678a8100a36}{app\_main}}()}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00063}00063 \{}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00064}00064     UNITY\_BEGIN();}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00065}00065     RUN\_TEST(\mbox{\hyperlink{test__fft_8c_a4ef2de7798ad1e4a01ea861311e3f731}{test\_processed\_data}});}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00066}00066     UNITY\_END();}
+\DoxyCodeLine{\Hypertarget{test__fft_8c_source_l00067}00067 \}}
+
+\end{DoxyCode}

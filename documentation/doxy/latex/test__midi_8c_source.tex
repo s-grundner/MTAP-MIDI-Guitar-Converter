@@ -1,0 +1,92 @@
+\hypertarget{test__midi_8c_source}{}\doxysection{test\+\_\+midi.\+c}
+\label{test__midi_8c_source}\index{test/test\_midi/test\_midi.c@{test/test\_midi/test\_midi.c}}
+\mbox{\hyperlink{test__midi_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00012}00012 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{midi_8h}{midi.h}}>}}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00013}00013 \textcolor{preprocessor}{\#include <unity.h>}}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00015}00015 \textcolor{keyword}{static} \mbox{\hyperlink{structmidi__context__t}{midi\_handle\_t}} midi\_handle;}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00017}\mbox{\hyperlink{test__midi_8c_a57e9b955863a0270f6bdf5317003d6a4}{00017}} \textcolor{preprocessor}{\#define MIDI\_UART (UART\_NUM\_1)}}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00018}\mbox{\hyperlink{test__midi_8c_a5cdf0322e10deeff92bbdf233382bca6}{00018}} \textcolor{preprocessor}{\#define MIDI\_BAUD (115200)}}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00019}\mbox{\hyperlink{test__midi_8c_af4773f7c0246cf1f8feea3de02c2bf86}{00019}} \textcolor{preprocessor}{\#define MIDI\_TX (GPIO\_NUM\_26)}}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00020}\mbox{\hyperlink{test__midi_8c_a3aa0cfef819ce6e845bee426c4f94431}{00020}} \textcolor{preprocessor}{\#define MIDI\_RX (GPIO\_NUM\_27)}}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00022}\mbox{\hyperlink{test__midi_8c_a95c834d6178047ce9e1bce7cbfea2836}{00022}} \textcolor{keywordtype}{void} \mbox{\hyperlink{test__midi_8c_a95c834d6178047ce9e1bce7cbfea2836}{setUp}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00023}00023 \{}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00024}00024     \textcolor{keyword}{static} \mbox{\hyperlink{structmidi__config__t}{midi\_config\_t}} midi\_cfg = \{}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00025}00025         .\mbox{\hyperlink{structmidi__config__t_af9196701f783d56635f29eaf00081549}{uart\_num}} = \mbox{\hyperlink{test__midi_8c_a57e9b955863a0270f6bdf5317003d6a4}{MIDI\_UART}},}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00026}00026         .baudrate = \mbox{\hyperlink{test__midi_8c_a5cdf0322e10deeff92bbdf233382bca6}{MIDI\_BAUD}},}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00027}00027         .rx\_io = \mbox{\hyperlink{test__midi_8c_a3aa0cfef819ce6e845bee426c4f94431}{MIDI\_RX}},}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00028}00028         .tx\_io = \mbox{\hyperlink{test__midi_8c_af4773f7c0246cf1f8feea3de02c2bf86}{MIDI\_TX}}\};}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00029}00029     ESP\_ERROR\_CHECK(\mbox{\hyperlink{midi_8c_ac71f907a5e5b7c07d492d621cafc2bb4}{midi\_init}}(\&midi\_handle, \&midi\_cfg));}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00030}00030 \}}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00032}\mbox{\hyperlink{test__midi_8c_a9909011e5fea0c018842eec4d93d0662}{00032}} \textcolor{keywordtype}{void} \mbox{\hyperlink{test__midi_8c_a9909011e5fea0c018842eec4d93d0662}{tearDown}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00033}00033 \{}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00034}00034     \mbox{\hyperlink{midi_8c_a6eff3a43d514679b4da21f8cca9e2316}{midi\_exit}}(midi\_handle);}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00035}00035 \}}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00037}\mbox{\hyperlink{test__midi_8c_a5c3ebb25c11455b687e32d3dc7b18f27}{00037}} \textcolor{keywordtype}{void} \mbox{\hyperlink{test__midi_8c_a5c3ebb25c11455b687e32d3dc7b18f27}{test\_midi\_blink}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00038}00038 \{}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00039}00039     \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} msg = \mbox{\hyperlink{midi_8h_a19ea9f06293f713229ffbf1673dfb3c5}{note\_on}}(0, 0x3C, 0x7F);}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00040}00040     TEST\_ASSERT\_EQUAL(ESP\_OK, \mbox{\hyperlink{midi_8c_ac6d19507fa71da416c31fbe9b38684fa}{midi\_write}}(midi\_handle, \&msg));}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00041}00041     vTaskDelay(1000 / portTICK\_PERIOD\_MS);}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00042}00042     msg.\mbox{\hyperlink{structmidi__message__t_aff4bb9542c2091c2a7b80c4a74df778c}{status}} = \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3a78dea1a5ae83e056e851a48a7f0c3563}{MIDI\_STATUS\_NOTE\_OFF}};}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00043}00043     TEST\_ASSERT\_EQUAL(ESP\_OK, \mbox{\hyperlink{midi_8c_ac6d19507fa71da416c31fbe9b38684fa}{midi\_write}}(midi\_handle, \&msg));}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00044}00044 \}}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00046}\mbox{\hyperlink{test__midi_8c_a4776631b017a19e2246cd7d1bbb23893}{00046}} \textcolor{keywordtype}{void} \mbox{\hyperlink{test__midi_8c_a4776631b017a19e2246cd7d1bbb23893}{test\_midi\_bend}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00047}00047 \{}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00048}00048     \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} msg = \mbox{\hyperlink{midi_8h_afc61f6a3b91a428edc2b1b0962573176}{pitch\_bend}}(0, \mbox{\hyperlink{midi_8h_af02cd8b82872f196f2d10b3248442bc8}{MIDI\_PITCH\_BEND\_MAX}});}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00049}00049     TEST\_ASSERT\_EQUAL(ESP\_OK, \mbox{\hyperlink{midi_8c_ac6d19507fa71da416c31fbe9b38684fa}{midi\_write}}(midi\_handle, \&msg));}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00050}00050     vTaskDelay(1000 / portTICK\_PERIOD\_MS);}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00051}00051     msg = \mbox{\hyperlink{midi_8h_afc61f6a3b91a428edc2b1b0962573176}{pitch\_bend}}(0, \mbox{\hyperlink{midi_8h_a502f2aeb3c96dd726974e602bced0e15}{MIDI\_PITCH\_BEND\_MIN}});}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00052}00052     TEST\_ASSERT\_EQUAL(ESP\_OK, \mbox{\hyperlink{midi_8c_ac6d19507fa71da416c31fbe9b38684fa}{midi\_write}}(midi\_handle, \&msg));}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00053}00053     vTaskDelay(1000 / portTICK\_PERIOD\_MS);}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00054}00054     msg = \mbox{\hyperlink{midi_8h_afc61f6a3b91a428edc2b1b0962573176}{pitch\_bend}}(0, \mbox{\hyperlink{midi_8h_a9e7f98c080083d0a47d1a656df111cdb}{MIDI\_PITCH\_BEND\_CENTER}});}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00055}00055     TEST\_ASSERT\_EQUAL(ESP\_OK, \mbox{\hyperlink{midi_8c_ac6d19507fa71da416c31fbe9b38684fa}{midi\_write}}(midi\_handle, \&msg));}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00056}00056 \}}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00058}\mbox{\hyperlink{test__midi_8c_aa5115d89d142fd93fe6bf0dee72c7be2}{00058}} \textcolor{keywordtype}{void} \mbox{\hyperlink{test__midi_8c_aa5115d89d142fd93fe6bf0dee72c7be2}{test\_midi\_bent\_note}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00059}00059 \{}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00060}00060     \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} msg = \mbox{\hyperlink{midi_8h_a19ea9f06293f713229ffbf1673dfb3c5}{note\_on}}(0, 0x3C, 0x7F);}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00061}00061     TEST\_ASSERT\_EQUAL(ESP\_OK, \mbox{\hyperlink{midi_8c_ac6d19507fa71da416c31fbe9b38684fa}{midi\_write}}(midi\_handle, \&msg));}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00063}00063     \textcolor{comment}{// ramp up and down pitch bend in 1 second}}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00064}00064     \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} msg\_bend = \mbox{\hyperlink{midi_8h_afc61f6a3b91a428edc2b1b0962573176}{pitch\_bend}}(0, \mbox{\hyperlink{midi_8h_a9e7f98c080083d0a47d1a656df111cdb}{MIDI\_PITCH\_BEND\_CENTER}});}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00065}00065     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = \mbox{\hyperlink{midi_8h_a9e7f98c080083d0a47d1a656df111cdb}{MIDI\_PITCH\_BEND\_CENTER}}; i <= \mbox{\hyperlink{midi_8h_af02cd8b82872f196f2d10b3248442bc8}{MIDI\_PITCH\_BEND\_MAX}}; i += 128)}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00066}00066     \{}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00067}00067         msg\_bend = \mbox{\hyperlink{midi_8h_afc61f6a3b91a428edc2b1b0962573176}{pitch\_bend}}(0, i);}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00068}00068         TEST\_ASSERT\_EQUAL(ESP\_OK, \mbox{\hyperlink{midi_8c_ac6d19507fa71da416c31fbe9b38684fa}{midi\_write}}(midi\_handle, \&msg\_bend));}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00069}00069         vTaskDelay(4 / portTICK\_PERIOD\_MS);}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00070}00070     \}}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00071}00071     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = \mbox{\hyperlink{midi_8h_af02cd8b82872f196f2d10b3248442bc8}{MIDI\_PITCH\_BEND\_MAX}}; i >= \mbox{\hyperlink{midi_8h_a502f2aeb3c96dd726974e602bced0e15}{MIDI\_PITCH\_BEND\_MIN}}; i -\/= 128)}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00072}00072     \{}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00073}00073         msg\_bend = \mbox{\hyperlink{midi_8h_afc61f6a3b91a428edc2b1b0962573176}{pitch\_bend}}(0, i);}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00074}00074         TEST\_ASSERT\_EQUAL(ESP\_OK, \mbox{\hyperlink{midi_8c_ac6d19507fa71da416c31fbe9b38684fa}{midi\_write}}(midi\_handle, \&msg\_bend));}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00075}00075         vTaskDelay(2 / portTICK\_PERIOD\_MS);}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00076}00076     \}}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00077}00077     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = \mbox{\hyperlink{midi_8h_a502f2aeb3c96dd726974e602bced0e15}{MIDI\_PITCH\_BEND\_MIN}}; i <= \mbox{\hyperlink{midi_8h_a9e7f98c080083d0a47d1a656df111cdb}{MIDI\_PITCH\_BEND\_CENTER}}; i += 128)}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00078}00078     \{}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00079}00079         msg\_bend = \mbox{\hyperlink{midi_8h_afc61f6a3b91a428edc2b1b0962573176}{pitch\_bend}}(0, i);}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00080}00080         TEST\_ASSERT\_EQUAL(ESP\_OK, \mbox{\hyperlink{midi_8c_ac6d19507fa71da416c31fbe9b38684fa}{midi\_write}}(midi\_handle, \&msg\_bend));}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00081}00081         vTaskDelay(4 / portTICK\_PERIOD\_MS);}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00082}00082     \}}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00083}00083     msg.\mbox{\hyperlink{structmidi__message__t_aff4bb9542c2091c2a7b80c4a74df778c}{status}} = \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3a78dea1a5ae83e056e851a48a7f0c3563}{MIDI\_STATUS\_NOTE\_OFF}};}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00084}00084     TEST\_ASSERT\_EQUAL(ESP\_OK, \mbox{\hyperlink{midi_8c_ac6d19507fa71da416c31fbe9b38684fa}{midi\_write}}(midi\_handle, \&msg));}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00085}00085 \}}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00087}\mbox{\hyperlink{test__midi_8c_abce06be17fc37d675118a678a8100a36}{00087}} \textcolor{keywordtype}{void} \mbox{\hyperlink{test__midi_8c_abce06be17fc37d675118a678a8100a36}{app\_main}}()}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00088}00088 \{}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00089}00089     UNITY\_BEGIN();}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00091}00091     RUN\_TEST(\mbox{\hyperlink{test__midi_8c_a5c3ebb25c11455b687e32d3dc7b18f27}{test\_midi\_blink}});}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00092}00092     RUN\_TEST(\mbox{\hyperlink{test__midi_8c_a4776631b017a19e2246cd7d1bbb23893}{test\_midi\_bend}});}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00093}00093     RUN\_TEST(\mbox{\hyperlink{test__midi_8c_aa5115d89d142fd93fe6bf0dee72c7be2}{test\_midi\_bent\_note}});}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00094}00094 }
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00095}00095     UNITY\_END();}
+\DoxyCodeLine{\Hypertarget{test__midi_8c_source_l00096}00096 \}}
+
+\end{DoxyCode}

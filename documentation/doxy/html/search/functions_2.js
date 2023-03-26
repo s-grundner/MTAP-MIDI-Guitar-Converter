@@ -1,12 +1,10 @@
 var searchData=
 [
-  ['mcp3201_5fexit_0',['mcp3201_exit',['../mcp3201_8c.html#acacc7f3f14eb9108f7c053d4cc370e00',1,'mcp3201_exit(mcp3201_handle_t mcp_handle):&#160;mcp3201.c'],['../mcp3201_8h.html#acacc7f3f14eb9108f7c053d4cc370e00',1,'mcp3201_exit(mcp3201_handle_t mcp_handle):&#160;mcp3201.c']]],
-  ['mcp3201_5finit_1',['mcp3201_init',['../mcp3201_8h.html#a69c1d4c194693ad14af26415e51cd4d5',1,'mcp3201.h']]],
-  ['mcp3201_5fread_2',['mcp3201_read',['../mcp3201_8h.html#ad2a98b7c4cafab98b390b467b976cc9f',1,'mcp3201.h']]],
-  ['mcp3201_5fsampler_5fstart_3',['mcp3201_sampler_start',['../mcp3201_8h.html#a597661bdfb234321b4ba0648dc161451',1,'mcp3201_sampler.c']]],
-  ['mcp3201_5fsampler_5fstop_4',['mcp3201_sampler_stop',['../mcp3201_8h.html#a09942c72d6880306a561ca69a5ecac80',1,'mcp3201_sampler.c']]],
-  ['midi_5fexit_5',['midi_exit',['../midi_8c.html#a6eff3a43d514679b4da21f8cca9e2316',1,'midi_exit(midi_handle_t midi_handle):&#160;midi.c'],['../midi_8h.html#a6eff3a43d514679b4da21f8cca9e2316',1,'midi_exit(midi_handle_t midi_handle):&#160;midi.c']]],
-  ['midi_5finit_6',['midi_init',['../midi_8h.html#ae650454d0c1ee0e1ccde60b84d5396be',1,'midi.h']]],
-  ['midi_5fread_7',['midi_read',['../midi_8c.html#a19339a5613e1e14bcffb4469675ec2db',1,'midi_read(midi_handle_t midi_handle, midi_message_t *msg, TickType_t timeout):&#160;midi.c'],['../midi_8h.html#a19339a5613e1e14bcffb4469675ec2db',1,'midi_read(midi_handle_t midi_handle, midi_message_t *msg, TickType_t timeout):&#160;midi.c']]],
-  ['midi_5fwrite_8',['midi_write',['../midi_8c.html#ac6d19507fa71da416c31fbe9b38684fa',1,'midi_write(midi_handle_t handle, midi_message_t *msg):&#160;midi.c'],['../midi_8h.html#a5aa4e2de2cfe3d569d4968df337cb846',1,'midi_write(midi_handle_t midi_handle, midi_message_t *msg):&#160;midi.c']]]
+  ['fft_0',['fft',['../fft_8c.html#ab4cb498bf7686f0d200752cc5a6ea3d3',1,'fft(float *input, float *output, float *twiddle_factors, int n):&#160;fft.c'],['../fft_8h.html#ab4cb498bf7686f0d200752cc5a6ea3d3',1,'fft(float *input, float *output, float *twiddle_factors, int n):&#160;fft.c']]],
+  ['fft4_1',['fft4',['../fft_8c.html#aa6e142d986a6a8f5da0f1196ba01068b',1,'fft4(float *input, int stride_in, float *output, int stride_out):&#160;fft.c'],['../fft_8h.html#aa6e142d986a6a8f5da0f1196ba01068b',1,'fft4(float *input, int stride_in, float *output, int stride_out):&#160;fft.c']]],
+  ['fft8_2',['fft8',['../fft_8c.html#a12468a362aeaa6675a5c3c6b08a1af56',1,'fft8(float *input, int stride_in, float *output, int stride_out):&#160;fft.c'],['../fft_8h.html#a12468a362aeaa6675a5c3c6b08a1af56',1,'fft8(float *input, int stride_in, float *output, int stride_out):&#160;fft.c']]],
+  ['fft_5fdestroy_3',['fft_destroy',['../fft_8c.html#a0532ef3e893952fd108b183d5a14cd0d',1,'fft_destroy(fft_config_t *config):&#160;fft.c'],['../fft_8h.html#a0532ef3e893952fd108b183d5a14cd0d',1,'fft_destroy(fft_config_t *config):&#160;fft.c']]],
+  ['fft_5fexecute_4',['fft_execute',['../fft_8c.html#aa0d01a17b65373896f2100bc63883ca3',1,'fft_execute(fft_config_t *config):&#160;fft.c'],['../fft_8h.html#aa0d01a17b65373896f2100bc63883ca3',1,'fft_execute(fft_config_t *config):&#160;fft.c']]],
+  ['fft_5finit_5',['fft_init',['../fft_8c.html#a99b7a87d5783b2727dac866314f2774d',1,'fft_init(int size, fft_type_t type, fft_direction_t direction, float *input, float *output):&#160;fft.c'],['../fft_8h.html#a99b7a87d5783b2727dac866314f2774d',1,'fft_init(int size, fft_type_t type, fft_direction_t direction, float *input, float *output):&#160;fft.c']]],
+  ['fft_5fprimitive_6',['fft_primitive',['../fft_8c.html#ab7790bb2c7fbd236af346a627c7c0ba9',1,'fft_primitive(float *x, float *y, int n, int stride, float *twiddle_factors, int tw_stride):&#160;fft.c'],['../fft_8h.html#ab7790bb2c7fbd236af346a627c7c0ba9',1,'fft_primitive(float *x, float *y, int n, int stride, float *twiddle_factors, int tw_stride):&#160;fft.c']]]
 ];

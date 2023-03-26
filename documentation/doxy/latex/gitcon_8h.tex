@@ -1,10 +1,11 @@
-\hypertarget{gitcon_8h}{}\doxysection{C\+:/\+Users/\+Smon/source/\+MTAP-\/\+MIDI-\/\+Guitar-\/\+Converter/firmware/\+MIDI-\/\+Testing/src/gitcon.h File Reference}
-\label{gitcon_8h}\index{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/src/gitcon.h@{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/src/gitcon.h}}
+\hypertarget{gitcon_8h}{}\doxysection{src/gitcon.h File Reference}
+\label{gitcon_8h}\index{src/gitcon.h@{src/gitcon.h}}
+
+
+Gitcon Driver Header.  
+
+
 {\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\newline
-Include dependency graph for gitcon.\+h\+:
-% FIG 0
-This graph shows which files directly or indirectly include this file\+:
-% FIG 1
 \doxysubsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
@@ -13,25 +14,25 @@ struct \mbox{\hyperlink{structgitcon__context__t}{gitcon\+\_\+context\+\_\+t}}
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{gitcon_8h_af41740c58c92b4864c2e8fa77ee56fd9}\label{gitcon_8h_af41740c58c92b4864c2e8fa77ee56fd9}} 
-\#define {\bfseries GITCON\+\_\+\+LOG\+\_\+\+LEVEL}~ESP\+\_\+\+LOG\+\_\+\+ERROR
+\#define \mbox{\hyperlink{gitcon_8h_af41740c58c92b4864c2e8fa77ee56fd9}{GITCON\+\_\+\+LOG\+\_\+\+LEVEL}}~ESP\+\_\+\+LOG\+\_\+\+ERROR
 \end{DoxyCompactItemize}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{gitcon_8h_a898b59703ba05e8a28c233508755ed60}\label{gitcon_8h_a898b59703ba05e8a28c233508755ed60}} 
-typedef \mbox{\hyperlink{structgitcon__context__t}{gitcon\+\_\+context\+\_\+t}} $\ast$ {\bfseries gitcon\+\_\+handle\+\_\+t}
+typedef \mbox{\hyperlink{structgitcon__context__t}{gitcon\+\_\+context\+\_\+t}} $\ast$ \mbox{\hyperlink{gitcon_8h_a898b59703ba05e8a28c233508755ed60}{gitcon\+\_\+handle\+\_\+t}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-esp\+\_\+err\+\_\+t \mbox{\hyperlink{gitcon_8h_a99e7f3808bee46708eb81bd55cae4a37}{gitcon\+\_\+init}} (\mbox{\hyperlink{structgitcon__context__t}{gitcon\+\_\+handle\+\_\+t}} $\ast$out\+\_\+handle)
-\begin{DoxyCompactList}\small\item\em initializes gitcon device \end{DoxyCompactList}\item 
-esp\+\_\+err\+\_\+t \mbox{\hyperlink{gitcon_8h_a34f972a4c96245ce63d26a5256c75e24}{gitcon\+\_\+exit}} (\mbox{\hyperlink{structgitcon__context__t}{gitcon\+\_\+handle\+\_\+t}} handle)
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{gitcon_8h_a99e7f3808bee46708eb81bd55cae4a37}{gitcon\+\_\+init}} (\mbox{\hyperlink{gitcon_8h_a898b59703ba05e8a28c233508755ed60}{gitcon\+\_\+handle\+\_\+t}} $\ast$out\+\_\+handle)
+\begin{DoxyCompactList}\small\item\em initializes gitcon device and installs peripheral drivers \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{gitcon_8h_a34f972a4c96245ce63d26a5256c75e24}{gitcon\+\_\+exit}} (\mbox{\hyperlink{gitcon_8h_a898b59703ba05e8a28c233508755ed60}{gitcon\+\_\+handle\+\_\+t}} handle)
 \begin{DoxyCompactList}\small\item\em frees all resources \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
+Gitcon Driver Header. 
+
 \begin{DoxyAuthor}{Author}
 @s-\/grundner @\+Laurenz03 
 \end{DoxyAuthor}
@@ -46,12 +47,42 @@ Copyright (c) 2022
 \end{DoxyCopyright}
 
 
+Definition in file \mbox{\hyperlink{gitcon_8h_source}{gitcon.\+h}}.
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{gitcon_8h_af41740c58c92b4864c2e8fa77ee56fd9}\label{gitcon_8h_af41740c58c92b4864c2e8fa77ee56fd9}} 
+\index{gitcon.h@{gitcon.h}!GITCON\_LOG\_LEVEL@{GITCON\_LOG\_LEVEL}}
+\index{GITCON\_LOG\_LEVEL@{GITCON\_LOG\_LEVEL}!gitcon.h@{gitcon.h}}
+\doxysubsubsection{\texorpdfstring{GITCON\_LOG\_LEVEL}{GITCON\_LOG\_LEVEL}}
+{\footnotesize\ttfamily \#define GITCON\+\_\+\+LOG\+\_\+\+LEVEL~ESP\+\_\+\+LOG\+\_\+\+ERROR}
+
+
+
+Definition at line \mbox{\hyperlink{gitcon_8h_source_l00017}{17}} of file \mbox{\hyperlink{gitcon_8h_source}{gitcon.\+h}}.
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{gitcon_8h_a898b59703ba05e8a28c233508755ed60}\label{gitcon_8h_a898b59703ba05e8a28c233508755ed60}} 
+\index{gitcon.h@{gitcon.h}!gitcon\_handle\_t@{gitcon\_handle\_t}}
+\index{gitcon\_handle\_t@{gitcon\_handle\_t}!gitcon.h@{gitcon.h}}
+\doxysubsubsection{\texorpdfstring{gitcon\_handle\_t}{gitcon\_handle\_t}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{structgitcon__context__t}{gitcon\+\_\+context\+\_\+t}}$\ast$ \mbox{\hyperlink{gitcon_8h_a898b59703ba05e8a28c233508755ed60}{gitcon\+\_\+handle\+\_\+t}}}
+
+
+
+Definition at line \mbox{\hyperlink{gitcon_8h_source_l00037}{37}} of file \mbox{\hyperlink{gitcon_8h_source}{gitcon.\+h}}.
+
+
+
 \doxysubsection{Function Documentation}
 \mbox{\Hypertarget{gitcon_8h_a34f972a4c96245ce63d26a5256c75e24}\label{gitcon_8h_a34f972a4c96245ce63d26a5256c75e24}} 
 \index{gitcon.h@{gitcon.h}!gitcon\_exit@{gitcon\_exit}}
 \index{gitcon\_exit@{gitcon\_exit}!gitcon.h@{gitcon.h}}
 \doxysubsubsection{\texorpdfstring{gitcon\_exit()}{gitcon\_exit()}}
-{\footnotesize\ttfamily esp\+\_\+err\+\_\+t gitcon\+\_\+exit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgitcon__context__t}{gitcon\+\_\+handle\+\_\+t}}}]{handle }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t gitcon\+\_\+exit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gitcon_8h_a898b59703ba05e8a28c233508755ed60}{gitcon\+\_\+handle\+\_\+t}}}]{handle }\end{DoxyParamCaption})}
 
 
 
@@ -65,17 +96,19 @@ frees all resources
 \begin{DoxyReturn}{Returns}
 ESP\+\_\+\+OK on success 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-% FIG 2
+
+
+Definition at line \mbox{\hyperlink{gitcon_8c_source_l00271}{271}} of file \mbox{\hyperlink{gitcon_8c_source}{gitcon.\+c}}.
+
 \mbox{\Hypertarget{gitcon_8h_a99e7f3808bee46708eb81bd55cae4a37}\label{gitcon_8h_a99e7f3808bee46708eb81bd55cae4a37}} 
 \index{gitcon.h@{gitcon.h}!gitcon\_init@{gitcon\_init}}
 \index{gitcon\_init@{gitcon\_init}!gitcon.h@{gitcon.h}}
 \doxysubsubsection{\texorpdfstring{gitcon\_init()}{gitcon\_init()}}
-{\footnotesize\ttfamily esp\+\_\+err\+\_\+t gitcon\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgitcon__context__t}{gitcon\+\_\+handle\+\_\+t}} $\ast$}]{out\+\_\+handle }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t gitcon\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gitcon_8h_a898b59703ba05e8a28c233508755ed60}{gitcon\+\_\+handle\+\_\+t}} $\ast$}]{out\+\_\+handle }\end{DoxyParamCaption})}
 
 
 
-initializes gitcon device 
+initializes gitcon device and installs peripheral drivers 
 
 
 \begin{DoxyParams}[1]{Parameters}

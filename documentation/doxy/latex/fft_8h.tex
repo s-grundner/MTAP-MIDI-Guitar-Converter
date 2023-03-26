@@ -1,0 +1,256 @@
+\hypertarget{fft_8h}{}\doxysection{lib/fft/fft.h File Reference}
+\label{fft_8h}\index{lib/fft/fft.h@{lib/fft/fft.h}}
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structfft__config__t}{fft\+\_\+config\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{fft_8h_ad2a04e717ebe86bf08875e879e7c24fa}{FFT\+\_\+\+OWN\+\_\+\+INPUT\+\_\+\+MEM}}~1
+\item 
+\#define \mbox{\hyperlink{fft_8h_a75136cb97002566d690469bc4d96a54e}{FFT\+\_\+\+OWN\+\_\+\+OUTPUT\+\_\+\+MEM}}~2
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3}{fft\+\_\+type\+\_\+t}} \{ \mbox{\hyperlink{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3aa35f248b935d5b32f1e254b3843caaa0}{FFT\+\_\+\+REAL}}
+, \mbox{\hyperlink{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3af226b92e6e73d2c1fba99afa79665052}{FFT\+\_\+\+COMPLEX}}
+ \}
+\begin{DoxyCompactList}\small\item\em ESP32 FFT. This provides a vanilla radix-\/2 FFT implementation and a test example. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{fft_8h_a7400df7c8f32ea8e6b010199d1813fe5}{fft\+\_\+direction\+\_\+t}} \{ \mbox{\hyperlink{fft_8h_a7400df7c8f32ea8e6b010199d1813fe5a7052223ae26883446425d6fc3338a869}{FFT\+\_\+\+FORWARD}}
+, \mbox{\hyperlink{fft_8h_a7400df7c8f32ea8e6b010199d1813fe5a94b2b900505b2cd82482f612244a54d3}{FFT\+\_\+\+BACKWARD}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structfft__config__t}{fft\+\_\+config\+\_\+t}} $\ast$ \mbox{\hyperlink{fft_8h_a99b7a87d5783b2727dac866314f2774d}{fft\+\_\+init}} (int size, \mbox{\hyperlink{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3}{fft\+\_\+type\+\_\+t}} type, \mbox{\hyperlink{fft_8h_a7400df7c8f32ea8e6b010199d1813fe5}{fft\+\_\+direction\+\_\+t}} direction, float $\ast$input, float $\ast$output)
+\item 
+void \mbox{\hyperlink{fft_8h_a0532ef3e893952fd108b183d5a14cd0d}{fft\+\_\+destroy}} (\mbox{\hyperlink{structfft__config__t}{fft\+\_\+config\+\_\+t}} $\ast$config)
+\item 
+void \mbox{\hyperlink{fft_8h_aa0d01a17b65373896f2100bc63883ca3}{fft\+\_\+execute}} (\mbox{\hyperlink{structfft__config__t}{fft\+\_\+config\+\_\+t}} $\ast$config)
+\item 
+void \mbox{\hyperlink{fft_8h_ab4cb498bf7686f0d200752cc5a6ea3d3}{fft}} (float $\ast$input, float $\ast$output, float $\ast$twiddle\+\_\+factors, int n)
+\item 
+void \mbox{\hyperlink{fft_8h_a77e61a567a4628991819bbd4230b561f}{ifft}} (float $\ast$input, float $\ast$output, float $\ast$twiddle\+\_\+factors, int n)
+\item 
+void \mbox{\hyperlink{fft_8h_a015dbb99fdfd93f586de17ddb23858ca}{rfft}} (float $\ast$x, float $\ast$y, float $\ast$twiddle\+\_\+factors, int n)
+\item 
+void \mbox{\hyperlink{fft_8h_a9d0c64b4392dd56fee766d29f01edccb}{irfft}} (float $\ast$x, float $\ast$y, float $\ast$twiddle\+\_\+factors, int n)
+\item 
+void \mbox{\hyperlink{fft_8h_ab7790bb2c7fbd236af346a627c7c0ba9}{fft\+\_\+primitive}} (float $\ast$x, float $\ast$y, int n, int stride, float $\ast$twiddle\+\_\+factors, int tw\+\_\+stride)
+\item 
+void \mbox{\hyperlink{fft_8h_a9dc6fcc26d03fd8439ca431177a231cd}{split\+\_\+radix\+\_\+fft}} (float $\ast$x, float $\ast$y, int n, int stride, float $\ast$twiddle\+\_\+factors, int tw\+\_\+stride)
+\item 
+void \mbox{\hyperlink{fft_8h_af0de060a6248093afe01317a1684e734}{ifft\+\_\+primitive}} (float $\ast$input, float $\ast$output, int n, int stride, float $\ast$twiddle\+\_\+factors, int tw\+\_\+stride)
+\item 
+void \mbox{\hyperlink{fft_8h_a12468a362aeaa6675a5c3c6b08a1af56}{fft8}} (float $\ast$input, int stride\+\_\+in, float $\ast$output, int stride\+\_\+out)
+\item 
+void \mbox{\hyperlink{fft_8h_aa6e142d986a6a8f5da0f1196ba01068b}{fft4}} (float $\ast$input, int stride\+\_\+in, float $\ast$output, int stride\+\_\+out)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{fft_8h_ad2a04e717ebe86bf08875e879e7c24fa}\label{fft_8h_ad2a04e717ebe86bf08875e879e7c24fa}} 
+\index{fft.h@{fft.h}!FFT\_OWN\_INPUT\_MEM@{FFT\_OWN\_INPUT\_MEM}}
+\index{FFT\_OWN\_INPUT\_MEM@{FFT\_OWN\_INPUT\_MEM}!fft.h@{fft.h}}
+\doxysubsubsection{\texorpdfstring{FFT\_OWN\_INPUT\_MEM}{FFT\_OWN\_INPUT\_MEM}}
+{\footnotesize\ttfamily \#define FFT\+\_\+\+OWN\+\_\+\+INPUT\+\_\+\+MEM~1}
+
+
+
+Definition at line \mbox{\hyperlink{fft_8h_source_l00040}{40}} of file \mbox{\hyperlink{fft_8h_source}{fft.\+h}}.
+
+\mbox{\Hypertarget{fft_8h_a75136cb97002566d690469bc4d96a54e}\label{fft_8h_a75136cb97002566d690469bc4d96a54e}} 
+\index{fft.h@{fft.h}!FFT\_OWN\_OUTPUT\_MEM@{FFT\_OWN\_OUTPUT\_MEM}}
+\index{FFT\_OWN\_OUTPUT\_MEM@{FFT\_OWN\_OUTPUT\_MEM}!fft.h@{fft.h}}
+\doxysubsubsection{\texorpdfstring{FFT\_OWN\_OUTPUT\_MEM}{FFT\_OWN\_OUTPUT\_MEM}}
+{\footnotesize\ttfamily \#define FFT\+\_\+\+OWN\+\_\+\+OUTPUT\+\_\+\+MEM~2}
+
+
+
+Definition at line \mbox{\hyperlink{fft_8h_source_l00041}{41}} of file \mbox{\hyperlink{fft_8h_source}{fft.\+h}}.
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{fft_8h_a7400df7c8f32ea8e6b010199d1813fe5}\label{fft_8h_a7400df7c8f32ea8e6b010199d1813fe5}} 
+\index{fft.h@{fft.h}!fft\_direction\_t@{fft\_direction\_t}}
+\index{fft\_direction\_t@{fft\_direction\_t}!fft.h@{fft.h}}
+\doxysubsubsection{\texorpdfstring{fft\_direction\_t}{fft\_direction\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{fft_8h_a7400df7c8f32ea8e6b010199d1813fe5}{fft\+\_\+direction\+\_\+t}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FFT\_FORWARD@{FFT\_FORWARD}!fft.h@{fft.h}}\index{fft.h@{fft.h}!FFT\_FORWARD@{FFT\_FORWARD}}}\mbox{\Hypertarget{fft_8h_a7400df7c8f32ea8e6b010199d1813fe5a7052223ae26883446425d6fc3338a869}\label{fft_8h_a7400df7c8f32ea8e6b010199d1813fe5a7052223ae26883446425d6fc3338a869}} 
+FFT\+\_\+\+FORWARD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FFT\_BACKWARD@{FFT\_BACKWARD}!fft.h@{fft.h}}\index{fft.h@{fft.h}!FFT\_BACKWARD@{FFT\_BACKWARD}}}\mbox{\Hypertarget{fft_8h_a7400df7c8f32ea8e6b010199d1813fe5a94b2b900505b2cd82482f612244a54d3}\label{fft_8h_a7400df7c8f32ea8e6b010199d1813fe5a94b2b900505b2cd82482f612244a54d3}} 
+FFT\+\_\+\+BACKWARD&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{fft_8h_source_l00034}{34}} of file \mbox{\hyperlink{fft_8h_source}{fft.\+h}}.
+
+\mbox{\Hypertarget{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3}\label{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3}} 
+\index{fft.h@{fft.h}!fft\_type\_t@{fft\_type\_t}}
+\index{fft\_type\_t@{fft\_type\_t}!fft.h@{fft.h}}
+\doxysubsubsection{\texorpdfstring{fft\_type\_t}{fft\_type\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3}{fft\+\_\+type\+\_\+t}}}
+
+
+
+ESP32 FFT. This provides a vanilla radix-\/2 FFT implementation and a test example. 
+
+\begin{DoxyAuthor}{Author}
+This code was written by \href{http://www.robinscheibler.org}{\texttt{ Robin Scheibler}} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+during rainy days in October 2017. 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+(c) 2017 Robin Scheibler Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \char`\"{}\+Software\char`\"{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\+:
+\end{DoxyCopyright}
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \char`\"{}\+AS IS\char`\"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FFT\_REAL@{FFT\_REAL}!fft.h@{fft.h}}\index{fft.h@{fft.h}!FFT\_REAL@{FFT\_REAL}}}\mbox{\Hypertarget{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3aa35f248b935d5b32f1e254b3843caaa0}\label{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3aa35f248b935d5b32f1e254b3843caaa0}} 
+FFT\+\_\+\+REAL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FFT\_COMPLEX@{FFT\_COMPLEX}!fft.h@{fft.h}}\index{fft.h@{fft.h}!FFT\_COMPLEX@{FFT\_COMPLEX}}}\mbox{\Hypertarget{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3af226b92e6e73d2c1fba99afa79665052}\label{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3af226b92e6e73d2c1fba99afa79665052}} 
+FFT\+\_\+\+COMPLEX&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{fft_8h_source_l00028}{28}} of file \mbox{\hyperlink{fft_8h_source}{fft.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{fft_8h_ab4cb498bf7686f0d200752cc5a6ea3d3}\label{fft_8h_ab4cb498bf7686f0d200752cc5a6ea3d3}} 
+\index{fft.h@{fft.h}!fft@{fft}}
+\index{fft@{fft}!fft.h@{fft.h}}
+\doxysubsubsection{\texorpdfstring{fft()}{fft()}}
+{\footnotesize\ttfamily void fft (\begin{DoxyParamCaption}\item[{float $\ast$}]{input,  }\item[{float $\ast$}]{output,  }\item[{float $\ast$}]{twiddle\+\_\+factors,  }\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{fft_8c_source_l00104}{104}} of file \mbox{\hyperlink{fft_8c_source}{fft.\+c}}.
+
+\mbox{\Hypertarget{fft_8h_aa6e142d986a6a8f5da0f1196ba01068b}\label{fft_8h_aa6e142d986a6a8f5da0f1196ba01068b}} 
+\index{fft.h@{fft.h}!fft4@{fft4}}
+\index{fft4@{fft4}!fft.h@{fft.h}}
+\doxysubsubsection{\texorpdfstring{fft4()}{fft4()}}
+{\footnotesize\ttfamily void fft4 (\begin{DoxyParamCaption}\item[{float $\ast$}]{input,  }\item[{int}]{stride\+\_\+in,  }\item[{float $\ast$}]{output,  }\item[{int}]{stride\+\_\+out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{fft_8c_source_l00627}{627}} of file \mbox{\hyperlink{fft_8c_source}{fft.\+c}}.
+
+\mbox{\Hypertarget{fft_8h_a12468a362aeaa6675a5c3c6b08a1af56}\label{fft_8h_a12468a362aeaa6675a5c3c6b08a1af56}} 
+\index{fft.h@{fft.h}!fft8@{fft8}}
+\index{fft8@{fft8}!fft.h@{fft.h}}
+\doxysubsubsection{\texorpdfstring{fft8()}{fft8()}}
+{\footnotesize\ttfamily void fft8 (\begin{DoxyParamCaption}\item[{float $\ast$}]{input,  }\item[{int}]{stride\+\_\+in,  }\item[{float $\ast$}]{output,  }\item[{int}]{stride\+\_\+out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{fft_8c_source_l00500}{500}} of file \mbox{\hyperlink{fft_8c_source}{fft.\+c}}.
+
+\mbox{\Hypertarget{fft_8h_a0532ef3e893952fd108b183d5a14cd0d}\label{fft_8h_a0532ef3e893952fd108b183d5a14cd0d}} 
+\index{fft.h@{fft.h}!fft\_destroy@{fft\_destroy}}
+\index{fft\_destroy@{fft\_destroy}!fft.h@{fft.h}}
+\doxysubsubsection{\texorpdfstring{fft\_destroy()}{fft\_destroy()}}
+{\footnotesize\ttfamily void fft\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structfft__config__t}{fft\+\_\+config\+\_\+t}} $\ast$}]{config }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{fft_8c_source_l00080}{80}} of file \mbox{\hyperlink{fft_8c_source}{fft.\+c}}.
+
+\mbox{\Hypertarget{fft_8h_aa0d01a17b65373896f2100bc63883ca3}\label{fft_8h_aa0d01a17b65373896f2100bc63883ca3}} 
+\index{fft.h@{fft.h}!fft\_execute@{fft\_execute}}
+\index{fft\_execute@{fft\_execute}!fft.h@{fft.h}}
+\doxysubsubsection{\texorpdfstring{fft\_execute()}{fft\_execute()}}
+{\footnotesize\ttfamily void fft\+\_\+execute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structfft__config__t}{fft\+\_\+config\+\_\+t}} $\ast$}]{config }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{fft_8c_source_l00092}{92}} of file \mbox{\hyperlink{fft_8c_source}{fft.\+c}}.
+
+\mbox{\Hypertarget{fft_8h_a99b7a87d5783b2727dac866314f2774d}\label{fft_8h_a99b7a87d5783b2727dac866314f2774d}} 
+\index{fft.h@{fft.h}!fft\_init@{fft\_init}}
+\index{fft\_init@{fft\_init}!fft.h@{fft.h}}
+\doxysubsubsection{\texorpdfstring{fft\_init()}{fft\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structfft__config__t}{fft\+\_\+config\+\_\+t}} $\ast$ fft\+\_\+init (\begin{DoxyParamCaption}\item[{int}]{size,  }\item[{\mbox{\hyperlink{fft_8h_a2f03b0c86da045ed0aa03c83e2bb90e3}{fft\+\_\+type\+\_\+t}}}]{type,  }\item[{\mbox{\hyperlink{fft_8h_a7400df7c8f32ea8e6b010199d1813fe5}{fft\+\_\+direction\+\_\+t}}}]{direction,  }\item[{float $\ast$}]{input,  }\item[{float $\ast$}]{output }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{fft_8c_source_l00013}{13}} of file \mbox{\hyperlink{fft_8c_source}{fft.\+c}}.
+
+\mbox{\Hypertarget{fft_8h_ab7790bb2c7fbd236af346a627c7c0ba9}\label{fft_8h_ab7790bb2c7fbd236af346a627c7c0ba9}} 
+\index{fft.h@{fft.h}!fft\_primitive@{fft\_primitive}}
+\index{fft\_primitive@{fft\_primitive}!fft.h@{fft.h}}
+\doxysubsubsection{\texorpdfstring{fft\_primitive()}{fft\_primitive()}}
+{\footnotesize\ttfamily void fft\+\_\+primitive (\begin{DoxyParamCaption}\item[{float $\ast$}]{x,  }\item[{float $\ast$}]{y,  }\item[{int}]{n,  }\item[{int}]{stride,  }\item[{float $\ast$}]{twiddle\+\_\+factors,  }\item[{int}]{tw\+\_\+stride }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{fft_8c_source_l00237}{237}} of file \mbox{\hyperlink{fft_8c_source}{fft.\+c}}.
+
+\mbox{\Hypertarget{fft_8h_a77e61a567a4628991819bbd4230b561f}\label{fft_8h_a77e61a567a4628991819bbd4230b561f}} 
+\index{fft.h@{fft.h}!ifft@{ifft}}
+\index{ifft@{ifft}!fft.h@{fft.h}}
+\doxysubsubsection{\texorpdfstring{ifft()}{ifft()}}
+{\footnotesize\ttfamily void ifft (\begin{DoxyParamCaption}\item[{float $\ast$}]{input,  }\item[{float $\ast$}]{output,  }\item[{float $\ast$}]{twiddle\+\_\+factors,  }\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{fft_8c_source_l00129}{129}} of file \mbox{\hyperlink{fft_8c_source}{fft.\+c}}.
+
+\mbox{\Hypertarget{fft_8h_af0de060a6248093afe01317a1684e734}\label{fft_8h_af0de060a6248093afe01317a1684e734}} 
+\index{fft.h@{fft.h}!ifft\_primitive@{ifft\_primitive}}
+\index{ifft\_primitive@{ifft\_primitive}!fft.h@{fft.h}}
+\doxysubsubsection{\texorpdfstring{ifft\_primitive()}{ifft\_primitive()}}
+{\footnotesize\ttfamily void ifft\+\_\+primitive (\begin{DoxyParamCaption}\item[{float $\ast$}]{input,  }\item[{float $\ast$}]{output,  }\item[{int}]{n,  }\item[{int}]{stride,  }\item[{float $\ast$}]{twiddle\+\_\+factors,  }\item[{int}]{tw\+\_\+stride }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{fft_8c_source_l00464}{464}} of file \mbox{\hyperlink{fft_8c_source}{fft.\+c}}.
+
+\mbox{\Hypertarget{fft_8h_a9d0c64b4392dd56fee766d29f01edccb}\label{fft_8h_a9d0c64b4392dd56fee766d29f01edccb}} 
+\index{fft.h@{fft.h}!irfft@{irfft}}
+\index{irfft@{irfft}!fft.h@{fft.h}}
+\doxysubsubsection{\texorpdfstring{irfft()}{irfft()}}
+{\footnotesize\ttfamily void irfft (\begin{DoxyParamCaption}\item[{float $\ast$}]{x,  }\item[{float $\ast$}]{y,  }\item[{float $\ast$}]{twiddle\+\_\+factors,  }\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{fft_8c_source_l00197}{197}} of file \mbox{\hyperlink{fft_8c_source}{fft.\+c}}.
+
+\mbox{\Hypertarget{fft_8h_a015dbb99fdfd93f586de17ddb23858ca}\label{fft_8h_a015dbb99fdfd93f586de17ddb23858ca}} 
+\index{fft.h@{fft.h}!rfft@{rfft}}
+\index{rfft@{rfft}!fft.h@{fft.h}}
+\doxysubsubsection{\texorpdfstring{rfft()}{rfft()}}
+{\footnotesize\ttfamily void rfft (\begin{DoxyParamCaption}\item[{float $\ast$}]{x,  }\item[{float $\ast$}]{y,  }\item[{float $\ast$}]{twiddle\+\_\+factors,  }\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{fft_8c_source_l00149}{149}} of file \mbox{\hyperlink{fft_8c_source}{fft.\+c}}.
+
+\mbox{\Hypertarget{fft_8h_a9dc6fcc26d03fd8439ca431177a231cd}\label{fft_8h_a9dc6fcc26d03fd8439ca431177a231cd}} 
+\index{fft.h@{fft.h}!split\_radix\_fft@{split\_radix\_fft}}
+\index{split\_radix\_fft@{split\_radix\_fft}!fft.h@{fft.h}}
+\doxysubsubsection{\texorpdfstring{split\_radix\_fft()}{split\_radix\_fft()}}
+{\footnotesize\ttfamily void split\+\_\+radix\+\_\+fft (\begin{DoxyParamCaption}\item[{float $\ast$}]{x,  }\item[{float $\ast$}]{y,  }\item[{int}]{n,  }\item[{int}]{stride,  }\item[{float $\ast$}]{twiddle\+\_\+factors,  }\item[{int}]{tw\+\_\+stride }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{fft_8c_source_l00325}{325}} of file \mbox{\hyperlink{fft_8c_source}{fft.\+c}}.
+

@@ -1,0 +1,100 @@
+\hypertarget{i2s__sampler_8h}{}\doxysection{lib/audio/i2s\+\_\+sampler.h File Reference}
+\label{i2s__sampler_8h}\index{lib/audio/i2s\_sampler.h@{lib/audio/i2s\_sampler.h}}
+
+
+I2S Sampler Driver for ESP32.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}driver/i2s.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}freertos/\+Free\+RTOS.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}freertos/task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}freertos/queue.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}freertos/timers.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}esp\+\_\+log.\+h\char`\"{}}\newline
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structi2s__sampler__t}{i2s\+\_\+sampler\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Sampler Configuration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structi2s__sampler__t}{i2s\+\_\+sampler\+\_\+t}} $\ast$ \mbox{\hyperlink{i2s__sampler_8h_a9f207e31199bd786a5c5a7b0f279c62e}{i2s\+\_\+sampler\+\_\+start}} (adc\+\_\+channel\+\_\+t adc1\+\_\+channel, Queue\+Handle\+\_\+t recv\+\_\+queue, size\+\_\+t buffer\+\_\+size, size\+\_\+t f\+\_\+sample)
+\begin{DoxyCompactList}\small\item\em Starts a sampler Task that samples from the given ADC1 Channel and sends the samples to the given Queue. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{i2s__sampler_8h_a2084807167ecf9a0ee15c945ccff4191}{i2s\+\_\+sampler\+\_\+stop}} (\mbox{\hyperlink{structi2s__sampler__t}{i2s\+\_\+sampler\+\_\+t}} $\ast$sampler)
+\begin{DoxyCompactList}\small\item\em Deletes sampler Task, frees memory and uninstalls adc as well as i2s driver. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+I2S Sampler Driver for ESP32. 
+
+\begin{DoxyAuthor}{Author}
+@s-\/grundner 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/03-\/26
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+Definition in file \mbox{\hyperlink{i2s__sampler_8h_source}{i2s\+\_\+sampler.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{i2s__sampler_8h_a9f207e31199bd786a5c5a7b0f279c62e}\label{i2s__sampler_8h_a9f207e31199bd786a5c5a7b0f279c62e}} 
+\index{i2s\_sampler.h@{i2s\_sampler.h}!i2s\_sampler\_start@{i2s\_sampler\_start}}
+\index{i2s\_sampler\_start@{i2s\_sampler\_start}!i2s\_sampler.h@{i2s\_sampler.h}}
+\doxysubsubsection{\texorpdfstring{i2s\_sampler\_start()}{i2s\_sampler\_start()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structi2s__sampler__t}{i2s\+\_\+sampler\+\_\+t}} $\ast$ i2s\+\_\+sampler\+\_\+start (\begin{DoxyParamCaption}\item[{adc\+\_\+channel\+\_\+t}]{adc1\+\_\+channel,  }\item[{Queue\+Handle\+\_\+t}]{recv\+\_\+queue,  }\item[{size\+\_\+t}]{buffer\+\_\+size,  }\item[{size\+\_\+t}]{f\+\_\+sample }\end{DoxyParamCaption})}
+
+
+
+Starts a sampler Task that samples from the given ADC1 Channel and sends the samples to the given Queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em adc1\+\_\+channel} & ADC1 Channel to use (Only ADC1 Channels are supported) \\
+\hline
+{\em recv\+\_\+queue} & Queue to send samples to \\
+\hline
+{\em buffer\+\_\+size} & Size of the buffer in samples \\
+\hline
+{\em f\+\_\+sample} & Sample rate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+i2s\+\_\+sampler\+\_\+t$\ast$ Sampler context or NULL if failed 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{i2s__sampler_8c_source_l00053}{53}} of file \mbox{\hyperlink{i2s__sampler_8c_source}{i2s\+\_\+sampler.\+c}}.
+
+\mbox{\Hypertarget{i2s__sampler_8h_a2084807167ecf9a0ee15c945ccff4191}\label{i2s__sampler_8h_a2084807167ecf9a0ee15c945ccff4191}} 
+\index{i2s\_sampler.h@{i2s\_sampler.h}!i2s\_sampler\_stop@{i2s\_sampler\_stop}}
+\index{i2s\_sampler\_stop@{i2s\_sampler\_stop}!i2s\_sampler.h@{i2s\_sampler.h}}
+\doxysubsubsection{\texorpdfstring{i2s\_sampler\_stop()}{i2s\_sampler\_stop()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t i2s\+\_\+sampler\+\_\+stop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structi2s__sampler__t}{i2s\+\_\+sampler\+\_\+t}} $\ast$}]{sampler }\end{DoxyParamCaption})}
+
+
+
+Deletes sampler Task, frees memory and uninstalls adc as well as i2s driver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sampler} & Sampler to stop \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ESP\+\_\+\+OK if successful 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{i2s__sampler_8c_source_l00092}{92}} of file \mbox{\hyperlink{i2s__sampler_8c_source}{i2s\+\_\+sampler.\+c}}.
+

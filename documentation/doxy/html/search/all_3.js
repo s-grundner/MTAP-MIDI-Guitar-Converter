@@ -1,12 +1,8 @@
 var searchData=
 [
-  ['get_5fkey_5fname_0',['get_key_name',['../scale_8h.html#abe9622ab264356cf01526b06f5da996d',1,'scale.c']]],
-  ['get_5fkey_5fnum_1',['get_key_num',['../scale_8h.html#ad264c4b750e8922861e5c3f56d67acc6',1,'scale.c']]],
-  ['get_5fmodal_5fname_2',['get_modal_name',['../scale_8h.html#a3f0fe955807ea6ce77a5d46e557c00c4',1,'scale.c']]],
-  ['get_5fpitch_5fhz_3',['get_pitch_hz',['../scale_8h.html#a7e5dced1f4ec1583890131af61b49f07',1,'scale.c']]],
-  ['gitcon_2ec_4',['gitcon.c',['../gitcon_8c.html',1,'']]],
-  ['gitcon_2eh_5',['gitcon.h',['../gitcon_8h.html',1,'']]],
-  ['gitcon_5fcontext_5ft_6',['gitcon_context_t',['../structgitcon__context__t.html',1,'']]],
-  ['gitcon_5fexit_7',['gitcon_exit',['../gitcon_8c.html#a34f972a4c96245ce63d26a5256c75e24',1,'gitcon_exit(gitcon_handle_t handle):&#160;gitcon.c'],['../gitcon_8h.html#a34f972a4c96245ce63d26a5256c75e24',1,'gitcon_exit(gitcon_handle_t handle):&#160;gitcon.c']]],
-  ['gitcon_5finit_8',['gitcon_init',['../gitcon_8h.html#a99e7f3808bee46708eb81bd55cae4a37',1,'gitcon.h']]]
+  ['direction_0',['direction',['../structfft__config__t.html#ae3ffe1db0831689395bc3e81ef5e748e',1,'fft_config_t']]],
+  ['dma_5fchan_1',['dma_chan',['../structmcp3201__config__t.html#a456684b326733e9d7a283b12f7316770',1,'mcp3201_config_t']]],
+  ['dma_5fchan_2',['DMA_CHAN',['../config_8h.html#a5c8e512df4a72e57db32aca9123c172f',1,'config.h']]],
+  ['dma_5fqueue_3',['dma_queue',['../structi2s__sampler__t.html#a01668835337313a60bcb16756c005b12',1,'i2s_sampler_t::dma_queue()'],['../structmcp3201__sampler__t.html#a01668835337313a60bcb16756c005b12',1,'mcp3201_sampler_t::dma_queue()']]],
+  ['dsp_5fqueue_4',['dsp_queue',['../structi2s__sampler__t.html#ac5aaa47703a07b7ca5bac6f7e7331b8b',1,'i2s_sampler_t::dsp_queue()'],['../structmcp3201__sampler__t.html#ac5aaa47703a07b7ca5bac6f7e7331b8b',1,'mcp3201_sampler_t::dsp_queue()']]]
 ];

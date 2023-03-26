@@ -1,5 +1,10 @@
-\hypertarget{config_8h}{}\doxysection{C\+:/\+Users/\+Smon/source/\+MTAP-\/\+MIDI-\/\+Guitar-\/\+Converter/firmware/\+MIDI-\/\+Testing/include/config.h File Reference}
-\label{config_8h}\index{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/include/config.h@{C:/Users/Smon/source/MTAP-\/MIDI-\/Guitar-\/Converter/firmware/MIDI-\/Testing/include/config.h}}
+\hypertarget{config_8h}{}\doxysection{include/config.h File Reference}
+\label{config_8h}\index{include/config.h@{include/config.h}}
+
+
+Gitcon Driver Configuration and Pin-\/\+Out File and dependencies.  
+
+
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include $<$string.\+h$>$}\newline
@@ -19,4 +24,258 @@
 {\ttfamily \#include \char`\"{}i2s\+\_\+sampler.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}mcp3201.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}midi.\+h\char`\"{}}\newline
-Include dependency graph for config.\+h\+:
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{config_8h_a7dbebab5f7dd57885adccf6711b13592}{SPI\+\_\+\+MOSI}}~(GPIO\+\_\+\+NUM\+\_\+23)
+\item 
+\#define \mbox{\hyperlink{config_8h_ab142cc77dfa97010c9d2b616d0992b64}{SPI\+\_\+\+MISO}}~(GPIO\+\_\+\+NUM\+\_\+19)
+\item 
+\#define \mbox{\hyperlink{config_8h_aefec442ab2dbec4785b387b3e88faa66}{SPI\+\_\+\+SCLK}}~(GPIO\+\_\+\+NUM\+\_\+18)
+\item 
+\#define \mbox{\hyperlink{config_8h_ade4259fa3cbb71732a4e73c18dcb9b0d}{SPI\+\_\+\+CS}}~(GPIO\+\_\+\+NUM\+\_\+5)
+\item 
+\#define \mbox{\hyperlink{config_8h_a38ce3824ec7a3243b3b966e64017d50c}{SPI\+\_\+\+DEV}}~(VSPI\+\_\+\+HOST)
+\item 
+\#define \mbox{\hyperlink{config_8h_a57e9b955863a0270f6bdf5317003d6a4}{MIDI\+\_\+\+UART}}~(UART\+\_\+\+NUM\+\_\+1)
+\item 
+\#define \mbox{\hyperlink{config_8h_a5cdf0322e10deeff92bbdf233382bca6}{MIDI\+\_\+\+BAUD}}~(115200)
+\item 
+\#define \mbox{\hyperlink{config_8h_af4773f7c0246cf1f8feea3de02c2bf86}{MIDI\+\_\+\+TX}}~(GPIO\+\_\+\+NUM\+\_\+26)
+\item 
+\#define \mbox{\hyperlink{config_8h_a3aa0cfef819ce6e845bee426c4f94431}{MIDI\+\_\+\+RX}}~(GPIO\+\_\+\+NUM\+\_\+27)
+\item 
+\#define \mbox{\hyperlink{config_8h_a5c8e512df4a72e57db32aca9123c172f}{DMA\+\_\+\+CHAN}}~1
+\item 
+\#define \mbox{\hyperlink{config_8h_aad793a45ce7e7d22d082d0a92edece6e}{ADC\+\_\+\+RES\+\_\+\+BITS}}~12
+\item 
+\#define \mbox{\hyperlink{config_8h_ab298faea909e0aa62203195aa3d6ca80}{ADC\+\_\+\+RES}}~(1 $<$$<$ \mbox{\hyperlink{config_8h_aad793a45ce7e7d22d082d0a92edece6e}{ADC\+\_\+\+RES\+\_\+\+BITS}})
+\item 
+\#define \mbox{\hyperlink{config_8h_ae28cb709c4dc3114500354fecc02ca23}{INTERNAL\+\_\+\+ADC\+\_\+\+UNIT}}~(ADC\+\_\+\+UNIT\+\_\+1)
+\item 
+\#define \mbox{\hyperlink{config_8h_a17da56be7ac4bd74a5996123898edfdb}{INTERNAL\+\_\+\+ADC\+\_\+\+CHANNEL}}~(ADC\+\_\+\+CHANNEL\+\_\+5)
+\item 
+\#define \mbox{\hyperlink{config_8h_a7c504a66f7fc0240d2b3f04cb88be20d}{INTERNAL\+\_\+\+ADC\+\_\+\+IO}}~(GPIO\+\_\+\+NUM\+\_\+33)
+\item 
+\#define \mbox{\hyperlink{config_8h_a1d48237cb63c5ae67aab6d00cc64afb6}{AUDIO\+\_\+\+BUFFER\+\_\+\+SIZE}}~512
+\item 
+\#define \mbox{\hyperlink{config_8h_a2203c75072f0cfea39f8d48f21ff097c}{F\+\_\+\+SAMPLE\+\_\+\+HZ}}~15000
+\item 
+\#define \mbox{\hyperlink{config_8h_a6fb55daf48579b8ab77d976c01ffae3a}{FFT\+\_\+\+WINDOW\+\_\+\+SIZE}}~4
+\item 
+\#define \mbox{\hyperlink{config_8h_a636ddc19af00bc87969a07c88331f105}{FFT\+\_\+\+SIZE}}~(\mbox{\hyperlink{config_8h_a1d48237cb63c5ae67aab6d00cc64afb6}{AUDIO\+\_\+\+BUFFER\+\_\+\+SIZE}} $\ast$ \mbox{\hyperlink{config_8h_a6fb55daf48579b8ab77d976c01ffae3a}{FFT\+\_\+\+WINDOW\+\_\+\+SIZE}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gitcon Driver Configuration and Pin-\/\+Out File and dependencies. 
+
+\begin{DoxyAuthor}{Author}
+@s-\/grundner 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022-\/12-\/24
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2022 
+\end{DoxyCopyright}
+
+
+Definition in file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{config_8h_ab298faea909e0aa62203195aa3d6ca80}\label{config_8h_ab298faea909e0aa62203195aa3d6ca80}} 
+\index{config.h@{config.h}!ADC\_RES@{ADC\_RES}}
+\index{ADC\_RES@{ADC\_RES}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{ADC\_RES}{ADC\_RES}}
+{\footnotesize\ttfamily \#define ADC\+\_\+\+RES~(1 $<$$<$ \mbox{\hyperlink{config_8h_aad793a45ce7e7d22d082d0a92edece6e}{ADC\+\_\+\+RES\+\_\+\+BITS}})}
+
+
+
+Definition at line \mbox{\hyperlink{config_8h_source_l00050}{50}} of file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
+
+\mbox{\Hypertarget{config_8h_aad793a45ce7e7d22d082d0a92edece6e}\label{config_8h_aad793a45ce7e7d22d082d0a92edece6e}} 
+\index{config.h@{config.h}!ADC\_RES\_BITS@{ADC\_RES\_BITS}}
+\index{ADC\_RES\_BITS@{ADC\_RES\_BITS}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{ADC\_RES\_BITS}{ADC\_RES\_BITS}}
+{\footnotesize\ttfamily \#define ADC\+\_\+\+RES\+\_\+\+BITS~12}
+
+
+
+Definition at line \mbox{\hyperlink{config_8h_source_l00049}{49}} of file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
+
+\mbox{\Hypertarget{config_8h_a1d48237cb63c5ae67aab6d00cc64afb6}\label{config_8h_a1d48237cb63c5ae67aab6d00cc64afb6}} 
+\index{config.h@{config.h}!AUDIO\_BUFFER\_SIZE@{AUDIO\_BUFFER\_SIZE}}
+\index{AUDIO\_BUFFER\_SIZE@{AUDIO\_BUFFER\_SIZE}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{AUDIO\_BUFFER\_SIZE}{AUDIO\_BUFFER\_SIZE}}
+{\footnotesize\ttfamily \#define AUDIO\+\_\+\+BUFFER\+\_\+\+SIZE~512}
+
+
+
+Definition at line \mbox{\hyperlink{config_8h_source_l00055}{55}} of file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
+
+\mbox{\Hypertarget{config_8h_a5c8e512df4a72e57db32aca9123c172f}\label{config_8h_a5c8e512df4a72e57db32aca9123c172f}} 
+\index{config.h@{config.h}!DMA\_CHAN@{DMA\_CHAN}}
+\index{DMA\_CHAN@{DMA\_CHAN}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{DMA\_CHAN}{DMA\_CHAN}}
+{\footnotesize\ttfamily \#define DMA\+\_\+\+CHAN~1}
+
+
+
+Definition at line \mbox{\hyperlink{config_8h_source_l00048}{48}} of file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
+
+\mbox{\Hypertarget{config_8h_a2203c75072f0cfea39f8d48f21ff097c}\label{config_8h_a2203c75072f0cfea39f8d48f21ff097c}} 
+\index{config.h@{config.h}!F\_SAMPLE\_HZ@{F\_SAMPLE\_HZ}}
+\index{F\_SAMPLE\_HZ@{F\_SAMPLE\_HZ}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{F\_SAMPLE\_HZ}{F\_SAMPLE\_HZ}}
+{\footnotesize\ttfamily \#define F\+\_\+\+SAMPLE\+\_\+\+HZ~15000}
+
+
+
+Definition at line \mbox{\hyperlink{config_8h_source_l00056}{56}} of file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
+
+\mbox{\Hypertarget{config_8h_a636ddc19af00bc87969a07c88331f105}\label{config_8h_a636ddc19af00bc87969a07c88331f105}} 
+\index{config.h@{config.h}!FFT\_SIZE@{FFT\_SIZE}}
+\index{FFT\_SIZE@{FFT\_SIZE}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{FFT\_SIZE}{FFT\_SIZE}}
+{\footnotesize\ttfamily \#define FFT\+\_\+\+SIZE~(\mbox{\hyperlink{config_8h_a1d48237cb63c5ae67aab6d00cc64afb6}{AUDIO\+\_\+\+BUFFER\+\_\+\+SIZE}} $\ast$ \mbox{\hyperlink{config_8h_a6fb55daf48579b8ab77d976c01ffae3a}{FFT\+\_\+\+WINDOW\+\_\+\+SIZE}})}
+
+
+
+Definition at line \mbox{\hyperlink{config_8h_source_l00058}{58}} of file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
+
+\mbox{\Hypertarget{config_8h_a6fb55daf48579b8ab77d976c01ffae3a}\label{config_8h_a6fb55daf48579b8ab77d976c01ffae3a}} 
+\index{config.h@{config.h}!FFT\_WINDOW\_SIZE@{FFT\_WINDOW\_SIZE}}
+\index{FFT\_WINDOW\_SIZE@{FFT\_WINDOW\_SIZE}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{FFT\_WINDOW\_SIZE}{FFT\_WINDOW\_SIZE}}
+{\footnotesize\ttfamily \#define FFT\+\_\+\+WINDOW\+\_\+\+SIZE~4}
+
+
+
+Definition at line \mbox{\hyperlink{config_8h_source_l00057}{57}} of file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
+
+\mbox{\Hypertarget{config_8h_a17da56be7ac4bd74a5996123898edfdb}\label{config_8h_a17da56be7ac4bd74a5996123898edfdb}} 
+\index{config.h@{config.h}!INTERNAL\_ADC\_CHANNEL@{INTERNAL\_ADC\_CHANNEL}}
+\index{INTERNAL\_ADC\_CHANNEL@{INTERNAL\_ADC\_CHANNEL}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{INTERNAL\_ADC\_CHANNEL}{INTERNAL\_ADC\_CHANNEL}}
+{\footnotesize\ttfamily \#define INTERNAL\+\_\+\+ADC\+\_\+\+CHANNEL~(ADC\+\_\+\+CHANNEL\+\_\+5)}
+
+
+
+Definition at line \mbox{\hyperlink{config_8h_source_l00052}{52}} of file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
+
+\mbox{\Hypertarget{config_8h_a7c504a66f7fc0240d2b3f04cb88be20d}\label{config_8h_a7c504a66f7fc0240d2b3f04cb88be20d}} 
+\index{config.h@{config.h}!INTERNAL\_ADC\_IO@{INTERNAL\_ADC\_IO}}
+\index{INTERNAL\_ADC\_IO@{INTERNAL\_ADC\_IO}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{INTERNAL\_ADC\_IO}{INTERNAL\_ADC\_IO}}
+{\footnotesize\ttfamily \#define INTERNAL\+\_\+\+ADC\+\_\+\+IO~(GPIO\+\_\+\+NUM\+\_\+33)}
+
+
+
+Definition at line \mbox{\hyperlink{config_8h_source_l00053}{53}} of file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
+
+\mbox{\Hypertarget{config_8h_ae28cb709c4dc3114500354fecc02ca23}\label{config_8h_ae28cb709c4dc3114500354fecc02ca23}} 
+\index{config.h@{config.h}!INTERNAL\_ADC\_UNIT@{INTERNAL\_ADC\_UNIT}}
+\index{INTERNAL\_ADC\_UNIT@{INTERNAL\_ADC\_UNIT}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{INTERNAL\_ADC\_UNIT}{INTERNAL\_ADC\_UNIT}}
+{\footnotesize\ttfamily \#define INTERNAL\+\_\+\+ADC\+\_\+\+UNIT~(ADC\+\_\+\+UNIT\+\_\+1)}
+
+
+
+Definition at line \mbox{\hyperlink{config_8h_source_l00051}{51}} of file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
+
+\mbox{\Hypertarget{config_8h_a5cdf0322e10deeff92bbdf233382bca6}\label{config_8h_a5cdf0322e10deeff92bbdf233382bca6}} 
+\index{config.h@{config.h}!MIDI\_BAUD@{MIDI\_BAUD}}
+\index{MIDI\_BAUD@{MIDI\_BAUD}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{MIDI\_BAUD}{MIDI\_BAUD}}
+{\footnotesize\ttfamily \#define MIDI\+\_\+\+BAUD~(115200)}
+
+
+
+Definition at line \mbox{\hyperlink{config_8h_source_l00044}{44}} of file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
+
+\mbox{\Hypertarget{config_8h_a3aa0cfef819ce6e845bee426c4f94431}\label{config_8h_a3aa0cfef819ce6e845bee426c4f94431}} 
+\index{config.h@{config.h}!MIDI\_RX@{MIDI\_RX}}
+\index{MIDI\_RX@{MIDI\_RX}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{MIDI\_RX}{MIDI\_RX}}
+{\footnotesize\ttfamily \#define MIDI\+\_\+\+RX~(GPIO\+\_\+\+NUM\+\_\+27)}
+
+
+
+Definition at line \mbox{\hyperlink{config_8h_source_l00046}{46}} of file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
+
+\mbox{\Hypertarget{config_8h_af4773f7c0246cf1f8feea3de02c2bf86}\label{config_8h_af4773f7c0246cf1f8feea3de02c2bf86}} 
+\index{config.h@{config.h}!MIDI\_TX@{MIDI\_TX}}
+\index{MIDI\_TX@{MIDI\_TX}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{MIDI\_TX}{MIDI\_TX}}
+{\footnotesize\ttfamily \#define MIDI\+\_\+\+TX~(GPIO\+\_\+\+NUM\+\_\+26)}
+
+
+
+Definition at line \mbox{\hyperlink{config_8h_source_l00045}{45}} of file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
+
+\mbox{\Hypertarget{config_8h_a57e9b955863a0270f6bdf5317003d6a4}\label{config_8h_a57e9b955863a0270f6bdf5317003d6a4}} 
+\index{config.h@{config.h}!MIDI\_UART@{MIDI\_UART}}
+\index{MIDI\_UART@{MIDI\_UART}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{MIDI\_UART}{MIDI\_UART}}
+{\footnotesize\ttfamily \#define MIDI\+\_\+\+UART~(UART\+\_\+\+NUM\+\_\+1)}
+
+
+
+Definition at line \mbox{\hyperlink{config_8h_source_l00043}{43}} of file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
+
+\mbox{\Hypertarget{config_8h_ade4259fa3cbb71732a4e73c18dcb9b0d}\label{config_8h_ade4259fa3cbb71732a4e73c18dcb9b0d}} 
+\index{config.h@{config.h}!SPI\_CS@{SPI\_CS}}
+\index{SPI\_CS@{SPI\_CS}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{SPI\_CS}{SPI\_CS}}
+{\footnotesize\ttfamily \#define SPI\+\_\+\+CS~(GPIO\+\_\+\+NUM\+\_\+5)}
+
+
+
+Definition at line \mbox{\hyperlink{config_8h_source_l00040}{40}} of file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
+
+\mbox{\Hypertarget{config_8h_a38ce3824ec7a3243b3b966e64017d50c}\label{config_8h_a38ce3824ec7a3243b3b966e64017d50c}} 
+\index{config.h@{config.h}!SPI\_DEV@{SPI\_DEV}}
+\index{SPI\_DEV@{SPI\_DEV}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{SPI\_DEV}{SPI\_DEV}}
+{\footnotesize\ttfamily \#define SPI\+\_\+\+DEV~(VSPI\+\_\+\+HOST)}
+
+
+
+Definition at line \mbox{\hyperlink{config_8h_source_l00041}{41}} of file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
+
+\mbox{\Hypertarget{config_8h_ab142cc77dfa97010c9d2b616d0992b64}\label{config_8h_ab142cc77dfa97010c9d2b616d0992b64}} 
+\index{config.h@{config.h}!SPI\_MISO@{SPI\_MISO}}
+\index{SPI\_MISO@{SPI\_MISO}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{SPI\_MISO}{SPI\_MISO}}
+{\footnotesize\ttfamily \#define SPI\+\_\+\+MISO~(GPIO\+\_\+\+NUM\+\_\+19)}
+
+
+
+Definition at line \mbox{\hyperlink{config_8h_source_l00038}{38}} of file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
+
+\mbox{\Hypertarget{config_8h_a7dbebab5f7dd57885adccf6711b13592}\label{config_8h_a7dbebab5f7dd57885adccf6711b13592}} 
+\index{config.h@{config.h}!SPI\_MOSI@{SPI\_MOSI}}
+\index{SPI\_MOSI@{SPI\_MOSI}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{SPI\_MOSI}{SPI\_MOSI}}
+{\footnotesize\ttfamily \#define SPI\+\_\+\+MOSI~(GPIO\+\_\+\+NUM\+\_\+23)}
+
+
+
+Definition at line \mbox{\hyperlink{config_8h_source_l00037}{37}} of file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
+
+\mbox{\Hypertarget{config_8h_aefec442ab2dbec4785b387b3e88faa66}\label{config_8h_aefec442ab2dbec4785b387b3e88faa66}} 
+\index{config.h@{config.h}!SPI\_SCLK@{SPI\_SCLK}}
+\index{SPI\_SCLK@{SPI\_SCLK}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{SPI\_SCLK}{SPI\_SCLK}}
+{\footnotesize\ttfamily \#define SPI\+\_\+\+SCLK~(GPIO\+\_\+\+NUM\+\_\+18)}
+
+
+
+Definition at line \mbox{\hyperlink{config_8h_source_l00039}{39}} of file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
+

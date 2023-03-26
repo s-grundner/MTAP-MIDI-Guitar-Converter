@@ -1,0 +1,82 @@
+\hypertarget{midi__utils_8c_source}{}\doxysection{midi\+\_\+utils.\+c}
+\label{midi__utils_8c_source}\index{lib/midi/midi\_utils.c@{lib/midi/midi\_utils.c}}
+\mbox{\hyperlink{midi__utils_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00011}00011 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{midi_8h}{midi.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00013}00013 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00014}00014 \textcolor{comment}{// MIDI UTILS}}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00015}00015 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00017}\mbox{\hyperlink{midi_8h_a5420c8cf31003518e18002e256fb6efb}{00017}} \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} \mbox{\hyperlink{midi__utils_8c_a5420c8cf31003518e18002e256fb6efb}{note\_off}}(uint8\_t channel, uint8\_t key\_num, uint8\_t velocity)}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00018}00018 \{}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00019}00019     \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} msg = \{}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00020}00020         .\mbox{\hyperlink{structmidi__message__t_aff4bb9542c2091c2a7b80c4a74df778c}{status}} = \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3a78dea1a5ae83e056e851a48a7f0c3563}{MIDI\_STATUS\_NOTE\_OFF}},}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00021}00021         .channel = channel,}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00022}00022         .param1 = key\_num,}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00023}00023         .param2 = velocity\};}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00024}00024     \textcolor{keywordflow}{return} msg;}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00025}00025 \}}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00027}\mbox{\hyperlink{midi_8h_a19ea9f06293f713229ffbf1673dfb3c5}{00027}} \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} \mbox{\hyperlink{midi__utils_8c_a19ea9f06293f713229ffbf1673dfb3c5}{note\_on}}(uint8\_t channel, uint8\_t key\_num, uint8\_t velocity)}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00028}00028 \{}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00029}00029     \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} msg = \{}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00030}00030         .\mbox{\hyperlink{structmidi__message__t_aff4bb9542c2091c2a7b80c4a74df778c}{status}} = \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3abe99811e428031d0f15688014e2cf5a8}{MIDI\_STATUS\_NOTE\_ON}},}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00031}00031         .channel = channel,}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00032}00032         .param1 = key\_num,}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00033}00033         .param2 = velocity\};}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00034}00034     \textcolor{keywordflow}{return} msg;}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00035}00035 \}}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00037}\mbox{\hyperlink{midi_8h_a84c158ecad666015c3eee20aa67a8dc2}{00037}} \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} \mbox{\hyperlink{midi__utils_8c_a84c158ecad666015c3eee20aa67a8dc2}{poly\_key\_pressure}}(uint8\_t channel, uint8\_t key\_num, uint8\_t value)}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00038}00038 \{}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00039}00039     \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} msg = \{}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00040}00040         .\mbox{\hyperlink{structmidi__message__t_aff4bb9542c2091c2a7b80c4a74df778c}{status}} = \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3aa7f1563cbb4918bb41382dc13918b033}{MIDI\_STATUS\_POLYPHONIC\_KEY\_PRESSURE}},}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00041}00041         .channel = channel,}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00042}00042         .param1 = key\_num,}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00043}00043         .param2 = value\};}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00044}00044     \textcolor{keywordflow}{return} msg;}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00045}00045 \}}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00047}\mbox{\hyperlink{midi_8h_a18d4efd2f7b7b960461a402d9c5f8535}{00047}} \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} \mbox{\hyperlink{midi__utils_8c_a18d4efd2f7b7b960461a402d9c5f8535}{ctrl\_change}}(uint8\_t channel, uint8\_t controller\_num, uint8\_t value)}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00048}00048 \{}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00049}00049     \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} msg = \{}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00050}00050         .\mbox{\hyperlink{structmidi__message__t_aff4bb9542c2091c2a7b80c4a74df778c}{status}} = \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3ac24c51550cb54517b8a4d43ae7ad9ecd}{MIDI\_STATUS\_CONTROL\_CHANGE}},}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00051}00051         .channel = channel,}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00052}00052         .param1 = controller\_num,}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00053}00053         .param2 = value\};}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00054}00054     \textcolor{keywordflow}{return} msg;}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00055}00055 \}}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00057}\mbox{\hyperlink{midi_8h_a74a04b0fd0b0f0ad4b05ee2cdce13f8f}{00057}} \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} \mbox{\hyperlink{midi__utils_8c_a74a04b0fd0b0f0ad4b05ee2cdce13f8f}{prg\_change}}(uint8\_t channel, uint8\_t program)}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00058}00058 \{}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00059}00059     \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} msg = \{}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00060}00060         .\mbox{\hyperlink{structmidi__message__t_aff4bb9542c2091c2a7b80c4a74df778c}{status}} = \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3a8907e3e0d6d7aaae3a03020e319025a3}{MIDI\_STATUS\_PROGRAM\_CHANGE}},}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00061}00061         .channel = channel,}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00062}00062         .param1 = program,}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00063}00063         .param2 = 0\};}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00064}00064     \textcolor{keywordflow}{return} msg;}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00065}00065 \}}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00066}00066 }
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00067}\mbox{\hyperlink{midi_8h_a65c6c5647ad8c4acb13b5c17acd04b54}{00067}} \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} \mbox{\hyperlink{midi__utils_8c_a65c6c5647ad8c4acb13b5c17acd04b54}{channel\_pressure}}(uint8\_t channel, uint8\_t value)}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00068}00068 \{}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00069}00069     \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} msg = \{}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00070}00070         .\mbox{\hyperlink{structmidi__message__t_aff4bb9542c2091c2a7b80c4a74df778c}{status}} = \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3a878bb42c1eab07194bfa44a5e773aef0}{MIDI\_STATUS\_CHANNEL\_PRESSURE}},}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00071}00071         .channel = channel,}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00072}00072         .param1 = value,}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00073}00073         .param2 = 0\};}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00074}00074     \textcolor{keywordflow}{return} msg;}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00075}00075 \}}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00077}\mbox{\hyperlink{midi_8h_afc61f6a3b91a428edc2b1b0962573176}{00077}} \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} \mbox{\hyperlink{midi__utils_8c_afc61f6a3b91a428edc2b1b0962573176}{pitch\_bend}}(uint8\_t channel, uint16\_t value)}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00078}00078 \{}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00079}00079     \mbox{\hyperlink{structmidi__message__t}{midi\_message\_t}} msg = \{}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00080}00080         .\mbox{\hyperlink{structmidi__message__t_aff4bb9542c2091c2a7b80c4a74df778c}{status}} = \mbox{\hyperlink{midi_8h_a37a498aac35ac1332061a8b453ec7ae3a1f64d20cde10447a140d9f080c58e274}{MIDI\_STATUS\_PITCH\_BEND}},}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00081}00081         .channel = channel,}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00082}00082         .param1 = value \& 0x7F,}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00083}00083         .param2 = (value >> 7) \& 0x7F\};}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00084}00084     \textcolor{keywordflow}{return} msg;}
+\DoxyCodeLine{\Hypertarget{midi__utils_8c_source_l00085}00085 \}}
+
+\end{DoxyCode}

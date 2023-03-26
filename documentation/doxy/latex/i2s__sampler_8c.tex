@@ -1,0 +1,131 @@
+\hypertarget{i2s__sampler_8c}{}\doxysection{lib/audio/i2s\+\_\+sampler.c File Reference}
+\label{i2s__sampler_8c}\index{lib/audio/i2s\_sampler.c@{lib/audio/i2s\_sampler.c}}
+
+
+I2S Sampler Driver Source for ESP32.  
+
+
+{\ttfamily \#include \char`\"{}i2s\+\_\+sampler.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{i2s__sampler_8c_aefeb1c9d5a6dbed18eb5ee26e1256870}{RESAMPLE\+\_\+\+DENOMINATOR}}~2
+\item 
+\#define \mbox{\hyperlink{i2s__sampler_8c_a4f85605dc744cf7ad2f8283b2af38f3f}{READER\+\_\+\+TIMEOUT\+\_\+\+MS}}~10
+\item 
+\#define \mbox{\hyperlink{i2s__sampler_8c_a89218c3a1a1e133c6bee85aa1d79acae}{READER\+\_\+\+TIMEOUT\+\_\+\+TICKS}}~(\mbox{\hyperlink{i2s__sampler_8c_a4f85605dc744cf7ad2f8283b2af38f3f}{READER\+\_\+\+TIMEOUT\+\_\+\+MS}} / port\+TICK\+\_\+\+PERIOD\+\_\+\+MS)
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structi2s__sampler__t}{i2s\+\_\+sampler\+\_\+t}} $\ast$ \mbox{\hyperlink{i2s__sampler_8c_a4cea4daf97a0f289cd8c5f3ae3a86fa3}{i2s\+\_\+sampler\+\_\+start}} (adc\+\_\+channel\+\_\+t adc1\+\_\+channel, Queue\+Handle\+\_\+t recv\+\_\+queue, const size\+\_\+t buffer\+\_\+size, const size\+\_\+t f\+\_\+sample)
+\begin{DoxyCompactList}\small\item\em Starts a sampler Task that samples from the given ADC1 Channel and sends the samples to the given Queue. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{i2s__sampler_8c_a2084807167ecf9a0ee15c945ccff4191}{i2s\+\_\+sampler\+\_\+stop}} (\mbox{\hyperlink{structi2s__sampler__t}{i2s\+\_\+sampler\+\_\+t}} $\ast$sampler)
+\begin{DoxyCompactList}\small\item\em Deletes sampler Task, frees memory and uninstalls adc as well as i2s driver. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+I2S Sampler Driver Source for ESP32. 
+
+\begin{DoxyAuthor}{Author}
+@s-\/grundner 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/03-\/26
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+Definition in file \mbox{\hyperlink{i2s__sampler_8c_source}{i2s\+\_\+sampler.\+c}}.
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{i2s__sampler_8c_a4f85605dc744cf7ad2f8283b2af38f3f}\label{i2s__sampler_8c_a4f85605dc744cf7ad2f8283b2af38f3f}} 
+\index{i2s\_sampler.c@{i2s\_sampler.c}!READER\_TIMEOUT\_MS@{READER\_TIMEOUT\_MS}}
+\index{READER\_TIMEOUT\_MS@{READER\_TIMEOUT\_MS}!i2s\_sampler.c@{i2s\_sampler.c}}
+\doxysubsubsection{\texorpdfstring{READER\_TIMEOUT\_MS}{READER\_TIMEOUT\_MS}}
+{\footnotesize\ttfamily \#define READER\+\_\+\+TIMEOUT\+\_\+\+MS~10}
+
+
+
+Definition at line \mbox{\hyperlink{i2s__sampler_8c_source_l00016}{16}} of file \mbox{\hyperlink{i2s__sampler_8c_source}{i2s\+\_\+sampler.\+c}}.
+
+\mbox{\Hypertarget{i2s__sampler_8c_a89218c3a1a1e133c6bee85aa1d79acae}\label{i2s__sampler_8c_a89218c3a1a1e133c6bee85aa1d79acae}} 
+\index{i2s\_sampler.c@{i2s\_sampler.c}!READER\_TIMEOUT\_TICKS@{READER\_TIMEOUT\_TICKS}}
+\index{READER\_TIMEOUT\_TICKS@{READER\_TIMEOUT\_TICKS}!i2s\_sampler.c@{i2s\_sampler.c}}
+\doxysubsubsection{\texorpdfstring{READER\_TIMEOUT\_TICKS}{READER\_TIMEOUT\_TICKS}}
+{\footnotesize\ttfamily \#define READER\+\_\+\+TIMEOUT\+\_\+\+TICKS~(\mbox{\hyperlink{i2s__sampler_8c_a4f85605dc744cf7ad2f8283b2af38f3f}{READER\+\_\+\+TIMEOUT\+\_\+\+MS}} / port\+TICK\+\_\+\+PERIOD\+\_\+\+MS)}
+
+
+
+Definition at line \mbox{\hyperlink{i2s__sampler_8c_source_l00017}{17}} of file \mbox{\hyperlink{i2s__sampler_8c_source}{i2s\+\_\+sampler.\+c}}.
+
+\mbox{\Hypertarget{i2s__sampler_8c_aefeb1c9d5a6dbed18eb5ee26e1256870}\label{i2s__sampler_8c_aefeb1c9d5a6dbed18eb5ee26e1256870}} 
+\index{i2s\_sampler.c@{i2s\_sampler.c}!RESAMPLE\_DENOMINATOR@{RESAMPLE\_DENOMINATOR}}
+\index{RESAMPLE\_DENOMINATOR@{RESAMPLE\_DENOMINATOR}!i2s\_sampler.c@{i2s\_sampler.c}}
+\doxysubsubsection{\texorpdfstring{RESAMPLE\_DENOMINATOR}{RESAMPLE\_DENOMINATOR}}
+{\footnotesize\ttfamily \#define RESAMPLE\+\_\+\+DENOMINATOR~2}
+
+
+
+Definition at line \mbox{\hyperlink{i2s__sampler_8c_source_l00015}{15}} of file \mbox{\hyperlink{i2s__sampler_8c_source}{i2s\+\_\+sampler.\+c}}.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{i2s__sampler_8c_a4cea4daf97a0f289cd8c5f3ae3a86fa3}\label{i2s__sampler_8c_a4cea4daf97a0f289cd8c5f3ae3a86fa3}} 
+\index{i2s\_sampler.c@{i2s\_sampler.c}!i2s\_sampler\_start@{i2s\_sampler\_start}}
+\index{i2s\_sampler\_start@{i2s\_sampler\_start}!i2s\_sampler.c@{i2s\_sampler.c}}
+\doxysubsubsection{\texorpdfstring{i2s\_sampler\_start()}{i2s\_sampler\_start()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structi2s__sampler__t}{i2s\+\_\+sampler\+\_\+t}} $\ast$ i2s\+\_\+sampler\+\_\+start (\begin{DoxyParamCaption}\item[{adc\+\_\+channel\+\_\+t}]{adc1\+\_\+channel,  }\item[{Queue\+Handle\+\_\+t}]{recv\+\_\+queue,  }\item[{size\+\_\+t}]{buffer\+\_\+size,  }\item[{size\+\_\+t}]{f\+\_\+sample }\end{DoxyParamCaption})}
+
+
+
+Starts a sampler Task that samples from the given ADC1 Channel and sends the samples to the given Queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em adc1\+\_\+channel} & ADC1 Channel to use (Only ADC1 Channels are supported) \\
+\hline
+{\em recv\+\_\+queue} & Queue to send samples to \\
+\hline
+{\em buffer\+\_\+size} & Size of the buffer in samples \\
+\hline
+{\em f\+\_\+sample} & Sample rate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+i2s\+\_\+sampler\+\_\+t$\ast$ Sampler context or NULL if failed 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{i2s__sampler_8c_source_l00053}{53}} of file \mbox{\hyperlink{i2s__sampler_8c_source}{i2s\+\_\+sampler.\+c}}.
+
+\mbox{\Hypertarget{i2s__sampler_8c_a2084807167ecf9a0ee15c945ccff4191}\label{i2s__sampler_8c_a2084807167ecf9a0ee15c945ccff4191}} 
+\index{i2s\_sampler.c@{i2s\_sampler.c}!i2s\_sampler\_stop@{i2s\_sampler\_stop}}
+\index{i2s\_sampler\_stop@{i2s\_sampler\_stop}!i2s\_sampler.c@{i2s\_sampler.c}}
+\doxysubsubsection{\texorpdfstring{i2s\_sampler\_stop()}{i2s\_sampler\_stop()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t i2s\+\_\+sampler\+\_\+stop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structi2s__sampler__t}{i2s\+\_\+sampler\+\_\+t}} $\ast$}]{sampler }\end{DoxyParamCaption})}
+
+
+
+Deletes sampler Task, frees memory and uninstalls adc as well as i2s driver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sampler} & Sampler to stop \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ESP\+\_\+\+OK if successful 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{i2s__sampler_8c_source_l00092}{92}} of file \mbox{\hyperlink{i2s__sampler_8c_source}{i2s\+\_\+sampler.\+c}}.
+
