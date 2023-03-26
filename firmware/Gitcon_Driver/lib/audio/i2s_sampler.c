@@ -1,10 +1,20 @@
+/**
+ * @file i2s_sampler.c
+ * @author @s-grundner
+ * @brief I2S Sampler Driver Source for ESP32
+ * @version 0.1
+ * @date 2023-03-26
+ *
+ * @copyright Copyright (c) 2023
+ *
+ */
+
 #include "i2s_sampler.h"
 static const char *TAG = "I2S_SAMPLER";
 
 #define RESAMPLE_DENOMINATOR 2
 #define READER_TIMEOUT_MS 10
 #define READER_TIMEOUT_TICKS (READER_TIMEOUT_MS / portTICK_PERIOD_MS)
-
 
 static TaskHandle_t sampler_task_handle;
 
@@ -14,36 +24,35 @@ static void IRAM_ATTR sampler_task(void *arg)
 	for (;;)
 	{
 		i2s_event_t evt;
-		if (xQueueReceive(sampler->dma_queue, &evt, portMAX_DELAY) == pdTRUE)
+		if (xQueueReceive(sampler->dma_queue, &evt, portMAX_DELAY) == pdFALSE)
+			continue;
+
+		if (evt.type != I2S_EVENT_RX_DONE)
+			continue;
+
+		size_t bytes_read = 0;
+		do
 		{
-			if (evt.type == I2S_EVENT_RX_DONE)
+			// fill audio buffer
+			size_t bytes_to_read = RESAMPLE_DENOMINATOR * (sampler->buffer_size - sampler->buffer_pos);
+			void *buffer_position = (void *)(sampler->buffer + sampler->buffer_pos);
+
+			// read data from i2s
+			i2s_read(I2S_NUM_0, buffer_position, bytes_to_read, &bytes_read, READER_TIMEOUT_TICKS);
+			sampler->buffer_pos += bytes_read / RESAMPLE_DENOMINATOR;
+
+			if (sampler->buffer_pos == sampler->buffer_size)
 			{
-				size_t bytes_read = 0;
-				do
-				{
-					// fill audio buffer
-					size_t bytes_to_read = RESAMPLE_DENOMINATOR * (sampler->buffer_size - sampler->buffer_pos);
-					void *buffer_position = (void *)(sampler->buffer + sampler->buffer_pos);
-
-					// read data from i2s
-					i2s_read(I2S_NUM_0, buffer_position, bytes_to_read, &bytes_read, READER_TIMEOUT_TICKS);
-					sampler->buffer_pos += bytes_read / RESAMPLE_DENOMINATOR;
-
-					if (sampler->buffer_pos == sampler->buffer_size)
-					{
-						sampler->buffer_pos = 0;
-						xQueueSend(sampler->dsp_queue, &sampler->buffer, portMAX_DELAY);
-					}
-				} while (bytes_read > 0);
+				sampler->buffer_pos = 0;
+				xQueueSend(sampler->dsp_queue, &sampler->buffer, portMAX_DELAY);
 			}
-		}
+		} while (bytes_read > 0);
 	}
 }
 
 i2s_sampler_t *i2s_sampler_start(adc_channel_t adc1_channel, QueueHandle_t recv_queue, const size_t buffer_size, const size_t f_sample)
 {
 	ESP_LOGI(TAG, "Initializing I2S Sampler...");
-
 	QueueHandle_t dma_queue;
 
 	i2s_config_t i2s_cfg = {

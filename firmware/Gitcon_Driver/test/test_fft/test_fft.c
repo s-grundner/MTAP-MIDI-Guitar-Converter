@@ -1,11 +1,21 @@
+/**
+ * @file test_fft.c
+ * @author @s-grundner
+ * @brief Unit Test for FFT
+ * @version 0.1
+ * @date 2023-03-26
+ *
+ * @copyright Copyright (c) 2023
+ *
+ */
 #include <processed-data.h>
 #include <fft.h>
 #include <unity.h>
 
 #define AUDIO_BUFFER_SIZE 512 // Size of buffer for FFT and sampler
 #define F_SAMPLE_HZ 44100	  // Sample rate of FFT and sampler
-#define FFT_WINDOW_SIZE 2	  // Amount of buffers to take for FFT
-#define FFT_SIZE 4096		  //(AUDIO_BUFFER_SIZE * FFT_WINDOW_SIZE)  Amount of samples to take for FFT
+#define FFT_WINDOW_SIZE 2	  // Number of buffers to take for FFT
+#define FFT_SIZE 4096		  //(AUDIO_BUFFER_SIZE * FFT_WINDOW_SIZE)  Number of samples to take for FFT
 
 void setUp(void)
 {

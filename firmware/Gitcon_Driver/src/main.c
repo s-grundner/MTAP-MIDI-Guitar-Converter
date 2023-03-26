@@ -1,7 +1,7 @@
 /**
  * @file main.c
  * @author @s-grundner
- * @brief main file for gitcon project
+ * @brief Main File for Gitcon Project
  * @version 0.1
  * @date 2022-12-23
  *

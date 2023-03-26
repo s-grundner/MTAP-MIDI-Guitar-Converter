@@ -1,7 +1,7 @@
 /**
  * @file gitcon.c
  * @author @s-grundner @Laurenz03
- * @brief
+ * @brief Gitcon Driver Source
  * @version 0.1
  * @date 2022-12-23
  *
@@ -19,6 +19,18 @@ static TaskHandle_t dsp_task_handle;
 
 #define FLOAT_TO_UINT16(x) ((uint16_t)((x)*32767.0f))
 #define UINT16_TO_FLOAT(x) ((float)(x) / 32767.0f)
+#define SENSITIVITY 0.5f
+#define MIDI_LOWEST_NOTE 21
+#define MIDI_HIGHEST_NOTE 108
+#define MIDI_KEY_BOUNDARY(x) ((x) < MIDI_LOWEST_NOTE || (x) > MIDI_HIGHEST_NOTE)
+#define CONCERT_A 440.0f
+#define CONCERT_A_NOTE 69
+
+// uncomment to enable debug output for better_serial_plotter software
+// #define DEBUG_BETTER_SERIAL_PLOTTER
+
+// uncomment to enable debug output for dsp_task
+// #define DEBUG_DSP
 
 // ------------------------------------------------------------
 // static functions
@@ -30,9 +42,18 @@ static TaskHandle_t dsp_task_handle;
  */
 static void dsp_task(void *arg)
 {
-	// parameter handler
+	// gitcon driver context handler
 	gitcon_handle_t gitcon_handle = (gitcon_handle_t)arg;
+
+	// audio buffer variables
 	uint16_t *audio_buffer = NULL;
+	float *audio_buffer_float = (float *)malloc(FFT_SIZE * sizeof(float));
+	if (audio_buffer_float == NULL)
+	{
+		ESP_LOGE(TAG, "Could not allocate memory for audio_buffer_float");
+		gitcon_exit(gitcon_handle);
+		return;
+	}
 
 	// fft variables
 	float fft_buffer[FFT_SIZE];
@@ -59,91 +80,112 @@ static void dsp_task(void *arg)
 		active_notes[i].param2 = 0;
 	}
 
+	// window counter to sweep through the audio_buffer_float
+	char window_counter = 0;
+
 	for (;;)
 	{
-		/// @note velocity of the note is determined by the initial amplitude of a transient frequency
-		// ------------------------------------------------------------
-		// DSP STEPS
-		// ------------------------------------------------------------
+		// delay to avoid overflow and to allow other tasks to run
+		vTaskDelay(10 / portTICK_PERIOD_MS);
 
-		///@note 1. read ADC to DMA buffer
-		if (xQueueReceive(gitcon_handle->sampler->dsp_queue, &audio_buffer, portMAX_DELAY) == pdTRUE)
+		// get audio buffer from sampler
+		if (xQueueReceive(gitcon_handle->sampler->dsp_queue, &audio_buffer, portMAX_DELAY) == pdFALSE)
+			continue; // skip iteration if queue is empty
+
+		///@note this is where the audio buffer is available and the FFT is executed
+		///@note append the audio_buffer to audio_buffer_float
+		float *start_pos = audio_buffer_float;
+		audio_buffer_float += (AUDIO_BUFFER_SIZE * window_counter); // move pointer to the next window
+		window_counter = (window_counter + 1) % (FFT_WINDOW_SIZE);	// increment window counter
+
+		// starting in a new window and fill the buffer with the new data
+		for (int i = 0; i < AUDIO_BUFFER_SIZE; i++)
+			audio_buffer_float[i] = UINT16_TO_FLOAT(audio_buffer[i]);
+		audio_buffer_float = start_pos;
+
+#ifdef DEBUG_BETTER_SERIAL_PLOTTER
+		for (int i = 0; i < FFT_SIZE; i++)
+			printf("%f\n", audio_buffer_float[i]); // for debugging in BetterSerialPlotter
+#endif
+		///@TODO: high pass f_g ~ 30Hz
+
+		///@note analyze audio data (FFT, etc.)
+		fft_config_t *fft_plan = fft_init(FFT_SIZE, FFT_REAL, FFT_FORWARD, audio_buffer_float, fft_buffer);
+		if (fft_plan == NULL)
 		{
-			// do stuff with audio_buffer
-			// this is where the audio buffer is available and the FFT is executed
-			// convert a uint16_t array to a float array
-			float audio_buffer_float[AUDIO_BUFFER_SIZE];
-			for (int i = 0; i < AUDIO_BUFFER_SIZE; i++)
-				audio_buffer_float[i] = UINT16_TO_FLOAT(audio_buffer[i]);
-
-			///@note  2. analyze audio data (FFT, etc.)
-			fft_config_t *real_fft_plan = fft_init(FFT_SIZE, FFT_REAL, FFT_FORWARD, audio_buffer_float, fft_buffer);
-			if (real_fft_plan == NULL)
-			{
-				ESP_LOGE(TAG, "FFT plan could not be created");
-				vTaskDelay(1000 / portTICK_PERIOD_MS);
-				continue;
-			}
-			fft_execute(real_fft_plan);
-
-			for (int k = 1; k < FFT_SIZE / 2; k++)
-			{
-				///@note  3. detect fundamental frequencies and convert to note number on piano roll
-				keyNR[k] = (unsigned char)round(log2(frequency[k] / 440) * 12 + 69) % 128;
-				magnitude[k] = 2 * sqrt(pow(fft_buffer[2 * k], 2) + pow(fft_buffer[2 * k + 1], 2)) / FFT_SIZE;
-				frequency[k] = k * ratio;
-			}
-
-			float max = 0;
-			for (int i = 0; i < FFT_SIZE / 2; i++)
-				max = (magnitude[i] > max) ? magnitude[i] : max;
-
-			if (max < 0.0005)
-				max = 100;
-
-			for (int k = 1; k < FFT_SIZE / 2; k++)
-			{
-				///@note  4. check if fundamental frequencies are above a certain threshold
-				///@note  4.1 save note on transient
-				///@note  5. check if already on notes are below a certain threshold and delete saved note
-
-				if (magnitude[k] < max * 0.5)
-				{
-					active_notes[keyNR[k]].status = MIDI_STATUS_NOTE_OFF;
-					continue;
-				}
-				active_notes[keyNR[k]].status = MIDI_STATUS_NOTE_ON;
-				active_notes[keyNR[k]].param2 = (uint8_t)(magnitude[k] / max * 127);
-			}
-			///@note  6. send saved notes to MIDI queue
-			xQueueSend(gitcon_handle->midi_queue, &active_notes, portMAX_DELAY);
-			fft_destroy(real_fft_plan);
+			ESP_LOGE(TAG, "FFT plan could not be created");
+			vTaskDelay(1000 / portTICK_PERIOD_MS);
+			continue;
 		}
-		vTaskDelay(100 / portTICK_PERIOD_MS);
+		fft_execute(fft_plan);
+
+		bool invalid_key = false; // invalid key flag
+		for (int k = 1; k < FFT_SIZE / 2; k++)
+		{
+			// detect fundamental frequencies
+			frequency[k] = k * ratio;
+			// convert to note number on piano roll
+			keyNR[k] = (unsigned char)round(log2(frequency[k] / CONCERT_A) * 12 + CONCERT_A_NOTE) % 128;
+			// calculate magnitude (absolute value of complex number)
+			magnitude[k] = 2 * sqrt(pow(fft_buffer[2 * k], 2) + pow(fft_buffer[2 * k + 1], 2)) / FFT_SIZE;
+		}
+
+		// calculate max magnitude for thresholding
+		float max = 0;
+		for (int i = 0; i < FFT_SIZE / 2; i++)
+			max = (magnitude[i] > max) ? magnitude[i] : max;
+
+		///@note if average is too small (noise or no audio), set it to a high value
+		///@note this is to avoid the thresholding to be too sensitive
+		/// TODO: find a better way to do this
+		if (max < 0.0005)
+			max = 100;
+
+		// check if magnitudes pass a certain threshold
+		for (int k = 1; k < FFT_SIZE / 2; k++)
+		{
+			// switch off notes that are not active
+			if ((magnitude[k] < max * SENSITIVITY) || MIDI_KEY_BOUNDARY(keyNR[k]))
+			{
+				active_notes[keyNR[k]].status = MIDI_STATUS_NOTE_OFF;
+				continue; // skip to next iteration threshold is not passed
+			}
+#ifdef DEBUG_DSP
+			ESP_LOGI(TAG, "keyNR: %d, magnitude: %f, frequency: %f", keyNR[k], magnitude[k], frequency[k]);
+#endif
+			active_notes[keyNR[k]].status = MIDI_STATUS_NOTE_ON;
+			active_notes[keyNR[k]].param2 = (uint8_t)(magnitude[k] / max * 127);
+		}
+		// send saved notes to MIDI queue
+		xQueueSend(gitcon_handle->midi_queue, &active_notes, portMAX_DELAY);
+		fft_destroy(fft_plan);
 	} // for(;;)
 } // dsp_task
 
 static void midi_task(void *arg)
 {
+	// gitcon driver context handler
 	gitcon_handle_t gitcon_handle = (gitcon_handle_t)arg;
 	midi_message_t *active_notes = NULL;
 	midi_status_t previous_states[128] = {0};
-
 	for (;;)
 	{
-		if (xQueueReceive(gitcon_handle->midi_queue, &active_notes, portMAX_DELAY) == pdTRUE)
-		{
-			for (size_t i = 0; i < 128; i++)
-			{
-				if (active_notes[i].status == previous_states[i])
-					continue;
-
-				// send message to MIDI UART
-				ESP_ERROR_CHECK(midi_write(gitcon_handle->midi_handle, &active_notes[i]));
-				previous_states[i] = active_notes[i].status;
-			}
-		}
+		///@note delay to avoid a watchdog timeout
 		vTaskDelay(10 / portTICK_PERIOD_MS);
+
+		if (xQueueReceive(gitcon_handle->midi_queue, &active_notes, portMAX_DELAY) == pdFALSE)
+			continue; // skip iteration if queue is empty
+
+		///@note active_notes is a pointer to an array of MIDI messages and should not be NULL
+		// send MIDI messages to UART
+		for (size_t i = 0; i < 128; i++)
+		{
+			if (active_notes[i].status == previous_states[i])
+				continue; // continue if note has not changed
+			// send message to MIDI UART
+			ESP_ERROR_CHECK(midi_write(gitcon_handle->midi_handle, &active_notes[i]));
+			previous_states[i] = active_notes[i].status;
+		}
 	} // for(;;)
 } // midi_task
 
@@ -157,7 +199,7 @@ esp_err_t gitcon_init(gitcon_context_t **out_handle)
 	if (!gitcon_cfg)
 		return ESP_ERR_NO_MEM;
 
-	// creat queue for audio data (passed into sampler)
+	// create queue for audio data (passed into sampler)
 	QueueHandle_t dsp_queue = xQueueCreate(10, sizeof(size_t *));
 
 	// create queue for midi messages
@@ -213,11 +255,11 @@ esp_err_t gitcon_init(gitcon_context_t **out_handle)
 	// ------------------------------------------------------------
 
 	ESP_LOGI(TAG, "Creating RTOS tasks...");
-	// DSP task: receives audio data from DMA task and sends midi messages to midi task
+	///@note DSP task: receives audio data from DMA task and sends audio data to MIDI task
 	if (xTaskCreatePinnedToCore(dsp_task, "dsp_task", 1 << 16, gitcon_cfg, 5, &dsp_task_handle, 1) == pdFALSE)
 		return ESP_ERR_NO_MEM;
 
-	// MIDI task: receives midi messages from DSP task and sends them to MIDI UART
+	///@note MIDI task: receives midi messages from DSP task and sends them to MIDI UART
 	if (xTaskCreatePinnedToCore(midi_task, "midi_task", 2048, gitcon_cfg, 5, &midi_task_handle, 0) == pdFALSE)
 		return ESP_ERR_NO_MEM;
 

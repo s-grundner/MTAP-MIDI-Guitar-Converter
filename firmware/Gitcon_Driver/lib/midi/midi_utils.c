@@ -1,3 +1,13 @@
+/**
+ * @file midi_utils.c
+ * @author @s-grundner
+ * @brief MIDI Message Utilities
+ * @version 0.1
+ * @date 2023-03-26
+ *
+ * @copyright Copyright (c) 2023
+ *
+ */
 #include "midi.h"
 
 // ------------------------------------------------------------
