@@ -1,3 +1,13 @@
+/**
+ * @file mcp3201_sampler.c
+ * @author @s-grundner
+ * @brief MCP3201 Sampler
+ * @version 0.1
+ * @date 2023-03-26
+ *
+ * @copyright Copyright (c) 2023
+ *
+ */
 #include "mcp3201.h"
 
 #define RESAMPLE_DENOMINATOR 2

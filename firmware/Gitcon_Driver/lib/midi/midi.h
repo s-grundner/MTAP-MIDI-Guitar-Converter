@@ -1,7 +1,7 @@
 /**
  * @file midi.h
  * @author @s-grundner
- * @brief midi uart driver for esp32
+ * @brief MIDI UART Driver for ESP32
  * @version 0.1
  * @date 2022-12-23
  *

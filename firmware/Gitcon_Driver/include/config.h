@@ -1,7 +1,7 @@
 /**
  * @file config.h
  * @author @s-grundner
- * @brief
+ * @brief Gitcon Driver Configuration and Pin-Out File and dependencies
  * @version 0.1
  * @date 2022-12-24
  *
@@ -54,8 +54,8 @@
 
 #define AUDIO_BUFFER_SIZE 512						   // Size of buffer for FFT and sampler
 #define F_SAMPLE_HZ 15000							   // Sample rate of FFT and sampler
-#define FFT_WINDOW_SIZE 4							   // Amount of buffers to take for FFT
-#define FFT_SIZE (AUDIO_BUFFER_SIZE * FFT_WINDOW_SIZE) // Amount of samples to take for FFT
+#define FFT_WINDOW_SIZE 4							   // Number of buffers to take for FFT
+#define FFT_SIZE (AUDIO_BUFFER_SIZE * FFT_WINDOW_SIZE) // Number of samples to take for FFT
 
 // leave this commented out to use internal ADC
 // #define USE_MCP3201

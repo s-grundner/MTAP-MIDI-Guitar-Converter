@@ -1,3 +1,14 @@
+/**
+ * @file test_midi.c
+ * @author @s-grundner
+ * @brief Unit Tests for MIDI Driver
+ * @version 0.1
+ * @date 2023-03-26
+ *
+ * @copyright Copyright (c) 2023
+ *
+ */
+
 #include <midi.h>
 #include <unity.h>
 

@@ -1,3 +1,13 @@
+/**
+ * @file i2s_sampler.h
+ * @author @s-grundner
+ * @brief I2S Sampler Driver for ESP32
+ * @version 0.1
+ * @date 2023-03-26
+ *
+ * @copyright Copyright (c) 2023
+ *
+ */
 #ifndef SAMPLING_H
 #define SAMPLING_H
 

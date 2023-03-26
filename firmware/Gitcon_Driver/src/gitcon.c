@@ -1,7 +1,7 @@
 /**
  * @file gitcon.c
  * @author @s-grundner @Laurenz03
- * @brief
+ * @brief Gitcon Driver Source
  * @version 0.1
  * @date 2022-12-23
  *
@@ -23,8 +23,13 @@ static TaskHandle_t dsp_task_handle;
 #define MIDI_LOWEST_NOTE 21
 #define MIDI_HIGHEST_NOTE 108
 #define MIDI_KEY_BOUNDARY(x) ((x) < MIDI_LOWEST_NOTE || (x) > MIDI_HIGHEST_NOTE)
+#define CONCERT_A 440.0f
+#define CONCERT_A_NOTE 69
 
+// uncomment to enable debug output for better_serial_plotter software
 // #define DEBUG_BETTER_SERIAL_PLOTTER
+
+// uncomment to enable debug output for dsp_task
 // #define DEBUG_DSP
 
 // ------------------------------------------------------------
@@ -37,8 +42,10 @@ static TaskHandle_t dsp_task_handle;
  */
 static void dsp_task(void *arg)
 {
-	// parameter handler
+	// gitcon driver context handler
 	gitcon_handle_t gitcon_handle = (gitcon_handle_t)arg;
+
+	// audio buffer variables
 	uint16_t *audio_buffer = NULL;
 	float *audio_buffer_float = (float *)malloc(FFT_SIZE * sizeof(float));
 	if (audio_buffer_float == NULL)
@@ -64,6 +71,7 @@ static void dsp_task(void *arg)
 		return;
 	}
 
+	// initialize active_notes
 	for (int i = 0; i < 128; i++)
 	{
 		active_notes[i].channel = 0;
@@ -72,24 +80,19 @@ static void dsp_task(void *arg)
 		active_notes[i].param2 = 0;
 	}
 
+	// window counter to sweep through the audio_buffer_float
 	char window_counter = 0;
 
 	for (;;)
 	{
+		// delay to avoid overflow and to allow other tasks to run
 		vTaskDelay(10 / portTICK_PERIOD_MS);
 
-		/// @note velocity of the note is determined by the initial amplitude of a transient frequency
-		// ------------------------------------------------------------
-		// DSP STEPS
-		// ------------------------------------------------------------
-
-		///@note 1. read ADC to DMA buffer
+		// get audio buffer from sampler
 		if (xQueueReceive(gitcon_handle->sampler->dsp_queue, &audio_buffer, portMAX_DELAY) == pdFALSE)
-			continue;
+			continue; // skip iteration if queue is empty
 
-		// do stuff with audio_buffer
-		// this is where the audio buffer is available and the FFT is executed
-
+		///@note this is where the audio buffer is available and the FFT is executed
 		///@note append the audio_buffer to audio_buffer_float
 		float *start_pos = audio_buffer_float;
 		audio_buffer_float += (AUDIO_BUFFER_SIZE * window_counter); // move pointer to the next window
@@ -106,31 +109,25 @@ static void dsp_task(void *arg)
 #endif
 		///@TODO: high pass f_g ~ 30Hz
 
-		///@note 2. analyze audio data (FFT, etc.)
-		fft_config_t *real_fft_plan = fft_init(FFT_SIZE, FFT_REAL, FFT_FORWARD, audio_buffer_float, fft_buffer);
-		if (real_fft_plan == NULL)
+		///@note analyze audio data (FFT, etc.)
+		fft_config_t *fft_plan = fft_init(FFT_SIZE, FFT_REAL, FFT_FORWARD, audio_buffer_float, fft_buffer);
+		if (fft_plan == NULL)
 		{
 			ESP_LOGE(TAG, "FFT plan could not be created");
 			vTaskDelay(1000 / portTICK_PERIOD_MS);
 			continue;
 		}
-		fft_execute(real_fft_plan);
+		fft_execute(fft_plan);
 
-		bool invalid_key = false;
+		bool invalid_key = false; // invalid key flag
 		for (int k = 1; k < FFT_SIZE / 2; k++)
 		{
-			///@note 3. detect fundamental frequencies and convert to note number on piano roll
-			keyNR[k] = (unsigned char)round(log2(frequency[k] / 440) * 12 + 69) % 128;
-			magnitude[k] = 2 * sqrt(pow(fft_buffer[2 * k], 2) + pow(fft_buffer[2 * k + 1], 2)) / FFT_SIZE;
+			// detect fundamental frequencies
 			frequency[k] = k * ratio;
-			if (MIDI_KEY_BOUNDARY(keyNR[k]))
-				invalid_key = true;
-		}
-
-		if (invalid_key) // skip iteration if the key is out of bounds
-		{
-			fft_destroy(real_fft_plan);
-			continue;
+			// convert to note number on piano roll
+			keyNR[k] = (unsigned char)round(log2(frequency[k] / CONCERT_A) * 12 + CONCERT_A_NOTE) % 128;
+			// calculate magnitude (absolute value of complex number)
+			magnitude[k] = 2 * sqrt(pow(fft_buffer[2 * k], 2) + pow(fft_buffer[2 * k + 1], 2)) / FFT_SIZE;
 		}
 
 		// calculate max magnitude for thresholding
@@ -138,55 +135,53 @@ static void dsp_task(void *arg)
 		for (int i = 0; i < FFT_SIZE / 2; i++)
 			max = (magnitude[i] > max) ? magnitude[i] : max;
 
-		// if average is too small (noise or no audio), set it to a high value
-		// this is to avoid the thresholding to be too sensitive
+		///@note if average is too small (noise or no audio), set it to a high value
+		///@note this is to avoid the thresholding to be too sensitive
 		/// TODO: find a better way to do this
 		if (max < 0.0005)
 			max = 100;
 
-		///@note 4. check if magnitudes pass a certain threshold
+		// check if magnitudes pass a certain threshold
 		for (int k = 1; k < FFT_SIZE / 2; k++)
 		{
-
-			///@note 4.1. switch off notes that are not active
-			if (magnitude[k] < max * SENSITIVITY)
+			// switch off notes that are not active
+			if ((magnitude[k] < max * SENSITIVITY) || MIDI_KEY_BOUNDARY(keyNR[k]))
 			{
 				active_notes[keyNR[k]].status = MIDI_STATUS_NOTE_OFF;
-				continue;
+				continue; // skip to next iteration threshold is not passed
 			}
 #ifdef DEBUG_DSP
 			ESP_LOGI(TAG, "keyNR: %d, magnitude: %f, frequency: %f", keyNR[k], magnitude[k], frequency[k]);
 #endif
-			///@note 4.2 active notes are turned on
 			active_notes[keyNR[k]].status = MIDI_STATUS_NOTE_ON;
-			active_notes[keyNR[k]].param1 = keyNR[k];
 			active_notes[keyNR[k]].param2 = (uint8_t)(magnitude[k] / max * 127);
 		}
-		///@note 5. send saved notes to MIDI queue
+		// send saved notes to MIDI queue
 		xQueueSend(gitcon_handle->midi_queue, &active_notes, portMAX_DELAY);
-		fft_destroy(real_fft_plan);
+		fft_destroy(fft_plan);
 	} // for(;;)
 } // dsp_task
 
 static void midi_task(void *arg)
 {
+	// gitcon driver context handler
 	gitcon_handle_t gitcon_handle = (gitcon_handle_t)arg;
 	midi_message_t *active_notes = NULL;
 	midi_status_t previous_states[128] = {0};
-
 	for (;;)
 	{
+		///@note delay to avoid a watchdog timeout
 		vTaskDelay(10 / portTICK_PERIOD_MS);
 
 		if (xQueueReceive(gitcon_handle->midi_queue, &active_notes, portMAX_DELAY) == pdFALSE)
-			continue;
+			continue; // skip iteration if queue is empty
 
+		///@note active_notes is a pointer to an array of MIDI messages and should not be NULL
+		// send MIDI messages to UART
 		for (size_t i = 0; i < 128; i++)
 		{
-			// continue if note has not changed
 			if (active_notes[i].status == previous_states[i])
-				continue;
-
+				continue; // continue if note has not changed
 			// send message to MIDI UART
 			ESP_ERROR_CHECK(midi_write(gitcon_handle->midi_handle, &active_notes[i]));
 			previous_states[i] = active_notes[i].status;

@@ -1,7 +1,7 @@
 /**
  * @file gitcon.h
  * @author @s-grundner @Laurenz03
- * @brief
+ * @brief Gitcon Driver Header
  * @version 0.1
  * @date 2022-12-23
  *
