@@ -18,6 +18,12 @@ static const char *TAG = "I2S_SAMPLER";
 
 static TaskHandle_t sampler_task_handle;
 
+/**
+ * @brief Sampler Task for I2S
+ *
+ * @param arg i2s_sampler_t*
+ * @return
+ */
 static void IRAM_ATTR sampler_task(void *arg)
 {
 	i2s_sampler_t *sampler = (i2s_sampler_t *)arg;
