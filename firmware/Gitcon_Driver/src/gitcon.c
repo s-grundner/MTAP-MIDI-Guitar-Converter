@@ -19,7 +19,7 @@ static TaskHandle_t dsp_task_handle;
 
 #define FLOAT_TO_UINT16(x) ((uint16_t)((x)*32767.0f))
 #define UINT16_TO_FLOAT(x) ((float)(x) / 32767.0f)
-#define SENSITIVITY 0.5f
+#define SENSITIVITY 0.6f
 #define MIDI_LOWEST_NOTE 21
 #define MIDI_HIGHEST_NOTE 108
 #define MIDI_KEY_BOUNDARY(x) ((x) < MIDI_LOWEST_NOTE || (x) > MIDI_HIGHEST_NOTE)
@@ -80,9 +80,6 @@ static void dsp_task(void *arg)
 		active_notes[i].param2 = 0;
 	}
 
-	// window counter to sweep through the audio_buffer_float
-	char window_counter = 0;
-
 	for (;;)
 	{
 		// delay to avoid overflow and to allow other tasks to run
@@ -94,14 +91,17 @@ static void dsp_task(void *arg)
 
 		///@note this is where the audio buffer is available and the FFT is executed
 		///@note append the audio_buffer to audio_buffer_float
-		float *start_pos = audio_buffer_float;
-		audio_buffer_float += (AUDIO_BUFFER_SIZE * window_counter); // move pointer to the next window
-		window_counter = (window_counter + 1) % (FFT_WINDOW_SIZE);	// increment window counter
+
+		for (int i = FFT_WINDOW_SIZE - 1; i > 0; i--)
+		{
+			memcpy(audio_buffer_float + (i * AUDIO_BUFFER_SIZE),
+				   audio_buffer_float + ((i - 1) * AUDIO_BUFFER_SIZE),
+				   AUDIO_BUFFER_SIZE * sizeof(float));
+		}
 
 		// starting in a new window and fill the buffer with the new data
 		for (int i = 0; i < AUDIO_BUFFER_SIZE; i++)
-			audio_buffer_float[i] = UINT16_TO_FLOAT(audio_buffer[i]);
-		audio_buffer_float = start_pos;
+			audio_buffer_float[i] = 25.0f * UINT16_TO_FLOAT(audio_buffer[AUDIO_BUFFER_SIZE - i - 1]);
 
 #ifdef DEBUG_BETTER_SERIAL_PLOTTER
 		for (int i = 0; i < FFT_SIZE; i++)
@@ -119,7 +119,6 @@ static void dsp_task(void *arg)
 		}
 		fft_execute(fft_plan);
 
-		bool invalid_key = false; // invalid key flag
 		for (int k = 1; k < FFT_SIZE / 2; k++)
 		{
 			// detect fundamental frequencies
@@ -138,7 +137,7 @@ static void dsp_task(void *arg)
 		///@note if average is too small (noise or no audio), set it to a high value
 		///@note this is to avoid the thresholding to be too sensitive
 		/// TODO: find a better way to do this
-		if (max < 0.0005)
+		if (max < 0.0125)
 			max = 100;
 
 		// check if magnitudes pass a certain threshold

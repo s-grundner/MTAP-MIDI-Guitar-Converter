@@ -74,6 +74,7 @@ i2s_sampler_t *i2s_sampler_start(adc_channel_t adc1_channel, QueueHandle_t recv_
 		.fixed_mclk = 0};
 
 	// Initialize ADC
+	adc1_config_channel_atten(adc1_channel, ADC_ATTEN_DB_0);
 	ESP_ERROR_CHECK(i2s_driver_install(I2S_NUM_0, &i2s_cfg, 4, &dma_queue));
 	ESP_ERROR_CHECK(i2s_set_adc_mode(ADC_UNIT_1, adc1_channel));
 	ESP_ERROR_CHECK(i2s_adc_enable(I2S_NUM_0));
