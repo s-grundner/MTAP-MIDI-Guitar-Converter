@@ -19,7 +19,7 @@ static TaskHandle_t dsp_task_handle;
 
 #define FLOAT_TO_UINT16(x) ((uint16_t)((x)*32767.0f))
 #define UINT16_TO_FLOAT(x) ((float)(x) / 32767.0f)
-#define SENSITIVITY 0.6f
+#define SENSITIVITY 0.9f
 #define MIDI_LOWEST_NOTE 21
 #define MIDI_HIGHEST_NOTE 108
 #define MIDI_KEY_BOUNDARY(x) ((x) < MIDI_LOWEST_NOTE || (x) > MIDI_HIGHEST_NOTE)
@@ -101,7 +101,7 @@ static void dsp_task(void *arg)
 
 		// starting in a new window and fill the buffer with the new data
 		for (int i = 0; i < AUDIO_BUFFER_SIZE; i++)
-			audio_buffer_float[i] = 25.0f * UINT16_TO_FLOAT(audio_buffer[AUDIO_BUFFER_SIZE - i - 1]);
+			audio_buffer_float[i] = 25.0f * UINT16_TO_FLOAT(audio_buffer[AUDIO_BUFFER_SIZE - 1 - i]);
 
 #ifdef DEBUG_BETTER_SERIAL_PLOTTER
 		for (int i = 0; i < FFT_SIZE; i++)
@@ -137,8 +137,8 @@ static void dsp_task(void *arg)
 		///@note if average is too small (noise or no audio), set it to a high value
 		///@note this is to avoid the thresholding to be too sensitive
 		/// TODO: find a better way to do this
-		if (max < 0.0125)
-			max = 100;
+		// if (max < 0.0125)
+		// max = 100;
 
 		// check if magnitudes pass a certain threshold
 		for (int k = 1; k < FFT_SIZE / 2; k++)
