@@ -17,7 +17,6 @@ float magnitude[NFFT / 2];
 float frequency[NFFT / 2];
 float keyNR[NFFT / 2];
 float ratio = (float)F_ABT / (float)NFFT;
-char file_buffer[NFFT];
 
 float getMaxMag();
 float max;
