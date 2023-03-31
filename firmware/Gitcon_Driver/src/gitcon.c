@@ -129,7 +129,7 @@ static void dsp_task(void *arg)
 			magnitude[k] = 2 * sqrt(pow(fft_buffer[2 * k], 2) + pow(fft_buffer[2 * k + 1], 2)) / FFT_SIZE;
 		}
 
-		// calculate max magnitude for thresholding
+		// calculate max magnitude for threshholding
 		float max = 0;
 		for (int i = 0; i < FFT_SIZE / 2; i++)
 			max = (magnitude[i] > max) ? magnitude[i] : max;
@@ -147,7 +147,8 @@ static void dsp_task(void *arg)
 			if ((magnitude[k] < max * SENSITIVITY) || MIDI_KEY_BOUNDARY(keyNR[k]))
 			{
 				active_notes[keyNR[k]].status = MIDI_STATUS_NOTE_OFF;
-				continue; // skip to next iteration threshold is not passed
+				active_notes[keyNR[k]].param2 = 0; // set velocity to 0
+				continue;						   // skip to next iteration threshold is not passed
 			}
 #ifdef DEBUG_DSP
 			ESP_LOGI(TAG, "keyNR: %d, magnitude: %f, frequency: %f", keyNR[k], magnitude[k], frequency[k]);
