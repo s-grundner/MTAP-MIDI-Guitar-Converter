@@ -137,8 +137,8 @@ static void dsp_task(void *arg)
 		///@note if average is too small (noise or no audio), set it to a high value
 		///@note this is to avoid the thresholding to be too sensitive
 		/// TODO: find a better way to do this
-		// if (max < 0.0125)
-		// max = 100;
+		if (max < 0.0125)
+		max = 100;
 
 		// check if magnitudes pass a certain threshold
 		for (int k = 1; k < FFT_SIZE / 2; k++)
