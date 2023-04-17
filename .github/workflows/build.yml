@@ -3,7 +3,7 @@ name: Assemble
 on:
   push:
     paths:
-      - "src"
+      - "firmware/Gitcon_Driver/src"
 
 jobs:
   assemble-pio-job:
