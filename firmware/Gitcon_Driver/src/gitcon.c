@@ -135,7 +135,7 @@ static void dsp_task(void *arg)
 			max = (magnitude[i] > max) ? magnitude[i] : max;
 
 		///@note if average is too small (noise or no audio), set it to a high value
-		///@note this is to avoid the thresholding to be too sensitive
+		///@note this is to avoid the threshholding to be too sensitive
 		/// TODO: find a better way to do this
 		if (max < 0.0125)
 		max = 100;
