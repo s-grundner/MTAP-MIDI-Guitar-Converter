@@ -30,7 +30,7 @@ static TaskHandle_t dsp_task_handle;
 // #define DEBUG_BETTER_SERIAL_PLOTTER
 
 // uncomment to enable debug output for dsp_task
-// #define DEBUG_DSP
+#define DEBUG_DSP
 
 // ------------------------------------------------------------
 // static functions
@@ -138,7 +138,7 @@ static void dsp_task(void *arg)
 		///@note this is to avoid the threshholding to be too sensitive
 		/// TODO: find a better way to do this
 		if (max < 0.0125)
-		max = 100;
+			max = 100;
 
 		// check if magnitudes pass a certain threshold
 		for (int k = 1; k < FFT_SIZE / 2; k++)

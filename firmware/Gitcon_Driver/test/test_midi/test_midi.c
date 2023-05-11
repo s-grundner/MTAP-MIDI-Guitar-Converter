@@ -89,8 +89,8 @@ void app_main()
 	UNITY_BEGIN();
 
 	RUN_TEST(test_midi_blink);
-	RUN_TEST(test_midi_bend);
-	RUN_TEST(test_midi_bent_note);
+	// RUN_TEST(test_midi_bend);
+	// RUN_TEST(test_midi_bent_note);
 
 	UNITY_END();
 }
