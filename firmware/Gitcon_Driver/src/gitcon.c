@@ -126,7 +126,7 @@ static void dsp_task(void *arg)
 			// convert to note number on piano roll
 			keyNR[k] = (unsigned char)round(log2(frequency[k] / CONCERT_A) * 12 + CONCERT_A_NOTE) % 128;
 			// calculate magnitude (absolute value of complex number)
-			magnitude[k] = 2 * sqrt(pow(fft_buffer[2 * k], 2) + pow(fft_buffer[2 * k + 1], 2)) / FFT_SIZE;
+			magnitude[k] = 2 * 25 * sqrt(pow(fft_buffer[2 * k], 2) + pow(fft_buffer[2 * k + 1], 2)) / FFT_SIZE;
 		}
 
 		// calculate max magnitude for threshholding
