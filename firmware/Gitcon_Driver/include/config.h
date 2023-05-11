@@ -52,9 +52,9 @@
 #define INTERNAL_ADC_CHANNEL (ADC_CHANNEL_5)
 #define INTERNAL_ADC_IO (GPIO_NUM_33)
 
-#define AUDIO_BUFFER_SIZE 512						   // Size of buffer for FFT and sampler
+#define AUDIO_BUFFER_SIZE 1024						   // Size of buffer for FFT and sampler
 #define F_SAMPLE_HZ 44100							   // Sample rate of FFT and sampler
-#define FFT_WINDOW_SIZE 8							   // Number of buffers to take for FFT
+#define FFT_WINDOW_SIZE 4							   // Number of buffers to take for FFT
 #define FFT_SIZE (AUDIO_BUFFER_SIZE * FFT_WINDOW_SIZE) // Number of samples to take for FFT
 
 // leave this commented out to use internal ADC

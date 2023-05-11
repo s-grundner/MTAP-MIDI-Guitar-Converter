@@ -25,12 +25,13 @@ static TaskHandle_t dsp_task_handle;
 #define MIDI_KEY_BOUNDARY(x) ((x) < MIDI_LOWEST_NOTE || (x) > MIDI_HIGHEST_NOTE)
 #define CONCERT_A 440.0f
 #define CONCERT_A_NOTE 69
+#define GAIN 1.0f
 
 // uncomment to enable debug output for better_serial_plotter software
 // #define DEBUG_BETTER_SERIAL_PLOTTER
 
 // uncomment to enable debug output for dsp_task
-#define DEBUG_DSP
+// #define DEBUG_DSP
 
 // ------------------------------------------------------------
 // static functions
@@ -101,7 +102,7 @@ static void dsp_task(void *arg)
 
 		// starting in a new window and fill the buffer with the new data
 		for (int i = 0; i < AUDIO_BUFFER_SIZE; i++)
-			audio_buffer_float[i] = 25.0f * UINT16_TO_FLOAT(audio_buffer[AUDIO_BUFFER_SIZE - 1 - i]);
+			audio_buffer_float[i] = GAIN * UINT16_TO_FLOAT(audio_buffer[AUDIO_BUFFER_SIZE - 1 - i]);
 
 #ifdef DEBUG_BETTER_SERIAL_PLOTTER
 		for (int i = 0; i < FFT_SIZE; i++)
@@ -126,7 +127,7 @@ static void dsp_task(void *arg)
 			// convert to note number on piano roll
 			keyNR[k] = (unsigned char)round(log2(frequency[k] / CONCERT_A) * 12 + CONCERT_A_NOTE) % 128;
 			// calculate magnitude (absolute value of complex number)
-			magnitude[k] = 2 * 25 * sqrt(pow(fft_buffer[2 * k], 2) + pow(fft_buffer[2 * k + 1], 2)) / FFT_SIZE;
+			magnitude[k] = GAIN * 2 * sqrt(pow(fft_buffer[2 * k], 2) + pow(fft_buffer[2 * k + 1], 2)) / FFT_SIZE;
 		}
 
 		// calculate max magnitude for threshholding
@@ -137,7 +138,7 @@ static void dsp_task(void *arg)
 		///@note if average is too small (noise or no audio), set it to a high value
 		///@note this is to avoid the threshholding to be too sensitive
 		/// TODO: find a better way to do this
-		if (max < 0.0125)
+		if (max < 0.0005 * GAIN)
 			max = 100;
 
 		// check if magnitudes pass a certain threshold
