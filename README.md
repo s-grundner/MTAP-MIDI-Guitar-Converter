@@ -18,23 +18,6 @@ Die Ein- und Ausgänge des Systems umfassen eine Micro-USB-Buchse und zwei Mono-
 
 Der Vorteil des MIDI-Formats ist, dass es der Standard vieler Musikproduktionsumgebungen ist. In der DAW wird das MIDI-Signal als Note auf einem Klavier interpretiert, welches dann in beliebige virtuelle Instrumente eingespeist werden kann und somit einen benutzerdefinierten Ton abspielt. Außerdem hat das Abgreifen der unveränderten Gitarrenschwingung den Zweck, dass parallel zur Analyse eine Aufnahme des Rohsignals erfolgen kann.
 
-## Projektstatus
-
-Das Projekt befindet sich derzeit in der Entwicklungsphase. Funktionalitäten sind noch in Planung.
-Planungsvorgänge können unter dem Reiter *[Projects](https://github.com/s-grundner/MTAP-MIDI-Guitar-Converter/projects?query=is%3Aopen)* eingesehen werden.
-
-- Der Schaltplan sowie die Platine sind fertig.
-- Simulationen für das Analogue-Frontend stimmen
-- Die FFT eines künstlich generierten Signals ist möglich
-- Frequenz zu Noten Konversion möglich
-- Die hardwaretechnische Realisierung des AFE Prototypen ist Vorhanden
-- Das Grundgerüst der Codebase ist ausgearbeitet
-- Die Firmware läuft bereits auf einem RTOS, in welchem die priorisierung der einzelen Tasks gehandled wird, sowie eine stabile Kommunikation zwischen den beiden Kernen am ESP32
-- Benötigte Bibliotheken sind ausprogrammiert bzw implementiert
-- (nicht kontinuierliche) FFT von Gitarrensamples sind möglich
-- kontinuierliches Sampling implementiert
-- MIDI noten werden berechnet (momentan werden auch oberwellen in MIDI umgewandelt)
-
 ### 3D Renderung der Platine
 
 ![](/documentation/images/MTAP-Embedded.gif)
