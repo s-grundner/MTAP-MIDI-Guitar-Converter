@@ -11,28 +11,28 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
+// #include <math.h>
 
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#include "freertos/queue.h"
-#include "freertos/timers.h"
+// #include "freertos/FreeRTOS.h"
+// #include "freertos/task.h"
+// #include "freertos/queue.h"
+// #include "freertos/timers.h"
 
-#include "driver/gpio.h"
-#include "driver/spi_master.h"
-#include "driver/uart.h"
-#include "driver/adc.h"
-#include "driver/i2s.h"
-#include "esp_adc_cal.h"
-#include "esp_log.h"
+// #include "driver/gpio.h"
+// #include "driver/spi_master.h"
+// #include "driver/uart.h"
+// #include "driver/adc.h"
+// #include "driver/i2s.h"
+// #include "esp_adc_cal.h"
+// #include "esp_log.h"
 
-#include "fft.h"
-#include "i2s_sampler.h"
-#include "mcp3201.h"
-#include "midi.h"
+// #include "fft.h"
+// #include "i2s_sampler.h"
+// #include "mcp3201.h"
+// #include "midi.h"
 
 #define SPI_MOSI (GPIO_NUM_23)
 #define SPI_MISO (GPIO_NUM_19)
