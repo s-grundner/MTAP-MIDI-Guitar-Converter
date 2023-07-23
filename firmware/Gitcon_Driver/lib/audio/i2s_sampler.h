@@ -52,6 +52,6 @@ i2s_sampler_t *i2s_sampler_start(adc_channel_t adc1_channel, QueueHandle_t recv_
  * @param sampler Sampler to stop
  * @return ESP_OK if successful
  */
-esp_err_t i2s_sampler_stop(i2s_sampler_t *sampler);
+void i2s_sampler_stop(i2s_sampler_t *sampler);
 
 #endif // SAMPLING_H

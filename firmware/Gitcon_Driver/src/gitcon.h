@@ -12,14 +12,13 @@
 #ifndef GITCON_H
 #define GITCON_H
 
-#include "config.h"
-#include <i2s_sampler.h>
+#include "freertos/task.h"
+#include "freertos/queue.h"
+
+#include <config.h>
 #include <midi.h>
+#include <i2s_sampler.h>
 #include <fft.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
 
 #define GITCON_LOG_LEVEL ESP_LOG_ERROR
 

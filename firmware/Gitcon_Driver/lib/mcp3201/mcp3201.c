@@ -104,19 +104,20 @@ esp_err_t mcp3201_read(mcp3201_context_t *ctx, uint16_t *out_value)
 
 esp_err_t mcp3201_exit(mcp3201_handle_t mcp_handle)
 {
-	esp_err_t err = ESP_OK;
-
-	if (mcp_handle->spi)
+	if (mcp_handle->spi != NULL)
 	{
-		err = spi_bus_remove_device(mcp_handle->spi);
-		if (err != ESP_OK)
-		{
-			ESP_LOGE(TAG, "Failed to remove device from spi bus");
-			return err;
-		}
-		mcp_handle->spi = NULL;
+		free(mcp_handle);
+		return ESP_OK;
 	}
 
+	esp_err_t err = spi_bus_remove_device(mcp_handle->spi);
+	if (err != ESP_OK)
+	{
+		ESP_LOGE(TAG, "Failed to remove device from spi bus");
+		return err;
+	}
+	mcp_handle->spi = NULL;
 	free(mcp_handle);
+
 	return err;
 }
