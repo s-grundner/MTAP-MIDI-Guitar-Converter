@@ -9,8 +9,15 @@
  *
  */
 
-#include "gitcon.h"
 #include "processed-data.h"
+#include "freertos/task.h"
+#include "freertos/queue.h"
+
+#include <gitcon.h>
+#include <config.h>
+#include <midi.h>
+#include <i2s_sampler.h>
+#include <fft.h>
 
 static const char *TAG = "gitcon";
 
@@ -27,11 +34,8 @@ static TaskHandle_t task_handle_dsp;
 #define CONCERT_A_NOTE 69
 #define GAIN 1.0f
 
-// uncomment to enable debug output for better_serial_plotter software
-// #define DEBUG_BETTER_SERIAL_PLOTTER
-
-// uncomment to enable debug output for dsp_task
-// #define DEBUG_DSP
+// #define DEBUG_BETTER_SERIAL_PLOTTER //to enable debug output for better_serial_plotter software
+// #define DEBUG_DSP //to enable debug output for dsp_task
 
 /**
  * @brief Gitcon Configuration
@@ -49,7 +53,7 @@ typedef struct gitcon_data_s
 	midi_handle_t midi_handle;
 	QueueHandle_t midi_queue;
 } gitcon_data_t;
-
+typedef struct gitcon_data_s *gitcon_handle_t;
 // ------------------------------------------------------------
 // static functions
 // ------------------------------------------------------------
@@ -242,7 +246,7 @@ esp_err_t gitcon_init(gitcon_handle_t *out_data)
 	// ------------------------------------------------------------
 	mcp3201_handle_t mcp_handle;
 	mcp3201_config_t mcp_cfg = {
-		.host = SPI_DEV,
+		.spi_host = SPI_DEV,
 		.cs_io = SPI_CS,
 		.miso_io = SPI_MISO,
 		.mosi_io = SPI_MOSI};
@@ -289,7 +293,7 @@ esp_err_t gitcon_exit(gitcon_handle_t handle)
 	// stop sampler
 #ifdef USE_MCP3201
 	mcp3201_sampler_stop(handle->sampler->mcp_handle);
-	ESP_ERROR_CHECK(mcp3201_exit(handle->sampler->mcp_handle));
+	RET_ON_ERROR(mcp3201_exit(handle->sampler->mcp_handle));
 #else
 	i2s_sampler_stop(handle->sampler);
 #endif

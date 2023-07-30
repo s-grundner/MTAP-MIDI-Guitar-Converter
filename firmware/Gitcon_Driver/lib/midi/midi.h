@@ -66,7 +66,7 @@ typedef struct
 } midi_message_t;
 
 /// @typedef *midi_handle_t MIDI Context Handler
-typedef midi_data_t *midi_handle_t;
+typedef void *midi_handle_t;
 
 /**
  * @brief initializes MIDI and allocates driver resources

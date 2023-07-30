@@ -17,12 +17,11 @@ static const char *TAG = "MIDI";
 static const char *MIDI_MON = "MIDI MONITOR";
 
 /**
- * @brief midi data
+ * @brief internal midi data
  * @struct midi_data_t
- * @param uart MIDI Config
- * @param queue MIDI Queue
+ * @struct uart uart Config
  */
-typedef struct
+typedef struct midi_data_s
 {
 	struct
 	{
@@ -32,6 +31,9 @@ typedef struct
 		gpio_num_t tx_io;
 	} uart;
 } midi_data_t;
+
+// define handle for external opaque reference
+typedef struct midi_data_s *midi_handle_t;
 
 // ------------------------------------------------------------
 // MIDI CONFIG
@@ -89,11 +91,11 @@ esp_err_t midi_init(midi_handle_t *out_data, uart_port_t uart_port_num, uint bau
 	return ESP_OK;
 }
 
-esp_err_t midi_exit(midi_handle_t midi_handle)
+esp_err_t midi_exit(midi_handle_t m_handle)
 {
 	esp_err_t err = ESP_OK;
-	err = uart_driver_delete(midi_handle->uart.uart_num);
-	free(midi_handle);
+	err = uart_driver_delete(m_handle->uart.port);
+	free(m_handle);
 	return err;
 }
 
@@ -101,7 +103,7 @@ esp_err_t midi_exit(midi_handle_t midi_handle)
 // MIDI TRANSMISSIONS
 // ------------------------------------------------------------
 
-esp_err_t midi_write(midi_handle_t handle, midi_message_t *msg)
+esp_err_t midi_write(midi_handle_t m_handle, midi_message_t *msg)
 {
 	int len = 0;
 	const char data[] = {msg->status | msg->channel, msg->param1, msg->param2};
@@ -114,11 +116,11 @@ esp_err_t midi_write(midi_handle_t handle, midi_message_t *msg)
 	case MIDI_STATUS_CONTROL_CHANGE:
 	case MIDI_STATUS_PITCH_BEND:
 	case MIDI_STATUS_POLYPHONIC_KEY_PRESSURE:
-		len = uart_write_bytes(handle->uart.uart_num, data, MIDI_BYTE_SIZE_DEFAULT);
+		len = uart_write_bytes(m_handle->uart.port, data, MIDI_BYTE_SIZE_DEFAULT);
 		break;
 	case MIDI_STATUS_PROGRAM_CHANGE:
 	case MIDI_STATUS_CHANNEL_PRESSURE:
-		len = uart_write_bytes(handle->uart.uart_num, data, MIDI_BYTE_SIZE_SHORT);
+		len = uart_write_bytes(m_handle->uart.port, data, MIDI_BYTE_SIZE_SHORT);
 		break;
 	default:
 		ESP_LOGE(TAG, "midi_send: invalid status: %02X", msg->status);
@@ -142,10 +144,10 @@ esp_err_t midi_write(midi_handle_t handle, midi_message_t *msg)
 	return ESP_OK;
 }
 
-esp_err_t midi_read(midi_handle_t midi_handle, midi_message_t *msg, TickType_t timeout)
+esp_err_t midi_read(midi_handle_t m_handle, midi_message_t *msg, TickType_t timeout)
 {
 	char data[3];
-	int len = uart_read_bytes(midi_handle->uart.uart_num, (uint8_t *)data, 3, timeout);
+	int len = uart_read_bytes(m_handle->uart.port, (uint8_t *)data, 3, timeout);
 	switch (len)
 	{
 	case -1:

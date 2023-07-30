@@ -12,18 +12,10 @@
 #ifndef GITCON_H
 #define GITCON_H
 
-#include "freertos/task.h"
-#include "freertos/queue.h"
-
-#include <config.h>
-#include <midi.h>
-#include <i2s_sampler.h>
-#include <fft.h>
-
 #define GITCON_LOG_LEVEL ESP_LOG_ERROR
 
-/// @typedef gitcon_context *gitcon_handle_t Opaque Pointer to Gitcon Data
-typedef struct gitcon_data_s *gitcon_handle_t;
+// handle for external opaque reference
+typedef void *gitcon_handle_t;
 
 /**
  * @brief initializes gitcon device and installs peripheral drivers
