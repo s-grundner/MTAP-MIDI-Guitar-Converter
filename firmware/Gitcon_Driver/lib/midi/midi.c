@@ -17,41 +17,53 @@ static const char *TAG = "MIDI";
 static const char *MIDI_MON = "MIDI MONITOR";
 
 /**
- * @brief MIDI Context (internal! not to be accessed externally, use midi_handle_t instead)
- * @struct midi_context_t
- * @param cfg MIDI Config
+ * @brief midi data
+ * @struct midi_data_t
+ * @param uart MIDI Config
+ * @param queue MIDI Queue
  */
-typedef struct midi_context_t
+typedef struct
 {
-	midi_config_t cfg;
-} midi_context_t;
+	struct
+	{
+		uart_port_t port;
+		uint baudrate;
+		gpio_num_t rx_io;
+		gpio_num_t tx_io;
+	} uart;
+} midi_data_t;
 
 // ------------------------------------------------------------
 // MIDI CONFIG
 // ------------------------------------------------------------
 
-esp_err_t midi_init(midi_context_t **out_ctx, midi_config_t *out_cfg)
+esp_err_t midi_init(midi_handle_t *out_data, uart_port_t uart_port_num, uint baudrate, gpio_num_t rx_io, gpio_num_t tx_io)
 {
 	// Allocate memory for context
-	midi_context_t *ctx = (midi_context_t *)malloc(sizeof(midi_context_t));
-	if (!ctx)
+	midi_data_t *data = (midi_data_t *)malloc(sizeof(midi_data_t));
+	if (!data)
 		return ESP_ERR_NO_MEM;
 
-	*ctx = (midi_context_t){
-		.cfg = *out_cfg};
+	*data = (midi_data_t){
+		.uart = {
+			.port = uart_port_num,
+			.baudrate = baudrate,
+			.rx_io = rx_io,
+			.tx_io = tx_io},
+	};
 
-	ESP_LOGI(TAG, "Initializing MIDI on %d (rx:%d, tx:%d) with %d baud...", ctx->cfg.uart_num, ctx->cfg.rx_io, ctx->cfg.tx_io, ctx->cfg.baudrate);
+	ESP_LOGI(TAG, "Initializing MIDI on %d (rx:%d, tx:%d) with %d baud...", data->uart.port, data->uart.rx_io, data->uart.tx_io, data->uart.baudrate);
 
 	// Configure UART
 	gpio_config_t rx_pin_config = {
-		.pin_bit_mask = (1ULL << ctx->cfg.rx_io),
+		.pin_bit_mask = (1ULL << data->uart.rx_io),
 		.mode = GPIO_MODE_INPUT,
 		.pull_up_en = GPIO_PULLUP_DISABLE,
 		.pull_down_en = GPIO_PULLDOWN_DISABLE,
 		.intr_type = GPIO_INTR_DISABLE};
 
 	gpio_config_t tx_pin_config = {
-		.pin_bit_mask = (1ULL << ctx->cfg.tx_io),
+		.pin_bit_mask = (1ULL << data->uart.tx_io),
 		.mode = GPIO_MODE_OUTPUT,
 		.pull_up_en = GPIO_PULLUP_DISABLE,
 		.pull_down_en = GPIO_PULLDOWN_DISABLE,
@@ -61,26 +73,26 @@ esp_err_t midi_init(midi_context_t **out_ctx, midi_config_t *out_cfg)
 	ESP_ERROR_CHECK(gpio_config(&tx_pin_config));
 
 	uart_config_t uart_config = {
-		.baud_rate = ctx->cfg.baudrate,
+		.baud_rate = data->uart.baudrate,
 		.data_bits = UART_DATA_8_BITS,
 		.parity = UART_PARITY_DISABLE,
 		.stop_bits = UART_STOP_BITS_1,
 		.flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
 		.source_clk = UART_SCLK_APB};
 
-	ESP_ERROR_CHECK(uart_param_config(ctx->cfg.uart_num, &uart_config));
-	ESP_ERROR_CHECK(uart_set_pin(ctx->cfg.uart_num, ctx->cfg.tx_io, ctx->cfg.rx_io, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE));
-	ESP_ERROR_CHECK(uart_driver_install(ctx->cfg.uart_num, 1024 * 2, 1024 * 2, 0, NULL, 0));
+	ESP_ERROR_CHECK(uart_param_config(data->uart.port, &uart_config));
+	ESP_ERROR_CHECK(uart_set_pin(data->uart.port, data->uart.tx_io, data->uart.rx_io, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE));
+	ESP_ERROR_CHECK(uart_driver_install(data->uart.port, 1024 * 2, 1024 * 2, 0, NULL, 0));
 
 	// Pass configured context to outer parameters
-	*out_ctx = ctx;
+	*out_data = data;
 	return ESP_OK;
 }
 
 esp_err_t midi_exit(midi_handle_t midi_handle)
 {
 	esp_err_t err = ESP_OK;
-	err = uart_driver_delete(midi_handle->cfg.uart_num);
+	err = uart_driver_delete(midi_handle->uart.uart_num);
 	free(midi_handle);
 	return err;
 }
@@ -102,11 +114,11 @@ esp_err_t midi_write(midi_handle_t handle, midi_message_t *msg)
 	case MIDI_STATUS_CONTROL_CHANGE:
 	case MIDI_STATUS_PITCH_BEND:
 	case MIDI_STATUS_POLYPHONIC_KEY_PRESSURE:
-		len = uart_write_bytes(handle->cfg.uart_num, data, MIDI_BYTE_SIZE_DEFAULT);
+		len = uart_write_bytes(handle->uart.uart_num, data, MIDI_BYTE_SIZE_DEFAULT);
 		break;
 	case MIDI_STATUS_PROGRAM_CHANGE:
 	case MIDI_STATUS_CHANNEL_PRESSURE:
-		len = uart_write_bytes(handle->cfg.uart_num, data, MIDI_BYTE_SIZE_SHORT);
+		len = uart_write_bytes(handle->uart.uart_num, data, MIDI_BYTE_SIZE_SHORT);
 		break;
 	default:
 		ESP_LOGE(TAG, "midi_send: invalid status: %02X", msg->status);
@@ -133,7 +145,7 @@ esp_err_t midi_write(midi_handle_t handle, midi_message_t *msg)
 esp_err_t midi_read(midi_handle_t midi_handle, midi_message_t *msg, TickType_t timeout)
 {
 	char data[3];
-	int len = uart_read_bytes(midi_handle->cfg.uart_num, (uint8_t *)data, 3, timeout);
+	int len = uart_read_bytes(midi_handle->uart.uart_num, (uint8_t *)data, 3, timeout);
 	switch (len)
 	{
 	case -1:

@@ -19,6 +19,23 @@ static const char *TAG = "I2S_SAMPLER";
 static TaskHandle_t sampler_task_handle;
 
 /**
+ * @brief Sampler Configuration
+ * @param dma_queue Samples are sent to this queue by the DMA
+ * @param dsp_queue Sampling result is sent to this queue
+ * @param buffer Buffer to store samples in
+ * @param buffer_pos Current position in buffer
+ * @param buffer_size Size of the buffer in samples
+ */
+typedef struct i2s_sampler_s
+{
+    QueueHandle_t dma_queue;
+    QueueHandle_t dsp_queue;
+    size_t *buffer;
+    size_t buffer_pos;
+    size_t buffer_size;
+} i2s_sampler_t;
+
+/**
  * @brief Sampler Task for I2S
  *
  * @param arg i2s_sampler_t*
@@ -26,7 +43,7 @@ static TaskHandle_t sampler_task_handle;
  */
 static void IRAM_ATTR sampler_task(void *arg)
 {
-    i2s_sampler_t *sampler = (i2s_sampler_t *)arg;
+    i2s_sampler_handle_t sampler = (i2s_sampler_handle_t)arg;
     for (;;)
     {
         i2s_event_t evt;
@@ -55,8 +72,7 @@ static void IRAM_ATTR sampler_task(void *arg)
         } while (bytes_read > 0);
     }
 }
-
-i2s_sampler_t *i2s_sampler_start(adc_channel_t adc1_channel, QueueHandle_t recv_queue, const size_t buffer_size, const size_t f_sample)
+i2s_sampler_handle_t i2s_sampler_start(adc_channel_t adc1_channel, QueueHandle_t recv_queue, const size_t buffer_size, const size_t f_sample)
 {
     ESP_LOGI(TAG, "Initializing I2S Sampler...");
     QueueHandle_t dma_queue;
@@ -79,7 +95,7 @@ i2s_sampler_t *i2s_sampler_start(adc_channel_t adc1_channel, QueueHandle_t recv_
     ESP_ERROR_CHECK(i2s_set_adc_mode(ADC_UNIT_1, adc1_channel));
     ESP_ERROR_CHECK(i2s_adc_enable(I2S_NUM_0));
 
-    i2s_sampler_t *sampler = (i2s_sampler_t *)malloc(sizeof(i2s_sampler_t));
+    i2s_sampler_handle_t sampler = (i2s_sampler_t *)malloc(sizeof(i2s_sampler_t));
 
     *sampler = (i2s_sampler_t){
         .buffer = (size_t *)malloc(buffer_size * sizeof(size_t)),
@@ -95,7 +111,12 @@ i2s_sampler_t *i2s_sampler_start(adc_channel_t adc1_channel, QueueHandle_t recv_
     return sampler;
 }
 
-void i2s_sampler_stop(i2s_sampler_t *sampler)
+QueueHandle_t i2s_sampler_get_queue(i2s_sampler_handle_t sampler)
+{
+    return sampler->dsp_queue;
+}
+
+void i2s_sampler_stop(i2s_sampler_handle_t sampler)
 {
     ESP_LOGI(TAG, "Stopping I2S Sampler...");
     // stop i2s

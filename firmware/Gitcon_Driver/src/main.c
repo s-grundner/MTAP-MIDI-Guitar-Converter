@@ -13,7 +13,7 @@
 
 #define USER_LOCAL_LEVEL ESP_LOG_ERROR
 
-// when PROTOTYPE is 1, the prototype board is used
+// when PROTOTYPE is 1, the prototype board 1 is used
 #define PROTOTYPE 0
 
 static const char *TAG = "main";
@@ -117,6 +117,7 @@ void app_main(void)
 		ESP_ERROR_CHECK(gpio_isr_handler_add(DIP_IO[i], dip_isr, &dip_switch));
 	}
 #endif
+
 	while (1)
 		vTaskDelay(1000 / portTICK_PERIOD_MS);
 }

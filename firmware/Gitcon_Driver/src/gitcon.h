@@ -22,25 +22,8 @@
 
 #define GITCON_LOG_LEVEL ESP_LOG_ERROR
 
-/**
- * @brief Gitcon Configuration
- * @param sampler Sampler Handler (MCP3201 or I2S)
- * @param midi_handle MIDI Driver Context (MIDI over UART)
- * @param midi_queue MIDI Queue Handler
- */
-typedef struct
-{
-#ifdef USE_MCP3201
-  mcp3201_sampler_t *sampler;
-#else
-  i2s_sampler_t *sampler;
-#endif
-  midi_handle_t midi_handle;
-  QueueHandle_t midi_queue;
-} gitcon_context_t;
-
-/// @typedef gitcon_context_t *gitcon_handle_t Gitcon Context Handler pointer
-typedef gitcon_context_t *gitcon_handle_t;
+/// @typedef gitcon_context *gitcon_handle_t Opaque Pointer to Gitcon Data
+typedef struct gitcon_data_s *gitcon_handle_t;
 
 /**
  * @brief initializes gitcon device and installs peripheral drivers
