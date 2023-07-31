@@ -80,6 +80,7 @@ static void IRAM_ATTR debounce_task(TimerHandle_t debounce_timer)
 void app_main(void)
 {
 	gitcon_handle_t handle;
+	
 	if (gitcon_init(&handle) != ESP_OK)
 	{
 		ESP_LOGE(TAG, "gitcon_init failed");

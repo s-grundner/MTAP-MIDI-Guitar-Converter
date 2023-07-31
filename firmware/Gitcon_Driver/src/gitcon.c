@@ -46,7 +46,9 @@ typedef struct gitcon_data_s
 	midi_handle_t midi_handle;
 	QueueHandle_t midi_queue;
 } gitcon_data_t;
-typedef struct gitcon_data_s *gitcon_handle_t;
+
+// typedef struct gitcon_data_s *gitcon_handle_t;
+
 // ------------------------------------------------------------
 // static functions
 // ------------------------------------------------------------
@@ -58,7 +60,7 @@ typedef struct gitcon_data_s *gitcon_handle_t;
 static void dsp_task(void *arg)
 {
 	// gitcon driver context handler
-	gitcon_handle_t g_handle = (gitcon_handle_t)arg;
+	gitcon_data_t *g_handle = (gitcon_data_t *)arg;
 
 	// audio buffer variables
 	uint16_t *audio_buffer = NULL;
@@ -101,7 +103,7 @@ static void dsp_task(void *arg)
 		vTaskDelay(10 / portTICK_PERIOD_MS);
 
 		// get audio buffer from sampler
-		if (xQueueReceive(i2s_sampler_get_queue(g_handle->sampler), &audio_buffer, portMAX_DELAY) == pdFALSE)
+		if (xQueueReceive(i2s_sampler_get_queue_handle(g_handle->sampler), &audio_buffer, portMAX_DELAY) == pdFALSE)
 			continue; // skip iteration if queue is empty
 
 		///@note this is where the audio buffer is available and the FFT is executed
@@ -180,7 +182,7 @@ static void dsp_task(void *arg)
 static void midi_task(void *arg)
 {
 	// gitcon driver context handler
-	gitcon_handle_t g_handle = (gitcon_handle_t)arg;
+	gitcon_data_t *g_handle = (gitcon_data_t *)arg;
 	midi_message_t *active_notes = NULL;
 	midi_status_t previous_states[128] = {0};
 	for (;;)
@@ -208,8 +210,9 @@ static void midi_task(void *arg)
 // non-static functions
 // ------------------------------------------------------------
 
-esp_err_t gitcon_init(gitcon_handle_t *out_data)
+esp_err_t gitcon_init(gitcon_handle_t *out_handle)
 {
+	gitcon_data_t **g_handle = (gitcon_data_t **)out_handle;
 	gitcon_data_t *g_data = (gitcon_data_t *)malloc(sizeof(gitcon_data_t));
 	if (!g_data)
 		return ESP_ERR_NO_MEM;
@@ -271,13 +274,14 @@ esp_err_t gitcon_init(gitcon_handle_t *out_data)
 		return ESP_ERR_NO_MEM;
 
 	// Pass final configuration to outer parameters
-	*out_data = g_data;
+	*g_handle = g_data;
 	return ESP_OK;
 }
 
 esp_err_t gitcon_exit(gitcon_handle_t handle)
 {
-	ESP_ERROR_CHECK(midi_exit(handle->midi_handle));
+	gitcon_data_t *g_handle = (gitcon_data_t *)handle;
+	ESP_ERROR_CHECK(midi_exit(g_handle->midi_handle));
 
 	// stop tasks
 	vTaskDelete(task_handle_dsp);
@@ -288,9 +292,9 @@ esp_err_t gitcon_exit(gitcon_handle_t handle)
 	mcp3201_sampler_stop(handle->sampler->mcp_handle);
 	RET_ON_ERROR(mcp3201_exit(handle->sampler->mcp_handle));
 #else
-	i2s_sampler_stop(handle->sampler);
+	i2s_sampler_stop(g_handle->sampler);
 #endif
 
-	free(handle);
+	free(g_handle);
 	return ESP_OK;
 }
