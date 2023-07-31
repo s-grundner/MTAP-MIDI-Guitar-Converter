@@ -10,14 +10,8 @@
  */
 
 #include "processed-data.h"
-#include "freertos/task.h"
-#include "freertos/queue.h"
-
 #include <gitcon.h>
-#include <config.h>
-#include <midi.h>
-#include <i2s_sampler.h>
-#include <fft.h>
+
 
 static const char *TAG = "gitcon";
 
