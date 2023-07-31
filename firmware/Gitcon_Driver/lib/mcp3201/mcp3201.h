@@ -12,12 +12,14 @@
 #define MCP3201_DRIVER_H
 
 #include <stdio.h>
+#include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/queue.h"
 #include "driver/gpio.h"
+#include "hal/spi_types.h"
+#include "driver/spi_master.h"
 #include "esp_log.h"
 #include "esp_err.h"
-#include "hal/spi_types.h"
 
 #define ADC_CLK SPI_MASTER_FREQ_8M
 

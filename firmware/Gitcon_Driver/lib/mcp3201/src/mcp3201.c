@@ -10,7 +10,6 @@
  */
 
 #include "mcp3201_internal.h"
-#include "driver/spi_master.h"
 
 static const char *TAG = "mcp3201";
 

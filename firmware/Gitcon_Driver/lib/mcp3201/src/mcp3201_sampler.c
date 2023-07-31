@@ -9,8 +9,6 @@
  *
  */
 #include "mcp3201_internal.h"
-#include "driver/spi_master.h"
-// #include "hal/spi_types.h"
 
 #define RESAMPLE_DENOMINATOR 2
 #define READER_TIMEOUT_MS 10
