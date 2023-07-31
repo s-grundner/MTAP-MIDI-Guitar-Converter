@@ -30,24 +30,7 @@ static TaskHandle_t task_handle_dsp;
 // #define DEBUG_BETTER_SERIAL_PLOTTER //to enable debug output for better_serial_plotter software
 // #define DEBUG_DSP //to enable debug output for dsp_task
 
-/**
- * @brief Gitcon Configuration
- * @param sampler Sampler Handler (MCP3201 or I2S)
- * @param midi_handle MIDI Driver Context (MIDI over UART)
- * @param midi_queue MIDI Queue Handler
- */
-typedef struct gitcon_data_s
-{
-#ifdef USE_MCP3201
-	mcp3201_sampler_t *sampler;
-#else
-	i2s_sampler_handle_t sampler;
-#endif
-	midi_handle_t midi_handle;
-	QueueHandle_t midi_queue;
-} gitcon_data_t;
-
-// typedef struct gitcon_data_s *gitcon_handle_t;
+typedef struct gitcon_data_s gitcon_data_t;
 
 // ------------------------------------------------------------
 // static functions
@@ -103,7 +86,7 @@ static void dsp_task(void *arg)
 		vTaskDelay(10 / portTICK_PERIOD_MS);
 
 		// get audio buffer from sampler
-		if (xQueueReceive(i2s_sampler_get_queue_handle(g_handle->sampler), &audio_buffer, portMAX_DELAY) == pdFALSE)
+		if (xQueueReceive(i2s_sampler_get_result_queue_handle(g_handle->sampler), &audio_buffer, portMAX_DELAY) == pdFALSE)
 			continue; // skip iteration if queue is empty
 
 		///@note this is where the audio buffer is available and the FFT is executed
@@ -124,8 +107,6 @@ static void dsp_task(void *arg)
 		for (int i = 0; i < FFT_SIZE; i++)
 			printf("%f\n", audio_buffer_float[i]); // for debugging in BetterSerialPlotter
 #endif
-		///@TODO: high pass f_g ~ 30Hz
-
 		///@note analyze audio data (FFT, etc.)
 		fft_config_t *fft_plan = fft_init(FFT_SIZE, FFT_REAL, FFT_FORWARD, audio_buffer_float, fft_buffer);
 		if (fft_plan == NULL)
@@ -212,13 +193,12 @@ static void midi_task(void *arg)
 
 esp_err_t gitcon_init(gitcon_handle_t *out_handle)
 {
-	gitcon_data_t **g_handle = (gitcon_data_t **)out_handle;
 	gitcon_data_t *g_data = (gitcon_data_t *)malloc(sizeof(gitcon_data_t));
 	if (!g_data)
 		return ESP_ERR_NO_MEM;
 
 	// create queue for audio data (passed into sampler)
-	QueueHandle_t dsp_queue = xQueueCreate(10, sizeof(size_t *));
+	QueueHandle_t result_queue = xQueueCreate(10, sizeof(size_t *));
 
 	// create queue for midi messages
 	g_data->midi_queue = xQueueCreate(5, sizeof(midi_handle_t *));
@@ -248,9 +228,9 @@ esp_err_t gitcon_init(gitcon_handle_t *out_handle)
 		.mosi_io = SPI_MOSI};
 	// initialize ADC and store in gitcon handle
 	ESP_ERROR_CHECK(mcp3201_init(&mcp_handle, &mcp_cfg));
-	gitcon_cfg->sampler = mcp3201_sampler_start(mcp_handle, dsp_queue, AUDIO_BUFFER_SIZE, F_SAMPLE_HZ);
+	gitcon_cfg->sampler = mcp3201_sampler_start(mcp_handle, result_queue, AUDIO_BUFFER_SIZE, F_SAMPLE_HZ);
 #else
-	g_data->sampler = i2s_sampler_start(INTERNAL_ADC_CHANNEL, dsp_queue, AUDIO_BUFFER_SIZE, F_SAMPLE_HZ);
+	g_data->sampler = i2s_sampler_start(INTERNAL_ADC_CHANNEL, result_queue, AUDIO_BUFFER_SIZE, F_SAMPLE_HZ);
 #endif
 
 	// ------------------------------------------------------------
@@ -274,13 +254,12 @@ esp_err_t gitcon_init(gitcon_handle_t *out_handle)
 		return ESP_ERR_NO_MEM;
 
 	// Pass final configuration to outer parameters
-	*g_handle = g_data;
+	*out_handle = g_data;
 	return ESP_OK;
 }
 
-esp_err_t gitcon_exit(gitcon_handle_t handle)
+esp_err_t gitcon_exit(gitcon_handle_t g_handle)
 {
-	gitcon_data_t *g_handle = (gitcon_data_t *)handle;
 	ESP_ERROR_CHECK(midi_exit(g_handle->midi_handle));
 
 	// stop tasks

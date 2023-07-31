@@ -65,8 +65,8 @@ typedef struct
 	uint8_t param2;
 } midi_message_t;
 
-/// @typedef *midi_handle_t MIDI Context Handler
-typedef void *midi_handle_t;
+// define handle for external opaque reference
+typedef struct midi_data_s *midi_handle_t;
 
 /**
  * @brief initializes MIDI and allocates driver resources

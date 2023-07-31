@@ -10,11 +10,12 @@
  */
 
 #include "gitcon.h"
+#include "freertos/FreeRTOS.h"
 
 #define USER_LOCAL_LEVEL ESP_LOG_ERROR
 
 // when PROTOTYPE is 1, the prototype board 1 is used
-#define PROTOTYPE 0
+#define PROTOTYPE 1
 
 static const char *TAG = "main";
 
@@ -80,7 +81,7 @@ static void IRAM_ATTR debounce_task(TimerHandle_t debounce_timer)
 void app_main(void)
 {
 	gitcon_handle_t handle;
-	
+
 	if (gitcon_init(&handle) != ESP_OK)
 	{
 		ESP_LOGE(TAG, "gitcon_init failed");
@@ -88,7 +89,7 @@ void app_main(void)
 		return;
 	}
 #if PROTOTYPE == 1
-	xTimerHandle debounce_timers[DIP_POL];
+	TimerHandle_t debounce_timers[DIP_POL];
 
 	for (size_t i = 0; i < DIP_POL; i++)
 		debounce_timers[i] = xTimerCreate("dip_switch", pdMS_TO_TICKS(DEBOUNCE_TIME_MS), pdFALSE, (void *)i, debounce_task);

@@ -23,7 +23,7 @@ static TaskHandle_t task_handle_reader;
  * @brief MCP3201 Sampler. Samples continuously and puts the samples into a queue.
  * @param mcp_handle MCP3201 Handle
  * @param dma_queue DMA Queue. Will be created by the sampler.
- * @param[out] dsp_queue DSP Queue. Has to be created by the user.
+ * @param[out] result_queue DSP Queue. Has to be created by the user.
  * @param buffer Buffer
  * @param buffer_pos Buffer Position
  * @param buffer_size Buffer Size
@@ -32,7 +32,7 @@ typedef struct mcp3201_sampler_data_s
 {
 	mcp3201_handle_t mcp_handle;
 	QueueHandle_t dma_queue;
-	QueueHandle_t dsp_queue;
+	QueueHandle_t result_queue;
 	size_t *buffer;
 	size_t buffer_pos;
 	size_t buffer_size;
@@ -78,7 +78,7 @@ static void IRAM_ATTR sampler_task(void *arg)
 			{
 				// send data to DSP queue
 				sampler->buffer_pos = 0;
-				xQueueSend(sampler->dsp_queue, &sampler->buffer, portMAX_DELAY);
+				xQueueSend(sampler->result_queue, &sampler->buffer, portMAX_DELAY);
 			}
 		} while (bytes_read > 0);
 	}
@@ -110,7 +110,7 @@ mcp3201_sampler_handle_t mcp3201_sampler_start(mcp3201_handle_t mcp_handle, Queu
 		.buffer = (size_t *)malloc(sizeof(size_t) * buffer_size),
 		.buffer_pos = 0,
 		.dma_queue = xQueueCreate(4, sizeof(spi_event_t)),
-		.dsp_queue = recv_queue};
+		.result_queue = recv_queue};
 
 	ESP_ERROR_CHECK(spi_device_acquire_bus(mcp_handle->spi_handle, portMAX_DELAY));
 
@@ -123,7 +123,7 @@ mcp3201_sampler_handle_t mcp3201_sampler_start(mcp3201_handle_t mcp_handle, Queu
 void mcp3201_sampler_stop(mcp3201_sampler_handle_t sampler)
 {
 	vQueueDelete(sampler->dma_queue);
-	vQueueDelete(sampler->dsp_queue);
+	vQueueDelete(sampler->result_queue);
 
 	spi_device_release_bus(sampler->mcp_handle->spi_handle);
 

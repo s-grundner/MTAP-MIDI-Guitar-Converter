@@ -14,7 +14,6 @@
 #define MIDI_BYTE_SIZE_SHORT 2
 
 static const char *TAG = "MIDI";
-static const char *MIDI_MON = "MIDI MONITOR";
 
 /**
  * @brief internal midi data
@@ -31,9 +30,6 @@ typedef struct midi_data_s
 		gpio_num_t tx_io;
 	} uart;
 } midi_data_t;
-
-// define handle for external opaque reference
-typedef struct midi_data_s *midi_handle_t;
 
 // ------------------------------------------------------------
 // MIDI CONFIG
@@ -138,7 +134,7 @@ esp_err_t midi_write(midi_handle_t m_handle, midi_message_t *msg)
 		return ESP_ERR_TIMEOUT;
 		break;
 	default:
-		// ESP_LOGI(MIDI_MON, "Status: %02X\tChannel: %02X\t Data: %02X %02X\t Length:%d", msg->status, msg->channel, msg->param1, msg->param2, len);
+		__unreachable();
 		break;
 	}
 	return ESP_OK;

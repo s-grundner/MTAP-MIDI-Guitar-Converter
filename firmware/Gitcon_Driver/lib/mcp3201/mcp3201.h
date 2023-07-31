@@ -40,8 +40,8 @@ typedef struct
 	uint dma_chan;
 } mcp3201_config_t;
 
-typedef void *mcp3201_handle_t;
-typedef void *mcp3201_sampler_handle_t;
+typedef struct mcp3201_data_s *mcp3201_handle_t;
+typedef struct mcp3201_sampler_data_s *mcp3201_sampler_handle_t;
 
 /**
  * @brief Initializes the MCP3201 ADC device

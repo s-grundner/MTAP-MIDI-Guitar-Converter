@@ -29,12 +29,11 @@ static TaskHandle_t task_handle_sampler;
 typedef struct i2s_sampler_data_s
 {
     QueueHandle_t dma_queue;
-    QueueHandle_t dsp_queue;
+    QueueHandle_t result_queue;
     size_t *buffer;
     size_t buffer_pos;
     size_t buffer_size;
 } i2s_sampler_data_t;
-typedef struct i2s_sampler_data_s *i2s_sampler_handle_t;
 
 /**
  * @brief Sampler Task for I2S
@@ -68,12 +67,13 @@ static void IRAM_ATTR sampler_task(void *arg)
             if (sampler->buffer_pos == sampler->buffer_size)
             {
                 sampler->buffer_pos = 0;
-                xQueueSend(sampler->dsp_queue, &sampler->buffer, portMAX_DELAY);
+                xQueueSend(sampler->result_queue, &sampler->buffer, portMAX_DELAY);
             }
         } while (bytes_read > 0);
     }
 }
-i2s_sampler_handle_t i2s_sampler_start(adc_channel_t adc1_channel, QueueHandle_t recv_queue, const size_t buffer_size, const size_t f_sample)
+
+i2s_sampler_handle_t i2s_sampler_start(adc_channel_t adc1_channel, QueueHandle_t result_queue, const size_t buffer_size, const size_t f_sample)
 {
     ESP_LOGI(TAG, "Initializing I2S Sampler...");
     QueueHandle_t dma_queue;
@@ -103,18 +103,20 @@ i2s_sampler_handle_t i2s_sampler_start(adc_channel_t adc1_channel, QueueHandle_t
         .buffer_pos = 0,
         .buffer_size = buffer_size,
         .dma_queue = dma_queue,
-        .dsp_queue = recv_queue};
+        .result_queue = result_queue};
 
     // DMA task: receives audio data from ADC and sends it to DSP task
     if (xTaskCreatePinnedToCore(sampler_task, "sampler_task", 1 << 14, sampler, 5, &task_handle_sampler, 0) == pdFALSE)
         return NULL;
-
     return sampler;
 }
 
-QueueHandle_t i2s_sampler_get_queue_handle(i2s_sampler_handle_t sampler)
+QueueHandle_t i2s_sampler_get_result_queue_handle(i2s_sampler_handle_t sampler)
 {
-    return sampler->dsp_queue;
+    if (sampler)
+        return sampler->result_queue;
+    ESP_LOGE(TAG, "The i2s handler is not initialized");
+    return NULL;
 }
 
 void i2s_sampler_stop(i2s_sampler_handle_t sampler)

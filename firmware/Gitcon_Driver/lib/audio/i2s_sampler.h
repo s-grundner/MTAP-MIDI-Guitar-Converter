@@ -19,7 +19,7 @@
 #include "freertos/timers.h"
 #include "esp_log.h"
 
-typedef void *i2s_sampler_handle_t;
+typedef struct i2s_sampler_data_s *i2s_sampler_handle_t;
 
 /**
  * @brief Starts a sampler Task that samples from the given ADC1 Channel and sends the samples to the given Queue
@@ -37,7 +37,7 @@ i2s_sampler_handle_t i2s_sampler_start(adc_channel_t adc1_channel, QueueHandle_t
  * @param sampler Sampler to acquire QueueHandle from
  * @return
  */
-QueueHandle_t i2s_sampler_get_queue_handle(i2s_sampler_handle_t sampler);
+QueueHandle_t i2s_sampler_get_result_queue_handle(i2s_sampler_handle_t sampler);
 
 /**
  * @brief Deletes sampler Task, frees memory and uninstalls adc as well as i2s driver
