@@ -10,9 +10,6 @@
  */
 
 #include "gitcon.h"
-#include "esp_log.h"
-#include "esp_err.h"
-#include "freertos/FreeRTOS.h"
 
 #define USER_LOCAL_LEVEL ESP_LOG_ERROR
 
