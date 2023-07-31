@@ -44,6 +44,7 @@ typedef struct i2s_sampler_data_s
 static void IRAM_ATTR sampler_task(void *arg)
 {
     i2s_sampler_handle_t sampler = (i2s_sampler_handle_t)arg;
+
     for (;;)
     {
         i2s_event_t evt;
@@ -97,8 +98,8 @@ i2s_sampler_handle_t i2s_sampler_start(adc_channel_t adc1_channel, QueueHandle_t
     ESP_ERROR_CHECK(i2s_adc_enable(I2S_NUM_0));
 
     i2s_sampler_handle_t sampler = (i2s_sampler_data_t *)malloc(sizeof(i2s_sampler_data_t));
-
     *sampler = (i2s_sampler_data_t){
+
         .buffer = (size_t *)malloc(buffer_size * sizeof(size_t)),
         .buffer_pos = 0,
         .buffer_size = buffer_size,
@@ -108,6 +109,7 @@ i2s_sampler_handle_t i2s_sampler_start(adc_channel_t adc1_channel, QueueHandle_t
     // DMA task: receives audio data from ADC and sends it to DSP task
     if (xTaskCreatePinnedToCore(sampler_task, "sampler_task", 1 << 14, sampler, 5, &task_handle_sampler, 0) == pdFALSE)
         return NULL;
+
     return sampler;
 }
 
