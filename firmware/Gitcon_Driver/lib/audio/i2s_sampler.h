@@ -19,22 +19,7 @@
 #include "freertos/timers.h"
 #include "esp_log.h"
 
-/**
- * @brief Sampler Configuration
- * @param dma_queue Samples are sent to this queue by the DMA
- * @param dsp_queue Sampling result is sent to this queue
- * @param buffer Buffer to store samples in
- * @param buffer_pos Current position in buffer
- * @param buffer_size Size of the buffer in samples
- */
-typedef struct
-{
-	QueueHandle_t dma_queue;
-	QueueHandle_t dsp_queue;
-	size_t *buffer;
-	size_t buffer_pos;
-	size_t buffer_size;
-} i2s_sampler_t;
+typedef struct i2s_sampler_data_s *i2s_sampler_handle_t;
 
 /**
  * @brief Starts a sampler Task that samples from the given ADC1 Channel and sends the samples to the given Queue
@@ -42,16 +27,23 @@ typedef struct
  * @param adc1_channel ADC1 Channel to use (Only ADC1 Channels are supported)
  * @param recv_queue Queue to send samples to
  * @param buffer_size Size of the buffer in samples
- * @param f_sample Sample rate
- * @return i2s_sampler_t* Sampler context or NULL if failed
+ * @param f_sample sample rate in Hz
+ * @return sampler handle or NULL if failed
  */
-i2s_sampler_t *i2s_sampler_start(adc_channel_t adc1_channel, QueueHandle_t recv_queue, size_t buffer_size, size_t f_sample);
+i2s_sampler_handle_t i2s_sampler_start(adc_channel_t adc1_channel, QueueHandle_t recv_queue, size_t buffer_size, size_t f_sample);
+
+/**
+ * @brief Access QueueHandle
+ * @param sampler Sampler to acquire QueueHandle from
+ * @return
+ */
+QueueHandle_t i2s_sampler_get_result_queue_handle(i2s_sampler_handle_t sampler);
 
 /**
  * @brief Deletes sampler Task, frees memory and uninstalls adc as well as i2s driver
  * @param sampler Sampler to stop
  * @return ESP_OK if successful
  */
-esp_err_t i2s_sampler_stop(i2s_sampler_t *sampler);
+void i2s_sampler_stop(i2s_sampler_handle_t sampler);
 
 #endif // SAMPLING_H

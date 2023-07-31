@@ -65,33 +65,20 @@ typedef struct
 	uint8_t param2;
 } midi_message_t;
 
-/**
- * @brief MIDI UART Configuration
- * @struct midi_config_t
- * @param uart_num UART Port
- * @param baudrate UART Baudrate
- * @param rx_io UART RX Pin
- * @param tx_io UART TX Pin
- */
-typedef struct
-{
-	uart_port_t uart_num;
-	uint baudrate;
-	gpio_num_t rx_io;
-	gpio_num_t tx_io;
-} midi_config_t;
-
-/// @typedef *midi_handle_t MIDI Context Handler
-typedef struct midi_context_t *midi_handle_t;
+// define handle for external opaque reference
+typedef struct midi_data_s *midi_handle_t;
 
 /**
  * @brief initializes MIDI and allocates driver resources
  *
  * @param[out] out_handle MIDI Handle to be initialized
- * @param[out] out_cfg MIDI Configuration
+ * @param uart_num UART Port
+ * @param baudrate UART Baudrate
+ * @param rx_io UART RX Pin
+ * @param tx_io UART TX Pin
  * @return esp_err_t
  */
-esp_err_t midi_init(midi_handle_t *out_handle, midi_config_t *out_cfg);
+esp_err_t midi_init(midi_handle_t *out_handle, uart_port_t uart_num, uint baudrate, gpio_num_t rx_io, gpio_num_t tx_io);
 
 /**
  * @brief Exits MIDI and frees all resources
@@ -104,7 +91,7 @@ esp_err_t midi_exit(midi_handle_t midi_handle);
 /**
  * @brief Writes MIDI Message to UART
  *
- * @param midi_handle MIDI Handle to pass parameters
+ * @param midi_handle Opaque MIDI Data
  * @param msg MIDI Message to be sent
  * @return esp_err_t
  */
@@ -113,7 +100,7 @@ esp_err_t midi_write(midi_handle_t midi_handle, midi_message_t *msg);
 /**
  * @brief Reads MIDI Message from UART
  *
- * @param midi_handle MIDI Handle to pass parameters
+ * @param midi_handle Opaque MIDI Data
  * @param msg MIDI Message to be read
  * @return esp_err_t
  */

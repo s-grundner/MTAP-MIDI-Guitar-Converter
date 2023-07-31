@@ -9,13 +9,13 @@
  *
  */
 
-#include "gitcon.h"
 #include "processed-data.h"
+#include "gitcon.h"
 
 static const char *TAG = "gitcon";
 
-static TaskHandle_t midi_task_handle;
-static TaskHandle_t dsp_task_handle;
+static TaskHandle_t task_handle_midi;
+static TaskHandle_t task_handle_dsp;
 
 #define FLOAT_TO_UINT16(x) ((uint16_t)((x)*32767.0f))
 #define UINT16_TO_FLOAT(x) ((float)(x) / 32767.0f)
@@ -27,11 +27,10 @@ static TaskHandle_t dsp_task_handle;
 #define CONCERT_A_NOTE 69
 #define GAIN 1.0f
 
-// uncomment to enable debug output for better_serial_plotter software
-// #define DEBUG_BETTER_SERIAL_PLOTTER
+// #define DEBUG_BETTER_SERIAL_PLOTTER //to enable debug output for better_serial_plotter software
+// #define DEBUG_DSP //to enable debug output for dsp_task
 
-// uncomment to enable debug output for dsp_task
-// #define DEBUG_DSP
+typedef struct gitcon_data_s gitcon_data_t;
 
 // ------------------------------------------------------------
 // static functions
@@ -44,7 +43,7 @@ static TaskHandle_t dsp_task_handle;
 static void dsp_task(void *arg)
 {
 	// gitcon driver context handler
-	gitcon_handle_t gitcon_handle = (gitcon_handle_t)arg;
+	gitcon_data_t *g_handle = (gitcon_data_t *)arg;
 
 	// audio buffer variables
 	uint16_t *audio_buffer = NULL;
@@ -52,7 +51,7 @@ static void dsp_task(void *arg)
 	if (audio_buffer_float == NULL)
 	{
 		ESP_LOGE(TAG, "Could not allocate memory for audio_buffer_float");
-		gitcon_exit(gitcon_handle);
+		gitcon_exit(g_handle);
 		return;
 	}
 
@@ -68,7 +67,7 @@ static void dsp_task(void *arg)
 	if (active_notes == NULL)
 	{
 		ESP_LOGE(TAG, "Could not allocate memory for active_notes");
-		gitcon_exit(gitcon_handle);
+		gitcon_exit(g_handle);
 		return;
 	}
 
@@ -87,7 +86,7 @@ static void dsp_task(void *arg)
 		vTaskDelay(10 / portTICK_PERIOD_MS);
 
 		// get audio buffer from sampler
-		if (xQueueReceive(gitcon_handle->sampler->dsp_queue, &audio_buffer, portMAX_DELAY) == pdFALSE)
+		if (xQueueReceive(i2s_sampler_get_result_queue_handle(g_handle->sampler), &audio_buffer, portMAX_DELAY) == pdFALSE)
 			continue; // skip iteration if queue is empty
 
 		///@note this is where the audio buffer is available and the FFT is executed
@@ -108,8 +107,6 @@ static void dsp_task(void *arg)
 		for (int i = 0; i < FFT_SIZE; i++)
 			printf("%f\n", audio_buffer_float[i]); // for debugging in BetterSerialPlotter
 #endif
-		///@TODO: high pass f_g ~ 30Hz
-
 		///@note analyze audio data (FFT, etc.)
 		fft_config_t *fft_plan = fft_init(FFT_SIZE, FFT_REAL, FFT_FORWARD, audio_buffer_float, fft_buffer);
 		if (fft_plan == NULL)
@@ -158,7 +155,7 @@ static void dsp_task(void *arg)
 			active_notes[keyNR[k]].param2 = (uint8_t)(magnitude[k] / max * 127);
 		}
 		// send saved notes to MIDI queue
-		xQueueSend(gitcon_handle->midi_queue, &active_notes, portMAX_DELAY);
+		xQueueSend(g_handle->midi_queue, &active_notes, portMAX_DELAY);
 		fft_destroy(fft_plan);
 	} // for(;;)
 } // dsp_task
@@ -166,7 +163,7 @@ static void dsp_task(void *arg)
 static void midi_task(void *arg)
 {
 	// gitcon driver context handler
-	gitcon_handle_t gitcon_handle = (gitcon_handle_t)arg;
+	gitcon_data_t *g_handle = (gitcon_data_t *)arg;
 	midi_message_t *active_notes = NULL;
 	midi_status_t previous_states[128] = {0};
 	for (;;)
@@ -174,7 +171,7 @@ static void midi_task(void *arg)
 		///@note delay to avoid a watchdog timeout
 		vTaskDelay(10 / portTICK_PERIOD_MS);
 
-		if (xQueueReceive(gitcon_handle->midi_queue, &active_notes, portMAX_DELAY) == pdFALSE)
+		if (xQueueReceive(g_handle->midi_queue, &active_notes, portMAX_DELAY) == pdFALSE)
 			continue; // skip iteration if queue is empty
 
 		///@note active_notes is a pointer to an array of MIDI messages and should not be NULL
@@ -184,7 +181,7 @@ static void midi_task(void *arg)
 			if (active_notes[i].status == previous_states[i])
 				continue; // continue if note has not changed
 			// send message to MIDI UART
-			ESP_ERROR_CHECK(midi_write(gitcon_handle->midi_handle, &active_notes[i]));
+			ESP_ERROR_CHECK(midi_write(g_handle->midi_handle, &active_notes[i]));
 			previous_states[i] = active_notes[i].status;
 		}
 	} // for(;;)
@@ -194,18 +191,18 @@ static void midi_task(void *arg)
 // non-static functions
 // ------------------------------------------------------------
 
-esp_err_t gitcon_init(gitcon_context_t **out_handle)
+esp_err_t gitcon_init(gitcon_handle_t *out_handle)
 {
-	gitcon_context_t *gitcon_cfg = (gitcon_context_t *)malloc(sizeof(gitcon_context_t));
-	if (!gitcon_cfg)
+	gitcon_data_t *g_data = (gitcon_data_t *)malloc(sizeof(gitcon_data_t));
+	if (!g_data)
 		return ESP_ERR_NO_MEM;
 
 	// create queue for audio data (passed into sampler)
-	QueueHandle_t dsp_queue = xQueueCreate(10, sizeof(size_t *));
+	QueueHandle_t result_queue = xQueueCreate(10, sizeof(size_t *));
 
 	// create queue for midi messages
-	gitcon_cfg->midi_queue = xQueueCreate(5, sizeof(midi_handle_t *));
-	if (!gitcon_cfg->midi_queue)
+	g_data->midi_queue = xQueueCreate(5, sizeof(midi_handle_t *));
+	if (!g_data->midi_queue)
 		return ESP_ERR_NO_MEM;
 
 #ifdef USE_MCP3201
@@ -225,31 +222,23 @@ esp_err_t gitcon_init(gitcon_context_t **out_handle)
 	// ------------------------------------------------------------
 	mcp3201_handle_t mcp_handle;
 	mcp3201_config_t mcp_cfg = {
-		.host = SPI_DEV,
+		.spi_host = SPI_DEV,
 		.cs_io = SPI_CS,
 		.miso_io = SPI_MISO,
 		.mosi_io = SPI_MOSI};
 	// initialize ADC and store in gitcon handle
 	ESP_ERROR_CHECK(mcp3201_init(&mcp_handle, &mcp_cfg));
-	gitcon_cfg->sampler = mcp3201_sampler_start(mcp_handle, dsp_queue, AUDIO_BUFFER_SIZE, F_SAMPLE_HZ);
+	gitcon_cfg->sampler = mcp3201_sampler_start(mcp_handle, result_queue, AUDIO_BUFFER_SIZE, F_SAMPLE_HZ);
 #else
-	gitcon_cfg->sampler = i2s_sampler_start(INTERNAL_ADC_CHANNEL, dsp_queue, AUDIO_BUFFER_SIZE, F_SAMPLE_HZ);
+	g_data->sampler = i2s_sampler_start(INTERNAL_ADC_CHANNEL, result_queue, AUDIO_BUFFER_SIZE, F_SAMPLE_HZ);
 #endif
 
 	// ------------------------------------------------------------
 	// MIDI
 	// ------------------------------------------------------------
 
-	// Configure a handle parameter for MIDI
-	midi_handle_t midi_handle;
-	midi_config_t midi_cfg = {
-		.uart_num = MIDI_UART,
-		.baudrate = MIDI_BAUD,
-		.rx_io = MIDI_RX,
-		.tx_io = MIDI_TX};
 	// Initialize MIDI and store in gitcon handle
-	ESP_ERROR_CHECK(midi_init(&midi_handle, &midi_cfg));
-	gitcon_cfg->midi_handle = midi_handle;
+	ESP_ERROR_CHECK(midi_init(&g_data->midi_handle, MIDI_UART, MIDI_BAUD, MIDI_RX, MIDI_TX));
 
 	// ------------------------------------------------------------
 	// INIT RTOS
@@ -257,34 +246,34 @@ esp_err_t gitcon_init(gitcon_context_t **out_handle)
 
 	ESP_LOGI(TAG, "Creating RTOS tasks...");
 	///@note DSP task: receives audio data from DMA task and sends audio data to MIDI task
-	if (xTaskCreatePinnedToCore(dsp_task, "dsp_task", 1 << 16, gitcon_cfg, 5, &dsp_task_handle, 1) == pdFALSE)
+	if (xTaskCreatePinnedToCore(dsp_task, "dsp_task", 1 << 16, g_data, 5, &task_handle_dsp, 1) == pdFALSE)
 		return ESP_ERR_NO_MEM;
 
 	///@note MIDI task: receives midi messages from DSP task and sends them to MIDI UART
-	if (xTaskCreatePinnedToCore(midi_task, "midi_task", 2048, gitcon_cfg, 5, &midi_task_handle, 0) == pdFALSE)
+	if (xTaskCreatePinnedToCore(midi_task, "midi_task", 2048, g_data, 5, &task_handle_midi, 0) == pdFALSE)
 		return ESP_ERR_NO_MEM;
 
 	// Pass final configuration to outer parameters
-	*out_handle = gitcon_cfg;
+	*out_handle = g_data;
 	return ESP_OK;
 }
 
-esp_err_t gitcon_exit(gitcon_handle_t handle)
+esp_err_t gitcon_exit(gitcon_handle_t g_handle)
 {
-	ESP_ERROR_CHECK(midi_exit(handle->midi_handle));
+	ESP_ERROR_CHECK(midi_exit(g_handle->midi_handle));
 
 	// stop tasks
-	vTaskDelete(dsp_task_handle);
-	vTaskDelete(midi_task_handle);
+	vTaskDelete(task_handle_dsp);
+	vTaskDelete(task_handle_midi);
 
 	// stop sampler
 #ifdef USE_MCP3201
 	mcp3201_sampler_stop(handle->sampler->mcp_handle);
-	ESP_ERROR_CHECK(mcp3201_exit(handle->sampler->mcp_handle));
+	RET_ON_ERROR(mcp3201_exit(handle->sampler->mcp_handle));
 #else
-	i2s_sampler_stop(handle->sampler);
+	i2s_sampler_stop(g_handle->sampler);
 #endif
 
-	free(handle);
+	free(g_handle);
 	return ESP_OK;
 }

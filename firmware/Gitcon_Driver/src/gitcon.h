@@ -29,19 +29,18 @@
  * @param midi_handle MIDI Driver Context (MIDI over UART)
  * @param midi_queue MIDI Queue Handler
  */
-typedef struct
+struct gitcon_data_s
 {
 #ifdef USE_MCP3201
   mcp3201_sampler_t *sampler;
 #else
-  i2s_sampler_t *sampler;
+  i2s_sampler_handle_t sampler;
 #endif
   midi_handle_t midi_handle;
   QueueHandle_t midi_queue;
-} gitcon_context_t;
+};
 
-/// @typedef gitcon_context_t *gitcon_handle_t Gitcon Context Handler pointer
-typedef gitcon_context_t *gitcon_handle_t;
+typedef struct gitcon_data_s *gitcon_handle_t;
 
 /**
  * @brief initializes gitcon device and installs peripheral drivers
