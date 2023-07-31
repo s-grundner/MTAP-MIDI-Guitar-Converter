@@ -10,8 +10,7 @@
  */
 
 #include "processed-data.h"
-#include <gitcon.h>
-
+#include "gitcon.h"
 
 static const char *TAG = "gitcon";
 
