@@ -1,6 +1,5 @@
 [![HTL Salzburg](https://img.shields.io/badge/HTBLuVA-Elektronik%20und%20Technische%20Informatik-8a2be2)](http://www.htl-salzburg.ac.at/startseite.html)
 [![Built with: platformio](https://img.shields.io/badge/built%20with-platformio-orange)](https://platformio.org/)
-[![Drawn with: Diagrams](https://img.shields.io/badge/drawn%20with-diagrams.net-ff8c00)](https://app.diagrams.net/)
 
 # [MTAP-MIDI-Guitar-Converter](http://www.htl-salzburg.ac.at/elektronik-technische-informatik-diplomarbeiten/1594.html) [DE]
 <picture>
