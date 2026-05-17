@@ -1,21 +1,22 @@
-Circuit: * C:\Users\simon\source\MTAP-MIDI-Guitar-Converter\simulations\Draft1.asc
+Circuit: * C:\Users\Smon\source\MTAP-MIDI-Guitar-Converter\simulations\Draft1.asc
 
-.OP point found by inspection.
+WARNING: Less than two connections to node NC_01.  This node is used by R4.
+Direct Newton iteration for .op point succeeded.
 
-Date: Fri Nov 24 15:26:13 2023
-Total elapsed time: 0.049 seconds.
+Date: Thu Aug 01 14:16:15 2024
+Total elapsed time: 0.047 seconds.
 
 tnom = 27
 temp = 27
 method = modified trap
-totiter = 226
-traniter = 226
-tranpoints = 114
-accept = 88
-rejected = 26
-matrix size = 3
+totiter = 2154
+traniter = 2148
+tranpoints = 1075
+accept = 1074
+rejected = 1
+matrix size = 8
 fillins = 0
 solver = Normal
-Matrix Compiler1: 50 bytes object code size  0.1/0.1/[0.1]
-Matrix Compiler2: 175 bytes object code size  0.1/0.1/[0.1]
+Matrix Compiler1: 318 bytes object code size  0.1/0.0/[0.0]
+Matrix Compiler2: 530 bytes object code size  0.0/0.1/[0.0]
 
